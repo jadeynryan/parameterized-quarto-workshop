@@ -1,0 +1,132 @@
+/*-- scss:defaults --*/
+
+// fonts
+@import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap';
+
+$font-family-sans-serif: "Atkinson Hyperlegible", sans-serif;
+$presentation-heading-color: #7090A5;
+$presentation-title-slide-text-align: "left";
+$presentation-font-size-root: 33px;
+$code-block-font-size: 0.6em;
+$link-color: #7090A5;
+$custom-col: #E67E3A;
+
+/*-- scss:rules --*/
+
+.emphasis {
+  font-weight: bold;
+  color: $custom-col;
+}
+
+details>summary {
+  font-size: 0.75em;
+}
+
+.smallest {
+  font-size: 0.35em;
+}
+
+.smaller {
+  font-size: 0.5em;
+}
+
+.small {
+  font-size: 0.75em;
+}
+
+.smallish {
+  font-size: 0.4em;
+}
+
+.larger {
+  font-size: 1.5em;
+}
+
+.largest {
+  font-size: 3em;
+}
+
+.reveal .slide .question {
+  border-left: 3px solid #7090A5;
+  padding-left: 0.5em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  background: #A9BCC9;
+}
+
+.reveal .slide .poll {
+  border-left: 3px solid #FFD166;
+  padding-left: 0.5em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  background: #FFEDC2;
+}
+
+.reveal .slide .appex {
+  border-left: 3px solid #003559;
+  padding: 0.25em;
+  background: #EBF7FF;
+}
+
+.reveal .slide .cloud {
+  border-left: 3px solid #8DB6DB;
+  margin-top: 0.5em;
+  padding: 0.25em;
+  background: #F3F7FB;
+  font-size: 0.75em;
+}
+
+.reveal .slide .share {
+  border-left: 3px solid #717DEF;
+  padding: 0.25em;
+  background: #F0F2FD;
+  font-size: 0.75em;
+}
+
+.reveal .slide .in-out {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+  padding-left: 1em;
+  background: #E8E8E8;
+  font-family: $font-family-monospace;
+  font-size: 0.6em;
+}
+
+
+.reveal .slide .goal {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+  padding-left: 1em;
+  background: #ccddeb;
+}
+
+.reveal countdown {
+  position: fixed;
+  bottom: 0em;
+  right: 0em;
+  font-size: 40px;
+  border: 2px solid;
+  border-radius: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
+  user-select: none;
+}
+
+.reveal pre {
+  overflow-x: auto;
+}
+.reveal pre code {
+  word-wrap: normal;
+  white-space: pre;
+}
+
+.reveal .slide .v-center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}

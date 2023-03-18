@@ -4,6 +4,13 @@ subtitle: "R/Medicine 2023 Workshop"
 editor: source
 ---
 
+```{r}
+#|include: false
+# fill for font awesome icons
+fa_fill <- "#606060"
+```
+
+
 ------------------------------------------------------------------------
 
 🗓 June X, 2023 \| X:00am - X:00pm EDT
@@ -70,6 +77,19 @@ Before attending the workshop please have the following installed and configured
 ![](images/Shannon_circle.png){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Shannon Pileggi" width="150"}
 
 [**Shannon Pileggi**](https://www.pipinghotdata.com/) (she/her) is a Lead Data Scientist at The Prostate Cancer Clinical Trials Consortium, a frequent blogger, and a member of the R-Ladies Global team. She enjoys automating data wrangling and data outputs, and making both data insights and learning new material digestible.
+
+<br>
+
+`r fontawesome::fa("link", fill = fa_fill)` [pipinghotdata.com](https://www.pipinghotdata.com/)
+
+`r fontawesome::fa("github", fill = fa_fill)` [github.com/shannonpileggi](https://github.com/shannonpileggi/)
+
+`r fontawesome::fa("mastodon", fill = fa_fill)` [@PipingHotData@fosstodon.org](https://fosstodon.org/@PipingHotData)
+
+`r fontawesome::fa("twitter", fill = fa_fill)` [\@PipingHotData](https://twitter.com/PipingHotData)
+
+`r fontawesome::fa("linkedin", fill = fa_fill)` [linkedin.com/in/shannon-m-pileggi/](https://www.linkedin.com/in/shannon-m-pileggi/)
+
 
 <br>
 <br>

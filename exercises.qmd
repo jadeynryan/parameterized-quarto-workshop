@@ -1,0 +1,274 @@
+---
+title: "Introducing {gtreg}: Exercises"
+format: 
+  html:
+    code-fold: true
+    code-summary: "Show the code solution"
+---
+
+# Instructions:
+
+**Recommended:** Complete these exercises in the dedicated R in Pharma RStudio Cloud work space, which comes with 
+
+1. all packages pre-installed, and
+
+2. an Rmarkdown document to fill in.
+
+It may still be helpful to peek here to verify that your tables match the 
+desired output.
+
+[Click here to enter R in Pharma RStudio Cloud work space for {gtreg}](https://rstudio.cloud/spaces/299322/join?access_code=Vnp96stsVIDLiEJI7AtHAQ4GB1gsptQgnOGb99_N){target="_blank"}
+
+**Otherwise:** Follow along this document, work on your personal computer, 
+and challenge yourself not to peek at the code solutions until you have completed
+the exercise.
+
+# Packages
+
+```{r}
+#| label: packages
+#| message: false
+#| echo: true
+#| code-fold: false
+library(tidyverse)
+library(gtsummary)
+library(gtreg)
+library(labelled)
+library(admiral)       # for subject data   
+library(admiral.test)  # for ae data
+```
+
+# Output display setting
+
+```{r}
+#| label: output-setting
+#| message: false
+#| echo: true
+#| code-fold: false
+theme_gtsummary_compact()
+```
+
+
+
+# The Data
+
+For these exercises we will be using STDM and ADaM datasets from the [{admiral.test}](https://github.com/pharmaverse/admiral.test) and [{admiral}](https://pharmaverse.github.io/admiral/index.html) and packages.
+
+
+First, prepare a subject level data set named `subjects` from the `admiral_adsl` data set
+with only the variables `USUBJID`, `ACTARM`, `AGE`, `SEX`, `RACE` and subjects who screen failed removed.
+
+```{r}
+#| label: prep-subjects
+#| echo: true
+#| code-fold: false
+dat_subjects <- admiral_adsl %>% 
+  filter(ACTARM != "Screen Failure" & ACTARM %in% c("Placebo", "Xanomeline High Dose") ) %>% 
+  select(USUBJID, ACTARM, AGE, SEX, RACE) %>% 
+  mutate(across(RACE, str_to_title)) %>% 
+  mutate(
+    # convert treatment arm and race to factors for table displays in a specific order
+    ACTARM = fct_relevel(ACTARM, "Placebo", "Xanomeline High Dose"),
+    RACE = fct_infreq(RACE)
+  ) %>% 
+  set_variable_labels(
+    ACTARM = "Actual treatment arm",
+    RACE = "Race"
+  )
+```
+
+Next, prepare an adverse event data set named `ae` from `admiral_ae` with the 
+only the variables `USUBJID`, `AESOC`, `AEDECOD`, `AESEV`, `AESER`, `AEREL`, `AESTDTC`.
+
+Join actual treatment arm (`ACTARM`) from the `subjects` data frame to the `ae` data.
+
+
+
+```{r}
+#| label: prep-aes
+#| echo: true
+#| code-fold: false
+dat_ae <- admiral_ae %>% 
+  select(USUBJID, AESOC, AEDECOD, AESEV, AESER, AEREL, AESTDTC) %>% 
+  left_join(dat_subjects %>% select(USUBJID, ACTARM), by = "USUBJID") %>% 
+  # removing subjects  with missing treatment arm as these were the low dose 
+  # subjects excluded from the subjects data set
+  drop_na(ACTARM) %>% 
+  mutate(
+    AESEV = fct_relevel(AESEV, "MILD", "MODERATE", "SEVERE"),
+    # converting treatment arm to factor
+    # note that treatment arm must be stored the same way in the two data sets
+    ACTARM = fct_relevel(ACTARM, "Placebo", "Xanomeline High Dose"),
+    year = str_sub(AESTDTC, start = 1, end = 4) %>% as.numeric()
+   ) %>%
+  mutate(across(c(AESOC, AEDECOD, AESEV, AEREL), str_to_title)) %>% 
+  # for brevity of output, only look at AEs from a single year and in
+  # a few SOC categories
+  filter(year == 2014) %>% 
+  filter(AESOC %in% c("Eye Disorders", "Nervous System Disorders", "Skin And Subcutaneous Tissue Disorders")) %>%
+  labelled::set_variable_labels(
+     AESOC    = "Primary System Organ Class", 
+     AEDECOD  = "Dictionary-Derived Term", 
+     AESEV    = "Severity/Intensity",
+     AEREL    = "Causality" 
+  )
+```
+
+
+# Exercise 1
+
+Create an adverse event table saved as `t1` that summarizes adverse events.
+
+1. Summarize the adverse events by both treatment arm and severity.
+
+2. Supply `id_df` to ensure the subject denominator is correct.
+
+```{r ae-first}
+t1 <- dat_ae %>%
+  tbl_ae(
+    id_df = dat_subjects,
+    id = USUBJID,
+    ae = AEDECOD,
+    soc = AESOC,
+    by = AESEV,
+    strata = ACTARM
+  ) 
+
+t1
+```
+
+# Exercise 2
+
+Create `t1_modify` that modifies `t1` such that:
+
+1. Bold the system organ class rows.
+
+2. Add an overall column to each treatment arm.
+
+3. Label the overall column as `Total`.
+
+4. In the header, place the number of subjects on a new line in each treatment arm. 
+
+5. Add a table caption that states `2014 Disorders Adverse Events` (displays at the top of the table).
+
+```{r ae-modify}
+t1_modify <- t1 %>% 
+  bold_labels() %>%
+  add_overall(across = 'by') %>% 
+  modify_header(all_overall_cols() ~ "**Total**") %>%
+  modify_spanning_header(all_ae_cols(TRUE, TRUE) ~ "**{strata}**  \nN = {n}") %>%
+  modify_caption("2014 Disorders Adverse Events")  
+
+t1_modify
+```
+
+# Exercise 3
+
+Create a descriptive statistics table from `subjects` named `t2` using `tbl_reg_summary`.
+
+1. Summarize the variables `AGE`, `SEX` and `RACE` by treatment arm (`ACTARM`).
+
+2. Add an overall column to summarize across both treatment arms.
+
+3. Bold the variable labels.
+
+4. In the header, place the number of subjects on a new line in each treatment arm. 
+
+```{r summary-first}
+t2 <- dat_subjects %>% 
+  select(-USUBJID) %>% 
+  tbl_reg_summary(
+    by = ACTARM
+  ) %>% 
+  add_overall(last = TRUE) %>% 
+  bold_labels() %>% 
+  modify_header(
+    list(
+      all_stat_cols(stat_0 = FALSE) ~ "**{level}**  \nN = {n}",
+      stat_0 ~ "**Overall**  \nN = {N}"
+    ))
+
+t2
+```
+
+# Exercise 4
+
+Create a grouped table listing of adverse events named `t3`.
+
+1. Display only events of `Probable` causality.
+
+2. Sort events by system organ class and term.
+
+3. Print subject id, term, and whether or not the event was serious.
+
+4. Group listings by system organ class.
+
+5. Bold system organ class labels.
+
+
+
+```{r listing}
+dat_list <- dat_ae %>% 
+  filter(AEREL == "Probable") %>% 
+  select(USUBJID, AESOC, AEDECOD, AESER) %>% 
+  arrange(AESOC, AEDECOD) 
+
+t3 <- dat_list %>% 
+  tbl_listing(
+    group_by = AESOC
+  ) %>% 
+  bold_labels() 
+
+t3
+```
+
+# Exercise 5
+
+Create `t2_shell`, a table shell from the `t2` table. This is the 
+exact same format as `t2`, except with numeric values replaced by `xx`.
+
+```{r summary-shell}
+t2_shell <- dat_subjects %>% 
+  select(-USUBJID) %>% 
+  tbl_reg_summary(
+    digits = everything() ~  style_xxx,
+    by = ACTARM
+  ) %>% 
+  add_overall(last = TRUE) %>% 
+  bold_labels() %>% 
+  modify_header(
+    list(
+      all_stat_cols(stat_0 = FALSE) ~ "**{level}**  \nN = xx",
+      stat_0 ~ "**Overall**  \nN = xx"
+    ))
+
+t2_shell
+```
+
+
+# Exercise 6
+
+Export `t2_shell` to either word or excel.
+
+```{r export-xlsx, eval=FALSE}
+t2_shell %>%  
+ as_hux_xlsx(
+   file = "output/summary_shell.xlsx"
+   )
+```
+
+```{r export-word, eval=FALSE}
+t2_shell %>%  
+  as_flex_table() %>% 
+  flextable::save_as_docx(path = "output/summary_shell.docx")
+```
+
+# Session info
+
+```{r}
+#| label: session-info
+#| eval: true
+#| code-fold: false
+devtools::session_info()
+```
+

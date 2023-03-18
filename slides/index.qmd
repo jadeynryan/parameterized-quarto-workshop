@@ -1,0 +1,30 @@
+---
+title: "Data Cleaning"
+author: "Crystal Lewis, Shannon Pileggi, Peter Higgins, & Duncan Garmonsway"
+footer:  "[Data Cleaning](https://shannonpileggi.github.io/gtreg-workshop-rinpharma-2022/)"
+logo: "images/gtreg-logo.png"
+editor: source
+format: 
+  revealjs: 
+    theme: slides.scss
+    transition: fade
+    slide-number: true
+    chalkboard: true
+execute:
+  echo: true
+  output: asis
+  freeze: auto
+cache: true
+---
+
+{{< include 00-setup.qmd >}}
+
+{{< include 01-crystal.qmd >}}
+
+{{< include 02-shannon.qmd >}}
+
+{{< include 03-peter.qmd >}}
+
+{{< include 04-duncan.qmd >}}
+
+{{< include 05-thank-you.qmd >}}
