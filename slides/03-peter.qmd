@@ -8,7 +8,11 @@
 
 # Reshaping your data with tidyr
 
-## Pivoting Longer
+## Pivoting Longer (common)
+
+### Visit Dates/Measures
+
+### Your Turn (Exercise)
 
 ## Pivoting Wider
 
