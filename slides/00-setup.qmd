@@ -3,25 +3,8 @@
 ```{r}
 #| echo: false
 #| cache: false
-library(gtsummary)
 library(tidyverse)
 library(countdown)
-library(gtreg)
-library(gt)
-
-knit_print.gtsummary <- function(x, ...) {
-  gtsummary::as_gt(x) |> gt::as_raw_html()
-}
-
-knit_print.gt_tbl <- function(x, ...) {
-  gt::as_raw_html(x)
-}
-
-registerS3method("knit_print", "gtsummary", knit_print.gtsummary)
-registerS3method("knit_print", "gt_tbl", knit_print.gt_tbl)
-
-# fill for font awesome icons
-fa_fill <- "#606060"
 ```
 
 ## Licensing
