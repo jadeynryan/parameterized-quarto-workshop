@@ -5,6 +5,8 @@
 #| cache: false
 library(tidyverse)
 library(countdown)
+# fill for font awesome icons
+fa_fill <- "#606060"
 ```
 
 ## Licensing
