@@ -1,12 +1,12 @@
 ---
-title: "Principals of Data Cleaning"
+title: "Principles of Data Cleaning"
 subtitle: "R/Medicine 2023 Workshop"
 editor: source
 ---
 
 ------------------------------------------------------------------------
 
-🗓 June X, 2023 \| X:00am - X:00pm EDT
+🗓 June 6, 2023 \| 8:30am - 12:00pm EDT
 
 🏨 Virtual
 
