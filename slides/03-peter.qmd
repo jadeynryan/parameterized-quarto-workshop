@@ -10,9 +10,9 @@
 
 ## Pivoting Longer (common)
 
-### Visit Dates/Measures
+- Visit Dates/Measures
 
-### Your Turn (Exercise)
+- Your Turn (Exercise)
 
 ## Pivoting Wider
 

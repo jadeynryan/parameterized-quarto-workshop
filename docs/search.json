@@ -130,7 +130,7 @@
     "href": "slides/index.html#checklist",
     "title": "Data Cleaning",
     "section": "Checklist",
-    "text": "Checklist\n\n Install recent R release\nCurrent version 4.2.1\n Install RStudio\nI am on version 2022.07.1+554 \n Install packages\ninstall.packages(c(\"gtreg\", \"gtsummary\", \"tidyverse\", \"labelled\", \"usethis\"))\n Ensure you can knit Rmarkdown files"
+    "text": "Checklist\n\n Install recent R release\nCurrent version 4.2.2\n Install RStudio\nI am on version 2022.07.1+554 \n Install packages\ninstall.packages(c(\"gtreg\", \"gtsummary\", \"tidyverse\", \"labelled\", \"usethis\"))\n Ensure you can knit Rmarkdown files"
   },
   {
     "objectID": "slides/index.html#schedule",
@@ -264,5 +264,117 @@
     "title": "Slides",
     "section": "",
     "text": "View slides in full screen"
+  },
+  {
+    "objectID": "slides/03-peter.html#is-it-the-patient",
+    "href": "slides/03-peter.html#is-it-the-patient",
+    "title": "Data Cleaning",
+    "section": "Is it the Patient?",
+    "text": "Is it the Patient?"
+  },
+  {
+    "objectID": "slides/03-peter.html#is-it-the-visitencounter",
+    "href": "slides/03-peter.html#is-it-the-visitencounter",
+    "title": "Data Cleaning",
+    "section": "Is it the Visit/Encounter?",
+    "text": "Is it the Visit/Encounter?"
+  },
+  {
+    "objectID": "slides/03-peter.html#pivoting-longer-common",
+    "href": "slides/03-peter.html#pivoting-longer-common",
+    "title": "Data Cleaning",
+    "section": "Pivoting Longer (common)",
+    "text": "Pivoting Longer (common)\n\nVisit Dates/Measures\nYour Turn (Exercise)"
+  },
+  {
+    "objectID": "slides/03-peter.html#pivoting-wider",
+    "href": "slides/03-peter.html#pivoting-wider",
+    "title": "Data Cleaning",
+    "section": "Pivoting Wider",
+    "text": "Pivoting Wider"
+  },
+  {
+    "objectID": "slides/03-peter.html#padding-unobserved-dates-weekends",
+    "href": "slides/03-peter.html#padding-unobserved-dates-weekends",
+    "title": "Data Cleaning",
+    "section": "Padding unobserved dates (weekends?)",
+    "text": "Padding unobserved dates (weekends?)"
+  },
+  {
+    "objectID": "slides/03-peter.html#padding-unovserved-times",
+    "href": "slides/03-peter.html#padding-unovserved-times",
+    "title": "Data Cleaning",
+    "section": "Padding unovserved times",
+    "text": "Padding unovserved times"
+  },
+  {
+    "objectID": "slides/03-peter.html#local-demographics-with-cdc-svi-data-one-to-one",
+    "href": "slides/03-peter.html#local-demographics-with-cdc-svi-data-one-to-one",
+    "title": "Data Cleaning",
+    "section": "Local Demographics with CDC SVI data (one to one)",
+    "text": "Local Demographics with CDC SVI data (one to one)"
+  },
+  {
+    "objectID": "slides/03-peter.html#patient-demographics-with-lab-results-one-to-many",
+    "href": "slides/03-peter.html#patient-demographics-with-lab-results-one-to-many",
+    "title": "Data Cleaning",
+    "section": "Patient Demographics with Lab results (one to many)",
+    "text": "Patient Demographics with Lab results (one to many)"
+  },
+  {
+    "objectID": "slides/index.html#is-it-the-patient",
+    "href": "slides/index.html#is-it-the-patient",
+    "title": "Data Cleaning",
+    "section": "Is it the Patient?",
+    "text": "Is it the Patient?"
+  },
+  {
+    "objectID": "slides/index.html#is-it-the-visitencounter",
+    "href": "slides/index.html#is-it-the-visitencounter",
+    "title": "Data Cleaning",
+    "section": "Is it the Visit/Encounter?",
+    "text": "Is it the Visit/Encounter?"
+  },
+  {
+    "objectID": "slides/index.html#pivoting-longer-common",
+    "href": "slides/index.html#pivoting-longer-common",
+    "title": "Data Cleaning",
+    "section": "Pivoting Longer (common)",
+    "text": "Pivoting Longer (common)\n\nVisit Dates/Measures\nYour Turn (Exercise)"
+  },
+  {
+    "objectID": "slides/index.html#pivoting-wider",
+    "href": "slides/index.html#pivoting-wider",
+    "title": "Data Cleaning",
+    "section": "Pivoting Wider",
+    "text": "Pivoting Wider"
+  },
+  {
+    "objectID": "slides/index.html#padding-unobserved-dates-weekends",
+    "href": "slides/index.html#padding-unobserved-dates-weekends",
+    "title": "Data Cleaning",
+    "section": "Padding unobserved dates (weekends?)",
+    "text": "Padding unobserved dates (weekends?)"
+  },
+  {
+    "objectID": "slides/index.html#padding-unovserved-times",
+    "href": "slides/index.html#padding-unovserved-times",
+    "title": "Data Cleaning",
+    "section": "Padding unovserved times",
+    "text": "Padding unovserved times"
+  },
+  {
+    "objectID": "slides/index.html#local-demographics-with-cdc-svi-data-one-to-one",
+    "href": "slides/index.html#local-demographics-with-cdc-svi-data-one-to-one",
+    "title": "Data Cleaning",
+    "section": "Local Demographics with CDC SVI data (one to one)",
+    "text": "Local Demographics with CDC SVI data (one to one)"
+  },
+  {
+    "objectID": "slides/index.html#patient-demographics-with-lab-results-one-to-many",
+    "href": "slides/index.html#patient-demographics-with-lab-results-one-to-many",
+    "title": "Data Cleaning",
+    "section": "Patient Demographics with Lab results (one to many)",
+    "text": "Patient Demographics with Lab results (one to many)"
   }
 ]

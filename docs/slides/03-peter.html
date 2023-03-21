@@ -123,15 +123,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#peter-section-a" id="toc-peter-section-a" class="nav-link active" data-scroll-target="#peter-section-a">Peter Section A</a>
+  <li><a href="#peter-sections" id="toc-peter-sections" class="nav-link active" data-scroll-target="#peter-sections">Peter Sections</a></li>
+  <li><a href="#deciding-on-the-unit-of-observation" id="toc-deciding-on-the-unit-of-observation" class="nav-link" data-scroll-target="#deciding-on-the-unit-of-observation">Deciding on the Unit of Observation</a>
   <ul class="collapse">
-  <li><a href="#slide-1" id="toc-slide-1" class="nav-link" data-scroll-target="#slide-1">Slide 1</a></li>
-  <li><a href="#slide-2" id="toc-slide-2" class="nav-link" data-scroll-target="#slide-2">Slide 2</a></li>
+  <li><a href="#is-it-the-patient" id="toc-is-it-the-patient" class="nav-link" data-scroll-target="#is-it-the-patient">Is it the Patient?</a></li>
+  <li><a href="#is-it-the-visitencounter" id="toc-is-it-the-visitencounter" class="nav-link" data-scroll-target="#is-it-the-visitencounter">Is it the Visit/Encounter?</a></li>
   </ul></li>
-  <li><a href="#peter-section-b" id="toc-peter-section-b" class="nav-link" data-scroll-target="#peter-section-b">Peter Section B</a>
+  <li><a href="#reshaping-your-data-with-tidyr" id="toc-reshaping-your-data-with-tidyr" class="nav-link" data-scroll-target="#reshaping-your-data-with-tidyr">Reshaping your data with tidyr</a>
   <ul class="collapse">
-  <li><a href="#slide-1-1" id="toc-slide-1-1" class="nav-link" data-scroll-target="#slide-1-1">Slide 1</a></li>
-  <li><a href="#slide-2-1" id="toc-slide-2-1" class="nav-link" data-scroll-target="#slide-2-1">Slide 2</a></li>
+  <li><a href="#pivoting-longer-common" id="toc-pivoting-longer-common" class="nav-link" data-scroll-target="#pivoting-longer-common">Pivoting Longer (common)</a></li>
+  <li><a href="#pivoting-wider" id="toc-pivoting-wider" class="nav-link" data-scroll-target="#pivoting-wider">Pivoting Wider</a></li>
+  </ul></li>
+  <li><a href="#filling-in-unobserved-datestimes-with-padr" id="toc-filling-in-unobserved-datestimes-with-padr" class="nav-link" data-scroll-target="#filling-in-unobserved-datestimes-with-padr">Filling in Unobserved Dates/Times with padr</a>
+  <ul class="collapse">
+  <li><a href="#padding-unobserved-dates-weekends" id="toc-padding-unobserved-dates-weekends" class="nav-link" data-scroll-target="#padding-unobserved-dates-weekends">Padding unobserved dates (weekends?)</a></li>
+  <li><a href="#padding-unovserved-times" id="toc-padding-unovserved-times" class="nav-link" data-scroll-target="#padding-unovserved-times">Padding unovserved times</a></li>
+  </ul></li>
+  <li><a href="#joins-of-data-from-different-sources" id="toc-joins-of-data-from-different-sources" class="nav-link" data-scroll-target="#joins-of-data-from-different-sources">Joins of data from different sources</a>
+  <ul class="collapse">
+  <li><a href="#local-demographics-with-cdc-svi-data-one-to-one" id="toc-local-demographics-with-cdc-svi-data-one-to-one" class="nav-link" data-scroll-target="#local-demographics-with-cdc-svi-data-one-to-one">Local Demographics with CDC SVI data (one to one)</a></li>
+  <li><a href="#patient-demographics-with-lab-results-one-to-many" id="toc-patient-demographics-with-lab-results-one-to-many" class="nav-link" data-scroll-target="#patient-demographics-with-lab-results-one-to-many">Patient Demographics with Lab results (one to many)</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/shannonpileggi/rmedicine-data-cleaning-2023/edit/main/slides/03-peter.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/shannonpileggi/rmedicine-data-cleaning-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -141,22 +152,47 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="peter-section-a" class="level1">
-<h1>Peter Section A</h1>
-<section id="slide-1" class="level2">
-<h2 class="anchored" data-anchor-id="slide-1">Slide 1</h2>
+<section id="peter-sections" class="level1">
+<h1>Peter Sections</h1>
 </section>
-<section id="slide-2" class="level2">
-<h2 class="anchored" data-anchor-id="slide-2">Slide 2</h2>
+<section id="deciding-on-the-unit-of-observation" class="level1">
+<h1>Deciding on the Unit of Observation</h1>
+<section id="is-it-the-patient" class="level2">
+<h2 class="anchored" data-anchor-id="is-it-the-patient">Is it the Patient?</h2>
+</section>
+<section id="is-it-the-visitencounter" class="level2">
+<h2 class="anchored" data-anchor-id="is-it-the-visitencounter">Is it the Visit/Encounter?</h2>
 </section>
 </section>
-<section id="peter-section-b" class="level1">
-<h1>Peter Section B</h1>
-<section id="slide-1-1" class="level2">
-<h2 class="anchored" data-anchor-id="slide-1-1">Slide 1</h2>
+<section id="reshaping-your-data-with-tidyr" class="level1">
+<h1>Reshaping your data with tidyr</h1>
+<section id="pivoting-longer-common" class="level2">
+<h2 class="anchored" data-anchor-id="pivoting-longer-common">Pivoting Longer (common)</h2>
+<ul>
+<li><p>Visit Dates/Measures</p></li>
+<li><p>Your Turn (Exercise)</p></li>
+</ul>
 </section>
-<section id="slide-2-1" class="level2">
-<h2 class="anchored" data-anchor-id="slide-2-1">Slide 2</h2>
+<section id="pivoting-wider" class="level2">
+<h2 class="anchored" data-anchor-id="pivoting-wider">Pivoting Wider</h2>
+</section>
+</section>
+<section id="filling-in-unobserved-datestimes-with-padr" class="level1">
+<h1>Filling in Unobserved Dates/Times with padr</h1>
+<section id="padding-unobserved-dates-weekends" class="level2">
+<h2 class="anchored" data-anchor-id="padding-unobserved-dates-weekends">Padding unobserved dates (weekends?)</h2>
+</section>
+<section id="padding-unovserved-times" class="level2">
+<h2 class="anchored" data-anchor-id="padding-unovserved-times">Padding unovserved times</h2>
+</section>
+</section>
+<section id="joins-of-data-from-different-sources" class="level1">
+<h1>Joins of data from different sources</h1>
+<section id="local-demographics-with-cdc-svi-data-one-to-one" class="level2">
+<h2 class="anchored" data-anchor-id="local-demographics-with-cdc-svi-data-one-to-one">Local Demographics with CDC SVI data (one to one)</h2>
+</section>
+<section id="patient-demographics-with-lab-results-one-to-many" class="level2">
+<h2 class="anchored" data-anchor-id="patient-demographics-with-lab-results-one-to-many">Patient Demographics with Lab results (one to many)</h2>
 
 
 </section>
