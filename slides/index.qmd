@@ -1,8 +1,8 @@
 ---
 title: "Data Cleaning"
 author: "Crystal Lewis, Shannon Pileggi, Peter Higgins, & Duncan Garmonsway"
-footer:  "[Data Cleaning](https://shannonpileggi.github.io/gtreg-workshop-rinpharma-2022/)"
-logo: "images/gtreg-logo.png"
+footer: "[Data Cleaning](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023)"
+logo: "images/R-Med-logo-revised-pride.png"
 editor: source
 format: 
   revealjs: 

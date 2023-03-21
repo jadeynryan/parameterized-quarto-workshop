@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data Cleaning - Data Cleaning: Exercises</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./license.html" rel="next">
+<link href="./slidespage.html" rel="prev">
+<link href="./images/R-Med-logo-revised-pride.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Data Cleaning: Exercises</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/R-Med-logo-revised-pride.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/shannonpileggi/rmedicine-data-cleaning-2023" title="GitHub" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Home</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slidespage.html" class="sidebar-item-text sidebar-link">Slides</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercises.html" class="sidebar-item-text sidebar-link active">Exercises</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./license.html" class="sidebar-item-text sidebar-link">License</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions:</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The Data</a></li>
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
+  <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info">Session info</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/shannonpileggi/rmedicine-data-cleaning-2023/edit/main/exercises.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/shannonpileggi/rmedicine-data-cleaning-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Data Cleaning: Exercises</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="instructions" class="level1">
+<h1>Instructions:</h1>
+<p><strong>Recommended:</strong> Complete these exercises in the dedicated R in Pharma RStudio Cloud work space, which comes with</p>
+<ol type="1">
+<li><p>all packages pre-installed, and</p></li>
+<li><p>an Rmarkdown document to fill in.</p></li>
+</ol>
+<p>It may still be helpful to peek here to verify that your tables match the desired output.</p>
+<p><a href="https://rstudio.cloud/spaces/299322/join?access_code=Vnp96stsVIDLiEJI7AtHAQ4GB1gsptQgnOGb99_N" target="_blank">Click here to enter R/Medicine Posit cloud work space</a></p>
+<p><strong>Otherwise:</strong> Follow along this document, work on your personal computer, and challenge yourself not to peek at the code solutions until you have completed the exercise.</p>
+</section>
+<section id="packages" class="level1">
+<h1>Packages</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-data" class="level1">
+<h1>The Data</h1>
+<p>data details</p>
+</section>
+<section id="exercise-1" class="level1">
+<h1>Exercise 1</h1>
+<p>view first six rows of <code>mtcars</code></p>
+<div class="cell">
+<details>
+<summary>Show the code solution</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+</div>
+</div>
+</section>
+<section id="exercise-2" class="level1">
+<h1>Exercise 2</h1>
+</section>
+<section id="session-info" class="level1">
+<h1>Session info</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>─ Session info ───────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.2.1 (2022-06-23 ucrt)
+ os       Windows 10 x64 (build 19042)
+ system   x86_64, mingw32
+ ui       RTerm
+ language (EN)
+ collate  English_United States.utf8
+ ctype    English_United States.utf8
+ tz       America/New_York
+ date     2023-03-20
+ pandoc   2.19.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
+
+─ Packages ───────────────────────────────────────────────────────────────────
+ package       * version date (UTC) lib source
+ assertthat      0.2.1   2019-03-21 [1] CRAN (R 4.2.1)
+ backports       1.4.1   2021-12-13 [1] CRAN (R 4.2.0)
+ broom           1.0.1   2022-08-29 [1] CRAN (R 4.2.1)
+ cachem          1.0.6   2021-08-19 [1] CRAN (R 4.2.1)
+ callr           3.7.2   2022-08-22 [1] CRAN (R 4.2.1)
+ cellranger      1.1.0   2016-07-27 [1] CRAN (R 4.2.1)
+ cli             3.4.1   2022-09-23 [1] CRAN (R 4.2.1)
+ colorspace      2.0-3   2022-02-21 [1] CRAN (R 4.2.1)
+ crayon          1.5.2   2022-09-29 [1] CRAN (R 4.2.1)
+ DBI             1.1.3   2022-06-18 [1] CRAN (R 4.2.1)
+ dbplyr          2.2.1   2022-06-27 [1] CRAN (R 4.2.1)
+ devtools        2.4.5   2022-10-11 [1] CRAN (R 4.2.1)
+ digest          0.6.29  2021-12-01 [1] CRAN (R 4.2.1)
+ dplyr         * 1.1.0   2023-01-29 [1] CRAN (R 4.2.2)
+ ellipsis        0.3.2   2021-04-29 [1] CRAN (R 4.2.1)
+ evaluate        0.17    2022-10-07 [1] CRAN (R 4.2.1)
+ fansi           1.0.3   2022-03-24 [1] CRAN (R 4.2.1)
+ fastmap         1.1.0   2021-01-25 [1] CRAN (R 4.2.1)
+ forcats       * 0.5.2   2022-08-19 [1] CRAN (R 4.2.1)
+ fs              1.5.2   2021-12-08 [1] CRAN (R 4.2.1)
+ gargle          1.2.1   2022-09-08 [1] CRAN (R 4.2.1)
+ generics        0.1.3   2022-07-05 [1] CRAN (R 4.2.1)
+ ggplot2       * 3.3.6   2022-05-03 [1] CRAN (R 4.2.1)
+ glue            1.6.2   2022-02-24 [1] CRAN (R 4.2.1)
+ googledrive     2.0.0   2021-07-08 [1] CRAN (R 4.2.2)
+ googlesheets4   1.0.1   2022-08-13 [1] CRAN (R 4.2.1)
+ gtable          0.3.1   2022-09-01 [1] CRAN (R 4.2.1)
+ haven           2.5.1   2022-08-22 [1] CRAN (R 4.2.1)
+ hms             1.1.2   2022-08-19 [1] CRAN (R 4.2.1)
+ htmltools       0.5.3   2022-07-18 [1] CRAN (R 4.2.1)
+ htmlwidgets     1.5.4   2021-09-08 [1] CRAN (R 4.2.1)
+ httpuv          1.6.6   2022-09-08 [1] CRAN (R 4.2.1)
+ httr            1.4.4   2022-08-17 [1] CRAN (R 4.2.1)
+ jsonlite        1.8.2   2022-10-02 [1] CRAN (R 4.2.1)
+ knitr           1.40    2022-08-24 [1] CRAN (R 4.2.1)
+ later           1.3.0   2021-08-18 [1] CRAN (R 4.2.1)
+ lifecycle       1.0.3   2022-10-07 [1] CRAN (R 4.2.1)
+ lubridate       1.8.0   2021-10-07 [1] CRAN (R 4.2.1)
+ magrittr        2.0.3   2022-03-30 [1] CRAN (R 4.2.1)
+ memoise         2.0.1   2021-11-26 [1] CRAN (R 4.2.1)
+ mime            0.12    2021-09-28 [1] CRAN (R 4.2.0)
+ miniUI          0.1.1.1 2018-05-18 [1] CRAN (R 4.2.1)
+ modelr          0.1.9   2022-08-19 [1] CRAN (R 4.2.1)
+ munsell         0.5.0   2018-06-12 [1] CRAN (R 4.2.1)
+ pillar          1.8.1   2022-08-19 [1] CRAN (R 4.2.1)
+ pkgbuild        1.3.1   2021-12-20 [1] CRAN (R 4.2.1)
+ pkgconfig       2.0.3   2019-09-22 [1] CRAN (R 4.2.1)
+ pkgload         1.3.0   2022-06-27 [1] CRAN (R 4.2.1)
+ prettyunits     1.1.1   2020-01-24 [1] CRAN (R 4.2.1)
+ processx        3.7.0   2022-07-07 [1] CRAN (R 4.2.1)
+ profvis         0.3.7   2020-11-02 [1] CRAN (R 4.2.1)
+ promises        1.2.0.1 2021-02-11 [1] CRAN (R 4.2.1)
+ ps              1.7.1   2022-06-18 [1] CRAN (R 4.2.1)
+ purrr         * 0.3.5   2022-10-06 [1] CRAN (R 4.2.1)
+ R6              2.5.1   2021-08-19 [1] CRAN (R 4.2.1)
+ Rcpp            1.0.9   2022-07-08 [1] CRAN (R 4.2.1)
+ readr         * 2.1.3   2022-10-01 [1] CRAN (R 4.2.1)
+ readxl          1.4.1   2022-08-17 [1] CRAN (R 4.2.1)
+ remotes         2.4.2   2021-11-30 [1] CRAN (R 4.2.1)
+ reprex          2.0.2   2022-08-17 [1] CRAN (R 4.2.1)
+ rlang           1.0.6   2022-09-24 [1] CRAN (R 4.2.1)
+ rmarkdown       2.17    2022-10-07 [1] CRAN (R 4.2.1)
+ rstudioapi      0.14    2022-08-22 [1] CRAN (R 4.2.1)
+ rvest           1.0.3   2022-08-19 [1] CRAN (R 4.2.1)
+ scales          1.2.1   2022-08-20 [1] CRAN (R 4.2.1)
+ sessioninfo     1.2.2   2021-12-06 [1] CRAN (R 4.2.1)
+ shiny           1.7.2   2022-07-19 [1] CRAN (R 4.2.1)
+ stringi         1.7.8   2022-07-11 [1] CRAN (R 4.2.1)
+ stringr       * 1.4.1   2022-08-20 [1] CRAN (R 4.2.1)
+ tibble        * 3.1.8   2022-07-22 [1] CRAN (R 4.2.1)
+ tidyr         * 1.2.1   2022-09-08 [1] CRAN (R 4.2.1)
+ tidyselect      1.2.0   2022-10-10 [1] CRAN (R 4.2.1)
+ tidyverse     * 1.3.2   2022-07-18 [1] CRAN (R 4.2.1)
+ tzdb            0.3.0   2022-03-28 [1] CRAN (R 4.2.1)
+ urlchecker      1.0.1   2021-11-30 [1] CRAN (R 4.2.1)
+ usethis         2.1.6   2022-05-25 [1] CRAN (R 4.2.1)
+ utf8            1.2.2   2021-07-24 [1] CRAN (R 4.2.1)
+ vctrs           0.5.2   2023-01-23 [1] CRAN (R 4.2.2)
+ withr           2.5.0   2022-03-03 [1] CRAN (R 4.2.1)
+ xfun            0.33    2022-09-12 [1] CRAN (R 4.2.1)
+ xml2            1.3.3   2021-11-30 [1] CRAN (R 4.2.1)
+ xtable          1.8-4   2019-04-21 [1] CRAN (R 4.2.1)
+ yaml            2.3.6   2022-10-18 [1] CRAN (R 4.2.1)
+
+ [1] C:/Program Files/R/R-4.2.1/library
+
+──────────────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./slidespage.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Slides</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./license.html" class="pagination-link">
+        <span class="nav-page-text">License</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>. Inspired by <a href="https://twitter.com/minebocek"><span class="citation" data-cites="minebocek">@minebocek</span></a>.</div>   
+  </div>
+</footer>
+
+
+
+</body></html>

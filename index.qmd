@@ -4,13 +4,6 @@ subtitle: "R/Medicine 2023 Workshop"
 editor: source
 ---
 
-```{r}
-#|include: false
-# fill for font awesome icons
-fa_fill <- "#606060"
-```
-
-
 ------------------------------------------------------------------------
 
 🗓 June X, 2023 \| X:00am - X:00pm EDT
@@ -58,7 +51,7 @@ Before attending the workshop please have the following installed and configured
 -   Recent version of packages used in workshop.
 
     ```r
-    instll_pkgs <- c("gtreg", "gtsummary", "tidyverse", "labelled", "usethis")
+    instll_pkgs <- c("tidyverse")
     install.packages(instll_pkgs)
     ```
 -   Ensure you can knit R markdown documents??
@@ -80,15 +73,15 @@ Before attending the workshop please have the following installed and configured
 
 <br>
 
-`r fontawesome::fa("link", fill = fa_fill)` [pipinghotdata.com](https://www.pipinghotdata.com/)
+`r fontawesome::fa("link")` [pipinghotdata.com](https://www.pipinghotdata.com/)
 
-`r fontawesome::fa("github", fill = fa_fill)` [github.com/shannonpileggi](https://github.com/shannonpileggi/)
+`r fontawesome::fa("github")` [github.com/shannonpileggi](https://github.com/shannonpileggi/)
 
-`r fontawesome::fa("mastodon", fill = fa_fill)` [@PipingHotData@fosstodon.org](https://fosstodon.org/@PipingHotData)
+`r fontawesome::fa("mastodon")` [@PipingHotData@fosstodon.org](https://fosstodon.org/@PipingHotData)
 
-`r fontawesome::fa("twitter", fill = fa_fill)` [\@PipingHotData](https://twitter.com/PipingHotData)
+`r fontawesome::fa("twitter")` [\@PipingHotData](https://twitter.com/PipingHotData)
 
-`r fontawesome::fa("linkedin", fill = fa_fill)` [linkedin.com/in/shannon-m-pileggi/](https://www.linkedin.com/in/shannon-m-pileggi/)
+`r fontawesome::fa("linkedin")` [linkedin.com/in/shannon-m-pileggi/](https://www.linkedin.com/in/shannon-m-pileggi/)
 
 
 <br>

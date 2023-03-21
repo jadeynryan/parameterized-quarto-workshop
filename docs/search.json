@@ -1,0 +1,198 @@
+[
+  {
+    "objectID": "exercises.html",
+    "href": "exercises.html",
+    "title": "Data Cleaning: Exercises",
+    "section": "",
+    "text": "Instructions:\nRecommended: Complete these exercises in the dedicated R in Pharma RStudio Cloud work space, which comes with\n\nall packages pre-installed, and\nan Rmarkdown document to fill in.\n\nIt may still be helpful to peek here to verify that your tables match the desired output.\nClick here to enter R/Medicine Posit cloud work space\nOtherwise: Follow along this document, work on your personal computer, and challenge yourself not to peek at the code solutions until you have completed the exercise.\n\n\nPackages\n\nlibrary(tidyverse)\n\n\n\nThe Data\ndata details\n\n\nExercise 1\nview first six rows of mtcars\n\n\nShow the code solution\nhead(mtcars)\n\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\n\n\nExercise 2\n\n\nSession info\n\ndevtools::session_info()\n\n─ Session info ───────────────────────────────────────────────────────────────\n setting  value\n version  R version 4.2.1 (2022-06-23 ucrt)\n os       Windows 10 x64 (build 19042)\n system   x86_64, mingw32\n ui       RTerm\n language (EN)\n collate  English_United States.utf8\n ctype    English_United States.utf8\n tz       America/New_York\n date     2023-03-20\n pandoc   2.19.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)\n\n─ Packages ───────────────────────────────────────────────────────────────────\n package       * version date (UTC) lib source\n assertthat      0.2.1   2019-03-21 [1] CRAN (R 4.2.1)\n backports       1.4.1   2021-12-13 [1] CRAN (R 4.2.0)\n broom           1.0.1   2022-08-29 [1] CRAN (R 4.2.1)\n cachem          1.0.6   2021-08-19 [1] CRAN (R 4.2.1)\n callr           3.7.2   2022-08-22 [1] CRAN (R 4.2.1)\n cellranger      1.1.0   2016-07-27 [1] CRAN (R 4.2.1)\n cli             3.4.1   2022-09-23 [1] CRAN (R 4.2.1)\n colorspace      2.0-3   2022-02-21 [1] CRAN (R 4.2.1)\n crayon          1.5.2   2022-09-29 [1] CRAN (R 4.2.1)\n DBI             1.1.3   2022-06-18 [1] CRAN (R 4.2.1)\n dbplyr          2.2.1   2022-06-27 [1] CRAN (R 4.2.1)\n devtools        2.4.5   2022-10-11 [1] CRAN (R 4.2.1)\n digest          0.6.29  2021-12-01 [1] CRAN (R 4.2.1)\n dplyr         * 1.1.0   2023-01-29 [1] CRAN (R 4.2.2)\n ellipsis        0.3.2   2021-04-29 [1] CRAN (R 4.2.1)\n evaluate        0.17    2022-10-07 [1] CRAN (R 4.2.1)\n fansi           1.0.3   2022-03-24 [1] CRAN (R 4.2.1)\n fastmap         1.1.0   2021-01-25 [1] CRAN (R 4.2.1)\n forcats       * 0.5.2   2022-08-19 [1] CRAN (R 4.2.1)\n fs              1.5.2   2021-12-08 [1] CRAN (R 4.2.1)\n gargle          1.2.1   2022-09-08 [1] CRAN (R 4.2.1)\n generics        0.1.3   2022-07-05 [1] CRAN (R 4.2.1)\n ggplot2       * 3.3.6   2022-05-03 [1] CRAN (R 4.2.1)\n glue            1.6.2   2022-02-24 [1] CRAN (R 4.2.1)\n googledrive     2.0.0   2021-07-08 [1] CRAN (R 4.2.2)\n googlesheets4   1.0.1   2022-08-13 [1] CRAN (R 4.2.1)\n gtable          0.3.1   2022-09-01 [1] CRAN (R 4.2.1)\n haven           2.5.1   2022-08-22 [1] CRAN (R 4.2.1)\n hms             1.1.2   2022-08-19 [1] CRAN (R 4.2.1)\n htmltools       0.5.3   2022-07-18 [1] CRAN (R 4.2.1)\n htmlwidgets     1.5.4   2021-09-08 [1] CRAN (R 4.2.1)\n httpuv          1.6.6   2022-09-08 [1] CRAN (R 4.2.1)\n httr            1.4.4   2022-08-17 [1] CRAN (R 4.2.1)\n jsonlite        1.8.2   2022-10-02 [1] CRAN (R 4.2.1)\n knitr           1.40    2022-08-24 [1] CRAN (R 4.2.1)\n later           1.3.0   2021-08-18 [1] CRAN (R 4.2.1)\n lifecycle       1.0.3   2022-10-07 [1] CRAN (R 4.2.1)\n lubridate       1.8.0   2021-10-07 [1] CRAN (R 4.2.1)\n magrittr        2.0.3   2022-03-30 [1] CRAN (R 4.2.1)\n memoise         2.0.1   2021-11-26 [1] CRAN (R 4.2.1)\n mime            0.12    2021-09-28 [1] CRAN (R 4.2.0)\n miniUI          0.1.1.1 2018-05-18 [1] CRAN (R 4.2.1)\n modelr          0.1.9   2022-08-19 [1] CRAN (R 4.2.1)\n munsell         0.5.0   2018-06-12 [1] CRAN (R 4.2.1)\n pillar          1.8.1   2022-08-19 [1] CRAN (R 4.2.1)\n pkgbuild        1.3.1   2021-12-20 [1] CRAN (R 4.2.1)\n pkgconfig       2.0.3   2019-09-22 [1] CRAN (R 4.2.1)\n pkgload         1.3.0   2022-06-27 [1] CRAN (R 4.2.1)\n prettyunits     1.1.1   2020-01-24 [1] CRAN (R 4.2.1)\n processx        3.7.0   2022-07-07 [1] CRAN (R 4.2.1)\n profvis         0.3.7   2020-11-02 [1] CRAN (R 4.2.1)\n promises        1.2.0.1 2021-02-11 [1] CRAN (R 4.2.1)\n ps              1.7.1   2022-06-18 [1] CRAN (R 4.2.1)\n purrr         * 0.3.5   2022-10-06 [1] CRAN (R 4.2.1)\n R6              2.5.1   2021-08-19 [1] CRAN (R 4.2.1)\n Rcpp            1.0.9   2022-07-08 [1] CRAN (R 4.2.1)\n readr         * 2.1.3   2022-10-01 [1] CRAN (R 4.2.1)\n readxl          1.4.1   2022-08-17 [1] CRAN (R 4.2.1)\n remotes         2.4.2   2021-11-30 [1] CRAN (R 4.2.1)\n reprex          2.0.2   2022-08-17 [1] CRAN (R 4.2.1)\n rlang           1.0.6   2022-09-24 [1] CRAN (R 4.2.1)\n rmarkdown       2.17    2022-10-07 [1] CRAN (R 4.2.1)\n rstudioapi      0.14    2022-08-22 [1] CRAN (R 4.2.1)\n rvest           1.0.3   2022-08-19 [1] CRAN (R 4.2.1)\n scales          1.2.1   2022-08-20 [1] CRAN (R 4.2.1)\n sessioninfo     1.2.2   2021-12-06 [1] CRAN (R 4.2.1)\n shiny           1.7.2   2022-07-19 [1] CRAN (R 4.2.1)\n stringi         1.7.8   2022-07-11 [1] CRAN (R 4.2.1)\n stringr       * 1.4.1   2022-08-20 [1] CRAN (R 4.2.1)\n tibble        * 3.1.8   2022-07-22 [1] CRAN (R 4.2.1)\n tidyr         * 1.2.1   2022-09-08 [1] CRAN (R 4.2.1)\n tidyselect      1.2.0   2022-10-10 [1] CRAN (R 4.2.1)\n tidyverse     * 1.3.2   2022-07-18 [1] CRAN (R 4.2.1)\n tzdb            0.3.0   2022-03-28 [1] CRAN (R 4.2.1)\n urlchecker      1.0.1   2021-11-30 [1] CRAN (R 4.2.1)\n usethis         2.1.6   2022-05-25 [1] CRAN (R 4.2.1)\n utf8            1.2.2   2021-07-24 [1] CRAN (R 4.2.1)\n vctrs           0.5.2   2023-01-23 [1] CRAN (R 4.2.2)\n withr           2.5.0   2022-03-03 [1] CRAN (R 4.2.1)\n xfun            0.33    2022-09-12 [1] CRAN (R 4.2.1)\n xml2            1.3.3   2021-11-30 [1] CRAN (R 4.2.1)\n xtable          1.8-4   2019-04-21 [1] CRAN (R 4.2.1)\n yaml            2.3.6   2022-10-18 [1] CRAN (R 4.2.1)\n\n [1] C:/Program Files/R/R-4.2.1/library\n\n──────────────────────────────────────────────────────────────────────────────"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Principals of Data Cleaning",
+    "section": "",
+    "text": "🗓 June X, 2023 | X:00am - X:00pm EDT\n🏨 Virtual\n💥 FREE workshop registration"
+  },
+  {
+    "objectID": "index.html#learning-objectives",
+    "href": "index.html#learning-objectives",
+    "title": "Principals of Data Cleaning",
+    "section": "Learning objectives",
+    "text": "Learning objectives\n\none\ntwo\nthree"
+  },
+  {
+    "objectID": "index.html#is-this-course-for-me",
+    "href": "index.html#is-this-course-for-me",
+    "title": "Principals of Data Cleaning",
+    "section": "Is this course for me?",
+    "text": "Is this course for me?\nIf your answer to any of the following questions is “yes”, then this is the right workshop for you.\n\none?\ntwo?\nthree?\n\nThe workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the %>%/|> operator is a plus, but not required."
+  },
+  {
+    "objectID": "index.html#prework",
+    "href": "index.html#prework",
+    "title": "Principals of Data Cleaning",
+    "section": "Prework",
+    "text": "Prework\nBefore attending the workshop please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nRecent version of packages used in workshop.\ninstll_pkgs <- c(\"tidyverse\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents??\n\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it."
+  },
+  {
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "License",
+    "section": "",
+    "text": "This work is licensed under a Creative Commons 4.0 International."
+  },
+  {
+    "objectID": "slides/index.html#licensing",
+    "href": "slides/index.html#licensing",
+    "title": "Data Cleaning",
+    "section": "Licensing",
+    "text": "Licensing\n\nThis work is licensed under Creative Commons Zero v1.0 Universal."
+  },
+  {
+    "objectID": "slides/index.html#instructors",
+    "href": "slides/index.html#instructors",
+    "title": "Data Cleaning",
+    "section": "Instructors",
+    "text": "Instructors\n\n\nCrystal Lewis\n Shannon Pileggi\n\n\nPeter Higgins\n\nDuncan Garmonsway"
+  },
+  {
+    "objectID": "slides/index.html#checklist",
+    "href": "slides/index.html#checklist",
+    "title": "Data Cleaning",
+    "section": "Checklist",
+    "text": "Checklist\n\n Install recent R release\nCurrent version 4.2.1\n Install RStudio\nI am on version 2022.07.1+554 \n Install packages\ninstall.packages(c(\"gtreg\", \"gtsummary\", \"tidyverse\", \"labelled\", \"usethis\"))\n Ensure you can knit Rmarkdown files"
+  },
+  {
+    "objectID": "slides/index.html#schedule",
+    "href": "slides/index.html#schedule",
+    "title": "Data Cleaning",
+    "section": "Schedule",
+    "text": "Schedule\n\n\n\nTime\nActivity\n\n\n\n\n09:00 - 09:50\nSection 1\n\n\n09:50 - 10:00\nBreak\n\n\n10:00 - 10:50\nSection 2\n\n\n10:50 - 11:00\nBreak\n\n\n11:00 - 12:00\nSection 3\n\n\n\n\nPlease add any questions to the public Zoom chat. These may be answered in the moment or addressed at the end depending on context."
+  },
+  {
+    "objectID": "slides/index.html#slide-1",
+    "href": "slides/index.html#slide-1",
+    "title": "Data Cleaning",
+    "section": "Slide 1",
+    "text": "Slide 1"
+  },
+  {
+    "objectID": "slides/index.html#slide-2",
+    "href": "slides/index.html#slide-2",
+    "title": "Data Cleaning",
+    "section": "Slide 2",
+    "text": "Slide 2"
+  },
+  {
+    "objectID": "slides/index.html#slide-1-1",
+    "href": "slides/index.html#slide-1-1",
+    "title": "Data Cleaning",
+    "section": "Slide 1",
+    "text": "Slide 1"
+  },
+  {
+    "objectID": "slides/index.html#slide-2-1",
+    "href": "slides/index.html#slide-2-1",
+    "title": "Data Cleaning",
+    "section": "Slide 2",
+    "text": "Slide 2"
+  },
+  {
+    "objectID": "slides/index.html#slide-1-2",
+    "href": "slides/index.html#slide-1-2",
+    "title": "Data Cleaning",
+    "section": "Slide 1",
+    "text": "Slide 1"
+  },
+  {
+    "objectID": "slides/index.html#slide-2-2",
+    "href": "slides/index.html#slide-2-2",
+    "title": "Data Cleaning",
+    "section": "Slide 2",
+    "text": "Slide 2"
+  },
+  {
+    "objectID": "slides/index.html#slide-1-3",
+    "href": "slides/index.html#slide-1-3",
+    "title": "Data Cleaning",
+    "section": "Slide 1",
+    "text": "Slide 1"
+  },
+  {
+    "objectID": "slides/index.html#slide-2-3",
+    "href": "slides/index.html#slide-2-3",
+    "title": "Data Cleaning",
+    "section": "Slide 2",
+    "text": "Slide 2"
+  },
+  {
+    "objectID": "slides/index.html#slide-1-4",
+    "href": "slides/index.html#slide-1-4",
+    "title": "Data Cleaning",
+    "section": "Slide 1",
+    "text": "Slide 1"
+  },
+  {
+    "objectID": "slides/index.html#slide-2-4",
+    "href": "slides/index.html#slide-2-4",
+    "title": "Data Cleaning",
+    "section": "Slide 2",
+    "text": "Slide 2"
+  },
+  {
+    "objectID": "slides/index.html#slide-1-5",
+    "href": "slides/index.html#slide-1-5",
+    "title": "Data Cleaning",
+    "section": "Slide 1",
+    "text": "Slide 1"
+  },
+  {
+    "objectID": "slides/index.html#slide-2-5",
+    "href": "slides/index.html#slide-2-5",
+    "title": "Data Cleaning",
+    "section": "Slide 2",
+    "text": "Slide 2"
+  },
+  {
+    "objectID": "slides/index.html#slide-1-6",
+    "href": "slides/index.html#slide-1-6",
+    "title": "Data Cleaning",
+    "section": "Slide 1",
+    "text": "Slide 1"
+  },
+  {
+    "objectID": "slides/index.html#slide-2-6",
+    "href": "slides/index.html#slide-2-6",
+    "title": "Data Cleaning",
+    "section": "Slide 2",
+    "text": "Slide 2"
+  },
+  {
+    "objectID": "slides/index.html#slide-1-7",
+    "href": "slides/index.html#slide-1-7",
+    "title": "Data Cleaning",
+    "section": "Slide 1",
+    "text": "Slide 1"
+  },
+  {
+    "objectID": "slides/index.html#slide-2-7",
+    "href": "slides/index.html#slide-2-7",
+    "title": "Data Cleaning",
+    "section": "Slide 2",
+    "text": "Slide 2"
+  },
+  {
+    "objectID": "slides/index.html#thank-you",
+    "href": "slides/index.html#thank-you",
+    "title": "Data Cleaning",
+    "section": "Thank you!",
+    "text": "Thank you!\n🙏 Click here to submit workshop feedback\n\n\n\nData Cleaning"
+  },
+  {
+    "objectID": "slidespage.html",
+    "href": "slidespage.html",
+    "title": "Slides",
+    "section": "",
+    "text": "View slides in full screen"
+  }
+]

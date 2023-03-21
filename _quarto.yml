@@ -1,0 +1,56 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+    - "!exercises/exercises.Rmd"
+    - "!slides/[0-9]*.qmd"
+
+execute:
+  freeze: auto
+
+website:
+  page-navigation: true
+  title: "Data Cleaning"
+  description: "Homepage for the R/Medicine 2023 Workshop"
+  site-url: "https://shannonpileggi.github.io/rmedicine-data-cleaning-2023"
+  favicon: "images/R-Med-logo-revised-pride.png"
+
+  repo-url: https://github.com/shannonpileggi/rmedicine-data-cleaning-2023
+  repo-actions: [edit, issue]
+
+  page-footer:
+    left: "This page is built with ❤️ and [Quarto](https://quarto.org/). Inspired by [@minebocek](https://twitter.com/minebocek) & [@statistishdan](https://github.com/ddsjoberg/clinical-reporting-gtsummary-rmed)."
+    background: "#708090"
+
+  sidebar:
+    background: "#708090"
+    logo: "images/R-Med-logo-revised-pride.png"
+    pinned: true
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/shannonpileggi/rmedicine-data-cleaning-2023
+        text: GitHub
+    style: docked
+    contents:
+     - href: index.qmd
+       text: Home
+     - href: slidespage.qmd
+       text: Slides
+     - href: exercises.qmd
+       text: Exercises
+     - href: license.qmd
+
+
+format:
+  html:
+    theme: [cosmo, theme.scss]
+    toc: true
+    code-copy: true
+    code-overflow: scroll
+    mainfont: "Atkinson Hyperlegible"
+    highlight-style: a11y
+
+editor: source
+
