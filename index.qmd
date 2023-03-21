@@ -70,18 +70,11 @@ Before attending the workshop please have the following installed and configured
 ![](images/Shannon_circle.png){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Shannon Pileggi" width="150"}
 
 [**Shannon Pileggi**](https://www.pipinghotdata.com/) (she/her) is a Lead Data Scientist at The Prostate Cancer Clinical Trials Consortium, a frequent blogger, and a member of the R-Ladies Global team. She enjoys automating data wrangling and data outputs, and making both data insights and learning new material digestible.
-
-<br>
-
-`r fontawesome::fa("link")` [pipinghotdata.com](https://www.pipinghotdata.com/)
-
-`r fontawesome::fa("github")` [github.com/shannonpileggi](https://github.com/shannonpileggi/)
-
-`r fontawesome::fa("mastodon")` [@PipingHotData@fosstodon.org](https://fosstodon.org/@PipingHotData)
-
-`r fontawesome::fa("twitter")` [\@PipingHotData](https://twitter.com/PipingHotData)
-
-`r fontawesome::fa("linkedin")` [linkedin.com/in/shannon-m-pileggi/](https://www.linkedin.com/in/shannon-m-pileggi/)
+[`r fontawesome::fa("link")`](https://www.pipinghotdata.com/)
+[`r fontawesome::fa("github")`](https://github.com/shannonpileggi/)
+[`r fontawesome::fa("mastodon")`](https://fosstodon.org/@PipingHotData)
+[`r fontawesome::fa("twitter")`](https://twitter.com/PipingHotData)
+[`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/shannon-m-pileggi/)
 
 
 <br>
