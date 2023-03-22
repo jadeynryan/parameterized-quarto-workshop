@@ -1,6 +1,10 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - "*.qmd"
+    - "!exercises/exercises.Rmd"
+    - "!slides/[0-9]*.qmd"
 
 website:
   page-navigation: true
