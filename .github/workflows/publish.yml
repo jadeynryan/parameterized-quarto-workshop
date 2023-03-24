@@ -29,16 +29,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-renv-
 
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get install pkg-config libcurl4-openssl-dev
+
       - name: Restore packages
         shell: Rscript {0}
         run: |
           if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
           renv::restore()
-
-      - name: Install system dependencies
-        if: runner.os == 'Linux'
-        run: |
-          sudo apt-get install pkg-config libcurl-dev
 
       - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
