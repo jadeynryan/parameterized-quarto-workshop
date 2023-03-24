@@ -12,6 +12,8 @@ jobs:
   quarto-publish:
     name: Publish with Quarto
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -33,7 +35,14 @@ jobs:
           if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
           renv::restore()
 
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get install pkg-config libcurl-dev
+
       - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
