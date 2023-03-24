@@ -1,33 +1,48 @@
 on:
-  workflow_dispatch:
   push:
-    branches: main
+    branches: [main, master]
+    tags: ['*']
 
-name: Quarto Publish
+name: deploy
+
+env:
+  RENV_PATHS_ROOT: ~/.local/share/renv
 
 jobs:
-  build-deploy:
+  quarto-publish:
+    name: Publish with Quarto
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Set up Quarto
+      - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Install R
-        uses: r-lib/actions/setup-r@v2
+      - name: Cache packages
+        uses: actions/cache@v1
         with:
-          r-version: '4.2.0'
+          path: ${{ env.RENV_PATHS_ROOT }}
+          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-renv-
 
-      - name: Install R Dependencies
-        uses: r-lib/actions/setup-renv@v2
-        with:
-          cache-version: 1
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install libcurl4-openssl-dev libharfbuzz-dev libfribidi-dev
 
-      - name: Render and Publish
+
+      - name: Restore packages
+        shell: Rscript {0}
+        run: |
+          if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+          renv::restore()
+
+      - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
