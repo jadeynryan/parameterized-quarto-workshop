@@ -1,11 +1,29 @@
-# Peter Section A
+# Peter Sections
 
-## Slide 1
+# Deciding on the Unit of Observation
 
-## Slide 2
+## Is it the Patient?
 
-# Peter Section B
+## Is it the Visit/Encounter?
 
-## Slide 1
+# Reshaping your data with tidyr
 
-## Slide 2
+## Pivoting Longer (common)
+
+- Visit Dates/Measures
+
+- Your Turn (Exercise)
+
+## Pivoting Wider
+
+# Filling in Unobserved Dates/Times with padr
+
+## Padding unobserved dates (weekends?)
+
+## Padding unovserved times
+
+# Joins of data from different sources
+
+## Local Demographics with CDC SVI data (one to one)
+
+## Patient Demographics with Lab results (one to many)
