@@ -34,7 +34,7 @@ If your answer to any of the following questions is "yes", then this is the righ
 
 -   Does this drive you slightly batty?
 
--   three?
+-   Do you want to learn how to make your life easier with a suite of data cleaning tools?
 
 The workshop is designed for those with some experience in R. 
 It will be assumed that participants can perform basic data manipulation.
