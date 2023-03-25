@@ -20,19 +20,19 @@ In this workshop you will learn how...
 
 ## Learning objectives
 
-* one
+* To import Excel files with (common, messy) data problems.
 
-* two
+* To address and clean problems common messy data problems in each variable 
 
-* three
+* To address and clean data with more complex meta-problems, like pivoting to long format for data analysis, dealing with multi-column headers, color-coded data (gah!), and un-pivoting pivot tables into tidy data.
 
 ## Is this course for me?
 
 If your answer to any of the following questions is "yes", then this is the right workshop for you.
 
--   one?
+-   Do you frequently receive untidy data for analysis in Excel spreadsheets?
 
--   two?
+-   Does this drive you slightly batty?
 
 -   three?
 
@@ -87,3 +87,9 @@ Before attending the workshop please have the following installed and configured
 
 
 [**Duncan Garmonsway**](https://nacnudus.github.io/duncangarmonsway/) 
+
+
+# Further Reading: 
+
+- Crystal has an excellent (work in progress) book on Data Management in Large -Scale Education Research [here](https://datamgmtinedresearch.com)
+- Duncan has an excellent bookdown book on Spreadsheet Munging Strategies [here](https://nacnudus.github.io/spreadsheet-munging-strategies/)
