@@ -18,7 +18,7 @@
     "href": "index.html#learning-objectives",
     "title": "Principles of Data Cleaning",
     "section": "Learning objectives",
-    "text": "Learning objectives\n\nTo import Excel files with (common, messy) data problems.\nTo address and clean problems common messy data problems in each variable\nTo address and clean data with more complex meta-problems, like pivoting to long format for data analysis, dealing with multi-column headers, color-coded data (gah!), and un-pivoting pivot tables into tidy data."
+    "text": "Learning objectives\n\nTo import Excel files with (common, messy) data problems.\nTo address and clean common messy data problems in each variable\nTo address and clean data with more complex meta-problems, like pivoting to long format for data analysis, dealing with multi-column headers, color-coded data (gah!), and un-pivoting pivot tables into tidy data."
   },
   {
     "objectID": "index.html#is-this-course-for-me",

@@ -16,13 +16,13 @@ editor: source
 
 # Overview
 
-In this workshop you will learn how...
+In this workshop you will learn how to import messy data from an Excel spreadsheet, and develop the R skills to turn this mess into tidy data ready for analysis. 
 
 ## Learning objectives
 
 * To import Excel files with (common, messy) data problems.
 
-* To address and clean problems common messy data problems in each variable 
+* To address and clean common messy data problems in each variable 
 
 * To address and clean data with more complex meta-problems, like pivoting to long format for data analysis, dealing with multi-column headers, color-coded data (gah!), and un-pivoting pivot tables into tidy data.
 
