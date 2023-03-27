@@ -51,7 +51,7 @@ Before attending the workshop please have the following installed and configured
 -   Recent version of packages used in workshop.
 
     ```r
-    instll_pkgs <- c("tidyverse")
+    instll_pkgs <- c("tidyverse", "tidyxl", "unpivotr")
     install.packages(instll_pkgs)
     ```
 -   Ensure you can knit R markdown documents??
@@ -79,8 +79,13 @@ Before attending the workshop please have the following installed and configured
 
 <br>
 <br>
+![](images/Peter_circle.jpg){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Peter Higgins" width="150"}
 
-[**Peter Higgins**](https://bookdown.org/pdr_higgins/rmrwr/) 
+[**Peter Higgins**](https://bookdown.org/pdr_higgins/rmrwr/) (he/him) is a Professor at the University of Michigan, a translational researcher interested in reproducible research, and the creator of the {medicaldata} package. He enjoys clean and tidy data when he (rarely) encounters it.
+[`r fontawesome::fa("link")`](https://www.uofmhealth.org/profile/4/peter-doyle-higgins-md-phd)
+[`r fontawesome::fa("github")`](https://github.com/higgi13425)
+[`r fontawesome::fa("twitter")`](https://twitter.com/ibddoctor)
+[`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/peter-higgins-b1a21a30/)
 
 <br>
 <br>
