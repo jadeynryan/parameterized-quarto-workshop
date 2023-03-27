@@ -16,13 +16,13 @@ editor: source
 
 # Overview
 
-In this workshop you will learn how...
+In this workshop you will learn how to import messy data from an Excel spreadsheet, and develop the R skills to turn this mess into tidy data ready for analysis. 
 
 ## Learning objectives
 
 * To import Excel files with (common, messy) data problems.
 
-* To address and clean problems common messy data problems in each variable 
+* To address and clean common messy data problems in each variable 
 
 * To address and clean data with more complex meta-problems, like pivoting to long format for data analysis, dealing with multi-column headers, color-coded data (gah!), and un-pivoting pivot tables into tidy data.
 
@@ -34,7 +34,7 @@ If your answer to any of the following questions is "yes", then this is the righ
 
 -   Does this drive you slightly batty?
 
--   three?
+-   Do you want to learn how to make your life easier with a suite of data cleaning tools?
 
 The workshop is designed for those with some experience in R. 
 It will be assumed that participants can perform basic data manipulation.
@@ -51,7 +51,7 @@ Before attending the workshop please have the following installed and configured
 -   Recent version of packages used in workshop.
 
     ```r
-    instll_pkgs <- c("tidyverse")
+    instll_pkgs <- c("tidyverse", "tidyxl", "unpivotr")
     install.packages(instll_pkgs)
     ```
 -   Ensure you can knit R markdown documents??
@@ -79,8 +79,13 @@ Before attending the workshop please have the following installed and configured
 
 <br>
 <br>
+![](images/Peter_circle.jpg){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Peter Higgins" width="150"}
 
-[**Peter Higgins**](https://bookdown.org/pdr_higgins/rmrwr/) 
+[**Peter Higgins**](https://bookdown.org/pdr_higgins/rmrwr/) (he/him) is a Professor at the University of Michigan, a translational researcher interested in reproducible research, and the creator of the {medicaldata} package. He enjoys clean and tidy data when he (rarely) encounters it in the wild.
+[`r fontawesome::fa("link")`](https://www.uofmhealth.org/profile/4/peter-doyle-higgins-md-phd)
+[`r fontawesome::fa("github")`](https://github.com/higgi13425)
+[`r fontawesome::fa("twitter")`](https://twitter.com/ibddoctor)
+[`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/peter-higgins-b1a21a30/)
 
 <br>
 <br>
@@ -89,7 +94,8 @@ Before attending the workshop please have the following installed and configured
 [**Duncan Garmonsway**](https://nacnudus.github.io/duncangarmonsway/) 
 
 
-# Further Reading: 
+# Further Reading/Viewing: 
 
-- Crystal has an excellent (work in progress) book on Data Management in Large -Scale Education Research [here](https://datamgmtinedresearch.com)
-- Duncan has an excellent bookdown book on Spreadsheet Munging Strategies [here](https://nacnudus.github.io/spreadsheet-munging-strategies/)
+- Crystal has an excellent (work in progress) e-book on Data Management in Large-Scale Education Research [here](https://datamgmtinedresearch.com).
+- Duncan has an excellent e-book on Spreadsheet Munging Strategies [here](https://nacnudus.github.io/spreadsheet-munging-strategies/).
+- Peter shared his strong feelings about the limitations of Excel as a data entry tool (and how you can use Excel better) in an R/Medicine workshop/YouTube video [here](https://www.youtube.com/watch?v=9f-hpJbjKZo).
