@@ -81,7 +81,7 @@ Before attending the workshop please have the following installed and configured
 <br>
 ![](images/Peter_circle.jpg){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Peter Higgins" width="150"}
 
-[**Peter Higgins**](https://bookdown.org/pdr_higgins/rmrwr/) (he/him) is a Professor at the University of Michigan, a translational researcher interested in reproducible research, and the creator of the {medicaldata} package. He enjoys clean and tidy data when he (rarely) encounters it.
+[**Peter Higgins**](https://bookdown.org/pdr_higgins/rmrwr/) (he/him) is a Professor at the University of Michigan, a translational researcher interested in reproducible research, and the creator of the {medicaldata} package. He enjoys clean and tidy data when he (rarely) encounters it in the wild.
 [`r fontawesome::fa("link")`](https://www.uofmhealth.org/profile/4/peter-doyle-higgins-md-phd)
 [`r fontawesome::fa("github")`](https://github.com/higgi13425)
 [`r fontawesome::fa("twitter")`](https://twitter.com/ibddoctor)
@@ -94,7 +94,8 @@ Before attending the workshop please have the following installed and configured
 [**Duncan Garmonsway**](https://nacnudus.github.io/duncangarmonsway/) 
 
 
-# Further Reading: 
+# Further Reading/Viewing: 
 
-- Crystal has an excellent (work in progress) book on Data Management in Large -Scale Education Research [here](https://datamgmtinedresearch.com)
-- Duncan has an excellent bookdown book on Spreadsheet Munging Strategies [here](https://nacnudus.github.io/spreadsheet-munging-strategies/)
+- Crystal has an excellent (work in progress) e-book on Data Management in Large-Scale Education Research [here](https://datamgmtinedresearch.com).
+- Duncan has an excellent e-book on Spreadsheet Munging Strategies [here](https://nacnudus.github.io/spreadsheet-munging-strategies/).
+- Peter shared his strong feelings about the limitations of Excel as a data entry tool (and how you can use Excel better) in an R/Medicine workshop/YouTube video [here](https://www.youtube.com/watch?v=9f-hpJbjKZo).
