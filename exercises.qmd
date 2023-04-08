@@ -8,20 +8,17 @@ format:
 
 # Instructions:
 
-**Recommended:** Complete these exercises in the dedicated R in Pharma RStudio Cloud work space, which comes with 
+**Recommended:** Complete these exercises in the dedicated Posit Cloud work space, which comes with
 
-1. all packages pre-installed, and
+1.  all packages pre-installed, and
 
-2. an Rmarkdown document to fill in.
+2.  an Rmarkdown document to fill in.
 
-It may still be helpful to peek here to verify that your tables match the 
-desired output.
+It will be helpful to peek here to verify that your tables generated in Posit Cloud match the desired output (or even to peek at the Code Solution if your cleaned tables don't look right).
 
-[Click here to enter R/Medicine Posit cloud work space](https://rstudio.cloud/spaces/299322/join?access_code=Vnp96stsVIDLiEJI7AtHAQ4GB1gsptQgnOGb99_N){target="_blank"}
+[Click here to enter the R/Medicine Posit cloud work space](https://rstudio.cloud/spaces/299322/join?access_code=Vnp96stsVIDLiEJI7AtHAQ4GB1gsptQgnOGb99_N){target="_blank"}
 
-**Otherwise:** Follow along this document, work on your personal computer, 
-and challenge yourself not to peek at the code solutions until you have completed
-the exercise.
+**Otherwise:** Follow along this document, work on your personal computer, and challenge yourself **not to peek** at the code solutions until you have completed the exercise.
 
 # Packages
 
@@ -34,12 +31,17 @@ the exercise.
 library(tidyverse)
 ```
 
-
 # The Data
 
-data details
+The data for each section will start out as messy Excel files of the type your well-meaning clinical colleague will have used to collect data from the local electronic medical record (EMR), with typos, data problems, and often untidy data structures.
 
-# Exercise 1
+Essentially, your job is to turn the messy Excel data beast (on the left) into the tidy data on the right.
+
+![Taming the Data Beast, by Allison Horst](images/data_beast_allison_horst.jpeg)
+
+# Section 1: Crystal Lewis ![Crystal Lewis](images/Crystal_circle.png){width="15%"}
+
+## Exercise 1
 
 view first six rows of `mtcars`
 
@@ -47,8 +49,69 @@ view first six rows of `mtcars`
 head(mtcars)
 ```
 
-# Exercise 2
+## Exercise 2
 
+view first six rows of `mtcars`
+
+```{r}
+head(mtcars)
+```
+
+# Section 2: Shannon Pileggi ![Shannon Pileggi](images/Shannon_circle.png){width="15%"}
+
+## Exercise 3
+
+view first six rows of `mtcars`
+
+```{r}
+head(mtcars)
+```
+
+## Exercise 4
+
+view first six rows of `mtcars`
+
+```{r}
+head(mtcars)
+```
+
+# Section 3: Peter Higgins ![Peter Higgins](images/Peter_circle.jpg){width="15%"}
+
+## Exercise 5
+
+view first six rows of `mtcars`
+
+```{r}
+head(mtcars)
+```
+
+## Exercise 6
+
+view first six rows of `mtcars`
+
+```{r}
+head(mtcars)
+```
+
+# Section 4: Duncan Garmonsway ![Duncan Garmonsway](images/Duncan_circle.png){width="15%"}
+
+## Exercise 7
+
+view first six rows of `mtcars`
+
+```{r}
+head(mtcars)
+```
+
+## Exercise 8
+
+view first six rows of `mtcars`
+
+```{r}
+head(mtcars)
+```
+
+# 
 
 # Session info
 
@@ -58,4 +121,3 @@ head(mtcars)
 #| code-fold: false
 devtools::session_info()
 ```
-
