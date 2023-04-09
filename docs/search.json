@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Principles of Data Cleaning",
     "section": "",
-    "text": "🗓 June 6, 2023 | 8:30am - 12:00pm EDT\n🏨 Virtual\n💥 FREE workshop registration"
+    "text": "🗓 June 6, 2023 | 9:30am - 1:00pm EDT\n🏨 Virtual\n💥 FREE workshop registration"
   },
   {
     "objectID": "index.html#learning-objectives",
@@ -25,14 +25,14 @@
     "href": "index.html#is-this-course-for-me",
     "title": "Principles of Data Cleaning",
     "section": "Is this course for me?",
-    "text": "Is this course for me?\nIf your answer to any of the following questions is “yes”, then this is the right workshop for you.\n\nDo you frequently receive untidy data for analysis in Excel spreadsheets?\nDoes this drive you slightly batty?\nDo you want to learn how to make your life easier with a suite of data cleaning tools?\n\nThe workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the %>%/|> operator is a plus, but not required."
+    "text": "Is this course for me?\nIf your answer to any of the following questions is “yes”, then this is the right workshop for you.\n\nDo you frequently receive untidy data for analysis in Excel spreadsheets?\nDoes this drive you slightly batty?\nDo you want to learn how to make your life easier with a suite of data cleaning tools?\n\nThe workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the %&gt;%/|&gt; operator is a plus, but not required."
   },
   {
     "objectID": "index.html#prework",
     "href": "index.html#prework",
     "title": "Principles of Data Cleaning",
     "section": "Prework",
-    "text": "Prework\nBefore attending the workshop please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nRecent version of packages used in workshop.\ninstll_pkgs <- c(\"tidyverse\", \"tidyxl\", \"unpivotr\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents??\n\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it."
+    "text": "Prework\nBefore attending the workshop please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nRecent version of packages used in workshop.\ninstll_pkgs &lt;- c(\"tidyverse\", \"tidyxl\", \"unpivotr\")\ninstall.packages(instll_pkgs)\nEnsure you can import data from a Microsoft Excel spreadsheet to R ??\n\nSave a a Microsoft Excel spreadsheet in a known folder on your computer.\nOpen RStudio install/load (library) the packages {readxl} (link) and {openxlsx} (link)\nImport the data from the spreadsheet into R using the path to the correct folder with either package."
   },
   {
     "objectID": "license.html",
