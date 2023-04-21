@@ -62,7 +62,13 @@ Before attending the workshop please have the following installed and configured
 # Instructors
 
 ![](images/Crystal_circle.png){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Crystal Lewis" width="150"}
-[**Crystal Lewis**](https://cghlewis.com/) 
+[**Crystal Lewis**](https://cghlewis.com) (she/her) is a Freelance Research Data Management Consultant, helping people better understand how to organize, document, and share their data. She has been wrangling data in the field of Education for over 10 years. She is also a co-organizer for R-Ladies St. Louis.
+
+[`r fontawesome::fa("link")`](https://cghlewis.com)
+[`r fontawesome::fa("github")`](https://github.com/Cghlewis/)
+[`r fontawesome::fa("mastodon")`](https://fosstodon.org/@Cghlewis)
+[`r fontawesome::fa("twitter")`](https://twitter.com/Cghlewis)
+[`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/crystal-lewis-922b4193/)
 
 <br>
 <br>
