@@ -48,9 +48,7 @@ This workshop will largely be conducted in the Posit Cloud environment. Please c
 
 If you will not be using the Posit Cloud instance, you can just watch along as the instructors teach.
 
-If you would like 
-
-Before attending the workshop please have the following installed and configured on your machine.
+If you would like to try this out on your own computer, please have the following installed and configured on your machine.
 
 -   Recent version of **R** 
 
@@ -62,9 +60,11 @@ Before attending the workshop please have the following installed and configured
     instll_pkgs <- c("tidyverse", "tidyxl", "unpivotr")
     install.packages(instll_pkgs)
     ```
--   Ensure you can knit R markdown documents??
-    - Open RStudio and create a new Rmarkdown document
-    - Save the document and check you are able to knit it.
+-   Ensure you can knit R markdown documents
+
+- Open RStudio and create a new Rmarkdown document
+
+- Save the document and check you are able to knit it.
 
  
 # Instructors
