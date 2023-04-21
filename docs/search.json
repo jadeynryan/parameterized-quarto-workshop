@@ -32,7 +32,7 @@
     "href": "index.html#prework",
     "title": "Principles of Data Cleaning",
     "section": "Prework",
-    "text": "Prework\nBefore attending the workshop please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nRecent version of packages used in workshop.\ninstll_pkgs &lt;- c(\"tidyverse\", \"tidyxl\", \"unpivotr\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents??\n\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it."
+    "text": "Prework\nThis workshop will largely be conducted in the Posit Cloud environment. Please create a login to the Posit Cloud instance of this workshop here:\nPosit Cloud Medical Cleaning Workshop.\nIf you will not be using the Posit Cloud instance, you can just watch along as the instructors teach.\nIf you would like\nBefore attending the workshop please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nRecent version of packages used in workshop.\ninstll_pkgs &lt;- c(\"tidyverse\", \"tidyxl\", \"unpivotr\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents??\n\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it."
   },
   {
     "objectID": "license.html",
