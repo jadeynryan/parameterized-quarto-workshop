@@ -61,6 +61,7 @@ Before attending the workshop please have the following installed and configured
  
 # Instructors
 
+![](images/Crystal_circle.png){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Shannon Pileggi" width="150"}
 [**Crystal Lewis**](https://cghlewis.com/) 
 
 <br>
