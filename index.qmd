@@ -42,6 +42,14 @@ Experience with the {tidyverse} and the `%>%`/`|>` operator is a plus, but not r
 
 ## Prework
 
+This workshop will largely be conducted in the Posit Cloud environment. Please create a login to the Posit Cloud instance of this workshop here:
+
+[Posit Cloud Medical Cleaning Workshop](https://posit.cloud/content/5758558).
+
+If you will not be using the Posit Cloud instance, you can just watch along as the instructors teach.
+
+If you would like 
+
 Before attending the workshop please have the following installed and configured on your machine.
 
 -   Recent version of **R** 

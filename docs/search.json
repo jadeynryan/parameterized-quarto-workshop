@@ -25,14 +25,14 @@
     "href": "index.html#is-this-course-for-me",
     "title": "Principles of Data Cleaning",
     "section": "Is this course for me?",
-    "text": "Is this course for me?\nIf your answer to any of the following questions is “yes”, then this is the right workshop for you.\n\nDo you frequently receive untidy data for analysis in Excel spreadsheets?\nDoes this drive you slightly batty?\nDo you want to learn how to make your life easier with a suite of data cleaning tools?\n\nThe workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the %>%/|> operator is a plus, but not required."
+    "text": "Is this course for me?\nIf your answer to any of the following questions is “yes”, then this is the right workshop for you.\n\nDo you frequently receive untidy data for analysis in Excel spreadsheets?\nDoes this drive you slightly batty?\nDo you want to learn how to make your life easier with a suite of data cleaning tools?\n\nThe workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the %&gt;%/|&gt; operator is a plus, but not required."
   },
   {
     "objectID": "index.html#prework",
     "href": "index.html#prework",
     "title": "Principles of Data Cleaning",
     "section": "Prework",
-    "text": "Prework\nBefore attending the workshop please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nRecent version of packages used in workshop.\ninstll_pkgs <- c(\"tidyverse\", \"tidyxl\", \"unpivotr\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents??\n\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it."
+    "text": "Prework\nBefore attending the workshop please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nRecent version of packages used in workshop.\ninstll_pkgs &lt;- c(\"tidyverse\", \"tidyxl\", \"unpivotr\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents??\n\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it."
   },
   {
     "objectID": "license.html",
