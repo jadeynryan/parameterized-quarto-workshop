@@ -22,7 +22,8 @@ This work is licensed under [Creative Commons Zero v1.0 Universal](https://creat
 ::: {.column width="50%"}
 **Crystal Lewis**
 
-![](images/Shannon_circle.png){width="40%"}
+![](images/Crystal_circle.png){width="40%"}
+
 **Shannon Pileggi**
 
 ![](images/Shannon_circle.png){width="40%"}
@@ -31,7 +32,8 @@ This work is licensed under [Creative Commons Zero v1.0 Universal](https://creat
 ::: {.column width="50%"}
 **Peter Higgins**
 
-![](images/Shannon_circle.png){width="40%"}
+![](images/Peter_circle.jpg){width="40%"}
+
 
 **Duncan Garmonsway**
 
