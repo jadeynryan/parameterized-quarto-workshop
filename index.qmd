@@ -91,22 +91,6 @@ If you would like to try this out on your own computer, please have the followin
 
 # Instructors
 
-![**Crystal Lewis**](images/Crystal_circle.png){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Crystal Lewis" width="150"}
-[**Crystal Lewis**](https://cghlewis.com) (she/her) is a research data management consultant, a frequent blogger, and a member of the R-Ladies Global team. She is working on a book titled *Data Management in Large-Scale Education Research*. After spending over eight years in the field of education research, she found that the most fulfilling part of my experience was helping researchers build and implement quality data management processes that allowed them to focus more on using their data to make positive changes in the field, and less time wrangling their data into a usable format.
-<br>
-<br>
-
-![](images/Shannon_circle.png){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Shannon Pileggi" width="150"}
-
-[**Shannon Pileggi**](https://www.pipinghotdata.com/) (she/her) is a Lead Data Scientist at The Prostate Cancer Clinical Trials Consortium, a frequent blogger, and a member of the R-Ladies Global team. She enjoys automating data wrangling and data outputs, and making both data insights and learning new material digestible.
-<br>
-<br>
-![](images/Peter_circle.jpg){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Peter Higgins" width="150"}
-
-[**Peter Higgins**](https://bookdown.org/pdr_higgins/rmrwr/) (he/him) is a Professor at the University of Michigan, a translational researcher interested in reproducible research, and the creator of the {medicaldata} package. He enjoys clean and tidy data when he (rarely) encounters it in the wild.
-<br>
-<br>
-[**Duncan Garmonsway**](https://nacnudus.github.io/duncangarmonsway/) 
 
 ![](images/Crystal_circle.png){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Crystal Lewis" width="150"}
 
