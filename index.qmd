@@ -1,64 +1,84 @@
 ---
 title: "Principles of Data Cleaning"
 subtitle: "R/Medicine 2023 Workshop"
-editor: source
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 ------------------------------------------------------------------------
 
-🗓 June 6, 2023 \| 8:30am - 12:00pm EDT
+🗓 June 6, 2023 \| 9:30am - 1:00pm EDT
 
 🏨 Virtual
 
-💥 **FREE** [workshop registration](xxx) 
+💥 **FREE** [workshop
+registration](https://events.linuxfoundation.org/r-medicine/)
 
 ------------------------------------------------------------------------
 
 # Overview
 
-In this workshop you will learn how to import messy data from an Excel spreadsheet, and develop the R skills to turn this mess into tidy data ready for analysis. 
+In this workshop you will learn how to import messy data from an Excel
+spreadsheet, and develop the R skills to turn this mess into tidy data
+ready for analysis.
 
 ## Learning objectives
 
-* To import Excel files with (common, messy) data problems.
+-   To import Excel files with (common, messy) data problems.
 
-* To address and clean common messy data problems in each variable 
+-   To address and clean common messy data problems in each variable
 
-* To address and clean data with more complex meta-problems, like pivoting to long format for data analysis, dealing with multi-column headers, color-coded data (gah!), and un-pivoting pivot tables into tidy data.
+-   To address and clean data with more complex meta-problems, like
+    pivoting to long format for data analysis, dealing with multi-column
+    headers, color-coded data (gah!), and un-pivoting pivot tables into
+    tidy data.
 
 ## Is this course for me?
 
-If your answer to any of the following questions is "yes", then this is the right workshop for you.
+If your answer to any of the following questions is "yes", then this is
+the right workshop for you.
 
--   Do you frequently receive untidy data for analysis in Excel spreadsheets?
+-   Do you frequently receive untidy data for analysis in Excel
+    spreadsheets?
 
 -   Does this drive you slightly batty?
 
--   Do you want to learn how to make your life easier with a suite of data cleaning tools?
+-   Do you want to learn how to make your life easier with a suite of
+    data cleaning tools?
 
-The workshop is designed for those with some experience in R. 
-It will be assumed that participants can perform basic data manipulation.
-Experience with the {tidyverse} and the `%>%`/`|>` operator is a plus, but not required.
+The workshop is designed for those with some experience in R. It will be
+assumed that participants can perform basic data manipulation.
+Experience with the {tidyverse} and the `%>%`/`|>` operator is a plus,
+but not required.
 
 ## Prework
 
-Before attending the workshop please have the following installed and configured on your machine.
+Before attending the workshop please have the following installed and
+configured on your machine.
 
--   Recent version of **R** 
+-   Recent version of **R**
 
 -   Recent version of **RStudio**
 
 -   Recent version of packages used in workshop.
 
-    ```r
+    ``` r
     instll_pkgs <- c("tidyverse", "tidyxl", "unpivotr")
     install.packages(instll_pkgs)
     ```
--   Ensure you can knit R markdown documents??
-    - Open RStudio and create a new Rmarkdown document
-    - Save the document and check you are able to knit it.
 
- 
+-   Ensure you can import data from a Microsoft Excel spreadsheet to R
+    ??
+
+    -   Save a a Microsoft Excel spreadsheet in a known folder on your
+        computer.
+    -   Open RStudio install/load (library) the packages {readxl}
+        ([link](https://readxl.tidyverse.org)) and {openxlsx}
+        ([link](https://ycphs.github.io/openxlsx/))
+    -   Import the data from the spreadsheet into R using the path to
+        the correct folder with either package.
+
 # Instructors
 
 ![](images/Crystal_circle.png){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Crystal Lewis" width="150"}
@@ -70,39 +90,50 @@ Before attending the workshop please have the following installed and configured
 [`r fontawesome::fa("twitter")`](https://twitter.com/Cghlewis)
 [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/crystal-lewis-922b4193/)
 
-<br>
-<br>
 
+<br> <br>
 
-![](images/Shannon_circle.png){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Shannon Pileggi" width="150"}
+![](images/Shannon_circle.png){style="float:left;padding: 0 10px 0 0;"
+fig-alt="Headshot of Shannon Pileggi" width="150"}
 
-[**Shannon Pileggi**](https://www.pipinghotdata.com/) (she/her) is a Lead Data Scientist at The Prostate Cancer Clinical Trials Consortium, a frequent blogger, and a member of the R-Ladies Global team. She enjoys automating data wrangling and data outputs, and making both data insights and learning new material digestible.
+[**Shannon Pileggi**](https://www.pipinghotdata.com/) (she/her) is a
+Lead Data Scientist at The Prostate Cancer Clinical Trials Consortium, a
+frequent blogger, and a member of the R-Ladies Global team. She enjoys
+automating data wrangling and data outputs, and making both data
+insights and learning new material digestible.
+
 [`r fontawesome::fa("link")`](https://www.pipinghotdata.com/)
 [`r fontawesome::fa("github")`](https://github.com/shannonpileggi/)
 [`r fontawesome::fa("mastodon")`](https://fosstodon.org/@PipingHotData)
 [`r fontawesome::fa("twitter")`](https://twitter.com/PipingHotData)
 [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/shannon-m-pileggi/)
 
+<br> <br>
+![](images/Peter_circle.jpg){style="float:left;padding: 0 10px 0 0;"
+fig-alt="Headshot of Peter Higgins" width="150"}
 
-<br>
-<br>
-![](images/Peter_circle.jpg){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Peter Higgins" width="150"}
-
-[**Peter Higgins**](https://bookdown.org/pdr_higgins/rmrwr/) (he/him) is a Professor at the University of Michigan, a translational researcher interested in reproducible research, and the creator of the {medicaldata} package. He enjoys clean and tidy data when he (rarely) encounters it in the wild.
+[**Peter Higgins**](https://bookdown.org/pdr_higgins/rmrwr/) (he/him) is
+a Professor at the University of Michigan, a translational researcher
+interested in reproducible research, and the creator of the
+{medicaldata} package. He enjoys clean and tidy data when he (rarely)
+encounters it in the wild.
 [`r fontawesome::fa("link")`](https://www.uofmhealth.org/profile/4/peter-doyle-higgins-md-phd)
 [`r fontawesome::fa("github")`](https://github.com/higgi13425)
 [`r fontawesome::fa("twitter")`](https://twitter.com/ibddoctor)
 [`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/peter-higgins-b1a21a30/)
 
-<br>
-<br>
+<br> <br>
 
+[**Duncan Garmonsway**](https://nacnudus.github.io/duncangarmonsway/)
 
-[**Duncan Garmonsway**](https://nacnudus.github.io/duncangarmonsway/) 
+# Further Reading/Viewing:
 
-
-# Further Reading/Viewing: 
-
-- Crystal has an excellent (work in progress) e-book on Data Management in Large-Scale Education Research [here](https://datamgmtinedresearch.com).
-- Duncan has an excellent e-book on Spreadsheet Munging Strategies [here](https://nacnudus.github.io/spreadsheet-munging-strategies/).
-- Peter shared his strong feelings about the limitations of Excel as a data entry tool (and how you can use Excel better) in an R/Medicine workshop/YouTube video [here](https://www.youtube.com/watch?v=9f-hpJbjKZo).
+-   Crystal has an excellent (work in progress) e-book on Data
+    Management in Large-Scale Education Research
+    [here](https://datamgmtinedresearch.com).
+-   Duncan has an excellent e-book on Spreadsheet Munging Strategies
+    [here](https://nacnudus.github.io/spreadsheet-munging-strategies/).
+-   Peter shared his strong feelings about the limitations of Excel as a
+    data entry tool (and how you can use Excel better) in an R/Medicine
+    workshop/YouTube video
+    [here](https://www.youtube.com/watch?v=9f-hpJbjKZo).

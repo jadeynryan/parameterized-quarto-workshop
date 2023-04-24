@@ -4,14 +4,14 @@
     "href": "exercises.html",
     "title": "Data Cleaning: Exercises",
     "section": "",
-    "text": "Instructions:\nRecommended: Complete these exercises in the dedicated R in Pharma RStudio Cloud work space, which comes with\n\nall packages pre-installed, and\nan Rmarkdown document to fill in.\n\nIt may still be helpful to peek here to verify that your tables match the desired output.\nClick here to enter R/Medicine Posit cloud work space\nOtherwise: Follow along this document, work on your personal computer, and challenge yourself not to peek at the code solutions until you have completed the exercise.\n\n\nPackages\n\nlibrary(tidyverse)\n\n\n\nThe Data\ndata details\n\n\nExercise 1\nview first six rows of mtcars\n\n\nShow the code solution\nhead(mtcars)\n\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\n\n\nExercise 2\n\n\nSession info\n\ndevtools::session_info()\n\n─ Session info ───────────────────────────────────────────────────────────────\n setting  value\n version  R version 4.2.3 (2023-03-15)\n os       macOS Ventura 13.2.1\n system   aarch64, darwin20\n ui       X11\n language (EN)\n collate  en_US.UTF-8\n ctype    en_US.UTF-8\n tz       America/Detroit\n date     2023-03-25\n pandoc   2.19.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)\n\n─ Packages ───────────────────────────────────────────────────────────────────\n ! package     * version date (UTC) lib source\n P cachem        1.0.7   2023-02-24 [?] CRAN (R 4.2.0)\n P callr         3.7.3   2022-11-02 [?] CRAN (R 4.2.0)\n P cli           3.6.1   2023-03-23 [?] CRAN (R 4.2.0)\n P colorspace    2.1-0   2023-01-23 [?] CRAN (R 4.2.0)\n P crayon        1.5.2   2022-09-29 [?] CRAN (R 4.2.0)\n P devtools      2.4.5   2022-10-11 [?] CRAN (R 4.2.0)\n P digest        0.6.31  2022-12-11 [?] CRAN (R 4.2.0)\n P dplyr       * 1.1.1   2023-03-22 [?] CRAN (R 4.2.0)\n P ellipsis      0.3.2   2021-04-29 [?] CRAN (R 4.2.0)\n P evaluate      0.20    2023-01-17 [?] CRAN (R 4.2.0)\n P fansi         1.0.4   2023-01-22 [?] CRAN (R 4.2.0)\n P fastmap       1.1.1   2023-02-24 [?] CRAN (R 4.2.0)\n P forcats     * 1.0.0   2023-01-29 [?] CRAN (R 4.2.0)\n P fs            1.6.1   2023-02-06 [?] CRAN (R 4.2.0)\n P generics      0.1.3   2022-07-05 [?] CRAN (R 4.2.0)\n P ggplot2     * 3.4.1   2023-02-10 [?] CRAN (R 4.2.0)\n P glue          1.6.2   2022-02-24 [?] CRAN (R 4.2.0)\n P gtable        0.3.3   2023-03-21 [?] CRAN (R 4.2.0)\n P hms           1.1.3   2023-03-21 [?] CRAN (R 4.2.0)\n P htmltools     0.5.5   2023-03-23 [?] CRAN (R 4.2.0)\n P htmlwidgets   1.6.2   2023-03-17 [?] CRAN (R 4.2.0)\n P httpuv        1.6.9   2023-02-14 [?] CRAN (R 4.2.0)\n P jsonlite      1.8.4   2022-12-06 [?] CRAN (R 4.2.0)\n P knitr         1.42    2023-01-25 [?] CRAN (R 4.2.0)\n P later         1.3.0   2021-08-18 [?] CRAN (R 4.2.0)\n P lifecycle     1.0.3   2022-10-07 [?] CRAN (R 4.2.0)\n P lubridate   * 1.9.2   2023-02-10 [?] CRAN (R 4.2.0)\n P magrittr      2.0.3   2022-03-30 [?] CRAN (R 4.2.0)\n P memoise       2.0.1   2021-11-26 [?] CRAN (R 4.2.0)\n P mime          0.12    2021-09-28 [?] CRAN (R 4.2.0)\n P miniUI        0.1.1.1 2018-05-18 [?] CRAN (R 4.2.0)\n P munsell       0.5.0   2018-06-12 [?] CRAN (R 4.2.0)\n P pillar        1.9.0   2023-03-22 [?] CRAN (R 4.2.0)\n P pkgbuild      1.4.0   2022-11-27 [?] CRAN (R 4.2.0)\n P pkgconfig     2.0.3   2019-09-22 [?] CRAN (R 4.2.0)\n P pkgload       1.3.2   2022-11-16 [?] CRAN (R 4.2.0)\n P prettyunits   1.1.1   2020-01-24 [?] CRAN (R 4.2.0)\n P processx      3.8.0   2022-10-26 [?] CRAN (R 4.2.0)\n P profvis       0.3.7   2020-11-02 [?] CRAN (R 4.2.0)\n P promises      1.2.0.1 2021-02-11 [?] CRAN (R 4.2.0)\n P ps            1.7.3   2023-03-21 [?] CRAN (R 4.2.0)\n P purrr       * 1.0.1   2023-01-10 [?] CRAN (R 4.2.0)\n P R6            2.5.1   2021-08-19 [?] CRAN (R 4.2.0)\n P Rcpp          1.0.10  2023-01-22 [?] CRAN (R 4.2.0)\n P readr       * 2.1.4   2023-02-10 [?] CRAN (R 4.2.0)\n P remotes       2.4.2   2021-11-30 [?] CRAN (R 4.2.0)\n P renv          0.17.2  2023-03-17 [?] CRAN (R 4.2.0)\n P rlang         1.1.0   2023-03-14 [?] CRAN (R 4.2.0)\n P rmarkdown     2.20    2023-01-19 [?] CRAN (R 4.2.0)\n P rstudioapi    0.14    2022-08-22 [?] CRAN (R 4.2.0)\n P scales        1.2.1   2022-08-20 [?] CRAN (R 4.2.0)\n P sessioninfo   1.2.2   2021-12-06 [?] CRAN (R 4.2.0)\n P shiny         1.7.4   2022-12-15 [?] CRAN (R 4.2.0)\n P stringi       1.7.12  2023-01-11 [?] CRAN (R 4.2.0)\n P stringr     * 1.5.0   2022-12-02 [?] CRAN (R 4.2.0)\n P tibble      * 3.2.1   2023-03-20 [?] CRAN (R 4.2.0)\n P tidyr       * 1.3.0   2023-01-24 [?] CRAN (R 4.2.0)\n P tidyselect    1.2.0   2022-10-10 [?] CRAN (R 4.2.0)\n P tidyverse   * 2.0.0   2023-02-22 [?] CRAN (R 4.2.0)\n P timechange    0.2.0   2023-01-11 [?] CRAN (R 4.2.0)\n P tzdb          0.3.0   2022-03-28 [?] CRAN (R 4.2.0)\n P urlchecker    1.0.1   2021-11-30 [?] CRAN (R 4.2.0)\n P usethis       2.1.6   2022-05-25 [?] CRAN (R 4.2.0)\n P utf8          1.2.3   2023-01-31 [?] CRAN (R 4.2.0)\n P vctrs         0.6.1   2023-03-22 [?] CRAN (R 4.2.0)\n P withr         2.5.0   2022-03-03 [?] CRAN (R 4.2.0)\n P xfun          0.38    2023-03-24 [?] CRAN (R 4.2.0)\n P xtable        1.8-4   2019-04-21 [?] CRAN (R 4.2.0)\n P yaml          2.3.7   2023-01-23 [?] CRAN (R 4.2.0)\n\n [1] /Users/peterhiggins/Documents/RCode/rmedicine-data-cleaning-2023/renv/library/R-4.2/aarch64-apple-darwin20\n [2] /Users/peterhiggins/Library/Caches/org.R-project.R/R/renv/sandbox/R-4.2/aarch64-apple-darwin20/84ba8b13\n\n P ── Loaded and on-disk path mismatch.\n\n──────────────────────────────────────────────────────────────────────────────"
+    "text": "Recommended: Complete these exercises in the dedicated Posit Cloud work space, which comes with\n\nall packages pre-installed, and\nan Rmarkdown document to fill in.\n\nIt will be helpful to peek here to verify that your tables generated in Posit Cloud match the desired output (or even to peek at the Code Solution if your cleaned tables don’t look right).\nClick here to enter the R/Medicine Posit cloud work space\nOtherwise: Follow along this document, work on your personal computer, and challenge yourself not to peek at the code solutions until you have completed the exercise."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Principles of Data Cleaning",
     "section": "",
-    "text": "🗓 June 6, 2023 | 8:30am - 12:00pm EDT\n🏨 Virtual\n💥 FREE workshop registration"
+    "text": "🗓 June 6, 2023 | 9:30am - 1:00pm EDT\n🏨 Virtual\n💥 FREE workshop registration"
   },
   {
     "objectID": "index.html#learning-objectives",
@@ -25,14 +25,14 @@
     "href": "index.html#is-this-course-for-me",
     "title": "Principles of Data Cleaning",
     "section": "Is this course for me?",
-    "text": "Is this course for me?\nIf your answer to any of the following questions is “yes”, then this is the right workshop for you.\n\nDo you frequently receive untidy data for analysis in Excel spreadsheets?\nDoes this drive you slightly batty?\nDo you want to learn how to make your life easier with a suite of data cleaning tools?\n\nThe workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the %>%/|> operator is a plus, but not required."
+    "text": "Is this course for me?\nIf your answer to any of the following questions is “yes”, then this is the right workshop for you.\n\nDo you frequently receive untidy data for analysis in Excel spreadsheets?\nDoes this drive you slightly batty?\nDo you want to learn how to make your life easier with a suite of data cleaning tools?\n\nThe workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the %&gt;%/|&gt; operator is a plus, but not required."
   },
   {
     "objectID": "index.html#prework",
     "href": "index.html#prework",
     "title": "Principles of Data Cleaning",
     "section": "Prework",
-    "text": "Prework\nBefore attending the workshop please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nRecent version of packages used in workshop.\ninstll_pkgs <- c(\"tidyverse\", \"tidyxl\", \"unpivotr\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents??\n\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it."
+    "text": "Prework\nBefore attending the workshop please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nRecent version of packages used in workshop.\ninstll_pkgs &lt;- c(\"tidyverse\", \"tidyxl\", \"unpivotr\")\ninstall.packages(instll_pkgs)\nEnsure you can import data from a Microsoft Excel spreadsheet to R ??\n\nSave a a Microsoft Excel spreadsheet in a known folder on your computer.\nOpen RStudio install/load (library) the packages {readxl} (link) and {openxlsx} (link)\nImport the data from the spreadsheet into R using the path to the correct folder with either package."
   },
   {
     "objectID": "license.html",
@@ -256,7 +256,7 @@
     "href": "slides/index.html#thank-you",
     "title": "Data Cleaning",
     "section": "Thank you!",
-    "text": "Thank you!\n🙏 Click here to submit workshop feedback"
+    "text": "Thank you!\n🙏 Click here to submit workshop feedback\n\n\n\nData Cleaning"
   },
   {
     "objectID": "slidespage.html",
@@ -383,5 +383,61 @@
     "title": "Data Cleaning",
     "section": "",
     "text": "This work is licensed under Creative Commons Zero v1.0 Universal.\n\n\n\n\n\nCrystal Lewis\n Shannon Pileggi\n\n\nPeter Higgins\n\nDuncan Garmonsway\n\n\n\n\n\n\n\n Install recent R release\nCurrent version 4.2.2\n Install RStudio\nI am on version 2022.07.1+554 \n Install packages\ninstall.packages(c(\"gtreg\", \"gtsummary\", \"tidyverse\", \"labelled\", \"usethis\"))\n Ensure you can knit Rmarkdown files\n\n\n\n\n\n\nTime\nActivity\n\n\n\n\n09:00 - 09:50\nSection 1\n\n\n09:50 - 10:00\nBreak\n\n\n10:00 - 10:50\nSection 2\n\n\n10:50 - 11:00\nBreak\n\n\n11:00 - 12:00\nSection 3\n\n\n\n\nPlease add any questions to the public Zoom chat. These may be answered in the moment or addressed at the end depending on context."
+  },
+  {
+    "objectID": "exercises.html#exercise-1",
+    "href": "exercises.html#exercise-1",
+    "title": "Data Cleaning: Exercises",
+    "section": "Exercise 1",
+    "text": "Exercise 1\nview first six rows of mtcars\n\n\nShow the code solution\nhead(mtcars)\n\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1"
+  },
+  {
+    "objectID": "exercises.html#exercise-2",
+    "href": "exercises.html#exercise-2",
+    "title": "Data Cleaning: Exercises",
+    "section": "Exercise 2",
+    "text": "Exercise 2\nview first six rows of mtcars\n\n\nShow the code solution\nhead(mtcars)\n\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1"
+  },
+  {
+    "objectID": "exercises.html#exercise-3",
+    "href": "exercises.html#exercise-3",
+    "title": "Data Cleaning: Exercises",
+    "section": "Exercise 3",
+    "text": "Exercise 3\nview first six rows of mtcars\n\n\nShow the code solution\nhead(mtcars)\n\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1"
+  },
+  {
+    "objectID": "exercises.html#exercise-4",
+    "href": "exercises.html#exercise-4",
+    "title": "Data Cleaning: Exercises",
+    "section": "Exercise 4",
+    "text": "Exercise 4\nview first six rows of mtcars\n\n\nShow the code solution\nhead(mtcars)\n\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1"
+  },
+  {
+    "objectID": "exercises.html#exercise-5",
+    "href": "exercises.html#exercise-5",
+    "title": "Data Cleaning: Exercises",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nview first six rows of mtcars\n\n\nShow the code solution\nhead(mtcars)\n\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1"
+  },
+  {
+    "objectID": "exercises.html#exercise-6",
+    "href": "exercises.html#exercise-6",
+    "title": "Data Cleaning: Exercises",
+    "section": "Exercise 6",
+    "text": "Exercise 6\nview first six rows of mtcars\n\n\nShow the code solution\nhead(mtcars)\n\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1"
+  },
+  {
+    "objectID": "exercises.html#exercise-7",
+    "href": "exercises.html#exercise-7",
+    "title": "Data Cleaning: Exercises",
+    "section": "Exercise 7",
+    "text": "Exercise 7\nview first six rows of mtcars\n\n\nShow the code solution\nhead(mtcars)\n\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1"
+  },
+  {
+    "objectID": "exercises.html#exercise-8",
+    "href": "exercises.html#exercise-8",
+    "title": "Data Cleaning: Exercises",
+    "section": "Exercise 8",
+    "text": "Exercise 8\nview first six rows of mtcars\n\n\nShow the code solution\nhead(mtcars)\n\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1"
   }
 ]
