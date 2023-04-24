@@ -123,14 +123,14 @@
     "href": "slides/index.html#instructors",
     "title": "Data Cleaning",
     "section": "Instructors",
-    "text": "Instructors\n\n\nCrystal Lewis\n Shannon Pileggi\n\n\nPeter Higgins\n\nDuncan Garmonsway"
+    "text": "Instructors\n\n\nCrystal Lewis\n\nShannon Pileggi\n\n\nPeter Higgins\n\nDuncan Garmonsway"
   },
   {
     "objectID": "slides/index.html#checklist",
     "href": "slides/index.html#checklist",
     "title": "Data Cleaning",
     "section": "Checklist",
-    "text": "Checklist\n\n Install recent R release\nCurrent version 4.2.2\n Install RStudio\nI am on version 2022.07.1+554 \n Install packages\ninstall.packages(c(\"gtreg\", \"gtsummary\", \"tidyverse\", \"labelled\", \"usethis\"))\n Ensure you can knit Rmarkdown files"
+    "text": "Checklist\n\n Install recent R release\nCurrent version 4.2.3\n Install RStudio\nI am on version 2022.07.1+554 \n Install packages\ninstall.packages(c(\"gtreg\", \"gtsummary\", \"tidyverse\", \"labelled\", \"usethis\"))\n Ensure you can knit Rmarkdown files"
   },
   {
     "objectID": "slides/index.html#schedule",
@@ -326,14 +326,14 @@
     "href": "slides/index.html#is-it-the-patient",
     "title": "Data Cleaning",
     "section": "Is it the Patient?",
-    "text": "Is it the Patient?"
+    "text": "Is it the Patient?\n\nPatient over time\nOutcome colectomy\nlabs over time"
   },
   {
     "objectID": "slides/index.html#is-it-the-visitencounter",
     "href": "slides/index.html#is-it-the-visitencounter",
     "title": "Data Cleaning",
     "section": "Is it the Visit/Encounter?",
-    "text": "Is it the Visit/Encounter?"
+    "text": "Is it the Visit/Encounter?\n\nPatient over time\nOutcome colectomy\nlabs over time"
   },
   {
     "objectID": "slides/index.html#pivoting-longer-common",

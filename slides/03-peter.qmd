@@ -1,12 +1,22 @@
-# Peter Sections
+# Wrangling your Data
 
-# Deciding on the Unit of Observation
+## Deciding on the Unit of Observation
+
+Image
 
 ## Is it the Patient?
 
+- Patient over time
+- Outcome colectomy
+- labs over time
+ 
 ## Is it the Visit/Encounter?
 
-# Reshaping your data with tidyr
+- Patient over time
+- Outcome colectomy
+- labs over time
+
+## Reshaping your data with tidyr
 
 ## Pivoting Longer (common)
 
@@ -22,8 +32,9 @@
 
 ## Padding unovserved times
 
-# Joins of data from different sources
+## Joins of data from different sources
 
 ## Local Demographics with CDC SVI data (one to one)
 
 ## Patient Demographics with Lab results (one to many)
+
