@@ -1,4 +1,3 @@
-gtsummary
 tidyverse
 ggplot2
 tibble
@@ -8,6 +7,8 @@ purrr
 dplyr
 stringr
 forcats
+lubridate
 countdown
-gtreg
-gt
+readxl
+janitor
+here
