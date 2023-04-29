@@ -58,7 +58,7 @@ This work is licensed under [Creative Commons Zero v1.0 Universal](https://creat
 `r fontawesome::fa("check", fill = fa_fill)` Install packages
 
 ``` r
-install.packages(c("gtreg", "gtsummary", "tidyverse", "labelled", "usethis"))
+# install.packages(c("gtreg", "gtsummary", "tidyverse", "labelled", "usethis"))
 ```
 
 `r fontawesome::fa("check", fill = fa_fill)` Ensure you can knit Rmarkdown files

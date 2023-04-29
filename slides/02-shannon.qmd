@@ -1,10 +1,104 @@
-# Shannon Section A
+# Stage 1 cleaning
 
-## Slide 1
+```{r}
+#| echo: false
+#| message: false
+library(readxl)
+library(tidyverse)
+library(janitor)
+library(here)
+```
 
-## Slide 2
 
-# Shannon Section B
+```{r}
+#| echo: false
+df_raw <- read_excel(
+  path = here("data", "messy_uc.xlsx"),
+  sheet = "Data",
+  skip = 5
+)
+```
+
+## new thing
+
+```{r}
+mtcars |> tibble::as_tibble()
+```
+
+## Variable names
+
+Original variable names in excel: 
+
+![](images/var_names_1.PNG)
+. . .
+
+Variable names import as shown, with modifications from `readxl::read_excel()` to ensure uniqueness:
+
+![](images/var_names_2.PNG)
+
+
+
+## Variable names, cleaner
+
+Variable names as imported:
+
+![](images/var_names_2.PNG)
+
+. . .
+
+`janitor::clean_names()` removes special characters and implements snake case by default:
+
+
+```{r}
+#| eval: false
+df_raw |> janitor::clean_names() 
+```
+
+![](images/var_names_3.PNG)
+
+## Recoding
+
+::: panel-tabset
+
+### Problem
+
+
+```{r}
+df_clean <- df_raw |>
+  janitor::clean_names()
+
+df_clean |> 
+  count(ethnic)
+```
+
+### Solution
+
+```{r}
+df_clean <- df_raw |>
+  janitor::clean_names() |> 
+  mutate(
+    ethnic_clean = case_when(
+      ethnic %in%  c("hispanic", "Hispanic", "hispamnic") ~ "hispanic",
+      ethnic %in%  c("NOT hispanic", "not hispanic") ~ "not hispanic",
+    )
+  )
+
+df_clean |> 
+  count(ethnic_clean)
+```
+
+
+### Confirm
+
+```{r}
+df_clean |> 
+  count(ethnic_clean, ethnic)
+```
+
+:::
+
+
+
 
 ## Slide 1
 
