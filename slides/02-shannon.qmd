@@ -25,7 +25,10 @@ df_raw <- read_excel(
 Original variable names in excel: 
 
 ![](images/var_names_1.PNG)
+
 . . .
+
+<br>
 
 Variable names import as shown, with modifications from `readxl::read_excel()` to ensure uniqueness:
 
@@ -41,6 +44,8 @@ Variable names as imported:
 
 . . .
 
+<br>
+
 `janitor::clean_names()` removes special characters and implements snake case by default:
 
 
@@ -51,6 +56,59 @@ df_raw |> janitor::clean_names()
 
 ![](images/var_names_3.PNG)
 
+## Remove empty columns or rows
+
+
+::: panel-tabset
+
+### Problem
+
+```{r}
+#| eval: true
+df_raw |> 
+  janitor::clean_names() |> 
+  select(pat_id, race:start_bp) |> 
+  slice(13:18)
+```
+
+### Solution
+
+```{r}
+#| eval: true
+#| code-line-numbers: "3"
+df_raw |> 
+  janitor::clean_names() |> 
+  janitor::remove_empty(which = c("rows", "cols")) |> 
+  select(pat_id, race:start_bp) |> 
+  slice(13:18)
+```
+
+### Confirm
+
+::: columns
+::: {.column width="35%"}
+```{r}
+#
+df_raw |>
+  janitor::clean_names() |> 
+  glimpse()
+```
+:::
+
+::: {.column width="65%"}
+```{r}
+df_raw |> 
+  janitor::clean_names() |> 
+  janitor::remove_empty(which = c("rows", "cols")) |> 
+  glimpse()
+```
+:::
+
+:::
+
+:::
+
+
 ## Recoding
 
 ::: panel-tabset
@@ -60,17 +118,21 @@ df_raw |> janitor::clean_names()
 
 ```{r}
 df_clean <- df_raw |>
-  janitor::clean_names()
+  janitor::clean_names() |> 
+  janitor::remove_empty(which = c("rows", "cols"))
 
 df_clean |> 
   count(ethnic)
 ```
 
+
 ### Solution
 
 ```{r}
+#| code-line-numbers: 4-9
 df_clean <- df_raw |>
   janitor::clean_names() |> 
+  janitor::remove_empty(which = c("rows", "cols")) |> 
   mutate(
     ethnic_clean = case_when(
       ethnic %in%  c("hispanic", "Hispanic", "hispamnic") ~ "hispanic",
@@ -92,9 +154,39 @@ df_clean |>
 
 :::
 
+## Replace values with missing
 
 
 
-## Slide 1
+::: panel-tabset
 
-## Slide 2
+### Problem
+
+::: columns
+
+::: {.column width="40%"}
+
+```{r}
+df_clean |> 
+  count(end_na) 
+```
+
+:::
+
+::: {.column width="40%"}
+
+```{r}
+df_clean |> 
+  ggplot(aes(x = end_na)) +
+  geom_histogram()
+```
+:::
+
+:::
+
+### Solution
+
+### Confirm
+
+:::
+
