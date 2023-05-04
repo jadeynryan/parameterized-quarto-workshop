@@ -19,25 +19,24 @@ This work is licensed under [Creative Commons Zero v1.0 Universal](https://creat
 ## Instructors
 
 ::: columns
-::: {.column width="50%"}
+::: {.column width="33%"}
 **Crystal Lewis**
 
-![](images/Crystal_circle.png){width="40%"}
+![](images/Crystal_circle.png){width="70%"}
 
+:::
+::: {.column width="33%"}
 **Shannon Pileggi**
 
-![](images/Shannon_circle.png){width="40%"}
+![](images/Shannon_circle.png){width="70%"}
 :::
 
-::: {.column width="50%"}
+::: {.column width="33%"}
 **Peter Higgins**
 
-![](images/Peter_circle.jpg){width="40%"}
+![](images/Peter_circle.jpg){width="70%"}
 
 
-**Duncan Garmonsway**
-
-![](images/Shannon_circle.png){width="40%"}
 
 :::
 :::

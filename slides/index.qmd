@@ -1,6 +1,6 @@
 ---
 title: "Data Cleaning"
-author: "Crystal Lewis, Shannon Pileggi, Peter Higgins, & Duncan Garmonsway"
+author: "Crystal Lewis, Shannon Pileggi, & Peter Higgins"
 footer: "[Data Cleaning](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023)"
 logo: "images/R-Med-logo-revised-pride.png"
 editor: source
@@ -12,7 +12,6 @@ format:
     chalkboard: true
 execute:
   echo: true
-  output: asis
   freeze: auto
 cache: true
 ---
@@ -25,6 +24,4 @@ cache: true
 
 {{< include 03-peter.qmd >}}
 
-{{< include 04-duncan.qmd >}}
-
-{{< include 05-thank-you.qmd >}}
+{{< include 04-thank-you.qmd >}}

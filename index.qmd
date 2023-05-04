@@ -135,14 +135,12 @@ encounters it in the wild.
 
 <br> <br>
 
-[**Duncan Garmonsway**](https://nacnudus.github.io/duncangarmonsway/)
-
 # Further Reading/Viewing:
 
 -   Crystal has an excellent (work in progress) e-book on Data
     Management in Large-Scale Education Research
     [here](https://datamgmtinedresearch.com).
--   Duncan has an excellent e-book on Spreadsheet Munging Strategies
+-   [Duncan Garmonsway](https://nacnudus.github.io/duncangarmonsway/) has an excellent e-book on Spreadsheet Munging Strategies
     [here](https://nacnudus.github.io/spreadsheet-munging-strategies/).
 -   Peter shared his strong feelings about the limitations of Excel as a
     data entry tool (and how you can use Excel better) in an R/Medicine

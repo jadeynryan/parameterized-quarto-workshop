@@ -19,11 +19,6 @@ df_raw <- read_excel(
 )
 ```
 
-## new thing
-
-```{r}
-mtcars |> tibble::as_tibble()
-```
 
 ## Variable names
 

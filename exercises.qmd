@@ -93,25 +93,7 @@ view first six rows of `mtcars`
 head(mtcars)
 ```
 
-# Section 4: Duncan Garmonsway ![Duncan Garmonsway](images/Duncan_circle.png){width="15%"}
 
-## Exercise 7
-
-view first six rows of `mtcars`
-
-```{r}
-head(mtcars)
-```
-
-## Exercise 8
-
-view first six rows of `mtcars`
-
-```{r}
-head(mtcars)
-```
-
-# 
 
 # Session info
 

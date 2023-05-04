@@ -123,14 +123,14 @@
     "href": "slides/index.html#instructors",
     "title": "Data Cleaning",
     "section": "Instructors",
-    "text": "Instructors\n\n\nCrystal Lewis\n\nShannon Pileggi\n\n\nPeter Higgins\n\nDuncan Garmonsway"
+    "text": "Instructors\n\n\nCrystal Lewis\n\n\nShannon Pileggi\n\n\nPeter Higgins"
   },
   {
     "objectID": "slides/index.html#checklist",
     "href": "slides/index.html#checklist",
     "title": "Data Cleaning",
     "section": "Checklist",
-    "text": "Checklist\n\n Install recent R release\nCurrent version 4.2.1\n Install RStudio\nI am on version 2022.07.1+554 \n Install packages\n# install.packages(c(\"gtreg\", \"gtsummary\", \"tidyverse\", \"labelled\", \"usethis\"))\n Ensure you can knit Rmarkdown files"
+    "text": "Checklist\n\n Install recent R release\nCurrent version 4.3.0\n Install RStudio\nI am on version 2022.07.1+554 \n Install packages\n# install.packages(c(\"gtreg\", \"gtsummary\", \"tidyverse\", \"labelled\", \"usethis\"))\n Ensure you can knit Rmarkdown files"
   },
   {
     "objectID": "slides/index.html#schedule",
@@ -473,14 +473,14 @@
     "href": "slides/index.html#variable-names-cleaner",
     "title": "Data Cleaning",
     "section": "Variable names, cleaner",
-    "text": "Variable names, cleaner\nVariable names as imported:\n\n\njanitor::clean_names() removes special characters and implements snake case by default:\n\ndf_raw |> janitor::clean_names()"
+    "text": "Variable names, cleaner\nVariable names as imported:\n\n\njanitor::clean_names() removes special characters and implements snake case by default:\n\ndf_raw |&gt; janitor::clean_names()"
   },
   {
     "objectID": "slides/index.html#recoding",
     "href": "slides/index.html#recoding",
     "title": "Data Cleaning",
     "section": "Recoding",
-    "text": "Recoding\n\nProblemSolutionConfirm\n\n\n\ndf_clean <- df_raw |>\n  janitor::clean_names()\n\ndf_clean |> \n  count(ethnic)\n\nA tibble: 6 × 2\nethnic n   1 Hispanic 1 2 NOT hispanic 1 3 hispamnic 1 4 hispanic 3 5 not hispanic 24 6  1\n\n\n\n\n\n\ndf_clean <- df_raw |>\n  janitor::clean_names() |> \n  mutate(\n    ethnic_clean = case_when(\n      ethnic %in%  c(\"hispanic\", \"Hispanic\", \"hispamnic\") ~ \"hispanic\",\n      ethnic %in%  c(\"NOT hispanic\", \"not hispanic\") ~ \"not hispanic\",\n    )\n  )\n\ndf_clean |> \n  count(ethnic_clean)\n\nA tibble: 3 × 2\nethnic_clean n   1 hispanic 5 2 not hispanic 25 3  1\n\n\n\n\n\n\ndf_clean |> \n  count(ethnic_clean, ethnic)\n\nA tibble: 6 × 3\nethnic_clean ethnic n    1 hispanic Hispanic 1 2 hispanic hispamnic 1 3 hispanic hispanic 3 4 not hispanic NOT hispanic 1 5 not hispanic not hispanic 24 6   1"
+    "text": "Recoding\n\nProblemSolutionConfirm\n\n\n\ndf_clean &lt;- df_raw |&gt;\n  janitor::clean_names()\n\ndf_clean |&gt; \n  count(ethnic)\n\n# A tibble: 6 × 2\n  ethnic           n\n  &lt;chr&gt;        &lt;int&gt;\n1 Hispanic         1\n2 NOT hispanic     1\n3 hispamnic        1\n4 hispanic         3\n5 not hispanic    24\n6 &lt;NA&gt;             1\n\n\n\n\n\ndf_clean &lt;- df_raw |&gt;\n  janitor::clean_names() |&gt; \n  mutate(\n    ethnic_clean = case_when(\n      ethnic %in%  c(\"hispanic\", \"Hispanic\", \"hispamnic\") ~ \"hispanic\",\n      ethnic %in%  c(\"NOT hispanic\", \"not hispanic\") ~ \"not hispanic\",\n    )\n  )\n\ndf_clean |&gt; \n  count(ethnic_clean)\n\n# A tibble: 3 × 2\n  ethnic_clean     n\n  &lt;chr&gt;        &lt;int&gt;\n1 hispanic         5\n2 not hispanic    25\n3 &lt;NA&gt;             1\n\n\n\n\n\ndf_clean |&gt; \n  count(ethnic_clean, ethnic)\n\n# A tibble: 6 × 3\n  ethnic_clean ethnic           n\n  &lt;chr&gt;        &lt;chr&gt;        &lt;int&gt;\n1 hispanic     Hispanic         1\n2 hispanic     hispamnic        1\n3 hispanic     hispanic         3\n4 not hispanic NOT hispanic     1\n5 not hispanic not hispanic    24\n6 &lt;NA&gt;         &lt;NA&gt;             1"
   },
   {
     "objectID": "slides/index.html#tibble",
@@ -494,6 +494,6 @@
     "href": "slides/index.html#new-thing",
     "title": "Data Cleaning",
     "section": "new thing",
-    "text": "new thing\n\nmtcars |> tibble::as_tibble()\n\nA tibble: 32 × 11\n mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb\n           1 21 6 160 110 3.9 2.62 16.5 0 1 4 4 2 21 6 160 110 3.9 2.88 17.0 0 1 4 4 3 22.8 4 108 93 3.85 2.32 18.6 1 1 4 1 4 21.4 6 258 110 3.08 3.22 19.4 1 0 3 1 5 18.7 8 360 175 3.15 3.44 17.0 0 0 3 2 6 18.1 6 225 105 2.76 3.46 20.2 1 0 3 1 7 14.3 8 360 245 3.21 3.57 15.8 0 0 3 4 8 24.4 4 147. 62 3.69 3.19 20 1 0 4 2 9 22.8 4 141. 95 3.92 3.15 22.9 1 0 4 2 10 19.2 6 168. 123 3.92 3.44 18.3 1 0 4 4 # ℹ 22 more rows"
+    "text": "new thing\n\nmtcars |&gt; tibble::as_tibble()\n\n# A tibble: 32 × 11\n     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb\n   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1  21       6  160    110  3.9   2.62  16.5     0     1     4     4\n 2  21       6  160    110  3.9   2.88  17.0     0     1     4     4\n 3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1\n 4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1\n 5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2\n 6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1\n 7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4\n 8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2\n 9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2\n10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4\n# ℹ 22 more rows"
   }
 ]
