@@ -748,7 +748,7 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 <div class="tab-content">
 <div id="tabset-3-1">
 <div class="columns">
-<div class="column" style="width:40%;">
+<div class="column" style="width:50%;">
 <div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-12_753c87ded3559dbb8b59ef8ad57ba460">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">count</span>(end_na) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -769,7 +769,7 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 # ℹ 20 more rows</code></pre>
 </div>
 </div>
-</div><div class="column" style="width:40%;">
+</div><div class="column" style="width:50%;">
 <div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-13_dadd6d4a90536ac9572339b0a1618965">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> end_na)) <span class="sc">+</span></span>
@@ -782,9 +782,108 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 </div>
 </div>
 <div id="tabset-3-2">
-
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-14_0e65c233a13f7039616660e6cfcc0924">
+<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a href="#cb22-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb22-5"><a href="#cb22-5"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
+<span id="cb22-6"><a href="#cb22-6"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
+<span id="cb22-7"><a href="#cb22-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
+<span id="cb22-8"><a href="#cb22-8"></a>    ),</span>
+<span id="cb22-9"><a href="#cb22-9"></a>    <span class="at">end_na_clean =</span> <span class="fu">na_if</span>(end_na, <span class="sc">-</span><span class="dv">99</span>)</span>
+<span id="cb22-10"><a href="#cb22-10"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 <div id="tabset-3-3">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-15_ef2fd497823e25f0bafcd46b41f21117">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">count</span>(end_na, end_na_clean) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30 × 3
+   end_na end_na_clean     n
+    &lt;dbl&gt;        &lt;dbl&gt; &lt;int&gt;
+ 1   -99           NA      1
+ 2   133.         133.     1
+ 3   135.         135.     1
+ 4   135.         135.     1
+ 5   136.         136.     1
+ 6   136.         136.     1
+ 7   137.         137.     1
+ 8   137.         137.     1
+ 9   138.         138.     1
+10   138.         138.     1
+# ℹ 20 more rows</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-16_2b4cb4a2f3bd339714b768ca47fb97b3">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> end_na_clean)) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="incorrect-variable-type" class="slide level2">
+<h2>Incorrect variable type</h2>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Problem</a></li><li><a href="#tabset-4-2">Solution</a></li><li><a href="#tabset-4-3">Confirm</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-17_5d9f1bd7056f98a4792fa00def934b63">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>df_raw <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">select</span>(end_emo) <span class="sc">|&gt;</span> </span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 31
+Columns: 1
+$ end_emo &lt;chr&gt; "30.275122309944972", "37.118259536333433", "37.07574416254249…</code></pre>
+</div>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-18_04c3e5058aed310ea1bf179e24a595a4">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">mean</span>(df_raw[[<span class="st">"end_emo"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
+</div>
+</div><div class="column fragment" style="width:50%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-19_a7a742d308b38f624ebee573df23d2c4">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>df_raw[[<span class="st">"end_emo"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "30.275122309944972" "37.118259536333433" "37.075744162542499"
+ [4] "44.923425798503175" "63.228299525683681" "41.86435199805284" 
+ [7] "67.32031128387257"  "59.876061196366294" "23.18900885212669" 
+[10] "41.504922743680069" "30.592724281914979" "46.630283339296213"
+[13] "50.615682540772333" "65.526626277741144" "not done"          
+[16] NA                   "41.49300761007953"  "37.159835881588052"
+[19] "65.952234027837804" "14.484200057523021" "57.241869748195107"
+[22] "42.544433076049309" "38.365858773417663" "69.372774009714519"
+[25] "48.314764900684409" "48.030380025050185" "39.109462231952456"
+[28] "38.28942618055703"  "65.298322247205732" "28.551119718792652"
+[31] "36.381974110703389"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-2">
+
+</div>
+<div id="tabset-4-3">
 
 </div>
 </div>

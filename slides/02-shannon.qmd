@@ -164,7 +164,7 @@ df_clean |>
 
 ::: columns
 
-::: {.column width="40%"}
+::: {.column width="50%"}
 
 ```{r}
 df_clean |> 
@@ -173,7 +173,7 @@ df_clean |>
 
 :::
 
-::: {.column width="40%"}
+::: {.column width="50%"}
 
 ```{r}
 df_clean |> 
@@ -186,7 +186,90 @@ df_clean |>
 
 ### Solution
 
+```{r}
+#| code-line-numbers: "9"
+df_clean <- df_raw |>
+  janitor::clean_names() |> 
+  janitor::remove_empty(which = c("rows", "cols")) |> 
+  mutate(
+    ethnic_clean = case_when(
+      ethnic %in%  c("hispanic", "Hispanic", "hispamnic") ~ "hispanic",
+      ethnic %in%  c("NOT hispanic", "not hispanic") ~ "not hispanic",
+    ),
+    end_na_clean = na_if(end_na, -99)
+  ) 
+```
+
+
 ### Confirm
+
+::: columns
+
+::: {.column width="50%"}
+
+```{r}
+df_clean |> 
+  count(end_na, end_na_clean) 
+```
 
 :::
 
+::: {.column width="50%"}
+
+```{r}
+df_clean |> 
+  ggplot(aes(x = end_na_clean)) +
+  geom_histogram()
+```
+:::
+
+:::
+
+:::
+
+
+## Incorrect variable type
+
+
+::: panel-tabset
+
+### Problem
+
+
+::: columns
+
+::: {.column width="50%"}
+
+```{r}
+df_raw |> 
+  select(end_emo) |> 
+  glimpse()
+```
+
+<br>
+
+
+::: {.fragment}
+```{r, error=TRUE}
+mean(df_raw[["end_emo"]])
+```
+:::
+
+:::
+
+::: {.column width="50%" .fragment}
+
+```{r}
+df_raw[["end_emo"]]
+```
+
+:::
+
+:::
+
+
+### Solution
+
+### Confirm
+
+:::
