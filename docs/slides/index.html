@@ -853,8 +853,12 @@ $ end_emo &lt;chr&gt; "30.275122309944972", "37.118259536333433", "37.0757441625
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-18_04c3e5058aed310ea1bf179e24a595a4">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">mean</span>(df_raw[[<span class="st">"end_emo"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-18_103039e7300dad783d1486a72e127c27">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">mean</span>(df_raw[[<span class="st">"end_emo"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in mean.default(df_raw[["end_emo"]], na.rm = TRUE): argument is not
+numeric or logical: returning NA</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
@@ -862,7 +866,7 @@ $ end_emo &lt;chr&gt; "30.275122309944972", "37.118259536333433", "37.0757441625
 </div>
 </div><div class="column fragment" style="width:50%;">
 <div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-19_a7a742d308b38f624ebee573df23d2c4">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>df_raw[[<span class="st">"end_emo"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>df_raw[[<span class="st">"end_emo"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "30.275122309944972" "37.118259536333433" "37.075744162542499"
  [4] "44.923425798503175" "63.228299525683681" "41.86435199805284" 
@@ -881,10 +885,65 @@ $ end_emo &lt;chr&gt; "30.275122309944972", "37.118259536333433", "37.0757441625
 </div>
 </div>
 <div id="tabset-4-2">
-
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-20_3d3a3529fedc928d4287f52a75f90c14">
+<div class="sourceCode cell-code" id="cb33" data-code-line-numbers="10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb33-3"><a href="#cb33-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb33-4"><a href="#cb33-4"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb33-5"><a href="#cb33-5"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
+<span id="cb33-6"><a href="#cb33-6"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
+<span id="cb33-7"><a href="#cb33-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
+<span id="cb33-8"><a href="#cb33-8"></a>    ),</span>
+<span id="cb33-9"><a href="#cb33-9"></a>    <span class="at">end_na_clean =</span> <span class="fu">na_if</span>(end_na, <span class="sc">-</span><span class="dv">99</span>),</span>
+<span id="cb33-10"><a href="#cb33-10"></a>    <span class="at">end_emo_clean =</span> <span class="fu">na_if</span>(end_emo, <span class="st">"not done"</span>) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>()</span>
+<span id="cb33-11"><a href="#cb33-11"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 <div id="tabset-4-3">
-
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-21_27ab05f0e4f201b90ec82d0048154724">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">select</span>(end_emo_clean) <span class="sc">|&gt;</span> </span>
+<span id="cb34-3"><a href="#cb34-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 30
+Columns: 1
+$ end_emo_clean &lt;dbl&gt; 30.27512, 37.11826, 37.07574, 44.92343, 63.22830, 41.864…</code></pre>
+</div>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-22_9aaab483ac1a8716c0fcc071f02a7812">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">mean</span>(df_clean[[<span class="st">"end_emo_clean"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 45.18381</code></pre>
+</div>
+</div>
+</div>
+</div><div class="column fragment" style="width:50%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-23_bccdb35cd45cf65dc2c72393f0477a07">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb38-2"><a href="#cb38-2"></a>  <span class="fu">count</span>(end_emo_clean, end_emo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30 × 3
+   end_emo_clean end_emo                n
+           &lt;dbl&gt; &lt;chr&gt;              &lt;int&gt;
+ 1          14.5 14.484200057523021     1
+ 2          23.2 23.18900885212669      1
+ 3          28.6 28.551119718792652     1
+ 4          30.3 30.275122309944972     1
+ 5          30.6 30.592724281914979     1
+ 6          36.4 36.381974110703389     1
+ 7          37.1 37.075744162542499     1
+ 8          37.1 37.118259536333433     1
+ 9          37.2 37.159835881588052     1
+10          38.3 38.28942618055703      1
+# ℹ 20 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>

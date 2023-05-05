@@ -250,8 +250,8 @@ df_raw |>
 
 
 ::: {.fragment}
-```{r, error=TRUE}
-mean(df_raw[["end_emo"]])
+```{r, warning = TRUE}
+mean(df_raw[["end_emo"]], na.rm = TRUE)
 ```
 :::
 
@@ -270,6 +270,55 @@ df_raw[["end_emo"]]
 
 ### Solution
 
+```{r}
+#| code-line-numbers: "10"
+df_clean <- df_raw |>
+  janitor::clean_names() |> 
+  janitor::remove_empty(which = c("rows", "cols")) |> 
+  mutate(
+    ethnic_clean = case_when(
+      ethnic %in%  c("hispanic", "Hispanic", "hispamnic") ~ "hispanic",
+      ethnic %in%  c("NOT hispanic", "not hispanic") ~ "not hispanic",
+    ),
+    end_na_clean = na_if(end_na, -99),
+    end_emo_clean = na_if(end_emo, "not done") |> as.numeric()
+  ) 
+```
+
 ### Confirm
+
+::: columns
+
+::: {.column width="50%"}
+
+```{r}
+df_clean |> 
+  select(end_emo_clean) |> 
+  glimpse()
+```
+
+<br>
+
+
+::: {.fragment}
+```{r, error=TRUE}
+mean(df_clean[["end_emo_clean"]], na.rm = TRUE)
+```
+:::
+
+:::
+
+::: {.column width="50%" .fragment}
+
+```{r}
+df_clean |> 
+  count(end_emo_clean, end_emo)
+```
+
+:::
+
+:::
+
+
 
 :::
