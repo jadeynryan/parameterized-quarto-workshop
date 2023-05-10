@@ -7,6 +7,7 @@ library(readxl)
 library(tidyverse)
 library(janitor)
 library(here)
+library(gtsummary)
 ```
 
 
@@ -319,6 +320,298 @@ df_clean |>
 
 :::
 
+:::
 
+## Character variable should be a factor
+
+
+::: panel-tabset
+
+### Problem
+
+
+::: columns
+
+::: {.column width="35%"}
+
+
+```{r}
+df_clean |> 
+  count(treatment)
+```
+
+<br>
+
+::: {.fragment}
+```{r}
+df_clean |> 
+  count(ethnic_clean)
+```
+:::
+
+
+:::
+
+
+
+::: {.column width="65%" .fragment}
+
+```{r}
+df_clean |> 
+  select(treatment, ethnic_clean) |> 
+  glimpse()
+```
+
+
+::: {.fragment}
+```{r}
+df_clean |> 
+  select(treatment, ethnic_clean) |> 
+  tbl_summary(by = treatment)
+```
+:::
+
+:::
+
+:::
+
+
+### Solution
+
+```{r}
+#| code-line-numbers: "8,11"
+df_clean <- df_raw |>
+  janitor::clean_names() |> 
+  janitor::remove_empty(which = c("rows", "cols")) |> 
+  mutate(
+    ethnic_clean = case_when(
+      ethnic %in%  c("hispanic", "Hispanic", "hispamnic") ~ "hispanic",
+      ethnic %in%  c("NOT hispanic", "not hispanic") ~ "not hispanic",
+    ) |> fct_infreq(),
+    end_na_clean = na_if(end_na, -99),
+    end_emo_clean = na_if(end_emo, "not done") |> as.numeric(),
+    treatment = fct_relevel(treatment, "upa", "uste", "oza")
+  ) 
+```
+
+<br>
+
+See the [forcats package](https://forcats.tidyverse.org/) for other factor handling solutions.
+
+### Confirm
+
+::: columns
+
+::: {.column width="35%"}
+
+
+```{r}
+df_clean |> 
+  count(treatment)
+```
+
+<br>
+
+::: {.fragment}
+```{r}
+df_clean |> 
+  count(ethnic_clean)
+```
+:::
+
+
+:::
+
+
+
+::: {.column width="65%" .fragment}
+
+```{r}
+df_clean |> 
+  select(treatment, ethnic_clean) |> 
+  glimpse()
+```
+
+
+::: {.fragment}
+```{r}
+df_clean |> 
+  select(treatment, ethnic_clean) |> 
+  tbl_summary(by = treatment)
+```
+:::
+
+:::
+
+:::
+
+:::
+
+
+
+## Separating values
+
+
+::: panel-tabset
+
+### Problem
+
+```{r}
+df_clean |> 
+  select(start_bp) |> 
+  glimpse()
+```
+
+<br>
+
+::: {.fragment}
+```{r, error=TRUE}
+mean(df_clean[["start_bp"]], na.rm = TRUE)
+```
+:::
+<br>
+
+
+::: {.fragment}
+```{r}
+df_clean[["start_bp"]]
+```
+:::
+
+### Solution
+
+
+```{r}
+#| code-line-numbers: "13,14"
+df_clean <- df_raw |>
+  janitor::clean_names() |> 
+  janitor::remove_empty(which = c("rows", "cols")) |> 
+  mutate(
+    ethnic_clean = case_when(
+      ethnic %in%  c("hispanic", "Hispanic", "hispamnic") ~ "hispanic",
+      ethnic %in%  c("NOT hispanic", "not hispanic") ~ "not hispanic",
+    ) |> fct_infreq(),
+    end_na_clean = na_if(end_na, -99),
+    end_emo_clean = na_if(end_emo, "not done") |> as.numeric(),
+    treatment = fct_relevel(treatment, "upa", "uste", "oza")
+    ) |>  
+  separate(start_bp, into = c("bp_systolic", "bp_diastolic"), sep ="/", remove = FALSE) |> 
+  mutate(across(c(bp_systolic, bp_diastolic), as.numeric)) 
+```
+
+### Confirm
+
+```{r}
+df_clean |> 
+  select(start_bp, bp_systolic, bp_diastolic) |> 
+  glimpse()
+```
+
+
+::: {.fragment}
+```{r, error=TRUE}
+mean(df_clean[["bp_systolic"]], na.rm = TRUE)
+mean(df_clean[["bp_diastolic"]], na.rm = TRUE)
+```
+:::
+
+::: {.fragment}
+```{r}
+df_clean[["bp_systolic"]]
+df_clean[["bp_diastolic"]]
+```
+:::
+
+:::
+
+
+## Assigning labels
+
+
+::: panel-tabset
+
+### Problem
+
+What does anything mean?
+
+```{r}
+#| eval: false
+view(df_clean)
+```
+
+insert screenshot
+
+### Solution 1
+
+```{r}
+# first import codebook
+df_codebook <- read_excel(
+  path = here("data", "messy_uc.xlsx"),
+  sheet = "Codebook"
+)
+df_codebook
+```
+
+
+### Solution 2
+
+```{r}
+# second create a named vector of variable names and variable labels
+vec_variables <- df_codebook |> 
+  select(Variable, Details) |> 
+  deframe()
+
+vec_variables
+```
+
+### Solution 3
+
+
+
+```{r}
+#| code-line-numbers: "16,17|18,19,20,21,22,23,24,25"
+# assign labels to the data set
+df_clean <- df_raw |>
+  janitor::clean_names() |> 
+  janitor::remove_empty(which = c("rows", "cols")) |> 
+  mutate(
+    ethnic_clean = case_when(
+      ethnic %in%  c("hispanic", "Hispanic", "hispamnic") ~ "hispanic",
+      ethnic %in%  c("NOT hispanic", "not hispanic") ~ "not hispanic",
+    ) |> fct_infreq(),
+    end_na_clean = na_if(end_na, -99),
+    end_emo_clean = na_if(end_emo, "not done") |> as.numeric(),
+    treatment = fct_relevel(treatment, "upa", "uste", "oza")
+    ) |>  
+  separate(start_bp, into = c("bp_systolic", "bp_diastolic"), sep ="/", remove = FALSE) |> 
+  mutate(across(c(bp_systolic, bp_diastolic), as.numeric)) |> 
+  # assign labels to all variables from the codebook
+  labelled::set_variable_labels(!!!vec_variables, .strict = FALSE) |> 
+  # assign labels to new derived variables that did not exist in the code book
+  labelled::set_variable_labels(
+    ethnic_clean = "Ethnicity",
+    end_na_clean = "Sodium level in serum at end",
+    end_emo_clean = "Emotional symptom score at end",
+    bp_systolic = "Systolic blood pressure",
+    bp_diastolic = "Diastolic blood pressure"
+  )
+```
+
+### Confirm 1
+
+```{r}
+#| eval: false
+# view entire data set
+df_clean |> view()
+```
+
+insert screenshot
+
+### Confirm 2
+
+```{r}
+# view structure of data frame
+df_clean |> str()
+```
 
 :::
