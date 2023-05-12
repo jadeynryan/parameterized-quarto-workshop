@@ -130,7 +130,7 @@
     "href": "slides/index.html#checklist",
     "title": "Data Cleaning",
     "section": "Checklist",
-    "text": "Checklist\n\n Install recent R release\nCurrent version 4.3.0\n Install RStudio\nI am on version 2022.07.1+554 \n Install packages\n# install.packages(c(\"gtreg\", \"gtsummary\", \"tidyverse\", \"labelled\", \"usethis\"))\n Ensure you can knit Rmarkdown files"
+    "text": "Checklist\n\n Install recent R release\nCurrent version 4.2.3\n Install RStudio\nI am on version 2022.07.1+554 \n Install packages\n# install.packages(c(\"gtreg\", \"gtsummary\", \"tidyverse\", \"labelled\", \"usethis\"))\n Ensure you can knit Rmarkdown files"
   },
   {
     "objectID": "slides/index.html#schedule",
