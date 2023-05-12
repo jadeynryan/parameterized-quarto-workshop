@@ -322,6 +322,101 @@ df_clean |>
 
 :::
 
+
+## Extracting numbers from text
+
+::: panel-tabset
+
+### Problem
+
+
+::: columns
+
+::: {.column width="50%"}
+
+```{r}
+df_raw |> 
+  select(start_na) |> 
+  glimpse()
+```
+
+<br>
+
+
+::: {.fragment}
+```{r, warning = TRUE}
+mean(df_raw[["start_na"]], na.rm = TRUE)
+```
+:::
+
+:::
+
+::: {.column width="50%" .fragment}
+
+```{r}
+df_raw[["start_na"]]
+```
+
+:::
+
+:::
+
+### Solution
+
+```{r, eval=FALSE}
+#| code-line-numbers: "11"
+df_clean <- df_raw |>
+  janitor::clean_names() |> 
+  janitor::remove_empty(which = c("rows", "cols")) |> 
+  mutate(
+    ethnic_clean = case_when(
+      ethnic %in%  c("hispanic", "Hispanic", "hispamnic") ~ "hispanic",
+      ethnic %in%  c("NOT hispanic", "not hispanic") ~ "not hispanic",
+    ),
+    end_na_clean = na_if(end_na, -99),
+    end_emo_clean = na_if(end_emo, "not done") |> as.numeric(),
+    start_na_clean = parse_number(start_na)
+  ) 
+```
+
+### Confirm
+
+::: columns
+
+::: {.column width="50%"}
+
+```{r, eval=FALSE}
+df_clean |> 
+  select(start_na_clean) |> 
+  glimpse()
+```
+
+<br>
+
+
+::: {.fragment}
+```{r, error=TRUE, eval=FALSE}
+mean(df_clean[["start_na_clean"]], na.rm = TRUE)
+```
+:::
+
+:::
+
+::: {.column width="50%" .fragment}
+
+```{r, eval=FALSE}
+df_clean |> 
+  count(start_na_clean, start_na)
+```
+
+:::
+
+:::
+
+:::
+
+
+
 ## Character variable should be a factor
 
 
@@ -448,7 +543,6 @@ df_clean |>
 :::
 
 
-
 ## Separating values
 
 
@@ -495,7 +589,7 @@ df_clean <- df_raw |>
     end_emo_clean = na_if(end_emo, "not done") |> as.numeric(),
     treatment = fct_relevel(treatment, "upa", "uste", "oza")
     ) |>  
-  separate(start_bp, into = c("bp_systolic", "bp_diastolic"), sep ="/", remove = FALSE) |> 
+  separate_wider_delim(start_bp, delim ="/", names = c("bp_systolic", "bp_diastolic"), cols_remove = FALSE) |> 
   mutate(across(c(bp_systolic, bp_diastolic), as.numeric)) 
 ```
 
