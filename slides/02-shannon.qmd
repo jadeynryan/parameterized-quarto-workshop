@@ -495,7 +495,7 @@ df_clean <- df_raw |>
     end_emo_clean = na_if(end_emo, "not done") |> as.numeric(),
     treatment = fct_relevel(treatment, "upa", "uste", "oza")
     ) |>  
-  separate(start_bp, into = c("bp_systolic", "bp_diastolic"), sep ="/", remove = FALSE) |> 
+  separate_wider_delim(start_bp, delim ="/", names = c("bp_systolic", "bp_diastolic"), cols_remove = FALSE) |> 
   mutate(across(c(bp_systolic, bp_diastolic), as.numeric)) 
 ```
 
