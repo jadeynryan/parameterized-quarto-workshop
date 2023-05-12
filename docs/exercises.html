@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.333">
 
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
@@ -188,12 +187,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
   <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
   </ul></li>
-  <li><a href="#section-4-duncan-garmonsway-duncan-garmonsway" id="toc-section-4-duncan-garmonsway-duncan-garmonsway" class="nav-link" data-scroll-target="#section-4-duncan-garmonsway-duncan-garmonsway">Section 4: Duncan Garmonsway <img src="images/Duncan_circle.png" class="img-fluid" style="width:15.0%" alt="Duncan Garmonsway"></a>
-  <ul class="collapse">
-  <li><a href="#exercise-7" id="toc-exercise-7" class="nav-link" data-scroll-target="#exercise-7">Exercise 7</a></li>
-  <li><a href="#exercise-8" id="toc-exercise-8" class="nav-link" data-scroll-target="#exercise-8">Exercise 8</a></li>
-  </ul></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info">Session info</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/shannonpileggi/rmedicine-data-cleaning-2023/edit/main/exercises.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/shannonpileggi/rmedicine-data-cleaning-2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -241,8 +234,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Essentially, your job is to turn the messy Excel data beast (on the left) into the tidy data on the right.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/data_beast_allison_horst.jpeg" class="quarto-discovered-preview-image img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Taming the Data Beast, by Allison Horst</figcaption><p></p>
+<p><img src="images/data_beast_allison_horst.jpeg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Taming the Data Beast, by Allison Horst</figcaption>
 </figure>
 </div>
 </section>
@@ -369,54 +362,10 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 </div>
 </section>
 </section>
-<section id="section-4-duncan-garmonsway-duncan-garmonsway" class="level1">
-<h1>Section 4: Duncan Garmonsway <img src="images/Duncan_circle.png" class="img-fluid" style="width:15.0%" alt="Duncan Garmonsway"></h1>
-<section id="exercise-7" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-7">Exercise 7</h2>
-<p>view first six rows of <code>mtcars</code></p>
-<div class="cell">
-<details>
-<summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
-Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
-</div>
-</div>
-</section>
-<section id="exercise-8" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-8">Exercise 8</h2>
-<p>view first six rows of <code>mtcars</code></p>
-<div class="cell">
-<details>
-<summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
-Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="section" class="level1">
-<h1></h1>
-</section>
 <section id="session-info" class="level1">
 <h1>Session info</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value
@@ -428,7 +377,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       America/Detroit
- date     2023-04-21
+ date     2023-05-12
  pandoc   2.19.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────

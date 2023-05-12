@@ -69,7 +69,7 @@ If you would like to try this out on your own computer, please have the followin
 -   Recent version of packages used in workshop.
 
     ``` r
-    instll_pkgs <- c("tidyverse", "tidyxl", "unpivotr")
+    instll_pkgs <- c("tidyverse", "tidyxl", "unpivotr", "readxl", "openxlsx", "padr")
     install.packages(instll_pkgs)
     ```
 -   Ensure you can knit R markdown documents
@@ -79,7 +79,6 @@ If you would like to try this out on your own computer, please have the followin
 - Save the document and check you are able to knit it.
 
 -   Ensure you can import data from a Microsoft Excel spreadsheet to R
-    ??
 
     -   Save a a Microsoft Excel spreadsheet in a known folder on your
         computer.
@@ -140,8 +139,6 @@ encounters it in the wild.
 -   Crystal has an excellent (work in progress) e-book on Data
     Management in Large-Scale Education Research
     [here](https://datamgmtinedresearch.com).
--   [Duncan Garmonsway](https://nacnudus.github.io/duncangarmonsway/) has an excellent e-book on Spreadsheet Munging Strategies
-    [here](https://nacnudus.github.io/spreadsheet-munging-strategies/).
 -   Peter shared his strong feelings about the limitations of Excel as a
     data entry tool (and how you can use Excel better) in an R/Medicine
     workshop/YouTube video
