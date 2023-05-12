@@ -21,6 +21,7 @@ df_raw <- read_excel(
 ```
 
 
+
 ## Variable names
 
 Original variable names in excel: 
@@ -51,8 +52,8 @@ Variable names as imported:
 
 
 ```{r}
-#| eval: false
-df_raw |> janitor::clean_names() 
+df_clean <- df_raw |> 
+  janitor::clean_names() 
 ```
 
 ![](images/var_names_3.PNG)
@@ -66,8 +67,7 @@ df_raw |> janitor::clean_names()
 
 ```{r}
 #| eval: true
-df_raw |> 
-  janitor::clean_names() |> 
+df_clean |> 
   select(pat_id, race:start_bp) |> 
   slice(13:18)
 ```
@@ -77,9 +77,15 @@ df_raw |>
 ```{r}
 #| eval: true
 #| code-line-numbers: "3"
-df_raw |> 
+df_clean <- df_raw |> 
   janitor::clean_names() |> 
-  janitor::remove_empty(which = c("rows", "cols")) |> 
+  janitor::remove_empty(which = c("rows", "cols"))
+```
+
+<br>
+
+```{r}
+df_clean |> 
   select(pat_id, race:start_bp) |> 
   slice(13:18)
 ```
@@ -118,10 +124,6 @@ df_raw |>
 
 
 ```{r}
-df_clean <- df_raw |>
-  janitor::clean_names() |> 
-  janitor::remove_empty(which = c("rows", "cols"))
-
 df_clean |> 
   count(ethnic)
 ```
@@ -322,6 +324,67 @@ df_clean |>
 
 :::
 
+
+## Correcting dates
+
+::: panel-tabset
+
+### Problem
+
+```{r}
+df_raw |> 
+  select(start_date) |> 
+  glimpse()
+```
+
+```{r}
+df_raw[["start_date"]]
+```
+
+### Solution
+
+```{r}
+#| code-line-numbers: "11"
+df_clean <- df_raw |>
+  janitor::clean_names() |> 
+  janitor::remove_empty(which = c("rows", "cols")) |> 
+  mutate(
+    ethnic_clean = case_when(
+      ethnic %in%  c("hispanic", "Hispanic", "hispamnic") ~ "hispanic",
+      ethnic %in%  c("NOT hispanic", "not hispanic") ~ "not hispanic",
+    ),
+    end_na_clean = na_if(end_na, -99),
+    end_emo_clean = na_if(end_emo, "not done") |> as.numeric(),
+    start_date_clean = janitor::convert_to_date(start_date)
+  ) 
+```
+
+### Confirm
+
+::: columns
+
+::: {.column width="50%"}
+
+```{r}
+df_clean |> 
+  select(start_date, start_date_clean) |> 
+  glimpse()
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+df_clean |> 
+  count(start_date, start_date_clean) 
+```
+
+:::
+
+:::
+
+:::
 
 ## Extracting numbers from text
 
