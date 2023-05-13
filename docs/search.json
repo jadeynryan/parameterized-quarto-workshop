@@ -32,7 +32,7 @@
     "href": "index.html#prework",
     "title": "Principles of Data Cleaning",
     "section": "Prework",
-    "text": "Prework\nThis workshop will largely be conducted in the Posit Cloud environment. Please create a login to the Posit Cloud instance of this workshop here:\nPosit Cloud Medical Cleaning Workshop.\nIf you will not be using the Posit Cloud instance, you can just watch along as the instructors teach.\nIf you would like to try this out on your own computer, please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nRecent version of packages used in workshop.\ninstll_pkgs &lt;- c(\"tidyverse\", \"tidyxl\", \"unpivotr\", \"readxl\", \"openxlsx\", \"padr\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it.\nEnsure you can import data from a Microsoft Excel spreadsheet to R\n\nSave a a Microsoft Excel spreadsheet in a known folder on your computer.\nOpen RStudio install/load (library) the packages {readxl} (link) and {openxlsx} (link)\nImport the data from the spreadsheet into R using the path to the correct folder with either package."
+    "text": "Prework\nThis workshop will largely be conducted in the Posit Cloud environment. Please create a login to the Posit Cloud instance of this workshop here:\nPosit Cloud Medical Cleaning Workshop.\nIf you will not be using the Posit Cloud instance, you can just watch along as the instructors teach.\nIf you would like to try this out on your own computer, please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nRecent version of packages used in workshop.\ninstll_pkgs &lt;- c(\"tidyverse\", \"tidyxl\", \"unpivotr\", \"readxl\", \"openxlsx\", \"janitor\", \"gtsummary\", \"here\", \"padr\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it.\nEnsure you can import data from a Microsoft Excel spreadsheet to R\n\nSave a a Microsoft Excel spreadsheet in a known folder on your computer.\nOpen RStudio install/load (library) the packages {readxl} (link) and {openxlsx} (link)\nImport the data from the spreadsheet into R using the path to the correct folder with either package."
   },
   {
     "objectID": "license.html",
@@ -130,7 +130,7 @@
     "href": "slides/index.html#checklist",
     "title": "Data Cleaning",
     "section": "Checklist",
-    "text": "Checklist\n\n Install recent R release\nCurrent version 4.2.3\n Install RStudio\nI am on version 2022.07.1+554 \n Install packages\n# install.packages(c(\"gtreg\", \"gtsummary\", \"tidyverse\", \"labelled\", \"usethis\"))\n Ensure you can knit Rmarkdown files"
+    "text": "Checklist\n\n Install recent R release\nCurrent version 4.3.0\n Install RStudio\nI am on version 2022.07.1+554 \n Install packages\n# install.packages(c(\"gtreg\", \"gtsummary\", \"tidyverse\", \"labelled\", \"usethis\"))\n Ensure you can knit Rmarkdown files"
   },
   {
     "objectID": "slides/index.html#schedule",

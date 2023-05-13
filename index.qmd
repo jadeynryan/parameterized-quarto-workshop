@@ -69,7 +69,7 @@ If you would like to try this out on your own computer, please have the followin
 -   Recent version of packages used in workshop.
 
     ``` r
-    instll_pkgs <- c("tidyverse", "tidyxl", "unpivotr", "readxl", "openxlsx", "padr")
+    instll_pkgs <- c("tidyverse", "tidyxl", "unpivotr", "readxl", "openxlsx", "janitor", "gtsummary", "here", "padr")
     install.packages(instll_pkgs)
     ```
 -   Ensure you can knit R markdown documents
