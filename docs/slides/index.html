@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.340">
+  <meta name="generator" content="quarto-1.3.333">
 
   <meta name="author" content="Crystal Lewis, Shannon Pileggi, &amp; Peter Higgins">
   <title>Data Cleaning</title>
@@ -2541,53 +2541,666 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </section>
 <section id="deciding-on-the-unit-of-observation" class="slide level2">
 <h2>Deciding on the Unit of Observation</h2>
-<p>Image</p>
-</section>
-<section id="is-it-the-patient" class="slide level2">
-<h2>Is it the Patient?</h2>
 <ul>
-<li>Patient over time</li>
-<li>Outcome colectomy</li>
-<li>labs over time</li>
+<li>In Prospective Data Collection, a patient arrives for a visit. All data collected are part of the same observation/visit.
+<ul>
+<li>Alternatively, we can divide a visit into distinct observations, like blood pressure, a PHQ-9 depression questionnaire, and a hemoglobin measurement (all on the same date)</li>
+</ul></li>
+<li>In retrospective data review, we can divide the observations up as we choose. For inpatient stays, we need to decide <em>a priori</em> on how to handle multiple observations of the same type (e.g., vitals q6h) in the same day.
+<ul>
+<li>use the 0800 observation each day?</li>
+<li>use the daily average?</li>
+<li>use the max values each day?</li>
+</ul></li>
 </ul>
 </section>
-<section id="is-it-the-visitencounter" class="slide level2">
-<h2>Is it the Visit/Encounter?</h2>
+<section id="what-is-the-unit-of-analysis" class="slide level2">
+<h2>What is the Unit of Analysis?</h2>
 <ul>
-<li>Patient over time</li>
-<li>Outcome colectomy</li>
-<li>labs over time</li>
+<li>While the unit of observation may be straightforward for outpatient visits, and complicated for inpatient stays, in the end we need to select a Unit of Analysis</li>
+<li>This Unit of Analysis usually depends on the <strong>Question</strong> we want to ask</li>
+</ul>
+</section>
+<section id="is-the-unit-of-analysis-the-patient" class="slide level2">
+<h2>Is the Unit of Analysis the Patient?</h2>
+<ul>
+<li>Did the patient die?</li>
+<li>Did the patient have the outcome of colectomy?</li>
+<li>Did the patient reach disease remission?</li>
+</ul>
+</section>
+<section id="is-the-unit-of-analysis-the-visitencounter" class="slide level2">
+<h2>Is the Unit of Analysis the Visit/Encounter?</h2>
+<ul>
+<li>Often these are within-patient outcomes
+<ul>
+<li>Did the C-reactive protein improve from Week 0 to Week 8?</li>
+<li>Did the number of sickle cell crises/year decrease after CRISPR gene therapy?</li>
+<li>Did the endoscopic ulcer score decrease on the experimental therapy vs placebo?</li>
+</ul></li>
 </ul>
 </section>
 <section id="reshaping-your-data-with-tidyr" class="slide level2">
 <h2>Reshaping your data with tidyr</h2>
+<ul>
+<li>We often enter data by patient</li>
+<li>Spreadsheets encourage us to enter longitudinal data as long rows (per patient)</li>
+<li>We end up with wide data</li>
+</ul>
+<p>[Image]</p>
+</section>
+<section id="reshaping-your-data-with-tidyr-1" class="slide level2">
+<h2>Reshaping your data with tidyr</h2>
+<ul>
+<li>R (and most R functions) are vectorized to handle tall data</li>
+<li>One small observation per row</li>
+<li>Lots of analyses in R are easier with tall data</li>
+</ul>
+<p>[Image]</p>
 </section>
 <section id="pivoting-longer-common" class="slide level2">
 <h2>Pivoting Longer (common)</h2>
 <ul>
-<li><p>Visit Dates/Measures</p></li>
-<li><p>Your Turn (Exercise)</p></li>
+<li>We need to ‘pivot’ data from wide to tall on the regular</li>
+<li>This “lengthens” data, increasing the number of rows, and decreasing the number of columns</li>
+<li>We will be looking at Visit Dates/Measures</li>
 </ul>
+</section>
+<section id="pivoting-longer" class="slide level2">
+<h2>Pivoting Longer</h2>
+<ul>
+<li>Arguments: data, cols, names_to, values_to, and many optional arguments</li>
+<li>Details from the tidyverse help page are <a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">here</a></li>
+<li><strong>data</strong> is your dataframe/tibble - you can pipe this in</li>
+<li><strong>cols</strong> = columns to pivot, as a vector of names, or by number, or selected with <a href="https://tidyselect.r-lib.org">tidyselect</a> functions</li>
+<li><strong>names_to</strong> = A character vector specifying the new column or columns to create from the information stored in the column names of data specified by cols.</li>
+<li><strong>values_to</strong> = A string specifying the name of the column to create from the data stored in cell values.</li>
+</ul>
+</section>
+<section id="pivoting-longer-example" class="slide level2">
+<h2>Pivoting Longer (Example)</h2>
+<p>Let’s start with the wide version (selected columns from messy_uc)</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-60_c2759ccbe0eab1e0d15e4c8fc8c9e1f5">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30 × 8
+   pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
+   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+ 1 001    upa               3       0      75.5    9.46      73.3    32.0
+ 2 002    uste              2       1      53.6   31.6       55.7    43.2
+ 3 003    oza               1       1      25.5   25.5       36.6    36.9
+ 4 004    upa               3       1      79.4   35.4       80.8    58.7
+ 5 005    oza               3       2      79.5   57.5       72.5    58.9
+ 6 006    uste              2       1      54.5   32.5       48.3    34.6
+ 7 007    uste              3       2      79.0   57.0       72.7    63.3
+ 8 008    oza               3       2      79.0   57.0       74.6    65.3
+ 9 009    upa               2       0      53.1    9.06      54.2    28.0
+10 010    oza               3       1      77.4   33.4       74.4    46.8
+# ℹ 20 more rows</code></pre>
+</div>
+</div>
+<ul>
+<li>Note that there are 30 rows, one per patient, with 6 measured quantities for each patient.</li>
+</ul>
+</section>
+<section id="pivoting-longer-example-1" class="slide level2">
+<h2>Pivoting Longer (Example)</h2>
+<p>This is the tall version we want to end up with.</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-61_b7972faa0a13abd11f26b0f7219555af">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 180 × 4
+   pat_id treatment measure   score
+   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;
+ 1 001    upa       start_mes  3   
+ 2 001    upa       end_mes    0   
+ 3 001    upa       start_bss 75.5 
+ 4 001    upa       end_bss    9.46
+ 5 001    upa       start_emo 73.3 
+ 6 001    upa       end_emo   32.0 
+ 7 002    uste      start_mes  2   
+ 8 002    uste      end_mes    1   
+ 9 002    uste      start_bss 53.6 
+10 002    uste      end_bss   31.6 
+# ℹ 170 more rows</code></pre>
+</div>
+</div>
+<ul>
+<li>Note that there now 180 rows (30*6), with one row per observation measure.</li>
+</ul>
+</section>
+<section id="doing-the-pivot_longer" class="slide level2">
+<h2>Doing the pivot_longer()</h2>
+<p>What values do we want for these key arguments?</p>
+<ul>
+<li>cols</li>
+<li>names_to</li>
+<li>values_to</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-62_fbb4fca8f7b53dff68600facd2dbdf9f">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30 × 8
+   pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
+   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+ 1 001    upa               3       0      75.5    9.46      73.3    32.0
+ 2 002    uste              2       1      53.6   31.6       55.7    43.2
+ 3 003    oza               1       1      25.5   25.5       36.6    36.9
+ 4 004    upa               3       1      79.4   35.4       80.8    58.7
+ 5 005    oza               3       2      79.5   57.5       72.5    58.9
+ 6 006    uste              2       1      54.5   32.5       48.3    34.6
+ 7 007    uste              3       2      79.0   57.0       72.7    63.3
+ 8 008    oza               3       2      79.0   57.0       74.6    65.3
+ 9 009    upa               2       0      53.1    9.06      54.2    28.0
+10 010    oza               3       1      77.4   33.4       74.4    46.8
+# ℹ 20 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="pivoting-longer-in-action" class="slide level2">
+<h2>Pivoting Longer In Action</h2>
+<div class="panel-tabset">
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Problem: Wide</a></li><li><a href="#tabset-10-2">Code: pivot_longer</a></li><li><a href="#tabset-10-3">Result: Tall</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-63_5942fbf07f34845002a6bb181ff45281">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30 × 8
+   pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
+   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+ 1 001    upa               3       0      75.5    9.46      73.3    32.0
+ 2 002    uste              2       1      53.6   31.6       55.7    43.2
+ 3 003    oza               1       1      25.5   25.5       36.6    36.9
+ 4 004    upa               3       1      79.4   35.4       80.8    58.7
+ 5 005    oza               3       2      79.5   57.5       72.5    58.9
+ 6 006    uste              2       1      54.5   32.5       48.3    34.6
+ 7 007    uste              3       2      79.0   57.0       72.7    63.3
+ 8 008    oza               3       2      79.0   57.0       74.6    65.3
+ 9 009    upa               2       0      53.1    9.06      54.2    28.0
+10 010    oza               3       1      77.4   33.4       74.4    46.8
+# ℹ 20 more rows</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-10-2">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-64_f1974fc0a505ac2aa9ff092d2db445fa">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1"></a>wide <span class="sc">|&gt;</span> </span>
+<span id="cb106-2"><a href="#cb106-2"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb106-3"><a href="#cb106-3"></a>    <span class="at">cols =</span> <span class="st">"start_mes"</span><span class="sc">:</span><span class="st">"end_emo"</span>, </span>
+<span id="cb106-4"><a href="#cb106-4"></a>    <span class="co"># could also use 3:8</span></span>
+<span id="cb106-5"><a href="#cb106-5"></a>               <span class="at">names_to =</span> <span class="st">"measure"</span>,</span>
+<span id="cb106-6"><a href="#cb106-6"></a>               <span class="at">values_to =</span> <span class="st">"score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-10-3">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-65_381a21df702264a66514fa6d1d20435c">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 180 × 4
+   pat_id treatment measure   score
+   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;
+ 1 001    upa       start_mes  3   
+ 2 001    upa       end_mes    0   
+ 3 001    upa       start_bss 75.5 
+ 4 001    upa       end_bss    9.46
+ 5 001    upa       start_emo 73.3 
+ 6 001    upa       end_emo   32.0 
+ 7 002    uste      start_mes  2   
+ 8 002    uste      end_mes    1   
+ 9 002    uste      start_bss 53.6 
+10 002    uste      end_bss   31.6 
+# ℹ 170 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="one-minor-issue---separation-of-measure" class="slide level2">
+<h2>One Minor Issue - Separation of measure</h2>
+<div class="panel-tabset">
+<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">Problem</a></li><li><a href="#tabset-11-2">Code</a></li><li><a href="#tabset-11-3">Result</a></li><li><a href="#tabset-11-4">Alternative within pivot_longer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1">
+<ul>
+<li>the “measure” column combines a timepoint and the measure</li>
+<li>Needs to be separated.</li>
+<li>You already know how to use <em>separate()</em></li>
+<li>Arguments
+<ul>
+<li>col</li>
+<li>sep</li>
+<li>into</li>
+</ul></li>
+</ul>
+</div>
+<div id="tabset-11-2">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-66_53c2e542505bdb1eec85324e280df7a3">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a>tall <span class="sc">|&gt;</span> </span>
+<span id="cb108-2"><a href="#cb108-2"></a>  <span class="fu">separate</span>(<span class="at">col =</span> <span class="st">"measure"</span>,</span>
+<span id="cb108-3"><a href="#cb108-3"></a>           <span class="at">sep =</span> <span class="st">"_"</span>,</span>
+<span id="cb108-4"><a href="#cb108-4"></a>           <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"timept"</span>, <span class="st">"measure"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-11-3">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-67_60f050ff3e9ba9b8a94a06a169b11987">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 180 × 5
+   pat_id treatment timept measure score
+   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;
+ 1 001    upa       start  mes      3   
+ 2 001    upa       end    mes      0   
+ 3 001    upa       start  bss     75.5 
+ 4 001    upa       end    bss      9.46
+ 5 001    upa       start  emo     73.3 
+ 6 001    upa       end    emo     32.0 
+ 7 002    uste      start  mes      2   
+ 8 002    uste      end    mes      1   
+ 9 002    uste      start  bss     53.6 
+10 002    uste      end    bss     31.6 
+# ℹ 170 more rows</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-11-4">
+<ul>
+<li>You can do this <em>within</em> pivot_longer with one more argument</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-68_95a8e3c74be97e90f2c45964fc65f9f8">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a>wide <span class="sc">|&gt;</span> </span>
+<span id="cb110-2"><a href="#cb110-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>,</span>
+<span id="cb110-3"><a href="#cb110-3"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"timept"</span>, <span class="st">"measure"</span>),</span>
+<span id="cb110-4"><a href="#cb110-4"></a>    <span class="at">names_sep =</span> <span class="st">"_"</span>,</span>
+<span id="cb110-5"><a href="#cb110-5"></a>    <span class="at">values_to =</span> <span class="st">"score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 180 × 5
+   pat_id treatment timept measure score
+   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;
+ 1 001    upa       start  mes      3   
+ 2 001    upa       end    mes      0   
+ 3 001    upa       start  bss     75.5 
+ 4 001    upa       end    bss      9.46
+ 5 001    upa       start  emo     73.3 
+ 6 001    upa       end    emo     32.0 
+ 7 002    uste      start  mes      2   
+ 8 002    uste      end    mes      1   
+ 9 002    uste      start  bss     53.6 
+10 002    uste      end    bss     31.6 
+# ℹ 170 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="pivoting-longer-1" class="slide level2">
+<h2>Pivoting Longer</h2>
+<ul>
+<li>Your Turn (Exercise) with endo_data</li>
+<li>Measurements of Trans-Epithelial Electrical Resistance (the inverse of leakiness) were taken from biopsies of 3 segments of intestine.</li>
+<li>This might be affected by portal hypertension in patients with liver cirrhosis</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-69_fbb507d259cfbef42df04bd840a8b354">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 5
+   pat_id portal_htn duod_teer ileal_teer colon_teer
+    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+ 1      1          1      4.33       14.6       16.2
+ 2      2          0     11.7        16.0       19.0
+ 3      3          1      4.12       13.8       15.2
+ 4      4          1      4.62       16.4       18.1
+ 5      5          0     12.4        15.8       19.0
+ 6      6          0     13.0        16.2       18.8
+ 7      7          0     11.9        15.7       18.3
+ 8      8          1      4.87       16.6       18.8
+ 9      9          1      4.23       15.0       16.9
+10     10          0     12.8        16.7       19.1</code></pre>
+</div>
+</div>
+</section>
+<section id="pivoting-longer-with-endo_data" class="slide level2">
+<h2>Pivoting Longer with endo_data</h2>
+<div class="panel-tabset">
+<ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">The Dataset</a></li><li><a href="#tabset-12-2">The Arguments</a></li><li><a href="#tabset-12-3">The Code</a></li><li><a href="#tabset-12-4">The Solution</a></li></ul>
+<div class="tab-content">
+<div id="tabset-12-1">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-70_fe0823ba162e0a02a70091063724753f">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 5
+   pat_id portal_htn duod_teer ileal_teer colon_teer
+    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+ 1      1          1      4.33       14.6       16.2
+ 2      2          0     11.7        16.0       19.0
+ 3      3          1      4.12       13.8       15.2
+ 4      4          1      4.62       16.4       18.1
+ 5      5          0     12.4        15.8       19.0
+ 6      6          0     13.0        16.2       18.8
+ 7      7          0     11.9        15.7       18.3
+ 8      8          1      4.87       16.6       18.8
+ 9      9          1      4.23       15.0       16.9
+10     10          0     12.8        16.7       19.1</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-12-2">
+<ul>
+<li>What values do you want to use for:
+<ul>
+<li>cols</li>
+<li>names_pattern = “(.+)_teer”</li>
+<li>names_to</li>
+<li>values_to</li>
+</ul></li>
+<li>Note that we are giving you the value for names_pattern, which means that we want to keep the characters of the name (of whatever length) before “_teer”</li>
+</ul>
+</div>
+<div id="tabset-12-3">
+<ul>
+<li>Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.</li>
+<li>Note that we are giving you names_pattern</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-71_fbd97bcb44ee94e1d41985ca55f7233f">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a>endo_data <span class="sc">|&gt;</span> </span>
+<span id="cb114-2"><a href="#cb114-2"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb114-3"><a href="#cb114-3"></a>    <span class="at">cols =</span>  ,</span>
+<span id="cb114-4"><a href="#cb114-4"></a>    <span class="at">names_pattern =</span> <span class="st">"(.+)_teer"</span>,</span>
+<span id="cb114-5"><a href="#cb114-5"></a>    <span class="at">names_to =</span>   ,</span>
+<span id="cb114-6"><a href="#cb114-6"></a>    <span class="at">values_to =</span> </span>
+<span id="cb114-7"><a href="#cb114-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-12-4">
+<ul>
+<li>Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-72_f8da23bf63167425406850662430fb63">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1"></a>endo_data <span class="sc">|&gt;</span> </span>
+<span id="cb115-2"><a href="#cb115-2"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb115-3"><a href="#cb115-3"></a>    <span class="at">cols =</span> <span class="st">"duod_teer"</span><span class="sc">:</span><span class="st">"colon_teer"</span>,</span>
+<span id="cb115-4"><a href="#cb115-4"></a>    <span class="at">names_pattern =</span> <span class="st">"(.+)_teer"</span>,</span>
+<span id="cb115-5"><a href="#cb115-5"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"location"</span>),</span>
+<span id="cb115-6"><a href="#cb115-6"></a>    <span class="at">values_to =</span> <span class="st">"teer"</span></span>
+<span id="cb115-7"><a href="#cb115-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Run the code, and look at the resulting table.</li>
+<li>Do you think that portal hypertension has an effect on TEER and (its inverse) epithelial leakiness?</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
 <section id="pivoting-wider" class="slide level2">
 <h2>Pivoting Wider</h2>
+<div class="panel-tabset">
+<ul id="tabset-13" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-13-1">Tall messy_uc Data</a></li><li><a href="#tabset-13-2">Code</a></li><li><a href="#tabset-13-3">Wider Result</a></li></ul>
+<div class="tab-content">
+<div id="tabset-13-1">
+<ul>
+<li>Wide data is less common, but sometimes needed</li>
+<li>Here we will convert the tall version of our selected messy_uc data back to wide.</li>
+<li>This is what the tall data look like</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-73_77ce868467add96d4ae934fdac92971a">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 180 × 4
+   pat_id treatment measure   score
+   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;
+ 1 001    upa       start_mes  3   
+ 2 001    upa       end_mes    0   
+ 3 001    upa       start_bss 75.5 
+ 4 001    upa       end_bss    9.46
+ 5 001    upa       start_emo 73.3 
+ 6 001    upa       end_emo   32.0 
+ 7 002    uste      start_mes  2   
+ 8 002    uste      end_mes    1   
+ 9 002    uste      start_bss 53.6 
+10 002    uste      end_bss   31.6 
+# ℹ 170 more rows</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-13-2">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-74_dff7f916a9d83146b7f520fc307e08ef">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1"></a>tall <span class="sc">|&gt;</span> </span>
+<span id="cb117-2"><a href="#cb117-2"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb117-3"><a href="#cb117-3"></a>    <span class="at">id_cols =</span> <span class="fu">c</span>(pat_id, treatment), <span class="co"># Variables not pivoted</span></span>
+<span id="cb117-4"><a href="#cb117-4"></a>    <span class="at">names_from =</span> measure, <span class="co"># will become column names</span></span>
+<span id="cb117-5"><a href="#cb117-5"></a>    <span class="at">values_from =</span> score <span class="co"># will become values</span></span>
+<span id="cb117-6"><a href="#cb117-6"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-13-3">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-75_6c812d9450f1416350140f51c942a9e7">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30 × 8
+   pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
+   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+ 1 001    upa               3       0      75.5    9.46      73.3    32.0
+ 2 002    uste              2       1      53.6   31.6       55.7    43.2
+ 3 003    oza               1       1      25.5   25.5       36.6    36.9
+ 4 004    upa               3       1      79.4   35.4       80.8    58.7
+ 5 005    oza               3       2      79.5   57.5       72.5    58.9
+ 6 006    uste              2       1      54.5   32.5       48.3    34.6
+ 7 007    uste              3       2      79.0   57.0       72.7    63.3
+ 8 008    oza               3       2      79.0   57.0       74.6    65.3
+ 9 009    upa               2       0      53.1    9.06      54.2    28.0
+10 010    oza               3       1      77.4   33.4       74.4    46.8
+# ℹ 20 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="filling-in-unobserved-datestimes-with-padr" class="title-slide slide level1 center">
 <h1>Filling in Unobserved Dates/Times with padr</h1>
-
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-76_cff5f3f1f2564863a64645b1b5d13dab">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1"></a><span class="fu">library</span>(padr)</span>
+<span id="cb119-2"><a href="#cb119-2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb119-3"><a href="#cb119-3"></a>emergency <span class="ot">&lt;-</span> padr<span class="sc">::</span>emergency</span>
+<span id="cb119-4"><a href="#cb119-4"></a><span class="fu">head</span>(emergency) <span class="sc">|&gt;</span>  </span>
+<span id="cb119-5"><a href="#cb119-5"></a>  <span class="fu">select</span>(title, time_stamp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  title                   time_stamp         
+  &lt;chr&gt;                   &lt;dttm&gt;             
+1 EMS: BACK PAINS/INJURY  2015-12-10 17:40:00
+2 EMS: DIABETIC EMERGENCY 2015-12-10 17:40:00
+3 Fire: GAS-ODOR/LEAK     2015-12-10 17:40:00
+4 EMS: CARDIAC EMERGENCY  2015-12-10 17:40:01
+5 EMS: DIZZINESS          2015-12-10 17:40:01
+6 EMS: HEAD INJURY        2015-12-10 17:40:01</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<ul>
+<li>The emergency data set contains &gt; 120K emergency calls from Montgomery County, PA over a period of ~ 11 months.</li>
+<li>Each call has a title and a timestamp</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="thickening-time-to-a-usable-level" class="slide level2">
+<h2>Thickening Time to a Usable Level</h2>
+<div class="panel-tabset">
+<ul id="tabset-14" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-14-1">Goal</a></li><li><a href="#tabset-14-2">Code</a></li><li><a href="#tabset-14-3">Result</a></li></ul>
+<div class="tab-content">
+<div id="tabset-14-1">
+<ul>
+<li>The thicken function adds a column to a data frame that is of a higher interval than the original variable.</li>
+<li>The variable <strong>time_stamp</strong> has the interval of seconds</li>
+<li>We can thicken the data to day, or to week, or to month.</li>
+</ul>
+</div>
+<div id="tabset-14-2">
+<ul>
+<li>We will thicken to month</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-77_465c6842415b9f0a211a11077bbe23d7">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1"></a>emergency <span class="sc">|&gt;</span> </span>
+<span id="cb121-2"><a href="#cb121-2"></a>  <span class="fu">thicken</span>(<span class="st">'month'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-14-3">
+<ul>
+<li>This lets us count events like overdoses by month with time_stamp_month.</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-78_6831390c9d9722a75f33fcc961e2c0ff">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 120,450 × 7
+     lat   lng   zip title            time_stamp          twp   time_stamp_month
+   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;            &lt;dttm&gt;              &lt;chr&gt; &lt;date&gt;          
+ 1  40.3 -75.6 19525 EMS: BACK PAINS… 2015-12-10 17:40:00 NEW … 2015-12-01      
+ 2  40.3 -75.3 19446 EMS: DIABETIC E… 2015-12-10 17:40:00 HATF… 2015-12-01      
+ 3  40.1 -75.4 19401 Fire: GAS-ODOR/… 2015-12-10 17:40:00 NORR… 2015-12-01      
+ 4  40.1 -75.3 19401 EMS: CARDIAC EM… 2015-12-10 17:40:01 NORR… 2015-12-01      
+ 5  40.3 -75.6    NA EMS: DIZZINESS   2015-12-10 17:40:01 LOWE… 2015-12-01      
+ 6  40.3 -75.3 19446 EMS: HEAD INJURY 2015-12-10 17:40:01 LANS… 2015-12-01      
+ 7  40.2 -75.1 19044 EMS: NAUSEA/VOM… 2015-12-10 17:40:01 HORS… 2015-12-01      
+ 8  40.2 -75.4 19426 EMS: RESPIRATOR… 2015-12-10 17:40:01 SKIP… 2015-12-01      
+ 9  40.3 -75.4 19438 EMS: SYNCOPAL E… 2015-12-10 17:40:01 LOWE… 2015-12-01      
+10  40.1 -75.3 19462 Traffic: VEHICL… 2015-12-10 17:40:01 PLYM… 2015-12-01      
+# ℹ 120,440 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="padding-unobserved-dates-weekends" class="slide level2">
 <h2>Padding unobserved dates (weekends?)</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>The pad function allows you to fill in missing intervals.</li>
+<li>As an example, my hospital only runs fecal calprotectin tests on weekdays.</li>
+<li>This can lead to weird discontinuities in data over a weekend (Dec 3-4).</li>
+<li>No observations on weekend days.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-79_c1aaf56df7c8cb5c8a52ebf665ae8c0d">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 15 × 3
+   pat_id date         fcp
+   &lt;chr&gt;  &lt;date&gt;     &lt;dbl&gt;
+ 1 001    2022-12-01  1574
+ 2 001    2022-12-02  1323
+ 3 001    2022-12-05   673
+ 4 001    2022-12-06   314
+ 5 001    2022-12-07   168
+ 6 002    2022-11-30  1393
+ 7 002    2022-12-01  1014
+ 8 002    2022-12-02   812
+ 9 002    2022-12-05   247
+10 002    2022-12-06   118
+11 003    2022-12-02   987
+12 003    2022-12-05   438
+13 003    2022-12-06   312
+14 003    2022-12-05   194
+15 003    2022-12-06   101</code></pre>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="padding-unovserved-times" class="slide level2">
-<h2>Padding unovserved times</h2>
+<section id="padding-unobserved-times" class="slide level2">
+<h2>Padding Unobserved Times</h2>
+<div class="panel-tabset">
+<ul id="tabset-15" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-15-1">The Problem</a></li><li><a href="#tabset-15-2">The Code</a></li><li><a href="#tabset-15-3">The Result</a></li></ul>
+<div class="tab-content">
+<div id="tabset-15-1">
+<ul>
+<li>We can fill in (pad) the unobserved weekend days with the <strong>pad()</strong> function.</li>
+</ul>
+</div>
+<div id="tabset-15-2">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-80_6a3a4728c1bdff5a32344acea3f104b7">
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1"></a>fcp <span class="sc">|&gt;</span> </span>
+<span id="cb124-2"><a href="#cb124-2"></a>  <span class="fu">pad</span>(<span class="at">group =</span> <span class="st">"pat_id"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb124-3"><a href="#cb124-3"></a>  tidyr<span class="sc">::</span><span class="fu">fill</span>(pat_id) <span class="sc">|&gt;</span> </span>
+<span id="cb124-4"><a href="#cb124-4"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-15-3">
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-81_e4be01bd365a3e3180c2cb517f47c7e2">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 21 × 3
+   pat_id date         fcp
+   &lt;chr&gt;  &lt;date&gt;     &lt;dbl&gt;
+ 1 001    2022-12-01  1574
+ 2 001    2022-12-02  1323
+ 3 001    2022-12-03    NA
+ 4 001    2022-12-04    NA
+ 5 001    2022-12-05   673
+ 6 001    2022-12-06   314
+ 7 001    2022-12-07   168
+ 8 002    2022-11-30  1393
+ 9 002    2022-12-01  1014
+10 002    2022-12-02   812
+11 002    2022-12-03    NA
+12 002    2022-12-04    NA
+13 002    2022-12-05   247
+14 002    2022-12-06   118
+# ℹ 7 more rows</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li>New observations are created on the missing dates</li>
+<li>NAs are filled in for the missing FCPs, with one for each day and group (pat_id)</li>
+<li>we used <strong>tidyr::fill(pat_id)</strong> to fill in the missing pat_ids</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="joins-of-data-from-different-sources" class="slide level2">
 <h2>Joins of data from different sources</h2>
+<ul>
+<li>We often collect data from different sources that we later want to join together for analysis
+<ul>
+<li>Data from local Electronic Medical Record</li>
+<li>Data from the CDC</li>
+<li>Data from the US Census</li>
+</ul></li>
+<li>External data can illuminate our understanding of our local patient data</li>
+</ul>
 </section>
-<section id="local-demographics-with-cdc-svi-data-one-to-one" class="slide level2">
-<h2>Local Demographics with CDC SVI data (one to one)</h2>
+<section id="local-demographics-with-cdc-svi-data" class="slide level2">
+<h2>Local Demographics with CDC SVI data</h2>
+<div class="panel-tabset">
+<ul id="tabset-16" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-16-1">The Problem</a></li><li><a href="#tabset-16-2">The Code</a></li><li><a href="#tabset-16-3">The Result</a></li></ul>
+<div class="tab-content">
+<div id="tabset-16-1">
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>We have 2 datasets, one local Demographics and Census Tract, and one from the CDC that has values for Social Vulnerability Index by Census Tract</li>
+<li>We want to know the median SVI for the neighborhood of each patient</li>
+<li>We need to left_join these datasets together by matching on the Census Tract</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/joins.png"></p>
+<figcaption>Joins</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-16-2">
+
+</div>
+<div id="tabset-16-3">
+
+</div>
+</div>
+</div>
 </section>
 <section id="patient-demographics-with-lab-results-one-to-many" class="slide level2">
 <h2>Patient Demographics with Lab results (one to many)</h2>

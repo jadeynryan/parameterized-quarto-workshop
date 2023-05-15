@@ -1,40 +1,488 @@
 # Wrangling your Data
 
+```{r}
+#| echo: false
+#| message: false
+library(readxl)
+library(tidyverse)
+library(janitor)
+library(here)
+library(gtsummary)
+library(padr)
+```
 ## Deciding on the Unit of Observation
 
-Image
+-   In Prospective Data Collection, a patient arrives for a visit. All data collected are part of the same observation/visit.
+    -   Alternatively, we can divide a visit into distinct observations, like blood pressure, a PHQ-9 depression questionnaire, and a hemoglobin measurement (all on the same date)
+-   In retrospective data review, we can divide the observations up as we choose. For inpatient stays, we need to decide *a priori* on how to handle multiple observations of the same type (e.g., vitals q6h) in the same day.
+    -   use the 0800 observation each day?
+    -   use the daily average?
+    -   use the max values each day?
 
-## Is it the Patient?
+## What is the Unit of Analysis?
 
-- Patient over time
-- Outcome colectomy
-- labs over time
- 
-## Is it the Visit/Encounter?
+-   While the unit of observation may be straightforward for outpatient visits, and complicated for inpatient stays, in the end we need to select a Unit of Analysis
+-   This Unit of Analysis usually depends on the **Question** we want to ask
 
-- Patient over time
-- Outcome colectomy
-- labs over time
+## Is the Unit of Analysis the Patient?
+
+-   Did the patient die?
+-   Did the patient have the outcome of colectomy?
+-   Did the patient reach disease remission?
+
+## Is the Unit of Analysis the Visit/Encounter?
+
+-   Often these are within-patient outcomes
+    -   Did the C-reactive protein improve from Week 0 to Week 8?
+    -   Did the number of sickle cell crises/year decrease after CRISPR gene therapy?
+    -   Did the endoscopic ulcer score decrease on the experimental therapy vs placebo?
 
 ## Reshaping your data with tidyr
 
+-   We often enter data by patient
+-   Spreadsheets encourage us to enter longitudinal data as long rows (per patient)
+-   We end up with wide data
+
+\[Image\]
+
+## Reshaping your data with tidyr
+
+-   R (and most R functions) are vectorized to handle tall data
+-   One small observation per row
+-   Lots of analyses in R are easier with tall data
+
+\[Image\]
+
 ## Pivoting Longer (common)
 
-- Visit Dates/Measures
+-   We need to 'pivot' data from wide to tall on the regular
+-   This "lengthens" data, increasing the number of rows, and decreasing the number of columns
+-   We will be looking at Visit Dates/Measures
 
-- Your Turn (Exercise)
+## Pivoting Longer
+
+-   Arguments: data, cols, names_to, values_to, and many optional arguments
+-   Details from the tidyverse help page are [here](https://tidyr.tidyverse.org/reference/pivot_longer.html)
+-   **data** is your dataframe/tibble - you can pipe this in
+-   **cols** = columns to pivot, as a vector of names, or by number, or selected with [tidyselect](https://tidyselect.r-lib.org) functions
+-   **names_to** = A character vector specifying the new column or columns to create from the information stored in the column names of data specified by cols.
+-   **values_to** = A string specifying the name of the column to create from the data stored in cell values.
+
+## Pivoting Longer (Example)
+
+Let's start with the wide version (selected columns from messy_uc)
+
+```{r, echo=FALSE}
+wide <- readxl::read_excel(here("data/messy_uc.xlsx"), sheet = 3, skip = 6) |>
+  janitor::clean_names() |>
+  janitor::remove_empty(which = c("rows", "cols")) |> 
+  select(pat_id, treatment, ends_with("mes"), ends_with("bss"), ends_with("emo")) |> 
+  mutate(across(3:8, as.numeric)) 
+
+wide
+```
+
+-    Note that there are 30 rows, one per patient, with 6 measured quantities for each patient.
+
+## Pivoting Longer (Example)
+
+This is the tall version we want to end up with.
+
+```{r, echo=FALSE}
+wide |> 
+  pivot_longer(cols = 3:8, 
+               names_to = "measure",
+               values_to = "score") 
+```
+
+-    Note that there now 180 rows (30\*6), with one row per observation measure.
+
+## Doing the pivot_longer()
+
+What values do we want for these key arguments?
+
+-   cols
+-   names_to
+-   values_to
+
+```{r, echo=FALSE}
+wide
+```
+
+## Pivoting Longer In Action
+
+::: panel-tabset
+### Problem: Wide
+
+```{r, echo=FALSE}
+wide
+```
+
+### Code: pivot_longer
+
+```{r, echo=TRUE, eval=FALSE}
+wide |> 
+  pivot_longer(
+    cols = "start_mes":"end_emo", 
+    # could also use 3:8
+               names_to = "measure",
+               values_to = "score")
+```
+
+### Result: Tall
+
+```{r, echo=FALSE, eval=TRUE}
+tall <- wide |> 
+  pivot_longer(
+    cols = "start_mes":"end_emo", 
+               names_to = "measure",
+               values_to = "score")
+
+tall
+```
+:::
+
+## One Minor Issue - Separation of measure
+
+::: panel-tabset
+### Problem
+
+-   the "measure" column combines a timepoint and the measure
+-   Needs to be separated.
+-   You already know how to use *separate()*
+-   Arguments
+    -   col
+    -   sep
+    -   into
+
+### Code
+
+```{r, echo=TRUE, eval=FALSE}
+tall |> 
+  separate(col = "measure",
+           sep = "_",
+           into = c("timept", "measure"))
+```
+
+### Result
+
+```{r, echo=FALSE, eval=TRUE}
+tall |> 
+  separate(col = "measure",
+           sep = "_",
+           into = c("timept", "measure"))
+```
+
+### Alternative within pivot_longer
+
+- You can do this _within_ pivot_longer with one more argument
+
+```{r}
+wide |> 
+  pivot_longer(cols = 3:8,
+    names_to = c("timept", "measure"),
+    names_sep = "_",
+    values_to = "score")
+
+```
+
+:::
+
+## Pivoting Longer
+
+-   Your Turn (Exercise) with endo_data
+- Measurements of Trans-Epithelial Electrical Resistance (the inverse of leakiness) were taken from biopsies of 3 segments of intestine.
+- This might be affected by portal hypertension in patients with liver cirrhosis
+
+```{r, echo=FALSE}
+endo_data <- tibble::tribble(
+  ~pat_id, ~portal_htn, ~duod_teer, ~ileal_teer, ~colon_teer,
+  001, 1, 4.33, 14.57, 16.23,
+  002, 0, 11.67, 15.99, 18.97,
+  003, 1, 4.12, 13.77, 15.22,
+  004, 1, 4.62, 16.37, 18.12,
+  005, 0, 12.43, 15.84, 19.04,
+  006, 0, 13.05, 16.23, 18.81,
+  007, 0, 11.88, 15.72, 18.31,
+  008, 1, 4.87, 16.59, 18.77,
+  009, 1, 4.23, 15.04, 16.87,
+  010, 0, 12.77, 16.73, 19.12
+)
+endo_data
+```
+
+
+## Pivoting Longer with endo_data
+
+::: panel-tabset
+
+### The Dataset
+
+```{r, echo=FALSE}
+endo_data
+```
+
+### The Arguments
+
+- What values do you want to use for:
+  - cols
+  - names_pattern = "(.+)_teer"
+  - names_to
+  - values_to
+- Note that we are giving you the value for names_pattern, which means that we want to keep the characters of the name (of whatever length) before "_teer"
+
+### The Code
+
+- Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.
+- Note that we are giving you names_pattern
+
+```{r, error=TRUE, eval=FALSE}
+endo_data |> 
+  pivot_longer(
+    cols =  ,
+    names_pattern = "(.+)_teer",
+    names_to =   ,
+    values_to = 
+  )
+```
+
+### The Solution
+
+- Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.
+
+```{r, error=TRUE, eval=FALSE}
+endo_data |> 
+  pivot_longer(
+    cols = "duod_teer":"colon_teer",
+    names_pattern = "(.+)_teer",
+    names_to = c("location"),
+    values_to = "teer"
+  )
+```
+
+- Run the code, and look at the resulting table.
+- Do you think that portal hypertension has an effect on TEER and (its inverse) epithelial leakiness?
+
+:::
 
 ## Pivoting Wider
 
+::: panel-tabset
+
+### Tall messy_uc Data
+-   Wide data is less common, but sometimes needed
+- Here we will convert the tall version of our selected messy_uc data back to wide.
+- This is what the tall data look like
+
+```{r, echo=FALSE}
+tall
+```
+
+### Code
+
+```{r echo=TRUE, eval=FALSE}
+tall |> 
+  pivot_wider(
+    id_cols = c(pat_id, treatment), # Variables not pivoted
+    names_from = measure, # will become column names
+    values_from = score # will become values
+  )
+```
+
+### Wider Result
+
+```{r echo=FALSE, eval=TRUE}
+tall |> 
+  pivot_wider(
+    id_cols = c(pat_id, treatment),
+    names_from = measure,
+    values_from = score
+  )
+```
+
+:::
+
 # Filling in Unobserved Dates/Times with padr
+
+::: columns
+::: {.column width="55%"}
+
+```{r}
+library(padr)
+library(tidyverse)
+emergency <- padr::emergency
+head(emergency) |>  
+  select(title, time_stamp)
+```
+
+:::
+
+::: {.column width="45%"}
+- The emergency data set contains > 120K emergency calls from Montgomery County, PA over a period of ~ 11 months.
+- Each call has a title and a timestamp
+
+:::
+
+:::
+
+## Thickening Time to a Usable Level
+
+::: panel-tabset
+
+### Goal
+- The thicken function adds a column to a data frame that is of a higher interval than the original variable.
+- The variable **time_stamp** has the interval of seconds
+- We can thicken the data to day, or to week, or to month.
+
+### Code
+- We will thicken to month
+
+```{r}
+#| echo: true
+#| eval: false
+emergency |> 
+  thicken('month')
+```
+
+### Result
+- This lets us count events like overdoses by month with time_stamp_month.
+
+```{r}
+#| echo: false
+#| eval: true
+emergency |> 
+  thicken('month')
+```
+
+:::
 
 ## Padding unobserved dates (weekends?)
 
-## Padding unovserved times
+::: columns
+::: {.column width="60%"}
+
+- The pad function allows you to fill in missing intervals.
+- As an example, my hospital only runs fecal calprotectin tests on weekdays.
+- This can lead to weird discontinuities in data over a weekend (Dec 3-4).
+- No observations on weekend days.
+
+:::
+
+::: {.column width="40%"}
+
+```{r}
+#| echo: false
+fcp <- tibble::tribble(
+  ~pat_id, ~date, ~fcp,
+  '001', "12-01-2022", 1574,
+  '001', "12-02-2022", 1323,
+  '001', "12-05-2022", 673,
+  '001', "12-06-2022", 314,
+  '001', "12-07-2022", 168,
+  '002', "11-30-2022", 1393,
+  '002', "12-01-2022", 1014,
+  '002', "12-02-2022", 812,
+  '002', "12-05-2022", 247,
+  '002', "12-06-2022", 118,
+  '003', "12-02-2022", 987,
+  '003', "12-05-2022", 438,
+  '003', "12-06-2022", 312,
+  '003', "12-05-2022", 194,
+  '003', "12-06-2022", 101
+) |> mutate(date = lubridate::mdy(date))
+
+fcp
+```
+
+:::
+
+:::
+
+## Padding Unobserved Times
+
+::: panel-tabset
+
+### The Problem
+
+- We can fill in (pad) the unobserved weekend days with the **pad()** function.
+
+### The Code
+
+```{r}
+#| echo: true
+#| eval: false
+fcp |> 
+  pad(group = "pat_id") |> 
+  tidyr::fill(pat_id) |> 
+  print(n = 14)
+```
+
+### The Result
+
+::: columns
+
+::: {.column width="40%"}
+
+```{r}
+#| echo: false
+#| eval: true
+fcp |> 
+  pad(group = "pat_id") |> 
+  tidyr::fill(pat_id) |> 
+  print(n = 14)
+```
+
+:::
+
+::: {.column width="60%"}
+
+- New observations are created on the missing dates
+- NAs are filled in for the missing FCPs, with one for each day and group (pat_id)
+- we used **tidyr::fill(pat_id)** to fill in the missing pat_ids
+
+:::
+
+:::
+
+:::
 
 ## Joins of data from different sources
 
-## Local Demographics with CDC SVI data (one to one)
+- We often collect data from different sources that we later want to join together for analysis
+  - Data from local Electronic Medical Record
+  - Data from the CDC
+  - Data from the US Census
+- External data can illuminate our understanding of our local patient data
+
+## Local Demographics with CDC SVI data 
+
+::: panel-tabset
+
+### The Problem
+
+::: columns
+::: {.column width="60%"}
+
+- We have 2 datasets, one local Demographics and Census Tract, and one from the CDC that has values for Social Vulnerability Index by Census Tract
+- We want to know the median SVI for the neighborhood of each patient
+- We need to left_join these datasets together by matching on the Census Tract
+
+:::
+
+::: {.column width="40%"}
+
+![Joins](images/joins.png)
+
+:::
+
+:::
+
+
+### The Code
+
+
+### The Result
+
+:::
 
 ## Patient Demographics with Lab results (one to many)
-

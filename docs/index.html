@@ -236,9 +236,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Recent version of <strong>R</strong></p></li>
 <li><p>Recent version of <strong>RStudio</strong></p></li>
 <li><p>Recent version of packages used in workshop.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>instll_pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"tidyxl"</span>, <span class="st">"unpivotr"</span>)</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>instll_pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"tidyxl"</span>, <span class="st">"unpivotr"</span>, <span class="st">"readxl"</span>, <span class="st">"openxlsx"</span>, <span class="st">"janitor"</span>, <span class="st">"gtsummary"</span>, <span class="st">"here"</span>, <span class="st">"padr"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(instll_pkgs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Ensure you can import data from a Microsoft Excel spreadsheet to R ??</p>
+<li><p>Ensure you can knit R markdown documents</p></li>
+<li><p>Open RStudio and create a new Rmarkdown document</p></li>
+<li><p>Save the document and check you are able to knit it.</p></li>
+<li><p>Ensure you can import data from a Microsoft Excel spreadsheet to R</p>
 <ul>
 <li>Save a a Microsoft Excel spreadsheet in a known folder on your computer.</li>
 <li>Open RStudio install/load (library) the packages {readxl} (<a href="https://readxl.tidyverse.org">link</a>) and {openxlsx} (<a href="https://ycphs.github.io/openxlsx/">link</a>)</li>
@@ -249,21 +252,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="instructors" class="level1">
 <h1>Instructors</h1>
-<p><img src="images/Crystal_circle.png" class="img-fluid" style="float:left;padding: 0 10px 0 0;" alt="Headshot of Crystal Lewis" width="150"> <a href="https://cghlewis.com"><strong>Crystal Lewis</strong></a> (she/her) is a research data management consultant, a frequent blogger, and a member of the R-Ladies Global team. She is working on a book titled <em>Data Management in Large-Scale Education Research</em>. After spending over eight years in the field of education research, she found that the most fulfilling part of my experience was helping researchers build and implement quality data management processes that allowed them to focus more on using their data to make positive changes in the field, and less time wrangling their data into a usable format. <br> <br></p>
+<p><img src="images/Crystal_circle.png" class="img-fluid" style="float:left;padding: 0 10px 0 0;" alt="Headshot of Crystal Lewis" width="150"></p>
+<p><a href="https://cghlewis.com"><strong>Crystal Lewis</strong></a> (she/her) is a Freelance Research Data Management Consultant, helping people better understand how to organize, document, and share their data. She has been wrangling data in the field of Education for over 10 years. She is also a co-organizer for R-Ladies St.&nbsp;Louis. <a href="https://cghlewis.com"><code>r fontawesome::fa("link")</code></a> <a href="https://github.com/Cghlewis/"><code>r fontawesome::fa("github")</code></a> <a href="https://fosstodon.org/@Cghlewis"><code>r fontawesome::fa("mastodon")</code></a> <a href="https://twitter.com/Cghlewis"><code>r fontawesome::fa("twitter")</code></a> <a href="https://www.linkedin.com/in/crystal-lewis-922b4193/"><code>r fontawesome::fa("linkedin")</code></a></p>
+<p><br> <br></p>
 <p><img src="images/Shannon_circle.png" class="img-fluid" style="float:left;padding: 0 10px 0 0;" alt="Headshot of Shannon Pileggi" width="150"></p>
-
 <p><a href="https://www.pipinghotdata.com/"><strong>Shannon Pileggi</strong></a> (she/her) is a Lead Data Scientist at The Prostate Cancer Clinical Trials Consortium, a frequent blogger, and a member of the R-Ladies Global team. She enjoys automating data wrangling and data outputs, and making both data insights and learning new material digestible.</p>
 <p><a href="https://www.pipinghotdata.com/"><code>r fontawesome::fa("link")</code></a> <a href="https://github.com/shannonpileggi/"><code>r fontawesome::fa("github")</code></a> <a href="https://fosstodon.org/@PipingHotData"><code>r fontawesome::fa("mastodon")</code></a> <a href="https://twitter.com/PipingHotData"><code>r fontawesome::fa("twitter")</code></a> <a href="https://www.linkedin.com/in/shannon-m-pileggi/"><code>r fontawesome::fa("linkedin")</code></a></p>
 <p><br> <br> <img src="images/Peter_circle.jpg" class="img-fluid" style="float:left;padding: 0 10px 0 0;" alt="Headshot of Peter Higgins" width="150"></p>
 <p><a href="https://bookdown.org/pdr_higgins/rmrwr/"><strong>Peter Higgins</strong></a> (he/him) is a Professor at the University of Michigan, a translational researcher interested in reproducible research, and the creator of the {medicaldata} package. He enjoys clean and tidy data when he (rarely) encounters it in the wild. <a href="https://www.uofmhealth.org/profile/4/peter-doyle-higgins-md-phd"><code>r fontawesome::fa("link")</code></a> <a href="https://github.com/higgi13425"><code>r fontawesome::fa("github")</code></a> <a href="https://twitter.com/ibddoctor"><code>r fontawesome::fa("twitter")</code></a> <a href="https://www.linkedin.com/in/peter-higgins-b1a21a30/"><code>r fontawesome::fa("linkedin")</code></a></p>
 <p><br> <br></p>
-<p><a href="https://nacnudus.github.io/duncangarmonsway/"><strong>Duncan Garmonsway</strong></a></p>
 </section>
 <section id="further-readingviewing" class="level1">
 <h1>Further Reading/Viewing:</h1>
 <ul>
 <li>Crystal has an excellent (work in progress) e-book on Data Management in Large-Scale Education Research <a href="https://datamgmtinedresearch.com">here</a>.</li>
-<li>Duncan has an excellent e-book on Spreadsheet Munging Strategies <a href="https://nacnudus.github.io/spreadsheet-munging-strategies/">here</a>.</li>
 <li>Peter shared his strong feelings about the limitations of Excel as a data entry tool (and how you can use Excel better) in an R/Medicine workshop/YouTube video <a href="https://www.youtube.com/watch?v=9f-hpJbjKZo">here</a>.</li>
 </ul>
 

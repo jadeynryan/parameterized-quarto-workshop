@@ -32,7 +32,7 @@
     "href": "index.html#prework",
     "title": "Principles of Data Cleaning",
     "section": "Prework",
-    "text": "Prework\nBefore attending the workshop please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nRecent version of packages used in workshop.\ninstll_pkgs &lt;- c(\"tidyverse\", \"tidyxl\", \"unpivotr\")\ninstall.packages(instll_pkgs)\nEnsure you can import data from a Microsoft Excel spreadsheet to R ??\n\nSave a a Microsoft Excel spreadsheet in a known folder on your computer.\nOpen RStudio install/load (library) the packages {readxl} (link) and {openxlsx} (link)\nImport the data from the spreadsheet into R using the path to the correct folder with either package."
+    "text": "Prework\nThis workshop will largely be conducted in the Posit Cloud environment. Please create a login to the Posit Cloud instance of this workshop here:\nPosit Cloud Medical Cleaning Workshop.\nIf you will not be using the Posit Cloud instance, you can just watch along as the instructors teach.\nIf you would like to try this out on your own computer, please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nRecent version of packages used in workshop.\ninstll_pkgs &lt;- c(\"tidyverse\", \"tidyxl\", \"unpivotr\", \"readxl\", \"openxlsx\", \"janitor\", \"gtsummary\", \"here\", \"padr\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it.\nEnsure you can import data from a Microsoft Excel spreadsheet to R\n\nSave a a Microsoft Excel spreadsheet in a known folder on your computer.\nOpen RStudio install/load (library) the packages {readxl} (link) and {openxlsx} (link)\nImport the data from the spreadsheet into R using the path to the correct folder with either package."
   },
   {
     "objectID": "license.html",
@@ -340,21 +340,21 @@
     "href": "slides/index.html#pivoting-longer-common",
     "title": "Data Cleaning",
     "section": "Pivoting Longer (common)",
-    "text": "Pivoting Longer (common)\n\nVisit Dates/Measures\nYour Turn (Exercise)"
+    "text": "Pivoting Longer (common)\n\nWe need to ‘pivot’ data from wide to tall on the regular\nThis “lengthens” data, increasing the number of rows, and decreasing the number of columns\nWe will be looking at Visit Dates/Measures"
   },
   {
     "objectID": "slides/index.html#pivoting-wider",
     "href": "slides/index.html#pivoting-wider",
     "title": "Data Cleaning",
     "section": "Pivoting Wider",
-    "text": "Pivoting Wider"
+    "text": "Pivoting Wider\n\nTall messy_uc DataCodeWider Result\n\n\n\nWide data is less common, but sometimes needed\nHere we will convert the tall version of our selected messy_uc data back to wide.\nThis is what the tall data look like\n\n\n\n# A tibble: 180 × 4\n   pat_id treatment measure   score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;\n 1 001    upa       start_mes  3   \n 2 001    upa       end_mes    0   \n 3 001    upa       start_bss 75.5 \n 4 001    upa       end_bss    9.46\n 5 001    upa       start_emo 73.3 \n 6 001    upa       end_emo   32.0 \n 7 002    uste      start_mes  2   \n 8 002    uste      end_mes    1   \n 9 002    uste      start_bss 53.6 \n10 002    uste      end_bss   31.6 \n# ℹ 170 more rows\n\n\n\n\n\ntall |&gt; \n  pivot_wider(\n    id_cols = c(pat_id, treatment), # Variables not pivoted\n    names_from = measure, # will become column names\n    values_from = score # will become values\n  )\n\n\n\n\n\n# A tibble: 30 × 8\n   pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo\n   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 001    upa               3       0      75.5    9.46      73.3    32.0\n 2 002    uste              2       1      53.6   31.6       55.7    43.2\n 3 003    oza               1       1      25.5   25.5       36.6    36.9\n 4 004    upa               3       1      79.4   35.4       80.8    58.7\n 5 005    oza               3       2      79.5   57.5       72.5    58.9\n 6 006    uste              2       1      54.5   32.5       48.3    34.6\n 7 007    uste              3       2      79.0   57.0       72.7    63.3\n 8 008    oza               3       2      79.0   57.0       74.6    65.3\n 9 009    upa               2       0      53.1    9.06      54.2    28.0\n10 010    oza               3       1      77.4   33.4       74.4    46.8\n# ℹ 20 more rows"
   },
   {
     "objectID": "slides/index.html#padding-unobserved-dates-weekends",
     "href": "slides/index.html#padding-unobserved-dates-weekends",
     "title": "Data Cleaning",
     "section": "Padding unobserved dates (weekends?)",
-    "text": "Padding unobserved dates (weekends?)"
+    "text": "Padding unobserved dates (weekends?)\n\n\n\nThe pad function allows you to fill in missing intervals.\nAs an example, my hospital only runs fecal calprotectin tests on weekdays.\nThis can lead to weird discontinuities in data over a weekend (Dec 3-4).\nNo observations on weekend days.\n\n\n\n\n# A tibble: 15 × 3\n   pat_id date         fcp\n   &lt;chr&gt;  &lt;date&gt;     &lt;dbl&gt;\n 1 001    2022-12-01  1574\n 2 001    2022-12-02  1323\n 3 001    2022-12-05   673\n 4 001    2022-12-06   314\n 5 001    2022-12-07   168\n 6 002    2022-11-30  1393\n 7 002    2022-12-01  1014\n 8 002    2022-12-02   812\n 9 002    2022-12-05   247\n10 002    2022-12-06   118\n11 003    2022-12-02   987\n12 003    2022-12-05   438\n13 003    2022-12-06   312\n14 003    2022-12-05   194\n15 003    2022-12-06   101"
   },
   {
     "objectID": "slides/index.html#padding-unovserved-times",
@@ -452,21 +452,21 @@
     "href": "slides/index.html#deciding-on-the-unit-of-observation",
     "title": "Data Cleaning",
     "section": "Deciding on the Unit of Observation",
-    "text": "Deciding on the Unit of Observation\nImage"
+    "text": "Deciding on the Unit of Observation\n\nIn Prospective Data Collection, a patient arrives for a visit. All data collected are part of the same observation/visit.\n\nAlternatively, we can divide a visit into distinct observations, like blood pressure, a PHQ-9 depression questionnaire, and a hemoglobin measurement (all on the same date)\n\nIn retrospective data review, we can divide the observations up as we choose. For inpatient stays, we need to decide a priori on how to handle multiple observations of the same type (e.g., vitals q6h) in the same day.\n\nuse the 0800 observation each day?\nuse the daily average?\nuse the max values each day?"
   },
   {
     "objectID": "slides/index.html#reshaping-your-data-with-tidyr",
     "href": "slides/index.html#reshaping-your-data-with-tidyr",
     "title": "Data Cleaning",
     "section": "Reshaping your data with tidyr",
-    "text": "Reshaping your data with tidyr"
+    "text": "Reshaping your data with tidyr\n\nWe often enter data by patient\nSpreadsheets encourage us to enter longitudinal data as long rows (per patient)\nWe end up with wide data\n\n[Image]"
   },
   {
     "objectID": "slides/index.html#joins-of-data-from-different-sources",
     "href": "slides/index.html#joins-of-data-from-different-sources",
     "title": "Data Cleaning",
     "section": "Joins of data from different sources",
-    "text": "Joins of data from different sources"
+    "text": "Joins of data from different sources\n\nWe often collect data from different sources that we later want to join together for analysis\n\nData from local Electronic Medical Record\nData from the CDC\nData from the US Census\n\nExternal data can illuminate our understanding of our local patient data"
   },
   {
     "objectID": "slides/index.html#variable-names-cleaner",
@@ -579,5 +579,138 @@
     "title": "Data Cleaning",
     "section": "Check",
     "text": "Check\n\ndf_raw\n\n# A tibble: 31 × 38\n   pat_id treatment start_date ethnic   race  dob                 ...7  start_bp\n   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dttm&gt;              &lt;lgl&gt; &lt;chr&gt;   \n 1 001    upa            44208 hispanic Cauc… 2005-01-07 00:00:00 NA    114/72  \n 2 002    uste           44215 not his… Cauc… 1937-04-13 00:00:00 NA    132/86  \n 3 003    oza            44230 not his… Afri… 1946-06-06 00:00:00 NA    124/92  \n 4 004    upa            44245 not his… Cauc… 1963-07-14 00:00:00 NA    144/83  \n 5 005    oza            44255 not his… Mixed 1978-05-12 00:00:00 NA    122/78  \n 6 006    uste           44259 not his… Other 1992-04-03 00:00:00 NA    121/80  \n 7 007    uste           44264 not his… Asian 1955-08-22 00:00:00 NA    133/74  \n 8 008    oza            44999 Hispanic afro… 1974-09-11 00:00:00 NA    116/73  \n 9 009    upa            44276 NOT his… Cauc… 1984-11-14 00:00:00 NA    118/66  \n10 010    oza            44278 hispamn… Cauc… 1972-12-20 00:00:00 NA    122/78  \n# ℹ 21 more rows\n# ℹ 30 more variables: `pre/post_wt_kg` &lt;chr&gt;, start_mes &lt;dbl&gt;,\n#   start_bss &lt;dbl&gt;, `Start Abd score` &lt;dbl&gt;, start_sys &lt;dbl&gt;,\n#   start_coping &lt;dbl&gt;, start_emo &lt;dbl&gt;,\n#   `Daily Life impact score at start` &lt;dbl&gt;, start_wbc &lt;dbl&gt;, start_plt &lt;chr&gt;,\n#   start_na &lt;chr&gt;, start_k &lt;chr&gt;, end_month &lt;dbl&gt;, end_day &lt;dbl&gt;,\n#   end_year &lt;dbl&gt;, end_mes &lt;dbl&gt;, end_bss &lt;dbl&gt;, end_abd &lt;dbl&gt;, …"
+  },
+  {
+    "objectID": "slides/index.html#what-is-the-unit-of-analysis",
+    "href": "slides/index.html#what-is-the-unit-of-analysis",
+    "title": "Data Cleaning",
+    "section": "What is the Unit of Analysis?",
+    "text": "What is the Unit of Analysis?\n\nWhile the unit of observation may be straightforward for outpatient visits, and complicated for inpatient stays, in the end we need to select a Unit of Analysis\nThis Unit of Analysis usually depends on the Question we want to ask"
+  },
+  {
+    "objectID": "slides/index.html#is-the-unit-of-analysis-the-patient",
+    "href": "slides/index.html#is-the-unit-of-analysis-the-patient",
+    "title": "Data Cleaning",
+    "section": "Is the Unit of Analysis the Patient?",
+    "text": "Is the Unit of Analysis the Patient?\n\nDid the patient die?\nDid the patient have the outcome of colectomy?\nDid the patient reach disease remission?"
+  },
+  {
+    "objectID": "slides/index.html#is-the-unit-of-analysis-the-visitencounter",
+    "href": "slides/index.html#is-the-unit-of-analysis-the-visitencounter",
+    "title": "Data Cleaning",
+    "section": "Is the Unit of Analysis the Visit/Encounter?",
+    "text": "Is the Unit of Analysis the Visit/Encounter?\n\nOften these are within-patient outcomes\n\nDid the C-reactive protein improve from Week 0 to Week 8?\nDid the number of sickle cell crises/year decrease after CRISPR gene therapy?\nDid the endoscopic ulcer score decrease on the experimental therapy vs placebo?"
+  },
+  {
+    "objectID": "slides/index.html#reshaping-your-data-with-tidyr-1",
+    "href": "slides/index.html#reshaping-your-data-with-tidyr-1",
+    "title": "Data Cleaning",
+    "section": "Reshaping your data with tidyr",
+    "text": "Reshaping your data with tidyr\n\nR (and most R functions) are vectorized to handle tall data\nOne small observation per row\nLots of analyses in R are easier with tall data\n\n[Image]"
+  },
+  {
+    "objectID": "slides/index.html#pivoting-longer",
+    "href": "slides/index.html#pivoting-longer",
+    "title": "Data Cleaning",
+    "section": "Pivoting Longer",
+    "text": "Pivoting Longer\n\nArguments: data, cols, names_to, values_to, and many optional arguments\nDetails from the tidyverse help page are here\ndata is your dataframe/tibble - you can pipe this in\ncols = columns to pivot, as a vector of names, or by number, or selected with tidyselect functions\nnames_to = A character vector specifying the new column or columns to create from the information stored in the column names of data specified by cols.\nvalues_to = A string specifying the name of the column to create from the data stored in cell values."
+  },
+  {
+    "objectID": "slides/index.html#pivoting-longer-example",
+    "href": "slides/index.html#pivoting-longer-example",
+    "title": "Data Cleaning",
+    "section": "Pivoting Longer (Example)",
+    "text": "Pivoting Longer (Example)\nLet’s start with the wide version (selected columns from messy_uc)\n\n\n# A tibble: 30 × 8\n   pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo\n   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 001    upa               3       0      75.5    9.46      73.3    32.0\n 2 002    uste              2       1      53.6   31.6       55.7    43.2\n 3 003    oza               1       1      25.5   25.5       36.6    36.9\n 4 004    upa               3       1      79.4   35.4       80.8    58.7\n 5 005    oza               3       2      79.5   57.5       72.5    58.9\n 6 006    uste              2       1      54.5   32.5       48.3    34.6\n 7 007    uste              3       2      79.0   57.0       72.7    63.3\n 8 008    oza               3       2      79.0   57.0       74.6    65.3\n 9 009    upa               2       0      53.1    9.06      54.2    28.0\n10 010    oza               3       1      77.4   33.4       74.4    46.8\n# ℹ 20 more rows\n\n\n\nNote that there are 30 rows, one per patient, with 6 measured quantities for each patient."
+  },
+  {
+    "objectID": "slides/index.html#pivoting-longer-example-1",
+    "href": "slides/index.html#pivoting-longer-example-1",
+    "title": "Data Cleaning",
+    "section": "Pivoting Longer (Example)",
+    "text": "Pivoting Longer (Example)\nThis is the tall version we want to end up with.\n\n\n# A tibble: 180 × 4\n   pat_id treatment measure   score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;\n 1 001    upa       start_mes  3   \n 2 001    upa       end_mes    0   \n 3 001    upa       start_bss 75.5 \n 4 001    upa       end_bss    9.46\n 5 001    upa       start_emo 73.3 \n 6 001    upa       end_emo   32.0 \n 7 002    uste      start_mes  2   \n 8 002    uste      end_mes    1   \n 9 002    uste      start_bss 53.6 \n10 002    uste      end_bss   31.6 \n# ℹ 170 more rows\n\n\n\nNote that there now 180 rows (30*6), with one row per observation measure."
+  },
+  {
+    "objectID": "slides/index.html#pivoting-longer-in-action",
+    "href": "slides/index.html#pivoting-longer-in-action",
+    "title": "Data Cleaning",
+    "section": "Pivoting Longer In Action",
+    "text": "Pivoting Longer In Action\n\nProblem: WideCode: pivot_longerResult: Tall\n\n\n\n\n# A tibble: 30 × 8\n   pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo\n   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 001    upa               3       0      75.5    9.46      73.3    32.0\n 2 002    uste              2       1      53.6   31.6       55.7    43.2\n 3 003    oza               1       1      25.5   25.5       36.6    36.9\n 4 004    upa               3       1      79.4   35.4       80.8    58.7\n 5 005    oza               3       2      79.5   57.5       72.5    58.9\n 6 006    uste              2       1      54.5   32.5       48.3    34.6\n 7 007    uste              3       2      79.0   57.0       72.7    63.3\n 8 008    oza               3       2      79.0   57.0       74.6    65.3\n 9 009    upa               2       0      53.1    9.06      54.2    28.0\n10 010    oza               3       1      77.4   33.4       74.4    46.8\n# ℹ 20 more rows\n\n\n\n\n\nwide |&gt; \n  pivot_longer(\n    cols = \"start_mes\":\"end_emo\", \n    # could also use 3:8\n               names_to = \"measure\",\n               values_to = \"score\")\n\n\n\n\n\n# A tibble: 180 × 4\n   pat_id treatment measure   score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;\n 1 001    upa       start_mes  3   \n 2 001    upa       end_mes    0   \n 3 001    upa       start_bss 75.5 \n 4 001    upa       end_bss    9.46\n 5 001    upa       start_emo 73.3 \n 6 001    upa       end_emo   32.0 \n 7 002    uste      start_mes  2   \n 8 002    uste      end_mes    1   \n 9 002    uste      start_bss 53.6 \n10 002    uste      end_bss   31.6 \n# ℹ 170 more rows"
+  },
+  {
+    "objectID": "slides/index.html#pivoting-longer-1",
+    "href": "slides/index.html#pivoting-longer-1",
+    "title": "Data Cleaning",
+    "section": "Pivoting Longer",
+    "text": "Pivoting Longer\n\nYour Turn (Exercise) with endo_data\nMeasurements of Trans-Epithelial Electrical Resistance (the inverse of leakiness) were taken from biopsies of 3 segments of intestine.\nThis might be affected by portal hypertension in patients with liver cirrhosis\n\n\n\n# A tibble: 10 × 5\n   pat_id portal_htn duod_teer ileal_teer colon_teer\n    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;\n 1      1          1      4.33       14.6       16.2\n 2      2          0     11.7        16.0       19.0\n 3      3          1      4.12       13.8       15.2\n 4      4          1      4.62       16.4       18.1\n 5      5          0     12.4        15.8       19.0\n 6      6          0     13.0        16.2       18.8\n 7      7          0     11.9        15.7       18.3\n 8      8          1      4.87       16.6       18.8\n 9      9          1      4.23       15.0       16.9\n10     10          0     12.8        16.7       19.1"
+  },
+  {
+    "objectID": "slides/index.html#pivoting-wider-1",
+    "href": "slides/index.html#pivoting-wider-1",
+    "title": "Data Cleaning",
+    "section": "Pivoting Wider",
+    "text": "Pivoting Wider\n\nReverse Your Turn (Exercise)"
+  },
+  {
+    "objectID": "slides/index.html#padding-unobvserved-times",
+    "href": "slides/index.html#padding-unobvserved-times",
+    "title": "Data Cleaning",
+    "section": "Padding unobvserved times",
+    "text": "Padding unobvserved times"
+  },
+  {
+    "objectID": "slides/index.html#pivoting-longer-example-2",
+    "href": "slides/index.html#pivoting-longer-example-2",
+    "title": "Data Cleaning",
+    "section": "Pivoting Longer (Example)",
+    "text": "Pivoting Longer (Example)\nWhat do we want for these arguments?\n\ncols\nnames_to\nvalues_to\n\n\n\n# A tibble: 30 × 8\n   pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo\n   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 001    upa               3       0      75.5    9.46      73.3    32.0\n 2 002    uste              2       1      53.6   31.6       55.7    43.2\n 3 003    oza               1       1      25.5   25.5       36.6    36.9\n 4 004    upa               3       1      79.4   35.4       80.8    58.7\n 5 005    oza               3       2      79.5   57.5       72.5    58.9\n 6 006    uste              2       1      54.5   32.5       48.3    34.6\n 7 007    uste              3       2      79.0   57.0       72.7    63.3\n 8 008    oza               3       2      79.0   57.0       74.6    65.3\n 9 009    upa               2       0      53.1    9.06      54.2    28.0\n10 010    oza               3       1      77.4   33.4       74.4    46.8\n# ℹ 20 more rows"
+  },
+  {
+    "objectID": "slides/index.html#one-minor-issue",
+    "href": "slides/index.html#one-minor-issue",
+    "title": "Data Cleaning",
+    "section": "One Minor Issue",
+    "text": "One Minor Issue\n\nProblemCodeResult\n\n\n\nthe “measure” column combines a timepoint and the measure\nNeeds to be separated.\nYou already know how to use separate()\nArguments\n\ncol\nsep\ninto\n\n\n\n\n\ntall |&gt; \n  separate(col = \"measure\",\n           sep = \"_\",\n           into = c(\"timept\", \"measure\"))\n\n\n\n\n\n# A tibble: 180 × 5\n   pat_id treatment timept measure score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;\n 1 001    upa       start  mes      3   \n 2 001    upa       end    mes      0   \n 3 001    upa       start  bss     75.5 \n 4 001    upa       end    bss      9.46\n 5 001    upa       start  emo     73.3 \n 6 001    upa       end    emo     32.0 \n 7 002    uste      start  mes      2   \n 8 002    uste      end    mes      1   \n 9 002    uste      start  bss     53.6 \n10 002    uste      end    bss     31.6 \n# ℹ 170 more rows"
+  },
+  {
+    "objectID": "slides/index.html#one-minor-issue---separation-of-measure",
+    "href": "slides/index.html#one-minor-issue---separation-of-measure",
+    "title": "Data Cleaning",
+    "section": "One Minor Issue - Separation of measure",
+    "text": "One Minor Issue - Separation of measure\n\nProblemCodeResultAlternative within pivot_longer\n\n\n\nthe “measure” column combines a timepoint and the measure\nNeeds to be separated.\nYou already know how to use separate()\nArguments\n\ncol\nsep\ninto\n\n\n\n\n\ntall |&gt; \n  separate(col = \"measure\",\n           sep = \"_\",\n           into = c(\"timept\", \"measure\"))\n\n\n\n\n\n# A tibble: 180 × 5\n   pat_id treatment timept measure score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;\n 1 001    upa       start  mes      3   \n 2 001    upa       end    mes      0   \n 3 001    upa       start  bss     75.5 \n 4 001    upa       end    bss      9.46\n 5 001    upa       start  emo     73.3 \n 6 001    upa       end    emo     32.0 \n 7 002    uste      start  mes      2   \n 8 002    uste      end    mes      1   \n 9 002    uste      start  bss     53.6 \n10 002    uste      end    bss     31.6 \n# ℹ 170 more rows\n\n\n\n\n\nYou can do this within pivot_longer with one more argument\n\n\nwide |&gt; \n  pivot_longer(cols = 3:8,\n    names_to = c(\"timept\", \"measure\"),\n    names_sep = \"_\",\n    values_to = \"score\")\n\n# A tibble: 180 × 5\n   pat_id treatment timept measure score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;\n 1 001    upa       start  mes      3   \n 2 001    upa       end    mes      0   \n 3 001    upa       start  bss     75.5 \n 4 001    upa       end    bss      9.46\n 5 001    upa       start  emo     73.3 \n 6 001    upa       end    emo     32.0 \n 7 002    uste      start  mes      2   \n 8 002    uste      end    mes      1   \n 9 002    uste      start  bss     53.6 \n10 002    uste      end    bss     31.6 \n# ℹ 170 more rows"
+  },
+  {
+    "objectID": "slides/index.html#doing-the-pivot_longer",
+    "href": "slides/index.html#doing-the-pivot_longer",
+    "title": "Data Cleaning",
+    "section": "Doing the pivot_longer()",
+    "text": "Doing the pivot_longer()\nWhat values do we want for these key arguments?\n\ncols\nnames_to\nvalues_to\n\n\n\n# A tibble: 30 × 8\n   pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo\n   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 001    upa               3       0      75.5    9.46      73.3    32.0\n 2 002    uste              2       1      53.6   31.6       55.7    43.2\n 3 003    oza               1       1      25.5   25.5       36.6    36.9\n 4 004    upa               3       1      79.4   35.4       80.8    58.7\n 5 005    oza               3       2      79.5   57.5       72.5    58.9\n 6 006    uste              2       1      54.5   32.5       48.3    34.6\n 7 007    uste              3       2      79.0   57.0       72.7    63.3\n 8 008    oza               3       2      79.0   57.0       74.6    65.3\n 9 009    upa               2       0      53.1    9.06      54.2    28.0\n10 010    oza               3       1      77.4   33.4       74.4    46.8\n# ℹ 20 more rows"
+  },
+  {
+    "objectID": "slides/index.html#pivoting-longer-with-endo_data",
+    "href": "slides/index.html#pivoting-longer-with-endo_data",
+    "title": "Data Cleaning",
+    "section": "Pivoting Longer with endo_data",
+    "text": "Pivoting Longer with endo_data\n\nThe DatasetThe ArgumentsThe CodeThe Solution\n\n\n\n\n# A tibble: 10 × 5\n   pat_id portal_htn duod_teer ileal_teer colon_teer\n    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;\n 1      1          1      4.33       14.6       16.2\n 2      2          0     11.7        16.0       19.0\n 3      3          1      4.12       13.8       15.2\n 4      4          1      4.62       16.4       18.1\n 5      5          0     12.4        15.8       19.0\n 6      6          0     13.0        16.2       18.8\n 7      7          0     11.9        15.7       18.3\n 8      8          1      4.87       16.6       18.8\n 9      9          1      4.23       15.0       16.9\n10     10          0     12.8        16.7       19.1\n\n\n\n\n\nWhat values do you want to use for:\n\ncols\nnames_pattern = “(.+)_teer”\nnames_to\nvalues_to\n\nNote that we are giving you the value for names_pattern, which means that we want to keep the characters of the name (of whatever length) before “_teer”\n\n\n\n\nFill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.\nNote that we are giving you names_pattern\n\n\nendo_data |&gt; \n  pivot_longer(\n    cols =  ,\n    names_pattern = \"(.+)_teer\",\n    names_to =   ,\n    values_to = \n  )\n\n\n\n\nFill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.\n\n\nendo_data |&gt; \n  pivot_longer(\n    cols = \"duod_teer\":\"colon_teer\",\n    names_pattern = \"(.+)_teer\",\n    names_to = c(\"location\"),\n    values_to = \"teer\"\n  )\n\n\nRun the code, and look at the resulting table.\nDo you think that portal hypertension has an effect on TEER and (its inverse) epithelial leakiness?"
+  },
+  {
+    "objectID": "slides/index.html#thickening-time-to-a-usable-level",
+    "href": "slides/index.html#thickening-time-to-a-usable-level",
+    "title": "Data Cleaning",
+    "section": "Thickening Time to a Usable Level",
+    "text": "Thickening Time to a Usable Level\n\nGoalCodeResult\n\n\n\nThe thicken function adds a column to a data frame that is of a higher interval than the original variable.\nThe variable time_stamp has the interval of seconds\nWe can thicken the data to day, or to week, or to month.\n\n\n\n\nWe will thicken to month\n\n\nemergency |&gt; \n  thicken('month')\n\n\n\n\nThis lets us count events like overdoses by month with time_stamp_month.\n\n\n\n# A tibble: 120,450 × 7\n     lat   lng   zip title            time_stamp          twp   time_stamp_month\n   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;            &lt;dttm&gt;              &lt;chr&gt; &lt;date&gt;          \n 1  40.3 -75.6 19525 EMS: BACK PAINS… 2015-12-10 17:40:00 NEW … 2015-12-01      \n 2  40.3 -75.3 19446 EMS: DIABETIC E… 2015-12-10 17:40:00 HATF… 2015-12-01      \n 3  40.1 -75.4 19401 Fire: GAS-ODOR/… 2015-12-10 17:40:00 NORR… 2015-12-01      \n 4  40.1 -75.3 19401 EMS: CARDIAC EM… 2015-12-10 17:40:01 NORR… 2015-12-01      \n 5  40.3 -75.6    NA EMS: DIZZINESS   2015-12-10 17:40:01 LOWE… 2015-12-01      \n 6  40.3 -75.3 19446 EMS: HEAD INJURY 2015-12-10 17:40:01 LANS… 2015-12-01      \n 7  40.2 -75.1 19044 EMS: NAUSEA/VOM… 2015-12-10 17:40:01 HORS… 2015-12-01      \n 8  40.2 -75.4 19426 EMS: RESPIRATOR… 2015-12-10 17:40:01 SKIP… 2015-12-01      \n 9  40.3 -75.4 19438 EMS: SYNCOPAL E… 2015-12-10 17:40:01 LOWE… 2015-12-01      \n10  40.1 -75.3 19462 Traffic: VEHICL… 2015-12-10 17:40:01 PLYM… 2015-12-01      \n# ℹ 120,440 more rows"
+  },
+  {
+    "objectID": "slides/index.html#padding-unobserved-times",
+    "href": "slides/index.html#padding-unobserved-times",
+    "title": "Data Cleaning",
+    "section": "Padding Unobserved Times",
+    "text": "Padding Unobserved Times\n\nThe ProblemThe CodeThe Result\n\n\n\nWe can fill in (pad) the unobserved weekend days with the pad() function.\n\n\n\n\nfcp |&gt; \n  pad(group = \"pat_id\") |&gt; \n  tidyr::fill(pat_id) |&gt; \n  print(n = 14)\n\n\n\n\n\n\n\n# A tibble: 21 × 3\n   pat_id date         fcp\n   &lt;chr&gt;  &lt;date&gt;     &lt;dbl&gt;\n 1 001    2022-12-01  1574\n 2 001    2022-12-02  1323\n 3 001    2022-12-03    NA\n 4 001    2022-12-04    NA\n 5 001    2022-12-05   673\n 6 001    2022-12-06   314\n 7 001    2022-12-07   168\n 8 002    2022-11-30  1393\n 9 002    2022-12-01  1014\n10 002    2022-12-02   812\n11 002    2022-12-03    NA\n12 002    2022-12-04    NA\n13 002    2022-12-05   247\n14 002    2022-12-06   118\n# ℹ 7 more rows\n\n\n\n\nNew observations are created on the missing dates\nNAs are filled in for the missing FCPs, with one for each day and group (pat_id)\nwe used tidyr::fill(pat_id) to fill in the missing pat_ids"
+  },
+  {
+    "objectID": "slides/index.html#local-demographics-with-cdc-svi-data",
+    "href": "slides/index.html#local-demographics-with-cdc-svi-data",
+    "title": "Data Cleaning",
+    "section": "Local Demographics with CDC SVI data",
+    "text": "Local Demographics with CDC SVI data\n\nThe ProblemThe CodeThe Result\n\n\n\n\n\nWe have 2 datasets, one local Demographics and Census Tract, and one from the CDC that has values for Social Vulnerability Index by Census Tract\nWe want to know the median SVI for the neighborhood of each patient\nWe need to left_join these datasets together by matching on the Census Tract\n\n\n\n\n\nJoins"
   }
 ]
