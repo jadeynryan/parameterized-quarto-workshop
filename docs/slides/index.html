@@ -2620,7 +2620,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <section id="pivoting-longer-example" class="slide level2">
 <h2>Pivoting Longer (Example)</h2>
 <p>Let’s start with the wide version (selected columns from messy_uc)</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-59_97816400618de102f12e14c5d2189417">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-60_c2759ccbe0eab1e0d15e4c8fc8c9e1f5">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
@@ -2645,7 +2645,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <section id="pivoting-longer-example-1" class="slide level2">
 <h2>Pivoting Longer (Example)</h2>
 <p>This is the tall version we want to end up with.</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-60_739529bff243f800fce35eacf8d171ec">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-61_b7972faa0a13abd11f26b0f7219555af">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 4
    pat_id treatment measure   score
@@ -2675,7 +2675,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <li>names_to</li>
 <li>values_to</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-61_c1e119e38d043c0ccfe7ca1cdd643fea">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-62_fbb4fca8f7b53dff68600facd2dbdf9f">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
@@ -2700,7 +2700,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Problem: Wide</a></li><li><a href="#tabset-10-2">Code: pivot_longer</a></li><li><a href="#tabset-10-3">Result: Tall</a></li></ul>
 <div class="tab-content">
 <div id="tabset-10-1">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-62_fbb4fca8f7b53dff68600facd2dbdf9f">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-63_5942fbf07f34845002a6bb181ff45281">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
@@ -2720,7 +2720,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-10-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-63_391d6500bad43df471a77a3a98f2f1ae">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-64_f1974fc0a505ac2aa9ff092d2db445fa">
 <div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1"></a>wide <span class="sc">|&gt;</span> </span>
 <span id="cb106-2"><a href="#cb106-2"></a>  <span class="fu">pivot_longer</span>(</span>
 <span id="cb106-3"><a href="#cb106-3"></a>    <span class="at">cols =</span> <span class="st">"start_mes"</span><span class="sc">:</span><span class="st">"end_emo"</span>, </span>
@@ -2730,7 +2730,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-10-3">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-64_39d7488a827410b5492a4639b7f51647">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-65_381a21df702264a66514fa6d1d20435c">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 4
    pat_id treatment measure   score
@@ -2771,7 +2771,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </ul>
 </div>
 <div id="tabset-11-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-65_de88d8a3be4606d28a959ac29a3646ce">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-66_53c2e542505bdb1eec85324e280df7a3">
 <div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a>tall <span class="sc">|&gt;</span> </span>
 <span id="cb108-2"><a href="#cb108-2"></a>  <span class="fu">separate</span>(<span class="at">col =</span> <span class="st">"measure"</span>,</span>
 <span id="cb108-3"><a href="#cb108-3"></a>           <span class="at">sep =</span> <span class="st">"_"</span>,</span>
@@ -2779,7 +2779,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-11-3">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-66_22830498e975b4408f326a0fc8002c66">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-67_60f050ff3e9ba9b8a94a06a169b11987">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 5
    pat_id treatment timept measure score
@@ -2802,7 +2802,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <ul>
 <li>You can do this <em>within</em> pivot_longer with one more argument</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-67_f59eb4cefe75dd4feb4e72db0078fdd4">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-68_95a8e3c74be97e90f2c45964fc65f9f8">
 <div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a>wide <span class="sc">|&gt;</span> </span>
 <span id="cb110-2"><a href="#cb110-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>,</span>
 <span id="cb110-3"><a href="#cb110-3"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"timept"</span>, <span class="st">"measure"</span>),</span>
@@ -2836,7 +2836,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <li>Measurements of Trans-Epithelial Electrical Resistance (the inverse of leakiness) were taken from biopsies of 3 segments of intestine.</li>
 <li>This might be affected by portal hypertension in patients with liver cirrhosis</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-68_da4ebb74a04c13959026d012f76d2173">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-69_fbb507d259cfbef42df04bd840a8b354">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 5
    pat_id portal_htn duod_teer ileal_teer colon_teer
@@ -2860,7 +2860,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">The Dataset</a></li><li><a href="#tabset-12-2">The Arguments</a></li><li><a href="#tabset-12-3">The Code</a></li><li><a href="#tabset-12-4">The Solution</a></li></ul>
 <div class="tab-content">
 <div id="tabset-12-1">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-69_2b38b5a38299ae6a3d761a5ada9aabed">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-70_fe0823ba162e0a02a70091063724753f">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 5
    pat_id portal_htn duod_teer ileal_teer colon_teer
@@ -2895,7 +2895,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <li>Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.</li>
 <li>Note that we are giving you names_pattern</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-70_2f75271fce6fc269c387180535007b11">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-71_fbd97bcb44ee94e1d41985ca55f7233f">
 <div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a>endo_data <span class="sc">|&gt;</span> </span>
 <span id="cb114-2"><a href="#cb114-2"></a>  <span class="fu">pivot_longer</span>(</span>
 <span id="cb114-3"><a href="#cb114-3"></a>    <span class="at">cols =</span>  ,</span>
@@ -2909,7 +2909,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <ul>
 <li>Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-71_ad620e525e10cd084f4d05cec553d10b">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-72_f8da23bf63167425406850662430fb63">
 <div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1"></a>endo_data <span class="sc">|&gt;</span> </span>
 <span id="cb115-2"><a href="#cb115-2"></a>  <span class="fu">pivot_longer</span>(</span>
 <span id="cb115-3"><a href="#cb115-3"></a>    <span class="at">cols =</span> <span class="st">"duod_teer"</span><span class="sc">:</span><span class="st">"colon_teer"</span>,</span>
@@ -2937,7 +2937,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <li>Here we will convert the tall version of our selected messy_uc data back to wide.</li>
 <li>This is what the tall data look like</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-72_e93c80b98d334457004843cc907e72fc">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-73_77ce868467add96d4ae934fdac92971a">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 4
    pat_id treatment measure   score
@@ -2957,7 +2957,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-13-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-73_11978e69af277f155d5ca7745f37da33">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-74_dff7f916a9d83146b7f520fc307e08ef">
 <div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1"></a>tall <span class="sc">|&gt;</span> </span>
 <span id="cb117-2"><a href="#cb117-2"></a>  <span class="fu">pivot_wider</span>(</span>
 <span id="cb117-3"><a href="#cb117-3"></a>    <span class="at">id_cols =</span> <span class="fu">c</span>(pat_id, treatment), <span class="co"># Variables not pivoted</span></span>
@@ -2967,7 +2967,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-13-3">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-74_f43d3d4b6d446e05d2f3e0859d5fcae0">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-75_6c812d9450f1416350140f51c942a9e7">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
@@ -2992,19 +2992,215 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <section>
 <section id="filling-in-unobserved-datestimes-with-padr" class="title-slide slide level1 center">
 <h1>Filling in Unobserved Dates/Times with padr</h1>
-
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-76_cff5f3f1f2564863a64645b1b5d13dab">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1"></a><span class="fu">library</span>(padr)</span>
+<span id="cb119-2"><a href="#cb119-2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb119-3"><a href="#cb119-3"></a>emergency <span class="ot">&lt;-</span> padr<span class="sc">::</span>emergency</span>
+<span id="cb119-4"><a href="#cb119-4"></a><span class="fu">head</span>(emergency) <span class="sc">|&gt;</span>  </span>
+<span id="cb119-5"><a href="#cb119-5"></a>  <span class="fu">select</span>(title, time_stamp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  title                   time_stamp         
+  &lt;chr&gt;                   &lt;dttm&gt;             
+1 EMS: BACK PAINS/INJURY  2015-12-10 17:40:00
+2 EMS: DIABETIC EMERGENCY 2015-12-10 17:40:00
+3 Fire: GAS-ODOR/LEAK     2015-12-10 17:40:00
+4 EMS: CARDIAC EMERGENCY  2015-12-10 17:40:01
+5 EMS: DIZZINESS          2015-12-10 17:40:01
+6 EMS: HEAD INJURY        2015-12-10 17:40:01</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<ul>
+<li>The emergency data set contains &gt; 120K emergency calls from Montgomery County, PA over a period of ~ 11 months.</li>
+<li>Each call has a title and a timestamp</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="thickening-time-to-a-usable-level" class="slide level2">
+<h2>Thickening Time to a Usable Level</h2>
+<div class="panel-tabset">
+<ul id="tabset-14" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-14-1">Goal</a></li><li><a href="#tabset-14-2">Code</a></li><li><a href="#tabset-14-3">Result</a></li></ul>
+<div class="tab-content">
+<div id="tabset-14-1">
+<ul>
+<li>The thicken function adds a column to a data frame that is of a higher interval than the original variable.</li>
+<li>The variable <strong>time_stamp</strong> has the interval of seconds</li>
+<li>We can thicken the data to day, or to week, or to month.</li>
+</ul>
+</div>
+<div id="tabset-14-2">
+<ul>
+<li>We will thicken to month</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-77_465c6842415b9f0a211a11077bbe23d7">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1"></a>emergency <span class="sc">|&gt;</span> </span>
+<span id="cb121-2"><a href="#cb121-2"></a>  <span class="fu">thicken</span>(<span class="st">'month'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-14-3">
+<ul>
+<li>This lets us count events like overdoses by month with time_stamp_month.</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-78_6831390c9d9722a75f33fcc961e2c0ff">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 120,450 × 7
+     lat   lng   zip title            time_stamp          twp   time_stamp_month
+   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;            &lt;dttm&gt;              &lt;chr&gt; &lt;date&gt;          
+ 1  40.3 -75.6 19525 EMS: BACK PAINS… 2015-12-10 17:40:00 NEW … 2015-12-01      
+ 2  40.3 -75.3 19446 EMS: DIABETIC E… 2015-12-10 17:40:00 HATF… 2015-12-01      
+ 3  40.1 -75.4 19401 Fire: GAS-ODOR/… 2015-12-10 17:40:00 NORR… 2015-12-01      
+ 4  40.1 -75.3 19401 EMS: CARDIAC EM… 2015-12-10 17:40:01 NORR… 2015-12-01      
+ 5  40.3 -75.6    NA EMS: DIZZINESS   2015-12-10 17:40:01 LOWE… 2015-12-01      
+ 6  40.3 -75.3 19446 EMS: HEAD INJURY 2015-12-10 17:40:01 LANS… 2015-12-01      
+ 7  40.2 -75.1 19044 EMS: NAUSEA/VOM… 2015-12-10 17:40:01 HORS… 2015-12-01      
+ 8  40.2 -75.4 19426 EMS: RESPIRATOR… 2015-12-10 17:40:01 SKIP… 2015-12-01      
+ 9  40.3 -75.4 19438 EMS: SYNCOPAL E… 2015-12-10 17:40:01 LOWE… 2015-12-01      
+10  40.1 -75.3 19462 Traffic: VEHICL… 2015-12-10 17:40:01 PLYM… 2015-12-01      
+# ℹ 120,440 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="padding-unobserved-dates-weekends" class="slide level2">
 <h2>Padding unobserved dates (weekends?)</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>The pad function allows you to fill in missing intervals.</li>
+<li>As an example, my hospital only runs fecal calprotectin tests on weekdays.</li>
+<li>This can lead to weird discontinuities in data over a weekend (Dec 3-4).</li>
+<li>No observations on weekend days.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-79_c1aaf56df7c8cb5c8a52ebf665ae8c0d">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 15 × 3
+   pat_id date         fcp
+   &lt;chr&gt;  &lt;date&gt;     &lt;dbl&gt;
+ 1 001    2022-12-01  1574
+ 2 001    2022-12-02  1323
+ 3 001    2022-12-05   673
+ 4 001    2022-12-06   314
+ 5 001    2022-12-07   168
+ 6 002    2022-11-30  1393
+ 7 002    2022-12-01  1014
+ 8 002    2022-12-02   812
+ 9 002    2022-12-05   247
+10 002    2022-12-06   118
+11 003    2022-12-02   987
+12 003    2022-12-05   438
+13 003    2022-12-06   312
+14 003    2022-12-05   194
+15 003    2022-12-06   101</code></pre>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="padding-unobvserved-times" class="slide level2">
-<h2>Padding unobvserved times</h2>
+<section id="padding-unobserved-times" class="slide level2">
+<h2>Padding Unobserved Times</h2>
+<div class="panel-tabset">
+<ul id="tabset-15" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-15-1">The Problem</a></li><li><a href="#tabset-15-2">The Code</a></li><li><a href="#tabset-15-3">The Result</a></li></ul>
+<div class="tab-content">
+<div id="tabset-15-1">
+<ul>
+<li>We can fill in (pad) the unobserved weekend days with the <strong>pad()</strong> function.</li>
+</ul>
+</div>
+<div id="tabset-15-2">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-80_6a3a4728c1bdff5a32344acea3f104b7">
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1"></a>fcp <span class="sc">|&gt;</span> </span>
+<span id="cb124-2"><a href="#cb124-2"></a>  <span class="fu">pad</span>(<span class="at">group =</span> <span class="st">"pat_id"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb124-3"><a href="#cb124-3"></a>  tidyr<span class="sc">::</span><span class="fu">fill</span>(pat_id) <span class="sc">|&gt;</span> </span>
+<span id="cb124-4"><a href="#cb124-4"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-15-3">
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-81_e4be01bd365a3e3180c2cb517f47c7e2">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 21 × 3
+   pat_id date         fcp
+   &lt;chr&gt;  &lt;date&gt;     &lt;dbl&gt;
+ 1 001    2022-12-01  1574
+ 2 001    2022-12-02  1323
+ 3 001    2022-12-03    NA
+ 4 001    2022-12-04    NA
+ 5 001    2022-12-05   673
+ 6 001    2022-12-06   314
+ 7 001    2022-12-07   168
+ 8 002    2022-11-30  1393
+ 9 002    2022-12-01  1014
+10 002    2022-12-02   812
+11 002    2022-12-03    NA
+12 002    2022-12-04    NA
+13 002    2022-12-05   247
+14 002    2022-12-06   118
+# ℹ 7 more rows</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li>New observations are created on the missing dates</li>
+<li>NAs are filled in for the missing FCPs, with one for each day and group (pat_id)</li>
+<li>we used <strong>tidyr::fill(pat_id)</strong> to fill in the missing pat_ids</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="joins-of-data-from-different-sources" class="slide level2">
 <h2>Joins of data from different sources</h2>
+<ul>
+<li>We often collect data from different sources that we later want to join together for analysis
+<ul>
+<li>Data from local Electronic Medical Record</li>
+<li>Data from the CDC</li>
+<li>Data from the US Census</li>
+</ul></li>
+<li>External data can illuminate our understanding of our local patient data</li>
+</ul>
 </section>
-<section id="local-demographics-with-cdc-svi-data-one-to-one" class="slide level2">
-<h2>Local Demographics with CDC SVI data (one to one)</h2>
+<section id="local-demographics-with-cdc-svi-data" class="slide level2">
+<h2>Local Demographics with CDC SVI data</h2>
+<div class="panel-tabset">
+<ul id="tabset-16" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-16-1">The Problem</a></li><li><a href="#tabset-16-2">The Code</a></li><li><a href="#tabset-16-3">The Result</a></li></ul>
+<div class="tab-content">
+<div id="tabset-16-1">
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>We have 2 datasets, one local Demographics and Census Tract, and one from the CDC that has values for Social Vulnerability Index by Census Tract</li>
+<li>We want to know the median SVI for the neighborhood of each patient</li>
+<li>We need to left_join these datasets together by matching on the Census Tract</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/joins.png"></p>
+<figcaption>Joins</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-16-2">
+
+</div>
+<div id="tabset-16-3">
+
+</div>
+</div>
+</div>
 </section>
 <section id="patient-demographics-with-lab-results-one-to-many" class="slide level2">
 <h2>Patient Demographics with Lab results (one to many)</h2>

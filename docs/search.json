@@ -354,7 +354,7 @@
     "href": "slides/index.html#padding-unobserved-dates-weekends",
     "title": "Data Cleaning",
     "section": "Padding unobserved dates (weekends?)",
-    "text": "Padding unobserved dates (weekends?)"
+    "text": "Padding unobserved dates (weekends?)\n\n\n\nThe pad function allows you to fill in missing intervals.\nAs an example, my hospital only runs fecal calprotectin tests on weekdays.\nThis can lead to weird discontinuities in data over a weekend (Dec 3-4).\nNo observations on weekend days.\n\n\n\n\n# A tibble: 15 × 3\n   pat_id date         fcp\n   &lt;chr&gt;  &lt;date&gt;     &lt;dbl&gt;\n 1 001    2022-12-01  1574\n 2 001    2022-12-02  1323\n 3 001    2022-12-05   673\n 4 001    2022-12-06   314\n 5 001    2022-12-07   168\n 6 002    2022-11-30  1393\n 7 002    2022-12-01  1014\n 8 002    2022-12-02   812\n 9 002    2022-12-05   247\n10 002    2022-12-06   118\n11 003    2022-12-02   987\n12 003    2022-12-05   438\n13 003    2022-12-06   312\n14 003    2022-12-05   194\n15 003    2022-12-06   101"
   },
   {
     "objectID": "slides/index.html#padding-unovserved-times",
@@ -466,7 +466,7 @@
     "href": "slides/index.html#joins-of-data-from-different-sources",
     "title": "Data Cleaning",
     "section": "Joins of data from different sources",
-    "text": "Joins of data from different sources"
+    "text": "Joins of data from different sources\n\nWe often collect data from different sources that we later want to join together for analysis\n\nData from local Electronic Medical Record\nData from the CDC\nData from the US Census\n\nExternal data can illuminate our understanding of our local patient data"
   },
   {
     "objectID": "slides/index.html#variable-names-cleaner",
@@ -691,5 +691,26 @@
     "title": "Data Cleaning",
     "section": "Pivoting Longer with endo_data",
     "text": "Pivoting Longer with endo_data\n\nThe DatasetThe ArgumentsThe CodeThe Solution\n\n\n\n\n# A tibble: 10 × 5\n   pat_id portal_htn duod_teer ileal_teer colon_teer\n    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;\n 1      1          1      4.33       14.6       16.2\n 2      2          0     11.7        16.0       19.0\n 3      3          1      4.12       13.8       15.2\n 4      4          1      4.62       16.4       18.1\n 5      5          0     12.4        15.8       19.0\n 6      6          0     13.0        16.2       18.8\n 7      7          0     11.9        15.7       18.3\n 8      8          1      4.87       16.6       18.8\n 9      9          1      4.23       15.0       16.9\n10     10          0     12.8        16.7       19.1\n\n\n\n\n\nWhat values do you want to use for:\n\ncols\nnames_pattern = “(.+)_teer”\nnames_to\nvalues_to\n\nNote that we are giving you the value for names_pattern, which means that we want to keep the characters of the name (of whatever length) before “_teer”\n\n\n\n\nFill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.\nNote that we are giving you names_pattern\n\n\nendo_data |&gt; \n  pivot_longer(\n    cols =  ,\n    names_pattern = \"(.+)_teer\",\n    names_to =   ,\n    values_to = \n  )\n\n\n\n\nFill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.\n\n\nendo_data |&gt; \n  pivot_longer(\n    cols = \"duod_teer\":\"colon_teer\",\n    names_pattern = \"(.+)_teer\",\n    names_to = c(\"location\"),\n    values_to = \"teer\"\n  )\n\n\nRun the code, and look at the resulting table.\nDo you think that portal hypertension has an effect on TEER and (its inverse) epithelial leakiness?"
+  },
+  {
+    "objectID": "slides/index.html#thickening-time-to-a-usable-level",
+    "href": "slides/index.html#thickening-time-to-a-usable-level",
+    "title": "Data Cleaning",
+    "section": "Thickening Time to a Usable Level",
+    "text": "Thickening Time to a Usable Level\n\nGoalCodeResult\n\n\n\nThe thicken function adds a column to a data frame that is of a higher interval than the original variable.\nThe variable time_stamp has the interval of seconds\nWe can thicken the data to day, or to week, or to month.\n\n\n\n\nWe will thicken to month\n\n\nemergency |&gt; \n  thicken('month')\n\n\n\n\nThis lets us count events like overdoses by month with time_stamp_month.\n\n\n\n# A tibble: 120,450 × 7\n     lat   lng   zip title            time_stamp          twp   time_stamp_month\n   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;            &lt;dttm&gt;              &lt;chr&gt; &lt;date&gt;          \n 1  40.3 -75.6 19525 EMS: BACK PAINS… 2015-12-10 17:40:00 NEW … 2015-12-01      \n 2  40.3 -75.3 19446 EMS: DIABETIC E… 2015-12-10 17:40:00 HATF… 2015-12-01      \n 3  40.1 -75.4 19401 Fire: GAS-ODOR/… 2015-12-10 17:40:00 NORR… 2015-12-01      \n 4  40.1 -75.3 19401 EMS: CARDIAC EM… 2015-12-10 17:40:01 NORR… 2015-12-01      \n 5  40.3 -75.6    NA EMS: DIZZINESS   2015-12-10 17:40:01 LOWE… 2015-12-01      \n 6  40.3 -75.3 19446 EMS: HEAD INJURY 2015-12-10 17:40:01 LANS… 2015-12-01      \n 7  40.2 -75.1 19044 EMS: NAUSEA/VOM… 2015-12-10 17:40:01 HORS… 2015-12-01      \n 8  40.2 -75.4 19426 EMS: RESPIRATOR… 2015-12-10 17:40:01 SKIP… 2015-12-01      \n 9  40.3 -75.4 19438 EMS: SYNCOPAL E… 2015-12-10 17:40:01 LOWE… 2015-12-01      \n10  40.1 -75.3 19462 Traffic: VEHICL… 2015-12-10 17:40:01 PLYM… 2015-12-01      \n# ℹ 120,440 more rows"
+  },
+  {
+    "objectID": "slides/index.html#padding-unobserved-times",
+    "href": "slides/index.html#padding-unobserved-times",
+    "title": "Data Cleaning",
+    "section": "Padding Unobserved Times",
+    "text": "Padding Unobserved Times\n\nThe ProblemThe CodeThe Result\n\n\n\nWe can fill in (pad) the unobserved weekend days with the pad() function.\n\n\n\n\nfcp |&gt; \n  pad(group = \"pat_id\") |&gt; \n  tidyr::fill(pat_id) |&gt; \n  print(n = 14)\n\n\n\n\n\n\n\n# A tibble: 21 × 3\n   pat_id date         fcp\n   &lt;chr&gt;  &lt;date&gt;     &lt;dbl&gt;\n 1 001    2022-12-01  1574\n 2 001    2022-12-02  1323\n 3 001    2022-12-03    NA\n 4 001    2022-12-04    NA\n 5 001    2022-12-05   673\n 6 001    2022-12-06   314\n 7 001    2022-12-07   168\n 8 002    2022-11-30  1393\n 9 002    2022-12-01  1014\n10 002    2022-12-02   812\n11 002    2022-12-03    NA\n12 002    2022-12-04    NA\n13 002    2022-12-05   247\n14 002    2022-12-06   118\n# ℹ 7 more rows\n\n\n\n\nNew observations are created on the missing dates\nNAs are filled in for the missing FCPs, with one for each day and group (pat_id)\nwe used tidyr::fill(pat_id) to fill in the missing pat_ids"
+  },
+  {
+    "objectID": "slides/index.html#local-demographics-with-cdc-svi-data",
+    "href": "slides/index.html#local-demographics-with-cdc-svi-data",
+    "title": "Data Cleaning",
+    "section": "Local Demographics with CDC SVI data",
+    "text": "Local Demographics with CDC SVI data\n\nThe ProblemThe CodeThe Result\n\n\n\n\n\nWe have 2 datasets, one local Demographics and Census Tract, and one from the CDC that has values for Social Vulnerability Index by Census Tract\nWe want to know the median SVI for the neighborhood of each patient\nWe need to left_join these datasets together by matching on the Census Tract\n\n\n\n\n\nJoins"
   }
 ]

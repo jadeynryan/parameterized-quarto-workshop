@@ -1,5 +1,15 @@
 # Wrangling your Data
 
+```{r}
+#| echo: false
+#| message: false
+library(readxl)
+library(tidyverse)
+library(janitor)
+library(here)
+library(gtsummary)
+library(padr)
+```
 ## Deciding on the Unit of Observation
 
 -   In Prospective Data Collection, a patient arrives for a visit. All data collected are part of the same observation/visit.
@@ -294,12 +304,185 @@ tall |>
 
 # Filling in Unobserved Dates/Times with padr
 
+::: columns
+::: {.column width="55%"}
+
+```{r}
+library(padr)
+library(tidyverse)
+emergency <- padr::emergency
+head(emergency) |>  
+  select(title, time_stamp)
+```
+
+:::
+
+::: {.column width="45%"}
+- The emergency data set contains > 120K emergency calls from Montgomery County, PA over a period of ~ 11 months.
+- Each call has a title and a timestamp
+
+:::
+
+:::
+
+## Thickening Time to a Usable Level
+
+::: panel-tabset
+
+### Goal
+- The thicken function adds a column to a data frame that is of a higher interval than the original variable.
+- The variable **time_stamp** has the interval of seconds
+- We can thicken the data to day, or to week, or to month.
+
+### Code
+- We will thicken to month
+
+```{r}
+#| echo: true
+#| eval: false
+emergency |> 
+  thicken('month')
+```
+
+### Result
+- This lets us count events like overdoses by month with time_stamp_month.
+
+```{r}
+#| echo: false
+#| eval: true
+emergency |> 
+  thicken('month')
+```
+
+:::
+
 ## Padding unobserved dates (weekends?)
 
-## Padding unobvserved times
+::: columns
+::: {.column width="60%"}
+
+- The pad function allows you to fill in missing intervals.
+- As an example, my hospital only runs fecal calprotectin tests on weekdays.
+- This can lead to weird discontinuities in data over a weekend (Dec 3-4).
+- No observations on weekend days.
+
+:::
+
+::: {.column width="40%"}
+
+```{r}
+#| echo: false
+fcp <- tibble::tribble(
+  ~pat_id, ~date, ~fcp,
+  '001', "12-01-2022", 1574,
+  '001', "12-02-2022", 1323,
+  '001', "12-05-2022", 673,
+  '001', "12-06-2022", 314,
+  '001', "12-07-2022", 168,
+  '002', "11-30-2022", 1393,
+  '002', "12-01-2022", 1014,
+  '002', "12-02-2022", 812,
+  '002', "12-05-2022", 247,
+  '002', "12-06-2022", 118,
+  '003', "12-02-2022", 987,
+  '003', "12-05-2022", 438,
+  '003', "12-06-2022", 312,
+  '003', "12-05-2022", 194,
+  '003', "12-06-2022", 101
+) |> mutate(date = lubridate::mdy(date))
+
+fcp
+```
+
+:::
+
+:::
+
+## Padding Unobserved Times
+
+::: panel-tabset
+
+### The Problem
+
+- We can fill in (pad) the unobserved weekend days with the **pad()** function.
+
+### The Code
+
+```{r}
+#| echo: true
+#| eval: false
+fcp |> 
+  pad(group = "pat_id") |> 
+  tidyr::fill(pat_id) |> 
+  print(n = 14)
+```
+
+### The Result
+
+::: columns
+
+::: {.column width="40%"}
+
+```{r}
+#| echo: false
+#| eval: true
+fcp |> 
+  pad(group = "pat_id") |> 
+  tidyr::fill(pat_id) |> 
+  print(n = 14)
+```
+
+:::
+
+::: {.column width="60%"}
+
+- New observations are created on the missing dates
+- NAs are filled in for the missing FCPs, with one for each day and group (pat_id)
+- we used **tidyr::fill(pat_id)** to fill in the missing pat_ids
+
+:::
+
+:::
+
+:::
 
 ## Joins of data from different sources
 
-## Local Demographics with CDC SVI data (one to one)
+- We often collect data from different sources that we later want to join together for analysis
+  - Data from local Electronic Medical Record
+  - Data from the CDC
+  - Data from the US Census
+- External data can illuminate our understanding of our local patient data
+
+## Local Demographics with CDC SVI data 
+
+::: panel-tabset
+
+### The Problem
+
+::: columns
+::: {.column width="60%"}
+
+- We have 2 datasets, one local Demographics and Census Tract, and one from the CDC that has values for Social Vulnerability Index by Census Tract
+- We want to know the median SVI for the neighborhood of each patient
+- We need to left_join these datasets together by matching on the Census Tract
+
+:::
+
+::: {.column width="40%"}
+
+![Joins](images/joins.png)
+
+:::
+
+:::
+
+
+### The Code
+
+
+### The Result
+
+:::
 
 ## Patient Demographics with Lab results (one to many)
