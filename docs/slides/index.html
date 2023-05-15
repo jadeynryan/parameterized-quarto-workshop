@@ -387,6 +387,8 @@
       margin-right: 0; 
     }
   </style>
+  <link href="../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
+  <script src="../site_libs/countdown-0.4.0/countdown.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -428,6 +430,11 @@ Crystal Lewis, Shannon Pileggi, &amp; Peter Higgins
 <p><img data-src="images/Peter_circle.jpg" style="width:70.0%"></p>
 </div>
 </div>
+</section>
+<section id="scope" class="slide level2">
+<h2>Scope</h2>
+
+<img data-src="images/data_beast_allison_horst.jpeg" class="r-stretch quarto-figure-center"><p class="caption">Taming the Data Beast, by Allison Horst</p><p>Taming the Data Beast, from Allison Horst’s <a href="https://allisonhorst.com/data-science-art">Data Science Illustrations</a></p>
 </section>
 <section id="schedule" class="slide level2">
 <h2>Schedule</h2>
@@ -815,6 +822,21 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 </div>
 </div>
 </section>
+<section id="exercise" class="slide level2">
+<h2>Exercise</h2>
+<p><br></p>
+<p>Complete Data Cleaning Fundamentals Exercise SP1.</p>
+<p><br></p>
+<p><a href="https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html" target="_blank">–&gt; Take me to the exercises &lt;–</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_9838576d" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:4em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
 <section id="replace-values-with-missing" class="slide level2">
 <h2>Replace values with missing</h2>
 <div class="panel-tabset">
@@ -823,7 +845,7 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 <div id="tabset-3-1">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-17_4815713746daf589d6fc150bfaca124a">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-18_40b9ed9a8eb8904e6f572250c48f1624">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">count</span>(end_na) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -844,19 +866,19 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-18_28d13678484acd02c6a7cbe7c28c1da0">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-19_52bc3e59c97f17e31ea6e555258b43b1">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> end_na)) <span class="sc">+</span></span>
 <span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-3-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-19_7fe78f483bd03dcb928ad546e46d2f2a">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-20_ae648cac99bc0d466c2c9caf48ff9382">
 <div class="sourceCode cell-code" id="cb24" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb24-3"><a href="#cb24-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
@@ -872,7 +894,7 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 <div id="tabset-3-3">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-20_9ea37eef964ec786ad371c779dff578a">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-21_bbff8a5a2488910680498f4552d8c9fd">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">count</span>(end_na, end_na_clean) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -893,12 +915,12 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-21_484ba5b1c8ce4609deac8ccbf4d5df5d">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-22_70916378208773539ebe81fd01a335a6">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> end_na_clean)) <span class="sc">+</span></span>
 <span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -915,7 +937,7 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 <div id="tabset-4-1">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-22_05510109a516659d5de17037f58ad097">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-23_465e9bea370d35d0dfa0e999b9611682">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>df_raw <span class="sc">|&gt;</span> </span>
 <span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">select</span>(end_emo) <span class="sc">|&gt;</span> </span>
 <span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -927,7 +949,7 @@ $ end_emo &lt;chr&gt; "31.980531232702354", "43.154961592472482", "36.8811239464
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-23_ec7d3b4b429f30248d240193c18cea68">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-24_84a3415e0b0bfccb4175a8f08461a5f7">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">mean</span>(df_raw[[<span class="st">"end_emo"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in mean.default(df_raw[["end_emo"]], na.rm = TRUE): argument is not
@@ -939,7 +961,7 @@ numeric or logical: returning NA</code></pre>
 </div>
 </div>
 </div><div class="column fragment" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-24_79b063b7fffdf4395cbaefce177dda95">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-25_4d6a3f525c90d890c99d986c53fff84f">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>df_raw[[<span class="st">"end_emo"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "31.980531232702354" "43.154961592472482" "36.881123946451076"
@@ -959,7 +981,7 @@ numeric or logical: returning NA</code></pre>
 </div>
 </div>
 <div id="tabset-4-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-25_4c6ec6e14497dc9c70ebe76c1cfb9285">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-26_2d834677e42bf028e9bced1a6d8961bc">
 <div class="sourceCode cell-code" id="cb35" data-code-line-numbers="10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
 <span id="cb35-2"><a href="#cb35-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb35-3"><a href="#cb35-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
@@ -976,7 +998,7 @@ numeric or logical: returning NA</code></pre>
 <div id="tabset-4-3">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-26_3972d13416aaa793c5744ff74511190d">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-27_ff875a6aac7f9608a1f343a130015e9a">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb36-2"><a href="#cb36-2"></a>  <span class="fu">select</span>(end_emo_clean) <span class="sc">|&gt;</span> </span>
 <span id="cb36-3"><a href="#cb36-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -988,7 +1010,7 @@ $ end_emo_clean &lt;dbl&gt; 31.98053, 43.15496, 36.88112, 58.67031, 58.86386, 34
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-27_e9be23cc93eaccf22b0de64b5ac16c07">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-28_4725d2f44601d9e6ca8aa3e578c6773b">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">mean</span>(df_clean[[<span class="st">"end_emo_clean"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 44.78813</code></pre>
@@ -996,7 +1018,7 @@ $ end_emo_clean &lt;dbl&gt; 31.98053, 43.15496, 36.88112, 58.67031, 58.86386, 34
 </div>
 </div>
 </div><div class="column fragment" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-28_dcc29f5fe7620b386a54558f4afed42a">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-29_8717b80a4a16a9f801faa54ffe9401bc">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb40-2"><a href="#cb40-2"></a>  <span class="fu">count</span>(end_emo_clean, end_emo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1028,7 +1050,7 @@ $ end_emo_clean &lt;dbl&gt; 31.98053, 43.15496, 36.88112, 58.67031, 58.86386, 34
 <ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Problem</a></li><li><a href="#tabset-5-2">Solution</a></li><li><a href="#tabset-5-3">Confirm</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-29_f4255a339b59ee53eab670a6777989ff">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-30_dfdfd9c40d569b785b5b3a201831f5a5">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>df_raw <span class="sc">|&gt;</span> </span>
 <span id="cb42-2"><a href="#cb42-2"></a>  <span class="fu">select</span>(start_date) <span class="sc">|&gt;</span> </span>
 <span id="cb42-3"><a href="#cb42-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1040,7 +1062,7 @@ $ start_date &lt;dbl&gt; 44208, 44215, 44230, 44245, 44255, 44259, 44264, 44999,
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-30_cef541969cec3763ff21cb252a10abc4">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-31_b18ec93d165bd4b0436e6593ffef9dfb">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>df_raw[[<span class="st">"start_date"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 44208 44215 44230 44245 44255 44259 44264 44999 44276 44278 44297 44308
@@ -1051,7 +1073,7 @@ $ start_date &lt;dbl&gt; 44208, 44215, 44230, 44245, 44255, 44259, 44264, 44999,
 </div>
 </div>
 <div id="tabset-5-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-31_1048806269fd96b6515195612247423e">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-32_d8e36ee849d33b82620e3d61cbdbd8f2">
 <div class="sourceCode cell-code" id="cb46" data-code-line-numbers="11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
 <span id="cb46-2"><a href="#cb46-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb46-3"><a href="#cb46-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
@@ -1069,7 +1091,7 @@ $ start_date &lt;dbl&gt; 44208, 44215, 44230, 44245, 44255, 44259, 44264, 44999,
 <div id="tabset-5-3">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-32_01182af0651e7b735bd2b44d33252f4b">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-33_609f0507cfa0dbe580fe1fa2b586a013">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb47-2"><a href="#cb47-2"></a>  <span class="fu">select</span>(start_date, start_date_clean) <span class="sc">|&gt;</span> </span>
 <span id="cb47-3"><a href="#cb47-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1081,7 +1103,7 @@ $ start_date_clean &lt;date&gt; 2021-01-12, 2021-01-19, 2021-02-03, 2021-02-18, 
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-33_5f1fcaed7f8e476891b54ab7337a199e">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-34_ee652d0d37bb405148a19058517af1bc">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb49-2"><a href="#cb49-2"></a>  <span class="fu">count</span>(start_date, start_date_clean) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1115,7 +1137,7 @@ $ start_date_clean &lt;date&gt; 2021-01-12, 2021-01-19, 2021-02-03, 2021-02-18, 
 <div id="tabset-6-1">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-34_7869547d06ddf679a682fd04c54bc6c5">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-35_d8065e3af5e9fd17e3026e4dbb1f6bf6">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>df_raw <span class="sc">|&gt;</span> </span>
 <span id="cb51-2"><a href="#cb51-2"></a>  <span class="fu">select</span>(start_na) <span class="sc">|&gt;</span> </span>
 <span id="cb51-3"><a href="#cb51-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1127,7 +1149,7 @@ $ start_na &lt;chr&gt; "137mmol/L", "142mmol/L", "140mmol/L", "139mmol/L", "144m
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-35_1f02fdf08b7d0acbd6eb9736fe8f1d49">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-36_63e4336ae51a757946c4bdf4842d1e69">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="fu">mean</span>(df_raw[[<span class="st">"start_na"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in mean.default(df_raw[["start_na"]], na.rm = TRUE): argument is not
@@ -1139,7 +1161,7 @@ numeric or logical: returning NA</code></pre>
 </div>
 </div>
 </div><div class="column fragment" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-36_37b0687c9d092ac9e7e289f36eeaea60">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-37_e42fd096ccb2d34392d6614eab77dca7">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>df_raw[[<span class="st">"start_na"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "137mmol/L" "142mmol/L" "140mmol/L" "139mmol/L" "144mmol/L" "145mmol/L"
@@ -1154,7 +1176,7 @@ numeric or logical: returning NA</code></pre>
 </div>
 </div>
 <div id="tabset-6-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-37_e4d0283ddaa5a659b6825a376a95acba">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-38_b87ee30d39d678a515c234156bbcb9f1">
 <div class="sourceCode cell-code" id="cb58" data-code-line-numbers="11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
 <span id="cb58-2"><a href="#cb58-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb58-3"><a href="#cb58-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
@@ -1172,7 +1194,7 @@ numeric or logical: returning NA</code></pre>
 <div id="tabset-6-3">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-38_bc268a2c14891758f8a65a2e47124010">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-39_f15a50a3dcc479f2627dcf90f351a48a">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb59-2"><a href="#cb59-2"></a>  <span class="fu">select</span>(start_na_clean) <span class="sc">|&gt;</span> </span>
 <span id="cb59-3"><a href="#cb59-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1184,7 +1206,7 @@ $ start_na_clean &lt;dbl&gt; 137, 142, 140, 139, 144, 145, 142, 138, 140, 137, 1
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-39_cf5fd834f9e8db6b3ae758c3ed697adc">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-40_577d470e398915679a5e10aa0aa35f14">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="fu">mean</span>(df_clean[[<span class="st">"start_na_clean"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 139.9333</code></pre>
@@ -1192,7 +1214,7 @@ $ start_na_clean &lt;dbl&gt; 137, 142, 140, 139, 144, 145, 142, 138, 140, 137, 1
 </div>
 </div>
 </div><div class="column fragment" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-40_113616d7a4beb004aff770d397f64d30">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-41_662b99cde61654f025a434265ed0e341">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb63-2"><a href="#cb63-2"></a>  <span class="fu">count</span>(start_na_clean, start_na)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1219,6 +1241,21 @@ $ start_na_clean &lt;dbl&gt; 137, 142, 140, 139, 144, 145, 142, 138, 140, 137, 1
 </div>
 </div>
 </section>
+<section id="exercise-1" class="slide level2">
+<h2>Exercise</h2>
+<p><br></p>
+<p>Complete Data Cleaning Fundamentals Exercise SP2.</p>
+<p><br></p>
+<p><a href="https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html" target="_blank">–&gt; Take me to the exercises &lt;–</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_30285aa6" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:4em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
 <section id="character-variable-should-be-a-factor" class="slide level2">
 <h2>Character variable should be a factor</h2>
 <div class="panel-tabset">
@@ -1227,7 +1264,7 @@ $ start_na_clean &lt;dbl&gt; 137, 142, 140, 139, 144, 145, 142, 138, 140, 137, 1
 <div id="tabset-7-1">
 <div class="columns">
 <div class="column" style="width:35%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-41_435e78577d0830ad42d21b42a6f60ba8">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-43_f124845c2dbba6efe69bb685cc44ec32">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb65-2"><a href="#cb65-2"></a>  <span class="fu">count</span>(treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1241,7 +1278,7 @@ $ start_na_clean &lt;dbl&gt; 137, 142, 140, 139, 144, 145, 142, 138, 140, 137, 1
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-42_1d3635131a029168f898c79b2a0b416a">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-44_5edf5f5f1d2c3d01ec5bc7ba419a84ef">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb67-2"><a href="#cb67-2"></a>  <span class="fu">count</span>(ethnic_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1254,7 +1291,7 @@ $ start_na_clean &lt;dbl&gt; 137, 142, 140, 139, 144, 145, 142, 138, 140, 137, 1
 </div>
 </div>
 </div><div class="column fragment" style="width:65%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-43_a9cd753c9f1efa74990f7252f322c923">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-45_74faee3bbcdabeaf19129a4467d539fa">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb69-2"><a href="#cb69-2"></a>  <span class="fu">select</span>(treatment, ethnic_clean) <span class="sc">|&gt;</span> </span>
 <span id="cb69-3"><a href="#cb69-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1266,29 +1303,29 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
 </div>
 </div>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-44_e68c70a0f69085e7377c82f964475b7a">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-46_91b0cc1965a2b830fa3aee80d20b421a">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb71-2"><a href="#cb71-2"></a>  <span class="fu">select</span>(treatment, ethnic_clean) <span class="sc">|&gt;</span> </span>
 <span id="cb71-3"><a href="#cb71-3"></a>  <span class="fu">tbl_summary</span>(<span class="at">by =</span> treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="fyykcbpacn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fyykcbpacn table {
+<div id="yykcbpacnd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yykcbpacnd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fyykcbpacn thead, #fyykcbpacn tbody, #fyykcbpacn tfoot, #fyykcbpacn tr, #fyykcbpacn td, #fyykcbpacn th {
+#yykcbpacnd thead, #yykcbpacnd tbody, #yykcbpacnd tfoot, #yykcbpacnd tr, #yykcbpacnd td, #yykcbpacnd th {
   border-style: none;
 }
 
-#fyykcbpacn p {
+#yykcbpacnd p {
   margin: 0;
   padding: 0;
 }
 
-#fyykcbpacn .gt_table {
+#yykcbpacnd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1314,12 +1351,12 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-left-color: #D3D3D3;
 }
 
-#fyykcbpacn .gt_caption {
+#yykcbpacnd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fyykcbpacn .gt_title {
+#yykcbpacnd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1331,7 +1368,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-bottom-width: 0;
 }
 
-#fyykcbpacn .gt_subtitle {
+#yykcbpacnd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1343,7 +1380,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-top-width: 0;
 }
 
-#fyykcbpacn .gt_heading {
+#yykcbpacnd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1355,13 +1392,13 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-right-color: #D3D3D3;
 }
 
-#fyykcbpacn .gt_bottom_border {
+#yykcbpacnd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fyykcbpacn .gt_col_headings {
+#yykcbpacnd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1376,7 +1413,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-right-color: #D3D3D3;
 }
 
-#fyykcbpacn .gt_col_heading {
+#yykcbpacnd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1396,7 +1433,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   overflow-x: hidden;
 }
 
-#fyykcbpacn .gt_column_spanner_outer {
+#yykcbpacnd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1408,15 +1445,15 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   padding-right: 4px;
 }
 
-#fyykcbpacn .gt_column_spanner_outer:first-child {
+#yykcbpacnd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fyykcbpacn .gt_column_spanner_outer:last-child {
+#yykcbpacnd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fyykcbpacn .gt_column_spanner {
+#yykcbpacnd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1428,11 +1465,11 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   width: 100%;
 }
 
-#fyykcbpacn .gt_spanner_row {
+#yykcbpacnd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fyykcbpacn .gt_group_heading {
+#yykcbpacnd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1458,7 +1495,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   text-align: left;
 }
 
-#fyykcbpacn .gt_empty_group_heading {
+#yykcbpacnd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1473,15 +1510,15 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   vertical-align: middle;
 }
 
-#fyykcbpacn .gt_from_md > :first-child {
+#yykcbpacnd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fyykcbpacn .gt_from_md > :last-child {
+#yykcbpacnd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fyykcbpacn .gt_row {
+#yykcbpacnd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1500,7 +1537,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   overflow-x: hidden;
 }
 
-#fyykcbpacn .gt_stub {
+#yykcbpacnd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1513,7 +1550,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   padding-right: 5px;
 }
 
-#fyykcbpacn .gt_stub_row_group {
+#yykcbpacnd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1527,15 +1564,15 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   vertical-align: top;
 }
 
-#fyykcbpacn .gt_row_group_first td {
+#yykcbpacnd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fyykcbpacn .gt_row_group_first th {
+#yykcbpacnd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fyykcbpacn .gt_summary_row {
+#yykcbpacnd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1545,16 +1582,16 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   padding-right: 5px;
 }
 
-#fyykcbpacn .gt_first_summary_row {
+#yykcbpacnd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fyykcbpacn .gt_first_summary_row.thick {
+#yykcbpacnd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fyykcbpacn .gt_last_summary_row {
+#yykcbpacnd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1564,7 +1601,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-bottom-color: #D3D3D3;
 }
 
-#fyykcbpacn .gt_grand_summary_row {
+#yykcbpacnd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1574,7 +1611,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   padding-right: 5px;
 }
 
-#fyykcbpacn .gt_first_grand_summary_row {
+#yykcbpacnd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1584,7 +1621,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-top-color: #D3D3D3;
 }
 
-#fyykcbpacn .gt_last_grand_summary_row_top {
+#yykcbpacnd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1594,11 +1631,11 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-bottom-color: #D3D3D3;
 }
 
-#fyykcbpacn .gt_striped {
+#yykcbpacnd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fyykcbpacn .gt_table_body {
+#yykcbpacnd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1607,7 +1644,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-bottom-color: #D3D3D3;
 }
 
-#fyykcbpacn .gt_footnotes {
+#yykcbpacnd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1621,7 +1658,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-right-color: #D3D3D3;
 }
 
-#fyykcbpacn .gt_footnote {
+#yykcbpacnd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1630,7 +1667,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   padding-right: 5px;
 }
 
-#fyykcbpacn .gt_sourcenotes {
+#yykcbpacnd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1644,7 +1681,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-right-color: #D3D3D3;
 }
 
-#fyykcbpacn .gt_sourcenote {
+#yykcbpacnd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1652,63 +1689,63 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   padding-right: 5px;
 }
 
-#fyykcbpacn .gt_left {
+#yykcbpacnd .gt_left {
   text-align: left;
 }
 
-#fyykcbpacn .gt_center {
+#yykcbpacnd .gt_center {
   text-align: center;
 }
 
-#fyykcbpacn .gt_right {
+#yykcbpacnd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fyykcbpacn .gt_font_normal {
+#yykcbpacnd .gt_font_normal {
   font-weight: normal;
 }
 
-#fyykcbpacn .gt_font_bold {
+#yykcbpacnd .gt_font_bold {
   font-weight: bold;
 }
 
-#fyykcbpacn .gt_font_italic {
+#yykcbpacnd .gt_font_italic {
   font-style: italic;
 }
 
-#fyykcbpacn .gt_super {
+#yykcbpacnd .gt_super {
   font-size: 65%;
 }
 
-#fyykcbpacn .gt_footnote_marks {
+#yykcbpacnd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fyykcbpacn .gt_asterisk {
+#yykcbpacnd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fyykcbpacn .gt_indent_1 {
+#yykcbpacnd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fyykcbpacn .gt_indent_2 {
+#yykcbpacnd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fyykcbpacn .gt_indent_3 {
+#yykcbpacnd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fyykcbpacn .gt_indent_4 {
+#yykcbpacnd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fyykcbpacn .gt_indent_5 {
+#yykcbpacnd .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1751,8 +1788,8 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
 </div>
 </div>
 <div id="tabset-7-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-45_d1b068d340b2b73681e6a68f92725ed5">
-<div class="sourceCode cell-code" id="cb72" data-code-line-numbers="8,11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-47_35a1c048f673aa5226829327faf20128">
+<div class="sourceCode cell-code" id="cb72" data-code-line-numbers="8,12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
 <span id="cb72-2"><a href="#cb72-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb72-3"><a href="#cb72-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb72-4"><a href="#cb72-4"></a>  <span class="fu">mutate</span>(</span>
@@ -1772,7 +1809,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
 <div id="tabset-7-3">
 <div class="columns">
 <div class="column" style="width:35%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-46_62237438640157548619ae4046eb0a8a">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-48_a8ed8afc30898bb02e301fb9632ac4be">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb73-2"><a href="#cb73-2"></a>  <span class="fu">count</span>(treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1786,7 +1823,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-47_004fa81319e45e63f76045364377dce1">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-49_15821c03de446d546b5f410636356306">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb75-2"><a href="#cb75-2"></a>  <span class="fu">count</span>(ethnic_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1799,7 +1836,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
 </div>
 </div>
 </div><div class="column fragment" style="width:65%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-48_992bb875b940e019b2bebb6109ac1049">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-50_acc6d5e96be33d2cb639a3cbc0a730f9">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb77-2"><a href="#cb77-2"></a>  <span class="fu">select</span>(treatment, ethnic_clean) <span class="sc">|&gt;</span> </span>
 <span id="cb77-3"><a href="#cb77-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1811,29 +1848,29 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
 </div>
 </div>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-49_7c7529c94e6e8d1d9e95c0a96de88bab">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-51_6796ab922cb840cbb60fb4b69f771b4d">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb79-2"><a href="#cb79-2"></a>  <span class="fu">select</span>(treatment, ethnic_clean) <span class="sc">|&gt;</span> </span>
 <span id="cb79-3"><a href="#cb79-3"></a>  <span class="fu">tbl_summary</span>(<span class="at">by =</span> treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="dhgowbrklr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dhgowbrklr table {
+<div id="hgowbrklrl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hgowbrklrl table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dhgowbrklr thead, #dhgowbrklr tbody, #dhgowbrklr tfoot, #dhgowbrklr tr, #dhgowbrklr td, #dhgowbrklr th {
+#hgowbrklrl thead, #hgowbrklrl tbody, #hgowbrklrl tfoot, #hgowbrklrl tr, #hgowbrklrl td, #hgowbrklrl th {
   border-style: none;
 }
 
-#dhgowbrklr p {
+#hgowbrklrl p {
   margin: 0;
   padding: 0;
 }
 
-#dhgowbrklr .gt_table {
+#hgowbrklrl .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1859,12 +1896,12 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-left-color: #D3D3D3;
 }
 
-#dhgowbrklr .gt_caption {
+#hgowbrklrl .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dhgowbrklr .gt_title {
+#hgowbrklrl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1876,7 +1913,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-bottom-width: 0;
 }
 
-#dhgowbrklr .gt_subtitle {
+#hgowbrklrl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1888,7 +1925,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-top-width: 0;
 }
 
-#dhgowbrklr .gt_heading {
+#hgowbrklrl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1900,13 +1937,13 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-right-color: #D3D3D3;
 }
 
-#dhgowbrklr .gt_bottom_border {
+#hgowbrklrl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dhgowbrklr .gt_col_headings {
+#hgowbrklrl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1921,7 +1958,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-right-color: #D3D3D3;
 }
 
-#dhgowbrklr .gt_col_heading {
+#hgowbrklrl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1941,7 +1978,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   overflow-x: hidden;
 }
 
-#dhgowbrklr .gt_column_spanner_outer {
+#hgowbrklrl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1953,15 +1990,15 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   padding-right: 4px;
 }
 
-#dhgowbrklr .gt_column_spanner_outer:first-child {
+#hgowbrklrl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dhgowbrklr .gt_column_spanner_outer:last-child {
+#hgowbrklrl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dhgowbrklr .gt_column_spanner {
+#hgowbrklrl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1973,11 +2010,11 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   width: 100%;
 }
 
-#dhgowbrklr .gt_spanner_row {
+#hgowbrklrl .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dhgowbrklr .gt_group_heading {
+#hgowbrklrl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2003,7 +2040,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   text-align: left;
 }
 
-#dhgowbrklr .gt_empty_group_heading {
+#hgowbrklrl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2018,15 +2055,15 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   vertical-align: middle;
 }
 
-#dhgowbrklr .gt_from_md > :first-child {
+#hgowbrklrl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dhgowbrklr .gt_from_md > :last-child {
+#hgowbrklrl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dhgowbrklr .gt_row {
+#hgowbrklrl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2045,7 +2082,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   overflow-x: hidden;
 }
 
-#dhgowbrklr .gt_stub {
+#hgowbrklrl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2058,7 +2095,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   padding-right: 5px;
 }
 
-#dhgowbrklr .gt_stub_row_group {
+#hgowbrklrl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2072,15 +2109,15 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   vertical-align: top;
 }
 
-#dhgowbrklr .gt_row_group_first td {
+#hgowbrklrl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dhgowbrklr .gt_row_group_first th {
+#hgowbrklrl .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dhgowbrklr .gt_summary_row {
+#hgowbrklrl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2090,16 +2127,16 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   padding-right: 5px;
 }
 
-#dhgowbrklr .gt_first_summary_row {
+#hgowbrklrl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dhgowbrklr .gt_first_summary_row.thick {
+#hgowbrklrl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dhgowbrklr .gt_last_summary_row {
+#hgowbrklrl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2109,7 +2146,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-bottom-color: #D3D3D3;
 }
 
-#dhgowbrklr .gt_grand_summary_row {
+#hgowbrklrl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2119,7 +2156,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   padding-right: 5px;
 }
 
-#dhgowbrklr .gt_first_grand_summary_row {
+#hgowbrklrl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2129,7 +2166,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-top-color: #D3D3D3;
 }
 
-#dhgowbrklr .gt_last_grand_summary_row_top {
+#hgowbrklrl .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2139,11 +2176,11 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-bottom-color: #D3D3D3;
 }
 
-#dhgowbrklr .gt_striped {
+#hgowbrklrl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dhgowbrklr .gt_table_body {
+#hgowbrklrl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2152,7 +2189,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-bottom-color: #D3D3D3;
 }
 
-#dhgowbrklr .gt_footnotes {
+#hgowbrklrl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2166,7 +2203,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-right-color: #D3D3D3;
 }
 
-#dhgowbrklr .gt_footnote {
+#hgowbrklrl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2175,7 +2212,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   padding-right: 5px;
 }
 
-#dhgowbrklr .gt_sourcenotes {
+#hgowbrklrl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2189,7 +2226,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-right-color: #D3D3D3;
 }
 
-#dhgowbrklr .gt_sourcenote {
+#hgowbrklrl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2197,63 +2234,63 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   padding-right: 5px;
 }
 
-#dhgowbrklr .gt_left {
+#hgowbrklrl .gt_left {
   text-align: left;
 }
 
-#dhgowbrklr .gt_center {
+#hgowbrklrl .gt_center {
   text-align: center;
 }
 
-#dhgowbrklr .gt_right {
+#hgowbrklrl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dhgowbrklr .gt_font_normal {
+#hgowbrklrl .gt_font_normal {
   font-weight: normal;
 }
 
-#dhgowbrklr .gt_font_bold {
+#hgowbrklrl .gt_font_bold {
   font-weight: bold;
 }
 
-#dhgowbrklr .gt_font_italic {
+#hgowbrklrl .gt_font_italic {
   font-style: italic;
 }
 
-#dhgowbrklr .gt_super {
+#hgowbrklrl .gt_super {
   font-size: 65%;
 }
 
-#dhgowbrklr .gt_footnote_marks {
+#hgowbrklrl .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dhgowbrklr .gt_asterisk {
+#hgowbrklrl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dhgowbrklr .gt_indent_1 {
+#hgowbrklrl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dhgowbrklr .gt_indent_2 {
+#hgowbrklrl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dhgowbrklr .gt_indent_3 {
+#hgowbrklrl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dhgowbrklr .gt_indent_4 {
+#hgowbrklrl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dhgowbrklr .gt_indent_5 {
+#hgowbrklrl .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2298,13 +2335,28 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
 </div>
 </div>
 </section>
+<section id="exercise-2" class="slide level2">
+<h2>Exercise</h2>
+<p><br></p>
+<p>Complete Data Cleaning Fundamentals Exercise SP3.</p>
+<p><br></p>
+<p><a href="https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html" target="_blank">–&gt; Take me to the exercises &lt;–</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_6c5bdd7d" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:4em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
 <section id="separating-values" class="slide level2">
 <h2>Separating values</h2>
 <div class="panel-tabset">
 <ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Problem</a></li><li><a href="#tabset-8-2">Solution</a></li><li><a href="#tabset-8-3">Confirm</a></li></ul>
 <div class="tab-content">
 <div id="tabset-8-1">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-50_28ac16c851c1d0f37c23feeaf58ec645">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-53_06f2e3a675c145d29f3835edd7007f69">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb80-2"><a href="#cb80-2"></a>  <span class="fu">select</span>(start_bp) <span class="sc">|&gt;</span> </span>
 <span id="cb80-3"><a href="#cb80-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2316,7 +2368,7 @@ $ start_bp &lt;chr&gt; "114/72", "132/86", "124/92", "144/83", "122/78", "121/80
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-51_4bcf900cf6d92f31283eddbfd6a3fed2">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-54_09365f966d09984d3f4da14351e018d5">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a><span class="fu">mean</span>(df_clean[[<span class="st">"start_bp"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
@@ -2325,7 +2377,7 @@ $ start_bp &lt;chr&gt; "114/72", "132/86", "124/92", "144/83", "122/78", "121/80
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-52_8fb909c009b5063277924bffde2b2fb8">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-55_f980e9fb7a22dc3bbfcd10b42dfc806e">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a>df_clean[[<span class="st">"start_bp"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "114/72" "132/86" "124/92" "144/83" "122/78" "121/80" "133/74" "116/73"
@@ -2337,7 +2389,7 @@ $ start_bp &lt;chr&gt; "114/72", "132/86", "124/92", "144/83", "122/78", "121/80
 </div>
 </div>
 <div id="tabset-8-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-53_ccf8def2304a0898adcb334198254fe8">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-56_b61043831f38645427381c2a0c616af9">
 <div class="sourceCode cell-code" id="cb86" data-code-line-numbers="14,15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
 <span id="cb86-2"><a href="#cb86-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb86-3"><a href="#cb86-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
@@ -2358,7 +2410,7 @@ $ start_bp &lt;chr&gt; "114/72", "132/86", "124/92", "144/83", "122/78", "121/80
 <div id="tabset-8-3">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-54_60e318fc0b535c30bdfe0a091524e5d0">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-57_3d34d4442d1b6ec37662771ec10d586d">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a>df_clean <span class="sc">|&gt;</span> </span>
 <span id="cb87-2"><a href="#cb87-2"></a>  <span class="fu">select</span>(start_bp, bp_systolic, bp_diastolic) <span class="sc">|&gt;</span> </span>
 <span id="cb87-3"><a href="#cb87-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2372,7 +2424,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-55_7630f85a123afc546f2f234f627a78f9">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-58_4f6d2670e31485ce6bc6a17ff09f3569">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a><span class="fu">mean</span>(df_clean[[<span class="st">"bp_systolic"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 121.5333</code></pre>
@@ -2385,7 +2437,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div><div class="column" style="width:50%;">
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-56_e796e2df0f9b5df61c548912f6b1fe95">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-59_5ed3d5c4d67338b0e4bb3ba739cd1d29">
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a>df_clean[[<span class="st">"bp_systolic"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 114 132 124 144 122 121 133 116 118 122 126 114 118 106 112 114 124 120 119
@@ -2411,14 +2463,14 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <div class="tab-content">
 <div id="tabset-9-1">
 <p>What does anything mean?</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-57_79dba5d883374e9ca2659946320e168e">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-60_6f23f567103fc91e85a77bd7e09dbed3">
 <div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1"></a><span class="fu">view</span>(df_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <p><img data-src="images/df_nolabels.PNG"></p>
 </div>
 <div id="tabset-9-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-58_8ea05f0b495175bc3196cfd39565eed1">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-61_d9584672961eeecfcaef9cc9651eacec">
 <div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a><span class="co"># first import codebook</span></span>
 <span id="cb98-2"><a href="#cb98-2"></a>df_codebook <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
 <span id="cb98-3"><a href="#cb98-3"></a>  <span class="at">path =</span> <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"messy_uc.xlsx"</span>),</span>
@@ -2444,7 +2496,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-9-3">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-59_d2af22594b228b7cb340103f512dbc83">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-62_7a5e8db6f0b1579b45f02baa5faf3fef">
 <div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a><span class="co"># second create a named vector of variable names and variable labels</span></span>
 <span id="cb100-2"><a href="#cb100-2"></a>vec_variables <span class="ot">&lt;-</span> df_codebook <span class="sc">|&gt;</span> </span>
 <span id="cb100-3"><a href="#cb100-3"></a>  <span class="fu">select</span>(Variable, Details) <span class="sc">|&gt;</span> </span>
@@ -2522,7 +2574,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-9-4">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-60_cc0b916bc1016d6f3923dbcb458c8749">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-63_bb5d0c0622030efa92d0dd0d680bce8c">
 <div class="sourceCode cell-code" id="cb102" data-code-line-numbers="17,18|19,20,21,22,23,24,25,26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a><span class="co"># assign labels to the data set</span></span>
 <span id="cb102-2"><a href="#cb102-2"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
 <span id="cb102-3"><a href="#cb102-3"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
@@ -2552,7 +2604,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-9-5">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-61_1a878f91ef011d27c74014c095b6d29a">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-64_a38384d51dd82d7f4d984dc0b4c499cd">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1"></a><span class="co"># view entire data set</span></span>
 <span id="cb103-2"><a href="#cb103-2"></a>df_clean <span class="sc">|&gt;</span> <span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -2560,7 +2612,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <p><img data-src="images/df_yeslabels.PNG"></p>
 </div>
 <div id="tabset-9-6">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-62_eda10d86ac70615ed6f68f05f0b96ce1">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-65_fec3cb3579b4a6d0be5ed74c650511b4">
 <div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a><span class="co"># view structure of data frame</span></span>
 <span id="cb104-2"><a href="#cb104-2"></a>df_clean <span class="sc">|&gt;</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2734,7 +2786,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <section id="pivoting-longer-example" class="slide level2">
 <h2>Pivoting Longer (Example)</h2>
 <p>Let’s start with the wide version (selected columns from messy_uc)</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-64_50e4bd59f03490c4bbf23b219f424676">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-67_501e0bb830a5075b9ae158eeabbaaf21">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
@@ -2759,7 +2811,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <section id="pivoting-longer-example-1" class="slide level2">
 <h2>Pivoting Longer (Example)</h2>
 <p>This is the tall version we want to end up with.</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-65_92baadb697e60b29cfd8e9318bc46049">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-68_2b88836ccb16db5fc32049b18e052125">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 4
    pat_id treatment measure   score
@@ -2789,7 +2841,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <li>names_to</li>
 <li>values_to</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-66_794dcabcd110b720db0dc662269e2175">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-69_58546e76f68d317219345b56e2f5005c">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
@@ -2814,7 +2866,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Problem: Wide</a></li><li><a href="#tabset-10-2">Code: pivot_longer</a></li><li><a href="#tabset-10-3">Result: Tall</a></li></ul>
 <div class="tab-content">
 <div id="tabset-10-1">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-67_8e720d678ad918fb09ea210a517809e8">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-70_ca69042b710f115f87f78425df0e8bef">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
@@ -2834,7 +2886,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-10-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-68_116046f7733cf621d1400e544689b09f">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-71_2681229ce9b83f88506d558eb23e5696">
 <div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a>wide <span class="sc">|&gt;</span> </span>
 <span id="cb110-2"><a href="#cb110-2"></a>  <span class="fu">pivot_longer</span>(</span>
 <span id="cb110-3"><a href="#cb110-3"></a>    <span class="at">cols =</span> <span class="st">"start_mes"</span><span class="sc">:</span><span class="st">"end_emo"</span>, </span>
@@ -2844,7 +2896,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-10-3">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-69_a17812d153c3ccbfd9b7976d857b42fd">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-72_2dc3ebb22be2e7b2459787d5d0e6054e">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 4
    pat_id treatment measure   score
@@ -2885,7 +2937,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </ul>
 </div>
 <div id="tabset-11-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-70_8b89d5ab79cb18faae7201690ae7a47b">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-73_74e1eb910910ff3780478dd2abcbd64b">
 <div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1"></a>tall <span class="sc">|&gt;</span> </span>
 <span id="cb112-2"><a href="#cb112-2"></a>  <span class="fu">separate</span>(<span class="at">col =</span> <span class="st">"measure"</span>,</span>
 <span id="cb112-3"><a href="#cb112-3"></a>           <span class="at">sep =</span> <span class="st">"_"</span>,</span>
@@ -2893,7 +2945,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-11-3">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-71_2b69ed738df58920460c3b963c4d1f2f">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-74_911dfcf8547e48f7d3d89b189e49faf7">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 5
    pat_id treatment timept measure score
@@ -2916,7 +2968,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <ul>
 <li>You can do this <em>within</em> pivot_longer with one more argument</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-72_cfb898296b07e1f453f909c04b45a84a">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-75_8f0df26cb3838b085f714a5849f4713d">
 <div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a>wide <span class="sc">|&gt;</span> </span>
 <span id="cb114-2"><a href="#cb114-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>,</span>
 <span id="cb114-3"><a href="#cb114-3"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"timept"</span>, <span class="st">"measure"</span>),</span>
@@ -2950,7 +3002,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <li>Measurements of Trans-Epithelial Electrical Resistance (the inverse of leakiness) were taken from biopsies of 3 segments of intestine.</li>
 <li>This might be affected by portal hypertension in patients with liver cirrhosis</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-73_98f03b8ebf9da201cc027b6185b0a323">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-76_6471b032d6750c834654b22f6134227a">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 5
    pat_id portal_htn duod_teer ileal_teer colon_teer
@@ -2974,7 +3026,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">The Dataset</a></li><li><a href="#tabset-12-2">The Arguments</a></li><li><a href="#tabset-12-3">The Code</a></li><li><a href="#tabset-12-4">The Solution</a></li></ul>
 <div class="tab-content">
 <div id="tabset-12-1">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-74_a7d9c5fa3f2120d5a14cb08f07f22c44">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-77_29755fc4250ba909711a5bf7ba2673c8">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 5
    pat_id portal_htn duod_teer ileal_teer colon_teer
@@ -3009,7 +3061,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <li>Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.</li>
 <li>Note that we are giving you names_pattern</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-75_b20b9f246074703bfea1390261a896d5">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-78_3a055a5bf7f2fbe0422d1eae02461c8d">
 <div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1"></a>endo_data <span class="sc">|&gt;</span> </span>
 <span id="cb118-2"><a href="#cb118-2"></a>  <span class="fu">pivot_longer</span>(</span>
 <span id="cb118-3"><a href="#cb118-3"></a>    <span class="at">cols =</span>  ,</span>
@@ -3023,7 +3075,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <ul>
 <li>Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-76_2fd0d3066ccf20f84cda6d6808512785">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-79_c82390457a46d0d8e49e92f6fb98d764">
 <div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1"></a>endo_data <span class="sc">|&gt;</span> </span>
 <span id="cb119-2"><a href="#cb119-2"></a>  <span class="fu">pivot_longer</span>(</span>
 <span id="cb119-3"><a href="#cb119-3"></a>    <span class="at">cols =</span> <span class="st">"duod_teer"</span><span class="sc">:</span><span class="st">"colon_teer"</span>,</span>
@@ -3051,7 +3103,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <li>Here we will convert the tall version of our selected messy_uc data back to wide.</li>
 <li>This is what the tall data look like</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-77_a8e14b85fc587f8bade607609674ba4e">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-80_3d18aaed1f30582e198a0fde57398c72">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 4
    pat_id treatment measure   score
@@ -3071,7 +3123,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-13-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-78_f122ddc0b87bc741575b116ff067a63d">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-81_6516f6dee0f1239b611388d7b49d5b1d">
 <div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1"></a>tall <span class="sc">|&gt;</span> </span>
 <span id="cb121-2"><a href="#cb121-2"></a>  <span class="fu">pivot_wider</span>(</span>
 <span id="cb121-3"><a href="#cb121-3"></a>    <span class="at">id_cols =</span> <span class="fu">c</span>(pat_id, treatment), <span class="co"># Variables not pivoted</span></span>
@@ -3081,7 +3133,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-13-3">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-79_c968aa9c48b3e1984cb4303871e65b4f">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-82_abae407884b21a515720886a93ab52cb">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
@@ -3108,7 +3160,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <h1>Filling in Unobserved Dates/Times with padr</h1>
 <div class="columns">
 <div class="column" style="width:55%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-80_242e57ba53fd6a74edcdd74e49f3b202">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-83_3720734e474bb88eda4ab73764ac1366">
 <div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1"></a><span class="fu">library</span>(padr)</span>
 <span id="cb123-2"><a href="#cb123-2"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb123-3"><a href="#cb123-3"></a>emergency <span class="ot">&lt;-</span> padr<span class="sc">::</span>emergency</span>
@@ -3150,7 +3202,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <ul>
 <li>We will thicken to month</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-81_b82011684416fa5f7024be0b31c72f7e">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-84_87bc2b721519f631a33218ad07f4022b">
 <div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1"></a>emergency <span class="sc">|&gt;</span> </span>
 <span id="cb125-2"><a href="#cb125-2"></a>  <span class="fu">thicken</span>(<span class="st">'month'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -3159,7 +3211,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <ul>
 <li>This lets us count events like overdoses by month with time_stamp_month.</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-82_f0763772db225497ff0d9dc36e35ac6f">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-85_f7e7eb58e714dcc723b5f261d72bf3a4">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 120,450 × 7
      lat   lng   zip title            time_stamp          twp   time_stamp_month
@@ -3192,7 +3244,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <li>No observations on weekend days.</li>
 </ul>
 </div><div class="column" style="width:40%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-83_b7753842a5853009920bd5f6c96834b6">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-86_c2201b24b0e44215e1444fb6b3e1ef9e">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 15 × 3
    pat_id date         fcp
@@ -3228,7 +3280,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </ul>
 </div>
 <div id="tabset-15-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-84_2eaa5ef7f2f0bd3fb9d9549dde760d44">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-87_e4a9c19d8491c772d9e5c13f1b188833">
 <div class="sourceCode cell-code" id="cb128"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1"></a>fcp <span class="sc">|&gt;</span> </span>
 <span id="cb128-2"><a href="#cb128-2"></a>  <span class="fu">pad</span>(<span class="at">group =</span> <span class="st">"pat_id"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb128-3"><a href="#cb128-3"></a>  tidyr<span class="sc">::</span><span class="fu">fill</span>(pat_id) <span class="sc">|&gt;</span> </span>
@@ -3238,7 +3290,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <div id="tabset-15-3">
 <div class="columns">
 <div class="column" style="width:40%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-85_aaa8e27c4601cf6ed1edc861702f0275">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-88_9bd183ae5403a5e458c8f68a7d6a39bc">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 21 × 3
    pat_id date         fcp

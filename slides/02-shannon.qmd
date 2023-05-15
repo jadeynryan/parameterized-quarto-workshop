@@ -157,6 +157,24 @@ df_clean |>
 
 :::
 
+## Exercise
+
+
+<br>
+
+Complete Data Cleaning Fundamentals Exercise SP1.
+
+<br>
+
+[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+
+```{r}
+#| echo: false
+#| cache: false
+countdown(minutes = 5, font_size = "4em")
+```
+
+
 ## Replace values with missing
 
 
@@ -487,6 +505,24 @@ df_clean |>
 :::
 
 
+## Exercise
+
+
+<br>
+
+Complete Data Cleaning Fundamentals Exercise SP2.
+
+<br>
+
+[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+
+```{r}
+#| echo: false
+#| cache: false
+countdown(minutes = 5, font_size = "4em")
+```
+
+
 
 ## Character variable should be a factor
 
@@ -545,7 +581,7 @@ df_clean |>
 ### Solution
 
 ```{r}
-#| code-line-numbers: "8,11"
+#| code-line-numbers: "8,12"
 df_clean <- df_raw |>
   janitor::clean_names() |> 
   janitor::remove_empty(which = c("rows", "cols")) |> 
@@ -613,6 +649,23 @@ df_clean |>
 :::
 
 :::
+
+## Exercise
+
+
+<br>
+
+Complete Data Cleaning Fundamentals Exercise SP3.
+
+<br>
+
+[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+
+```{r}
+#| echo: false
+#| cache: false
+countdown(minutes = 5, font_size = "4em")
+```
 
 
 ## Separating values
