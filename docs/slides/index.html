@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.333">
+  <meta name="generator" content="quarto-1.3.340">
 
   <meta name="author" content="Crystal Lewis, Shannon Pileggi, &amp; Peter Higgins">
   <title>Data Cleaning</title>
@@ -429,51 +429,125 @@ Crystal Lewis, Shannon Pileggi, &amp; Peter Higgins
 </div>
 </div>
 </section>
-<section id="checklist" class="slide level2">
-<h2>Checklist</h2>
-<p><br></p>
-<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#606060;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Install recent R release</p>
-<pre><code>Current version 4.3.0</code></pre>
-<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#606060;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Install RStudio</p>
-<pre><code>I am on version 2022.07.1+554 </code></pre>
-<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#606060;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Install packages</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># install.packages(c("gtreg", "gtsummary", "tidyverse", "labelled", "usethis"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#606060;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg> Ensure you can knit Rmarkdown files</p>
-</section>
 <section id="schedule" class="slide level2">
 <h2>Schedule</h2>
 <table>
+<colgroup>
+<col style="width: 42%">
+<col style="width: 57%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Time</th>
-<th style="text-align: left;">Activity</th>
+<th>Time</th>
+<th>Activity</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">09:00 - 09:50</td>
-<td style="text-align: left;">Section 1</td>
+<td>11:00 - 11:50</td>
+<td>Crystal Lewis (Data management best practices)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">09:50 - 10:00</td>
-<td style="text-align: left;"><em>Break</em></td>
+<td>11:50 - 12:00</td>
+<td><em>Break</em></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">10:00 - 10:50</td>
-<td style="text-align: left;">Section 2</td>
+<td>12:00 - 12:50</td>
+<td>Shannon Pileggi (Data cleaning fundamentals)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">10:50 - 11:00</td>
-<td style="text-align: left;"><em>Break</em></td>
+<td>12:50 - 12:00</td>
+<td><em>Break</em></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">11:00 - 12:00</td>
-<td style="text-align: left;">Section 3</td>
+<td>01:00 - 02:00</td>
+<td>Peter Higgins (Data wrangling &amp; reshaping)</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
 <p>Please add any questions to the public Zoom chat. These may be answered in the moment or addressed at the end depending on context.</p>
+</section></section>
+<section>
+<section id="syntax-aside" class="title-slide slide level1 center">
+<h1>Syntax aside</h1>
+
+</section>
+<section id="pipes" class="slide level2">
+<h2>Pipes</h2>
+<ul>
+<li><p>2014+ magrittr pipe <code>%&gt;%</code></p></li>
+<li><p>2021+ (R <span class="math inline">\(\geq\)</span> 4.1.0) native R pipe <code>|&gt;</code></p></li>
+</ul>
+<p>2022 Isabella Velásquez Understanding the native R pipe |&gt; <a href="https://ivelasq.rbind.io/blog/understanding-the-r-pipe/" class="uri">https://ivelasq.rbind.io/blog/understanding-the-r-pipe/</a></p>
+<div class="fragment">
+<p><brshort></brshort></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-2_a118722ddfe3d2b8388695b719052073">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">whatever</span>(arg1, arg2, arg3, ...)</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a>arg1 <span class="sc">|&gt;</span>  </span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">whatever</span>(arg2, arg3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:45%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-3_43c4b95e43ccbe6c13ab98bc0338abae">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">mean</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">|&gt;</span> </span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">mean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<p>Change <code>CTRL + Shift + M</code> shortcut to native pipe:</p>
+<p><code>Tools -&gt; Global Options -&gt; Code -&gt;</code></p>
+<p>&nbsp;&nbsp; <code>Editing -&gt; check Use Native Pipe Operator</code></p>
+</div>
+</div>
+</section>
+<section id="r-for-data-science-ch-18-pipes" class="slide level2">
+<h2>R for Data Science: Ch 18 Pipes</h2>
+
+<img data-src="images/foo-foo.png" class="r-stretch"><div class="footer">
+<p><a href="https://r4ds.had.co.nz/pipes.html#pipes" class="uri">https://r4ds.had.co.nz/pipes.html#pipes</a></p>
+</div>
+</section>
+<section id="namespacing" class="slide level2">
+<h2>Namespacing</h2>
+<p><code>dplyr::select()</code></p>
+<ul>
+<li><p>tells R explicitly to use the function <code>select</code> from the package <code>dplyr</code></p></li>
+<li><p>can help to avoid name conflicts (e.g., <code>MASS::select()</code>)</p></li>
+<li><p>does not require <code>library(dplyr)</code></p></li>
+</ul>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-4_f17d1176be26064341febfc458f4cd7b">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">select</span>(mtcars, mpg, cyl) </span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a>mtcars <span class="sc">|&gt;</span>  </span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">select</span>(mpg, cyl) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-5_f509baf7d1120bc64763172bdfa08dd6">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># library(dplyr) not needed</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(mtcars, mpg, cyl) </span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a>mtcars <span class="sc">|&gt;</span>  </span>
+<span id="cb4-6"><a href="#cb4-6"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(mpg, cyl) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="crystal-section-a" class="title-slide slide level1 center">
@@ -519,9 +593,9 @@ Crystal Lewis, Shannon Pileggi, &amp; Peter Higgins
 <div class="fragment">
 <p><br></p>
 <p><code>janitor::clean_names()</code> removes special characters and implements snake case by default:</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-4_7517b61fa48af80cc3a387cbe1e141d4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
-<span id="cb4-2"><a href="#cb4-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-8_b427be64641fd6305528125cc56738f8">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img data-src="images/var_names_3.PNG"></p>
 </div>
@@ -532,10 +606,10 @@ Crystal Lewis, Shannon Pileggi, &amp; Peter Higgins
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Problem</a></li><li><a href="#tabset-1-2">Solution</a></li><li><a href="#tabset-1-3">Confirm</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-5_2f065d3e523435066407697f3a1d75ba">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">select</span>(pat_id, race<span class="sc">:</span>start_bp) <span class="sc">|&gt;</span> </span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">slice</span>(<span class="dv">13</span><span class="sc">:</span><span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-9_fe2322909bf343881c8eb7d3f022e776">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">select</span>(pat_id, race<span class="sc">:</span>start_bp) <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">slice</span>(<span class="dv">13</span><span class="sc">:</span><span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
   pat_id race             dob                 x7    start_bp
@@ -550,16 +624,16 @@ Crystal Lewis, Shannon Pileggi, &amp; Peter Higgins
 </div>
 </div>
 <div id="tabset-1-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-6_42567eb08ed52eb43628fb31d4e6d835">
-<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb7-3"><a href="#cb7-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-10_d3ddd2fc995dfbbee338d1b956f703d7">
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a href="#cb8-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-7_9011f746c78a31f52fd5462f0cfc1e1b">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">select</span>(pat_id, race<span class="sc">:</span>start_bp) <span class="sc">|&gt;</span> </span>
-<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">slice</span>(<span class="dv">13</span><span class="sc">:</span><span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-11_dc0c487c1bdab34b8b4714f21eb85581">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">select</span>(pat_id, race<span class="sc">:</span>start_bp) <span class="sc">|&gt;</span> </span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">slice</span>(<span class="dv">13</span><span class="sc">:</span><span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
   pat_id race             dob                 start_bp
@@ -576,11 +650,11 @@ Crystal Lewis, Shannon Pileggi, &amp; Peter Higgins
 <div id="tabset-1-3">
 <div class="columns">
 <div class="column" style="width:35%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-8_e7ea0710c56119f163181d4187ff1ab5">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">#</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>df_raw <span class="sc">|&gt;</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-12_d2b938f9385454db0777b19b8263bea6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>df_raw <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 31
 Columns: 38
@@ -625,11 +699,11 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 </div>
 </div>
 </div><div class="column" style="width:65%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-9_480e7cf057b52dcaca9d6f4fb687d5bf">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>df_raw <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a href="#cb12-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb12-3"><a href="#cb12-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-13_575b1adee193a27eefeb667686ac5745">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>df_raw <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a href="#cb13-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 30
 Columns: 37
@@ -684,9 +758,9 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Problem</a></li><li><a href="#tabset-2-2">Solution</a></li><li><a href="#tabset-2-3">Confirm</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-10_936c890f72b7e97ba2d00cc3c9295fd6">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">count</span>(ethnic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-14_f4b324c9d1f0b8bc1133a9ffcf48d122">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">count</span>(ethnic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   ethnic           n
@@ -700,19 +774,19 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 </div>
 </div>
 <div id="tabset-2-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-11_62ec2ce7553cee16bbfc7bccee41dae2">
-<div class="sourceCode cell-code" id="cb16" data-code-line-numbers="4-9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb16-3"><a href="#cb16-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb16-4"><a href="#cb16-4"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb16-5"><a href="#cb16-5"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
-<span id="cb16-6"><a href="#cb16-6"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
-<span id="cb16-7"><a href="#cb16-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
-<span id="cb16-8"><a href="#cb16-8"></a>    )</span>
-<span id="cb16-9"><a href="#cb16-9"></a>  )</span>
-<span id="cb16-10"><a href="#cb16-10"></a></span>
-<span id="cb16-11"><a href="#cb16-11"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb16-12"><a href="#cb16-12"></a>  <span class="fu">count</span>(ethnic_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-15_8dd407231f4d7fae7530e5d7a1716c9f">
+<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="4-9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="#cb17-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb17-5"><a href="#cb17-5"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
+<span id="cb17-6"><a href="#cb17-6"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
+<span id="cb17-7"><a href="#cb17-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
+<span id="cb17-8"><a href="#cb17-8"></a>    )</span>
+<span id="cb17-9"><a href="#cb17-9"></a>  )</span>
+<span id="cb17-10"><a href="#cb17-10"></a></span>
+<span id="cb17-11"><a href="#cb17-11"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb17-12"><a href="#cb17-12"></a>  <span class="fu">count</span>(ethnic_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   ethnic_clean     n
@@ -723,9 +797,9 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 </div>
 </div>
 <div id="tabset-2-3">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-12_62413173faa50d03ee26042f5b55d6f6">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">count</span>(ethnic_clean, ethnic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-16_5bc470a2bfe38de6b0b54204fb5670f2">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">count</span>(ethnic_clean, ethnic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
   ethnic_clean ethnic           n
@@ -749,9 +823,9 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 <div id="tabset-3-1">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-13_1b06e3ab557d76b9011427eeceb1f1ae">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">count</span>(end_na) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-17_4815713746daf589d6fc150bfaca124a">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">count</span>(end_na) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 2
    end_na     n
@@ -770,37 +844,37 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-14_68fe07d4296e8dc242b07d76c3030691">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> end_na)) <span class="sc">+</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-18_28d13678484acd02c6a7cbe7c28c1da0">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> end_na)) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-3-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-15_e124a6cadc13f4aada4c5a77e199816c">
-<div class="sourceCode cell-code" id="cb23" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb23-3"><a href="#cb23-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb23-5"><a href="#cb23-5"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
-<span id="cb23-6"><a href="#cb23-6"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
-<span id="cb23-7"><a href="#cb23-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
-<span id="cb23-8"><a href="#cb23-8"></a>    ),</span>
-<span id="cb23-9"><a href="#cb23-9"></a>    <span class="at">end_na_clean =</span> <span class="fu">na_if</span>(end_na, <span class="sc">-</span><span class="dv">99</span>)</span>
-<span id="cb23-10"><a href="#cb23-10"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-19_7fe78f483bd03dcb928ad546e46d2f2a">
+<div class="sourceCode cell-code" id="cb24" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb24-3"><a href="#cb24-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb24-5"><a href="#cb24-5"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
+<span id="cb24-6"><a href="#cb24-6"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
+<span id="cb24-7"><a href="#cb24-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
+<span id="cb24-8"><a href="#cb24-8"></a>    ),</span>
+<span id="cb24-9"><a href="#cb24-9"></a>    <span class="at">end_na_clean =</span> <span class="fu">na_if</span>(end_na, <span class="sc">-</span><span class="dv">99</span>)</span>
+<span id="cb24-10"><a href="#cb24-10"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-3-3">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-16_c224e32fc048a7dbbb41d0bffd41aedf">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">count</span>(end_na, end_na_clean) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-20_9ea37eef964ec786ad371c779dff578a">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">count</span>(end_na, end_na_clean) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 3
    end_na end_na_clean     n
@@ -819,12 +893,12 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-17_3520c68c4aeafd174c90bc9bf38d9ed1">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> end_na_clean)) <span class="sc">+</span></span>
-<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-21_484ba5b1c8ce4609deac8ccbf4d5df5d">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> end_na_clean)) <span class="sc">+</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -841,10 +915,10 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 <div id="tabset-4-1">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-18_0926a7a2d0d662828afe555243256a47">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>df_raw <span class="sc">|&gt;</span> </span>
-<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">select</span>(end_emo) <span class="sc">|&gt;</span> </span>
-<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-22_05510109a516659d5de17037f58ad097">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>df_raw <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">select</span>(end_emo) <span class="sc">|&gt;</span> </span>
+<span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 31
 Columns: 1
@@ -853,8 +927,8 @@ $ end_emo &lt;chr&gt; "31.980531232702354", "43.154961592472482", "36.8811239464
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-19_1381d47d552e6fad2b40410222363bf5">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">mean</span>(df_raw[[<span class="st">"end_emo"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-23_ec7d3b4b429f30248d240193c18cea68">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">mean</span>(df_raw[[<span class="st">"end_emo"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in mean.default(df_raw[["end_emo"]], na.rm = TRUE): argument is not
 numeric or logical: returning NA</code></pre>
@@ -865,8 +939,8 @@ numeric or logical: returning NA</code></pre>
 </div>
 </div>
 </div><div class="column fragment" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-20_73ccebe3c6981e3856611c6fcbc80396">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>df_raw[[<span class="st">"end_emo"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-24_79b063b7fffdf4395cbaefce177dda95">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>df_raw[[<span class="st">"end_emo"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "31.980531232702354" "43.154961592472482" "36.881123946451076"
  [4] "58.670309483569042" "58.863864661125419" "34.593046073414015"
@@ -885,27 +959,27 @@ numeric or logical: returning NA</code></pre>
 </div>
 </div>
 <div id="tabset-4-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-21_c268ab29eb495602d0bae4c8035d524e">
-<div class="sourceCode cell-code" id="cb34" data-code-line-numbers="10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb34-3"><a href="#cb34-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb34-4"><a href="#cb34-4"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb34-5"><a href="#cb34-5"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
-<span id="cb34-6"><a href="#cb34-6"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
-<span id="cb34-7"><a href="#cb34-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
-<span id="cb34-8"><a href="#cb34-8"></a>    ),</span>
-<span id="cb34-9"><a href="#cb34-9"></a>    <span class="at">end_na_clean =</span> <span class="fu">na_if</span>(end_na, <span class="sc">-</span><span class="dv">99</span>),</span>
-<span id="cb34-10"><a href="#cb34-10"></a>    <span class="at">end_emo_clean =</span> <span class="fu">na_if</span>(end_emo, <span class="st">"not done"</span>) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>()</span>
-<span id="cb34-11"><a href="#cb34-11"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-25_4c6ec6e14497dc9c70ebe76c1cfb9285">
+<div class="sourceCode cell-code" id="cb35" data-code-line-numbers="10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb35-3"><a href="#cb35-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb35-4"><a href="#cb35-4"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb35-5"><a href="#cb35-5"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
+<span id="cb35-6"><a href="#cb35-6"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
+<span id="cb35-7"><a href="#cb35-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
+<span id="cb35-8"><a href="#cb35-8"></a>    ),</span>
+<span id="cb35-9"><a href="#cb35-9"></a>    <span class="at">end_na_clean =</span> <span class="fu">na_if</span>(end_na, <span class="sc">-</span><span class="dv">99</span>),</span>
+<span id="cb35-10"><a href="#cb35-10"></a>    <span class="at">end_emo_clean =</span> <span class="fu">na_if</span>(end_emo, <span class="st">"not done"</span>) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>()</span>
+<span id="cb35-11"><a href="#cb35-11"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-4-3">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-22_da5b6262efcc57ceea010c98f5f54ead">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb35-2"><a href="#cb35-2"></a>  <span class="fu">select</span>(end_emo_clean) <span class="sc">|&gt;</span> </span>
-<span id="cb35-3"><a href="#cb35-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-26_3972d13416aaa793c5744ff74511190d">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb36-2"><a href="#cb36-2"></a>  <span class="fu">select</span>(end_emo_clean) <span class="sc">|&gt;</span> </span>
+<span id="cb36-3"><a href="#cb36-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 30
 Columns: 1
@@ -914,17 +988,17 @@ $ end_emo_clean &lt;dbl&gt; 31.98053, 43.15496, 36.88112, 58.67031, 58.86386, 34
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-23_b8f7476b99d4d985ac584c5e0a0dc2e6">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">mean</span>(df_clean[[<span class="st">"end_emo_clean"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-27_e9be23cc93eaccf22b0de64b5ac16c07">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">mean</span>(df_clean[[<span class="st">"end_emo_clean"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 44.78813</code></pre>
 </div>
 </div>
 </div>
 </div><div class="column fragment" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-24_bb9ed35b3a15572207d609e2adafa676">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb39-2"><a href="#cb39-2"></a>  <span class="fu">count</span>(end_emo_clean, end_emo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-28_dcc29f5fe7620b386a54558f4afed42a">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb40-2"><a href="#cb40-2"></a>  <span class="fu">count</span>(end_emo_clean, end_emo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 3
    end_emo_clean end_emo                n
@@ -954,18 +1028,20 @@ $ end_emo_clean &lt;dbl&gt; 31.98053, 43.15496, 36.88112, 58.67031, 58.86386, 34
 <ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Problem</a></li><li><a href="#tabset-5-2">Solution</a></li><li><a href="#tabset-5-3">Confirm</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-25_75d6f19914b005daf7811495fca2b0fd">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>df_raw <span class="sc">|&gt;</span> </span>
-<span id="cb41-2"><a href="#cb41-2"></a>  <span class="fu">select</span>(start_date) <span class="sc">|&gt;</span> </span>
-<span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-29_f4255a339b59ee53eab670a6777989ff">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>df_raw <span class="sc">|&gt;</span> </span>
+<span id="cb42-2"><a href="#cb42-2"></a>  <span class="fu">select</span>(start_date) <span class="sc">|&gt;</span> </span>
+<span id="cb42-3"><a href="#cb42-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 31
 Columns: 1
 $ start_date &lt;dbl&gt; 44208, 44215, 44230, 44245, 44255, 44259, 44264, 44999, 442…</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-26_5a71de8a91bfa2d1e93d03b123eee26a">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>df_raw[[<span class="st">"start_date"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+<div class="fragment">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-30_cef541969cec3763ff21cb252a10abc4">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>df_raw[[<span class="st">"start_date"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 44208 44215 44230 44245 44255 44259 44264 44999 44276 44278 44297 44308
 [13] 44313 44318 44324    NA 44329 44332 44346 44358 44370 44383 44391 44397
@@ -973,29 +1049,30 @@ $ start_date &lt;dbl&gt; 44208, 44215, 44230, 44245, 44255, 44259, 44264, 44999,
 </div>
 </div>
 </div>
+</div>
 <div id="tabset-5-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-27_e8b220f2bb2e03df0ecf1770824834fa">
-<div class="sourceCode cell-code" id="cb45" data-code-line-numbers="11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
-<span id="cb45-2"><a href="#cb45-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb45-3"><a href="#cb45-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb45-4"><a href="#cb45-4"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb45-5"><a href="#cb45-5"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
-<span id="cb45-6"><a href="#cb45-6"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
-<span id="cb45-7"><a href="#cb45-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
-<span id="cb45-8"><a href="#cb45-8"></a>    ),</span>
-<span id="cb45-9"><a href="#cb45-9"></a>    <span class="at">end_na_clean =</span> <span class="fu">na_if</span>(end_na, <span class="sc">-</span><span class="dv">99</span>),</span>
-<span id="cb45-10"><a href="#cb45-10"></a>    <span class="at">end_emo_clean =</span> <span class="fu">na_if</span>(end_emo, <span class="st">"not done"</span>) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>(),</span>
-<span id="cb45-11"><a href="#cb45-11"></a>    <span class="at">start_date_clean =</span> janitor<span class="sc">::</span><span class="fu">convert_to_date</span>(start_date)</span>
-<span id="cb45-12"><a href="#cb45-12"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-31_1048806269fd96b6515195612247423e">
+<div class="sourceCode cell-code" id="cb46" data-code-line-numbers="11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
+<span id="cb46-2"><a href="#cb46-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb46-3"><a href="#cb46-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb46-4"><a href="#cb46-4"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb46-5"><a href="#cb46-5"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
+<span id="cb46-6"><a href="#cb46-6"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
+<span id="cb46-7"><a href="#cb46-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
+<span id="cb46-8"><a href="#cb46-8"></a>    ),</span>
+<span id="cb46-9"><a href="#cb46-9"></a>    <span class="at">end_na_clean =</span> <span class="fu">na_if</span>(end_na, <span class="sc">-</span><span class="dv">99</span>),</span>
+<span id="cb46-10"><a href="#cb46-10"></a>    <span class="at">end_emo_clean =</span> <span class="fu">na_if</span>(end_emo, <span class="st">"not done"</span>) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>(),</span>
+<span id="cb46-11"><a href="#cb46-11"></a>    <span class="at">start_date_clean =</span> janitor<span class="sc">::</span><span class="fu">convert_to_date</span>(start_date)</span>
+<span id="cb46-12"><a href="#cb46-12"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-5-3">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-28_2d730fab09ee793dee89be49c84b2335">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb46-2"><a href="#cb46-2"></a>  <span class="fu">select</span>(start_date, start_date_clean) <span class="sc">|&gt;</span> </span>
-<span id="cb46-3"><a href="#cb46-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-32_01182af0651e7b735bd2b44d33252f4b">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb47-2"><a href="#cb47-2"></a>  <span class="fu">select</span>(start_date, start_date_clean) <span class="sc">|&gt;</span> </span>
+<span id="cb47-3"><a href="#cb47-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 30
 Columns: 2
@@ -1004,9 +1081,9 @@ $ start_date_clean &lt;date&gt; 2021-01-12, 2021-01-19, 2021-02-03, 2021-02-18, 
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-29_5737cb1835e67cfa5ff52aca5e7988c7">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb48-2"><a href="#cb48-2"></a>  <span class="fu">count</span>(start_date, start_date_clean) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-33_5f1fcaed7f8e476891b54ab7337a199e">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb49-2"><a href="#cb49-2"></a>  <span class="fu">count</span>(start_date, start_date_clean) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 3
    start_date start_date_clean     n
@@ -1038,10 +1115,10 @@ $ start_date_clean &lt;date&gt; 2021-01-12, 2021-01-19, 2021-02-03, 2021-02-18, 
 <div id="tabset-6-1">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-30_1d97bbbdb276c3ca70ecfb146e2344a7">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>df_raw <span class="sc">|&gt;</span> </span>
-<span id="cb50-2"><a href="#cb50-2"></a>  <span class="fu">select</span>(start_na) <span class="sc">|&gt;</span> </span>
-<span id="cb50-3"><a href="#cb50-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-34_7869547d06ddf679a682fd04c54bc6c5">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>df_raw <span class="sc">|&gt;</span> </span>
+<span id="cb51-2"><a href="#cb51-2"></a>  <span class="fu">select</span>(start_na) <span class="sc">|&gt;</span> </span>
+<span id="cb51-3"><a href="#cb51-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 31
 Columns: 1
@@ -1050,8 +1127,8 @@ $ start_na &lt;chr&gt; "137mmol/L", "142mmol/L", "140mmol/L", "139mmol/L", "144m
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-31_d291743f732e6a9882dd22516644d695">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">mean</span>(df_raw[[<span class="st">"start_na"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-35_1f02fdf08b7d0acbd6eb9736fe8f1d49">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="fu">mean</span>(df_raw[[<span class="st">"start_na"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in mean.default(df_raw[["start_na"]], na.rm = TRUE): argument is not
 numeric or logical: returning NA</code></pre>
@@ -1062,8 +1139,8 @@ numeric or logical: returning NA</code></pre>
 </div>
 </div>
 </div><div class="column fragment" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-32_bc522b4ebf28166293759fcb209c6247">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>df_raw[[<span class="st">"start_na"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-36_37b0687c9d092ac9e7e289f36eeaea60">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>df_raw[[<span class="st">"start_na"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "137mmol/L" "142mmol/L" "140mmol/L" "139mmol/L" "144mmol/L" "145mmol/L"
  [7] "142mmol/L" "138mmol/L" "140mmol/L" "137mmol/L" "143mmol/L" "136mmol/L"
@@ -1077,39 +1154,64 @@ numeric or logical: returning NA</code></pre>
 </div>
 </div>
 <div id="tabset-6-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-33_9cb74d7f0fb0da1073320f763607d959">
-<div class="sourceCode cell-code" id="cb57" data-code-line-numbers="11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
-<span id="cb57-2"><a href="#cb57-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb57-3"><a href="#cb57-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb57-4"><a href="#cb57-4"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb57-5"><a href="#cb57-5"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
-<span id="cb57-6"><a href="#cb57-6"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
-<span id="cb57-7"><a href="#cb57-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
-<span id="cb57-8"><a href="#cb57-8"></a>    ),</span>
-<span id="cb57-9"><a href="#cb57-9"></a>    <span class="at">end_na_clean =</span> <span class="fu">na_if</span>(end_na, <span class="sc">-</span><span class="dv">99</span>),</span>
-<span id="cb57-10"><a href="#cb57-10"></a>    <span class="at">end_emo_clean =</span> <span class="fu">na_if</span>(end_emo, <span class="st">"not done"</span>) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>(),</span>
-<span id="cb57-11"><a href="#cb57-11"></a>    <span class="at">start_na_clean =</span> <span class="fu">parse_number</span>(start_na)</span>
-<span id="cb57-12"><a href="#cb57-12"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-37_e4d0283ddaa5a659b6825a376a95acba">
+<div class="sourceCode cell-code" id="cb58" data-code-line-numbers="11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
+<span id="cb58-2"><a href="#cb58-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb58-3"><a href="#cb58-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb58-4"><a href="#cb58-4"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb58-5"><a href="#cb58-5"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
+<span id="cb58-6"><a href="#cb58-6"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
+<span id="cb58-7"><a href="#cb58-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
+<span id="cb58-8"><a href="#cb58-8"></a>    ),</span>
+<span id="cb58-9"><a href="#cb58-9"></a>    <span class="at">end_na_clean =</span> <span class="fu">na_if</span>(end_na, <span class="sc">-</span><span class="dv">99</span>),</span>
+<span id="cb58-10"><a href="#cb58-10"></a>    <span class="at">end_emo_clean =</span> <span class="fu">na_if</span>(end_emo, <span class="st">"not done"</span>) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>(),</span>
+<span id="cb58-11"><a href="#cb58-11"></a>    <span class="at">start_na_clean =</span> <span class="fu">parse_number</span>(start_na)</span>
+<span id="cb58-12"><a href="#cb58-12"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-6-3">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-34_5b4ca930b2891df5484f334f0a21420d">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb58-2"><a href="#cb58-2"></a>  <span class="fu">select</span>(start_na_clean) <span class="sc">|&gt;</span> </span>
-<span id="cb58-3"><a href="#cb58-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-38_bc268a2c14891758f8a65a2e47124010">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb59-2"><a href="#cb59-2"></a>  <span class="fu">select</span>(start_na_clean) <span class="sc">|&gt;</span> </span>
+<span id="cb59-3"><a href="#cb59-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 30
+Columns: 1
+$ start_na_clean &lt;dbl&gt; 137, 142, 140, 139, 144, 145, 142, 138, 140, 137, 143, …</code></pre>
+</div>
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-35_69989f6cb43a435cf479af5bed956a6b">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="fu">mean</span>(df_clean[[<span class="st">"start_na_clean"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-39_cf5fd834f9e8db6b3ae758c3ed697adc">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="fu">mean</span>(df_clean[[<span class="st">"start_na_clean"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 139.9333</code></pre>
+</div>
 </div>
 </div>
 </div><div class="column fragment" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-36_f2fe43f1d1f131f0b81bc5c47179ace4">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb60-2"><a href="#cb60-2"></a>  <span class="fu">count</span>(start_na_clean, start_na)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-40_113616d7a4beb004aff770d397f64d30">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb63-2"><a href="#cb63-2"></a>  <span class="fu">count</span>(start_na_clean, start_na)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 3
+   start_na_clean start_na      n
+            &lt;dbl&gt; &lt;chr&gt;     &lt;int&gt;
+ 1            133 133mmol/L     1
+ 2            135 135mmol/L     2
+ 3            136 136mmol/L     2
+ 4            137 137mmol/L     2
+ 5            138 138mmol/L     3
+ 6            139 139mmol/L     3
+ 7            140 140mmol/L     4
+ 8            141 141mmol/L     2
+ 9            142 142mmol/L     4
+10            143 143mmol/L     2
+11            144 144mmol/L     3
+12            145 145mmol/L     2</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1125,9 +1227,9 @@ numeric or logical: returning NA</code></pre>
 <div id="tabset-7-1">
 <div class="columns">
 <div class="column" style="width:35%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-37_1f87051d48e0566b65d9cff70074c63b">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb61-2"><a href="#cb61-2"></a>  <span class="fu">count</span>(treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-41_435e78577d0830ad42d21b42a6f60ba8">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb65-2"><a href="#cb65-2"></a>  <span class="fu">count</span>(treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   treatment     n
@@ -1139,9 +1241,9 @@ numeric or logical: returning NA</code></pre>
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-38_8629fe8b8ee795f82242b29fdd3fb05e">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb63-2"><a href="#cb63-2"></a>  <span class="fu">count</span>(ethnic_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-42_1d3635131a029168f898c79b2a0b416a">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb67-2"><a href="#cb67-2"></a>  <span class="fu">count</span>(ethnic_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   ethnic_clean     n
@@ -1152,10 +1254,10 @@ numeric or logical: returning NA</code></pre>
 </div>
 </div>
 </div><div class="column fragment" style="width:65%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-39_71dcaaedb5a60df05a7c215445ec2cf4">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb65-2"><a href="#cb65-2"></a>  <span class="fu">select</span>(treatment, ethnic_clean) <span class="sc">|&gt;</span> </span>
-<span id="cb65-3"><a href="#cb65-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-43_a9cd753c9f1efa74990f7252f322c923">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb69-2"><a href="#cb69-2"></a>  <span class="fu">select</span>(treatment, ethnic_clean) <span class="sc">|&gt;</span> </span>
+<span id="cb69-3"><a href="#cb69-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 30
 Columns: 2
@@ -1164,29 +1266,29 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
 </div>
 </div>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-40_256b45a7151965b8200e11ed04fd811a">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb67-2"><a href="#cb67-2"></a>  <span class="fu">select</span>(treatment, ethnic_clean) <span class="sc">|&gt;</span> </span>
-<span id="cb67-3"><a href="#cb67-3"></a>  <span class="fu">tbl_summary</span>(<span class="at">by =</span> treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-44_e68c70a0f69085e7377c82f964475b7a">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb71-2"><a href="#cb71-2"></a>  <span class="fu">select</span>(treatment, ethnic_clean) <span class="sc">|&gt;</span> </span>
+<span id="cb71-3"><a href="#cb71-3"></a>  <span class="fu">tbl_summary</span>(<span class="at">by =</span> treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="dbiuvksrhf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dbiuvksrhf table {
+<div id="fyykcbpacn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fyykcbpacn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dbiuvksrhf thead, #dbiuvksrhf tbody, #dbiuvksrhf tfoot, #dbiuvksrhf tr, #dbiuvksrhf td, #dbiuvksrhf th {
+#fyykcbpacn thead, #fyykcbpacn tbody, #fyykcbpacn tfoot, #fyykcbpacn tr, #fyykcbpacn td, #fyykcbpacn th {
   border-style: none;
 }
 
-#dbiuvksrhf p {
+#fyykcbpacn p {
   margin: 0;
   padding: 0;
 }
 
-#dbiuvksrhf .gt_table {
+#fyykcbpacn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1212,12 +1314,12 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-left-color: #D3D3D3;
 }
 
-#dbiuvksrhf .gt_caption {
+#fyykcbpacn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dbiuvksrhf .gt_title {
+#fyykcbpacn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1229,7 +1331,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-bottom-width: 0;
 }
 
-#dbiuvksrhf .gt_subtitle {
+#fyykcbpacn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1241,7 +1343,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-top-width: 0;
 }
 
-#dbiuvksrhf .gt_heading {
+#fyykcbpacn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1253,13 +1355,13 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-right-color: #D3D3D3;
 }
 
-#dbiuvksrhf .gt_bottom_border {
+#fyykcbpacn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dbiuvksrhf .gt_col_headings {
+#fyykcbpacn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1274,7 +1376,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-right-color: #D3D3D3;
 }
 
-#dbiuvksrhf .gt_col_heading {
+#fyykcbpacn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1294,7 +1396,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   overflow-x: hidden;
 }
 
-#dbiuvksrhf .gt_column_spanner_outer {
+#fyykcbpacn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1306,15 +1408,15 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   padding-right: 4px;
 }
 
-#dbiuvksrhf .gt_column_spanner_outer:first-child {
+#fyykcbpacn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dbiuvksrhf .gt_column_spanner_outer:last-child {
+#fyykcbpacn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dbiuvksrhf .gt_column_spanner {
+#fyykcbpacn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1326,11 +1428,11 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   width: 100%;
 }
 
-#dbiuvksrhf .gt_spanner_row {
+#fyykcbpacn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dbiuvksrhf .gt_group_heading {
+#fyykcbpacn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1356,7 +1458,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   text-align: left;
 }
 
-#dbiuvksrhf .gt_empty_group_heading {
+#fyykcbpacn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1371,15 +1473,15 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   vertical-align: middle;
 }
 
-#dbiuvksrhf .gt_from_md > :first-child {
+#fyykcbpacn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dbiuvksrhf .gt_from_md > :last-child {
+#fyykcbpacn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dbiuvksrhf .gt_row {
+#fyykcbpacn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1398,7 +1500,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   overflow-x: hidden;
 }
 
-#dbiuvksrhf .gt_stub {
+#fyykcbpacn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1411,7 +1513,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   padding-right: 5px;
 }
 
-#dbiuvksrhf .gt_stub_row_group {
+#fyykcbpacn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1425,15 +1527,15 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   vertical-align: top;
 }
 
-#dbiuvksrhf .gt_row_group_first td {
+#fyykcbpacn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dbiuvksrhf .gt_row_group_first th {
+#fyykcbpacn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dbiuvksrhf .gt_summary_row {
+#fyykcbpacn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1443,16 +1545,16 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   padding-right: 5px;
 }
 
-#dbiuvksrhf .gt_first_summary_row {
+#fyykcbpacn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dbiuvksrhf .gt_first_summary_row.thick {
+#fyykcbpacn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dbiuvksrhf .gt_last_summary_row {
+#fyykcbpacn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1462,7 +1564,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-bottom-color: #D3D3D3;
 }
 
-#dbiuvksrhf .gt_grand_summary_row {
+#fyykcbpacn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1472,7 +1574,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   padding-right: 5px;
 }
 
-#dbiuvksrhf .gt_first_grand_summary_row {
+#fyykcbpacn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1482,7 +1584,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-top-color: #D3D3D3;
 }
 
-#dbiuvksrhf .gt_last_grand_summary_row_top {
+#fyykcbpacn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1492,11 +1594,11 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-bottom-color: #D3D3D3;
 }
 
-#dbiuvksrhf .gt_striped {
+#fyykcbpacn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dbiuvksrhf .gt_table_body {
+#fyykcbpacn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1505,7 +1607,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-bottom-color: #D3D3D3;
 }
 
-#dbiuvksrhf .gt_footnotes {
+#fyykcbpacn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1519,7 +1621,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-right-color: #D3D3D3;
 }
 
-#dbiuvksrhf .gt_footnote {
+#fyykcbpacn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1528,7 +1630,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   padding-right: 5px;
 }
 
-#dbiuvksrhf .gt_sourcenotes {
+#fyykcbpacn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1542,7 +1644,7 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   border-right-color: #D3D3D3;
 }
 
-#dbiuvksrhf .gt_sourcenote {
+#fyykcbpacn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1550,63 +1652,63 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
   padding-right: 5px;
 }
 
-#dbiuvksrhf .gt_left {
+#fyykcbpacn .gt_left {
   text-align: left;
 }
 
-#dbiuvksrhf .gt_center {
+#fyykcbpacn .gt_center {
   text-align: center;
 }
 
-#dbiuvksrhf .gt_right {
+#fyykcbpacn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dbiuvksrhf .gt_font_normal {
+#fyykcbpacn .gt_font_normal {
   font-weight: normal;
 }
 
-#dbiuvksrhf .gt_font_bold {
+#fyykcbpacn .gt_font_bold {
   font-weight: bold;
 }
 
-#dbiuvksrhf .gt_font_italic {
+#fyykcbpacn .gt_font_italic {
   font-style: italic;
 }
 
-#dbiuvksrhf .gt_super {
+#fyykcbpacn .gt_super {
   font-size: 65%;
 }
 
-#dbiuvksrhf .gt_footnote_marks {
+#fyykcbpacn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dbiuvksrhf .gt_asterisk {
+#fyykcbpacn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dbiuvksrhf .gt_indent_1 {
+#fyykcbpacn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dbiuvksrhf .gt_indent_2 {
+#fyykcbpacn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dbiuvksrhf .gt_indent_3 {
+#fyykcbpacn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dbiuvksrhf .gt_indent_4 {
+#fyykcbpacn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dbiuvksrhf .gt_indent_5 {
+#fyykcbpacn .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1649,19 +1751,20 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
 </div>
 </div>
 <div id="tabset-7-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-41_704bc9b1cc0907e2cbf7d5d2fa093bea">
-<div class="sourceCode cell-code" id="cb68" data-code-line-numbers="8,11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
-<span id="cb68-2"><a href="#cb68-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb68-3"><a href="#cb68-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb68-4"><a href="#cb68-4"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb68-5"><a href="#cb68-5"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
-<span id="cb68-6"><a href="#cb68-6"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
-<span id="cb68-7"><a href="#cb68-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
-<span id="cb68-8"><a href="#cb68-8"></a>    ) <span class="sc">|&gt;</span> <span class="fu">fct_infreq</span>(),</span>
-<span id="cb68-9"><a href="#cb68-9"></a>    <span class="at">end_na_clean =</span> <span class="fu">na_if</span>(end_na, <span class="sc">-</span><span class="dv">99</span>),</span>
-<span id="cb68-10"><a href="#cb68-10"></a>    <span class="at">end_emo_clean =</span> <span class="fu">na_if</span>(end_emo, <span class="st">"not done"</span>) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>(),</span>
-<span id="cb68-11"><a href="#cb68-11"></a>    <span class="at">treatment =</span> <span class="fu">fct_relevel</span>(treatment, <span class="st">"upa"</span>, <span class="st">"uste"</span>, <span class="st">"oza"</span>)</span>
-<span id="cb68-12"><a href="#cb68-12"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-45_d1b068d340b2b73681e6a68f92725ed5">
+<div class="sourceCode cell-code" id="cb72" data-code-line-numbers="8,11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
+<span id="cb72-2"><a href="#cb72-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb72-3"><a href="#cb72-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb72-4"><a href="#cb72-4"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb72-5"><a href="#cb72-5"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
+<span id="cb72-6"><a href="#cb72-6"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
+<span id="cb72-7"><a href="#cb72-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
+<span id="cb72-8"><a href="#cb72-8"></a>    ) <span class="sc">|&gt;</span> <span class="fu">fct_infreq</span>(),</span>
+<span id="cb72-9"><a href="#cb72-9"></a>    <span class="at">end_na_clean =</span> <span class="fu">na_if</span>(end_na, <span class="sc">-</span><span class="dv">99</span>),</span>
+<span id="cb72-10"><a href="#cb72-10"></a>    <span class="at">end_emo_clean =</span> <span class="fu">na_if</span>(end_emo, <span class="st">"not done"</span>) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>(),</span>
+<span id="cb72-11"><a href="#cb72-11"></a>    <span class="at">start_na_clean =</span> <span class="fu">parse_number</span>(start_na),</span>
+<span id="cb72-12"><a href="#cb72-12"></a>    <span class="at">treatment =</span> <span class="fu">fct_relevel</span>(treatment, <span class="st">"upa"</span>, <span class="st">"uste"</span>, <span class="st">"oza"</span>)</span>
+<span id="cb72-13"><a href="#cb72-13"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <p>See the <a href="https://forcats.tidyverse.org/">forcats package</a> for other factor handling solutions.</p>
@@ -1669,9 +1772,9 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
 <div id="tabset-7-3">
 <div class="columns">
 <div class="column" style="width:35%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-42_56e24bb68441fe0d78b97230712433a3">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb69-2"><a href="#cb69-2"></a>  <span class="fu">count</span>(treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-46_62237438640157548619ae4046eb0a8a">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb73-2"><a href="#cb73-2"></a>  <span class="fu">count</span>(treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   treatment     n
@@ -1683,9 +1786,9 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-43_5cd078ce1bc544d7d062fbbb3096564f">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb71-2"><a href="#cb71-2"></a>  <span class="fu">count</span>(ethnic_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-47_004fa81319e45e63f76045364377dce1">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb75-2"><a href="#cb75-2"></a>  <span class="fu">count</span>(ethnic_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   ethnic_clean     n
@@ -1696,10 +1799,10 @@ $ ethnic_clean &lt;chr&gt; "hispanic", "not hispanic", "not hispanic", "not hisp
 </div>
 </div>
 </div><div class="column fragment" style="width:65%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-44_3d1b3cb1d86109c7dc78c6c463cd212f">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb73-2"><a href="#cb73-2"></a>  <span class="fu">select</span>(treatment, ethnic_clean) <span class="sc">|&gt;</span> </span>
-<span id="cb73-3"><a href="#cb73-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-48_992bb875b940e019b2bebb6109ac1049">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb77-2"><a href="#cb77-2"></a>  <span class="fu">select</span>(treatment, ethnic_clean) <span class="sc">|&gt;</span> </span>
+<span id="cb77-3"><a href="#cb77-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 30
 Columns: 2
@@ -1708,29 +1811,29 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
 </div>
 </div>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-45_80f4a268aa23f18d1c9a7998db33e5c4">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb75-2"><a href="#cb75-2"></a>  <span class="fu">select</span>(treatment, ethnic_clean) <span class="sc">|&gt;</span> </span>
-<span id="cb75-3"><a href="#cb75-3"></a>  <span class="fu">tbl_summary</span>(<span class="at">by =</span> treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-49_7c7529c94e6e8d1d9e95c0a96de88bab">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb79-2"><a href="#cb79-2"></a>  <span class="fu">select</span>(treatment, ethnic_clean) <span class="sc">|&gt;</span> </span>
+<span id="cb79-3"><a href="#cb79-3"></a>  <span class="fu">tbl_summary</span>(<span class="at">by =</span> treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="iarwvbhqej" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#iarwvbhqej table {
+<div id="dhgowbrklr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dhgowbrklr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#iarwvbhqej thead, #iarwvbhqej tbody, #iarwvbhqej tfoot, #iarwvbhqej tr, #iarwvbhqej td, #iarwvbhqej th {
+#dhgowbrklr thead, #dhgowbrklr tbody, #dhgowbrklr tfoot, #dhgowbrklr tr, #dhgowbrklr td, #dhgowbrklr th {
   border-style: none;
 }
 
-#iarwvbhqej p {
+#dhgowbrklr p {
   margin: 0;
   padding: 0;
 }
 
-#iarwvbhqej .gt_table {
+#dhgowbrklr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1756,12 +1859,12 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-left-color: #D3D3D3;
 }
 
-#iarwvbhqej .gt_caption {
+#dhgowbrklr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#iarwvbhqej .gt_title {
+#dhgowbrklr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1773,7 +1876,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-bottom-width: 0;
 }
 
-#iarwvbhqej .gt_subtitle {
+#dhgowbrklr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1785,7 +1888,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-top-width: 0;
 }
 
-#iarwvbhqej .gt_heading {
+#dhgowbrklr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1797,13 +1900,13 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-right-color: #D3D3D3;
 }
 
-#iarwvbhqej .gt_bottom_border {
+#dhgowbrklr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#iarwvbhqej .gt_col_headings {
+#dhgowbrklr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1818,7 +1921,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-right-color: #D3D3D3;
 }
 
-#iarwvbhqej .gt_col_heading {
+#dhgowbrklr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1838,7 +1941,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   overflow-x: hidden;
 }
 
-#iarwvbhqej .gt_column_spanner_outer {
+#dhgowbrklr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1850,15 +1953,15 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   padding-right: 4px;
 }
 
-#iarwvbhqej .gt_column_spanner_outer:first-child {
+#dhgowbrklr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#iarwvbhqej .gt_column_spanner_outer:last-child {
+#dhgowbrklr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#iarwvbhqej .gt_column_spanner {
+#dhgowbrklr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1870,11 +1973,11 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   width: 100%;
 }
 
-#iarwvbhqej .gt_spanner_row {
+#dhgowbrklr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#iarwvbhqej .gt_group_heading {
+#dhgowbrklr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1900,7 +2003,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   text-align: left;
 }
 
-#iarwvbhqej .gt_empty_group_heading {
+#dhgowbrklr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1915,15 +2018,15 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   vertical-align: middle;
 }
 
-#iarwvbhqej .gt_from_md > :first-child {
+#dhgowbrklr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#iarwvbhqej .gt_from_md > :last-child {
+#dhgowbrklr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#iarwvbhqej .gt_row {
+#dhgowbrklr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1942,7 +2045,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   overflow-x: hidden;
 }
 
-#iarwvbhqej .gt_stub {
+#dhgowbrklr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1955,7 +2058,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   padding-right: 5px;
 }
 
-#iarwvbhqej .gt_stub_row_group {
+#dhgowbrklr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1969,15 +2072,15 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   vertical-align: top;
 }
 
-#iarwvbhqej .gt_row_group_first td {
+#dhgowbrklr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#iarwvbhqej .gt_row_group_first th {
+#dhgowbrklr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#iarwvbhqej .gt_summary_row {
+#dhgowbrklr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1987,16 +2090,16 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   padding-right: 5px;
 }
 
-#iarwvbhqej .gt_first_summary_row {
+#dhgowbrklr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#iarwvbhqej .gt_first_summary_row.thick {
+#dhgowbrklr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#iarwvbhqej .gt_last_summary_row {
+#dhgowbrklr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2006,7 +2109,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-bottom-color: #D3D3D3;
 }
 
-#iarwvbhqej .gt_grand_summary_row {
+#dhgowbrklr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2016,7 +2119,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   padding-right: 5px;
 }
 
-#iarwvbhqej .gt_first_grand_summary_row {
+#dhgowbrklr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2026,7 +2129,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-top-color: #D3D3D3;
 }
 
-#iarwvbhqej .gt_last_grand_summary_row_top {
+#dhgowbrklr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2036,11 +2139,11 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-bottom-color: #D3D3D3;
 }
 
-#iarwvbhqej .gt_striped {
+#dhgowbrklr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#iarwvbhqej .gt_table_body {
+#dhgowbrklr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2049,7 +2152,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-bottom-color: #D3D3D3;
 }
 
-#iarwvbhqej .gt_footnotes {
+#dhgowbrklr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2063,7 +2166,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-right-color: #D3D3D3;
 }
 
-#iarwvbhqej .gt_footnote {
+#dhgowbrklr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2072,7 +2175,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   padding-right: 5px;
 }
 
-#iarwvbhqej .gt_sourcenotes {
+#dhgowbrklr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2086,7 +2189,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   border-right-color: #D3D3D3;
 }
 
-#iarwvbhqej .gt_sourcenote {
+#dhgowbrklr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2094,63 +2197,63 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
   padding-right: 5px;
 }
 
-#iarwvbhqej .gt_left {
+#dhgowbrklr .gt_left {
   text-align: left;
 }
 
-#iarwvbhqej .gt_center {
+#dhgowbrklr .gt_center {
   text-align: center;
 }
 
-#iarwvbhqej .gt_right {
+#dhgowbrklr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#iarwvbhqej .gt_font_normal {
+#dhgowbrklr .gt_font_normal {
   font-weight: normal;
 }
 
-#iarwvbhqej .gt_font_bold {
+#dhgowbrklr .gt_font_bold {
   font-weight: bold;
 }
 
-#iarwvbhqej .gt_font_italic {
+#dhgowbrklr .gt_font_italic {
   font-style: italic;
 }
 
-#iarwvbhqej .gt_super {
+#dhgowbrklr .gt_super {
   font-size: 65%;
 }
 
-#iarwvbhqej .gt_footnote_marks {
+#dhgowbrklr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#iarwvbhqej .gt_asterisk {
+#dhgowbrklr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#iarwvbhqej .gt_indent_1 {
+#dhgowbrklr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#iarwvbhqej .gt_indent_2 {
+#dhgowbrklr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#iarwvbhqej .gt_indent_3 {
+#dhgowbrklr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#iarwvbhqej .gt_indent_4 {
+#dhgowbrklr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#iarwvbhqej .gt_indent_5 {
+#dhgowbrklr .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2201,10 +2304,10 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
 <ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">Problem</a></li><li><a href="#tabset-8-2">Solution</a></li><li><a href="#tabset-8-3">Confirm</a></li></ul>
 <div class="tab-content">
 <div id="tabset-8-1">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-46_998706bbf9ab4a97dbe4a181dcde2a91">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb76-2"><a href="#cb76-2"></a>  <span class="fu">select</span>(start_bp) <span class="sc">|&gt;</span> </span>
-<span id="cb76-3"><a href="#cb76-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-50_28ac16c851c1d0f37c23feeaf58ec645">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb80-2"><a href="#cb80-2"></a>  <span class="fu">select</span>(start_bp) <span class="sc">|&gt;</span> </span>
+<span id="cb80-3"><a href="#cb80-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 30
 Columns: 1
@@ -2213,8 +2316,8 @@ $ start_bp &lt;chr&gt; "114/72", "132/86", "124/92", "144/83", "122/78", "121/80
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-47_07adf877bc44817be14ff5605b0c6e67">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="fu">mean</span>(df_clean[[<span class="st">"start_bp"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-51_4bcf900cf6d92f31283eddbfd6a3fed2">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a><span class="fu">mean</span>(df_clean[[<span class="st">"start_bp"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
@@ -2222,8 +2325,8 @@ $ start_bp &lt;chr&gt; "114/72", "132/86", "124/92", "144/83", "122/78", "121/80
 </div>
 <p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-48_51cec346188e64af195677aad8f66f1f">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a>df_clean[[<span class="st">"start_bp"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-52_8fb909c009b5063277924bffde2b2fb8">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a>df_clean[[<span class="st">"start_bp"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "114/72" "132/86" "124/92" "144/83" "122/78" "121/80" "133/74" "116/73"
  [9] "118/66" "122/78" "126/82" "114/68" "118/73" "106/59" "112/69" "114/76"
@@ -2234,28 +2337,31 @@ $ start_bp &lt;chr&gt; "114/72", "132/86", "124/92", "144/83", "122/78", "121/80
 </div>
 </div>
 <div id="tabset-8-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-49_a9a794b78a98a8838341ff036b3b2dcb">
-<div class="sourceCode cell-code" id="cb82" data-code-line-numbers="13,14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
-<span id="cb82-2"><a href="#cb82-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb82-3"><a href="#cb82-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb82-4"><a href="#cb82-4"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb82-5"><a href="#cb82-5"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
-<span id="cb82-6"><a href="#cb82-6"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
-<span id="cb82-7"><a href="#cb82-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
-<span id="cb82-8"><a href="#cb82-8"></a>    ) <span class="sc">|&gt;</span> <span class="fu">fct_infreq</span>(),</span>
-<span id="cb82-9"><a href="#cb82-9"></a>    <span class="at">end_na_clean =</span> <span class="fu">na_if</span>(end_na, <span class="sc">-</span><span class="dv">99</span>),</span>
-<span id="cb82-10"><a href="#cb82-10"></a>    <span class="at">end_emo_clean =</span> <span class="fu">na_if</span>(end_emo, <span class="st">"not done"</span>) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>(),</span>
-<span id="cb82-11"><a href="#cb82-11"></a>    <span class="at">treatment =</span> <span class="fu">fct_relevel</span>(treatment, <span class="st">"upa"</span>, <span class="st">"uste"</span>, <span class="st">"oza"</span>)</span>
-<span id="cb82-12"><a href="#cb82-12"></a>    ) <span class="sc">|&gt;</span>  </span>
-<span id="cb82-13"><a href="#cb82-13"></a>  <span class="fu">separate_wider_delim</span>(start_bp, <span class="at">delim =</span><span class="st">"/"</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"bp_systolic"</span>, <span class="st">"bp_diastolic"</span>), <span class="at">cols_remove =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb82-14"><a href="#cb82-14"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(bp_systolic, bp_diastolic), as.numeric)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-53_ccf8def2304a0898adcb334198254fe8">
+<div class="sourceCode cell-code" id="cb86" data-code-line-numbers="14,15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
+<span id="cb86-2"><a href="#cb86-2"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb86-3"><a href="#cb86-3"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb86-4"><a href="#cb86-4"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb86-5"><a href="#cb86-5"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
+<span id="cb86-6"><a href="#cb86-6"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
+<span id="cb86-7"><a href="#cb86-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
+<span id="cb86-8"><a href="#cb86-8"></a>    ) <span class="sc">|&gt;</span> <span class="fu">fct_infreq</span>(),</span>
+<span id="cb86-9"><a href="#cb86-9"></a>    <span class="at">end_na_clean =</span> <span class="fu">na_if</span>(end_na, <span class="sc">-</span><span class="dv">99</span>),</span>
+<span id="cb86-10"><a href="#cb86-10"></a>    <span class="at">end_emo_clean =</span> <span class="fu">na_if</span>(end_emo, <span class="st">"not done"</span>) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>(),</span>
+<span id="cb86-11"><a href="#cb86-11"></a>    <span class="at">start_na_clean =</span> <span class="fu">parse_number</span>(start_na),</span>
+<span id="cb86-12"><a href="#cb86-12"></a>    <span class="at">treatment =</span> <span class="fu">fct_relevel</span>(treatment, <span class="st">"upa"</span>, <span class="st">"uste"</span>, <span class="st">"oza"</span>)</span>
+<span id="cb86-13"><a href="#cb86-13"></a>    ) <span class="sc">|&gt;</span>  </span>
+<span id="cb86-14"><a href="#cb86-14"></a>  <span class="fu">separate_wider_delim</span>(start_bp, <span class="at">delim =</span><span class="st">"/"</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"bp_systolic"</span>, <span class="st">"bp_diastolic"</span>), <span class="at">cols_remove =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb86-15"><a href="#cb86-15"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(bp_systolic, bp_diastolic), as.numeric)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-8-3">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-50_e81e4cdfe5d712a780187c4ff7799e27">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb83-2"><a href="#cb83-2"></a>  <span class="fu">select</span>(start_bp, bp_systolic, bp_diastolic) <span class="sc">|&gt;</span> </span>
-<span id="cb83-3"><a href="#cb83-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-54_60e318fc0b535c30bdfe0a091524e5d0">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb87-2"><a href="#cb87-2"></a>  <span class="fu">select</span>(start_bp, bp_systolic, bp_diastolic) <span class="sc">|&gt;</span> </span>
+<span id="cb87-3"><a href="#cb87-3"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 30
 Columns: 3
@@ -2264,29 +2370,33 @@ $ bp_systolic  &lt;dbl&gt; 114, 132, 124, 144, 122, 121, 133, 116, 118, 122, 126
 $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 59, 6…</code></pre>
 </div>
 </div>
+<p><br></p>
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-51_afff33578b633e5f10025aed4d393c1b">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a><span class="fu">mean</span>(df_clean[[<span class="st">"bp_systolic"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-55_7630f85a123afc546f2f234f627a78f9">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a><span class="fu">mean</span>(df_clean[[<span class="st">"bp_systolic"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 121.5333</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a><span class="fu">mean</span>(df_clean[[<span class="st">"bp_diastolic"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a><span class="fu">mean</span>(df_clean[[<span class="st">"bp_diastolic"</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 76.36667</code></pre>
 </div>
 </div>
 </div>
+</div><div class="column" style="width:50%;">
 <div class="fragment">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-52_669125ba3a62601d4853932a1e6f3169">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a>df_clean[[<span class="st">"bp_systolic"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-56_e796e2df0f9b5df61c548912f6b1fe95">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a>df_clean[[<span class="st">"bp_systolic"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 114 132 124 144 122 121 133 116 118 122 126 114 118 106 112 114 124 120 119
 [20] 116 121 112 117 118 116 126 144 120 115 142</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a>df_clean[[<span class="st">"bp_diastolic"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a>df_clean[[<span class="st">"bp_diastolic"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 72 86 92 83 78 80 74 73 66 78 82 68 73 59 69 76 80 68 77 74 80 58 67 73 74
 [26] 84 96 84 75 92</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2301,19 +2411,20 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <div class="tab-content">
 <div id="tabset-9-1">
 <p>What does anything mean?</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-53_9b95e004d6b16c4dfea7d285c24d9acf">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a><span class="fu">view</span>(df_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-57_79dba5d883374e9ca2659946320e168e">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1"></a><span class="fu">view</span>(df_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>insert screenshot</p>
+<p><br></p>
+<p><img data-src="images/df_nolabels.PNG"></p>
 </div>
 <div id="tabset-9-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-54_7b4b5d9f3245faceb45248e533665b8b">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a><span class="co"># first import codebook</span></span>
-<span id="cb94-2"><a href="#cb94-2"></a>df_codebook <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
-<span id="cb94-3"><a href="#cb94-3"></a>  <span class="at">path =</span> <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"messy_uc.xlsx"</span>),</span>
-<span id="cb94-4"><a href="#cb94-4"></a>  <span class="at">sheet =</span> <span class="st">"Codebook"</span></span>
-<span id="cb94-5"><a href="#cb94-5"></a>)</span>
-<span id="cb94-6"><a href="#cb94-6"></a>df_codebook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-58_8ea05f0b495175bc3196cfd39565eed1">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a><span class="co"># first import codebook</span></span>
+<span id="cb98-2"><a href="#cb98-2"></a>df_codebook <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb98-3"><a href="#cb98-3"></a>  <span class="at">path =</span> <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"messy_uc.xlsx"</span>),</span>
+<span id="cb98-4"><a href="#cb98-4"></a>  <span class="at">sheet =</span> <span class="st">"Codebook"</span></span>
+<span id="cb98-5"><a href="#cb98-5"></a>)</span>
+<span id="cb98-6"><a href="#cb98-6"></a>df_codebook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 33 × 5
    Variable       Details                                      Units Range ...5 
@@ -2333,13 +2444,13 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-9-3">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-55_9a8186a96e52f260101169df077623fe">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a><span class="co"># second create a named vector of variable names and variable labels</span></span>
-<span id="cb96-2"><a href="#cb96-2"></a>vec_variables <span class="ot">&lt;-</span> df_codebook <span class="sc">|&gt;</span> </span>
-<span id="cb96-3"><a href="#cb96-3"></a>  <span class="fu">select</span>(Variable, Details) <span class="sc">|&gt;</span> </span>
-<span id="cb96-4"><a href="#cb96-4"></a>  <span class="fu">deframe</span>()</span>
-<span id="cb96-5"><a href="#cb96-5"></a></span>
-<span id="cb96-6"><a href="#cb96-6"></a>vec_variables</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-59_d2af22594b228b7cb340103f512dbc83">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a><span class="co"># second create a named vector of variable names and variable labels</span></span>
+<span id="cb100-2"><a href="#cb100-2"></a>vec_variables <span class="ot">&lt;-</span> df_codebook <span class="sc">|&gt;</span> </span>
+<span id="cb100-3"><a href="#cb100-3"></a>  <span class="fu">select</span>(Variable, Details) <span class="sc">|&gt;</span> </span>
+<span id="cb100-4"><a href="#cb100-4"></a>  <span class="fu">deframe</span>()</span>
+<span id="cb100-5"><a href="#cb100-5"></a></span>
+<span id="cb100-6"><a href="#cb100-6"></a>vec_variables</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                        pat_id 
                           "Patient Identifier" 
@@ -2411,47 +2522,49 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-9-4">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-56_e7504ae73e1387f554a2d0e980f7977a">
-<div class="sourceCode cell-code" id="cb98" data-code-line-numbers="16,17|18,19,20,21,22,23,24,25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a><span class="co"># assign labels to the data set</span></span>
-<span id="cb98-2"><a href="#cb98-2"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
-<span id="cb98-3"><a href="#cb98-3"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb98-4"><a href="#cb98-4"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb98-5"><a href="#cb98-5"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb98-6"><a href="#cb98-6"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
-<span id="cb98-7"><a href="#cb98-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
-<span id="cb98-8"><a href="#cb98-8"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
-<span id="cb98-9"><a href="#cb98-9"></a>    ) <span class="sc">|&gt;</span> <span class="fu">fct_infreq</span>(),</span>
-<span id="cb98-10"><a href="#cb98-10"></a>    <span class="at">end_na_clean =</span> <span class="fu">na_if</span>(end_na, <span class="sc">-</span><span class="dv">99</span>),</span>
-<span id="cb98-11"><a href="#cb98-11"></a>    <span class="at">end_emo_clean =</span> <span class="fu">na_if</span>(end_emo, <span class="st">"not done"</span>) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>(),</span>
-<span id="cb98-12"><a href="#cb98-12"></a>    <span class="at">treatment =</span> <span class="fu">fct_relevel</span>(treatment, <span class="st">"upa"</span>, <span class="st">"uste"</span>, <span class="st">"oza"</span>)</span>
-<span id="cb98-13"><a href="#cb98-13"></a>    ) <span class="sc">|&gt;</span>  </span>
-<span id="cb98-14"><a href="#cb98-14"></a>  <span class="fu">separate</span>(start_bp, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"bp_systolic"</span>, <span class="st">"bp_diastolic"</span>), <span class="at">sep =</span><span class="st">"/"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb98-15"><a href="#cb98-15"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(bp_systolic, bp_diastolic), as.numeric)) <span class="sc">|&gt;</span> </span>
-<span id="cb98-16"><a href="#cb98-16"></a>  <span class="co"># assign labels to all variables from the codebook</span></span>
-<span id="cb98-17"><a href="#cb98-17"></a>  labelled<span class="sc">::</span><span class="fu">set_variable_labels</span>(<span class="sc">!!!</span>vec_variables, <span class="at">.strict =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb98-18"><a href="#cb98-18"></a>  <span class="co"># assign labels to new derived variables that did not exist in the code book</span></span>
-<span id="cb98-19"><a href="#cb98-19"></a>  labelled<span class="sc">::</span><span class="fu">set_variable_labels</span>(</span>
-<span id="cb98-20"><a href="#cb98-20"></a>    <span class="at">ethnic_clean =</span> <span class="st">"Ethnicity"</span>,</span>
-<span id="cb98-21"><a href="#cb98-21"></a>    <span class="at">end_na_clean =</span> <span class="st">"Sodium level in serum at end"</span>,</span>
-<span id="cb98-22"><a href="#cb98-22"></a>    <span class="at">end_emo_clean =</span> <span class="st">"Emotional symptom score at end"</span>,</span>
-<span id="cb98-23"><a href="#cb98-23"></a>    <span class="at">bp_systolic =</span> <span class="st">"Systolic blood pressure"</span>,</span>
-<span id="cb98-24"><a href="#cb98-24"></a>    <span class="at">bp_diastolic =</span> <span class="st">"Diastolic blood pressure"</span></span>
-<span id="cb98-25"><a href="#cb98-25"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-60_cc0b916bc1016d6f3923dbcb458c8749">
+<div class="sourceCode cell-code" id="cb102" data-code-line-numbers="17,18|19,20,21,22,23,24,25,26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a><span class="co"># assign labels to the data set</span></span>
+<span id="cb102-2"><a href="#cb102-2"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span></span>
+<span id="cb102-3"><a href="#cb102-3"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb102-4"><a href="#cb102-4"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb102-5"><a href="#cb102-5"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb102-6"><a href="#cb102-6"></a>    <span class="at">ethnic_clean =</span> <span class="fu">case_when</span>(</span>
+<span id="cb102-7"><a href="#cb102-7"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"hispanic"</span>, <span class="st">"Hispanic"</span>, <span class="st">"hispamnic"</span>) <span class="sc">~</span> <span class="st">"hispanic"</span>,</span>
+<span id="cb102-8"><a href="#cb102-8"></a>      ethnic <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">"NOT hispanic"</span>, <span class="st">"not hispanic"</span>) <span class="sc">~</span> <span class="st">"not hispanic"</span>,</span>
+<span id="cb102-9"><a href="#cb102-9"></a>    ) <span class="sc">|&gt;</span> <span class="fu">fct_infreq</span>(),</span>
+<span id="cb102-10"><a href="#cb102-10"></a>    <span class="at">end_na_clean =</span> <span class="fu">na_if</span>(end_na, <span class="sc">-</span><span class="dv">99</span>),</span>
+<span id="cb102-11"><a href="#cb102-11"></a>    <span class="at">end_emo_clean =</span> <span class="fu">na_if</span>(end_emo, <span class="st">"not done"</span>) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>(),</span>
+<span id="cb102-12"><a href="#cb102-12"></a>    <span class="at">start_na_clean =</span> <span class="fu">parse_number</span>(start_na),</span>
+<span id="cb102-13"><a href="#cb102-13"></a>    <span class="at">treatment =</span> <span class="fu">fct_relevel</span>(treatment, <span class="st">"upa"</span>, <span class="st">"uste"</span>, <span class="st">"oza"</span>)</span>
+<span id="cb102-14"><a href="#cb102-14"></a>    ) <span class="sc">|&gt;</span>  </span>
+<span id="cb102-15"><a href="#cb102-15"></a>  <span class="fu">separate_wider_delim</span>(start_bp, <span class="at">delim =</span><span class="st">"/"</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"bp_systolic"</span>, <span class="st">"bp_diastolic"</span>), <span class="at">cols_remove =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb102-16"><a href="#cb102-16"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(bp_systolic, bp_diastolic), as.numeric)) <span class="sc">|&gt;</span> </span>
+<span id="cb102-17"><a href="#cb102-17"></a>  <span class="co"># assign labels to all variables from the codebook</span></span>
+<span id="cb102-18"><a href="#cb102-18"></a>  labelled<span class="sc">::</span><span class="fu">set_variable_labels</span>(<span class="sc">!!!</span>vec_variables, <span class="at">.strict =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb102-19"><a href="#cb102-19"></a>  <span class="co"># assign labels to new derived variables that did not exist in the code book</span></span>
+<span id="cb102-20"><a href="#cb102-20"></a>  labelled<span class="sc">::</span><span class="fu">set_variable_labels</span>(</span>
+<span id="cb102-21"><a href="#cb102-21"></a>    <span class="at">ethnic_clean =</span> <span class="st">"Ethnicity"</span>,</span>
+<span id="cb102-22"><a href="#cb102-22"></a>    <span class="at">end_na_clean =</span> <span class="st">"Sodium level in serum at end"</span>,</span>
+<span id="cb102-23"><a href="#cb102-23"></a>    <span class="at">end_emo_clean =</span> <span class="st">"Emotional symptom score at end"</span>,</span>
+<span id="cb102-24"><a href="#cb102-24"></a>    <span class="at">bp_systolic =</span> <span class="st">"Systolic blood pressure"</span>,</span>
+<span id="cb102-25"><a href="#cb102-25"></a>    <span class="at">bp_diastolic =</span> <span class="st">"Diastolic blood pressure"</span></span>
+<span id="cb102-26"><a href="#cb102-26"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-9-5">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-57_9add73f15e1d334f4bf2bc9ba95b6a60">
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1"></a><span class="co"># view entire data set</span></span>
-<span id="cb99-2"><a href="#cb99-2"></a>df_clean <span class="sc">|&gt;</span> <span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-61_1a878f91ef011d27c74014c095b6d29a">
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1"></a><span class="co"># view entire data set</span></span>
+<span id="cb103-2"><a href="#cb103-2"></a>df_clean <span class="sc">|&gt;</span> <span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>insert screenshot</p>
+<p><br></p>
+<p><img data-src="images/df_yeslabels.PNG"></p>
 </div>
 <div id="tabset-9-6">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-58_254fc3b03f8f413ab4295ea0d28d27af">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a><span class="co"># view structure of data frame</span></span>
-<span id="cb100-2"><a href="#cb100-2"></a>df_clean <span class="sc">|&gt;</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-62_eda10d86ac70615ed6f68f05f0b96ce1">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a><span class="co"># view structure of data frame</span></span>
+<span id="cb104-2"><a href="#cb104-2"></a>df_clean <span class="sc">|&gt;</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tibble [30 × 42] (S3: tbl_df/tbl/data.frame)
+<pre><code>tibble [30 × 43] (S3: tbl_df/tbl/data.frame)
  $ pat_id                          : chr [1:30] "001" "002" "003" "004" ...
   ..- attr(*, "label")= chr "Patient Identifier"
  $ treatment                       : Factor w/ 3 levels "upa","uste","oza": 1 2 3 1 3 2 2 3 1 3 ...
@@ -2463,12 +2576,12 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
  $ race                            : chr [1:30] "Caucasian" "Caucasian" "African-American" "Caucasian" ...
   ..- attr(*, "label")= chr "Race - one of 7 choices"
  $ dob                             : POSIXct[1:30], format: "2005-01-07" "1937-04-13" ...
- $ start_bp                        : chr [1:30] "114/72" "132/86" "124/92" "144/83" ...
-  ..- attr(*, "label")= chr "blood pressure at start - systolic/diastolic"
  $ bp_systolic                     : num [1:30] 114 132 124 144 122 121 133 116 118 122 ...
   ..- attr(*, "label")= chr "Systolic blood pressure"
  $ bp_diastolic                    : num [1:30] 72 86 92 83 78 80 74 73 66 78 ...
   ..- attr(*, "label")= chr "Diastolic blood pressure"
+ $ start_bp                        : chr [1:30] "114/72" "132/86" "124/92" "144/83" ...
+  ..- attr(*, "label")= chr "blood pressure at start - systolic/diastolic"
  $ pre_post_wt_kg                  : chr [1:30] "84/82" "77/77" "74/75" "66/65" ...
  $ start_mes                       : num [1:30] 3 2 1 3 3 2 3 3 2 3 ...
   ..- attr(*, "label")= chr "Mayo endoscopic Score at start of treatment"
@@ -2527,7 +2640,8 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
  $ end_na_clean                    : num [1:30] 137 142 140 139 144 ...
   ..- attr(*, "label")= chr "Sodium level in serum at end"
  $ end_emo_clean                   : num [1:30] 32 43.2 36.9 58.7 58.9 ...
-  ..- attr(*, "label")= chr "Emotional symptom score at end"</code></pre>
+  ..- attr(*, "label")= chr "Emotional symptom score at end"
+ $ start_na_clean                  : num [1:30] 137 142 140 139 144 145 142 138 140 137 ...</code></pre>
 </div>
 </div>
 </div>
@@ -2620,7 +2734,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <section id="pivoting-longer-example" class="slide level2">
 <h2>Pivoting Longer (Example)</h2>
 <p>Let’s start with the wide version (selected columns from messy_uc)</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-60_c2759ccbe0eab1e0d15e4c8fc8c9e1f5">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-64_50e4bd59f03490c4bbf23b219f424676">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
@@ -2645,7 +2759,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <section id="pivoting-longer-example-1" class="slide level2">
 <h2>Pivoting Longer (Example)</h2>
 <p>This is the tall version we want to end up with.</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-61_b7972faa0a13abd11f26b0f7219555af">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-65_92baadb697e60b29cfd8e9318bc46049">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 4
    pat_id treatment measure   score
@@ -2675,7 +2789,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <li>names_to</li>
 <li>values_to</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-62_fbb4fca8f7b53dff68600facd2dbdf9f">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-66_794dcabcd110b720db0dc662269e2175">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
@@ -2700,7 +2814,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Problem: Wide</a></li><li><a href="#tabset-10-2">Code: pivot_longer</a></li><li><a href="#tabset-10-3">Result: Tall</a></li></ul>
 <div class="tab-content">
 <div id="tabset-10-1">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-63_5942fbf07f34845002a6bb181ff45281">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-67_8e720d678ad918fb09ea210a517809e8">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
@@ -2720,17 +2834,17 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-10-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-64_f1974fc0a505ac2aa9ff092d2db445fa">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1"></a>wide <span class="sc">|&gt;</span> </span>
-<span id="cb106-2"><a href="#cb106-2"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb106-3"><a href="#cb106-3"></a>    <span class="at">cols =</span> <span class="st">"start_mes"</span><span class="sc">:</span><span class="st">"end_emo"</span>, </span>
-<span id="cb106-4"><a href="#cb106-4"></a>    <span class="co"># could also use 3:8</span></span>
-<span id="cb106-5"><a href="#cb106-5"></a>               <span class="at">names_to =</span> <span class="st">"measure"</span>,</span>
-<span id="cb106-6"><a href="#cb106-6"></a>               <span class="at">values_to =</span> <span class="st">"score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-68_116046f7733cf621d1400e544689b09f">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a>wide <span class="sc">|&gt;</span> </span>
+<span id="cb110-2"><a href="#cb110-2"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb110-3"><a href="#cb110-3"></a>    <span class="at">cols =</span> <span class="st">"start_mes"</span><span class="sc">:</span><span class="st">"end_emo"</span>, </span>
+<span id="cb110-4"><a href="#cb110-4"></a>    <span class="co"># could also use 3:8</span></span>
+<span id="cb110-5"><a href="#cb110-5"></a>               <span class="at">names_to =</span> <span class="st">"measure"</span>,</span>
+<span id="cb110-6"><a href="#cb110-6"></a>               <span class="at">values_to =</span> <span class="st">"score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-10-3">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-65_381a21df702264a66514fa6d1d20435c">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-69_a17812d153c3ccbfd9b7976d857b42fd">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 4
    pat_id treatment measure   score
@@ -2771,15 +2885,15 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </ul>
 </div>
 <div id="tabset-11-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-66_53c2e542505bdb1eec85324e280df7a3">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a>tall <span class="sc">|&gt;</span> </span>
-<span id="cb108-2"><a href="#cb108-2"></a>  <span class="fu">separate</span>(<span class="at">col =</span> <span class="st">"measure"</span>,</span>
-<span id="cb108-3"><a href="#cb108-3"></a>           <span class="at">sep =</span> <span class="st">"_"</span>,</span>
-<span id="cb108-4"><a href="#cb108-4"></a>           <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"timept"</span>, <span class="st">"measure"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-70_8b89d5ab79cb18faae7201690ae7a47b">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1"></a>tall <span class="sc">|&gt;</span> </span>
+<span id="cb112-2"><a href="#cb112-2"></a>  <span class="fu">separate</span>(<span class="at">col =</span> <span class="st">"measure"</span>,</span>
+<span id="cb112-3"><a href="#cb112-3"></a>           <span class="at">sep =</span> <span class="st">"_"</span>,</span>
+<span id="cb112-4"><a href="#cb112-4"></a>           <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"timept"</span>, <span class="st">"measure"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-11-3">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-67_60f050ff3e9ba9b8a94a06a169b11987">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-71_2b69ed738df58920460c3b963c4d1f2f">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 5
    pat_id treatment timept measure score
@@ -2802,12 +2916,12 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <ul>
 <li>You can do this <em>within</em> pivot_longer with one more argument</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-68_95a8e3c74be97e90f2c45964fc65f9f8">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a>wide <span class="sc">|&gt;</span> </span>
-<span id="cb110-2"><a href="#cb110-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>,</span>
-<span id="cb110-3"><a href="#cb110-3"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"timept"</span>, <span class="st">"measure"</span>),</span>
-<span id="cb110-4"><a href="#cb110-4"></a>    <span class="at">names_sep =</span> <span class="st">"_"</span>,</span>
-<span id="cb110-5"><a href="#cb110-5"></a>    <span class="at">values_to =</span> <span class="st">"score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-72_cfb898296b07e1f453f909c04b45a84a">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a>wide <span class="sc">|&gt;</span> </span>
+<span id="cb114-2"><a href="#cb114-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>,</span>
+<span id="cb114-3"><a href="#cb114-3"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"timept"</span>, <span class="st">"measure"</span>),</span>
+<span id="cb114-4"><a href="#cb114-4"></a>    <span class="at">names_sep =</span> <span class="st">"_"</span>,</span>
+<span id="cb114-5"><a href="#cb114-5"></a>    <span class="at">values_to =</span> <span class="st">"score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 5
    pat_id treatment timept measure score
@@ -2836,7 +2950,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <li>Measurements of Trans-Epithelial Electrical Resistance (the inverse of leakiness) were taken from biopsies of 3 segments of intestine.</li>
 <li>This might be affected by portal hypertension in patients with liver cirrhosis</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-69_fbb507d259cfbef42df04bd840a8b354">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-73_98f03b8ebf9da201cc027b6185b0a323">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 5
    pat_id portal_htn duod_teer ileal_teer colon_teer
@@ -2860,7 +2974,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <ul id="tabset-12" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-12-1">The Dataset</a></li><li><a href="#tabset-12-2">The Arguments</a></li><li><a href="#tabset-12-3">The Code</a></li><li><a href="#tabset-12-4">The Solution</a></li></ul>
 <div class="tab-content">
 <div id="tabset-12-1">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-70_fe0823ba162e0a02a70091063724753f">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-74_a7d9c5fa3f2120d5a14cb08f07f22c44">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 5
    pat_id portal_htn duod_teer ileal_teer colon_teer
@@ -2895,28 +3009,28 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <li>Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.</li>
 <li>Note that we are giving you names_pattern</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-71_fbd97bcb44ee94e1d41985ca55f7233f">
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a>endo_data <span class="sc">|&gt;</span> </span>
-<span id="cb114-2"><a href="#cb114-2"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb114-3"><a href="#cb114-3"></a>    <span class="at">cols =</span>  ,</span>
-<span id="cb114-4"><a href="#cb114-4"></a>    <span class="at">names_pattern =</span> <span class="st">"(.+)_teer"</span>,</span>
-<span id="cb114-5"><a href="#cb114-5"></a>    <span class="at">names_to =</span>   ,</span>
-<span id="cb114-6"><a href="#cb114-6"></a>    <span class="at">values_to =</span> </span>
-<span id="cb114-7"><a href="#cb114-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-75_b20b9f246074703bfea1390261a896d5">
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1"></a>endo_data <span class="sc">|&gt;</span> </span>
+<span id="cb118-2"><a href="#cb118-2"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb118-3"><a href="#cb118-3"></a>    <span class="at">cols =</span>  ,</span>
+<span id="cb118-4"><a href="#cb118-4"></a>    <span class="at">names_pattern =</span> <span class="st">"(.+)_teer"</span>,</span>
+<span id="cb118-5"><a href="#cb118-5"></a>    <span class="at">names_to =</span>   ,</span>
+<span id="cb118-6"><a href="#cb118-6"></a>    <span class="at">values_to =</span> </span>
+<span id="cb118-7"><a href="#cb118-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-12-4">
 <ul>
 <li>Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-72_f8da23bf63167425406850662430fb63">
-<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1"></a>endo_data <span class="sc">|&gt;</span> </span>
-<span id="cb115-2"><a href="#cb115-2"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb115-3"><a href="#cb115-3"></a>    <span class="at">cols =</span> <span class="st">"duod_teer"</span><span class="sc">:</span><span class="st">"colon_teer"</span>,</span>
-<span id="cb115-4"><a href="#cb115-4"></a>    <span class="at">names_pattern =</span> <span class="st">"(.+)_teer"</span>,</span>
-<span id="cb115-5"><a href="#cb115-5"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"location"</span>),</span>
-<span id="cb115-6"><a href="#cb115-6"></a>    <span class="at">values_to =</span> <span class="st">"teer"</span></span>
-<span id="cb115-7"><a href="#cb115-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-76_2fd0d3066ccf20f84cda6d6808512785">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1"></a>endo_data <span class="sc">|&gt;</span> </span>
+<span id="cb119-2"><a href="#cb119-2"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb119-3"><a href="#cb119-3"></a>    <span class="at">cols =</span> <span class="st">"duod_teer"</span><span class="sc">:</span><span class="st">"colon_teer"</span>,</span>
+<span id="cb119-4"><a href="#cb119-4"></a>    <span class="at">names_pattern =</span> <span class="st">"(.+)_teer"</span>,</span>
+<span id="cb119-5"><a href="#cb119-5"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"location"</span>),</span>
+<span id="cb119-6"><a href="#cb119-6"></a>    <span class="at">values_to =</span> <span class="st">"teer"</span></span>
+<span id="cb119-7"><a href="#cb119-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Run the code, and look at the resulting table.</li>
@@ -2937,7 +3051,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <li>Here we will convert the tall version of our selected messy_uc data back to wide.</li>
 <li>This is what the tall data look like</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-73_77ce868467add96d4ae934fdac92971a">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-77_a8e14b85fc587f8bade607609674ba4e">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 4
    pat_id treatment measure   score
@@ -2957,17 +3071,17 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-13-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-74_dff7f916a9d83146b7f520fc307e08ef">
-<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1"></a>tall <span class="sc">|&gt;</span> </span>
-<span id="cb117-2"><a href="#cb117-2"></a>  <span class="fu">pivot_wider</span>(</span>
-<span id="cb117-3"><a href="#cb117-3"></a>    <span class="at">id_cols =</span> <span class="fu">c</span>(pat_id, treatment), <span class="co"># Variables not pivoted</span></span>
-<span id="cb117-4"><a href="#cb117-4"></a>    <span class="at">names_from =</span> measure, <span class="co"># will become column names</span></span>
-<span id="cb117-5"><a href="#cb117-5"></a>    <span class="at">values_from =</span> score <span class="co"># will become values</span></span>
-<span id="cb117-6"><a href="#cb117-6"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-78_f122ddc0b87bc741575b116ff067a63d">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1"></a>tall <span class="sc">|&gt;</span> </span>
+<span id="cb121-2"><a href="#cb121-2"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb121-3"><a href="#cb121-3"></a>    <span class="at">id_cols =</span> <span class="fu">c</span>(pat_id, treatment), <span class="co"># Variables not pivoted</span></span>
+<span id="cb121-4"><a href="#cb121-4"></a>    <span class="at">names_from =</span> measure, <span class="co"># will become column names</span></span>
+<span id="cb121-5"><a href="#cb121-5"></a>    <span class="at">values_from =</span> score <span class="co"># will become values</span></span>
+<span id="cb121-6"><a href="#cb121-6"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-13-3">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-75_6c812d9450f1416350140f51c942a9e7">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-79_c968aa9c48b3e1984cb4303871e65b4f">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
@@ -2994,12 +3108,12 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <h1>Filling in Unobserved Dates/Times with padr</h1>
 <div class="columns">
 <div class="column" style="width:55%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-76_cff5f3f1f2564863a64645b1b5d13dab">
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1"></a><span class="fu">library</span>(padr)</span>
-<span id="cb119-2"><a href="#cb119-2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb119-3"><a href="#cb119-3"></a>emergency <span class="ot">&lt;-</span> padr<span class="sc">::</span>emergency</span>
-<span id="cb119-4"><a href="#cb119-4"></a><span class="fu">head</span>(emergency) <span class="sc">|&gt;</span>  </span>
-<span id="cb119-5"><a href="#cb119-5"></a>  <span class="fu">select</span>(title, time_stamp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-80_242e57ba53fd6a74edcdd74e49f3b202">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1"></a><span class="fu">library</span>(padr)</span>
+<span id="cb123-2"><a href="#cb123-2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb123-3"><a href="#cb123-3"></a>emergency <span class="ot">&lt;-</span> padr<span class="sc">::</span>emergency</span>
+<span id="cb123-4"><a href="#cb123-4"></a><span class="fu">head</span>(emergency) <span class="sc">|&gt;</span>  </span>
+<span id="cb123-5"><a href="#cb123-5"></a>  <span class="fu">select</span>(title, time_stamp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   title                   time_stamp         
@@ -3036,16 +3150,16 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <ul>
 <li>We will thicken to month</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-77_465c6842415b9f0a211a11077bbe23d7">
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1"></a>emergency <span class="sc">|&gt;</span> </span>
-<span id="cb121-2"><a href="#cb121-2"></a>  <span class="fu">thicken</span>(<span class="st">'month'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-81_b82011684416fa5f7024be0b31c72f7e">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1"></a>emergency <span class="sc">|&gt;</span> </span>
+<span id="cb125-2"><a href="#cb125-2"></a>  <span class="fu">thicken</span>(<span class="st">'month'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-14-3">
 <ul>
 <li>This lets us count events like overdoses by month with time_stamp_month.</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-78_6831390c9d9722a75f33fcc961e2c0ff">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-82_f0763772db225497ff0d9dc36e35ac6f">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 120,450 × 7
      lat   lng   zip title            time_stamp          twp   time_stamp_month
@@ -3078,7 +3192,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <li>No observations on weekend days.</li>
 </ul>
 </div><div class="column" style="width:40%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-79_c1aaf56df7c8cb5c8a52ebf665ae8c0d">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-83_b7753842a5853009920bd5f6c96834b6">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 15 × 3
    pat_id date         fcp
@@ -3114,17 +3228,17 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </ul>
 </div>
 <div id="tabset-15-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-80_6a3a4728c1bdff5a32344acea3f104b7">
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1"></a>fcp <span class="sc">|&gt;</span> </span>
-<span id="cb124-2"><a href="#cb124-2"></a>  <span class="fu">pad</span>(<span class="at">group =</span> <span class="st">"pat_id"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb124-3"><a href="#cb124-3"></a>  tidyr<span class="sc">::</span><span class="fu">fill</span>(pat_id) <span class="sc">|&gt;</span> </span>
-<span id="cb124-4"><a href="#cb124-4"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-84_2eaa5ef7f2f0bd3fb9d9549dde760d44">
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1"></a>fcp <span class="sc">|&gt;</span> </span>
+<span id="cb128-2"><a href="#cb128-2"></a>  <span class="fu">pad</span>(<span class="at">group =</span> <span class="st">"pat_id"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb128-3"><a href="#cb128-3"></a>  tidyr<span class="sc">::</span><span class="fu">fill</span>(pat_id) <span class="sc">|&gt;</span> </span>
+<span id="cb128-4"><a href="#cb128-4"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-15-3">
 <div class="columns">
 <div class="column" style="width:40%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-81_e4be01bd365a3e3180c2cb517f47c7e2">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-85_aaa8e27c4601cf6ed1edc861702f0275">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 21 × 3
    pat_id date         fcp

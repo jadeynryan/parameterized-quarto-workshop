@@ -331,15 +331,23 @@ df_clean |>
 
 ### Problem
 
+
 ```{r}
 df_raw |> 
   select(start_date) |> 
   glimpse()
 ```
 
+
+<br>
+
+::: {.fragment}
+
 ```{r}
 df_raw[["start_date"]]
 ```
+
+:::
 
 ### Solution
 
@@ -426,7 +434,7 @@ df_raw[["start_na"]]
 
 ### Solution
 
-```{r, eval=FALSE}
+```{r}
 #| code-line-numbers: "11"
 df_clean <- df_raw |>
   janitor::clean_names() |> 
@@ -448,7 +456,7 @@ df_clean <- df_raw |>
 
 ::: {.column width="50%"}
 
-```{r, eval=FALSE}
+```{r}
 df_clean |> 
   select(start_na_clean) |> 
   glimpse()
@@ -458,7 +466,7 @@ df_clean |>
 
 
 ::: {.fragment}
-```{r, error=TRUE, eval=FALSE}
+```{r, error=TRUE}
 mean(df_clean[["start_na_clean"]], na.rm = TRUE)
 ```
 :::
@@ -467,7 +475,7 @@ mean(df_clean[["start_na_clean"]], na.rm = TRUE)
 
 ::: {.column width="50%" .fragment}
 
-```{r, eval=FALSE}
+```{r}
 df_clean |> 
   count(start_na_clean, start_na)
 ```
@@ -548,6 +556,7 @@ df_clean <- df_raw |>
     ) |> fct_infreq(),
     end_na_clean = na_if(end_na, -99),
     end_emo_clean = na_if(end_emo, "not done") |> as.numeric(),
+    start_na_clean = parse_number(start_na),
     treatment = fct_relevel(treatment, "upa", "uste", "oza")
   ) 
 ```
@@ -639,7 +648,7 @@ df_clean[["start_bp"]]
 
 
 ```{r}
-#| code-line-numbers: "13,14"
+#| code-line-numbers: "14,15"
 df_clean <- df_raw |>
   janitor::clean_names() |> 
   janitor::remove_empty(which = c("rows", "cols")) |> 
@@ -650,6 +659,7 @@ df_clean <- df_raw |>
     ) |> fct_infreq(),
     end_na_clean = na_if(end_na, -99),
     end_emo_clean = na_if(end_emo, "not done") |> as.numeric(),
+    start_na_clean = parse_number(start_na),
     treatment = fct_relevel(treatment, "upa", "uste", "oza")
     ) |>  
   separate_wider_delim(start_bp, delim ="/", names = c("bp_systolic", "bp_diastolic"), cols_remove = FALSE) |> 
@@ -658,12 +668,17 @@ df_clean <- df_raw |>
 
 ### Confirm
 
+::: columns
+
+::: {.column width="50%"}
+
+
 ```{r}
 df_clean |> 
   select(start_bp, bp_systolic, bp_diastolic) |> 
   glimpse()
 ```
-
+<br>
 
 ::: {.fragment}
 ```{r, error=TRUE}
@@ -671,6 +686,10 @@ mean(df_clean[["bp_systolic"]], na.rm = TRUE)
 mean(df_clean[["bp_diastolic"]], na.rm = TRUE)
 ```
 :::
+
+:::
+
+::: {.column width="50%"}
 
 ::: {.fragment}
 ```{r}
@@ -681,6 +700,9 @@ df_clean[["bp_diastolic"]]
 
 :::
 
+:::
+
+:::
 
 ## Assigning labels
 
@@ -696,7 +718,9 @@ What does anything mean?
 view(df_clean)
 ```
 
-insert screenshot
+<br>
+
+![](images/df_nolabels.PNG)
 
 ### Solution 1
 
@@ -726,7 +750,7 @@ vec_variables
 
 
 ```{r}
-#| code-line-numbers: "16,17|18,19,20,21,22,23,24,25"
+#| code-line-numbers: "17,18|19,20,21,22,23,24,25,26"
 # assign labels to the data set
 df_clean <- df_raw |>
   janitor::clean_names() |> 
@@ -738,9 +762,10 @@ df_clean <- df_raw |>
     ) |> fct_infreq(),
     end_na_clean = na_if(end_na, -99),
     end_emo_clean = na_if(end_emo, "not done") |> as.numeric(),
+    start_na_clean = parse_number(start_na),
     treatment = fct_relevel(treatment, "upa", "uste", "oza")
     ) |>  
-  separate(start_bp, into = c("bp_systolic", "bp_diastolic"), sep ="/", remove = FALSE) |> 
+  separate_wider_delim(start_bp, delim ="/", names = c("bp_systolic", "bp_diastolic"), cols_remove = FALSE) |> 
   mutate(across(c(bp_systolic, bp_diastolic), as.numeric)) |> 
   # assign labels to all variables from the codebook
   labelled::set_variable_labels(!!!vec_variables, .strict = FALSE) |> 
@@ -762,7 +787,10 @@ df_clean <- df_raw |>
 df_clean |> view()
 ```
 
-insert screenshot
+
+<br>
+
+![](images/df_yeslabels.PNG)
 
 ### Confirm 2
 
