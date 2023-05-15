@@ -733,5 +733,89 @@
     "title": "Data Cleaning",
     "section": "Namespacing",
     "text": "Namespacing\ndplyr::select()\n\ntells R explicitly to use the function select from the package dplyr\ncan help to avoid name conflicts (e.g., MASS::select())\ndoes not require library(dplyr)\n\n\n\n\n\nlibrary(dplyr)\n\nselect(mtcars, mpg, cyl) \n\nmtcars |&gt;  \n  select(mpg, cyl) \n\n\n\n\n\n# library(dplyr) not needed\n\ndplyr::select(mtcars, mpg, cyl) \n\nmtcars |&gt;  \n  dplyr::select(mpg, cyl)"
+  },
+  {
+    "objectID": "exercises.html#set-up",
+    "href": "exercises.html#set-up",
+    "title": "Data Cleaning: Exercises",
+    "section": "Set up",
+    "text": "Set up\n\n# import raw data\ndf_raw &lt;- read_excel(\n  path = here(\"data\", \"messy_uc.xlsx\"),\n  sheet = \"Data\",\n  skip = 5\n)\n\n# do initial cleaning of variable names and removing empty rows/columns\ndf_clean &lt;- df_raw |&gt; \n  janitor::clean_names() |&gt; \n  janitor::remove_empty(which = c(\"rows\", \"cols\"))"
+  },
+  {
+    "objectID": "exercises.html#sp1",
+    "href": "exercises.html#sp1",
+    "title": "Data Cleaning: Exercises",
+    "section": "SP1",
+    "text": "SP1\n\nExplore the values of race.\n\n\n\nShow the code solution\ndf_clean |&gt; count(race)\n\n\n# A tibble: 9 × 2\n  race                 n\n  &lt;chr&gt;            &lt;int&gt;\n1 African-American     4\n2 AmerInd              1\n3 Asian                1\n4 Caucasian           17\n5 H/API                1\n6 Hawaiian             1\n7 Mixed                1\n8 Other                2\n9 afromerican          2\n\n\n\nIn the df_clean data set, create a new variable named race_clean that cleans the coding of race (combine “African-American” & “afromerican”; “H/API” & “Mixed” & “Other”).\n\n\n\nShow the code solution\ndf_clean &lt;- df_raw |&gt; \n  janitor::clean_names() |&gt; \n  janitor::remove_empty(which = c(\"rows\", \"cols\")) |&gt; \n  mutate(\n    race_clean = case_when(\n      race %in% c(\"African-American\", \"afromerican\") ~ \"African-American\",\n      race %in% c(\"H/API\", \"Mixed\", \"Other\") ~ \"Other\",\n      TRUE ~ race\n    )\n  )\n\n\n\nConfirm the new race_clean variable is coded correctly.\n\n\n\nShow the code solution\ndf_clean |&gt; \n  count(race_clean, race)\n\n\n# A tibble: 9 × 3\n  race_clean       race                 n\n  &lt;chr&gt;            &lt;chr&gt;            &lt;int&gt;\n1 African-American African-American     4\n2 African-American afromerican          2\n3 AmerInd          AmerInd              1\n4 Asian            Asian                1\n5 Caucasian        Caucasian           17\n6 Hawaiian         Hawaiian             1\n7 Other            H/API                1\n8 Other            Mixed                1\n9 Other            Other                2"
+  },
+  {
+    "objectID": "exercises.html#sp2",
+    "href": "exercises.html#sp2",
+    "title": "Data Cleaning: Exercises",
+    "section": "SP2",
+    "text": "SP2\n\nExplore the type of and values of start_plt.\n\n\n\nShow the code solution\ndf_clean |&gt; \n  count(start_plt)\n\n\n# A tibble: 28 × 2\n   start_plt        n\n   &lt;chr&gt;        &lt;int&gt;\n 1 115K/microL      1\n 2 1550K/microL     1\n 3 177K/microL      1\n 4 188K/microL      1\n 5 197K/microL      1\n 6 204K/microL      1\n 7 249K/microL      1\n 8 258K/microL      1\n 9 273K/microL      1\n10 288K/microL      1\n# ℹ 18 more rows\n\n\nShow the code solution\ndf_clean |&gt; \n  select(start_plt) |&gt; \n  glimpse()\n\n\nRows: 30\nColumns: 1\n$ start_plt &lt;chr&gt; \"273K/microL\", \"414K/microL\", \"323K/microL\", \"389K/microL\", …\n\n\nShow the code solution\ndf_clean[[\"start_plt\"]]\n\n\n [1] \"273K/microL\"  \"414K/microL\"  \"323K/microL\"  \"389K/microL\"  \"411K/microL\" \n [6] \"427K/microL\"  \"249K/microL\"  \"197K/microL\"  \"204K/microL\"  \"305K/microL\" \n[11] \"347K/microL\"  \"402K/microL\"  \"389K/microL\"  \"432K/microL\"  \"288K/microL\" \n[16] \"177K/microL\"  \"290K/microL\"  \"312K/microL\"  \"399K/microL\"  \"423K/microL\" \n[21] \"clumped\"      \"323K/microL\"  \"258K/microL\"  \"115K/microL\"  \"1550K/microL\"\n[26] \"37K/microL\"   \"188K/microL\"  \"456K/microL\"  \"356K/microL\"  \"291K/microL\" \n\n\n\nIn the df_clean data set, create a new variable named start_plt_clean that corrects any unusual values and assigns the correct variable type.\n\n\n\nShow the code solution\ndf_clean &lt;- df_raw |&gt; \n  janitor::clean_names() |&gt; \n  janitor::remove_empty(which = c(\"rows\", \"cols\")) |&gt; \n  mutate(\n    race_clean = case_when(\n      race %in% c(\"African-American\", \"afromerican\") ~ \"African-American\",\n      race %in% c(\"H/API\", \"Mixed\", \"Other\") ~ \"Other\",\n      TRUE ~ race\n    ),\n    start_plt_clean = parse_number(start_plt) \n  )\n\n\n\nConfirm the new start_plt_clean variable is coded correctly.\n\n\n\nShow the code solution\ndf_clean |&gt; \n  count(start_plt_clean, start_plt)\n\n\n# A tibble: 28 × 3\n   start_plt_clean start_plt       n\n             &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt;\n 1              37 37K/microL      1\n 2             115 115K/microL     1\n 3             177 177K/microL     1\n 4             188 188K/microL     1\n 5             197 197K/microL     1\n 6             204 204K/microL     1\n 7             249 249K/microL     1\n 8             258 258K/microL     1\n 9             273 273K/microL     1\n10             288 288K/microL     1\n# ℹ 18 more rows\n\n\nShow the code solution\ndf_clean |&gt; \n  select(start_plt, start_plt_clean) |&gt; \n  glimpse()\n\n\nRows: 30\nColumns: 2\n$ start_plt       &lt;chr&gt; \"273K/microL\", \"414K/microL\", \"323K/microL\", \"389K/mic…\n$ start_plt_clean &lt;dbl&gt; 273, 414, 323, 389, 411, 427, 249, 197, 204, 305, 347,…\n\n\nShow the code solution\ndf_clean[[\"start_plt_clean\"]]\n\n\n [1]  273  414  323  389  411  427  249  197  204  305  347  402  389  432  288\n[16]  177  290  312  399  423   NA  323  258  115 1550   37  188  456  356  291\nattr(,\"problems\")\n# A tibble: 1 × 4\n    row   col expected actual \n  &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;  \n1    21    NA a number clumped"
+  },
+  {
+    "objectID": "slides/index.html#scope",
+    "href": "slides/index.html#scope",
+    "title": "Data Cleaning",
+    "section": "Scope",
+    "text": "Scope\n\nTaming the Data Beast, by Allison HorstTaming the Data Beast, from Allison Horst’s Data Science Illustrations"
+  },
+  {
+    "objectID": "exercises.html#cl1",
+    "href": "exercises.html#cl1",
+    "title": "Data Cleaning: Exercises",
+    "section": "CL1",
+    "text": "CL1"
+  },
+  {
+    "objectID": "exercises.html#cl2",
+    "href": "exercises.html#cl2",
+    "title": "Data Cleaning: Exercises",
+    "section": "CL2",
+    "text": "CL2"
+  },
+  {
+    "objectID": "exercises.html#sp3",
+    "href": "exercises.html#sp3",
+    "title": "Data Cleaning: Exercises",
+    "section": "SP3",
+    "text": "SP3\n\nExplore the type of and values of race_clean.\n\n\n\nShow the code solution\ndf_clean |&gt; \n  count(race_clean)\n\n\n# A tibble: 6 × 2\n  race_clean           n\n  &lt;chr&gt;            &lt;int&gt;\n1 African-American     6\n2 AmerInd              1\n3 Asian                1\n4 Caucasian           17\n5 Hawaiian             1\n6 Other                4\n\n\n\nConvert the race_clean variable to a factor such that the most common values present in order in a summary table.\n\n\n\nShow the code solution\ndf_clean &lt;- df_raw |&gt; \n  janitor::clean_names() |&gt; \n  janitor::remove_empty(which = c(\"rows\", \"cols\")) |&gt; \n  mutate(\n    race_clean = case_when(\n      race %in% c(\"African-American\", \"afromerican\") ~ \"African-American\",\n      race %in% c(\"H/API\", \"Mixed\", \"Other\") ~ \"Other\",\n      TRUE ~ race\n    ) |&gt; fct_infreq(),\n    start_plt_clean = parse_number(start_plt) \n  )\n\n\n\nConfirm the new coding of race_clean.\n\n\n\nShow the code solution\ndf_clean |&gt; \n  count(race_clean, race)\n\n\n# A tibble: 9 × 3\n  race_clean       race                 n\n  &lt;fct&gt;            &lt;chr&gt;            &lt;int&gt;\n1 Caucasian        Caucasian           17\n2 African-American African-American     4\n3 African-American afromerican          2\n4 Other            H/API                1\n5 Other            Mixed                1\n6 Other            Other                2\n7 AmerInd          AmerInd              1\n8 Asian            Asian                1\n9 Hawaiian         Hawaiian             1\n\n\nShow the code solution\ndf_clean |&gt; \n  count(race_clean)\n\n\n# A tibble: 6 × 2\n  race_clean           n\n  &lt;fct&gt;            &lt;int&gt;\n1 Caucasian           17\n2 African-American     6\n3 Other                4\n4 AmerInd              1\n5 Asian                1\n6 Hawaiian             1"
+  },
+  {
+    "objectID": "exercises.html#ph1",
+    "href": "exercises.html#ph1",
+    "title": "Data Cleaning: Exercises",
+    "section": "PH1",
+    "text": "PH1"
+  },
+  {
+    "objectID": "exercises.html#ph2",
+    "href": "exercises.html#ph2",
+    "title": "Data Cleaning: Exercises",
+    "section": "PH2",
+    "text": "PH2"
+  },
+  {
+    "objectID": "slides/index.html#exercise",
+    "href": "slides/index.html#exercise",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP1.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/index.html#exercise-1",
+    "href": "slides/index.html#exercise-1",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP2.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/index.html#exercise-2",
+    "href": "slides/index.html#exercise-2",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP3.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
   }
 ]

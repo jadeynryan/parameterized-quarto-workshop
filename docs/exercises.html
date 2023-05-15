@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.333">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -172,20 +172,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions:</a></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
   <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The Data</a></li>
-  <li><a href="#section-1-crystal-lewis-crystal-lewis" id="toc-section-1-crystal-lewis-crystal-lewis" class="nav-link" data-scroll-target="#section-1-crystal-lewis-crystal-lewis">Section 1: Crystal Lewis <img src="images/Crystal_circle.png" class="img-fluid" style="width:15.0%" alt="Crystal Lewis"></a>
+  <li><a href="#crystal-lewis-data-management-best-practices" id="toc-crystal-lewis-data-management-best-practices" class="nav-link" data-scroll-target="#crystal-lewis-data-management-best-practices"><img src="images/Crystal_circle.png" class="img-fluid" style="width:15.0%" alt="Crystal Lewis"> Data management best practices</a>
   <ul class="collapse">
-  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
-  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
+  <li><a href="#cl1" id="toc-cl1" class="nav-link" data-scroll-target="#cl1">CL1</a></li>
+  <li><a href="#cl2" id="toc-cl2" class="nav-link" data-scroll-target="#cl2">CL2</a></li>
   </ul></li>
-  <li><a href="#section-2-shannon-pileggi-shannon-pileggi" id="toc-section-2-shannon-pileggi-shannon-pileggi" class="nav-link" data-scroll-target="#section-2-shannon-pileggi-shannon-pileggi">Section 2: Shannon Pileggi <img src="images/Shannon_circle.png" class="img-fluid" style="width:15.0%" alt="Shannon Pileggi"></a>
+  <li><a href="#shannon-pileggi-data-cleaning-fundamentals" id="toc-shannon-pileggi-data-cleaning-fundamentals" class="nav-link" data-scroll-target="#shannon-pileggi-data-cleaning-fundamentals"><img src="images/Shannon_circle.png" class="img-fluid" style="width:15.0%" alt="Shannon Pileggi"> Data cleaning fundamentals</a>
   <ul class="collapse">
-  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
-  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
+  <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set up</a></li>
+  <li><a href="#sp1" id="toc-sp1" class="nav-link" data-scroll-target="#sp1">SP1</a></li>
+  <li><a href="#sp2" id="toc-sp2" class="nav-link" data-scroll-target="#sp2">SP2</a></li>
+  <li><a href="#sp3" id="toc-sp3" class="nav-link" data-scroll-target="#sp3">SP3</a></li>
   </ul></li>
-  <li><a href="#section-3-peter-higgins-peter-higgins" id="toc-section-3-peter-higgins-peter-higgins" class="nav-link" data-scroll-target="#section-3-peter-higgins-peter-higgins">Section 3: Peter Higgins <img src="images/Peter_circle.jpg" class="img-fluid" style="width:15.0%" alt="Peter Higgins"></a>
+  <li><a href="#peter-higgins-data-wrangling-reshaping" id="toc-peter-higgins-data-wrangling-reshaping" class="nav-link" data-scroll-target="#peter-higgins-data-wrangling-reshaping"><img src="images/Peter_circle.jpg" class="img-fluid" style="width:15.0%" alt="Peter Higgins"> Data wrangling &amp; reshaping</a>
   <ul class="collapse">
-  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
-  <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
+  <li><a href="#ph1" id="toc-ph1" class="nav-link" data-scroll-target="#ph1">PH1</a></li>
+  <li><a href="#ph2" id="toc-ph2" class="nav-link" data-scroll-target="#ph2">PH2</a></li>
   </ul></li>
   <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info">Session info</a></li>
   </ul>
@@ -225,7 +227,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="packages" class="level1">
 <h1>Packages</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># general use</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)   <span class="co"># handy data cleaning functions</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)    <span class="co"># import excel files</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)      <span class="co"># find files in a project</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary) <span class="co"># presentation ready summary tables  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="the-data" class="level1">
@@ -239,221 +245,418 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="section-1-crystal-lewis-crystal-lewis" class="level1">
-<h1>Section 1: Crystal Lewis <img src="images/Crystal_circle.png" class="img-fluid" style="width:15.0%" alt="Crystal Lewis"></h1>
-<section id="exercise-1" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
-<p>view first six rows of <code>mtcars</code></p>
+<section id="crystal-lewis-data-management-best-practices" class="level1">
+<h1><img src="images/Crystal_circle.png" class="img-fluid" style="width:15.0%" alt="Crystal Lewis"> Data management best practices</h1>
+<section id="cl1" class="level2">
+<h2 class="anchored" data-anchor-id="cl1">CL1</h2>
+</section>
+<section id="cl2" class="level2">
+<h2 class="anchored" data-anchor-id="cl2">CL2</h2>
+</section>
+</section>
+<section id="shannon-pileggi-data-cleaning-fundamentals" class="level1">
+<h1><img src="images/Shannon_circle.png" class="img-fluid" style="width:15.0%" alt="Shannon Pileggi"> Data cleaning fundamentals</h1>
+<section id="set-up" class="level2">
+<h2 class="anchored" data-anchor-id="set-up">Set up</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import raw data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df_raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"messy_uc.xlsx"</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"Data"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">5</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># do initial cleaning of variable names and removing empty rows/columns</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sp1" class="level2">
+<h2 class="anchored" data-anchor-id="sp1">SP1</h2>
+<ol type="1">
+<li>Explore the values of <code>race</code>.</li>
+</ol>
 <div class="cell">
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> <span class="fu">count</span>(race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
-Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<pre><code># A tibble: 9 × 2
+  race                 n
+  &lt;chr&gt;            &lt;int&gt;
+1 African-American     4
+2 AmerInd              1
+3 Asian                1
+4 Caucasian           17
+5 H/API                1
+6 Hawaiian             1
+7 Mixed                1
+8 Other                2
+9 afromerican          2</code></pre>
 </div>
 </div>
-</section>
-<section id="exercise-2" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
-<p>view first six rows of <code>mtcars</code></p>
+<ol start="2" type="1">
+<li>In the <code>df_clean</code> data set, create a new variable named <code>race_clean</code> that cleans the coding of <code>race</code> (combine “African-American” &amp; “afromerican”; “H/API” &amp; “Mixed” &amp; “Other”).</li>
+</ol>
 <div class="cell">
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">race_clean =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"African-American"</span>, <span class="st">"afromerican"</span>) <span class="sc">~</span> <span class="st">"African-American"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"H/API"</span>, <span class="st">"Mixed"</span>, <span class="st">"Other"</span>) <span class="sc">~</span> <span class="st">"Other"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> race</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
-Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 </div>
-</div>
-</section>
-</section>
-<section id="section-2-shannon-pileggi-shannon-pileggi" class="level1">
-<h1>Section 2: Shannon Pileggi <img src="images/Shannon_circle.png" class="img-fluid" style="width:15.0%" alt="Shannon Pileggi"></h1>
-<section id="exercise-3" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-3">Exercise 3</h2>
-<p>view first six rows of <code>mtcars</code></p>
+<ol start="3" type="1">
+<li>Confirm the new <code>race_clean</code> variable is coded correctly.</li>
+</ol>
 <div class="cell">
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(race_clean, race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
-Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<pre><code># A tibble: 9 × 3
+  race_clean       race                 n
+  &lt;chr&gt;            &lt;chr&gt;            &lt;int&gt;
+1 African-American African-American     4
+2 African-American afromerican          2
+3 AmerInd          AmerInd              1
+4 Asian            Asian                1
+5 Caucasian        Caucasian           17
+6 Hawaiian         Hawaiian             1
+7 Other            H/API                1
+8 Other            Mixed                1
+9 Other            Other                2</code></pre>
 </div>
 </div>
 </section>
-<section id="exercise-4" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-4">Exercise 4</h2>
-<p>view first six rows of <code>mtcars</code></p>
+<section id="sp2" class="level2">
+<h2 class="anchored" data-anchor-id="sp2">SP2</h2>
+<ol type="1">
+<li>Explore the type of and values of <code>start_plt</code>.</li>
+</ol>
 <div class="cell">
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(start_plt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
-Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<pre><code># A tibble: 28 × 2
+   start_plt        n
+   &lt;chr&gt;        &lt;int&gt;
+ 1 115K/microL      1
+ 2 1550K/microL     1
+ 3 177K/microL      1
+ 4 188K/microL      1
+ 5 197K/microL      1
+ 6 204K/microL      1
+ 7 249K/microL      1
+ 8 258K/microL      1
+ 9 273K/microL      1
+10 288K/microL      1
+# ℹ 18 more rows</code></pre>
+</div>
+<details>
+<summary>Show the code solution</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(start_plt) <span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 30
+Columns: 1
+$ start_plt &lt;chr&gt; "273K/microL", "414K/microL", "323K/microL", "389K/microL", …</code></pre>
+</div>
+<details>
+<summary>Show the code solution</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_clean[[<span class="st">"start_plt"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "273K/microL"  "414K/microL"  "323K/microL"  "389K/microL"  "411K/microL" 
+ [6] "427K/microL"  "249K/microL"  "197K/microL"  "204K/microL"  "305K/microL" 
+[11] "347K/microL"  "402K/microL"  "389K/microL"  "432K/microL"  "288K/microL" 
+[16] "177K/microL"  "290K/microL"  "312K/microL"  "399K/microL"  "423K/microL" 
+[21] "clumped"      "323K/microL"  "258K/microL"  "115K/microL"  "1550K/microL"
+[26] "37K/microL"   "188K/microL"  "456K/microL"  "356K/microL"  "291K/microL" </code></pre>
 </div>
 </div>
-</section>
-</section>
-<section id="section-3-peter-higgins-peter-higgins" class="level1">
-<h1>Section 3: Peter Higgins <img src="images/Peter_circle.jpg" class="img-fluid" style="width:15.0%" alt="Peter Higgins"></h1>
-<section id="exercise-5" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-5">Exercise 5</h2>
-<p>view first six rows of <code>mtcars</code></p>
+<ol start="2" type="1">
+<li>In the <code>df_clean</code> data set, create a new variable named <code>start_plt_clean</code> that corrects any unusual values and assigns the correct variable type.</li>
+</ol>
 <div class="cell">
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">race_clean =</span> <span class="fu">case_when</span>(</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"African-American"</span>, <span class="st">"afromerican"</span>) <span class="sc">~</span> <span class="st">"African-American"</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"H/API"</span>, <span class="st">"Mixed"</span>, <span class="st">"Other"</span>) <span class="sc">~</span> <span class="st">"Other"</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> race</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">start_plt_clean =</span> <span class="fu">parse_number</span>(start_plt) </span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
-Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 </div>
-</div>
-</section>
-<section id="exercise-6" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-6">Exercise 6</h2>
-<p>view first six rows of <code>mtcars</code></p>
+<ol start="3" type="1">
+<li>Confirm the new <code>start_plt_clean</code> variable is coded correctly.</li>
+</ol>
 <div class="cell">
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(start_plt_clean, start_plt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
-Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<pre><code># A tibble: 28 × 3
+   start_plt_clean start_plt       n
+             &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt;
+ 1              37 37K/microL      1
+ 2             115 115K/microL     1
+ 3             177 177K/microL     1
+ 4             188 188K/microL     1
+ 5             197 197K/microL     1
+ 6             204 204K/microL     1
+ 7             249 249K/microL     1
+ 8             258 258K/microL     1
+ 9             273 273K/microL     1
+10             288 288K/microL     1
+# ℹ 18 more rows</code></pre>
+</div>
+<details>
+<summary>Show the code solution</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(start_plt, start_plt_clean) <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 30
+Columns: 2
+$ start_plt       &lt;chr&gt; "273K/microL", "414K/microL", "323K/microL", "389K/mic…
+$ start_plt_clean &lt;dbl&gt; 273, 414, 323, 389, 411, 427, 249, 197, 204, 305, 347,…</code></pre>
+</div>
+<details>
+<summary>Show the code solution</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_clean[[<span class="st">"start_plt_clean"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  273  414  323  389  411  427  249  197  204  305  347  402  389  432  288
+[16]  177  290  312  399  423   NA  323  258  115 1550   37  188  456  356  291
+attr(,"problems")
+# A tibble: 1 × 4
+    row   col expected actual 
+  &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;  
+1    21    NA a number clumped</code></pre>
 </div>
 </div>
+</section>
+<section id="sp3" class="level2">
+<h2 class="anchored" data-anchor-id="sp3">SP3</h2>
+<ol type="1">
+<li>Explore the type of and values of <code>race_clean</code>.</li>
+</ol>
+<div class="cell">
+<details>
+<summary>Show the code solution</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(race_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  race_clean           n
+  &lt;chr&gt;            &lt;int&gt;
+1 African-American     6
+2 AmerInd              1
+3 Asian                1
+4 Caucasian           17
+5 Hawaiian             1
+6 Other                4</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Convert the <code>race_clean</code> variable to a factor such that the most common values present in order in a summary table.</li>
+</ol>
+<div class="cell">
+<details>
+<summary>Show the code solution</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">race_clean =</span> <span class="fu">case_when</span>(</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"African-American"</span>, <span class="st">"afromerican"</span>) <span class="sc">~</span> <span class="st">"African-American"</span>,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"H/API"</span>, <span class="st">"Mixed"</span>, <span class="st">"Other"</span>) <span class="sc">~</span> <span class="st">"Other"</span>,</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> race</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> <span class="fu">fct_infreq</span>(),</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">start_plt_clean =</span> <span class="fu">parse_number</span>(start_plt) </span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ol start="3" type="1">
+<li>Confirm the new coding of <code>race_clean</code>.</li>
+</ol>
+<div class="cell">
+<details>
+<summary>Show the code solution</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(race_clean, race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 3
+  race_clean       race                 n
+  &lt;fct&gt;            &lt;chr&gt;            &lt;int&gt;
+1 Caucasian        Caucasian           17
+2 African-American African-American     4
+3 African-American afromerican          2
+4 Other            H/API                1
+5 Other            Mixed                1
+6 Other            Other                2
+7 AmerInd          AmerInd              1
+8 Asian            Asian                1
+9 Hawaiian         Hawaiian             1</code></pre>
+</div>
+<details>
+<summary>Show the code solution</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(race_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  race_clean           n
+  &lt;fct&gt;            &lt;int&gt;
+1 Caucasian           17
+2 African-American     6
+3 Other                4
+4 AmerInd              1
+5 Asian                1
+6 Hawaiian             1</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="peter-higgins-data-wrangling-reshaping" class="level1">
+<h1><img src="images/Peter_circle.jpg" class="img-fluid" style="width:15.0%" alt="Peter Higgins"> Data wrangling &amp; reshaping</h1>
+<section id="ph1" class="level2">
+<h2 class="anchored" data-anchor-id="ph1">PH1</h2>
+</section>
+<section id="ph2" class="level2">
+<h2 class="anchored" data-anchor-id="ph2">PH2</h2>
 </section>
 </section>
 <section id="session-info" class="level1">
 <h1>Session info</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value
- version  R version 4.2.3 (2023-03-15)
- os       macOS Ventura 13.3.1
- system   aarch64, darwin20
- ui       X11
+ version  R version 4.3.0 (2023-04-21 ucrt)
+ os       Windows 10 x64 (build 19044)
+ system   x86_64, mingw32
+ ui       RTerm
  language (EN)
- collate  en_US.UTF-8
- ctype    en_US.UTF-8
- tz       America/Detroit
- date     2023-05-12
- pandoc   2.19.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)
+ collate  English_United States.utf8
+ ctype    English_United States.utf8
+ tz       America/New_York
+ date     2023-05-15
+ pandoc   2.19.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────
- ! package     * version date (UTC) lib source
- P cachem        1.0.7   2023-02-24 [?] CRAN (R 4.2.0)
- P callr         3.7.3   2022-11-02 [?] CRAN (R 4.2.0)
- P cli           3.6.1   2023-03-23 [?] CRAN (R 4.2.0)
- P colorspace    2.1-0   2023-01-23 [?] CRAN (R 4.2.0)
- P crayon        1.5.2   2022-09-29 [?] CRAN (R 4.2.0)
- P devtools      2.4.5   2022-10-11 [?] CRAN (R 4.2.0)
- P digest        0.6.31  2022-12-11 [?] CRAN (R 4.2.0)
- P dplyr       * 1.1.1   2023-03-22 [?] CRAN (R 4.2.0)
- P ellipsis      0.3.2   2021-04-29 [?] CRAN (R 4.2.0)
- P evaluate      0.20    2023-01-17 [?] CRAN (R 4.2.0)
- P fansi         1.0.4   2023-01-22 [?] CRAN (R 4.2.0)
- P fastmap       1.1.1   2023-02-24 [?] CRAN (R 4.2.0)
- P forcats     * 1.0.0   2023-01-29 [?] CRAN (R 4.2.0)
- P fs            1.6.1   2023-02-06 [?] CRAN (R 4.2.0)
- P generics      0.1.3   2022-07-05 [?] CRAN (R 4.2.0)
- P ggplot2     * 3.4.1   2023-02-10 [?] CRAN (R 4.2.0)
- P glue          1.6.2   2022-02-24 [?] CRAN (R 4.2.0)
- P gtable        0.3.3   2023-03-21 [?] CRAN (R 4.2.0)
- P hms           1.1.3   2023-03-21 [?] CRAN (R 4.2.0)
- P htmltools     0.5.5   2023-03-23 [?] CRAN (R 4.2.0)
- P htmlwidgets   1.6.2   2023-03-17 [?] CRAN (R 4.2.0)
- P httpuv        1.6.9   2023-02-14 [?] CRAN (R 4.2.0)
- P jsonlite      1.8.4   2022-12-06 [?] CRAN (R 4.2.0)
- P knitr         1.42    2023-01-25 [?] CRAN (R 4.2.0)
- P later         1.3.0   2021-08-18 [?] CRAN (R 4.2.0)
- P lifecycle     1.0.3   2022-10-07 [?] CRAN (R 4.2.0)
- P lubridate   * 1.9.2   2023-02-10 [?] CRAN (R 4.2.0)
- P magrittr      2.0.3   2022-03-30 [?] CRAN (R 4.2.0)
- P memoise       2.0.1   2021-11-26 [?] CRAN (R 4.2.0)
- P mime          0.12    2021-09-28 [?] CRAN (R 4.2.0)
- P miniUI        0.1.1.1 2018-05-18 [?] CRAN (R 4.2.0)
- P munsell       0.5.0   2018-06-12 [?] CRAN (R 4.2.0)
- P pillar        1.9.0   2023-03-22 [?] CRAN (R 4.2.0)
- P pkgbuild      1.4.0   2022-11-27 [?] CRAN (R 4.2.0)
- P pkgconfig     2.0.3   2019-09-22 [?] CRAN (R 4.2.0)
- P pkgload       1.3.2   2022-11-16 [?] CRAN (R 4.2.0)
- P prettyunits   1.1.1   2020-01-24 [?] CRAN (R 4.2.0)
- P processx      3.8.0   2022-10-26 [?] CRAN (R 4.2.0)
- P profvis       0.3.7   2020-11-02 [?] CRAN (R 4.2.0)
- P promises      1.2.0.1 2021-02-11 [?] CRAN (R 4.2.0)
- P ps            1.7.3   2023-03-21 [?] CRAN (R 4.2.0)
- P purrr       * 1.0.1   2023-01-10 [?] CRAN (R 4.2.0)
- P R6            2.5.1   2021-08-19 [?] CRAN (R 4.2.0)
- P Rcpp          1.0.10  2023-01-22 [?] CRAN (R 4.2.0)
- P readr       * 2.1.4   2023-02-10 [?] CRAN (R 4.2.0)
- P remotes       2.4.2   2021-11-30 [?] CRAN (R 4.2.0)
- P renv          0.17.2  2023-03-17 [?] CRAN (R 4.2.0)
- P rlang         1.1.0   2023-03-14 [?] CRAN (R 4.2.0)
- P rmarkdown     2.20    2023-01-19 [?] CRAN (R 4.2.0)
- P rstudioapi    0.14    2022-08-22 [?] CRAN (R 4.2.0)
- P scales        1.2.1   2022-08-20 [?] CRAN (R 4.2.0)
- P sessioninfo   1.2.2   2021-12-06 [?] CRAN (R 4.2.0)
- P shiny         1.7.4   2022-12-15 [?] CRAN (R 4.2.0)
- P stringi       1.7.12  2023-01-11 [?] CRAN (R 4.2.0)
- P stringr     * 1.5.0   2022-12-02 [?] CRAN (R 4.2.0)
- P tibble      * 3.2.1   2023-03-20 [?] CRAN (R 4.2.0)
- P tidyr       * 1.3.0   2023-01-24 [?] CRAN (R 4.2.0)
- P tidyselect    1.2.0   2022-10-10 [?] CRAN (R 4.2.0)
- P tidyverse   * 2.0.0   2023-02-22 [?] CRAN (R 4.2.0)
- P timechange    0.2.0   2023-01-11 [?] CRAN (R 4.2.0)
- P tzdb          0.3.0   2022-03-28 [?] CRAN (R 4.2.0)
- P urlchecker    1.0.1   2021-11-30 [?] CRAN (R 4.2.0)
- P usethis       2.1.6   2022-05-25 [?] CRAN (R 4.2.0)
- P utf8          1.2.3   2023-01-31 [?] CRAN (R 4.2.0)
- P vctrs         0.6.1   2023-03-22 [?] CRAN (R 4.2.0)
- P withr         2.5.0   2022-03-03 [?] CRAN (R 4.2.0)
- P xfun          0.38    2023-03-24 [?] CRAN (R 4.2.0)
- P xtable        1.8-4   2019-04-21 [?] CRAN (R 4.2.0)
- P yaml          2.3.7   2023-01-23 [?] CRAN (R 4.2.0)
+ ! package       * version date (UTC) lib source
+ P broom.helpers   1.13.0  2023-03-28 [?] CRAN (R 4.3.0)
+ P cachem          1.0.7   2023-02-24 [?] CRAN (R 4.3.0)
+ P callr           3.7.3   2022-11-02 [?] CRAN (R 4.3.0)
+ P cellranger      1.1.0   2016-07-27 [?] CRAN (R 4.3.0)
+ P cli             3.6.1   2023-03-23 [?] CRAN (R 4.3.0)
+ P colorspace      2.1-0   2023-01-23 [?] CRAN (R 4.3.0)
+ P crayon          1.5.2   2022-09-29 [?] CRAN (R 4.3.0)
+ P devtools        2.4.5   2022-10-11 [?] CRAN (R 4.3.0)
+ P digest          0.6.31  2022-12-11 [?] CRAN (R 4.3.0)
+ P dplyr         * 1.1.1   2023-03-22 [?] CRAN (R 4.3.0)
+ P ellipsis        0.3.2   2021-04-29 [?] CRAN (R 4.3.0)
+ P evaluate        0.20    2023-01-17 [?] CRAN (R 4.3.0)
+ P fansi           1.0.4   2023-01-22 [?] CRAN (R 4.3.0)
+ P fastmap         1.1.1   2023-02-24 [?] CRAN (R 4.3.0)
+ P forcats       * 1.0.0   2023-01-29 [?] CRAN (R 4.3.0)
+ P fs              1.6.1   2023-02-06 [?] CRAN (R 4.3.0)
+ P generics        0.1.3   2022-07-05 [?] CRAN (R 4.3.0)
+ P ggplot2       * 3.4.1   2023-02-10 [?] CRAN (R 4.3.0)
+ P glue            1.6.2   2022-02-24 [?] CRAN (R 4.3.0)
+ P gt              0.9.0   2023-03-31 [?] CRAN (R 4.3.0)
+ P gtable          0.3.3   2023-03-21 [?] CRAN (R 4.3.0)
+ P gtsummary     * 1.7.1   2023-04-27 [?] CRAN (R 4.3.0)
+ P here          * 1.0.1   2020-12-13 [?] CRAN (R 4.3.0)
+ P hms             1.1.3   2023-03-21 [?] CRAN (R 4.3.0)
+ P htmltools       0.5.5   2023-03-23 [?] CRAN (R 4.3.0)
+ P htmlwidgets     1.6.2   2023-03-17 [?] CRAN (R 4.3.0)
+ P httpuv          1.6.9   2023-02-14 [?] CRAN (R 4.3.0)
+ P janitor       * 2.2.0   2023-02-02 [?] CRAN (R 4.3.0)
+ P jsonlite        1.8.4   2022-12-06 [?] CRAN (R 4.3.0)
+ P knitr           1.42    2023-01-25 [?] CRAN (R 4.3.0)
+ P later           1.3.0   2021-08-18 [?] CRAN (R 4.3.0)
+ P lifecycle       1.0.3   2022-10-07 [?] CRAN (R 4.3.0)
+ P lubridate     * 1.9.2   2023-02-10 [?] CRAN (R 4.3.0)
+ P magrittr        2.0.3   2022-03-30 [?] CRAN (R 4.3.0)
+ P memoise         2.0.1   2021-11-26 [?] CRAN (R 4.3.0)
+ P mime            0.12    2021-09-28 [?] CRAN (R 4.3.0)
+ P miniUI          0.1.1.1 2018-05-18 [?] CRAN (R 4.3.0)
+ P munsell         0.5.0   2018-06-12 [?] CRAN (R 4.3.0)
+ P pillar          1.9.0   2023-03-22 [?] CRAN (R 4.3.0)
+ P pkgbuild        1.4.0   2022-11-27 [?] CRAN (R 4.3.0)
+ P pkgconfig       2.0.3   2019-09-22 [?] CRAN (R 4.3.0)
+ P pkgload         1.3.2   2022-11-16 [?] CRAN (R 4.3.0)
+ P prettyunits     1.1.1   2020-01-24 [?] CRAN (R 4.3.0)
+ P processx        3.8.0   2022-10-26 [?] CRAN (R 4.3.0)
+ P profvis         0.3.7   2020-11-02 [?] CRAN (R 4.3.0)
+ P promises        1.2.0.1 2021-02-11 [?] CRAN (R 4.3.0)
+ P ps              1.7.3   2023-03-21 [?] CRAN (R 4.3.0)
+ P purrr         * 1.0.1   2023-01-10 [?] CRAN (R 4.3.0)
+ P R6              2.5.1   2021-08-19 [?] CRAN (R 4.3.0)
+ P Rcpp            1.0.10  2023-01-22 [?] CRAN (R 4.3.0)
+ P readr         * 2.1.4   2023-02-10 [?] CRAN (R 4.3.0)
+ P readxl        * 1.4.2   2023-02-09 [?] CRAN (R 4.3.0)
+ P remotes         2.4.2   2021-11-30 [?] CRAN (R 4.3.0)
+   renv            0.17.2  2023-03-17 [1] CRAN (R 4.3.0)
+ P rlang           1.1.0   2023-03-14 [?] CRAN (R 4.3.0)
+ P rmarkdown       2.20    2023-01-19 [?] CRAN (R 4.3.0)
+ P rprojroot       2.0.3   2022-04-02 [?] CRAN (R 4.3.0)
+ P rstudioapi      0.14    2022-08-22 [?] CRAN (R 4.3.0)
+ P scales          1.2.1   2022-08-20 [?] CRAN (R 4.3.0)
+ P sessioninfo     1.2.2   2021-12-06 [?] CRAN (R 4.3.0)
+ P shiny           1.7.4   2022-12-15 [?] CRAN (R 4.3.0)
+ P snakecase       0.11.0  2019-05-25 [?] CRAN (R 4.3.0)
+ P stringi         1.7.12  2023-01-11 [?] CRAN (R 4.3.0)
+ P stringr       * 1.5.0   2022-12-02 [?] CRAN (R 4.3.0)
+ P tibble        * 3.2.1   2023-03-20 [?] CRAN (R 4.3.0)
+ P tidyr         * 1.3.0   2023-01-24 [?] CRAN (R 4.3.0)
+ P tidyselect      1.2.0   2022-10-10 [?] CRAN (R 4.3.0)
+ P tidyverse     * 2.0.0   2023-02-22 [?] CRAN (R 4.3.0)
+ P timechange      0.2.0   2023-01-11 [?] CRAN (R 4.3.0)
+ P tzdb            0.3.0   2022-03-28 [?] CRAN (R 4.3.0)
+ P urlchecker      1.0.1   2021-11-30 [?] CRAN (R 4.3.0)
+ P usethis         2.1.6   2022-05-25 [?] CRAN (R 4.3.0)
+ P utf8            1.2.3   2023-01-31 [?] CRAN (R 4.3.0)
+ P vctrs           0.6.1   2023-03-22 [?] CRAN (R 4.3.0)
+ P withr           2.5.0   2022-03-03 [?] CRAN (R 4.3.0)
+ P xfun            0.38    2023-03-24 [?] CRAN (R 4.3.0)
+ P xml2            1.3.3   2021-11-30 [?] CRAN (R 4.3.0)
+ P xtable          1.8-4   2019-04-21 [?] CRAN (R 4.3.0)
+ P yaml            2.3.7   2023-01-23 [?] CRAN (R 4.3.0)
 
- [1] /Users/peterhiggins/Documents/RCode/rmedicine-data-cleaning-2023/renv/library/R-4.2/aarch64-apple-darwin20
- [2] /Users/peterhiggins/Library/Caches/org.R-project.R/R/renv/sandbox/R-4.2/aarch64-apple-darwin20/84ba8b13
+ [1] C:/Users/pileggis/Documents/gh-personal/rmedicine-data-cleaning-2023/renv/library/R-4.3/x86_64-w64-mingw32
+ [2] C:/Users/pileggis/AppData/Local/R/cache/R/renv/sandbox/R-4.3/x86_64-w64-mingw32/830ce55b
 
  P ── Loaded and on-disk path mismatch.
 
