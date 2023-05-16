@@ -111,17 +111,17 @@ These aren't just arbitrary practices. They serve a purpose.
     
 :::
 
-## Data Structure Exercise
-
-<br>
+## Exercise
 
 What data structure issues do you notice in our sample data?
 
 ![](images/messy_data.PNG){fig-align="center"}
 
-<br>
-
-**1 minute timer**
+```{r}
+#| echo: false
+#| cache: false
+countdown(minutes = 1, font_size = "1em")
+```
 
 ::: {.notes}
 
@@ -170,17 +170,18 @@ So let's do a quick exercise. Take one minute to review this messy data and look
 
 :::
 
-## Variable Values Exercise
+## Exercise
 
-<br>
 
 What variable value issues do you notice in our sample data?
 
 ![](images/messy_data.PNG){fig-align="center"}
 
-<br>
-
-**1 minute timer**
+```{r}
+#| echo: false
+#| cache: false
+countdown(minutes = 1, font_size = "1em")
+```
 
   
 ## Variable Values
@@ -234,7 +235,6 @@ It's important to check your date types when you read in your data. While someti
     - A special class of variables, helpful when working with categorical or ordinal variables
     - Factors assign an order to your variable groups
     - You must assign this class to your variables
-      - Does anyone remember the default `stringsAsFactors = TRUE`?
     - You can learn more about working with factors in this article: [https://peerj.com/preprints/3163/](https://peerj.com/preprints/3163/)
       
 ::: {.notes}
@@ -252,7 +252,7 @@ Just a warning, factors can be a little tricky to work with, especially when con
 :::
 
 
-## Variable Types Exercise 1
+## Exercise
 
 What is the R class for the following variables?
 
@@ -318,17 +318,17 @@ class(var3)
 
 :::
 
-## Variable Types Exercise 2
-
-<br>
+## Exercise
 
 What variable type issues do you notice in our sample data?
 
-![](images/type_clean.PNG){fig-align="center"}
+![](images/type_clean.PNG){fig-align="center" width=90% height=90%}
 
-<br>
-
-**1 minute timer**
+```{r}
+#| echo: false
+#| cache: false
+countdown(minutes = 1, font_size = "1em")
+```
 
 ## Variable Types
 
@@ -361,18 +361,17 @@ I personally have no preference for which method you use. What is important thou
 
 :::
 
-## Missing Data Exercise
-
-<br>
+## Exercise
 
 What missing data issues do you notice in our sample data?
 
-![](images/missing_clean.PNG){fig-align="center"}
+![](images/missing_clean.PNG){fig-align="center" width=75% height=70%}
 
-<br>
-
-**1 minute timer**
-
+```{r}
+#| echo: false
+#| cache: false
+countdown(minutes = 1, font_size = "1em")
+```
     
 ## Missing Data
 
@@ -599,7 +598,7 @@ create_agent(df_raw) |>
 
 ## Report
 
-![](images/pointblank.PNG){fig-align="center" width=80%}
+![](images/pointblank.PNG){fig-align="center" width=80% height=90%}
 
 :::
 
@@ -691,13 +690,18 @@ For the remainder of this workshop will be working through a sample messy datase
 - As we start to review the data, we find a sundry of errors that need correction
 
 
-## Open the data and the data dictionary
+## Exercise
 
-<br>
 
 Take 1 minute to review the data dictionary and our data.
 
-1 minute
+Give instructions here....
+
+```{r}
+#| echo: false
+#| cache: false
+countdown(minutes = 1, font_size = "3em")
+```
 
 
 ::: {.notes}
@@ -774,19 +778,30 @@ df_raw <- read_excel("../data/messy_uc.xlsx",
 #| echo: false
 
 df_raw |>
-  slice(1:5) |>
-  select(pat_id:dob) |>
+  slice(1:10) |>
+  select(pat_id:start_mes) |>
   gt::gt()
 
 ```
 
 :::
 
-## Your turn! Read in the data
+## Exercise
 
-Read the data in
+<br>
 
-**3 minutes**
+Your turn! Take 3 minutes to import the data.
+
+<br>
+
+[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+
+```{r}
+#| echo: false
+#| cache: false
+countdown(minutes = 3, font_size = "2em")
+```
+
 
 ## Review the data
 
@@ -881,7 +896,7 @@ So this function provides some overall summary information (number of rows and c
 
 ## Output
 
-![](images/exploratory1.PNG){width=50%}![](images/exploratory2.PNG){width=50%}
+![](images/exploratory1.PNG){width=50%}![](images/exploratory2.PNG){width=50% height=90%}
 
 :::
 
@@ -914,7 +929,7 @@ But a quick word of caution about this funciton. You'll notice that it provides 
 
 :::
 
-## Your turn!
+## Exercise
 
 Use one or more of these exploratory packages to review your data. Based on your data and your data dictionary, what fixes do you see that need to happen?
 
@@ -925,6 +940,13 @@ Use one or more of these exploratory packages to review your data. Based on your
 - `visdat:vis_dat()`
 - `DataExplorer::create_report()`
 
-**5 minutes**
+[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+
+```{r}
+#| echo: false
+#| cache: false
+countdown(minutes = 5, font_size = "2em")
+```
+
 
 
