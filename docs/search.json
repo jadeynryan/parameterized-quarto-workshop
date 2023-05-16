@@ -641,7 +641,7 @@
     "href": "slides/index.html#pivoting-longer-1",
     "title": "Data Cleaning",
     "section": "Pivoting Longer",
-    "text": "Pivoting Longer\n\nYour Turn (Exercise) with endo_data\nMeasurements of Trans-Epithelial Electrical Resistance (the inverse of leakiness) were taken from biopsies of 3 segments of intestine.\nThis might be affected by portal hypertension in patients with liver cirrhosis\n\n\n\n# A tibble: 10 × 5\n   pat_id portal_htn duod_teer ileal_teer colon_teer\n    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;\n 1      1          1      4.33       14.6       16.2\n 2      2          0     11.7        16.0       19.0\n 3      3          1      4.12       13.8       15.2\n 4      4          1      4.62       16.4       18.1\n 5      5          0     12.4        15.8       19.0\n 6      6          0     13.0        16.2       18.8\n 7      7          0     11.9        15.7       18.3\n 8      8          1      4.87       16.6       18.8\n 9      9          1      4.23       15.0       16.9\n10     10          0     12.8        16.7       19.1"
+    "text": "Pivoting Longer\n\nYour Turn (Exercise) with endo_data\nMeasurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) were taken from biopsies of 3 segments of intestine.\nThis might be affected by portal hypertension in patients with liver cirrhosis\n\n\n\n# A tibble: 10 × 5\n   pat_id portal_htn duod_teer ileal_teer colon_teer\n    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;\n 1      1          1      4.33       14.6       16.2\n 2      2          0     11.7        16.0       19.0\n 3      3          1      4.12       13.8       15.2\n 4      4          1      4.62       16.4       18.1\n 5      5          0     12.4        15.8       19.0\n 6      6          0     13.0        16.2       18.8\n 7      7          0     11.9        15.7       18.3\n 8      8          1      4.87       16.6       18.8\n 9      9          1      4.23       15.0       16.9\n10     10          0     12.8        16.7       19.1"
   },
   {
     "objectID": "slides/index.html#pivoting-wider-1",
@@ -676,14 +676,14 @@
     "href": "slides/index.html#one-minor-issue---separation-of-measure",
     "title": "Data Cleaning",
     "section": "One Minor Issue - Separation of measure",
-    "text": "One Minor Issue - Separation of measure\n\nProblemCodeResultAlternative within pivot_longer\n\n\n\nthe “measure” column combines a timepoint and the measure\nNeeds to be separated.\nYou already know how to use separate()\nArguments\n\ncol\nsep\ninto\n\n\n\n\n\ntall |&gt; \n  separate(col = \"measure\",\n           sep = \"_\",\n           into = c(\"timept\", \"measure\"))\n\n\n\n\n\n# A tibble: 180 × 5\n   pat_id treatment timept measure score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;\n 1 001    upa       start  mes      3   \n 2 001    upa       end    mes      0   \n 3 001    upa       start  bss     75.5 \n 4 001    upa       end    bss      9.46\n 5 001    upa       start  emo     73.3 \n 6 001    upa       end    emo     32.0 \n 7 002    uste      start  mes      2   \n 8 002    uste      end    mes      1   \n 9 002    uste      start  bss     53.6 \n10 002    uste      end    bss     31.6 \n# ℹ 170 more rows\n\n\n\n\n\nYou can do this within pivot_longer with one more argument\n\n\nwide |&gt; \n  pivot_longer(cols = 3:8,\n    names_to = c(\"timept\", \"measure\"),\n    names_sep = \"_\",\n    values_to = \"score\")\n\n# A tibble: 180 × 5\n   pat_id treatment timept measure score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;\n 1 001    upa       start  mes      3   \n 2 001    upa       end    mes      0   \n 3 001    upa       start  bss     75.5 \n 4 001    upa       end    bss      9.46\n 5 001    upa       start  emo     73.3 \n 6 001    upa       end    emo     32.0 \n 7 002    uste      start  mes      2   \n 8 002    uste      end    mes      1   \n 9 002    uste      start  bss     53.6 \n10 002    uste      end    bss     31.6 \n# ℹ 170 more rows"
+    "text": "One Minor Issue - Separation of measure\n\nProblemCodeResultAlternative within pivot_longer\n\n\n\nthe “measure” column combines a timepoint and the measure\nNeeds to be separated.\nYou already know how to use separate()\nArguments\n\ncol\nsep\ninto\n\n\n\n\n\ntall |&gt; \n  separate(col = \"measure\",\n           sep = \"_\",\n           into = c(\"timept\", \"measure\"))\n\n\n\n\n\n# A tibble: 180 × 5\n   pat_id treatment timept measure score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;\n 1 001    upa       start  mes      3   \n 2 001    upa       end    mes      0   \n 3 001    upa       start  bss     75.5 \n 4 001    upa       end    bss      9.46\n 5 001    upa       start  emo     73.3 \n 6 001    upa       end    emo     32.0 \n 7 002    uste      start  mes      2   \n 8 002    uste      end    mes      1   \n 9 002    uste      start  bss     53.6 \n10 002    uste      end    bss     31.6 \n# ℹ 170 more rows\n\n\n\n\n\nYou can do this within pivot_longer with one more argument (if you are fancy)\n\n\nwide |&gt; \n  pivot_longer(cols = 3:8,\n    names_to = c(\"timept\", \"measure\"),\n    names_sep = \"_\",\n    values_to = \"score\")\n\n# A tibble: 180 × 5\n   pat_id treatment timept measure score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;\n 1 001    upa       start  mes      3   \n 2 001    upa       end    mes      0   \n 3 001    upa       start  bss     75.5 \n 4 001    upa       end    bss      9.46\n 5 001    upa       start  emo     73.3 \n 6 001    upa       end    emo     32.0 \n 7 002    uste      start  mes      2   \n 8 002    uste      end    mes      1   \n 9 002    uste      start  bss     53.6 \n10 002    uste      end    bss     31.6 \n# ℹ 170 more rows"
   },
   {
     "objectID": "slides/index.html#doing-the-pivot_longer",
     "href": "slides/index.html#doing-the-pivot_longer",
     "title": "Data Cleaning",
     "section": "Doing the pivot_longer()",
-    "text": "Doing the pivot_longer()\nWhat values do we want for these key arguments?\n\ncols\nnames_to\nvalues_to\n\n\n\n# A tibble: 30 × 8\n   pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo\n   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 001    upa               3       0      75.5    9.46      73.3    32.0\n 2 002    uste              2       1      53.6   31.6       55.7    43.2\n 3 003    oza               1       1      25.5   25.5       36.6    36.9\n 4 004    upa               3       1      79.4   35.4       80.8    58.7\n 5 005    oza               3       2      79.5   57.5       72.5    58.9\n 6 006    uste              2       1      54.5   32.5       48.3    34.6\n 7 007    uste              3       2      79.0   57.0       72.7    63.3\n 8 008    oza               3       2      79.0   57.0       74.6    65.3\n 9 009    upa               2       0      53.1    9.06      54.2    28.0\n10 010    oza               3       1      77.4   33.4       74.4    46.8\n# ℹ 20 more rows"
+    "text": "Doing the pivot_longer()\nWhat values do we want for these key arguments in order to pivot_longer?\n\ncols (which columns to pivot)\nnames_to (variable to store the names)\nvalues_to (variable to store the values)\n\n\n\n# A tibble: 30 × 8\n   pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo\n   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 001    upa               3       0      75.5    9.46      73.3    32.0\n 2 002    uste              2       1      53.6   31.6       55.7    43.2\n 3 003    oza               1       1      25.5   25.5       36.6    36.9\n 4 004    upa               3       1      79.4   35.4       80.8    58.7\n 5 005    oza               3       2      79.5   57.5       72.5    58.9\n 6 006    uste              2       1      54.5   32.5       48.3    34.6\n 7 007    uste              3       2      79.0   57.0       72.7    63.3\n 8 008    oza               3       2      79.0   57.0       74.6    65.3\n 9 009    upa               2       0      53.1    9.06      54.2    28.0\n10 010    oza               3       1      77.4   33.4       74.4    46.8\n# ℹ 20 more rows"
   },
   {
     "objectID": "slides/index.html#pivoting-longer-with-endo_data",
@@ -697,21 +697,21 @@
     "href": "slides/index.html#thickening-time-to-a-usable-level",
     "title": "Data Cleaning",
     "section": "Thickening Time to a Usable Level",
-    "text": "Thickening Time to a Usable Level\n\nGoalCodeResult\n\n\n\nThe thicken function adds a column to a data frame that is of a higher interval than the original variable.\nThe variable time_stamp has the interval of seconds\nWe can thicken the data to day, or to week, or to month.\n\n\n\n\nWe will thicken to month\n\n\nemergency |&gt; \n  thicken('month')\n\n\n\n\nThis lets us count events like overdoses by month with time_stamp_month.\n\n\n\n# A tibble: 120,450 × 7\n     lat   lng   zip title            time_stamp          twp   time_stamp_month\n   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;            &lt;dttm&gt;              &lt;chr&gt; &lt;date&gt;          \n 1  40.3 -75.6 19525 EMS: BACK PAINS… 2015-12-10 17:40:00 NEW … 2015-12-01      \n 2  40.3 -75.3 19446 EMS: DIABETIC E… 2015-12-10 17:40:00 HATF… 2015-12-01      \n 3  40.1 -75.4 19401 Fire: GAS-ODOR/… 2015-12-10 17:40:00 NORR… 2015-12-01      \n 4  40.1 -75.3 19401 EMS: CARDIAC EM… 2015-12-10 17:40:01 NORR… 2015-12-01      \n 5  40.3 -75.6    NA EMS: DIZZINESS   2015-12-10 17:40:01 LOWE… 2015-12-01      \n 6  40.3 -75.3 19446 EMS: HEAD INJURY 2015-12-10 17:40:01 LANS… 2015-12-01      \n 7  40.2 -75.1 19044 EMS: NAUSEA/VOM… 2015-12-10 17:40:01 HORS… 2015-12-01      \n 8  40.2 -75.4 19426 EMS: RESPIRATOR… 2015-12-10 17:40:01 SKIP… 2015-12-01      \n 9  40.3 -75.4 19438 EMS: SYNCOPAL E… 2015-12-10 17:40:01 LOWE… 2015-12-01      \n10  40.1 -75.3 19462 Traffic: VEHICL… 2015-12-10 17:40:01 PLYM… 2015-12-01      \n# ℹ 120,440 more rows"
+    "text": "Thickening Time to a Usable Level\n\nGoalCodeResult\n\n\n\nThe thicken function adds a column to a data frame that is of a higher interval than the original variable.\nThe variable time_stamp has the interval of seconds\nWe can thicken the data to day, or to week, or to month.\nThen we can count events by a usable unit of time\n\n\n\n\nWe will thicken to month\nThen count overdoses by month\n\n\nemergency |&gt; \n  thicken('month') |&gt; \n  filter(str_detect(title, \"OVERDOSE\")) |&gt;   group_by(time_stamp_month) |&gt; \n  mutate(ods = sum(str_detect(title, \"OVERDOSE\"))) |&gt; \n    select(time_stamp_month, ods) |&gt; \n  distinct()\n\n\n\n\nThis lets us count events like overdoses by month with time_stamp_month.\n\n\n\n# A tibble: 11 × 2\n# Groups:   time_stamp_month [11]\n   time_stamp_month   ods\n   &lt;date&gt;           &lt;int&gt;\n 1 2015-12-01          91\n 2 2016-01-01         135\n 3 2016-02-01         141\n 4 2016-03-01         161\n 5 2016-04-01         124\n 6 2016-05-01         149\n 7 2016-06-01         140\n 8 2016-07-01         147\n 9 2016-08-01         137\n10 2016-09-01         171\n11 2016-10-01          95"
   },
   {
     "objectID": "slides/index.html#padding-unobserved-times",
     "href": "slides/index.html#padding-unobserved-times",
     "title": "Data Cleaning",
     "section": "Padding Unobserved Times",
-    "text": "Padding Unobserved Times\n\nThe ProblemThe CodeThe Result\n\n\n\nWe can fill in (pad) the unobserved weekend days with the pad() function.\n\n\n\n\nfcp |&gt; \n  pad(group = \"pat_id\") |&gt; \n  tidyr::fill(pat_id) |&gt; \n  print(n = 14)\n\n\n\n\n\n\n\n# A tibble: 21 × 3\n   pat_id date         fcp\n   &lt;chr&gt;  &lt;date&gt;     &lt;dbl&gt;\n 1 001    2022-12-01  1574\n 2 001    2022-12-02  1323\n 3 001    2022-12-03    NA\n 4 001    2022-12-04    NA\n 5 001    2022-12-05   673\n 6 001    2022-12-06   314\n 7 001    2022-12-07   168\n 8 002    2022-11-30  1393\n 9 002    2022-12-01  1014\n10 002    2022-12-02   812\n11 002    2022-12-03    NA\n12 002    2022-12-04    NA\n13 002    2022-12-05   247\n14 002    2022-12-06   118\n# ℹ 7 more rows\n\n\n\n\nNew observations are created on the missing dates\nNAs are filled in for the missing FCPs, with one for each day and group (pat_id)\nwe used tidyr::fill(pat_id) to fill in the missing pat_ids"
+    "text": "Padding Unobserved Times\n\nThe ProblemThe CodeThe Result\n\n\n\nWe can fill in (pad) the unobserved weekend days with the pad() function.\n\n\n\n\nfcp |&gt; \n  pad(group = \"pat_id\") |&gt; \n  tidyr::fill(pat_id) |&gt; # fill in the missing pat_ids\n  print(n = 14)\n\n\n\n\n\n\n\n# A tibble: 21 × 3\n   pat_id date         fcp\n   &lt;chr&gt;  &lt;date&gt;     &lt;dbl&gt;\n 1 001    2022-12-01  1574\n 2 001    2022-12-02  1323\n 3 001    2022-12-03    NA\n 4 001    2022-12-04    NA\n 5 001    2022-12-05   673\n 6 001    2022-12-06   314\n 7 001    2022-12-07   168\n 8 002    2022-11-30  1393\n 9 002    2022-12-01  1014\n10 002    2022-12-02   812\n11 002    2022-12-03    NA\n12 002    2022-12-04    NA\n13 002    2022-12-05   247\n14 002    2022-12-06   118\n# ℹ 7 more rows\n\n\n\n\nNew observations are created on the missing dates\nNAs are filled in for the missing FCPs, with one for each day and group (pat_id)\nwe used tidyr::fill(pat_id) to fill in the missing pat_ids"
   },
   {
     "objectID": "slides/index.html#local-demographics-with-cdc-svi-data",
     "href": "slides/index.html#local-demographics-with-cdc-svi-data",
     "title": "Data Cleaning",
     "section": "Local Demographics with CDC SVI data",
-    "text": "Local Demographics with CDC SVI data\n\nThe ProblemThe CodeThe Result\n\n\n\n\n\nWe have 2 datasets, one local Demographics and Census Tract, and one from the CDC that has values for Social Vulnerability Index by Census Tract\nWe want to know the median SVI for the neighborhood of each patient\nWe need to left_join these datasets together by matching on the Census Tract\n\n\n\n\n\nJoins"
+    "text": "Local Demographics with CDC SVI data\n\nThe ProblemThe DataThe CodeThe Result\n\n\n\n\n\nWe have 2 datasets, one local Demographics and Census Tract, and one from the CDC that has values for Social Vulnerability Index by Census Tract\nWe want to know the median SVI for the neighborhood of each patient\nWe need to left_join these datasets together by matching on the Census Tract\n\n\n\n\n\nJoins\n\n\n\n\n\n\n\nWhat is the common uniqid/key?\n\n\n\n\ndemo\n\n\n\n# A tibble: 9 × 4\n  pat_id name                 htn census_tract\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;        &lt;dbl&gt;\n1 001    Arthur Blankenship     0  26161404400\n2 002    Britney Jonas          0  26161405100\n3 003    Sally Davis            1  26161402100\n4 004    Al Jones               0  26161403200\n5 005    Gary Hamill            1  26161405200\n6 006    Ken Bartoletti         0  26161404500\n7 007    Ike Gerhold            0  26161405600\n8 008    Tatiana Grant          0  26161404300\n9 009    Antione Delacroix      1  26161405500\n\n\n\n\ncdc\n\n\n\n# A tibble: 9 × 2\n  census_tract   svi\n         &lt;dbl&gt; &lt;dbl&gt;\n1  26161404400  0.12\n2  26161405100  0.67\n3  26161402100  0.43\n4  26161403200  0.07\n5  26161405200  0.71\n6  26161404500  0.23\n7  26161405600  0.27\n8  26161404300  0.21\n9  26161405500  0.62\n\n\n\n\n\n\n\nReplace the arguments to join the demographic data (demo) on the left to add Social Vulnerability index (svi) from the cdc dataset on the RHS. Left join by census tract.\n\n\nleft_join(dataset_x, dataset_y, by = \"key\")\n\n\n\n\nIs there an association between social vulnerability and hypertension?\n\n\n\n# A tibble: 9 × 5\n  pat_id name                 htn census_tract   svi\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;\n1 001    Arthur Blankenship     0  26161404400  0.12\n2 002    Britney Jonas          0  26161405100  0.67\n3 003    Sally Davis            1  26161402100  0.43\n4 004    Al Jones               0  26161403200  0.07\n5 005    Gary Hamill            1  26161405200  0.71\n6 006    Ken Bartoletti         0  26161404500  0.23\n7 007    Ike Gerhold            0  26161405600  0.27\n8 008    Tatiana Grant          0  26161404300  0.21\n9 009    Antione Delacroix      1  26161405500  0.62"
   },
   {
     "objectID": "slides/index.html#pipes",
@@ -817,5 +817,75 @@
     "title": "Data Cleaning",
     "section": "Exercise",
     "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP3.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/index.html#exercise-ph1",
+    "href": "slides/index.html#exercise-ph1",
+    "title": "Data Cleaning",
+    "section": "Exercise PH1",
+    "text": "Exercise PH1\n\nComplete Data Cleaning Fundamentals Exercise PH1.\n\nIf you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji on your screen.\nIf you are having trouble, click on the Reactions tab in Zoom, and click to put the “raise hand” emoji on your screen.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/index.html#patient-demographics-with-lab-results-yout-turn-to-join",
+    "href": "slides/index.html#patient-demographics-with-lab-results-yout-turn-to-join",
+    "title": "Data Cleaning",
+    "section": "Patient Demographics with Lab results (Yout Turn to Join)",
+    "text": "Patient Demographics with Lab results (Yout Turn to Join)\n\n\n\nWe have some basic Patient Demographics in one table\n\n\n\n# A tibble: 9 × 3\n  pat_id name                 age\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;\n1 001    Arthur Blankenship    67\n2 002    Britney Jonas         23\n3 003    Sally Davis           63\n4 004    Al Jones              44\n5 005    Gary Hamill           38\n6 006    Ken Bartoletti        33\n7 007    Ike Gerhold           52\n8 008    Tatiana Grant         42\n9 009    Antione Delacroix     27\n\n\n\nand potassium levels and creatinine levels in 2 other tables\n\n\n# A tibble: 6 × 2\n  pat_id     k\n  &lt;chr&gt;  &lt;dbl&gt;\n1 001      3.2\n2 002      3.7\n3 003      4.2\n4 004      4.4\n5 005      4.1\n6 006      4  \n\n\n\n\n# A tibble: 6 × 2\n  pat_id    cr\n  &lt;chr&gt;  &lt;dbl&gt;\n1 001      0.2\n2 002      0.5\n3 003      0.9\n4 004      1.5\n5 005      0.7\n6 006      0.9"
+  },
+  {
+    "objectID": "slides/index.html#your-turn-to-join",
+    "href": "slides/index.html#your-turn-to-join",
+    "title": "Data Cleaning",
+    "section": "Your Turn to Join",
+    "text": "Your Turn to Join\n\nWe want to join the correct labs (9 rows each) to the correct patients.\nThe unique identifier (called the uniqid or key or recordID) is pat_id.\nIt only occurs once for each patient/row\nIt appears in each table we want to join\nThe pat_id is of the character type in each (a common downfall if one is character, one is numeric, but they look the same - but don’t match)\nWe want to start with demographics, then add datasets that match to the right.\nWe will use demo as our base dataset on the left hand side (LHS), and first join the potassium (pot) results (RHS)"
+  },
+  {
+    "objectID": "slides/index.html#your-turn-to-join-1",
+    "href": "slides/index.html#your-turn-to-join-1",
+    "title": "Data Cleaning",
+    "section": "Your Turn to Join",
+    "text": "Your Turn to Join\n\nThe ProblemThe CodeThe Result\n\n\n\nJoining demo to pot with a left_join\nleft_join(data_x, data_y, by = “uniqid”)\n\n\n\n\nreplace the arguments with the correct ones to join demo to pot and produce new_data.\n\n\nnew_data &lt;- left_join(data_x, data_y, by = \"uniqid\")\nnew_data\n\n\n\n\n\n# A tibble: 9 × 4\n  pat_id name                 age     k\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt;\n1 001    Arthur Blankenship    67   3.2\n2 002    Britney Jonas         23   3.7\n3 003    Sally Davis           63   4.2\n4 004    Al Jones              44   4.4\n5 005    Gary Hamill           38   4.1\n6 006    Ken Bartoletti        33   4  \n7 007    Ike Gerhold           52   3.6\n8 008    Tatiana Grant         42   4.2\n9 009    Antione Delacroix     27   4.9"
+  },
+  {
+    "objectID": "slides/index.html#exercise-ph2",
+    "href": "slides/index.html#exercise-ph2",
+    "title": "Data Cleaning",
+    "section": "Exercise PH2",
+    "text": "Exercise PH2\n\nComplete Data Cleaning Fundamentals Exercise PH2.\n–&gt; Take me to the exercises &lt;–\n\nIf you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji on your screen.\nIf you are having trouble, click on the Reactions tab in Zoom, and click to put the “raise hand” emoji on your screen.\n\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/index.html#solution-ph2",
+    "href": "slides/index.html#solution-ph2",
+    "title": "Data Cleaning",
+    "section": "Solution PH2",
+    "text": "Solution PH2\n\nnew_data &lt;- left_join(demo, pot, by = \"pat_id\")\nnew_data"
+  },
+  {
+    "objectID": "slides/index.html#now-add-creatinine-cr-to-new_data",
+    "href": "slides/index.html#now-add-creatinine-cr-to-new_data",
+    "title": "Data Cleaning",
+    "section": "Now add Creatinine (cr) to new_data",
+    "text": "Now add Creatinine (cr) to new_data\n\nThe ProblemThe CodeThe Result\n\n\n\nJoining new_data and cr with a left_join\nleft_join(data_x, data_y, by = “uniqid”)\n\n\n\n\nReplace the arguments with the correct ones to join new_data and cr and produce new_data2.\n\n\nnew_data2 &lt;- left_join(data_x, data_y, by = \"uniqid\")\nnew_data2\n\n\n\n\n\n# A tibble: 9 × 5\n  pat_id name                 age     k    cr\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 001    Arthur Blankenship    67   3.2   0.2\n2 002    Britney Jonas         23   3.7   0.5\n3 003    Sally Davis           63   4.2   0.9\n4 004    Al Jones              44   4.4   1.5\n5 005    Gary Hamill           38   4.1   0.7\n6 006    Ken Bartoletti        33   4     0.9\n7 007    Ike Gerhold           52   3.6   0.7\n8 008    Tatiana Grant         42   4.2   1  \n9 009    Antione Delacroix     27   4.9   1.7"
+  },
+  {
+    "objectID": "slides/index.html#exercise-ph3",
+    "href": "slides/index.html#exercise-ph3",
+    "title": "Data Cleaning",
+    "section": "Exercise PH3",
+    "text": "Exercise PH3\n\nComplete Data Cleaning Fundamentals Exercise PH3.\n–&gt; Take me to the exercises &lt;–\n\nIf you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji on your screen.\nIf you are having trouble, click on the Reactions tab in Zoom, and click to put the “raise hand” emoji on your screen.\n\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/index.html#patient-demographics-with-lab-results-your-turn-to-join",
+    "href": "slides/index.html#patient-demographics-with-lab-results-your-turn-to-join",
+    "title": "Data Cleaning",
+    "section": "Patient Demographics with Lab results (Your Turn to Join)",
+    "text": "Patient Demographics with Lab results (Your Turn to Join)\n\n\n\nWe have some basic Patient Demographics in one table\n\n\n\n# A tibble: 9 × 3\n  pat_id name                 age\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;\n1 001    Arthur Blankenship    67\n2 002    Britney Jonas         23\n3 003    Sally Davis           63\n4 004    Al Jones              44\n5 005    Gary Hamill           38\n6 006    Ken Bartoletti        33\n7 007    Ike Gerhold           52\n8 008    Tatiana Grant         42\n9 009    Antione Delacroix     27\n\n\n\nand potassium levels and creatinine levels in 2 other tables\n\n\n# A tibble: 6 × 2\n  pat_id     k\n  &lt;chr&gt;  &lt;dbl&gt;\n1 001      3.2\n2 002      3.7\n3 003      4.2\n4 004      4.4\n5 005      4.1\n6 006      4  \n\n\n\n\n# A tibble: 6 × 2\n  pat_id    cr\n  &lt;chr&gt;  &lt;dbl&gt;\n1 001      0.2\n2 002      0.5\n3 003      0.9\n4 004      1.5\n5 005      0.7\n6 006      0.9"
+  },
+  {
+    "objectID": "slides/index.html#other-fancy-joins",
+    "href": "slides/index.html#other-fancy-joins",
+    "title": "Data Cleaning",
+    "section": "Other Fancy Joins",
+    "text": "Other Fancy Joins\n\nleft_join is your workhorse. Start with patient identifiers/uniqid and add data to the right side.\nSometimes you will need to wrangle/process incoming data, then right_join it to the patient demographics\nThere are multiple kinds of fancy joins (semi_join, anti_join, inner_join, full_join) which come in handy once in a while.+\nThese are all well explained here"
   }
 ]

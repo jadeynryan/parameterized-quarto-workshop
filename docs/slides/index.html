@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.340">
+  <meta name="generator" content="quarto-1.3.333">
 
   <meta name="author" content="Crystal Lewis, Shannon Pileggi, &amp; Peter Higgins">
   <title>Data Cleaning</title>
@@ -830,7 +830,7 @@ $ fake_zip                         &lt;dbl&gt; 96074, 11264, 57246, 31457, 30711
 <p><a href="https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html" target="_blank">–&gt; Take me to the exercises &lt;–</a></p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_9838576d" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:4em;">
+<div class="countdown" id="timer_3d634430" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:4em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1249,7 +1249,7 @@ $ start_na_clean &lt;dbl&gt; 137, 142, 140, 139, 144, 145, 142, 138, 140, 137, 1
 <p><a href="https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html" target="_blank">–&gt; Take me to the exercises &lt;–</a></p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_30285aa6" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:4em;">
+<div class="countdown" id="timer_341276f7" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:4em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2343,7 +2343,7 @@ $ ethnic_clean &lt;fct&gt; hispanic, not hispanic, not hispanic, not hispanic, n
 <p><a href="https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html" target="_blank">–&gt; Take me to the exercises &lt;–</a></p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_6c5bdd7d" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:4em;">
+<div class="countdown" id="timer_c6558024" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:4em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2786,7 +2786,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <section id="pivoting-longer-example" class="slide level2">
 <h2>Pivoting Longer (Example)</h2>
 <p>Let’s start with the wide version (selected columns from messy_uc)</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-67_501e0bb830a5075b9ae158eeabbaaf21">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-67_11bba0615a4120906586ad3840c605b3">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
@@ -2835,11 +2835,11 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </section>
 <section id="doing-the-pivot_longer" class="slide level2">
 <h2>Doing the pivot_longer()</h2>
-<p>What values do we want for these key arguments?</p>
+<p>What values do we want for these key arguments in order to pivot_longer?</p>
 <ul>
-<li>cols</li>
-<li>names_to</li>
-<li>values_to</li>
+<li>cols (which columns to pivot)</li>
+<li>names_to (variable to store the names)</li>
+<li>values_to (variable to store the values)</li>
 </ul>
 <div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-69_58546e76f68d317219345b56e2f5005c">
 <div class="cell-output cell-output-stdout">
@@ -2966,7 +2966,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 <div id="tabset-11-4">
 <ul>
-<li>You can do this <em>within</em> pivot_longer with one more argument</li>
+<li>You can do this <em>within</em> pivot_longer with one more argument (if you are <em>fancy</em>)</li>
 </ul>
 <div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-75_8f0df26cb3838b085f714a5849f4713d">
 <div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a>wide <span class="sc">|&gt;</span> </span>
@@ -2999,7 +2999,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <h2>Pivoting Longer</h2>
 <ul>
 <li>Your Turn (Exercise) with endo_data</li>
-<li>Measurements of Trans-Epithelial Electrical Resistance (the inverse of leakiness) were taken from biopsies of 3 segments of intestine.</li>
+<li>Measurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) were taken from biopsies of 3 segments of intestine.</li>
 <li>This might be affected by portal hypertension in patients with liver cirrhosis</li>
 </ul>
 <div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-76_6471b032d6750c834654b22f6134227a">
@@ -3092,6 +3092,24 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 </section>
+<section id="exercise-ph1" class="slide level2">
+<h2>Exercise PH1</h2>
+<p><br></p>
+<p>Complete Data Cleaning Fundamentals Exercise PH1.</p>
+<ul>
+<li><p>If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji on your screen.</p></li>
+<li><p>If you are having trouble, click on the Reactions tab in Zoom, and click to put the “raise hand” emoji on your screen.</p></li>
+</ul>
+<p><a href="https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html" target="_blank">–&gt; Take me to the exercises &lt;–</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_bbab6345" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:4em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
 <section id="pivoting-wider" class="slide level2">
 <h2>Pivoting Wider</h2>
 <div class="panel-tabset">
@@ -3103,7 +3121,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <li>Here we will convert the tall version of our selected messy_uc data back to wide.</li>
 <li>This is what the tall data look like</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-80_3d18aaed1f30582e198a0fde57398c72">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-81_ffeafd643dfe5573ac3e32c3b7dbaeb3">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 4
    pat_id treatment measure   score
@@ -3123,7 +3141,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-13-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-81_6516f6dee0f1239b611388d7b49d5b1d">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-82_7b5ccb03b865b0c2777918334ef1df65">
 <div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1"></a>tall <span class="sc">|&gt;</span> </span>
 <span id="cb121-2"><a href="#cb121-2"></a>  <span class="fu">pivot_wider</span>(</span>
 <span id="cb121-3"><a href="#cb121-3"></a>    <span class="at">id_cols =</span> <span class="fu">c</span>(pat_id, treatment), <span class="co"># Variables not pivoted</span></span>
@@ -3133,7 +3151,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-13-3">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-82_abae407884b21a515720886a93ab52cb">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-83_11eb01d669994bd3d5d39f986d53ef8f">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo
@@ -3160,12 +3178,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <h1>Filling in Unobserved Dates/Times with padr</h1>
 <div class="columns">
 <div class="column" style="width:55%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-83_3720734e474bb88eda4ab73764ac1366">
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1"></a><span class="fu">library</span>(padr)</span>
-<span id="cb123-2"><a href="#cb123-2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb123-3"><a href="#cb123-3"></a>emergency <span class="ot">&lt;-</span> padr<span class="sc">::</span>emergency</span>
-<span id="cb123-4"><a href="#cb123-4"></a><span class="fu">head</span>(emergency) <span class="sc">|&gt;</span>  </span>
-<span id="cb123-5"><a href="#cb123-5"></a>  <span class="fu">select</span>(title, time_stamp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-84_42ee63d5d6013c5de71f435c11894a9c">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   title                   time_stamp         
@@ -3180,7 +3193,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div><div class="column" style="width:45%;">
 <ul>
-<li>The emergency data set contains &gt; 120K emergency calls from Montgomery County, PA over a period of ~ 11 months.</li>
+<li>The <strong>emergency</strong> data set in the {padr} package contains &gt; 120K emergency calls from Montgomery County, PA over a period of ~ 11 months.</li>
 <li>Each call has a title and a timestamp</li>
 </ul>
 </div>
@@ -3196,37 +3209,44 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <li>The thicken function adds a column to a data frame that is of a higher interval than the original variable.</li>
 <li>The variable <strong>time_stamp</strong> has the interval of seconds</li>
 <li>We can thicken the data to day, or to week, or to month.</li>
+<li>Then we can count events by a usable unit of time</li>
 </ul>
 </div>
 <div id="tabset-14-2">
 <ul>
 <li>We will thicken to month</li>
+<li>Then count overdoses by month</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-84_87bc2b721519f631a33218ad07f4022b">
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1"></a>emergency <span class="sc">|&gt;</span> </span>
-<span id="cb125-2"><a href="#cb125-2"></a>  <span class="fu">thicken</span>(<span class="st">'month'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-85_6063a93a743ddd34fb17f272dc712f9a">
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1"></a>emergency <span class="sc">|&gt;</span> </span>
+<span id="cb124-2"><a href="#cb124-2"></a>  <span class="fu">thicken</span>(<span class="st">'month'</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb124-3"><a href="#cb124-3"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(title, <span class="st">"OVERDOSE"</span>)) <span class="sc">|&gt;</span>   <span class="fu">group_by</span>(time_stamp_month) <span class="sc">|&gt;</span> </span>
+<span id="cb124-4"><a href="#cb124-4"></a>  <span class="fu">mutate</span>(<span class="at">ods =</span> <span class="fu">sum</span>(<span class="fu">str_detect</span>(title, <span class="st">"OVERDOSE"</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb124-5"><a href="#cb124-5"></a>    <span class="fu">select</span>(time_stamp_month, ods) <span class="sc">|&gt;</span> </span>
+<span id="cb124-6"><a href="#cb124-6"></a>  <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-14-3">
 <ul>
 <li>This lets us count events like overdoses by month with time_stamp_month.</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-85_f7e7eb58e714dcc723b5f261d72bf3a4">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-86_45a9375800d1456283e1e85befc35b0c">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 120,450 × 7
-     lat   lng   zip title            time_stamp          twp   time_stamp_month
-   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;            &lt;dttm&gt;              &lt;chr&gt; &lt;date&gt;          
- 1  40.3 -75.6 19525 EMS: BACK PAINS… 2015-12-10 17:40:00 NEW … 2015-12-01      
- 2  40.3 -75.3 19446 EMS: DIABETIC E… 2015-12-10 17:40:00 HATF… 2015-12-01      
- 3  40.1 -75.4 19401 Fire: GAS-ODOR/… 2015-12-10 17:40:00 NORR… 2015-12-01      
- 4  40.1 -75.3 19401 EMS: CARDIAC EM… 2015-12-10 17:40:01 NORR… 2015-12-01      
- 5  40.3 -75.6    NA EMS: DIZZINESS   2015-12-10 17:40:01 LOWE… 2015-12-01      
- 6  40.3 -75.3 19446 EMS: HEAD INJURY 2015-12-10 17:40:01 LANS… 2015-12-01      
- 7  40.2 -75.1 19044 EMS: NAUSEA/VOM… 2015-12-10 17:40:01 HORS… 2015-12-01      
- 8  40.2 -75.4 19426 EMS: RESPIRATOR… 2015-12-10 17:40:01 SKIP… 2015-12-01      
- 9  40.3 -75.4 19438 EMS: SYNCOPAL E… 2015-12-10 17:40:01 LOWE… 2015-12-01      
-10  40.1 -75.3 19462 Traffic: VEHICL… 2015-12-10 17:40:01 PLYM… 2015-12-01      
-# ℹ 120,440 more rows</code></pre>
+<pre><code># A tibble: 11 × 2
+# Groups:   time_stamp_month [11]
+   time_stamp_month   ods
+   &lt;date&gt;           &lt;int&gt;
+ 1 2015-12-01          91
+ 2 2016-01-01         135
+ 3 2016-02-01         141
+ 4 2016-03-01         161
+ 5 2016-04-01         124
+ 6 2016-05-01         149
+ 7 2016-06-01         140
+ 8 2016-07-01         147
+ 9 2016-08-01         137
+10 2016-09-01         171
+11 2016-10-01          95</code></pre>
 </div>
 </div>
 </div>
@@ -3244,7 +3264,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <li>No observations on weekend days.</li>
 </ul>
 </div><div class="column" style="width:40%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-86_c2201b24b0e44215e1444fb6b3e1ef9e">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-87_d1595e89237eefa8bd1a8bf98b7f6f44">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 15 × 3
    pat_id date         fcp
@@ -3280,17 +3300,17 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </ul>
 </div>
 <div id="tabset-15-2">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-87_e4a9c19d8491c772d9e5c13f1b188833">
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1"></a>fcp <span class="sc">|&gt;</span> </span>
-<span id="cb128-2"><a href="#cb128-2"></a>  <span class="fu">pad</span>(<span class="at">group =</span> <span class="st">"pat_id"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb128-3"><a href="#cb128-3"></a>  tidyr<span class="sc">::</span><span class="fu">fill</span>(pat_id) <span class="sc">|&gt;</span> </span>
-<span id="cb128-4"><a href="#cb128-4"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-88_56b4eb634e179eb8ab35d7d9e2899dd4">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1"></a>fcp <span class="sc">|&gt;</span> </span>
+<span id="cb127-2"><a href="#cb127-2"></a>  <span class="fu">pad</span>(<span class="at">group =</span> <span class="st">"pat_id"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb127-3"><a href="#cb127-3"></a>  tidyr<span class="sc">::</span><span class="fu">fill</span>(pat_id) <span class="sc">|&gt;</span> <span class="co"># fill in the missing pat_ids</span></span>
+<span id="cb127-4"><a href="#cb127-4"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-15-3">
 <div class="columns">
 <div class="column" style="width:40%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-88_9bd183ae5403a5e458c8f68a7d6a39bc">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-89_4ea34d856b372c68fe671f9615eaefad">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 21 × 3
    pat_id date         fcp
@@ -3339,7 +3359,7 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 <section id="local-demographics-with-cdc-svi-data" class="slide level2">
 <h2>Local Demographics with CDC SVI data</h2>
 <div class="panel-tabset">
-<ul id="tabset-16" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-16-1">The Problem</a></li><li><a href="#tabset-16-2">The Code</a></li><li><a href="#tabset-16-3">The Result</a></li></ul>
+<ul id="tabset-16" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-16-1">The Problem</a></li><li><a href="#tabset-16-2">The Data</a></li><li><a href="#tabset-16-3">The Code</a></li><li><a href="#tabset-16-4">The Result</a></li></ul>
 <div class="tab-content">
 <div id="tabset-16-1">
 <div class="columns">
@@ -3360,16 +3380,306 @@ $ bp_diastolic &lt;dbl&gt; 72, 86, 92, 83, 78, 80, 74, 73, 66, 78, 82, 68, 73, 5
 </div>
 </div>
 <div id="tabset-16-2">
-
+<ul>
+<li>What is the common uniqid/key?</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>demo</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-90_0186fdf8efec355f042bb8cc9c349917">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 4
+  pat_id name                 htn census_tract
+  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;        &lt;dbl&gt;
+1 001    Arthur Blankenship     0  26161404400
+2 002    Britney Jonas          0  26161405100
+3 003    Sally Davis            1  26161402100
+4 004    Al Jones               0  26161403200
+5 005    Gary Hamill            1  26161405200
+6 006    Ken Bartoletti         0  26161404500
+7 007    Ike Gerhold            0  26161405600
+8 008    Tatiana Grant          0  26161404300
+9 009    Antione Delacroix      1  26161405500</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<ul>
+<li>cdc</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-91_a5ee528ce658cfdd1cf56ba494f9d238">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 2
+  census_tract   svi
+         &lt;dbl&gt; &lt;dbl&gt;
+1  26161404400  0.12
+2  26161405100  0.67
+3  26161402100  0.43
+4  26161403200  0.07
+5  26161405200  0.71
+6  26161404500  0.23
+7  26161405600  0.27
+8  26161404300  0.21
+9  26161405500  0.62</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="tabset-16-3">
-
+<ul>
+<li>Replace the arguments to join the demographic data (<em>demo</em>) on the left to add Social Vulnerability index (svi) from the <em>cdc</em> dataset on the RHS. Left join by census tract.</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-92_e96e4abcd1a18d5ebefe7de979cdc9f1">
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1"></a><span class="fu">left_join</span>(dataset_x, dataset_y, <span class="at">by =</span> <span class="st">"key"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-16-4">
+<ul>
+<li>Is there an association between social vulnerability and hypertension?</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-93_617bc4290ff2e56206ffff0fda33c56f">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 5
+  pat_id name                 htn census_tract   svi
+  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;
+1 001    Arthur Blankenship     0  26161404400  0.12
+2 002    Britney Jonas          0  26161405100  0.67
+3 003    Sally Davis            1  26161402100  0.43
+4 004    Al Jones               0  26161403200  0.07
+5 005    Gary Hamill            1  26161405200  0.71
+6 006    Ken Bartoletti         0  26161404500  0.23
+7 007    Ike Gerhold            0  26161405600  0.27
+8 008    Tatiana Grant          0  26161404300  0.21
+9 009    Antione Delacroix      1  26161405500  0.62</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 </section>
-<section id="patient-demographics-with-lab-results-one-to-many" class="slide level2">
-<h2>Patient Demographics with Lab results (one to many)</h2>
+<section id="patient-demographics-with-lab-results-your-turn-to-join" class="slide level2">
+<h2>Patient Demographics with Lab results (Your Turn to Join)</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li>We have some basic Patient Demographics in one table</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-94_eb7c129e82960c1f9713e9f69f3a9c71">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 3
+  pat_id name                 age
+  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;
+1 001    Arthur Blankenship    67
+2 002    Britney Jonas         23
+3 003    Sally Davis           63
+4 004    Al Jones              44
+5 005    Gary Hamill           38
+6 006    Ken Bartoletti        33
+7 007    Ike Gerhold           52
+8 008    Tatiana Grant         42
+9 009    Antione Delacroix     27</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<p>and potassium levels and creatinine levels in 2 other tables</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-95_2759e469c6a090d49d731c6737c36057">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  pat_id     k
+  &lt;chr&gt;  &lt;dbl&gt;
+1 001      3.2
+2 002      3.7
+3 003      4.2
+4 004      4.4
+5 005      4.1
+6 006      4  </code></pre>
+</div>
+</div>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-96_2272b5ae18396f340d9f0ef535f221d7">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  pat_id    cr
+  &lt;chr&gt;  &lt;dbl&gt;
+1 001      0.2
+2 002      0.5
+3 003      0.9
+4 004      1.5
+5 005      0.7
+6 006      0.9</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="your-turn-to-join" class="slide level2">
+<h2>Your Turn to Join</h2>
+<ul>
+<li>We want to join the correct labs (9 rows each) to the correct patients.</li>
+<li>The unique identifier (called the uniqid or key or recordID) is pat_id.</li>
+<li>It only occurs once for each patient/row</li>
+<li>It appears in each table we want to join</li>
+<li>The pat_id is of the character type in each (a common downfall if one is character, one is numeric, but they <strong>look</strong> the same - but don’t match)</li>
+<li>We want to start with demographics, then add datasets that match to the right.</li>
+<li>We will use <em>demo</em> as our base dataset on the left hand side (LHS), and first join the potassium (<em>pot</em>) results (RHS)</li>
+</ul>
+</section>
+<section id="your-turn-to-join-1" class="slide level2">
+<h2>Your Turn to Join</h2>
+<div class="panel-tabset">
+<ul id="tabset-17" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-17-1">The Problem</a></li><li><a href="#tabset-17-2">The Code</a></li><li><a href="#tabset-17-3">The Result</a></li></ul>
+<div class="tab-content">
+<div id="tabset-17-1">
+<ul>
+<li>Joining <em>demo</em> to <em>pot</em> with a left_join</li>
+<li>left_join(data_x, data_y, by = “uniqid”)</li>
+</ul>
+</div>
+<div id="tabset-17-2">
+<ul>
+<li>replace the arguments with the correct ones to join <em>demo</em> to <em>pot</em> and produce <em>new_data</em>.</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-97_b9fd877e3ffa8a1c7802bbf2221efffe">
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1"></a>new_data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(data_x, data_y, <span class="at">by =</span> <span class="st">"uniqid"</span>)</span>
+<span id="cb136-2"><a href="#cb136-2"></a>new_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-17-3">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-98_7423e3b2b71cc2d324c9d15f16409ee0">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 4
+  pat_id name                 age     k
+  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt;
+1 001    Arthur Blankenship    67   3.2
+2 002    Britney Jonas         23   3.7
+3 003    Sally Davis           63   4.2
+4 004    Al Jones              44   4.4
+5 005    Gary Hamill           38   4.1
+6 006    Ken Bartoletti        33   4  
+7 007    Ike Gerhold           52   3.6
+8 008    Tatiana Grant         42   4.2
+9 009    Antione Delacroix     27   4.9</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-ph2" class="slide level2">
+<h2>Exercise PH2</h2>
+<p><br></p>
+<p>Complete Data Cleaning Fundamentals Exercise PH2.</p>
+<p><a href="https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html" target="_blank">–&gt; Take me to the exercises &lt;–</a></p>
+<ul>
+<li><p>If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji on your screen.</p></li>
+<li><p>If you are having trouble, click on the Reactions tab in Zoom, and click to put the “raise hand” emoji on your screen.</p></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_3d68b888" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:4em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-ph2" class="slide level2">
+<h2>Solution PH2</h2>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-100_4b1403abc6f8d8090b79f90b2365b1b0">
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1"></a>new_data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(demo, pot, <span class="at">by =</span> <span class="st">"pat_id"</span>)</span>
+<span id="cb138-2"><a href="#cb138-2"></a>new_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="now-add-creatinine-cr-to-new_data" class="slide level2">
+<h2>Now add Creatinine (cr) to new_data</h2>
+<div class="panel-tabset">
+<ul id="tabset-18" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-18-1">The Problem</a></li><li><a href="#tabset-18-2">The Code</a></li><li><a href="#tabset-18-3">The Result</a></li></ul>
+<div class="tab-content">
+<div id="tabset-18-1">
+<ul>
+<li>Joining new_data and cr with a left_join</li>
+<li>left_join(data_x, data_y, by = “uniqid”)</li>
+</ul>
+</div>
+<div id="tabset-18-2">
+<ul>
+<li>Replace the arguments with the correct ones to join new_data and cr and produce new_data2.</li>
+</ul>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-101_91ea780bfc7167c938faeac65e5bae79">
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1"></a>new_data2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(data_x, data_y, <span class="at">by =</span> <span class="st">"uniqid"</span>)</span>
+<span id="cb139-2"><a href="#cb139-2"></a>new_data2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-18-3">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-102_50f2a91291031260a2b5e8f2747d0afe">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 5
+  pat_id name                 age     k    cr
+  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 001    Arthur Blankenship    67   3.2   0.2
+2 002    Britney Jonas         23   3.7   0.5
+3 003    Sally Davis           63   4.2   0.9
+4 004    Al Jones              44   4.4   1.5
+5 005    Gary Hamill           38   4.1   0.7
+6 006    Ken Bartoletti        33   4     0.9
+7 007    Ike Gerhold           52   3.6   0.7
+8 008    Tatiana Grant         42   4.2   1  
+9 009    Antione Delacroix     27   4.9   1.7</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-ph3" class="slide level2">
+<h2>Exercise PH3</h2>
+<p><br></p>
+<p>Complete Data Cleaning Fundamentals Exercise PH3.</p>
+<p><a href="https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html" target="_blank">–&gt; Take me to the exercises &lt;–</a></p>
+<ul>
+<li><p>If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji on your screen.</p></li>
+<li><p>If you are having trouble, click on the Reactions tab in Zoom, and click to put the “raise hand” emoji on your screen.</p></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_d325d79e" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:4em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
+<section id="other-fancy-joins" class="slide level2">
+<h2>Other Fancy Joins</h2>
+<ul>
+<li><em>left_join</em> is your workhorse. Start with patient identifiers/uniqid and add data to the right side.</li>
+<li>Sometimes you will need to wrangle/process incoming data, then <em>right_join</em> it to the patient demographics</li>
+<li>There are multiple kinds of fancy joins (semi_join, anti_join, inner_join, full_join) which come in handy once in a while.+</li>
+<li>These are all well explained <a href="http://statseducation.com/Introduction-to-R/modules/tidy%20data/joins/#:~:text=semi_join(x%2C%20y)%3A%20Return,This%20is%20a%20filtering%20join.">here</a></li>
+</ul>
+</section></section>
+<section>
+<section id="duncan-section-a-tidyxl" class="title-slide slide level1 center">
+<h1>Duncan Section A tidyxl</h1>
+
+</section>
+<section id="slide-1-2" class="slide level2">
+<h2>Slide 1</h2>
+</section>
+<section id="slide-2-2" class="slide level2">
+<h2>Slide 2</h2>
+</section></section>
+<section>
+<section id="duncan-section-b-unpivotr" class="title-slide slide level1 center">
+<h1>Duncan Section B unpivotr</h1>
+
+</section>
+<section id="slide-1-3" class="slide level2">
+<h2>Slide 1</h2>
+</section>
+<section id="slide-2-3" class="slide level2">
+<h2>Slide 2</h2>
 </section>
 <section id="thank-you" class="slide level2">
 <h2>Thank you!</h2>
