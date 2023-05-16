@@ -9,6 +9,7 @@ library(janitor)
 library(here)
 library(gtsummary)
 library(padr)
+library(countdown)
 ```
 ## Deciding on the Unit of Observation
 
@@ -72,7 +73,7 @@ library(padr)
 
 Let's start with the wide version (selected columns from messy_uc)
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
 wide <- readxl::read_excel(here("data/messy_uc.xlsx"), sheet = 3, skip = 6) |>
   janitor::clean_names() |>
   janitor::remove_empty(which = c("rows", "cols")) |> 
@@ -99,11 +100,11 @@ wide |>
 
 ## Doing the pivot_longer()
 
-What values do we want for these key arguments?
+What values do we want for these key arguments in order to pivot_longer?
 
--   cols
--   names_to
--   values_to
+-   cols (which columns to pivot)
+-   names_to (variable to store the names)
+-   values_to (variable to store the values)
 
 ```{r, echo=FALSE}
 wide
@@ -175,7 +176,7 @@ tall |>
 
 ### Alternative within pivot_longer
 
-- You can do this _within_ pivot_longer with one more argument
+- You can do this _within_ pivot_longer with one more argument (if you are _fancy_)
 
 ```{r}
 wide |> 
@@ -191,7 +192,7 @@ wide |>
 ## Pivoting Longer
 
 -   Your Turn (Exercise) with endo_data
-- Measurements of Trans-Epithelial Electrical Resistance (the inverse of leakiness) were taken from biopsies of 3 segments of intestine.
+- Measurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) were taken from biopsies of 3 segments of intestine.
 - This might be affected by portal hypertension in patients with liver cirrhosis
 
 ```{r, echo=FALSE}
@@ -265,6 +266,25 @@ endo_data |>
 
 :::
 
+## Exercise PH1
+
+
+<br>
+
+Complete Data Cleaning Fundamentals Exercise PH1.
+
+- If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji on your screen.
+
+- If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raise hand" emoji on your screen.
+
+[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+
+```{r}
+#| echo: false
+#| cache: false
+countdown(minutes = 3, font_size = "4em")
+```
+
 ## Pivoting Wider
 
 ::: panel-tabset
@@ -307,7 +327,7 @@ tall |>
 ::: columns
 ::: {.column width="55%"}
 
-```{r}
+```{r, echo=FALSE}
 library(padr)
 library(tidyverse)
 emergency <- padr::emergency
@@ -318,7 +338,7 @@ head(emergency) |>
 :::
 
 ::: {.column width="45%"}
-- The emergency data set contains > 120K emergency calls from Montgomery County, PA over a period of ~ 11 months.
+- The **emergency** data set in the {padr} package contains > 120K emergency calls from Montgomery County, PA over a period of ~ 11 months.
 - Each call has a title and a timestamp
 
 :::
@@ -333,15 +353,21 @@ head(emergency) |>
 - The thicken function adds a column to a data frame that is of a higher interval than the original variable.
 - The variable **time_stamp** has the interval of seconds
 - We can thicken the data to day, or to week, or to month.
+- Then we can count events by a usable unit of time
 
 ### Code
 - We will thicken to month
+- Then count overdoses by month
 
 ```{r}
 #| echo: true
 #| eval: false
 emergency |> 
-  thicken('month')
+  thicken('month') |> 
+  filter(str_detect(title, "OVERDOSE")) |>   group_by(time_stamp_month) |> 
+  mutate(ods = sum(str_detect(title, "OVERDOSE"))) |> 
+    select(time_stamp_month, ods) |> 
+  distinct()
 ```
 
 ### Result
@@ -351,7 +377,12 @@ emergency |>
 #| echo: false
 #| eval: true
 emergency |> 
-  thicken('month')
+  thicken('month') |> 
+  filter(str_detect(title, "OVERDOSE")) |>
+  group_by(time_stamp_month) |> 
+  mutate(ods = sum(str_detect(title, "OVERDOSE"))) |> 
+  select(time_stamp_month, ods) |> 
+  distinct()
 ```
 
 :::
@@ -413,7 +444,7 @@ fcp
 #| eval: false
 fcp |> 
   pad(group = "pat_id") |> 
-  tidyr::fill(pat_id) |> 
+  tidyr::fill(pat_id) |> # fill in the missing pat_ids
   print(n = 14)
 ```
 
@@ -478,11 +509,257 @@ fcp |>
 :::
 
 
+
+### The Data
+- What is the common uniqid/key?
+
+::: columns
+::: {.column width="60%"}
+
+- demo
+
+```{r}
+#| echo: false
+demo <- tibble::tribble(
+  ~pat_id, ~name, ~htn, ~census_tract,
+  '001', "Arthur Blankenship", 0, 26161404400,
+  '002', "Britney Jonas", 0, 26161405100,
+  '003', "Sally Davis", 1, 26161402100,
+  '004', "Al Jones", 0, 26161403200,
+  '005', "Gary Hamill", 1, 26161405200,
+  '006', "Ken Bartoletti", 0, 26161404500,
+  '007', "Ike Gerhold", 0, 26161405600,
+  '008', "Tatiana Grant", 0, 26161404300,
+  '009', "Antione Delacroix", 1, 26161405500,
+)
+
+demo
+```
+
+:::
+
+::: {.column width="40%"}
+
+- cdc
+
+```{r}
+#| echo: false
+cdc <- tibble::tribble(
+  ~census_tract, ~svi,
+  26161404400, 0.12,
+  26161405100, 0.67,
+  26161402100, 0.43,
+  26161403200, 0.07,
+  26161405200, 0.71,
+  26161404500, 0.23,
+  26161405600, 0.27,
+  26161404300, 0.21,
+  26161405500, 0.62
+)
+
+cdc
+```
+
+:::
+
+:::
+
 ### The Code
+- Replace the arguments to join the demographic data (*demo*) on the left to add Social Vulnerability index (svi) from the *cdc* dataset on the RHS. Left join by census tract.
+
+```{r, echo=TRUE, eval=FALSE}
+left_join(dataset_x, dataset_y, by = "key")
+```
 
 
 ### The Result
 
+- Is there an association between social vulnerability and hypertension?
+
+```{r, echo=FALSE, eval=TRUE}
+left_join(demo, cdc, by = "census_tract")
+```
+
 :::
 
-## Patient Demographics with Lab results (one to many)
+## Patient Demographics with Lab results (Your Turn to Join)
+
+::: columns
+::: {.column width="40%"}
+
+- We have some basic Patient Demographics in one table
+
+```{r}
+#| echo: false
+demo <- tibble::tribble(
+  ~pat_id, ~name, ~age,
+  '001', "Arthur Blankenship", 67,
+  '002', "Britney Jonas", 23,
+  '003', "Sally Davis", 63,
+  '004', "Al Jones", 44,
+  '005', "Gary Hamill", 38,
+  '006', "Ken Bartoletti", 33,
+  '007', "Ike Gerhold", 52,
+  '008', "Tatiana Grant", 42,
+  '009', "Antione Delacroix", 27,
+)
+
+demo
+```
+:::
+
+::: {.column width="60%"}
+and potassium levels and creatinine levels in 2 other tables
+
+```{r}
+#| echo: false
+pot <- tibble::tribble(
+  ~pat_id, ~k,
+  '001', 3.2,
+  '002', 3.7,
+  '003', 4.2,
+  '004', 4.4,
+  '005', 4.1,
+  '006', 4.0,
+  '007', 3.6,
+  '008', 4.2,
+  '009', 4.9,
+)
+
+head(pot)
+```
+
+```{r}
+#| echo: false
+cr <- tibble::tribble(
+  ~pat_id, ~cr,
+  '001', 0.2,
+  '002', 0.5,
+  '003', 0.9,
+  '004', 1.5,
+  '005', 0.7,
+  '006', 0.9,
+  '007', 0.7,
+  '008', 1.0,
+  '009', 1.7,
+)
+
+head(cr)
+```
+
+:::
+
+:::
+
+## Your Turn to Join
+
+- We want to join the correct labs (9 rows each) to the correct patients.
+- The unique identifier (called the uniqid or key or recordID) is pat_id. 
+- It only occurs once for each patient/row
+- It appears in each table we want to join
+- The pat_id is of the character type in each (a common downfall if one is character, one is numeric, but they **look** the same - but don't match)
+- We want to start with demographics, then add datasets that match to the right.
+- We will use *demo* as our base dataset on the left hand side (LHS), and first join the potassium (*pot*) results (RHS)
+
+## Your Turn to Join
+
+::: panel-tabset
+
+### The Problem
+- Joining _demo_ to _pot_ with a left_join
+- left_join(data_x, data_y, by = "uniqid")
+
+### The Code
+- replace the arguments with the correct ones to join _demo_ to _pot_ and produce *new_data*.
+
+```{r, error=TRUE, eval=FALSE}
+new_data <- left_join(data_x, data_y, by = "uniqid")
+new_data
+```
+
+### The Result
+
+
+```{r, echo=FALSE}
+new_data <- left_join(demo, pot, by = "pat_id")
+new_data
+```
+
+:::
+
+## Exercise PH2
+
+
+<br>
+
+Complete Data Cleaning Fundamentals Exercise PH2.
+
+[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+
+- If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji on your screen.
+
+- If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raise hand" emoji on your screen.
+
+```{r}
+#| echo: false
+#| cache: false
+countdown(minutes = 3, font_size = "4em")
+```
+
+## Solution PH2
+
+```{r, echo=TRUE, eval=FALSE}
+new_data <- left_join(demo, pot, by = "pat_id")
+new_data
+```
+
+## Now add Creatinine (cr) to new_data
+
+::: panel-tabset
+
+### The Problem
+- Joining new_data and cr with a left_join
+- left_join(data_x, data_y, by = "uniqid")
+
+### The Code
+- Replace the arguments with the correct ones to join new_data and cr and produce new_data2.
+
+```{r, error=TRUE, eval=FALSE}
+new_data2 <- left_join(data_x, data_y, by = "uniqid")
+new_data2
+```
+
+### The Result
+
+
+```{r, echo=FALSE}
+new_data2 <- left_join(new_data, cr, by = "pat_id")
+new_data2
+```
+
+:::
+
+## Exercise PH3
+
+
+<br>
+
+Complete Data Cleaning Fundamentals Exercise PH3.
+
+[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+
+- If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji on your screen.
+
+- If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raise hand" emoji on your screen.
+
+```{r}
+#| echo: false
+#| cache: false
+countdown(minutes = 3, font_size = "4em")
+```
+
+## Other Fancy Joins
+- *left_join* is your workhorse. Start with patient identifiers/uniqid and add data to the right side.
+- Sometimes you will need to wrangle/process incoming data, then *right_join* it to the patient demographics
+- There are multiple kinds of fancy joins (semi_join, anti_join, inner_join, full_join) which come in handy once in a while.+
+- These are all well explained [here](http://statseducation.com/Introduction-to-R/modules/tidy%20data/joins/#:~:text=semi_join(x%2C%20y)%3A%20Return,This%20is%20a%20filtering%20join.)
