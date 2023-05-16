@@ -10,6 +10,7 @@ library(here)
 library(gtsummary)
 library(padr)
 library(countdown)
+library(emo)
 ```
 ## Deciding on the Unit of Observation
 
@@ -273,9 +274,9 @@ endo_data |>
 
 Complete Data Cleaning Fundamentals Exercise PH1.
 
-- If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji on your screen.
+- If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji `r emo::ji('+1')` on your screen.
 
-- If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raise hand" emoji on your screen.
+- If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raise hand" emoji `r emo::ji('raised')` on your screen.
 
 [--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
 
@@ -698,9 +699,9 @@ Complete Data Cleaning Fundamentals Exercise PH2.
 
 [--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
 
-- If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji on your screen.
+- If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji `r emo::ji('+1')` on your screen.
 
-- If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raise hand" emoji on your screen.
+- If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raise hand" emoji `r emo::ji('raised')` on your screen.
 
 ```{r}
 #| echo: false

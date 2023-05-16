@@ -802,28 +802,28 @@
     "href": "slides/index.html#exercise",
     "title": "Data Cleaning",
     "section": "Exercise",
-    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP1.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+    "text": "Exercise\nWhat data structure issues do you notice in our sample data?\n\n\n\n\n−+\n01:00\n\n\n\n\nSo let’s do a quick exercise. Take one minute to review this messy data and look for any structure issues going on here. And by structure I mean review both how the rows and columns are laid out as well as variable names. If you find any errors, type them in the chat."
   },
   {
     "objectID": "slides/index.html#exercise-1",
     "href": "slides/index.html#exercise-1",
     "title": "Data Cleaning",
     "section": "Exercise",
-    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP2.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+    "text": "Exercise\nWhat variable value issues do you notice in our sample data?\n\n\n\n\n−+\n01:00"
   },
   {
     "objectID": "slides/index.html#exercise-2",
     "href": "slides/index.html#exercise-2",
     "title": "Data Cleaning",
     "section": "Exercise",
-    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP3.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+    "text": "Exercise\nWhat is the R class for the following variables?\n\nvar1var1 typevar2var2 typevar3var3 type\n\n\n\n\n[1] \" 7.5\" \"2\"    \"3.6\" \n\n\n\n\n\nclass(var1)\n\n[1] \"character\"\n\n\n\n\n\n\n[1] medium medium low    high   low   \nLevels: low medium high\n\n\n\n\n\nclass(var2)\n\n[1] \"factor\"\n\n\n\n\n\n\n[1] \"50kg\" \"59kg\" \"82kg\"\n\n\n\n\n\nclass(var3)\n\n[1] \"character\""
   },
   {
     "objectID": "slides/index.html#exercise-ph1",
     "href": "slides/index.html#exercise-ph1",
     "title": "Data Cleaning",
     "section": "Exercise PH1",
-    "text": "Exercise PH1\n\nComplete Data Cleaning Fundamentals Exercise PH1.\n\nIf you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji on your screen.\nIf you are having trouble, click on the Reactions tab in Zoom, and click to put the “raise hand” emoji on your screen.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n03:00"
+    "text": "Exercise PH1\n\nComplete Data Cleaning Fundamentals Exercise PH1.\n\nIf you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji 👍 on your screen.\nIf you are having trouble, click on the Reactions tab in Zoom, and click to put the “raise hand” emoji 🤚 on your screen.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n03:00"
   },
   {
     "objectID": "slides/index.html#patient-demographics-with-lab-results-yout-turn-to-join",
@@ -851,7 +851,7 @@
     "href": "slides/index.html#exercise-ph2",
     "title": "Data Cleaning",
     "section": "Exercise PH2",
-    "text": "Exercise PH2\n\nComplete Data Cleaning Fundamentals Exercise PH2.\n–&gt; Take me to the exercises &lt;–\n\nIf you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji on your screen.\nIf you are having trouble, click on the Reactions tab in Zoom, and click to put the “raise hand” emoji on your screen.\n\n\n\n\n−+\n03:00"
+    "text": "Exercise PH2\n\nComplete Data Cleaning Fundamentals Exercise PH2.\n–&gt; Take me to the exercises &lt;–\n\nIf you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji 👍 on your screen.\nIf you are having trouble, click on the Reactions tab in Zoom, and click to put the “raise hand” emoji 🤚 on your screen.\n\n\n\n\n−+\n03:00"
   },
   {
     "objectID": "slides/index.html#solution-ph2",
@@ -887,5 +887,264 @@
     "title": "Data Cleaning",
     "section": "Other Fancy Joins",
     "text": "Other Fancy Joins\n\nleft_join is your workhorse. Start with patient identifiers/uniqid and add data to the right side.\nSometimes you will need to wrangle/process incoming data, then right_join it to the patient demographics\nThere are multiple kinds of fancy joins (semi_join, anti_join, inner_join, full_join) which come in handy once in a while.+\nThese are all well explained here"
+  },
+  {
+    "objectID": "slides/index.html#data-horror-stories",
+    "href": "slides/index.html#data-horror-stories",
+    "title": "Data Cleaning",
+    "section": "Data Horror Stories",
+    "text": "Data Horror Stories\n\n\n\n\n\n\nSo I imagine that many of you, at some point in your career, have received a spreadsheet that looks like this\nAnd upon receiving those spreadsheets, you probably felt something like this."
+  },
+  {
+    "objectID": "slides/index.html#data-horror-stories-1",
+    "href": "slides/index.html#data-horror-stories-1",
+    "title": "Data Cleaning",
+    "section": "Data Horror Stories",
+    "text": "Data Horror Stories\n\n\nImage from knowyourmeme.com\n\n\nJust defeated. Because you know that you now are going to have to spend hours and hours of time cleaning those spreadsheets before they can be used in your work. And that is what today is about. We are going to first provide you a foundational understanding for how data SHOULD be organized, we will briefly discuss how if at all possible, you want to correct messy data at the source, and then last, the meat of this presentation will include a review of various R functions that will help you quickly and efficiently turn a very messy dataset into a tidy and useable one."
+  },
+  {
+    "objectID": "slides/index.html#data-organizing-principles",
+    "href": "slides/index.html#data-organizing-principles",
+    "title": "Data Cleaning",
+    "section": "Data Organizing Principles",
+    "text": "Data Organizing Principles\n\n\n\n\nData Structure\nVariable Values\n\n\n\nVariable Types\nMissing Data\n\n\n\n\n\nSo first we are going to talk about data organizing principles associated with 4 practices. And by reviewing these principles, my hope is that we will all have a shared understanding of how data SHOULD be organized and that understanding will help you to strategically plan for how you should wrangle those messy datasets."
+  },
+  {
+    "objectID": "slides/index.html#data-structure",
+    "href": "slides/index.html#data-structure",
+    "title": "Data Cleaning",
+    "section": "Data Structure",
+    "text": "Data Structure\n\nData should make a rectangle of rows and columns\n\nYou should have the expected number of rows (cases in your data)\nYou should have the expected number of columns (variables in your data)\n\n\n\n\nAnd at the intersection of those rows and columns are cells filled with values\nYou should have no more or no less than you expect. And when I say “expect”, hopefully have some idea of what should exist in your data. Either you collected it yourself so you have an idea, or you have been given a codebook or data dictionary that tells you what should exist in the data.\n- Extra columns in your data may mean that you have empty columns or unexpected variables in your data  \n- Extra rows could mean you have duplicate or empty rows in your data  \n- Less columns in your data means you might be missing variables  \n- Less rows in your data means you may be missing cases  \nAnd these are things that need to be remedied in our data cleaning process"
+  },
+  {
+    "objectID": "slides/index.html#data-structure-1",
+    "href": "slides/index.html#data-structure-1",
+    "title": "Data Cleaning",
+    "section": "Data Structure",
+    "text": "Data Structure\n\nVariable names should be the first, and only the first, row of your data\n\nThey should also adhere to variable name best practices\n\nMake variable names meaningful (gender instead of X1)\nDon’t start with a number\nNo spaces in variable names\nNo special characters except _\n\nSo no /, -, !, \"\n\n\n\n\n\nThese aren’t just arbitrary practices. They serve a purpose.\n- First, they make your variable names more interpretable and easier to work with  \n- They also make your variables more compatiable with languages such as R. For instance, R does not allow variable names to start with numbers. It will give you an error if you do this."
+  },
+  {
+    "objectID": "slides/index.html#data-structure-2",
+    "href": "slides/index.html#data-structure-2",
+    "title": "Data Cleaning",
+    "section": "Data Structure",
+    "text": "Data Structure\n\nVariable names are not the first row of the data\nOur data does not make a rectangle - Empty column, empty rows\nVariable names do not adhere to best practices"
+  },
+  {
+    "objectID": "slides/index.html#variable-values",
+    "href": "slides/index.html#variable-values",
+    "title": "Data Cleaning",
+    "section": "Variable Values",
+    "text": "Variable Values\n\nValues should be explicit, not implicit\n\nIf a blank cell is implied to be zero, fill that cell with an actual zero\nNo color coding should be used to indicate information. Make a new variable.\n\n\n\n\nValues should be analyzable. This means no more than one measure should be captured in a variable.\n\n\n\n\nVariables should be captured consistently within a column\n\nDates captured consistently (i.e. YYYY-MM-DD)\nCategories captured consistently (both spelling and capitalization)\nIf the variable is numeric, values should fall within your expected range\n\n\n\n\nWe don’t ever want anyone to have to guess what a cell value means\n\n\nIf you are color coding a variable in order to indicate treatment, instead make a treatment variable and add the values to that variable\n\n\nSo for instance, we don’t want both weight and height in the same variable. It would be very difficult to analyze a variable with combined information. We would want to split this information into two columns.\nPick a format and stick to it\n\n\nFor instance if you could make a decision to always capture dates in this ISO 8601 standardized format\nSo if you’re capture gender, you always want to spell male the same way, always want to spell female the same way. This allows your data to be easily categorized.\nSo if the range for a variable is 1-50, you shouldn’t see values outside of that range"
+  },
+  {
+    "objectID": "slides/index.html#variable-values-1",
+    "href": "slides/index.html#variable-values-1",
+    "title": "Data Cleaning",
+    "section": "Variable Values",
+    "text": "Variable Values\n\nColor coding used to indicate information\nTwo things measured in one column\nCategorical values captured inconsistently"
+  },
+  {
+    "objectID": "slides/index.html#variable-types",
+    "href": "slides/index.html#variable-types",
+    "title": "Data Cleaning",
+    "section": "Variable Types",
+    "text": "Variable Types\nVariables should be stored as your expected type (or in R terms - class)\n\n\nNumeric\n\nContain numeric values (14.5, 14.539, 789, -24)\nNumeric variables cannot contain special characters, spaces, or letters\n\n100mg\n83/150\n” 89”\n\n\n\n\n\n\nDate, Time, Date-Time\n\nRepresented in R as either &lt;date&gt;, &lt;time&gt; or &lt;dttm&gt;/&lt;POSIXct&gt;\nAllow you to perform calculations on dates\n\n\n\nIn R, type actually refers to how the variable is stored. Here we are more concerned about the abstract type that tells us how we can actually use the variable for analyses and so forth. And in R, that’s actually called variable class.\nSo let’s review a few of these variable classes.\n\nIf your variable contains non-numeric values, the class will be character. And you will no longer be able to perform calculations on your numeric variable, so no means, ranges, etc.\nBecause of the way dates are stored in R, they allow you to perform calculations using your dates, which is cool. You can add dates, subtract dates, etc. So as long as your dates are stored as dates, then we are good. However, if your dates are stored as character values, you will not be able to perform calculations on your dates.\n\nIt’s important to check your date types when you read in your data. While sometimes they are read in as dates, othertimes they may be read in as character values or numeric values and it’s important to be aware of this."
+  },
+  {
+    "objectID": "slides/index.html#variable-types-1",
+    "href": "slides/index.html#variable-types-1",
+    "title": "Data Cleaning",
+    "section": "Variable Types",
+    "text": "Variable Types\n\nCharacter\n\nContain character values or strings (“kg”, “R in Medicine”, “11.5”, “5mg”)\n\n\n\n\nFactor\n\nA special class of variables, helpful when working with categorical or ordinal variables\nFactors assign an order to your variable groups\nYou must assign this class to your variables\nYou can learn more about working with factors in this article: https://peerj.com/preprints/3163/\n\n\n\n\nYou can even store numbers as characters\nVery useful for ordering your groups in tables, graphs, or models\n\nSo when you read in your data, your character variables will not automatically be assigned as factors. You need to assign this class yourself.\nIf anyone remembers the controversial default of strings as factors = TRUE from the old days, then you probably already know what I’m talking about\nJust a warning, factors can be a little tricky to work with, especially when converting from factor back to a numeric variable. You can learn more about working with factors in this article from Amelia McNamara and Nicholas Horton."
+  },
+  {
+    "objectID": "slides/index.html#exercise-3",
+    "href": "slides/index.html#exercise-3",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\nWhat variable type issues do you notice in our sample data?\n\n\n\n\n\n\n\n\n−+\n01:00"
+  },
+  {
+    "objectID": "slides/index.html#variable-types-2",
+    "href": "slides/index.html#variable-types-2",
+    "title": "Data Cleaning",
+    "section": "Variable Types",
+    "text": "Variable Types\n\nDates stored as numbers\nSpecial characters in numeric variables"
+  },
+  {
+    "objectID": "slides/index.html#missing-data",
+    "href": "slides/index.html#missing-data",
+    "title": "Data Cleaning",
+    "section": "Missing Data",
+    "text": "Missing Data\n\nMissing data should appear as you expect it to\n\nThe amount of missingness\nThe variables/cases that data is missing for\n\n\n\n\nUse consistent values to indicate missing responses\n\nBlanks? NAs? -999?\nThe missing values should match your variable type\n\ni.e., Don’t use “no response” in a numeric variable\n\n\n\n\n\nSo there are varying opinions on how missing data should be assigned. Some people think that missing data should be explicitly assigned with a value like -999. That way you know that the cell wasn’t just skipped over by accident when data was being entered.\n\nSome people prefer to just leave the cell blank to not cause confusion by adding extreme values to a variable.\nI personally have no preference for which method you use. What is important though, is that you use consistent values to represent missing data (choose one and stick with it) AND that your missing values match your variable type."
+  },
+  {
+    "objectID": "slides/index.html#exercise-4",
+    "href": "slides/index.html#exercise-4",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\nWhat missing data issues do you notice in our sample data?\n\n\n\n\n\n\n\n\n−+\n01:00"
+  },
+  {
+    "objectID": "slides/index.html#missing-data-1",
+    "href": "slides/index.html#missing-data-1",
+    "title": "Data Cleaning",
+    "section": "Missing Data",
+    "text": "Missing Data\n\nUnexpected missing data\nInconsistent missing values used\nMissing values do not match variable type"
+  },
+  {
+    "objectID": "slides/index.html#error-reduction",
+    "href": "slides/index.html#error-reduction",
+    "title": "Data Cleaning",
+    "section": "Error Reduction",
+    "text": "Error Reduction\nThe number one way to reduce data errors is to make a plan before you collect data\n\nCorrect data at the source\n\n\n\n Plan the variables you want to collect\n\n\n Build your data collection/entry tools in a way that follows your plan\n\n\n Test your data tools before collecting/entering data\n\n\n Check your data often during data collection/entry\n\nSo if you have the luxury of being able to collect your own data, you want to make sure that you spend time planning so you can correct data at the source"
+  },
+  {
+    "objectID": "slides/index.html#plan-the-variables-you-want-to-collect",
+    "href": "slides/index.html#plan-the-variables-you-want-to-collect",
+    "title": "Data Cleaning",
+    "section": "Plan the variables you want to collect",
+    "text": "Plan the variables you want to collect\n\n\n\nNecessary to plan for\n\nVariable name\nVariable label/item wording\nVariable type\nAllowable values/ranges\nMissing values\n\n\nNice to plan for\n\nSkip patterns\nRequired items\nVariable universe\n\n\n\n\nThese items on the right can be really helpful to plan for if you are collecting something like survey data in particular. These items will help you better understand when and why you might have missing data for items.\n\nAre there skip or display patterns for any items? What is the logic for those items?\nAre items required or are people allowed to skip items?\nWhat is the variable universe for each item? Will the whole sample get each item or are some items only shown to a subsample of your group?"
+  },
+  {
+    "objectID": "slides/index.html#add-those-variables-to-a-data-dictionary",
+    "href": "slides/index.html#add-those-variables-to-a-data-dictionary",
+    "title": "Data Cleaning",
+    "section": "Add those variables to a data dictionary",
+    "text": "Add those variables to a data dictionary\n\n\n\n\n\n\n\n  \n    \n    \n      var_name\n      label\n      type\n      values\n      missing_values\n    \n  \n  \n    pat_id\nPatient Identifier\ncharacter\n001-030\nNA\n    treatment\nTreatment for UC\ncharacter\nupa; uste; oza\nNA\n    start_date\nDate of start of treatment\ndate\nYYYY-MM-DD\nNA\n    ethnic\nEthnicity - hispanic or not hispanic\ncharacter\nhispanic; not hispanic\nmissing\n    start_mes\nMayo endoscopic Score at start of treatment\nnumeric\n0-3\n-99\n  \n  \n  \n\n\n\n\n\nA data dictionary is a rectangular formatted collection of names, definitions, and attributes about variables in a dataset\nSet this up similar to a dataset, with a row and column layout, with variable names in first row"
+  },
+  {
+    "objectID": "slides/index.html#build-your-tools-based-on-your-data-dictionary",
+    "href": "slides/index.html#build-your-tools-based-on-your-data-dictionary",
+    "title": "Data Cleaning",
+    "section": "Build your tools based on your data dictionary",
+    "text": "Build your tools based on your data dictionary\n\n\n Name your variables correctly in your tool\n\nInstead of Q1, Q2, Q3 -&gt; id, start_date, treatment\n\n\n\n Build items to only accept allowable values\n\nOnly within specified range (0-50)\nOnly within specified categories (“hispanic”, “not hispanic”)\n\n\n\n Build items to only accept specified variable types\n\nOnly numeric values\nOnly dates in the YYYY-MM-DD format\n\n\nAnd by tool I mean whatever program you use to collect or enter data. So that could be Excel, RedCap, Qualtrics, or something else.\n\nThis reduces confusion during data entry, and also creates less data cleaning steps when you export your data\nIf working with numeric items, only allow values in a specified range, for example 0-50. You can set these validation rules in your tools, so that if someone tries to enter 51, it will say, this value is not allowed\n\nIf working with categorical items, only allow values in specified categories. Here it can be really helpful to use something like a drop down menu instead of open text boxes to make sure you own collect allowable values only.\n\nAgain, you can set these content validation rules in your tools so that a warning will pop up when unexpected formats or types are entered"
+  },
+  {
+    "objectID": "slides/index.html#test-your-data-collection-or-entry-tool",
+    "href": "slides/index.html#test-your-data-collection-or-entry-tool",
+    "title": "Data Cleaning",
+    "section": "Test your data collection or entry tool",
+    "text": "Test your data collection or entry tool\n\nCollect/enter sample data\n\nAre any items missing?\nAre you getting unexpected values for items?\n\nValues out of range\nIncorrect formats\nInconsistent entries\n\n“m”, “male”, “Male”, “MALE”\n\n\nIs the display logic working as expected?\nAre people able to skip items that they should not be able to skip?\n\n\n\nIf you find anything wrong, fix this in your tool before you begin to collect or enter data"
+  },
+  {
+    "objectID": "slides/index.html#review-your-data-often-during-data-collection-or-entry",
+    "href": "slides/index.html#review-your-data-often-during-data-collection-or-entry",
+    "title": "Data Cleaning",
+    "section": "Review your data often during data collection or entry",
+    "text": "Review your data often during data collection or entry\n\nValidate your data based on your expectations\n\npointblank\nvalidate\nassertr\nExcellent resource: https://www.youtube.com/watch?v=0d1c-8yw6Tk\n\n\n\nOne option for reviewing your data is to write code to validate your specified criteria. So you can write code to validate that variables are your expected types, fall within expected ranges, ids are not duplicated and so forth.\nHere are a couple of packages that have functions specifically for this purpose and they export really helpful reports for you to review.\nThis is a link to a great talk on validation that reviews all of these packages and more. I highly recommend watching it."
+  },
+  {
+    "objectID": "slides/index.html#pointblank-report",
+    "href": "slides/index.html#pointblank-report",
+    "title": "Data Cleaning",
+    "section": "pointblank report",
+    "text": "pointblank report\n\nCodeReport\n\n\n\nlibrary(pointblank)\n\ncreate_agent(df_raw) |&gt;\n  rows_distinct(columns = vars(pat_id)) |&gt;\n  col_vals_not_null(columns = vars(pat_id)) |&gt;\n  col_is_date(columns = vars(start_date)) |&gt;\n  col_is_numeric(columns = vars(start_mes)) |&gt;\n  col_vals_in_set(columns = vars(treatment), set = c(\"upa\", \"uste\", \"oza\")) |&gt;\n  col_vals_in_set(columns = vars(ethnic), set = c(\"hispanic\", \"not hispanic\")) |&gt;\n  col_vals_between(columns = vars(start_mes), left = 0, right = 3, na_pass = FALSE) |&gt;\n  interrogate()\n\n\n\n\n\n\n\n\n\n\n\n\nSo here I am showing a very brief example of how I might set up some validation criteria using the pointblank package. And I could run this on a recurring schedule during data collection or entry to make sure everything is being collected as expected.\nAnd when I run this code, I receive this report that assures me that everything is being collected as expected EXCEPT there are two variables that fail. My start_date variable is not being collected in a date format and my ethnicity variable has collected some unexpected values. And this is something that if caught early, I could go and fix in my tool. Because if I don’t fix this, I could end up with really messy data, or I might end up with data that is completely unusable if there are some values collected that I am unable to interpret."
+  },
+  {
+    "objectID": "slides/index.html#review-your-data-often-during-data-collection",
+    "href": "slides/index.html#review-your-data-often-during-data-collection",
+    "title": "Data Cleaning",
+    "section": "Review your data often during data collection",
+    "text": "Review your data often during data collection\n\nCreate a codebook to review univariate summary statistics\n\ncodebookr\ncodebook\nmemisc\nsjPlot\n\n\n\nA second option for reviewing your data during collection is to create a codebook. Codebooks provide descriptive variable-level information as well univariate summary statistics (such as means, ranges, counts). There are several R packages that automate the creation of codebooks.\nBut unlike validation, where we write code based on idividualized criteria, for the most part, these codebooks provide similar out of the box summary statistics that allow you to get a feel for what is going on in your data.\nBoth the validation and codebook methods provide you solid information to help you better understand if your data is being collected as expected."
+  },
+  {
+    "objectID": "slides/index.html#codebookr-codebook",
+    "href": "slides/index.html#codebookr-codebook",
+    "title": "Data Cleaning",
+    "section": "codebookr codebook",
+    "text": "codebookr codebook\n\nCodeCodebook\n\n\n\nlibrary(codebookr)\n\ndf_codebook &lt;- codebook(df_raw)\n\nprint(df_codebook,\"my_codebookr_codebook.docx\")\n\n\n\n\n\n\n\n\n\n\n\n\nHere is one example of a codebook created using the codebookr package. And if I ran that code, you can see it gives me a codebook that looks like this.\nAt the top it provides me some overarching dataset summary information and then it quickly jumps into variable-level information including summary statistics.\nAnd I could once again see here that I am having issues with my start_date variable, it’s being collected as a numeric type instead of a date. And my ethnicity variable has some unexpected values. And I would want to go correct this at the source so I can fix this issue sooner rather than later.\nAnd the last thing to know about codebooks is that they are even more useful when working with data that contains embedded metadata (like variable and value labels - you see in this in data that comes from programs like SPSS or Stata). When working with labelled data, those labels are displayed in the codebook. So for instance, if this was labelled data, you would see variable descriptions under each variable section, that describes what each variable represents. So for instance, under pat_id, you would see a label that says “patient unique identifier”. And that descriptive information helps me to better interpret the data. But as you can see, codebooks work fine without labels as well."
+  },
+  {
+    "objectID": "slides/index.html#scenario",
+    "href": "slides/index.html#scenario",
+    "title": "Data Cleaning",
+    "section": "Scenario",
+    "text": "Scenario\n\nWe have data that originate from an observational study comparing 3 treatments of ulcerative colitis (UC)\nWe have an analysis question:\n\nAre there differences in change in MES and QOL scores between start and finish, and are the decreases in scores greater for any of the 3 new medications?\n\nIn order to answer this question, we have asked a student to extract data from the medical record into Excel\nAlong with the spreadsheet, we are provided a data dictionary\nAs we start to review the data, we find a sundry of errors that need correction"
+  },
+  {
+    "objectID": "slides/index.html#exercise-5",
+    "href": "slides/index.html#exercise-5",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\nTake 1 minute to review the data dictionary and our data.\nGive instructions here….\n\n\n\n−+\n01:00\n\n\n\n\nBelieve it or not, the first thing we are going to do is NOT import our data into R. We are first going to open and review the data dictionary. We want to learn about what we should expect from our data before we open it.\nThen we are going to open the Excel file. Because there is a lot of merit to knowing what you are getting into before reading your file into R.\n….\nSo hopefully you noticed a few things upon reviewing our data.\n\nOur variable names are not the first row of our data. That is really important to know before we try to import our data.\nOur data is not the first sheet of our Excel file. It’s actually the 3rd sheet over. And that’s also important to know."
+  },
+  {
+    "objectID": "slides/index.html#import-our-file",
+    "href": "slides/index.html#import-our-file",
+    "title": "Data Cleaning",
+    "section": "Import our file",
+    "text": "Import our file\n\nWe are going to use the read_excel() function from the readxl package\nThere are several arguments to consider when using this function\n\npath\nsheet = NULL\ncol_names = TRUE\nna = ” ”\nskip = 0\n\ntype ?read_excel in your console to see more arguments\n\n\n\nlist the path to our xls or xlsx file\nwe can add the name or position of the sheet to read in\nshould R grab column names from the first row in your data?\nare there any values that R should read in as NA?\nwhat is the minimum number of rows R should skip before reading anything?"
+  },
+  {
+    "objectID": "slides/index.html#import-our-file-1",
+    "href": "slides/index.html#import-our-file-1",
+    "title": "Data Cleaning",
+    "section": "Import our file",
+    "text": "Import our file\n\nCodeData\n\n\n\nlibrary(readxl)\n\ndf_raw &lt;- read_excel(\"data/messy_uc.xlsx\",\n  sheet = \"Data\", skip = 5\n)\n\n\n\n\n\n\n\n\n\n  \n    \n    \n      pat_id\n      treatment\n      start_date\n      ethnic\n      race\n      dob\n      ...7\n      start_bp\n      pre/post_wt_kg\n      start_mes\n    \n  \n  \n    001\nupa\n44208\nhispanic\nCaucasian\n2005-01-07\nNA\n114/72\n84/82\n3\n    002\nuste\n44215\nnot hispanic\nCaucasian\n1937-04-13\nNA\n132/86\n77/77\n2\n    003\noza\n44230\nnot hispanic\nAfrican-American\n1946-06-06\nNA\n124/92\n74/75\n1\n    004\nupa\n44245\nnot hispanic\nCaucasian\n1963-07-14\nNA\n144/83\n66/65\n3\n    005\noza\n44255\nnot hispanic\nMixed\n1978-05-12\nNA\n122/78\n55/56\n3\n    006\nuste\n44259\nnot hispanic\nOther\n1992-04-03\nNA\n121/80\n111/110\n2\n    007\nuste\n44264\nnot hispanic\nAsian\n1955-08-22\nNA\n133/74\n133/130\n3\n    008\noza\n44999\nHispanic\nafromerican\n1974-09-11\nNA\n116/73\n74/76\n3\n    009\nupa\n44276\nNOT hispanic\nCaucasian\n1984-11-14\nNA\n118/66\n82/80\n2\n    010\noza\n44278\nhispamnic\nCaucasian\n1972-12-20\nNA\n122/78\n85/87\n3"
+  },
+  {
+    "objectID": "slides/index.html#exercise-6",
+    "href": "slides/index.html#exercise-6",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\n\nYour turn! Take 3 minutes to import the data.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/index.html#review-the-data",
+    "href": "slides/index.html#review-the-data",
+    "title": "Data Cleaning",
+    "section": "Review the data",
+    "text": "Review the data\n\nEDA is not a formal process with a strict set of rules. More than anything, EDA is a state of mind. During the initial phases of EDA you should feel free to investigate every idea that occurs to you. - R for Data Science\n\n\n\nImage from giphy.com\n\n\nTo quote the authors of R 4 Data Science\nSo what does this mean? It means there is no one prescriptive way to review your data. There are endless ways to figure out if there are errors in your data. Try any ideas you can think of. But there are some common steps you can at least start with."
+  },
+  {
+    "objectID": "slides/index.html#review-the-data-1",
+    "href": "slides/index.html#review-the-data-1",
+    "title": "Data Cleaning",
+    "section": "Review the data",
+    "text": "Review the data\n\n\n\nIt is important to get to know your data\n\nHow many rows? How many columns?\nWhat are the variable types?\nWhat are variable values?\nHow much missing data is there?\nHow are variables related?\n\n\n\n\nThere are several functions that can be used to explore data.\n\ndplyr::glimpse()\nskimr::skim()\nbase::summary()\nvisdat:vis_dat()\nsummarytools::dfSummary()\nDataExplorer::create_report()\nHmisc::describe()\n\n\n\n\nSo after you read your data into R, once again, use the old fashioned method of opening up your data and looking at it to see if everything imported as you expected.\nAfter that, you can start to run some functions to review your data for the following things.\n\nAre the values within your expected ranges? What outliers do you see? Is there a lack of variation? All values are equal to the same number?\nConsider bivariate plots, is one variable high and the other low - is that normal"
+  },
+  {
+    "objectID": "slides/index.html#summarytoolsdfsummary",
+    "href": "slides/index.html#summarytoolsdfsummary",
+    "title": "Data Cleaning",
+    "section": "summarytools::dfSummary()",
+    "text": "summarytools::dfSummary()\n\nCodeOutput\n\n\n\nlibrary(summarytools)\n\ndfSummary(df_raw)\n\n\nSo this function provides some overall summary information (number of rows and columns) as well as variable level summary information including variable type, values, frequencies, and histograms."
+  },
+  {
+    "objectID": "slides/index.html#skimrskim",
+    "href": "slides/index.html#skimrskim",
+    "title": "Data Cleaning",
+    "section": "skimr::skim()",
+    "text": "skimr::skim()\n\nCodeOutput\n\n\n\nlibrary(skimr)\n\nskim(df_raw)\n\n\n\n\n\n\n\n\nSo this function provides similar information to dfSummary, just formatted differently. It also provides some overall data summary information (number of rows and columns) as well as variable level summary information including variable type, completion rate, values, percentiles, and histograms.\nBut a quick word of caution about this funciton. You’ll notice that it provides some misleading information for character variables. It gives a min and max value. This is actually the min and max character count for each variable."
+  },
+  {
+    "objectID": "slides/index.html#exercise-7",
+    "href": "slides/index.html#exercise-7",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\nUse one or more of these exploratory packages to review your data. Based on your data and your data dictionary, what fixes do you see that need to happen?\n\n\n\ndplyr::glimpse()\nskimr::skim()\nbase::summary()\nvisdat:vis_dat()\n\n\n\nsummarytools::dfSummary()\nDataExplorer::create_report()\nHmisc::describe()\n\n\n\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/index.html#exercise-8",
+    "href": "slides/index.html#exercise-8",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP1.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/index.html#exercise-9",
+    "href": "slides/index.html#exercise-9",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP2.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/index.html#exercise-10",
+    "href": "slides/index.html#exercise-10",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP3.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
   }
 ]
