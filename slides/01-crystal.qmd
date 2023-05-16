@@ -27,7 +27,9 @@ Welcome to the first section of this workshop. We are going to spend the next 30
 
 ::: {.notes}
 
-And upon receiving those spreadsheets, you feel something like this
+So I imagine that many of you, at some point in your career, have received a spreadsheet that looks like this
+
+And upon receiving those spreadsheets, you probably felt something like this. 
 
 :::
 
@@ -38,6 +40,13 @@ And upon receiving those spreadsheets, you feel something like this
 ::: footer  
 Image from knowyourmeme.com
 :::  
+
+
+::: {.notes}
+
+Just defeated. Because you know that you now are going to have to spend hours and hours of time cleaning those spreadsheets before they can be used in your work. And that is what today is about. We are going to first provide you a foundational understanding for how data SHOULD be organized, we will briefly discuss how if at all possible, you want to correct messy data at the source, and then last, the meat of this presentation will include a review of various R functions that will help you quickly and efficiently turn a very messy dataset into a tidy and useable one.
+
+:::
 
 ## Data Organizing Principles
 
@@ -65,7 +74,7 @@ Image from knowyourmeme.com
 
 ::: {.notes}
 
-So we are going to talk about data organizing principles associated with 4 practices that will help you better think through how to wrangle those messy datasets
+So first we are going to talk about data organizing principles associated with 4 practices. And by reviewing these principles, my hope is that we will all have a shared understanding of how data SHOULD be organized and that understanding will help you to strategically plan for how you should wrangle those messy datasets.
 
 :::
 
@@ -158,6 +167,8 @@ So let's do a quick exercise. Take one minute to review this messy data and look
 
 1. We don't ever want anyone to have to guess what a cell value means
 
+- If you are color coding a variable in order to indicate treatment, instead make a treatment variable and add the values to that variable
+
 2. So for instance, we don't want both weight and height in the same variable. It would be very difficult to analyze a variable with combined information. We would want to split this information into two columns.
 
 3. Pick a format and stick to it
@@ -217,6 +228,8 @@ Variables should be stored as your expected type (or in R terms - `class`)
 In R, type actually refers to how the variable is stored. Here we are more concerned about the abstract type that tells us how we can actually use the variable for analyses and so forth. And in R, that's actually called variable class.
 
 So let's review a few of these variable classes.
+
+1. If your variable contains non-numeric values, the class will be character. And you will no longer be able to perform calculations on your numeric variable, so no means, ranges, etc.
 
 2. Because of the way dates are stored in R, they allow you to perform calculations using your dates, which is cool. You can add dates, subtract dates, etc. So as long as your dates are stored as dates, then we are good. However, if your dates are stored as character values, you will not be able to perform calculations on your dates.
 
@@ -446,9 +459,9 @@ So if you have the luxury of being able to collect your own data, you want to ma
 
 These items on the right can be really helpful to plan for if you are collecting something like survey data in particular. These items will help you better understand when and why you might have missing data for items.
 
-1. Are there skip or display patterns for any items? What is the logic behind those?
-2. Were items required or were people allowed to skip items?
-3. What is the variable universe for each item? Did the whole sample get each item or were some items only shown to a subsample of your group?
+1. Are there skip or display patterns for any items? What is the logic for those items?
+2. Are items required or are people allowed to skip items?
+3. What is the variable universe for each item? Will the whole sample get each item or are some items only shown to a subsample of your group?
 
 :::
 
@@ -462,15 +475,15 @@ These items on the right can be really helpful to plan for if you are collecting
 library(tidyverse)
 library(gt)
 
-dict <- tribble(~var_name, ~label, ~type, ~values,
+dict <- tribble(~var_name, ~label, ~type, ~values, ~missing_values,
                 "pat_id", "Patient Identifier",
-                "character", "001-030",
-                "treatment", "Treatment for UC", "character", "upa; uste; oza",
+                "character", "001-030", NA,
+                "treatment", "Treatment for UC", "character", "upa; uste; oza", NA,
                 "start_date", "Date of start of treatment",
-                "date", "YYYY-MM-DD",
+                "date", "YYYY-MM-DD", NA,
                 "ethnic", "Ethnicity - hispanic or not hispanic",
-                "character", "hispanic; not hispanic",
-                "start_mes", "Mayo endoscopic Score at start of treatment", "numeric", "0-3")
+                "character", "hispanic; not hispanic", "missing",
+                "start_mes", "Mayo endoscopic Score at start of treatment", "numeric", "0-3", "-99")
 
 gt::gt(dict)
 
@@ -654,13 +667,13 @@ print(df_codebook,"my_codebookr_codebook.docx")
 
 ::: {.notes}
 
-Here is one example of a codebook using the codebookr package. And if I ran that code, you can see it gives me a codebook that looks like this.
+Here is one example of a codebook created using the codebookr package. And if I ran that code, you can see it gives me a codebook that looks like this.
 
 At the top it provides me some overarching dataset summary information and then it quickly jumps into variable-level information including summary statistics.
 
-And I could once again see here that I am having issues with my start_date variable, it's being collected as a numeric type instead of a date. And my ethnicity variable has some unexpected values. And I would want to go correct this at the source.
+And I could once again see here that I am having issues with my start_date variable, it's being collected as a numeric type instead of a date. And my ethnicity variable has some unexpected values. And I would want to go correct this at the source so I can fix this issue sooner rather than later.
 
-And last, the thing about codebooks is that they are even more useful when working with data that contains embedded metadata (like variable and value labels - you see in this in data that comes from programs like SPSS or Stata). When working with labelled data, those labels are displayed in the codebook. So for instance, if this was labelled data, you would see variable descriptions under each variable section, that describes what each variable represents. So for instance, under pat_id, you would see a label that says "patient unique identifier". And that descriptive information helps me to better interpret the data. But as you can see, codebooks work fine without labels as well.
+And the last thing to know about codebooks is that they are even more useful when working with data that contains embedded metadata (like variable and value labels - you see in this in data that comes from programs like SPSS or Stata). When working with labelled data, those labels are displayed in the codebook. So for instance, if this was labelled data, you would see variable descriptions under each variable section, that describes what each variable represents. So for instance, under pat_id, you would see a label that says "patient unique identifier". And that descriptive information helps me to better interpret the data. But as you can see, codebooks work fine without labels as well.
 
 :::
 
@@ -818,7 +831,7 @@ Image from giphy.com
 ::: {.notes}
 To quote the authors of R 4 Data Science
 
-So what does this mean? It means there is no one prescriptive way to review your data. There are endless possibilities to figure out if there are errors in your data. Try any ideas you can think of. But there are some common steps you can at least start with.
+So what does this mean? It means there is no one prescriptive way to review your data. There are endless ways to figure out if there are errors in your data. Try any ideas you can think of. But there are some common steps you can at least start with.
 
 :::
 
@@ -851,9 +864,10 @@ There are several functions that can be used to explore data.
 - `dplyr::glimpse()`
 - `skimr::skim()`
 - `base::summary()`
-- `summarytools::dfSummary()`
 - `visdat:vis_dat()`
+- `summarytools::dfSummary()`
 - `DataExplorer::create_report()`
+- `Hmisc::describe()`
 
 :::
 
@@ -884,7 +898,7 @@ After that, you can start to run some functions to review your data for the foll
 
 library(summarytools)
 
-view(dfSummary(df_raw))
+dfSummary(df_raw)
 
 ```
 
@@ -933,12 +947,25 @@ But a quick word of caution about this funciton. You'll notice that it provides 
 
 Use one or more of these exploratory packages to review your data. Based on your data and your data dictionary, what fixes do you see that need to happen?
 
+:::: {.columns}
+
+::: {.column width="40%"}
 - `dplyr::glimpse()`
 - `skimr::skim()`
 - `base::summary()`
-- `summarytools::dfSummary()`
 - `visdat:vis_dat()`
+
+:::
+
+::: {.column width="40%"}
+- `summarytools::dfSummary()`
 - `DataExplorer::create_report()`
+- `Hmisc::describe()`
+:::
+
+::::
+
+<br>
 
 [--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
 
