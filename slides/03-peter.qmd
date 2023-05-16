@@ -502,7 +502,9 @@ fcp |>
 
 ::: {.column width="40%"}
 
-![Joins](images/joins.png)
+![](images/joins.PNG)
+
+
 
 :::
 
@@ -584,7 +586,7 @@ left_join(demo, cdc, by = "census_tract")
 
 ## Patient Demographics with Lab results (Your Turn to Join)
 
-::: columns
+::: {.columns}
 ::: {.column width="40%"}
 
 - We have some basic Patient Demographics in one table
