@@ -4,11 +4,12 @@ subtitle: "R/Medicine 2023 Workshop"
 editor: 
   markdown: 
     wrap: 72
+engine: knitr
 ---
 
 ------------------------------------------------------------------------
 
-🗓 June 6, 2023 \| 9:30am - 1:00pm EDT
+🗓 June 6, 2023 \| 11:00am - 2:00pm EDT
 
 🏨 Virtual
 
@@ -94,6 +95,7 @@ If you would like to try this out on your own computer, please have the followin
 ![](images/Crystal_circle.png){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Crystal Lewis" width="150"}
 
 [**Crystal Lewis**](https://cghlewis.com) (she/her) is a Freelance Research Data Management Consultant, helping people better understand how to organize, document, and share their data. She has been wrangling data in the field of Education for over 10 years. She is also a co-organizer for R-Ladies St. Louis.
+
 [`r fontawesome::fa("link")`](https://cghlewis.com)
 [`r fontawesome::fa("github")`](https://github.com/Cghlewis/)
 [`r fontawesome::fa("mastodon")`](https://fosstodon.org/@Cghlewis)
@@ -127,6 +129,7 @@ a Professor at the University of Michigan, a translational researcher
 interested in reproducible research, and the creator of the
 {medicaldata} package. He enjoys clean and tidy data when he (rarely)
 encounters it in the wild.
+
 [`r fontawesome::fa("link")`](https://www.uofmhealth.org/profile/4/peter-doyle-higgins-md-phd)
 [`r fontawesome::fa("github")`](https://github.com/higgi13425)
 [`r fontawesome::fa("twitter")`](https://twitter.com/ibddoctor)
