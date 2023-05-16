@@ -26,9 +26,11 @@ ready for analysis.
 
 ## Learning objectives
 
+-   The acquire a foundational understanding of how data should be organized.
+
 -   To import Excel files with (common, messy) data problems.
 
--   To address and clean common messy data problems in each variable
+-   To address and clean common messy data problems in each variable.
 
 -   To address and clean data with more complex meta-problems, like
     pivoting to long format for data analysis, dealing with multi-column
