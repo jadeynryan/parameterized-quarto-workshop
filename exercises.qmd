@@ -68,59 +68,27 @@ df_raw <- read_excel(
 
 2. Use an exploratory function to review the data.
 
-`dplyr::glimpse()`
 ```{r}
+#| eval: false
 #| message: false
 #| warning: false
 
 dplyr::glimpse(df_raw)
 
-```
-
-`skimr::skim()`
-```{r}
-#| message: false
-#| warning: false
-
 skimr::skim(df_raw)
-
-```
-
-`base::summary()`
-```{r}
-#| message: false
-#| warning: false
 
 base::summary(df_raw)
 
-```
-
-`summarytools::dfSummary()`
-```{r}
-#| message: false
-#| warning: false
-
-summarytools::dfSummary(df_raw)
-
-```
-
-`visdat:vis_dat()`
-```{r}
-#| message: false
-#| warning: false
-
 visdat::vis_dat(df_raw)
 
-```
-
-`DataExplorer::create_report()`
-```{r}
-#| message: false
-#| warning: false
+summarytools::view(summarytools::dfSummary(df_raw))
 
 DataExplorer::create_report(df_raw)
 
+Hmisc::describe(df_raw)
+
 ```
+
 
 
 # ![Shannon Pileggi](images/Shannon_circle.png){width="15%"} Data cleaning fundamentals
