@@ -47,24 +47,90 @@ Essentially, your job is to turn the messy Excel data beast (on the left) into t
 
 ## CL1
 
-## CL2
-
-# ![Shannon Pileggi](images/Shannon_circle.png){width="15%"} Data cleaning fundamentals
-
-## Set up
-
-
+1. Import `messy_uc.xlsx` using `readxl::read_excel()`
 
 ```{r}
 #| code-fold: false
 #| message: false
 #| warning: false
+
 # import raw data
 df_raw <- read_excel(
-  path = here("data", "messy_uc.xlsx"),
+  path = "data/messy_uc.xlsx",
   sheet = "Data",
   skip = 5
 )
+
+```
+
+
+## CL2
+
+2. Use an exploratory function to review the data.
+
+`dplyr::glimpse()`
+```{r}
+#| message: false
+#| warning: false
+
+dplyr::glimpse(df_raw)
+
+```
+
+`skimr::skim()`
+```{r}
+#| message: false
+#| warning: false
+
+skimr::skim(df_raw)
+
+```
+
+`base::summary()`
+```{r}
+#| message: false
+#| warning: false
+
+base::summary(df_raw)
+
+```
+
+`summarytools::dfSummary()`
+```{r}
+#| message: false
+#| warning: false
+
+summarytools::dfSummary(df_raw)
+
+```
+
+`visdat:vis_dat()`
+```{r}
+#| message: false
+#| warning: false
+
+visdat::vis_dat(df_raw)
+
+```
+
+`DataExplorer::create_report()`
+```{r}
+#| message: false
+#| warning: false
+
+DataExplorer::create_report(df_raw)
+
+```
+
+
+# ![Shannon Pileggi](images/Shannon_circle.png){width="15%"} Data cleaning fundamentals
+
+## Set up
+
+```{r}
+#| code-fold: false
+#| message: false
+#| warning: false
 
 # do initial cleaning of variable names and removing empty rows/columns
 df_clean <- df_raw |> 
