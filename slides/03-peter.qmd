@@ -254,8 +254,8 @@ wide |>
 ## Pivoting Longer
 
 -   Your Turn (Exercise) with endo_data
--   Measurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) were taken from biopsies of 3 segments of intestine.
--   This might be affected by portal hypertension in patients with liver cirrhosis
+-   Measurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) in biopsies of 3 segments of intestine.
+-   This could be affected by portal hypertension in pts with liver cirrhosis
 
 ```{r, echo=FALSE}
 endo_data <- tibble::tribble(
@@ -359,15 +359,28 @@ countdown(minutes = 3, font_size = "4em")
 ## Pivoting Wider
 
 ::: panel-tabset
+
 ### Tall messy_uc Data
+::: columns
+
+::: {.column width="50%"}
 
 -   Wide data is less common, but sometimes needed
 -   Here we will convert the tall version of our selected messy_uc data back to wide.
 -   This is what the tall data look like
 
+:::
+
+
+::: {.column width="50%"}
+
 ```{r, echo=FALSE}
 tall
 ```
+
+:::
+
+:::
 
 ### Code to Pivot
 
@@ -390,6 +403,7 @@ tall |>
     values_from = score
   )
 ```
+
 :::
 
 ## Fill in Unobserved Date-Times with padr
@@ -444,14 +458,32 @@ emergency |>
 ```{r}
 #| echo: false
 #| eval: true
-emergency |> 
+by_month <- emergency |> 
   thicken('month') |> 
   filter(str_detect(title, "OVERDOSE")) |>
   group_by(time_stamp_month) |> 
   mutate(ods = sum(str_detect(title, "OVERDOSE"))) |> 
   select(time_stamp_month, ods) |> 
   distinct()
+
+by_month
 ```
+
+### Plot Monthly 
+```{r}
+#| output-location: column-fragment
+by_month |> 
+  ggplot(aes(x = time_stamp_month,
+             y = ods)) +
+  geom_point(size = 3, color = "red") +
+  geom_line() +
+  labs(y = "Overdoses Per Month",
+       x = "Month",
+  title = "Monthly Overdose Calls") +
+  theme_linedraw(base_size = 20) +
+  ylim(0,175)
+```
+
 :::
 
 ## Padding unobserved dates (weekends?)
@@ -648,7 +680,7 @@ demo
 ```
 :::
 
-::: {.column width="60%"}
+::: {.column width="60%" .fragment}
 and potassium levels and creatinine levels in 2 other tables
 
 ```{r}
@@ -713,7 +745,7 @@ head(cr)
 
 ### The Code
 
--   replace the arguments with the correct ones to join *demo* to *pot* and produce *new_data*.
+-   replace the generic arguments below with the correct ones to join *demo* to *pot* and produce *new_data*.
 
 ```{r, error=TRUE, eval=FALSE}
 new_data <- left_join(data_x, data_y, by = "uniqid")
@@ -726,6 +758,7 @@ new_data
 new_data <- left_join(demo, pot, by = "pat_id")
 new_data
 ```
+
 :::
 
 ## Exercise PH2
@@ -776,6 +809,8 @@ new_data2
 new_data2 <- left_join(new_data, cr, by = "pat_id")
 new_data2
 ```
+- Al has HTN and DM2
+- Antione has early stage FSGS
 :::
 
 ## Exercise PH3
