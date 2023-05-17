@@ -13,6 +13,11 @@ library(countdown)
 library(emo)
 ```
 
+## Where are We Now?
+- We have done DEV (Data Evaluation and Validation) - more validation to be done
+- Discussed the importance of preventing data errors at the source - data collection and entry
+- Did Stage 1 cleaning - variable names, remove empty columns/rows, variable types/classes (characters in numeric, recoding factors, date madness), missingness, violations of tidy data principles (separate), added meaningful variable labels.
+
 ## Deciding on the Unit of Observation
 
 -   In Prospective Data Collection, a patient arrives for a visit. All data collected are part of the same observation/visit.

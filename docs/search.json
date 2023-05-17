@@ -1188,5 +1188,12 @@
     "title": "Data Cleaning",
     "section": "What the Left Join Looks Like",
     "text": "What the Left Join Looks Like"
+  },
+  {
+    "objectID": "slides/index.html#where-are-we-now",
+    "href": "slides/index.html#where-are-we-now",
+    "title": "Data Cleaning",
+    "section": "Where are We Now?",
+    "text": "Where are We Now?\n\nWe have done DEV (Data Evaluation and Validation) - more validation to be done\nDiscussed the importance of preventing data errors at the source - data collection and entry\nDid Stage 1 cleaning - variable names, remove empty columns/rows, variable types/classes (characters in numeric, recoding factors, date madness), missingness, violations of tidy data principles (separate), added meaningful variable labels."
   }
 ]
