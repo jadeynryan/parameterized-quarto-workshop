@@ -865,3 +865,50 @@ countdown(minutes = 3, font_size = "4em")
 :::
 
 :::
+
+## Data Horror
+
+::: columns
+
+::: {.column width="50%"}
+Data So Messy, it Constitutes a Data Crime
+
+<br>
+![Messy](images/messy.png)
+
+<br>
+What Should You Do?
+:::
+
+::: {.column width="50%"}
+<div class="tenor-gif-embed" data-postid="21508179" data-share-method="host" data-aspect-ratio="1.33333" data-width="100%"><a href="https://tenor.com/view/apocalypse-now-marlon-brando-colonel-kurtz-kurtz-the-horror-gif-21508179">Apocalypse Now Marlon Brando GIF</a>from <a href="https://tenor.com/search/apocalypse+now-gifs">Apocalypse Now GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+:::
+
+:::
+
+
+## Two Options
+
+::: columns
+
+::: {.column width="50%"}
+1. You can find the person who collected/entered the data
+
+- If you don't correct this behavior now, this will torture _**many**_ future data analysts
+- Educate in this *teachable moment* about tidy data
+- **Improve** the world
+- Send them to Tidy Spreadsheets on YouTube [here](https://www.youtube.com/watch?v=9f-hpJbjKZo)
+:::
+
+::: {.column width="50%"}
+2. There is no way to find the person who collected/entered the data
+
+- Pull out some advanced data cleaning packages made for this mess
+  - unpivotr
+  - tidyxl
+  - unheadr
+- Lean on a free e-book, [Spreadsheet Munging Strategies](https://nacnudus.github.io/spreadsheet-munging-strategies/)
+- Watch the 14 min video [here](https://www.youtube.com/watch?v=ShWxAqnY2YE)
+:::
+
+:::

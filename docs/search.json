@@ -11,14 +11,14 @@
     "href": "index.html",
     "title": "Principles of Data Cleaning",
     "section": "",
-    "text": "🗓 June 6, 2023 | 9:30am - 1:00pm EDT\n🏨 Virtual\n💥 FREE workshop registration"
+    "text": "🗓 June 6, 2023 | 11:00am - 2:00pm EDT\n🏨 Virtual\n💥 FREE workshop registration"
   },
   {
     "objectID": "index.html#learning-objectives",
     "href": "index.html#learning-objectives",
     "title": "Principles of Data Cleaning",
     "section": "Learning objectives",
-    "text": "Learning objectives\n\nTo import Excel files with (common, messy) data problems.\nTo address and clean common messy data problems in each variable\nTo address and clean data with more complex meta-problems, like pivoting to long format for data analysis, dealing with multi-column headers, color-coded data (gah!), and un-pivoting pivot tables into tidy data."
+    "text": "Learning objectives\n\nThe acquire a foundational understanding of how data should be organized.\nTo import Excel files with (common, messy) data problems.\nTo address and clean common messy data problems in each variable.\nTo address and clean data with more complex meta-problems, like pivoting to long format for data analysis, dealing with multi-column headers, color-coded data (gah!), and un-pivoting pivot tables into tidy data."
   },
   {
     "objectID": "index.html#is-this-course-for-me",
@@ -137,7 +137,7 @@
     "href": "slides/index.html#schedule",
     "title": "Data Cleaning",
     "section": "Schedule",
-    "text": "Schedule\n\n\n\n\n\n\n\nTime\nActivity\n\n\n\n\n11:00 - 11:50\nCrystal Lewis (Data management best practices)\n\n\n11:50 - 12:00\nBreak\n\n\n12:00 - 12:50\nShannon Pileggi (Data cleaning fundamentals)\n\n\n12:50 - 12:00\nBreak\n\n\n01:00 - 02:00\nPeter Higgins (Data wrangling & reshaping)\n\n\n\n\nPlease add any questions to the public Zoom chat. These may be answered in the moment or addressed at the end depending on context."
+    "text": "Schedule\n\n\n\n\n\n\n\nTime\nActivity\n\n\n\n\n11:00-11:10\nIntro/Logistics\n\n\n11:10 - 11:55\nCrystal Lewis (Data management best practices)\n\n\n11:55 - 12:00\nBreak\n\n\n12:00 - 12:50\nShannon Pileggi (Data cleaning fundamentals)\n\n\n12:50 - 12:00\nBreak\n\n\n01:00 - 02:00\nPeter Higgins (Data wrangling & reshaping)\n\n\n\n\nPlease add any questions to the public Zoom chat. These may be answered in the moment or addressed at the end depending on context."
   },
   {
     "objectID": "slides/index.html#slide-1",
@@ -732,14 +732,14 @@
     "href": "slides/index.html#namespacing",
     "title": "Data Cleaning",
     "section": "Namespacing",
-    "text": "Namespacing\ndplyr::select()\n\ntells R explicitly to use the function select from the package dplyr\ncan help to avoid name conflicts (e.g., MASS::select())\ndoes not require library(dplyr)\n\n\n\n\n\nlibrary(dplyr)\n\nselect(mtcars, mpg, cyl) \n\nmtcars |&gt;  \n  select(mpg, cyl) \n\n\n\n\n\n# library(dplyr) not needed\n\ndplyr::select(mtcars, mpg, cyl) \n\nmtcars |&gt;  \n  dplyr::select(mpg, cyl)"
+    "text": "Namespacing\npackage::function()\ndplyr::select()\n\ntells R explicitly to use the function select from the package dplyr\ncan help to avoid name conflicts (e.g., MASS::select())\ndoes not require library(dplyr)\n\n\n\n\n\nlibrary(dplyr)\n\nselect(mtcars, mpg, cyl) \n\nmtcars |&gt;  \n  select(mpg, cyl) \n\n\n\n\n\n# library(dplyr) not needed\n\ndplyr::select(mtcars, mpg, cyl) \n\nmtcars |&gt;  \n  dplyr::select(mpg, cyl)"
   },
   {
     "objectID": "exercises.html#set-up",
     "href": "exercises.html#set-up",
     "title": "Data Cleaning: Exercises",
     "section": "Set up",
-    "text": "Set up\n\n# import raw data\ndf_raw &lt;- read_excel(\n  path = here(\"data\", \"messy_uc.xlsx\"),\n  sheet = \"Data\",\n  skip = 5\n)\n\n# do initial cleaning of variable names and removing empty rows/columns\ndf_clean &lt;- df_raw |&gt; \n  janitor::clean_names() |&gt; \n  janitor::remove_empty(which = c(\"rows\", \"cols\"))"
+    "text": "Set up\n\n# do initial cleaning of variable names and removing empty rows/columns\ndf_clean &lt;- df_raw |&gt; \n  janitor::clean_names() |&gt; \n  janitor::remove_empty(which = c(\"rows\", \"cols\"))"
   },
   {
     "objectID": "exercises.html#sp1",
@@ -767,14 +767,14 @@
     "href": "exercises.html#cl1",
     "title": "Data Cleaning: Exercises",
     "section": "CL1",
-    "text": "CL1"
+    "text": "CL1\n\nImport messy_uc.xlsx using readxl::read_excel()\n\n\n# import raw data\ndf_raw &lt;- read_excel(\n  path = \"data/messy_uc.xlsx\",\n  sheet = \"Data\",\n  skip = 5\n)"
   },
   {
     "objectID": "exercises.html#cl2",
     "href": "exercises.html#cl2",
     "title": "Data Cleaning: Exercises",
     "section": "CL2",
-    "text": "CL2"
+    "text": "CL2\n\nUse an exploratory function to review the data.\n\n\n\nShow the code solution\ndplyr::glimpse(df_raw)\n\nskimr::skim(df_raw)\n\nbase::summary(df_raw)\n\nvisdat::vis_dat(df_raw)\n\nsummarytools::view(summarytools::dfSummary(df_raw))\n\nDataExplorer::create_report(df_raw)\n\nHmisc::describe(df_raw)"
   },
   {
     "objectID": "exercises.html#sp3",
@@ -1195,5 +1195,19 @@
     "title": "Data Cleaning",
     "section": "Where are We Now?",
     "text": "Where are We Now?\n\nWe have done DEV (Data Evaluation and Validation) - more validation to be done\nDiscussed the importance of preventing data errors at the source - data collection and entry\nDid Stage 1 cleaning - variable names, remove empty columns/rows, variable types/classes (characters in numeric, recoding factors, date madness), missingness, violations of tidy data principles (separate), added meaningful variable labels."
+  },
+  {
+    "objectID": "slides/index.html#data-horror",
+    "href": "slides/index.html#data-horror",
+    "title": "Data Cleaning",
+    "section": "Data Horror",
+    "text": "Data Horror\n\n\nData So Messy, it Constitutes a Data Crime\n \n What Should You Do?\n\n\nApocalypse Now Marlon Brando GIFfrom Apocalypse Now GIFs"
+  },
+  {
+    "objectID": "slides/index.html#two-options",
+    "href": "slides/index.html#two-options",
+    "title": "Data Cleaning",
+    "section": "Two Options",
+    "text": "Two Options\n\n\n\nYou can find the person who collected/entered the data\n\n\nIf you don’t correct this behavior now, this will torture many future data analysts\nEducate in this teachable moment about tidy data\nImprove the world\nSend them to Tidy Spreadsheets on YouTube here\n\n\n\nThere is no way to find the person who collected/entered the data\n\n\nPull out some advanced data cleaning packages made for this mess\n\nunpivotr\ntidyxl\nunheadr\n\nLean on a free e-book, Spreadsheet Munging Strategies\nWatch the 14 min video here"
   }
 ]
