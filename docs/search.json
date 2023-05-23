@@ -641,7 +641,7 @@
     "href": "slides/index.html#pivoting-longer-1",
     "title": "Data Cleaning",
     "section": "Pivoting Longer",
-    "text": "Pivoting Longer\n\nYour Turn (Exercise) with endo_data\nMeasurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) in biopsies of 3 segments of intestine.\nThis could be affected by portal hypertension in pts with liver cirrhosis\n\n\n\n# A tibble: 10 × 5\n   pat_id portal_htn duod_teer ileal_teer colon_teer\n    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;\n 1      1          1      4.33       14.6       16.2\n 2      2          0     11.7        16.0       19.0\n 3      3          1      4.12       13.8       15.2\n 4      4          1      4.62       16.4       18.1\n 5      5          0     12.4        15.8       19.0\n 6      6          0     13.0        16.2       18.8\n 7      7          0     11.9        15.7       18.3\n 8      8          1      4.87       16.6       18.8\n 9      9          1      4.23       15.0       16.9\n10     10          0     12.8        16.7       19.1"
+    "text": "Pivoting Longer\n\nYour Turn (Exercise) with endo_data\nMeasurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) in biopsies of 3 segments of intestine.\nThis could be affected by portal hypertension in patients with liver cirrhosis\n\n\n\n# A tibble: 10 × 5\n   pat_id portal_htn duod_teer ileal_teer colon_teer\n    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;\n 1      1          1      4.33       14.6       16.2\n 2      2          0     11.7        16.0       19.0\n 3      3          1      4.12       13.8       15.2\n 4      4          1      4.62       16.4       18.1\n 5      5          0     12.4        15.8       19.0\n 6      6          0     13.0        16.2       18.8\n 7      7          0     11.9        15.7       18.3\n 8      8          1      4.87       16.6       18.8\n 9      9          1      4.23       15.0       16.9\n10     10          0     12.8        16.7       19.1"
   },
   {
     "objectID": "slides/index.html#pivoting-wider-1",
@@ -823,7 +823,7 @@
     "href": "slides/index.html#exercise-ph1",
     "title": "Data Cleaning",
     "section": "Exercise PH1",
-    "text": "Exercise PH1\n\nComplete Data Cleaning Fundamentals Exercise PH1.\n\nIf you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji 👍 on your screen.\nIf you are having trouble, click on the Reactions tab in Zoom, and click to put the “raised hand” emoji ✋ on your screen.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n03:00"
+    "text": "Exercise PH1\n\nComplete Data Cleaning Fundamentals Exercise PH1.\n\nDo This in Posit Cloud\nIf you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji 👍 on your screen.\nIf you are having trouble, click on the Reactions tab in Zoom, and click to put the “raised hand” emoji ✋ on your screen.\n\n–&gt; Take me to the exercise solution &lt;–\n\n\n\n\n−+\n03:00"
   },
   {
     "objectID": "slides/index.html#patient-demographics-with-lab-results-yout-turn-to-join",
@@ -851,7 +851,7 @@
     "href": "slides/index.html#exercise-ph2",
     "title": "Data Cleaning",
     "section": "Exercise PH2",
-    "text": "Exercise PH2\n\nComplete Data Cleaning Fundamentals Exercise PH2.\n–&gt; Take me to the exercises &lt;–\n\nIf you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji 👍 on your screen.\nIf you are having trouble, click on the Reactions tab in Zoom, and click to put the “raised hand” emoji ✋ on your screen.\n\n\n\n\n−+\n03:00"
+    "text": "Exercise PH2\n\nComplete Data Cleaning Fundamentals Exercise PH2.\n\nDo This in Posit Cloud\nIf you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji 👍 on your screen.\nIf you are having trouble, click on the Reactions tab in Zoom, and click to put the “raised hand” emoji ✋ on your screen.\n\n–&gt; Take me to the exercise &lt;–\n\n\n\n−+\n03:00"
   },
   {
     "objectID": "slides/index.html#solution-ph2",
@@ -1201,14 +1201,14 @@
     "href": "slides/index.html#data-horror",
     "title": "Data Cleaning",
     "section": "Data Horror",
-    "text": "Data Horror\n\n\nData So Messy, it Constitutes a Data Crime\n \n What Should You Do?\n\n\nApocalypse Now Marlon Brando GIFfrom Apocalypse Now GIFs"
+    "text": "Data Horror\n\n\nData So Messy, it Constitutes a Data Crime\n \n What Should You Do?\n\n\n\n\n The Horror! The Horror!"
   },
   {
     "objectID": "slides/index.html#two-options",
     "href": "slides/index.html#two-options",
     "title": "Data Cleaning",
     "section": "Two Options",
-    "text": "Two Options\n\n\n\nYou can find the person who collected/entered the data\n\n\nIf you don’t correct this behavior now, this will torture many future data analysts\nEducate in this teachable moment about tidy data\nImprove the world\nSend them to Tidy Spreadsheets on YouTube here to prevent this in the future.\n\n\n\nThere is no way to find the person who collected/entered the data\n\n\nPull out some advanced data cleaning packages made for this particular kind of mess\n\nunpivotr\ntidyxl\nunheadr\n\nLean on a free e-book, Spreadsheet Munging Strategies\nWatch the 14 min video here"
+    "text": "Two Options\n\n\n\nYou can find the person who collected/entered the data\n\n\nIf you don’t correct this behavior now, this will torture many future data analysts\nEducate in this teachable moment about tidy data\nSend them to watch Tidy Spreadsheets on YouTube here to prevent this kind of Data Crime in the future.\nImprove the world, one (now tidy) data collector at a time.\n\n\n\nThere is no way to find the person who collected/entered the data\n\n\nPull out some advanced data cleaning packages made for this particular kind of mess\n\n{unpivotr}\n{tidyxl}\n{unheadr}\n\nWatch the unpivotr/tidyxl 14 min video here\nLearn from a free e-book, Spreadsheet Munging Strategies"
   },
   {
     "objectID": "exercises.html#pivoting-longer",
