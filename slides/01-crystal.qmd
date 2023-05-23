@@ -27,9 +27,9 @@ Welcome to the first section of this workshop. We are going to spend the next 30
 
 ::: {.notes}
 
-So I imagine that many of you, at some point in your career, have received a spreadsheet that looks like this
+So I imagine that many of you, at some point in your career, have either created or received a spreadsheet that looks like this
 
-And upon receiving those spreadsheets, you probably felt something like this. 
+And spreadsheets formatted like this, with color coding and various headers and notes throughout CAN be really helpful when you just needing to eyeball and review some information. But at some point you are probably going to need to actually analyze this data in some sort of statistical program and if you've ever tried to read a spreadsheet like this into a program like R, then you probably felt a little like this.
 
 :::
 
@@ -44,7 +44,11 @@ Image from knowyourmeme.com
 
 ::: {.notes}
 
-Just defeated. Because you know that you now are going to have to spend hours and hours of time cleaning those spreadsheets before they can be used in your work. And that is what today is about. We are going to first provide you a foundational understanding for how data SHOULD be organized, we will briefly discuss how if at all possible, you want to correct messy data at the source, and then last, the meat of this presentation will include a review of various R functions that will help you quickly and efficiently turn a very messy dataset into a tidy and useable one.
+Maybe a little defeated. Because you realize that while those colorful spreadsheets are formatted to be human readable, they are not formatted to be machine readable. And now you are going to have to spend hours and hours of time cleaning those spreadsheets before they can be analyzed in R. And that is what today is about. We are going to first provide you a foundational understanding for how data SHOULD be organized for analysis purposes. 
+
+We will also briefly discuss how if at all possible, you want to correct messy data at the source. 
+
+And then last, the meat of this presentation will include a review of various R functions that will help you quickly and efficiently turn a very messy dataset into a tidy and useable one.
 
 :::
 
@@ -105,8 +109,9 @@ And these are things that need to be remedied in our data cleaning process
 
 2. Variable names should be the first, and **only** the first, row of your data  
     - They should also adhere to variable name best practices
+      - Variable names should be unique
       - Make variable names meaningful (`gender` instead of `X1`)
-      - Don't start with a number
+      - Don't start with a number or special character
       - No spaces in variable names
       - No special characters except `_`
         - So no `/`, `-`, `!`, `"`
@@ -116,7 +121,7 @@ And these are things that need to be remedied in our data cleaning process
 These aren't just arbitrary practices. They serve a purpose.
 
     - First, they make your variable names more interpretable and easier to work with  
-    - They also make your variables more compatiable with languages such as R. For instance, R does not allow variable names to start with numbers. It will give you an error if you do this. 
+    - They also make your variables more compatiable with languages such as R. For instance, R does not allow variable names to start with numbers. It will give you an error if you do this. Another example is that R also does not allow you to include dashes or hyphens in your variable names. They are consider subtraction and negation operators. So again you will get an error if you include those characters in your variable names.
     
 :::
 
@@ -159,7 +164,7 @@ So let's do a quick exercise. Take one minute to review this messy data and look
 . . .
 
 3. Variables should be captured consistently within a column
-    - Dates captured consistently (i.e. YYYY-MM-DD)
+    - Dates captured consistently (i.e. [YYYY-MM-DD](https://www.iso.org/iso-8601-date-and-time-format.html))
     - Categories captured consistently (both spelling and capitalization)
     - If the variable is numeric, values should fall within your expected range
 
@@ -173,7 +178,7 @@ So let's do a quick exercise. Take one minute to review this messy data and look
 
 3. Pick a format and stick to it
 
- - For instance if you could make a decision to always capture dates in this ISO 8601 standardized format
+ - For instance if you could make a decision to always capture dates in this ISO 8601 standardized format. Using a standardized format like this has many benefits and can make your dates easier to work with. You can click on this date in the slides to learn more.
 
  - So if you're capture gender, you always want to spell male the same way, always want to spell female the same way. This allows your data to be easily categorized.
 
@@ -248,11 +253,11 @@ It's important to check your date types when you read in your data. While someti
     - A special class of variables, helpful when working with categorical or ordinal variables
     - Factors assign an order to your variable groups
     - You must assign this class to your variables
-    - You can learn more about working with factors in this article: [https://peerj.com/preprints/3163/](https://peerj.com/preprints/3163/)
+    - You can learn more about working with factors in this article: [Wrangling Categorical Data in R](https://peerj.com/preprints/3163/)
       
 ::: {.notes}
 
-3. You can even store numbers as characters
+3. You can even store numbers as characters. But remember, if you want to analyze those values as numeric, you will need to change them to a numeric format.
 
 4. Very useful for ordering your groups in tables, graphs, or models
 
@@ -271,8 +276,9 @@ What is the R class for the following variables?
 
 ::: panel-tabset
 
-## var1
+### var1
 
+::: {.fragment}
 ```{r}
 #| echo: false
 
@@ -282,16 +288,22 @@ var1
 
 ```
 
-## var1 type
+:::
+<br>
 
+::: {.fragment}
 ```{r}
 
 class(var1)
 
 ```
 
-## var2
+:::
 
+
+### var2
+
+::: {.fragment}
 ```{r}
 #| echo: false
 
@@ -303,15 +315,20 @@ var2
 
 ```
 
-## var2 type
+:::
+<br>
 
+::: {.fragment}
 ```{r}
 class(var2)
 
 ```
 
-## var3
+:::
 
+### var3
+
+::: {.fragment}
 ```{r}
 #| echo: false
 
@@ -321,14 +338,17 @@ var3
 
 ```
 
-## var3 type
+:::
+<br>
 
+::: {.fragment}
 ```{r}
 
 class(var3)
 
 ```
 
+:::
 :::
 
 ## Exercise
@@ -370,7 +390,9 @@ countdown(minutes = 1, font_size = "1em")
 
 Some people prefer to just leave the cell blank to not cause confusion by adding extreme values to a variable.
 
-I personally have no preference for which method you use. What is important though, is that you use consistent values to represent missing data (choose one and stick with it) AND that your missing values match your variable type.
+I personally have no preference for which method you use. I think it is important to be aware of the problems that can be caused by adding extreme values to your data. If you add -999 as a missing value, be aware that someone could accidentally interpret that as an actual value, leading to bad results.
+
+Ultimately I think what is important though, is that you use consistent values to represent missing data (choose one and stick with it), that your missing values are documented so that future users know how to interpret the values in your data, AND last, that your missing values match your variable type. If you use text to define missing values in a numeric variable, that variable will no longer be considered a numeric variable.
 
 :::
 
@@ -459,7 +481,7 @@ So if you have the luxury of being able to collect your own data, you want to ma
 
 These items on the right can be really helpful to plan for if you are collecting something like survey data in particular. These items will help you better understand when and why you might have missing data for items.
 
-1. Are there skip or display patterns for any items? What is the logic for those items?
+1. Are there skip patterns for any items? What is the logic for those items?
 2. Are items required or are people allowed to skip items?
 3. What is the variable universe for each item? Will the whole sample get each item or are some items only shown to a subsample of your group?
 
@@ -499,33 +521,47 @@ Set this up similar to a dataset, with a row and column layout, with variable na
 
 ## Build your tools based on your data dictionary
 
+- Excel
+- Qualtrics
+- RedCap
+
+- Know the strengths and limitations of your tool
+  - Consider things such a privacy (PHI), versioning, validation
+  - [Tidy Spreadsheets in Medical Research (70 mins)](https://www.youtube.com/watch?v=9f-hpJbjKZo&t=7s)
+  
+::: {.notes}
+
+And by tool I mean whatever program you use to collect or enter data. So that could be Excel, RedCap, Qualtrics, or something else. Not all data entry and collection tools are created equal so make sure to consider the limitations and strengths of your tools. We don't have time to explore different data collection and entry tools today but if you want to learn more, you can watch this video from a previous R in Medicine workshop.
+
+:::
+  
+## Build your tools based on your data dictionary
+
 . . . 
 
 <br>
 
-`r fontawesome::fa("check", fill = fa_fill)` Name your variables correctly in your tool
+`r fontawesome::fa("check", fill = fa_fill)` Name your variables correctly in your tool  
 
-  - Instead of Q1, Q2, Q3 -> id, start_date, treatment
-
+- Instead of Q1, Q2, Q3 -> id, start_date, treatment
 
 . . .
 
 `r fontawesome::fa("check", fill = fa_fill)` Build items to only accept allowable values
 
-  - Only within specified range (0-50)
-  - Only within specified categories ("hispanic", "not hispanic")
-
+-   Only within specified range (0-50)
+-   Only within specified categories ("hispanic", "not hispanic")
 
 . . .
 
 `r fontawesome::fa("check", fill = fa_fill)` Build items to only accept specified variable types
 
-  - Only numeric values
-  - Only dates in the YYYY-MM-DD format
+-   Only numeric values
+-   Only dates in the YYYY-MM-DD format
 
 ::: {.notes}
 
-And by tool I mean whatever program you use to collect or enter data. So that could be Excel, RedCap, Qualtrics, or something else.
+So once you've chosen your tool, you want to build your data collection/entry screens based on your data dictionary
 
 1. This reduces confusion during data entry, and also creates less data cleaning steps when you export your data
 
@@ -546,7 +582,7 @@ If working with categorical items, only allow values in specified categories. He
     - Incorrect formats
     - Inconsistent entries
       - "m", "male", "Male", "MALE"
-  - Is the display logic working as expected?
+  - Is the skip logic working as expected?
   - Are people able to skip items that they should not be able to skip?
   
 ::: {.notes}
@@ -562,13 +598,14 @@ If you find anything wrong, fix this in your tool before you begin to collect or
     - `pointblank`
     - `validate`
     - `assertr`
-    - Excellent resource: [https://www.youtube.com/watch?v=0d1c-8yw6Tk](https://www.youtube.com/watch?v=0d1c-8yw6Tk)
+    - `dataquieR`
+    - Excellent resource: [Data Validation in R: From Principles to Tools and Packages (80 minutes)](https://www.youtube.com/watch?v=0d1c-8yw6Tk)
     
 ::: {.notes}
 
-One option for reviewing your data is to write code to validate your specified criteria. So you can write code to validate that variables are your expected types, fall within expected ranges, ids are not duplicated and so forth.
+One option for reviewing your data is to write code in a program such as R, to validate your specified criteria. You can write code to validate that variables are your expected types, fall within expected ranges, ids are not duplicated and so forth.
 
-Here are a couple of packages that have functions specifically for this purpose and they export really helpful reports for you to review.
+Here are a couple of R packages that have functions specifically for validation purposes and they export really helpful reports for you to review. There will actually be a presentation during this conference on the last package on this list. I believe on Thursday at 3 Eastern Time. 
 
 This is a link to a great talk on validation that reviews all of these packages and more. I highly recommend watching it.
 
@@ -596,6 +633,8 @@ df_raw <- readxl::read_excel("../data/messy_uc.xlsx", sheet = "Data", skip = 5) 
 #| eval: false
 
 library(pointblank)
+
+df_raw <- readxl::read_excel("data/mydata.csv")
 
 create_agent(df_raw) |>
   rows_distinct(columns = vars(pat_id)) |>
@@ -652,6 +691,8 @@ Both the validation and codebook methods provide you solid information to help y
 
 library(codebookr)
 
+df_raw <- readxl::read_excel("data/mydata.csv")
+
 df_codebook <- codebook(df_raw)
 
 print(df_codebook,"my_codebookr_codebook.docx")
@@ -673,7 +714,7 @@ At the top it provides me some overarching dataset summary information and then 
 
 And I could once again see here that I am having issues with my start_date variable, it's being collected as a numeric type instead of a date. And my ethnicity variable has some unexpected values. And I would want to go correct this at the source so I can fix this issue sooner rather than later.
 
-And the last thing to know about codebooks is that they are even more useful when working with data that contains embedded metadata (like variable and value labels - you see in this in data that comes from programs like SPSS or Stata). When working with labelled data, those labels are displayed in the codebook. So for instance, if this was labelled data, you would see variable descriptions under each variable section, that describes what each variable represents. So for instance, under pat_id, you would see a label that says "patient unique identifier". And that descriptive information helps me to better interpret the data. But as you can see, codebooks work fine without labels as well.
+And the last thing to know about codebooks is that they are even more useful when working with data that contains embedded metadata (like variable and value labels - you see in this in data that comes from programs like SPSS or Stata). When working with labelled data, those labels are displayed in the codebook. So for instance, if the data were labelled, you would see variable descriptions under each variable section, that describes what each variable represents. So for instance, under pat_id, you would see a label that says "patient unique identifier". And that descriptive information helps me to better interpret the data. But as you can see, codebooks work fine without labels as well.
 
 :::
 
@@ -710,12 +751,14 @@ Take 1 minute to review the data dictionary and our data.
 
 Give instructions here....
 
+![](images/data_file.PNG){width=80%}
+
+
 ```{r}
 #| echo: false
 #| cache: false
 countdown(minutes = 1, font_size = "3em")
 ```
-
 
 ::: {.notes}
 
@@ -727,7 +770,7 @@ Then we are going to open the Excel file. Because there is a lot of merit to kno
 
 So hopefully you noticed a few things upon reviewing our data.
 
-1. Our variable names are not the first row of our data. That is really important to know before we try to import our data.
+1. Our variable names are not the first row of our data. There are 6 rows of irrelevant information before we finally get to our variable names. That is really important to know before we try to import our data.
 
 2. Our data is not the first sheet of our Excel file. It's actually the 3rd sheet over. And that's also important to know.
 
@@ -748,10 +791,12 @@ So hopefully you noticed a few things upon reviewing our data.
 
 ::: {.notes}
 
+- We are going to open a scrip
+
 - list the path to our xls or xlsx file
 - we can add the name or position of the sheet to read in
 - should R grab column names from the first row in your data?
-- are there any values that R should read in as NA?
+- are there any values that R should read in as NA? For instance, if we had added -99 as our missing values indicator, we could tell R to convert all of our -99s to NA when we read the data in
 - what is the minimum number of rows R should skip before reading anything?
 
 :::
@@ -760,6 +805,10 @@ So hopefully you noticed a few things upon reviewing our data.
 
 ::: panel-tabset
 
+## Script
+
+![](images/script.PNG){width=50%}
+
 ## Code
 
 ```{r}
@@ -767,8 +816,10 @@ So hopefully you noticed a few things upon reviewing our data.
  
 library(readxl)
 
-df_raw <- read_excel("data/messy_uc.xlsx",
-  sheet = "Data", skip = 5
+# Import our file
+
+df_raw <- readxl::read_excel("data/messy_uc.xlsx",
+  sheet = "Data", skip = 6
 )
 
 ```
@@ -782,7 +833,7 @@ df_raw <- read_excel("data/messy_uc.xlsx",
 library(readxl)
 
 df_raw <- read_excel("../data/messy_uc.xlsx",
-  sheet = "Data", skip = 5
+  sheet = "Data", skip = 6
 )
 
 ```
@@ -807,7 +858,7 @@ Your turn! Take 3 minutes to import the data.
 
 <br>
 
-[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#cl1){target="_blank"}
 
 ```{r}
 #| echo: false
@@ -830,6 +881,8 @@ Image from giphy.com
 
 ::: {.notes}
 To quote the authors of R 4 Data Science
+
+Or data exploration
 
 So what does this mean? It means there is no one prescriptive way to review your data. There are endless ways to figure out if there are errors in your data. Try any ideas you can think of. But there are some common steps you can at least start with.
 
@@ -939,7 +992,7 @@ skim(df_raw)
 
 So this function provides similar information to dfSummary, just formatted differently. It also provides some overall data summary information (number of rows and columns) as well as variable level summary information including variable type, completion rate, values, percentiles, and histograms. 
 
-But a quick word of caution about this funciton. You'll notice that it provides some misleading information for character variables. It gives a min and max value. This is actually the min and max character count for each variable.
+But a quick word of caution about this function. You'll notice that it provides some confusing information for character variables. It gives a min and max value. This is actually the min and max character count for each variable.
 
 :::
 
@@ -967,7 +1020,7 @@ Use one or more of these exploratory packages to review your data. Based on your
 
 <br>
 
-[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#cl2){target="_blank"}
 
 ```{r}
 #| echo: false
