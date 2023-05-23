@@ -11,28 +11,28 @@
     "href": "index.html",
     "title": "Principles of Data Cleaning",
     "section": "",
-    "text": "🗓 June 6, 2023 | 11:00am - 2:00pm EDT\n🏨 Virtual\n💥 FREE workshop registration"
+    "text": "🗓 June 6, 2023 | 11:00am - 2:00pm EDT\n🏨 Virtual\n💥 FREE workshop registration with registration for the R/Medicine 2023 meeting."
   },
   {
     "objectID": "index.html#learning-objectives",
     "href": "index.html#learning-objectives",
     "title": "Principles of Data Cleaning",
     "section": "Learning objectives",
-    "text": "Learning objectives\n\nThe acquire a foundational understanding of how data should be organized.\nTo import Excel files with (common, messy) data problems.\nTo address and clean common messy data problems in each variable.\nTo address and clean data with more complex meta-problems, like pivoting to long format for data analysis, dealing with multi-column headers, color-coded data (gah!), and un-pivoting pivot tables into tidy data."
+    "text": "Learning objectives\n\nThe acquire a foundational understanding of how data should be organized.\nTo import Excel files with (common, messy) data problems.\nTo address and clean common messy data problems in each variable.\nTo address and clean data with more complex meta-problems, like pivoting to long format for data analysis, thickening timestamped data to manageable time units, padding missing dates, and joining different datasets together."
   },
   {
     "objectID": "index.html#is-this-course-for-me",
     "href": "index.html#is-this-course-for-me",
     "title": "Principles of Data Cleaning",
     "section": "Is this course for me?",
-    "text": "Is this course for me?\nIf your answer to any of the following questions is “yes”, then this is the right workshop for you.\n\nDo you frequently receive untidy data for analysis in Excel spreadsheets?\nDoes this drive you slightly batty?\nDo you want to learn how to make your life easier with a suite of data cleaning tools?\n\nThe workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the %&gt;%/|&gt; operator is a plus, but not required."
+    "text": "Is this course for me?\nIf your answer to any of the following questions is “yes”, then this is the right workshop for you.\n\nDo you frequently receive untidy data for analysis in Excel spreadsheets?\nDoes this drive you slightly batty?\nDo you want to learn how to make your life easier with a suite of data cleaning tools?\n\nThe workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the %&gt;%/|&gt; operator is a major plus, but is not required."
   },
   {
     "objectID": "index.html#prework",
     "href": "index.html#prework",
     "title": "Principles of Data Cleaning",
     "section": "Prework",
-    "text": "Prework\nThis workshop will largely be conducted in the Posit Cloud environment. Please create a login to the Posit Cloud instance of this workshop here:\nPosit Cloud Medical Cleaning Workshop.\nIf you will not be using the Posit Cloud instance, you can just watch along as the instructors teach.\nIf you would like to try this out on your own computer, please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nRecent version of packages used in workshop.\ninstll_pkgs &lt;- c(\"tidyverse\", \"tidyxl\", \"unpivotr\", \"readxl\", \"openxlsx\", \"janitor\", \"gtsummary\", \"here\", \"padr\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it.\nEnsure you can import data from a Microsoft Excel spreadsheet to R\n\nSave a a Microsoft Excel spreadsheet in a known folder on your computer.\nOpen RStudio install/load (library) the packages {readxl} (link) and {openxlsx} (link)\nImport the data from the spreadsheet into R using the path to the correct folder with either package."
+    "text": "Prework\nThis workshop will largely be conducted in the Posit Cloud environment. Please create a login to the Posit Cloud instance of this workshop here:\nPosit Cloud Medical Cleaning Workshop.\nIf you will not be using the Posit Cloud instance, you can just watch along as the instructors teach.\nAs a more high-risk alternative, if you would like to try this out on your own computer, please have the following installed and configured on your machine. Note that we will NOT be able to help you with local computer problems during the workshop. If you choose to do this, you are on your own.\n\nRecent version of R\nRecent version of RStudio\nRecent version of packages used in this workshop.\ninstll_pkgs &lt;- c(\"tidyverse\", \"tidyxl\", \"unpivotr\", \"readxl\", \"openxlsx\", \"janitor\", \"gtsummary\", \"here\", \"padr\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it.\nEnsure you can import data from a Microsoft Excel spreadsheet to R\n\nSave a a Microsoft Excel spreadsheet in a known folder on your computer.\nOpen RStudio install/load (library) the packages {readxl} (link) and {openxlsx} (link)\nImport the data from the spreadsheet into R using the path to the correct folder with either package."
   },
   {
     "objectID": "license.html",

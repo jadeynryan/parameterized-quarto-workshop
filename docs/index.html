@@ -203,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 <p>🗓 June 6, 2023 | 11:00am - 2:00pm EDT</p>
 <p>🏨 Virtual</p>
-<p>💥 <strong>FREE</strong> <a href="https://events.linuxfoundation.org/r-medicine/">workshop registration</a></p>
+<p>💥 <strong>FREE</strong> <a href="https://events.linuxfoundation.org/r-medicine/">workshop registration</a> with registration for the R/Medicine 2023 meeting.</p>
 <hr>
 <section id="overview" class="level1">
 <h1>Overview</h1>
@@ -214,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>The acquire a foundational understanding of how data should be organized.</p></li>
 <li><p>To import Excel files with (common, messy) data problems.</p></li>
 <li><p>To address and clean common messy data problems in each variable.</p></li>
-<li><p>To address and clean data with more complex meta-problems, like pivoting to long format for data analysis, dealing with multi-column headers, color-coded data (gah!), and un-pivoting pivot tables into tidy data.</p></li>
+<li><p>To address and clean data with more complex meta-problems, like pivoting to long format for data analysis, thickening timestamped data to manageable time units, padding missing dates, and joining different datasets together.</p></li>
 </ul>
 </section>
 <section id="is-this-course-for-me" class="level2">
@@ -225,18 +225,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Does this drive you slightly batty?</p></li>
 <li><p>Do you want to learn how to make your life easier with a suite of data cleaning tools?</p></li>
 </ul>
-<p>The workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the <code>%&gt;%</code>/<code>|&gt;</code> operator is a plus, but not required.</p>
+<p>The workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the <code>%&gt;%</code>/<code>|&gt;</code> operator is a major plus, but is not required.</p>
 </section>
 <section id="prework" class="level2">
 <h2 class="anchored" data-anchor-id="prework">Prework</h2>
 <p>This workshop will largely be conducted in the Posit Cloud environment. Please create a login to the Posit Cloud instance of this workshop here:</p>
 <p><a href="https://posit.cloud/content/5758558">Posit Cloud Medical Cleaning Workshop</a>.</p>
 <p>If you will not be using the Posit Cloud instance, you can just watch along as the instructors teach.</p>
-<p>If you would like to try this out on your own computer, please have the following installed and configured on your machine.</p>
+<p>As a more high-risk alternative, if you would like to try this out on your own computer, please have the following installed and configured on your machine. Note that we will <strong>NOT</strong> be able to help you with local computer problems during the workshop. If you choose to do this, you are on your own.</p>
 <ul>
 <li><p>Recent version of <strong>R</strong></p></li>
 <li><p>Recent version of <strong>RStudio</strong></p></li>
-<li><p>Recent version of packages used in workshop.</p>
+<li><p>Recent version of packages used in this workshop.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>instll_pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"tidyxl"</span>, <span class="st">"unpivotr"</span>, <span class="st">"readxl"</span>, <span class="st">"openxlsx"</span>, <span class="st">"janitor"</span>, <span class="st">"gtsummary"</span>, <span class="st">"here"</span>, <span class="st">"padr"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(instll_pkgs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Ensure you can knit R markdown documents</p></li>
@@ -270,6 +270,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Crystal has an excellent (work in progress) e-book on Data Management in Large-Scale Education Research <a href="https://datamgmtinedresearch.com">here</a>.</li>
 <li>Peter shared his strong feelings about the limitations of Excel as a data entry tool (and how you can use Excel better) in an R/Medicine workshop/YouTube video <a href="https://www.youtube.com/watch?v=9f-hpJbjKZo">here</a>.</li>
+<li>Peter is working on a free e-book (work in progress) on reproducible medical data analysis <a href="https://bookdown.org/pdr_higgins/rmrwr/">here</a> and a package of clean (and messy) medical data for practicing and teaching in R <a href="https://higgi13425.github.io/medicaldata/">here</a>.</li>
+<li>Our friend Duncan Garmonsway has a free e-book on advanced data cleaning strategies for especially devilish colored, pivoted, or bizarrely structured data <a href="https://nacnudus.github.io/spreadsheet-munging-strategies/">here</a></li>
 </ul>
 
 
