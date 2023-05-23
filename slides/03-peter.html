@@ -83,6 +83,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="wrangling-your-data" class="level1">
 <h1>Wrangling your Data</h1>
+<section id="where-are-we-now" class="level2">
+<h2 class="anchored" data-anchor-id="where-are-we-now">Where are We Now?</h2>
+<ul>
+<li>We have done DEV (Data Evaluation and Validation) - more validation to be done, Data validation is a continuous process, right up to Data Lock.</li>
+<li>Discussed the importance of preventing data errors at the source - data collection and entry (preferably using a tool with data validation at entry - like REDCap)</li>
+<li>Did Stage 1 cleaning - clean variable names, remove empty columns/rows, fix variable types/classes (characters in numeric, recoding factors, date madness), address missingness, violations of tidy data principles (separate), added meaningful variable labels.</li>
+</ul>
+</section>
 <section id="deciding-on-the-unit-of-observation" class="level2">
 <h2 class="anchored" data-anchor-id="deciding-on-the-unit-of-observation">Deciding on the Unit of Observation</h2>
 <ul>
@@ -93,7 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>In retrospective data review, we can divide the observations up as we choose. For inpatient stays, we need to decide <em>a priori</em> on how to handle multiple observations of the same type (e.g., vitals q6h) in the same day.
 <ul>
 <li>use the 0800 observation each day?</li>
-<li>use the daily average?</li>
+<li>use the daily average for SBP and DBP?</li>
 <li>use the max values each day?</li>
 </ul></li>
 </ul>
@@ -126,28 +134,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="reshaping-your-data-with-tidyr" class="level2">
 <h2 class="anchored" data-anchor-id="reshaping-your-data-with-tidyr">Reshaping your data with tidyr</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">The Problem</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Wide Version of Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Tall Version of Data</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <ul>
-<li>We often enter data by patient</li>
+<li>We often <em>enter</em> data by patient</li>
 <li>Spreadsheets encourage us to enter longitudinal data as long rows (per patient)</li>
-<li>We end up with wide data</li>
+<li>We end up with <strong>wide</strong>, rather than <strong>tall</strong> data</li>
 </ul>
-<p>[Image]</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 8
+  pat_id treatment start_mes end_mes start_bss end_bss
+  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1 001    upa               3       0      75.9    9.85
+2 002    uste              2       1      54.7   32.7 
+3 003    oza               1       1      28.5   28.5 
+4 004    upa               3       1      77.2   33.2 
+5 005    oza               3       2      78.8   56.8 
+6 006    uste              2       1      54.4   32.4 
+# ℹ 2 more variables: start_emo &lt;dbl&gt;, end_emo &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 180 × 4
+   pat_id treatment measure   score
+   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;
+ 1 001    upa       start_mes  3   
+ 2 001    upa       end_mes    0   
+ 3 001    upa       start_bss 75.9 
+ 4 001    upa       end_bss    9.85
+ 5 001    upa       start_emo 79.3 
+ 6 001    upa       end_emo   39.8 
+ 7 002    uste      start_mes  2   
+ 8 002    uste      end_mes    1   
+ 9 002    uste      start_bss 54.7 
+10 002    uste      end_bss   32.7 
+# ℹ 170 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="reshaping-your-data-with-tidyr-1" class="level2">
 <h2 class="anchored" data-anchor-id="reshaping-your-data-with-tidyr-1">Reshaping your data with tidyr</h2>
 <ul>
 <li>R (and most R functions) are vectorized to handle tall data</li>
 <li>One small observation per row</li>
-<li>Lots of analyses in R are easier with tall data</li>
+<li>Most analyses in R are easier with tall data</li>
 </ul>
-<p>[Image]</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 180 × 4
+   pat_id treatment measure   score
+   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;
+ 1 001    upa       start_mes  3   
+ 2 001    upa       end_mes    0   
+ 3 001    upa       start_bss 75.9 
+ 4 001    upa       end_bss    9.85
+ 5 001    upa       start_emo 79.3 
+ 6 001    upa       end_emo   39.8 
+ 7 002    uste      start_mes  2   
+ 8 002    uste      end_mes    1   
+ 9 002    uste      start_bss 54.7 
+10 002    uste      end_bss   32.7 
+# ℹ 170 more rows</code></pre>
+</div>
+</div>
 </section>
 <section id="pivoting-longer-common" class="level2">
 <h2 class="anchored" data-anchor-id="pivoting-longer-common">Pivoting Longer (common)</h2>
 <ul>
 <li>We need to ‘pivot’ data from wide to tall on the regular</li>
 <li>This “lengthens” data, increasing the number of rows, and decreasing the number of columns</li>
-<li>We will be looking at Visit Dates/Measures</li>
+<li>We will be looking at Visit Dates (Start vs End) and Measures</li>
 </ul>
 </section>
 <section id="pivoting-longer" class="level2">
@@ -169,16 +236,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss
    &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
- 1 001    upa               3       0      75.5    9.46
- 2 002    uste              2       1      53.6   31.6 
- 3 003    oza               1       1      25.5   25.5 
- 4 004    upa               3       1      79.4   35.4 
- 5 005    oza               3       2      79.5   57.5 
- 6 006    uste              2       1      54.5   32.5 
- 7 007    uste              3       2      79.0   57.0 
- 8 008    oza               3       2      79.0   57.0 
+ 1 001    upa               3       0      75.9    9.85
+ 2 002    uste              2       1      54.7   32.7 
+ 3 003    oza               1       1      28.5   28.5 
+ 4 004    upa               3       1      77.2   33.2 
+ 5 005    oza               3       2      78.8   56.8 
+ 6 006    uste              2       1      54.4   32.4 
+ 7 007    uste              3       2      79.7   57.7 
+ 8 008    oza               3       2      75.0   53.0 
  9 009    upa               2       0      53.1    9.06
-10 010    oza               3       1      77.4   33.4 
+10 010    oza               3       1      78.9   34.9 
 # ℹ 20 more rows
 # ℹ 2 more variables: start_emo &lt;dbl&gt;, end_emo &lt;dbl&gt;</code></pre>
 </div>
@@ -197,14 +264,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;
  1 001    upa       start_mes  3   
  2 001    upa       end_mes    0   
- 3 001    upa       start_bss 75.5 
- 4 001    upa       end_bss    9.46
- 5 001    upa       start_emo 73.3 
- 6 001    upa       end_emo   32.0 
+ 3 001    upa       start_bss 75.9 
+ 4 001    upa       end_bss    9.85
+ 5 001    upa       start_emo 79.3 
+ 6 001    upa       end_emo   39.8 
  7 002    uste      start_mes  2   
  8 002    uste      end_mes    1   
- 9 002    uste      start_bss 53.6 
-10 002    uste      end_bss   31.6 
+ 9 002    uste      start_bss 54.7 
+10 002    uste      end_bss   32.7 
 # ℹ 170 more rows</code></pre>
 </div>
 </div>
@@ -225,16 +292,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss
    &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
- 1 001    upa               3       0      75.5    9.46
- 2 002    uste              2       1      53.6   31.6 
- 3 003    oza               1       1      25.5   25.5 
- 4 004    upa               3       1      79.4   35.4 
- 5 005    oza               3       2      79.5   57.5 
- 6 006    uste              2       1      54.5   32.5 
- 7 007    uste              3       2      79.0   57.0 
- 8 008    oza               3       2      79.0   57.0 
+ 1 001    upa               3       0      75.9    9.85
+ 2 002    uste              2       1      54.7   32.7 
+ 3 003    oza               1       1      28.5   28.5 
+ 4 004    upa               3       1      77.2   33.2 
+ 5 005    oza               3       2      78.8   56.8 
+ 6 006    uste              2       1      54.4   32.4 
+ 7 007    uste              3       2      79.7   57.7 
+ 8 008    oza               3       2      75.0   53.0 
  9 009    upa               2       0      53.1    9.06
-10 010    oza               3       1      77.4   33.4 
+10 010    oza               3       1      78.9   34.9 
 # ℹ 20 more rows
 # ℹ 2 more variables: start_emo &lt;dbl&gt;, end_emo &lt;dbl&gt;</code></pre>
 </div>
@@ -243,40 +310,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="pivoting-longer-in-action" class="level2">
 <h2 class="anchored" data-anchor-id="pivoting-longer-in-action">Pivoting Longer In Action</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Problem: Wide</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Code: pivot_longer</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Result: Tall</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Problem: Wide</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Code: pivot_longer</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false" href="">Result: Tall</a></li></ul>
 <div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss
    &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
- 1 001    upa               3       0      75.5    9.46
- 2 002    uste              2       1      53.6   31.6 
- 3 003    oza               1       1      25.5   25.5 
- 4 004    upa               3       1      79.4   35.4 
- 5 005    oza               3       2      79.5   57.5 
- 6 006    uste              2       1      54.5   32.5 
- 7 007    uste              3       2      79.0   57.0 
- 8 008    oza               3       2      79.0   57.0 
+ 1 001    upa               3       0      75.9    9.85
+ 2 002    uste              2       1      54.7   32.7 
+ 3 003    oza               1       1      28.5   28.5 
+ 4 004    upa               3       1      77.2   33.2 
+ 5 005    oza               3       2      78.8   56.8 
+ 6 006    uste              2       1      54.4   32.4 
+ 7 007    uste              3       2      79.7   57.7 
+ 8 008    oza               3       2      75.0   53.0 
  9 009    upa               2       0      53.1    9.06
-10 010    oza               3       1      77.4   33.4 
+10 010    oza               3       1      78.9   34.9 
 # ℹ 20 more rows
 # ℹ 2 more variables: start_emo &lt;dbl&gt;, end_emo &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>wide <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="st">"start_mes"</span><span class="sc">:</span><span class="st">"end_emo"</span>, </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># could also use 3:8</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"measure"</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wide <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="st">"start_mes"</span><span class="sc">:</span><span class="st">"end_emo"</span>, </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># could also use 3:8</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"measure"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 4
@@ -284,17 +351,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;
  1 001    upa       start_mes  3   
  2 001    upa       end_mes    0   
- 3 001    upa       start_bss 75.5 
- 4 001    upa       end_bss    9.46
- 5 001    upa       start_emo 73.3 
- 6 001    upa       end_emo   32.0 
+ 3 001    upa       start_bss 75.9 
+ 4 001    upa       end_bss    9.85
+ 5 001    upa       start_emo 79.3 
+ 6 001    upa       end_emo   39.8 
  7 002    uste      start_mes  2   
  8 002    uste      end_mes    1   
- 9 002    uste      start_bss 53.6 
-10 002    uste      end_bss   31.6 
+ 9 002    uste      start_bss 54.7 
+10 002    uste      end_bss   32.7 
 # ℹ 170 more rows</code></pre>
 </div>
 </div>
+<ul>
+<li>Does this make sense so far?</li>
+<li>Zoom reaction: “thumbs up” emoji 👍 if yes
+<ul>
+<li>“raised hand” emoji ✋ if puzzled/questions</li>
+</ul></li>
+</ul>
 </div>
 </div>
 </div>
@@ -302,9 +376,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="one-minor-issue---separation-of-measure" class="level2">
 <h2 class="anchored" data-anchor-id="one-minor-issue---separation-of-measure">One Minor Issue - Separation of measure</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Problem</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false" href="">Result</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false" href="">Alternative within pivot_longer</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Problem</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false" href="">Result</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false" href="">Alternative within pivot_longer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <ul>
 <li>the “measure” column combines a timepoint and the measure</li>
 <li>Needs to be separated.</li>
@@ -317,15 +391,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 </div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tall <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="at">col =</span> <span class="st">"measure"</span>,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">sep =</span> <span class="st">"_"</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"timept"</span>, <span class="st">"measure"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tall <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="at">col =</span> <span class="st">"measure"</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">sep =</span> <span class="st">"_"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"timept"</span>, <span class="st">"measure"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 5
@@ -333,43 +407,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;
  1 001    upa       start  mes      3   
  2 001    upa       end    mes      0   
- 3 001    upa       start  bss     75.5 
- 4 001    upa       end    bss      9.46
- 5 001    upa       start  emo     73.3 
- 6 001    upa       end    emo     32.0 
+ 3 001    upa       start  bss     75.9 
+ 4 001    upa       end    bss      9.85
+ 5 001    upa       start  emo     79.3 
+ 6 001    upa       end    emo     39.8 
  7 002    uste      start  mes      2   
  8 002    uste      end    mes      1   
- 9 002    uste      start  bss     53.6 
-10 002    uste      end    bss     31.6 
+ 9 002    uste      start  bss     54.7 
+10 002    uste      end    bss     32.7 
 # ℹ 170 more rows</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
+<div id="tabset-3-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-4-tab">
 <ul>
 <li>You can do this <em>within</em> pivot_longer with one more argument (if you are <em>fancy</em>)</li>
 </ul>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>wide <span class="sc">|&gt;</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"timept"</span>, <span class="st">"measure"</span>),</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_sep =</span> <span class="st">"_"</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>wide <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"timept"</span>, <span class="st">"measure"</span>),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_sep =</span> <span class="st">"_"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 5
    pat_id treatment timept measure score
    &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;
  1 001    upa       start  mes      3   
  2 001    upa       end    mes      0   
- 3 001    upa       start  bss     75.5 
- 4 001    upa       end    bss      9.46
- 5 001    upa       start  emo     73.3 
- 6 001    upa       end    emo     32.0 
+ 3 001    upa       start  bss     75.9 
+ 4 001    upa       end    bss      9.85
+ 5 001    upa       start  emo     79.3 
+ 6 001    upa       end    emo     39.8 
  7 002    uste      start  mes      2   
  8 002    uste      end    mes      1   
- 9 002    uste      start  bss     53.6 
-10 002    uste      end    bss     31.6 
+ 9 002    uste      start  bss     54.7 
+10 002    uste      end    bss     32.7 
 # ℹ 170 more rows</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -380,8 +461,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="pivoting-longer-1">Pivoting Longer</h2>
 <ul>
 <li>Your Turn (Exercise) with endo_data</li>
-<li>Measurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) were taken from biopsies of 3 segments of intestine.</li>
-<li>This might be affected by portal hypertension in patients with liver cirrhosis</li>
+<li>Measurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) in biopsies of 3 segments of intestine.</li>
+<li>This could be affected by portal hypertension in patients with liver cirrhosis</li>
 </ul>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -398,78 +479,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  8      8          1      4.87       16.6       18.8
  9      9          1      4.23       15.0       16.9
 10     10          0     12.8        16.7       19.1</code></pre>
-</div>
-</div>
-</section>
-<section id="pivoting-longer-with-endo_data" class="level2">
-<h2 class="anchored" data-anchor-id="pivoting-longer-with-endo_data">Pivoting Longer with endo_data</h2>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">The Dataset</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">The Arguments</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false" href="">The Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false" href="">The Solution</a></li></ul>
-<div class="tab-content">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 5
-   pat_id portal_htn duod_teer ileal_teer colon_teer
-    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
- 1      1          1      4.33       14.6       16.2
- 2      2          0     11.7        16.0       19.0
- 3      3          1      4.12       13.8       15.2
- 4      4          1      4.62       16.4       18.1
- 5      5          0     12.4        15.8       19.0
- 6      6          0     13.0        16.2       18.8
- 7      7          0     11.9        15.7       18.3
- 8      8          1      4.87       16.6       18.8
- 9      9          1      4.23       15.0       16.9
-10     10          0     12.8        16.7       19.1</code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<ul>
-<li>What values do you want to use for:
-<ul>
-<li>cols</li>
-<li>names_pattern = “(.+)_teer”</li>
-<li>names_to</li>
-<li>values_to</li>
-</ul></li>
-<li>Note that we are giving you the value for names_pattern, which means that we want to keep the characters of the name (of whatever length) before “_teer”</li>
-</ul>
-</div>
-<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
-<ul>
-<li>Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.</li>
-<li>Note that we are giving you names_pattern</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>endo_data <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span>  ,</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_pattern =</span> <span class="st">"(.+)_teer"</span>,</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span>   ,</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div id="tabset-3-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-4-tab">
-<ul>
-<li>Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>endo_data <span class="sc">|&gt;</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="st">"duod_teer"</span><span class="sc">:</span><span class="st">"colon_teer"</span>,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_pattern =</span> <span class="st">"(.+)_teer"</span>,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"location"</span>),</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"teer"</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Run the code, and look at the resulting table.</li>
-<li>Do you think that portal hypertension has an effect on TEER and (its inverse) epithelial leakiness?</li>
-</ul>
-</div>
 </div>
 </div>
 </section>
@@ -478,13 +487,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><br></p>
 <p>Complete Data Cleaning Fundamentals Exercise PH1.</p>
 <ul>
-<li><p>If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji on your screen.</p></li>
-<li><p>If you are having trouble, click on the Reactions tab in Zoom, and click to put the “raise hand” emoji on your screen.</p></li>
+<li><p>Do This in <a href="https://posit.cloud/content/5758558">Posit Cloud</a></p></li>
+<li><p>If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji 👍 on your screen.</p></li>
+<li><p>If you are having trouble, click on the Reactions tab in Zoom, and click to put the “raised hand” emoji ✋ on your screen.</p></li>
 </ul>
-<p><a href="https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html" target="_blank">–&gt; Take me to the exercises &lt;–</a></p>
+<p><a href="https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#ph1" target="_blank">–&gt; Take me to the exercise solution &lt;–</a></p>
+<p><br></p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_c5fc2ac6" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:4em;">
+<div class="countdown" id="timer_9560a382" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:3.5em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -494,14 +505,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="pivoting-wider" class="level2">
 <h2 class="anchored" data-anchor-id="pivoting-wider">Pivoting Wider</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Tall messy_uc Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false" href="">Wider Result</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Tall messy_uc Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Code to Pivot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false" href="">Wider Result</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li>Wide data is less common, but sometimes needed</li>
 <li>Here we will convert the tall version of our selected messy_uc data back to wide.</li>
 <li>This is what the tall data look like</li>
 </ul>
+</div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 4
@@ -509,15 +523,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;
  1 001    upa       start_mes  3   
  2 001    upa       end_mes    0   
- 3 001    upa       start_bss 75.5 
- 4 001    upa       end_bss    9.46
- 5 001    upa       start_emo 73.3 
- 6 001    upa       end_emo   32.0 
+ 3 001    upa       start_bss 75.9 
+ 4 001    upa       end_bss    9.85
+ 5 001    upa       start_emo 79.3 
+ 6 001    upa       end_emo   39.8 
  7 002    uste      start_mes  2   
  8 002    uste      end_mes    1   
- 9 002    uste      start_bss 53.6 
-10 002    uste      end_bss   31.6 
+ 9 002    uste      start_bss 54.7 
+10 002    uste      end_bss   32.7 
 # ℹ 170 more rows</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -537,16 +553,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code># A tibble: 30 × 8
    pat_id treatment start_mes end_mes start_bss end_bss
    &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
- 1 001    upa               3       0      75.5    9.46
- 2 002    uste              2       1      53.6   31.6 
- 3 003    oza               1       1      25.5   25.5 
- 4 004    upa               3       1      79.4   35.4 
- 5 005    oza               3       2      79.5   57.5 
- 6 006    uste              2       1      54.5   32.5 
- 7 007    uste              3       2      79.0   57.0 
- 8 008    oza               3       2      79.0   57.0 
+ 1 001    upa               3       0      75.9    9.85
+ 2 002    uste              2       1      54.7   32.7 
+ 3 003    oza               1       1      28.5   28.5 
+ 4 004    upa               3       1      77.2   33.2 
+ 5 005    oza               3       2      78.8   56.8 
+ 6 006    uste              2       1      54.4   32.4 
+ 7 007    uste              3       2      79.7   57.7 
+ 8 008    oza               3       2      75.0   53.0 
  9 009    upa               2       0      53.1    9.06
-10 010    oza               3       1      77.4   33.4 
+10 010    oza               3       1      78.9   34.9 
 # ℹ 20 more rows
 # ℹ 2 more variables: start_emo &lt;dbl&gt;, end_emo &lt;dbl&gt;</code></pre>
 </div>
@@ -555,9 +571,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-</section>
-<section id="filling-in-unobserved-datestimes-with-padr" class="level1">
-<h1>Filling in Unobserved Dates/Times with padr</h1>
+<section id="fill-in-unobserved-date-times-with-padr" class="level2">
+<h2 class="anchored" data-anchor-id="fill-in-unobserved-date-times-with-padr">Fill in Unobserved Date-Times with padr</h2>
 <div class="columns">
 <div class="column" style="width:55%;">
 <div class="cell">
@@ -580,10 +595,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </div>
 </div>
+</section>
 <section id="thickening-time-to-a-usable-level" class="level2">
 <h2 class="anchored" data-anchor-id="thickening-time-to-a-usable-level">Thickening Time to a Usable Level</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">Goal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false" href="">Result</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">Goal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false" href="">Result</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-4" role="tab" aria-controls="tabset-5-4" aria-selected="false" href="">Plot Monthly</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <ul>
@@ -628,6 +644,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  9 2016-08-01         137
 10 2016-09-01         171
 11 2016-10-01          95</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-5-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-4-tab">
+<div class="cell" data-output-location="column-fragment">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>by_month <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time_stamp_month,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> ods)) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Overdoses Per Month"</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Month"</span>,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Monthly Overdose Calls"</span>) <span class="sc">+</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>(<span class="at">base_size =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">175</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="03-peter_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
@@ -682,10 +715,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fcp <span class="sc">|&gt;</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pad</span>(<span class="at">group =</span> <span class="st">"pat_id"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">fill</span>(pat_id) <span class="sc">|&gt;</span> <span class="co"># fill in the missing pat_ids</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fcp <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pad</span>(<span class="at">group =</span> <span class="st">"pat_id"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">fill</span>(pat_id) <span class="sc">|&gt;</span> <span class="co"># fill in the missing pat_ids</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-6-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-3-tab">
@@ -743,7 +776,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="local-demographics-with-cdc-svi-data" class="level2">
 <h2 class="anchored" data-anchor-id="local-demographics-with-cdc-svi-data">Local Demographics with CDC SVI data</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">The Problem</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">The Problem</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">The Data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false" href="">The Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-4" role="tab" aria-controls="tabset-7-4" aria-selected="false" href="">The Solution</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-5" role="tab" aria-controls="tabset-7-5" aria-selected="false" href="">The Result</a></li></ul>
 <div class="tab-content">
 <div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
 <div class="columns">
@@ -754,21 +787,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>We need to left_join these datasets together by matching on the Census Tract</li>
 </ul>
 </div><div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/joins.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Joins</figcaption>
-</figure>
+<p><img src="images/joins.PNG" class="img-fluid"></p>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<section id="the-data" class="level3">
-<h3 class="anchored" data-anchor-id="the-data">The Data</h3>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<ul>
+<li>What is the common uniqid/key?</li>
+</ul>
 <div class="columns">
 <div class="column" style="width:60%;">
+<ul>
+<li>demo</li>
+</ul>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 4
@@ -786,6 +817,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div><div class="column" style="width:40%;">
+<ul>
+<li>cdc</li>
+</ul>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 2
@@ -802,16 +836,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 9  26161405500  0.62</code></pre>
 </div>
 </div>
-</div><section id="the-code-2" class="level3">
-<h3 class="anchored" data-anchor-id="the-code-2">The Code</h3>
+</div>
+</div>
+</div>
+<div id="tabset-7-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-3-tab">
 <ul>
-<li>Replace the arguments to join the demographic data (<em>demo</em>) on the left to add Social Vulnerability index (svi) from the <em>cdc</em> dataset on the RHS. Left join by census tract.</li>
+<li>Replace the generic arguments to the left_join function to join the demographic data (<em>demo</em>) on the left to add Social Vulnerability index (svi) from the <em>cdc</em> dataset on the RHS. Left join by census tract.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(dataset_x, dataset_y, <span class="at">by =</span> <span class="st">"key"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(dataset_x, dataset_y, <span class="at">by =</span> <span class="st">"key"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="the-result-1" class="level3">
-<h3 class="anchored" data-anchor-id="the-result-1">The Result</h3>
+</div>
+<div id="tabset-7-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-4-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(demo, cdc, <span class="at">by =</span> <span class="st">"census_tract"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-7-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-5-tab">
+<ul>
+<li>Is there an association between social vulnerability and hypertension?</li>
+</ul>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 5
@@ -828,9 +872,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 9 009    Antione Delacroix      1  26161405500  0.62</code></pre>
 </div>
 </div>
-</section>
 </div>
-</section>
+</div>
+</div>
 </section>
 <section id="patient-demographics-with-lab-results-your-turn-to-join" class="level2">
 <h2 class="anchored" data-anchor-id="patient-demographics-with-lab-results-your-turn-to-join">Patient Demographics with Lab results (Your Turn to Join)</h2>
@@ -855,7 +899,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 9 009    Antione Delacroix     27</code></pre>
 </div>
 </div>
-</div><div class="column" style="width:60%;">
+</div><div class="column fragment" style="width:60%;">
 <p>and potassium levels and creatinine levels in 2 other tables</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -889,140 +933,125 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="your-turn-to-join" class="level2">
 <h2 class="anchored" data-anchor-id="your-turn-to-join">Your Turn to Join</h2>
 <ul>
-<li>We want to join the correct labs (there are 9 rows each) to the correct patients.</li>
-<li>The unique identifier (often called the uniqid or key or recordID) is pat_id.</li>
+<li>We want to join the correct labs (9 rows each) to the correct patients.</li>
+<li>The unique identifier (called the uniqid or key or recordID) is pat_id.</li>
 <li>It only occurs once for each patient/row</li>
 <li>It appears in each table we want to join</li>
-<li>The pat_id is of the character type in each (a common downfall if one is character, one is numeric, but they <strong>look</strong> the same - but they don’t match)</li>
+<li>The pat_id is of the character type in each (a common downfall if one is character, one is numeric, but they <strong>look</strong> the same - but don’t match)</li>
 <li>We want to start with demographics, then add datasets that match to the right.</li>
 <li>We will use <em>demo</em> as our base dataset on the left hand side (LHS), and first join the potassium (<em>pot</em>) results (RHS)</li>
 </ul>
 </section>
-<section id="your-turn-to-join-1" class="level2">
-<h2 class="anchored" data-anchor-id="your-turn-to-join-1">Your Turn to Join</h2>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">The Problem</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href="">The Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-3" role="tab" aria-controls="tabset-8-3" aria-selected="false" href="">The Result</a></li></ul>
-<div class="tab-content">
-<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
-<ul>
-<li>Joining demo to pot with a left_join</li>
-<li>left_join(data_x, data_y, by = “uniqid”)</li>
-</ul>
-</div>
-<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
-<ul>
-<li>Replace the arguments with the correct ones to join demo to pot and produce new_data.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(data_x, data_y, <span class="at">by =</span> <span class="st">"uniqid"</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>new_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div id="tabset-8-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-3-tab">
-<ul>
-<li>replace the arguments with the correct ones to join demo to pot and produce new_data.</li>
-</ul>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 9 × 4
-  pat_id name                 age     k
-  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt;
-1 001    Arthur Blankenship    67   3.2
-2 002    Britney Jonas         23   3.7
-3 003    Sally Davis           63   4.2
-4 004    Al Jones              44   4.4
-5 005    Gary Hamill           38   4.1
-6 006    Ken Bartoletti        33   4  
-7 007    Ike Gerhold           52   3.6
-8 008    Tatiana Grant         42   4.2
-9 009    Antione Delacroix     27   4.9</code></pre>
-</div>
-</div>
-</div>
-</div>
+<section id="what-the-left-join-looks-like" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-left-join-looks-like">What the Left Join Looks Like</h2>
+<div class="animations">
+<img alt="gif here" width="80%" height="80%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/left-join.gif">
 </div>
 </section>
 <section id="exercise-ph2" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-ph2">Exercise PH2</h2>
 <p><br></p>
 <p>Complete Data Cleaning Fundamentals Exercise PH2.</p>
-<p><a href="https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html" target="_blank">–&gt; Take me to the exercises &lt;–</a></p>
 <ul>
-<li><p>If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji on your screen.</p></li>
-<li><p>If you are having trouble, click on the Reactions tab in Zoom, and click to put the “raise hand” emoji on your screen.</p></li>
+<li><p>Do This in <a href="https://posit.cloud/content/5758558">Posit Cloud</a></p></li>
+<li><p>If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji 👍 on your screen.</p></li>
+<li><p>If you are having trouble, click on the Reactions tab in Zoom, and click to put the “raised hand” emoji ✋ on your screen.</p></li>
 </ul>
+<p><a href="https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#ph2" target="_blank">–&gt; Take me to the exercise &lt;–</a></p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_477b29be" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:4em;">
+<div class="countdown" id="timer_339d75e9" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:4em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
 </section>
-<section id="solution-ph2" class="level2">
-<h2 class="anchored" data-anchor-id="solution-ph2">Solution PH2</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(demo, pot, <span class="at">by =</span> <span class="st">"pat_id"</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>new_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="now-add-creatinine-cr-to-new_data" class="level2">
-<h2 class="anchored" data-anchor-id="now-add-creatinine-cr-to-new_data">Now add Creatinine (cr) to new_data</h2>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href="">The Problem</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href="">The Code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-3" role="tab" aria-controls="tabset-9-3" aria-selected="false" href="">The Result</a></li></ul>
-<div class="tab-content">
-<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<section id="workhorse-joins" class="level2">
+<h2 class="anchored" data-anchor-id="workhorse-joins">Workhorse Joins</h2>
 <ul>
-<li>Joining new_data and cr with a left_join</li>
-<li>left_join(data_x, data_y, by = “uniqid”)</li>
+<li><em>left_join</em> is your workhorse. Start with patient identifiers/uniqid and add data to the right side.</li>
+<li>Sometimes you will need to wrangle/process incoming data, then <em>right_join</em> it to the patient demographics</li>
 </ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="animations">
+<img alt="gif here" width="100%" height="100%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/left-join.gif">
 </div>
-<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
-<ul>
-<li>Replace the arguments with the correct ones to join new_data and cr and produce new_data2.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>new_data2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(data_x, data_y, <span class="at">by =</span> <span class="st">"uniqid"</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>new_data2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div id="tabset-9-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-3-tab">
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 9 × 5
-  pat_id name                 age     k    cr
-  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 001    Arthur Blankenship    67   3.2   0.2
-2 002    Britney Jonas         23   3.7   0.5
-3 003    Sally Davis           63   4.2   0.9
-4 004    Al Jones              44   4.4   1.5
-5 005    Gary Hamill           38   4.1   0.7
-6 006    Ken Bartoletti        33   4     0.9
-7 007    Ike Gerhold           52   3.6   0.7
-8 008    Tatiana Grant         42   4.2   1  
-9 009    Antione Delacroix     27   4.9   1.7</code></pre>
-</div>
-</div>
+</div><div class="column" style="width:50%;">
+<div class="animations">
+<img alt="gif here" width="100%" height="100%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/right-join.gif">
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-ph3" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-ph3">Exercise PH3</h2>
-<p><br></p>
-<p>Complete Data Cleaning Fundamentals Exercise PH3.</p>
-<p><a href="https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html" target="_blank">–&gt; Take me to the exercises &lt;–</a></p>
+<section id="fancy-joins" class="level2">
+<h2 class="anchored" data-anchor-id="fancy-joins">Fancy Joins</h2>
 <ul>
-<li><p>If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji on your screen.</p></li>
-<li><p>If you are having trouble, click on the Reactions tab in Zoom, and click to put the “raise hand” emoji on your screen.</p></li>
+<li>There are multiple kinds of fancy joins (semi_join, anti_join, inner_join, full_join, union, intersect, setdiff) which come in handy once in a while.</li>
+<li>These are all well explained <a href="http://statseducation.com/Introduction-to-R/modules/tidy%20data/joins/#:~:text=semi_join(x%2C%20y)%3A%20Return,This%20is%20a%20filtering%20join.">here</a></li>
 </ul>
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_d6534efd" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:4em;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>You want to subset your data (x) by keeping only the ones (y=hospitalized) who were hospitalized.</li>
+</ul>
+<div class="animations">
+<img alt="gif here" width="100%" height="100%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/semi-join.gif">
 </div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>You want to subset your data (x) by keeping only the ones <br>(y = dead) <br>who are NOT dead.</li>
+</ul>
+<div class="animations">
+<img alt="gif here" width="100%" height="100%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/anti-join.gif">
+</div>
+</div>
+</div>
+</section>
+<section id="data-horror" class="level2">
+<h2 class="anchored" data-anchor-id="data-horror">Data Horror</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Data So Messy, it Constitutes a Data Crime</p>
+<p><br> <img src="images/messy.png" class="img-fluid" alt="Messy"></p>
+<p><br> What Should You Do?</p>
+</div><div class="column" style="width:50%;">
+<iframe src="https://giphy.com/embed/jquDWJfPUMCiI" width="480" height="428" frameborder="0" class="giphy-embed" allowfullscreen="">
+</iframe>
+<p>
+<a href="https://giphy.com/gifs/scared-shocked-jquDWJfPUMCiI"> The Horror! The Horror!</a>
+</p>
+</div>
+</div>
+</section>
+<section id="two-options" class="level2">
+<h2 class="anchored" data-anchor-id="two-options">Two Options</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ol type="1">
+<li>You can find the person who collected/entered the data</li>
+</ol>
+<ul>
+<li>If you don’t correct this behavior now, this will torture <em><strong>many</strong></em> future data analysts</li>
+<li>Educate in this <em>teachable moment</em> about tidy data</li>
+<li>Send them to watch Tidy Spreadsheets on YouTube <a href="https://www.youtube.com/watch?v=9f-hpJbjKZo">here</a> to prevent this kind of Data Crime in the future.</li>
+<li><strong>Improve</strong> the world, one (now tidy) data collector at a time.</li>
+</ul>
+</div><div class="column fragment" style="width:50%;">
+<ol start="2" type="1">
+<li>There is no way to find the person who collected/entered the data</li>
+</ol>
+<ul>
+<li>Pull out some advanced data cleaning packages made for this particular kind of mess
+<ul>
+<li>{unpivotr}</li>
+<li>{tidyxl}</li>
+<li>{unheadr}</li>
+</ul></li>
+<li>Watch the unpivotr/tidyxl 14 min video <a href="https://www.youtube.com/watch?v=ShWxAqnY2YE">here</a></li>
+<li>Learn from a free e-book, <a href="https://nacnudus.github.io/spreadsheet-munging-strategies/">Spreadsheet Munging Strategies</a></li>
+</ul>
 </div>
 </div>
 </section>

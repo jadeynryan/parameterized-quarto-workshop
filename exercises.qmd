@@ -236,9 +236,295 @@ df_clean |>
 
 ## PH1
 
+## Pivoting Longer
+
+-   Your Turn with endo_data
+-   Measurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) in biopsies of 3 segments of intestine.
+-   This could be affected by portal hypertension in patients with liver cirrhosis
+- Let's find out!
+
+- Here is the code to load the data if you are doing this on a local computer. Use the clipboard icon at the top right to copy the code.
+
+```{r}
+#| code-fold: false
+endo_data <- tibble::tribble(
+  ~pat_id, ~portal_htn, ~duod_teer, ~ileal_teer, ~colon_teer,
+  001, 1, 4.33, 14.57, 16.23,
+  002, 0, 11.67, 15.99, 18.97,
+  003, 1, 4.12, 13.77, 15.22,
+  004, 1, 4.62, 16.37, 18.12,
+  005, 0, 12.43, 15.84, 19.04,
+  006, 0, 13.05, 16.23, 18.81,
+  007, 0, 11.88, 15.72, 18.31,
+  008, 1, 4.87, 16.59, 18.77,
+  009, 1, 4.23, 15.04, 16.87,
+  010, 0, 12.77, 16.73, 19.12
+)
+endo_data
+```
+
+## Pivoting Longer with endo_data
+
+::: panel-tabset
+### Dataset
+
+```{r, echo=FALSE}
+endo_data
+```
+
+### Arguments
+
+-   What values do you want to use for these arguments to `pivot_longer`:
+    -   cols
+    -   names_pattern = "(.+)\_teer"
+    -   names_to
+    -   values_to
+-   Note that we are giving you the correct value for `names_pattern`, which will ask for what we want - to keep the characters of the name (of whatever length) before "\_teer"
+
+### Code
+
+-   Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.
+-   Note that we are giving you the correct answer for the `names_pattern` argument.
+
+```{r, error=TRUE, eval=FALSE}
+#| code-fold: false
+endo_data |> 
+  pivot_longer(
+    cols = ___ ,
+    names_pattern = "(.+)_teer",
+    names_to =  ___ ,
+    values_to = ___
+  )
+```
+
+### Solution
+
+-   Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.
+
+```{r, error=TRUE, eval=FALSE}
+endo_data |> 
+  pivot_longer(
+    cols = "duod_teer":"colon_teer",
+    names_pattern = "(.+)_teer",
+    names_to = c("location"),
+    values_to = "teer"
+  )
+```
+
+-   Run the code, and look at the resulting table. Use the clipboard icon at the top right to copy the code.
+
+### Result
+
+```{r, echo=FALSE}
+endo_data |> 
+  pivot_longer(
+    cols = "duod_teer":"colon_teer",
+    names_pattern = "(.+)_teer",
+    names_to = c("location"),
+    values_to = "teer"
+  )
+```
+-   Do you think that portal hypertension has an effect on TEER and (its inverse) epithelial leakiness?
+
+:::
+
 ## PH2
 
+## Patient Demographics with Lab results (Your Turn to Join)
 
+::: columns
+::: {.column width="40%"}
+-   We have some basic Patient Demographics in one table
+
+```{r}
+#| echo: false
+demo <- tibble::tribble(
+  ~pat_id, ~name, ~age,
+  '001', "Arthur Blankenship", 67,
+  '002', "Britney Jonas", 23,
+  '003', "Sally Davis", 63,
+  '004', "Al Jones", 44,
+  '005', "Gary Hamill", 38,
+  '006', "Ken Bartoletti", 33,
+  '007', "Ike Gerhold", 52,
+  '008', "Tatiana Grant", 42,
+  '009', "Antione Delacroix", 27,
+)
+
+demo
+```
+:::
+
+::: {.column width="60%" .fragment}
+and potassium levels and creatinine levels in 2 other tables
+
+```{r}
+#| echo: false
+pot <- tibble::tribble(
+  ~pat_id, ~k,
+  '001', 3.2,
+  '002', 3.7,
+  '003', 4.2,
+  '004', 4.4,
+  '005', 4.1,
+  '006', 4.0,
+  '007', 3.6,
+  '008', 4.2,
+  '009', 4.9,
+)
+
+head(pot)
+```
+
+```{r}
+#| echo: false
+cr <- tibble::tribble(
+  ~pat_id, ~cr,
+  '001', 0.2,
+  '002', 0.5,
+  '003', 0.9,
+  '004', 1.5,
+  '005', 0.7,
+  '006', 0.9,
+  '007', 0.7,
+  '008', 1.0,
+  '009', 1.7,
+)
+
+head(cr)
+```
+:::
+:::
+
+## Need to Load the Data?
+
+If you are trying this on your local computer, copy the code below with the clipboard icon to get the data into your computer.
+
+```{r}
+demo <- tibble::tribble(
+  ~pat_id, ~name, ~age,
+  '001', "Arthur Blankenship", 67,
+  '002', "Britney Jonas", 23,
+  '003', "Sally Davis", 63,
+  '004', "Al Jones", 44,
+  '005', "Gary Hamill", 38,
+  '006', "Ken Bartoletti", 33,
+  '007', "Ike Gerhold", 52,
+  '008', "Tatiana Grant", 42,
+  '009', "Antoine Delacroix", 27,
+)
+
+pot <- tibble::tribble(
+  ~pat_id, ~k,
+  '001', 3.2,
+  '002', 3.7,
+  '003', 4.2,
+  '004', 4.4,
+  '005', 4.1,
+  '006', 4.0,
+  '007', 3.6,
+  '008', 4.2,
+  '009', 4.9,
+)
+
+cr <- tibble::tribble(
+  ~pat_id, ~cr,
+  '001', 0.2,
+  '002', 0.5,
+  '003', 0.9,
+  '004', 1.5,
+  '005', 0.7,
+  '006', 0.9,
+  '007', 0.7,
+  '008', 1.0,
+  '009', 1.7,
+)
+```
+
+## Your Turn to Join
+
+-   We want to join the correct labs (9 rows each) to the correct patients.
+-   The unique identifier (called the uniqid or key or recordID) is pat_id.
+  -   It only occurs once for each patient/row
+  -   It appears in each table we want to join
+-   The pat_id is of the character type in each (a common downfall if one is character, one is numeric, but they can  **look** the same - but don't match)
+-   We want to start with demographics, then add datasets that match to the right.
+-   We will use *demo* as our base dataset on the left hand side (LHS), and first join the potassium (*pot*) results (RHS)
+
+## What the Left Join Looks Like
+
+   <div class="animations"><img alt="gif here" width="80%" height="80%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/left-join.gif"> </div>  
+   
+## Your Turn to Join
+
+::: panel-tabset
+### The Problem
+
+-   Joining *demo* to *pot* with a left_join
+-   left_join(data_x, data_y, by = "uniqid")
+
+### The Code
+
+-   replace the generic arguments below with the correct ones to join *demo* to *pot* and produce *new_data*.
+
+```{r, error=TRUE, eval=FALSE}
+#| code-fold: false
+new_data <- left_join(data_x, data_y, by = "uniqid")
+new_data
+```
+
+### The Solution
+
+```{r, eval=FALSE}
+new_data <- left_join(demo, pot, by = "pat_id")
+new_data
+```
+
+### The Result
+
+```{r, echo=FALSE}
+new_data <- left_join(demo, pot, by = "pat_id")
+new_data
+```
+
+:::
+
+
+## Now add Creatinine (cr) to new_data
+
+::: panel-tabset
+### The Problem
+
+-   Joining new_data and cr with a left_join
+-   left_join(data_x, data_y, by = "uniqid")
+
+### The Code
+
+-   Replace the generic arguments with the correct ones to join new_data and cr and produce new_data2.
+
+```{r, error=TRUE, eval=FALSE}
+#| code-fold: false
+new_data2 <- left_join(data_x, data_y, by = "uniqid")
+new_data2
+```
+
+### The Solution
+
+```{r, eval=FALSE}
+new_data2 <- left_join(new_data, cr, by = "pat_id")
+new_data2
+```
+
+### The Result
+
+```{r, echo=FALSE}
+new_data2 <- left_join(new_data, cr, by = "pat_id")
+new_data2
+```
+
+- Al has HTN and DM2
+- Antoine has early stage FSGS
+:::
 
 # Session info
 

@@ -11,28 +11,28 @@
     "href": "index.html",
     "title": "Principles of Data Cleaning",
     "section": "",
-    "text": "🗓 June 6, 2023 | 9:30am - 1:00pm EDT\n🏨 Virtual\n💥 FREE workshop registration"
+    "text": "🗓 June 6, 2023 | 11:00am - 2:00pm EDT\n🏨 Virtual\n💥 FREE workshop registration with registration for the R/Medicine 2023 meeting."
   },
   {
     "objectID": "index.html#learning-objectives",
     "href": "index.html#learning-objectives",
     "title": "Principles of Data Cleaning",
     "section": "Learning objectives",
-    "text": "Learning objectives\n\nTo import Excel files with (common, messy) data problems.\nTo address and clean common messy data problems in each variable\nTo address and clean data with more complex meta-problems, like pivoting to long format for data analysis, dealing with multi-column headers, color-coded data (gah!), and un-pivoting pivot tables into tidy data."
+    "text": "Learning objectives\n\nThe acquire a foundational understanding of how data should be organized.\nTo import Excel files with (common, messy) data problems.\nTo address and clean common messy data problems in each variable.\nTo address and clean data with more complex meta-problems, like pivoting to long format for data analysis, thickening timestamped data to manageable time units, padding missing dates, and joining different datasets together."
   },
   {
     "objectID": "index.html#is-this-course-for-me",
     "href": "index.html#is-this-course-for-me",
     "title": "Principles of Data Cleaning",
     "section": "Is this course for me?",
-    "text": "Is this course for me?\nIf your answer to any of the following questions is “yes”, then this is the right workshop for you.\n\nDo you frequently receive untidy data for analysis in Excel spreadsheets?\nDoes this drive you slightly batty?\nDo you want to learn how to make your life easier with a suite of data cleaning tools?\n\nThe workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the %&gt;%/|&gt; operator is a plus, but not required."
+    "text": "Is this course for me?\nIf your answer to any of the following questions is “yes”, then this is the right workshop for you.\n\nDo you frequently receive untidy data for analysis in Excel spreadsheets?\nDoes this drive you slightly batty?\nDo you want to learn how to make your life easier with a suite of data cleaning tools?\n\nThe workshop is designed for those with some experience in R. It will be assumed that participants can perform basic data manipulation. Experience with the {tidyverse} and the %&gt;%/|&gt; operator is a major plus, but is not required."
   },
   {
     "objectID": "index.html#prework",
     "href": "index.html#prework",
     "title": "Principles of Data Cleaning",
     "section": "Prework",
-    "text": "Prework\nThis workshop will largely be conducted in the Posit Cloud environment. Please create a login to the Posit Cloud instance of this workshop here:\nPosit Cloud Medical Cleaning Workshop.\nIf you will not be using the Posit Cloud instance, you can just watch along as the instructors teach.\nIf you would like to try this out on your own computer, please have the following installed and configured on your machine.\n\nRecent version of R\nRecent version of RStudio\nRecent version of packages used in workshop.\ninstll_pkgs &lt;- c(\"tidyverse\", \"tidyxl\", \"unpivotr\", \"readxl\", \"openxlsx\", \"janitor\", \"gtsummary\", \"here\", \"padr\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it.\nEnsure you can import data from a Microsoft Excel spreadsheet to R\n\nSave a a Microsoft Excel spreadsheet in a known folder on your computer.\nOpen RStudio install/load (library) the packages {readxl} (link) and {openxlsx} (link)\nImport the data from the spreadsheet into R using the path to the correct folder with either package."
+    "text": "Prework\nThis workshop will largely be conducted in the Posit Cloud environment. Please create a login to the Posit Cloud instance of this workshop here:\nPosit Cloud Medical Cleaning Workshop.\nIf you will not be using the Posit Cloud instance, you can just watch along as the instructors teach.\nAs a more high-risk alternative, if you would like to try this out on your own computer, please have the following installed and configured on your machine. Note that we will NOT be able to help you with local computer problems during the workshop. If you choose to do this, you are on your own.\n\nRecent version of R\nRecent version of RStudio\nRecent version of packages used in this workshop.\ninstll_pkgs &lt;- c(\"tidyverse\", \"tidyxl\", \"unpivotr\", \"readxl\", \"openxlsx\", \"janitor\", \"gtsummary\", \"here\", \"padr\")\ninstall.packages(instll_pkgs)\nEnsure you can knit R markdown documents\nOpen RStudio and create a new Rmarkdown document\nSave the document and check you are able to knit it.\nEnsure you can import data from a Microsoft Excel spreadsheet to R\n\nSave a a Microsoft Excel spreadsheet in a known folder on your computer.\nOpen RStudio install/load (library) the packages {readxl} (link) and {openxlsx} (link)\nImport the data from the spreadsheet into R using the path to the correct folder with either package."
   },
   {
     "objectID": "license.html",
@@ -137,7 +137,7 @@
     "href": "slides/index.html#schedule",
     "title": "Data Cleaning",
     "section": "Schedule",
-    "text": "Schedule\n\n\n\n\n\n\n\nTime\nActivity\n\n\n\n\n11:00 - 11:50\nCrystal Lewis (Data management best practices)\n\n\n11:50 - 12:00\nBreak\n\n\n12:00 - 12:50\nShannon Pileggi (Data cleaning fundamentals)\n\n\n12:50 - 12:00\nBreak\n\n\n01:00 - 02:00\nPeter Higgins (Data wrangling & reshaping)\n\n\n\n\nPlease add any questions to the public Zoom chat. These may be answered in the moment or addressed at the end depending on context."
+    "text": "Schedule\n\n\n\n\n\n\n\nTime\nActivity\n\n\n\n\n11:00-11:10\nIntro/Logistics\n\n\n11:10 - 11:55\nCrystal Lewis (Data management best practices)\n\n\n11:55 - 12:00\nBreak\n\n\n12:00 - 12:50\nShannon Pileggi (Data cleaning fundamentals)\n\n\n12:50 - 12:00\nBreak\n\n\n01:00 - 02:00\nPeter Higgins (Data wrangling & reshaping)\n\n\n\n\nPlease add any questions to the public Zoom chat. These may be answered in the moment or addressed at the end depending on context."
   },
   {
     "objectID": "slides/index.html#slide-1",
@@ -340,14 +340,14 @@
     "href": "slides/index.html#pivoting-longer-common",
     "title": "Data Cleaning",
     "section": "Pivoting Longer (common)",
-    "text": "Pivoting Longer (common)\n\nWe need to ‘pivot’ data from wide to tall on the regular\nThis “lengthens” data, increasing the number of rows, and decreasing the number of columns\nWe will be looking at Visit Dates/Measures"
+    "text": "Pivoting Longer (common)\n\nWe need to ‘pivot’ data from wide to tall on the regular\nThis “lengthens” data, increasing the number of rows, and decreasing the number of columns\nWe will be looking at Visit Dates (Start vs End) and Measures"
   },
   {
     "objectID": "slides/index.html#pivoting-wider",
     "href": "slides/index.html#pivoting-wider",
     "title": "Data Cleaning",
     "section": "Pivoting Wider",
-    "text": "Pivoting Wider\n\nTall messy_uc DataCodeWider Result\n\n\n\nWide data is less common, but sometimes needed\nHere we will convert the tall version of our selected messy_uc data back to wide.\nThis is what the tall data look like\n\n\n\n# A tibble: 180 × 4\n   pat_id treatment measure   score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;\n 1 001    upa       start_mes  3   \n 2 001    upa       end_mes    0   \n 3 001    upa       start_bss 75.5 \n 4 001    upa       end_bss    9.46\n 5 001    upa       start_emo 73.3 \n 6 001    upa       end_emo   32.0 \n 7 002    uste      start_mes  2   \n 8 002    uste      end_mes    1   \n 9 002    uste      start_bss 53.6 \n10 002    uste      end_bss   31.6 \n# ℹ 170 more rows\n\n\n\n\n\ntall |&gt; \n  pivot_wider(\n    id_cols = c(pat_id, treatment), # Variables not pivoted\n    names_from = measure, # will become column names\n    values_from = score # will become values\n  )\n\n\n\n\n\n# A tibble: 30 × 8\n   pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo\n   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 001    upa               3       0      75.5    9.46      73.3    32.0\n 2 002    uste              2       1      53.6   31.6       55.7    43.2\n 3 003    oza               1       1      25.5   25.5       36.6    36.9\n 4 004    upa               3       1      79.4   35.4       80.8    58.7\n 5 005    oza               3       2      79.5   57.5       72.5    58.9\n 6 006    uste              2       1      54.5   32.5       48.3    34.6\n 7 007    uste              3       2      79.0   57.0       72.7    63.3\n 8 008    oza               3       2      79.0   57.0       74.6    65.3\n 9 009    upa               2       0      53.1    9.06      54.2    28.0\n10 010    oza               3       1      77.4   33.4       74.4    46.8\n# ℹ 20 more rows"
+    "text": "Pivoting Wider\n\nTall messy_uc DataCode to PivotWider Result\n\n\n\n\n\nWide data is less common, but sometimes needed\nHere we will convert the tall version of our selected messy_uc data back to wide.\nThis is what the tall data look like\n\n\n\n\n# A tibble: 180 × 4\n   pat_id treatment measure   score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;\n 1 001    upa       start_mes  3   \n 2 001    upa       end_mes    0   \n 3 001    upa       start_bss 75.5 \n 4 001    upa       end_bss    9.46\n 5 001    upa       start_emo 73.3 \n 6 001    upa       end_emo   32.0 \n 7 002    uste      start_mes  2   \n 8 002    uste      end_mes    1   \n 9 002    uste      start_bss 53.6 \n10 002    uste      end_bss   31.6 \n# ℹ 170 more rows\n\n\n\n\n\n\n\ntall |&gt; \n  pivot_wider(\n    id_cols = c(pat_id, treatment), # Variables not pivoted\n    names_from = measure, # will become column names\n    values_from = score # will become values\n  )\n\n\n\n\n\n# A tibble: 30 × 8\n   pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo\n   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 001    upa               3       0      75.5    9.46      73.3    32.0\n 2 002    uste              2       1      53.6   31.6       55.7    43.2\n 3 003    oza               1       1      25.5   25.5       36.6    36.9\n 4 004    upa               3       1      79.4   35.4       80.8    58.7\n 5 005    oza               3       2      79.5   57.5       72.5    58.9\n 6 006    uste              2       1      54.5   32.5       48.3    34.6\n 7 007    uste              3       2      79.0   57.0       72.7    63.3\n 8 008    oza               3       2      79.0   57.0       74.6    65.3\n 9 009    upa               2       0      53.1    9.06      54.2    28.0\n10 010    oza               3       1      77.4   33.4       74.4    46.8\n# ℹ 20 more rows"
   },
   {
     "objectID": "slides/index.html#padding-unobserved-dates-weekends",
@@ -382,7 +382,7 @@
     "href": "slides/index.html",
     "title": "Data Cleaning",
     "section": "",
-    "text": "This work is licensed under Creative Commons Zero v1.0 Universal.\n\n\n\n\n\nCrystal Lewis\n Shannon Pileggi\n\n\nPeter Higgins\n\nDuncan Garmonsway\n\n\n\n\n\n\n\n Install recent R release\nCurrent version 4.2.2\n Install RStudio\nI am on version 2022.07.1+554 \n Install packages\ninstall.packages(c(\"gtreg\", \"gtsummary\", \"tidyverse\", \"labelled\", \"usethis\"))\n Ensure you can knit Rmarkdown files\n\n\n\n\n\n\nTime\nActivity\n\n\n\n\n09:00 - 09:50\nSection 1\n\n\n09:50 - 10:00\nBreak\n\n\n10:00 - 10:50\nSection 2\n\n\n10:50 - 11:00\nBreak\n\n\n11:00 - 12:00\nSection 3\n\n\n\n\nPlease add any questions to the public Zoom chat. These may be answered in the moment or addressed at the end depending on context."
+    "text": "This work is licensed under Creative Commons Zero v1.0 Universal.\n\n\n\n\n\nCrystal Lewis\n\n\nShannon Pileggi\n\n\nPeter Higgins\n\n\n\n\n\n\n\n\n\nTaming the Data Beast, by Allison Horst\n\n\nTaming the Data Beast, from Allison Horst’s Data Science Illustrations\n\n\n\n\n\n\n\n\n\n\nTime\nActivity\n\n\n\n\n11:00-11:10\nIntro/Logistics\n\n\n11:10 - 11:55\nCrystal Lewis (Data management best practices)\n\n\n11:55 - 12:00\nBreak\n\n\n12:00 - 12:50\nShannon Pileggi (Data cleaning fundamentals)\n\n\n12:50 - 12:00\nBreak\n\n\n01:00 - 02:00\nPeter Higgins (Data wrangling & reshaping)\n\n\n\n\nPlease add any questions to the public Zoom chat. These may be answered in the moment or addressed at the end depending on context."
   },
   {
     "objectID": "exercises.html#exercise-1",
@@ -452,14 +452,14 @@
     "href": "slides/index.html#deciding-on-the-unit-of-observation",
     "title": "Data Cleaning",
     "section": "Deciding on the Unit of Observation",
-    "text": "Deciding on the Unit of Observation\n\nIn Prospective Data Collection, a patient arrives for a visit. All data collected are part of the same observation/visit.\n\nAlternatively, we can divide a visit into distinct observations, like blood pressure, a PHQ-9 depression questionnaire, and a hemoglobin measurement (all on the same date)\n\nIn retrospective data review, we can divide the observations up as we choose. For inpatient stays, we need to decide a priori on how to handle multiple observations of the same type (e.g., vitals q6h) in the same day.\n\nuse the 0800 observation each day?\nuse the daily average?\nuse the max values each day?"
+    "text": "Deciding on the Unit of Observation\n\nIn Prospective Data Collection, a patient arrives for a visit. All data collected are part of the same observation/visit.\n\nAlternatively, we can divide a visit into distinct observations, like blood pressure, a PHQ-9 depression questionnaire, and a hemoglobin measurement (all on the same date)\n\nIn retrospective data review, we can divide the observations up as we choose. For inpatient stays, we need to decide a priori on how to handle multiple observations of the same type (e.g., vitals q6h) in the same day.\n\nuse the 0800 observation each day?\nuse the daily average for SBP and DBP?\nuse the max values each day?"
   },
   {
     "objectID": "slides/index.html#reshaping-your-data-with-tidyr",
     "href": "slides/index.html#reshaping-your-data-with-tidyr",
     "title": "Data Cleaning",
     "section": "Reshaping your data with tidyr",
-    "text": "Reshaping your data with tidyr\n\nWe often enter data by patient\nSpreadsheets encourage us to enter longitudinal data as long rows (per patient)\nWe end up with wide data\n\n[Image]"
+    "text": "Reshaping your data with tidyr\n\nThe ProblemWide Version of DataTall Version of Data\n\n\n\nWe often enter data by patient\nSpreadsheets encourage us to enter longitudinal data as long rows (per patient)\nWe end up with wide, rather than tall data\n\n\n\n\n\n# A tibble: 6 × 8\n  pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo\n  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 001    upa               3       0      75.5    9.46      73.3    32.0\n2 002    uste              2       1      53.6   31.6       55.7    43.2\n3 003    oza               1       1      25.5   25.5       36.6    36.9\n4 004    upa               3       1      79.4   35.4       80.8    58.7\n5 005    oza               3       2      79.5   57.5       72.5    58.9\n6 006    uste              2       1      54.5   32.5       48.3    34.6\n\n\n\n\n\n\n# A tibble: 180 × 4\n   pat_id treatment measure   score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;\n 1 001    upa       start_mes  3   \n 2 001    upa       end_mes    0   \n 3 001    upa       start_bss 75.5 \n 4 001    upa       end_bss    9.46\n 5 001    upa       start_emo 73.3 \n 6 001    upa       end_emo   32.0 \n 7 002    uste      start_mes  2   \n 8 002    uste      end_mes    1   \n 9 002    uste      start_bss 53.6 \n10 002    uste      end_bss   31.6 \n# ℹ 170 more rows"
   },
   {
     "objectID": "slides/index.html#joins-of-data-from-different-sources",
@@ -606,7 +606,7 @@
     "href": "slides/index.html#reshaping-your-data-with-tidyr-1",
     "title": "Data Cleaning",
     "section": "Reshaping your data with tidyr",
-    "text": "Reshaping your data with tidyr\n\nR (and most R functions) are vectorized to handle tall data\nOne small observation per row\nLots of analyses in R are easier with tall data\n\n[Image]"
+    "text": "Reshaping your data with tidyr\n\nR (and most R functions) are vectorized to handle tall data\nOne small observation per row\nMost analyses in R are easier with tall data\n\n\n\n# A tibble: 180 × 4\n   pat_id treatment measure   score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;\n 1 001    upa       start_mes  3   \n 2 001    upa       end_mes    0   \n 3 001    upa       start_bss 75.5 \n 4 001    upa       end_bss    9.46\n 5 001    upa       start_emo 73.3 \n 6 001    upa       end_emo   32.0 \n 7 002    uste      start_mes  2   \n 8 002    uste      end_mes    1   \n 9 002    uste      start_bss 53.6 \n10 002    uste      end_bss   31.6 \n# ℹ 170 more rows"
   },
   {
     "objectID": "slides/index.html#pivoting-longer",
@@ -634,14 +634,14 @@
     "href": "slides/index.html#pivoting-longer-in-action",
     "title": "Data Cleaning",
     "section": "Pivoting Longer In Action",
-    "text": "Pivoting Longer In Action\n\nProblem: WideCode: pivot_longerResult: Tall\n\n\n\n\n# A tibble: 30 × 8\n   pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo\n   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 001    upa               3       0      75.5    9.46      73.3    32.0\n 2 002    uste              2       1      53.6   31.6       55.7    43.2\n 3 003    oza               1       1      25.5   25.5       36.6    36.9\n 4 004    upa               3       1      79.4   35.4       80.8    58.7\n 5 005    oza               3       2      79.5   57.5       72.5    58.9\n 6 006    uste              2       1      54.5   32.5       48.3    34.6\n 7 007    uste              3       2      79.0   57.0       72.7    63.3\n 8 008    oza               3       2      79.0   57.0       74.6    65.3\n 9 009    upa               2       0      53.1    9.06      54.2    28.0\n10 010    oza               3       1      77.4   33.4       74.4    46.8\n# ℹ 20 more rows\n\n\n\n\n\nwide |&gt; \n  pivot_longer(\n    cols = \"start_mes\":\"end_emo\", \n    # could also use 3:8\n               names_to = \"measure\",\n               values_to = \"score\")\n\n\n\n\n\n# A tibble: 180 × 4\n   pat_id treatment measure   score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;\n 1 001    upa       start_mes  3   \n 2 001    upa       end_mes    0   \n 3 001    upa       start_bss 75.5 \n 4 001    upa       end_bss    9.46\n 5 001    upa       start_emo 73.3 \n 6 001    upa       end_emo   32.0 \n 7 002    uste      start_mes  2   \n 8 002    uste      end_mes    1   \n 9 002    uste      start_bss 53.6 \n10 002    uste      end_bss   31.6 \n# ℹ 170 more rows"
+    "text": "Pivoting Longer In Action\n\nProblem: WideCode: pivot_longerResult: Tall\n\n\n\n\n# A tibble: 30 × 8\n   pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo\n   &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 001    upa               3       0      75.5    9.46      73.3    32.0\n 2 002    uste              2       1      53.6   31.6       55.7    43.2\n 3 003    oza               1       1      25.5   25.5       36.6    36.9\n 4 004    upa               3       1      79.4   35.4       80.8    58.7\n 5 005    oza               3       2      79.5   57.5       72.5    58.9\n 6 006    uste              2       1      54.5   32.5       48.3    34.6\n 7 007    uste              3       2      79.0   57.0       72.7    63.3\n 8 008    oza               3       2      79.0   57.0       74.6    65.3\n 9 009    upa               2       0      53.1    9.06      54.2    28.0\n10 010    oza               3       1      77.4   33.4       74.4    46.8\n# ℹ 20 more rows\n\n\n\n\n\nwide |&gt; \n  pivot_longer(\n    cols = \"start_mes\":\"end_emo\", \n    # could also use 3:8\n               names_to = \"measure\",\n               values_to = \"score\")\n\n\n\n\n\n# A tibble: 180 × 4\n   pat_id treatment measure   score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;\n 1 001    upa       start_mes  3   \n 2 001    upa       end_mes    0   \n 3 001    upa       start_bss 75.5 \n 4 001    upa       end_bss    9.46\n 5 001    upa       start_emo 73.3 \n 6 001    upa       end_emo   32.0 \n 7 002    uste      start_mes  2   \n 8 002    uste      end_mes    1   \n 9 002    uste      start_bss 53.6 \n10 002    uste      end_bss   31.6 \n# ℹ 170 more rows\n\n\n\nDoes this make sense so far?\nZoom reaction: “thumbs up” emoji 👍 if yes\n\n“raised hand” emoji ✋ if puzzled/questions"
   },
   {
     "objectID": "slides/index.html#pivoting-longer-1",
     "href": "slides/index.html#pivoting-longer-1",
     "title": "Data Cleaning",
     "section": "Pivoting Longer",
-    "text": "Pivoting Longer\n\nYour Turn (Exercise) with endo_data\nMeasurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) were taken from biopsies of 3 segments of intestine.\nThis might be affected by portal hypertension in patients with liver cirrhosis\n\n\n\n# A tibble: 10 × 5\n   pat_id portal_htn duod_teer ileal_teer colon_teer\n    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;\n 1      1          1      4.33       14.6       16.2\n 2      2          0     11.7        16.0       19.0\n 3      3          1      4.12       13.8       15.2\n 4      4          1      4.62       16.4       18.1\n 5      5          0     12.4        15.8       19.0\n 6      6          0     13.0        16.2       18.8\n 7      7          0     11.9        15.7       18.3\n 8      8          1      4.87       16.6       18.8\n 9      9          1      4.23       15.0       16.9\n10     10          0     12.8        16.7       19.1"
+    "text": "Pivoting Longer\n\nYour Turn (Exercise) with endo_data\nMeasurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) in biopsies of 3 segments of intestine.\nThis could be affected by portal hypertension in patients with liver cirrhosis\n\n\n\n# A tibble: 10 × 5\n   pat_id portal_htn duod_teer ileal_teer colon_teer\n    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;\n 1      1          1      4.33       14.6       16.2\n 2      2          0     11.7        16.0       19.0\n 3      3          1      4.12       13.8       15.2\n 4      4          1      4.62       16.4       18.1\n 5      5          0     12.4        15.8       19.0\n 6      6          0     13.0        16.2       18.8\n 7      7          0     11.9        15.7       18.3\n 8      8          1      4.87       16.6       18.8\n 9      9          1      4.23       15.0       16.9\n10     10          0     12.8        16.7       19.1"
   },
   {
     "objectID": "slides/index.html#pivoting-wider-1",
@@ -676,7 +676,7 @@
     "href": "slides/index.html#one-minor-issue---separation-of-measure",
     "title": "Data Cleaning",
     "section": "One Minor Issue - Separation of measure",
-    "text": "One Minor Issue - Separation of measure\n\nProblemCodeResultAlternative within pivot_longer\n\n\n\nthe “measure” column combines a timepoint and the measure\nNeeds to be separated.\nYou already know how to use separate()\nArguments\n\ncol\nsep\ninto\n\n\n\n\n\ntall |&gt; \n  separate(col = \"measure\",\n           sep = \"_\",\n           into = c(\"timept\", \"measure\"))\n\n\n\n\n\n# A tibble: 180 × 5\n   pat_id treatment timept measure score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;\n 1 001    upa       start  mes      3   \n 2 001    upa       end    mes      0   \n 3 001    upa       start  bss     75.5 \n 4 001    upa       end    bss      9.46\n 5 001    upa       start  emo     73.3 \n 6 001    upa       end    emo     32.0 \n 7 002    uste      start  mes      2   \n 8 002    uste      end    mes      1   \n 9 002    uste      start  bss     53.6 \n10 002    uste      end    bss     31.6 \n# ℹ 170 more rows\n\n\n\n\n\nYou can do this within pivot_longer with one more argument (if you are fancy)\n\n\nwide |&gt; \n  pivot_longer(cols = 3:8,\n    names_to = c(\"timept\", \"measure\"),\n    names_sep = \"_\",\n    values_to = \"score\")\n\n# A tibble: 180 × 5\n   pat_id treatment timept measure score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;\n 1 001    upa       start  mes      3   \n 2 001    upa       end    mes      0   \n 3 001    upa       start  bss     75.5 \n 4 001    upa       end    bss      9.46\n 5 001    upa       start  emo     73.3 \n 6 001    upa       end    emo     32.0 \n 7 002    uste      start  mes      2   \n 8 002    uste      end    mes      1   \n 9 002    uste      start  bss     53.6 \n10 002    uste      end    bss     31.6 \n# ℹ 170 more rows"
+    "text": "One Minor Issue - Separation of measure\n\nProblemCodeResultAlternative within pivot_longer\n\n\n\nthe “measure” column combines a timepoint and the measure\nNeeds to be separated.\nYou already know how to use separate()\nArguments\n\ncol\nsep\ninto\n\n\n\n\n\ntall |&gt; \n  separate(col = \"measure\",\n           sep = \"_\",\n           into = c(\"timept\", \"measure\"))\n\n\n\n\n\n# A tibble: 180 × 5\n   pat_id treatment timept measure score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;\n 1 001    upa       start  mes      3   \n 2 001    upa       end    mes      0   \n 3 001    upa       start  bss     75.5 \n 4 001    upa       end    bss      9.46\n 5 001    upa       start  emo     73.3 \n 6 001    upa       end    emo     32.0 \n 7 002    uste      start  mes      2   \n 8 002    uste      end    mes      1   \n 9 002    uste      start  bss     53.6 \n10 002    uste      end    bss     31.6 \n# ℹ 170 more rows\n\n\n\n\n\nYou can do this within pivot_longer with one more argument (if you are fancy)\n\n\n\n\nwide |&gt; \n  pivot_longer(cols = 3:8,\n    names_to = c(\"timept\", \"measure\"),\n    names_sep = \"_\",\n    values_to = \"score\")\n\n\n\n\n# A tibble: 180 × 5\n   pat_id treatment timept measure score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;\n 1 001    upa       start  mes      3   \n 2 001    upa       end    mes      0   \n 3 001    upa       start  bss     75.5 \n 4 001    upa       end    bss      9.46\n 5 001    upa       start  emo     73.3 \n 6 001    upa       end    emo     32.0 \n 7 002    uste      start  mes      2   \n 8 002    uste      end    mes      1   \n 9 002    uste      start  bss     53.6 \n10 002    uste      end    bss     31.6 \n# ℹ 170 more rows"
   },
   {
     "objectID": "slides/index.html#doing-the-pivot_longer",
@@ -690,14 +690,14 @@
     "href": "slides/index.html#pivoting-longer-with-endo_data",
     "title": "Data Cleaning",
     "section": "Pivoting Longer with endo_data",
-    "text": "Pivoting Longer with endo_data\n\nThe DatasetThe ArgumentsThe CodeThe Solution\n\n\n\n\n# A tibble: 10 × 5\n   pat_id portal_htn duod_teer ileal_teer colon_teer\n    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;\n 1      1          1      4.33       14.6       16.2\n 2      2          0     11.7        16.0       19.0\n 3      3          1      4.12       13.8       15.2\n 4      4          1      4.62       16.4       18.1\n 5      5          0     12.4        15.8       19.0\n 6      6          0     13.0        16.2       18.8\n 7      7          0     11.9        15.7       18.3\n 8      8          1      4.87       16.6       18.8\n 9      9          1      4.23       15.0       16.9\n10     10          0     12.8        16.7       19.1\n\n\n\n\n\nWhat values do you want to use for:\n\ncols\nnames_pattern = “(.+)_teer”\nnames_to\nvalues_to\n\nNote that we are giving you the value for names_pattern, which means that we want to keep the characters of the name (of whatever length) before “_teer”\n\n\n\n\nFill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.\nNote that we are giving you names_pattern\n\n\nendo_data |&gt; \n  pivot_longer(\n    cols =  ,\n    names_pattern = \"(.+)_teer\",\n    names_to =   ,\n    values_to = \n  )\n\n\n\n\nFill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.\n\n\nendo_data |&gt; \n  pivot_longer(\n    cols = \"duod_teer\":\"colon_teer\",\n    names_pattern = \"(.+)_teer\",\n    names_to = c(\"location\"),\n    values_to = \"teer\"\n  )\n\n\nRun the code, and look at the resulting table.\nDo you think that portal hypertension has an effect on TEER and (its inverse) epithelial leakiness?"
+    "text": "Pivoting Longer with endo_data\n\nDatasetArgumentsCodeSolutionResult\n\n\n\n\n# A tibble: 10 × 5\n   pat_id portal_htn duod_teer ileal_teer colon_teer\n    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;\n 1      1          1      4.33       14.6       16.2\n 2      2          0     11.7        16.0       19.0\n 3      3          1      4.12       13.8       15.2\n 4      4          1      4.62       16.4       18.1\n 5      5          0     12.4        15.8       19.0\n 6      6          0     13.0        16.2       18.8\n 7      7          0     11.9        15.7       18.3\n 8      8          1      4.87       16.6       18.8\n 9      9          1      4.23       15.0       16.9\n10     10          0     12.8        16.7       19.1\n\n\n\n\n\nWhat values do you want to use for:\n\ncols\nnames_pattern = “(.+)_teer”\nnames_to\nvalues_to\n\nNote that we are giving you the value for names_pattern, which means that we want to keep the characters of the name (of whatever length) before “_teer”\n\n\n\n\nFill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.\nNote that we are giving you names_pattern\n\n\nendo_data |&gt; \n  pivot_longer(\n    cols =  ,\n    names_pattern = \"(.+)_teer\",\n    names_to =   ,\n    values_to = \n  )\n\n\n\n\nFill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.\n\n\nendo_data |&gt; \n  pivot_longer(\n    cols = \"duod_teer\":\"colon_teer\",\n    names_pattern = \"(.+)_teer\",\n    names_to = c(\"location\"),\n    values_to = \"teer\"\n  )\n\n\nRun the code, and look at the resulting table.\n\n\n\n\n\n# A tibble: 30 × 4\n   pat_id portal_htn location  teer\n    &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;\n 1      1          1 duod      4.33\n 2      1          1 ileal    14.6 \n 3      1          1 colon    16.2 \n 4      2          0 duod     11.7 \n 5      2          0 ileal    16.0 \n 6      2          0 colon    19.0 \n 7      3          1 duod      4.12\n 8      3          1 ileal    13.8 \n 9      3          1 colon    15.2 \n10      4          1 duod      4.62\n# ℹ 20 more rows\n\n\n\nDo you think that portal hypertension has an effect on TEER and (its inverse) epithelial leakiness?"
   },
   {
     "objectID": "slides/index.html#thickening-time-to-a-usable-level",
     "href": "slides/index.html#thickening-time-to-a-usable-level",
     "title": "Data Cleaning",
     "section": "Thickening Time to a Usable Level",
-    "text": "Thickening Time to a Usable Level\n\nGoalCodeResult\n\n\n\nThe thicken function adds a column to a data frame that is of a higher interval than the original variable.\nThe variable time_stamp has the interval of seconds\nWe can thicken the data to day, or to week, or to month.\nThen we can count events by a usable unit of time\n\n\n\n\nWe will thicken to month\nThen count overdoses by month\n\n\nemergency |&gt; \n  thicken('month') |&gt; \n  filter(str_detect(title, \"OVERDOSE\")) |&gt;   group_by(time_stamp_month) |&gt; \n  mutate(ods = sum(str_detect(title, \"OVERDOSE\"))) |&gt; \n    select(time_stamp_month, ods) |&gt; \n  distinct()\n\n\n\n\nThis lets us count events like overdoses by month with time_stamp_month.\n\n\n\n# A tibble: 11 × 2\n# Groups:   time_stamp_month [11]\n   time_stamp_month   ods\n   &lt;date&gt;           &lt;int&gt;\n 1 2015-12-01          91\n 2 2016-01-01         135\n 3 2016-02-01         141\n 4 2016-03-01         161\n 5 2016-04-01         124\n 6 2016-05-01         149\n 7 2016-06-01         140\n 8 2016-07-01         147\n 9 2016-08-01         137\n10 2016-09-01         171\n11 2016-10-01          95"
+    "text": "Thickening Time to a Usable Level\n\nGoalCodeResultPlot Monthly\n\n\n\nThe thicken function adds a column to a data frame that is of a higher interval than the original variable.\nThe variable time_stamp has the interval of seconds\nWe can thicken the data to day, or to week, or to month.\nThen we can count events by a usable unit of time\n\n\n\n\nWe will thicken to month\nThen count overdoses by month\n\n\nemergency |&gt; \n  thicken('month') |&gt; \n  filter(str_detect(title, \"OVERDOSE\")) |&gt;   group_by(time_stamp_month) |&gt; \n  mutate(ods = sum(str_detect(title, \"OVERDOSE\"))) |&gt; \n    select(time_stamp_month, ods) |&gt; \n  distinct()\n\n\n\n\nThis lets us count events like overdoses by month with time_stamp_month.\n\n\n\n# A tibble: 11 × 2\n# Groups:   time_stamp_month [11]\n   time_stamp_month   ods\n   &lt;date&gt;           &lt;int&gt;\n 1 2015-12-01          91\n 2 2016-01-01         135\n 3 2016-02-01         141\n 4 2016-03-01         161\n 5 2016-04-01         124\n 6 2016-05-01         149\n 7 2016-06-01         140\n 8 2016-07-01         147\n 9 2016-08-01         137\n10 2016-09-01         171\n11 2016-10-01          95\n\n\n\n\n\n\nby_month |&gt; \n  ggplot(aes(x = time_stamp_month,\n             y = ods)) +\n  geom_point(size = 3, color = \"red\") +\n  geom_line() +\n  labs(y = \"Overdoses Per Month\",\n       x = \"Month\",\n  title = \"Monthly Overdose Calls\") +\n  theme_linedraw(base_size = 20) +\n  ylim(0,175)"
   },
   {
     "objectID": "slides/index.html#padding-unobserved-times",
@@ -711,7 +711,7 @@
     "href": "slides/index.html#local-demographics-with-cdc-svi-data",
     "title": "Data Cleaning",
     "section": "Local Demographics with CDC SVI data",
-    "text": "Local Demographics with CDC SVI data\n\nThe ProblemThe DataThe CodeThe Result\n\n\n\n\n\nWe have 2 datasets, one local Demographics and Census Tract, and one from the CDC that has values for Social Vulnerability Index by Census Tract\nWe want to know the median SVI for the neighborhood of each patient\nWe need to left_join these datasets together by matching on the Census Tract\n\n\n\n\n\nJoins\n\n\n\n\n\n\n\nWhat is the common uniqid/key?\n\n\n\n\ndemo\n\n\n\n# A tibble: 9 × 4\n  pat_id name                 htn census_tract\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;        &lt;dbl&gt;\n1 001    Arthur Blankenship     0  26161404400\n2 002    Britney Jonas          0  26161405100\n3 003    Sally Davis            1  26161402100\n4 004    Al Jones               0  26161403200\n5 005    Gary Hamill            1  26161405200\n6 006    Ken Bartoletti         0  26161404500\n7 007    Ike Gerhold            0  26161405600\n8 008    Tatiana Grant          0  26161404300\n9 009    Antione Delacroix      1  26161405500\n\n\n\n\ncdc\n\n\n\n# A tibble: 9 × 2\n  census_tract   svi\n         &lt;dbl&gt; &lt;dbl&gt;\n1  26161404400  0.12\n2  26161405100  0.67\n3  26161402100  0.43\n4  26161403200  0.07\n5  26161405200  0.71\n6  26161404500  0.23\n7  26161405600  0.27\n8  26161404300  0.21\n9  26161405500  0.62\n\n\n\n\n\n\n\nReplace the arguments to join the demographic data (demo) on the left to add Social Vulnerability index (svi) from the cdc dataset on the RHS. Left join by census tract.\n\n\nleft_join(dataset_x, dataset_y, by = \"key\")\n\n\n\n\nIs there an association between social vulnerability and hypertension?\n\n\n\n# A tibble: 9 × 5\n  pat_id name                 htn census_tract   svi\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;\n1 001    Arthur Blankenship     0  26161404400  0.12\n2 002    Britney Jonas          0  26161405100  0.67\n3 003    Sally Davis            1  26161402100  0.43\n4 004    Al Jones               0  26161403200  0.07\n5 005    Gary Hamill            1  26161405200  0.71\n6 006    Ken Bartoletti         0  26161404500  0.23\n7 007    Ike Gerhold            0  26161405600  0.27\n8 008    Tatiana Grant          0  26161404300  0.21\n9 009    Antione Delacroix      1  26161405500  0.62"
+    "text": "Local Demographics with CDC SVI data\n\nThe ProblemThe DataThe CodeThe SolutionThe Result\n\n\n\n\n\nWe have 2 datasets, one local Demographics and Census Tract, and one from the CDC that has values for Social Vulnerability Index by Census Tract\nWe want to know the median SVI for the neighborhood of each patient\nWe need to left_join these datasets together by matching on the Census Tract\n\n\n\n\n\n\n\n\nWhat is the common uniqid/key?\n\n\n\n\ndemo\n\n\n\n# A tibble: 9 × 4\n  pat_id name                 htn census_tract\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;        &lt;dbl&gt;\n1 001    Arthur Blankenship     0  26161404400\n2 002    Britney Jonas          0  26161405100\n3 003    Sally Davis            1  26161402100\n4 004    Al Jones               0  26161403200\n5 005    Gary Hamill            1  26161405200\n6 006    Ken Bartoletti         0  26161404500\n7 007    Ike Gerhold            0  26161405600\n8 008    Tatiana Grant          0  26161404300\n9 009    Antione Delacroix      1  26161405500\n\n\n\n\ncdc\n\n\n\n# A tibble: 9 × 2\n  census_tract   svi\n         &lt;dbl&gt; &lt;dbl&gt;\n1  26161404400  0.12\n2  26161405100  0.67\n3  26161402100  0.43\n4  26161403200  0.07\n5  26161405200  0.71\n6  26161404500  0.23\n7  26161405600  0.27\n8  26161404300  0.21\n9  26161405500  0.62\n\n\n\n\n\n\n\nReplace the generic arguments to the left_join function to join the demographic data (demo) on the left to add Social Vulnerability index (svi) from the cdc dataset on the RHS. Left join by census tract.\n\n\nleft_join(dataset_x, dataset_y, by = \"key\")\n\n\n\n\nleft_join(demo, cdc, by = \"census_tract\")\n\n\n\n\nIs there an association between social vulnerability and hypertension?\n\n\n\n# A tibble: 9 × 5\n  pat_id name                 htn census_tract   svi\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;\n1 001    Arthur Blankenship     0  26161404400  0.12\n2 002    Britney Jonas          0  26161405100  0.67\n3 003    Sally Davis            1  26161402100  0.43\n4 004    Al Jones               0  26161403200  0.07\n5 005    Gary Hamill            1  26161405200  0.71\n6 006    Ken Bartoletti         0  26161404500  0.23\n7 007    Ike Gerhold            0  26161405600  0.27\n8 008    Tatiana Grant          0  26161404300  0.21\n9 009    Antione Delacroix      1  26161405500  0.62"
   },
   {
     "objectID": "slides/index.html#pipes",
@@ -732,14 +732,14 @@
     "href": "slides/index.html#namespacing",
     "title": "Data Cleaning",
     "section": "Namespacing",
-    "text": "Namespacing\ndplyr::select()\n\ntells R explicitly to use the function select from the package dplyr\ncan help to avoid name conflicts (e.g., MASS::select())\ndoes not require library(dplyr)\n\n\n\n\n\nlibrary(dplyr)\n\nselect(mtcars, mpg, cyl) \n\nmtcars |&gt;  \n  select(mpg, cyl) \n\n\n\n\n\n# library(dplyr) not needed\n\ndplyr::select(mtcars, mpg, cyl) \n\nmtcars |&gt;  \n  dplyr::select(mpg, cyl)"
+    "text": "Namespacing\npackage::function()\ndplyr::select()\n\ntells R explicitly to use the function select from the package dplyr\ncan help to avoid name conflicts (e.g., MASS::select())\ndoes not require library(dplyr)\n\n\n\n\n\nlibrary(dplyr)\n\nselect(mtcars, mpg, cyl) \n\nmtcars |&gt;  \n  select(mpg, cyl) \n\n\n\n\n\n# library(dplyr) not needed\n\ndplyr::select(mtcars, mpg, cyl) \n\nmtcars |&gt;  \n  dplyr::select(mpg, cyl)"
   },
   {
     "objectID": "exercises.html#set-up",
     "href": "exercises.html#set-up",
     "title": "Data Cleaning: Exercises",
     "section": "Set up",
-    "text": "Set up\n\n# import raw data\ndf_raw &lt;- read_excel(\n  path = here(\"data\", \"messy_uc.xlsx\"),\n  sheet = \"Data\",\n  skip = 5\n)\n\n# do initial cleaning of variable names and removing empty rows/columns\ndf_clean &lt;- df_raw |&gt; \n  janitor::clean_names() |&gt; \n  janitor::remove_empty(which = c(\"rows\", \"cols\"))"
+    "text": "Set up\n\n# do initial cleaning of variable names and removing empty rows/columns\ndf_clean &lt;- df_raw |&gt; \n  janitor::clean_names() |&gt; \n  janitor::remove_empty(which = c(\"rows\", \"cols\"))"
   },
   {
     "objectID": "exercises.html#sp1",
@@ -767,14 +767,14 @@
     "href": "exercises.html#cl1",
     "title": "Data Cleaning: Exercises",
     "section": "CL1",
-    "text": "CL1"
+    "text": "CL1\n\nImport messy_uc.xlsx using readxl::read_excel()\n\n\n# import raw data\ndf_raw &lt;- read_excel(\n  path = \"data/messy_uc.xlsx\",\n  sheet = \"Data\",\n  skip = 5\n)"
   },
   {
     "objectID": "exercises.html#cl2",
     "href": "exercises.html#cl2",
     "title": "Data Cleaning: Exercises",
     "section": "CL2",
-    "text": "CL2"
+    "text": "CL2\n\nUse an exploratory function to review the data.\n\n\n\nShow the code solution\ndplyr::glimpse(df_raw)\n\nskimr::skim(df_raw)\n\nbase::summary(df_raw)\n\nvisdat::vis_dat(df_raw)\n\nsummarytools::view(summarytools::dfSummary(df_raw))\n\nDataExplorer::create_report(df_raw)\n\nHmisc::describe(df_raw)"
   },
   {
     "objectID": "exercises.html#sp3",
@@ -802,28 +802,28 @@
     "href": "slides/index.html#exercise",
     "title": "Data Cleaning",
     "section": "Exercise",
-    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP1.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+    "text": "Exercise\nWhat data structure issues do you notice in our sample data?\n\n\n\n\n−+\n01:00\n\n\n\n\nSo let’s do a quick exercise. Take one minute to review this messy data and look for any structure issues going on here. And by structure I mean review both how the rows and columns are laid out as well as variable names. If you find any errors, type them in the chat."
   },
   {
     "objectID": "slides/index.html#exercise-1",
     "href": "slides/index.html#exercise-1",
     "title": "Data Cleaning",
     "section": "Exercise",
-    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP2.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+    "text": "Exercise\nWhat variable value issues do you notice in our sample data?\n\n\n\n\n−+\n01:00"
   },
   {
     "objectID": "slides/index.html#exercise-2",
     "href": "slides/index.html#exercise-2",
     "title": "Data Cleaning",
     "section": "Exercise",
-    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP3.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+    "text": "Exercise\nWhat is the R class for the following variables?\n\nvar1var1 typevar2var2 typevar3var3 type\n\n\n\n\n[1] \" 7.5\" \"2\"    \"3.6\" \n\n\n\n\n\nclass(var1)\n\n[1] \"character\"\n\n\n\n\n\n\n[1] medium medium low    high   low   \nLevels: low medium high\n\n\n\n\n\nclass(var2)\n\n[1] \"factor\"\n\n\n\n\n\n\n[1] \"50kg\" \"59kg\" \"82kg\"\n\n\n\n\n\nclass(var3)\n\n[1] \"character\""
   },
   {
     "objectID": "slides/index.html#exercise-ph1",
     "href": "slides/index.html#exercise-ph1",
     "title": "Data Cleaning",
     "section": "Exercise PH1",
-    "text": "Exercise PH1\n\nComplete Data Cleaning Fundamentals Exercise PH1.\n\nIf you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji on your screen.\nIf you are having trouble, click on the Reactions tab in Zoom, and click to put the “raise hand” emoji on your screen.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n03:00"
+    "text": "Exercise PH1\n\nComplete Data Cleaning Fundamentals Exercise PH1.\n\nDo This in Posit Cloud\nIf you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji 👍 on your screen.\nIf you are having trouble, click on the Reactions tab in Zoom, and click to put the “raised hand” emoji ✋ on your screen.\n\n–&gt; Take me to the exercise solution &lt;–\n\n\n\n\n−+\n03:00"
   },
   {
     "objectID": "slides/index.html#patient-demographics-with-lab-results-yout-turn-to-join",
@@ -844,14 +844,14 @@
     "href": "slides/index.html#your-turn-to-join-1",
     "title": "Data Cleaning",
     "section": "Your Turn to Join",
-    "text": "Your Turn to Join\n\nThe ProblemThe CodeThe Result\n\n\n\nJoining demo to pot with a left_join\nleft_join(data_x, data_y, by = “uniqid”)\n\n\n\n\nreplace the arguments with the correct ones to join demo to pot and produce new_data.\n\n\nnew_data &lt;- left_join(data_x, data_y, by = \"uniqid\")\nnew_data\n\n\n\n\n\n# A tibble: 9 × 4\n  pat_id name                 age     k\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt;\n1 001    Arthur Blankenship    67   3.2\n2 002    Britney Jonas         23   3.7\n3 003    Sally Davis           63   4.2\n4 004    Al Jones              44   4.4\n5 005    Gary Hamill           38   4.1\n6 006    Ken Bartoletti        33   4  \n7 007    Ike Gerhold           52   3.6\n8 008    Tatiana Grant         42   4.2\n9 009    Antione Delacroix     27   4.9"
+    "text": "Your Turn to Join\n\nThe ProblemThe CodeThe Result\n\n\n\nJoining demo to pot with a left_join\nleft_join(data_x, data_y, by = “uniqid”)\n\n\n\n\nreplace the generic arguments below with the correct ones to join demo to pot and produce new_data.\n\n\nnew_data &lt;- left_join(data_x, data_y, by = \"uniqid\")\nnew_data\n\n\n\n\n\n# A tibble: 9 × 4\n  pat_id name                 age     k\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt;\n1 001    Arthur Blankenship    67   3.2\n2 002    Britney Jonas         23   3.7\n3 003    Sally Davis           63   4.2\n4 004    Al Jones              44   4.4\n5 005    Gary Hamill           38   4.1\n6 006    Ken Bartoletti        33   4  \n7 007    Ike Gerhold           52   3.6\n8 008    Tatiana Grant         42   4.2\n9 009    Antione Delacroix     27   4.9"
   },
   {
     "objectID": "slides/index.html#exercise-ph2",
     "href": "slides/index.html#exercise-ph2",
     "title": "Data Cleaning",
     "section": "Exercise PH2",
-    "text": "Exercise PH2\n\nComplete Data Cleaning Fundamentals Exercise PH2.\n–&gt; Take me to the exercises &lt;–\n\nIf you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji on your screen.\nIf you are having trouble, click on the Reactions tab in Zoom, and click to put the “raise hand” emoji on your screen.\n\n\n\n\n−+\n03:00"
+    "text": "Exercise PH2\n\nComplete Data Cleaning Fundamentals Exercise PH2.\n\nDo This in Posit Cloud\nIf you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji 👍 on your screen.\nIf you are having trouble, click on the Reactions tab in Zoom, and click to put the “raised hand” emoji ✋ on your screen.\n\n–&gt; Take me to the exercise &lt;–\n\n\n\n−+\n03:00"
   },
   {
     "objectID": "slides/index.html#solution-ph2",
@@ -865,14 +865,14 @@
     "href": "slides/index.html#now-add-creatinine-cr-to-new_data",
     "title": "Data Cleaning",
     "section": "Now add Creatinine (cr) to new_data",
-    "text": "Now add Creatinine (cr) to new_data\n\nThe ProblemThe CodeThe Result\n\n\n\nJoining new_data and cr with a left_join\nleft_join(data_x, data_y, by = “uniqid”)\n\n\n\n\nReplace the arguments with the correct ones to join new_data and cr and produce new_data2.\n\n\nnew_data2 &lt;- left_join(data_x, data_y, by = \"uniqid\")\nnew_data2\n\n\n\n\n\n# A tibble: 9 × 5\n  pat_id name                 age     k    cr\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 001    Arthur Blankenship    67   3.2   0.2\n2 002    Britney Jonas         23   3.7   0.5\n3 003    Sally Davis           63   4.2   0.9\n4 004    Al Jones              44   4.4   1.5\n5 005    Gary Hamill           38   4.1   0.7\n6 006    Ken Bartoletti        33   4     0.9\n7 007    Ike Gerhold           52   3.6   0.7\n8 008    Tatiana Grant         42   4.2   1  \n9 009    Antione Delacroix     27   4.9   1.7"
+    "text": "Now add Creatinine (cr) to new_data\n\nThe ProblemThe CodeThe SolutionThe Result\n\n\n\nJoining new_data and cr with a left_join\nleft_join(data_x, data_y, by = “uniqid”)\n\n\n\n\nReplace the generic arguments with the correct ones to join new_data and cr and produce new_data2.\n\n\nnew_data2 &lt;- left_join(data_x, data_y, by = \"uniqid\")\nnew_data2\n\n\n\n\nnew_data2 &lt;- left_join(new_data, cr, by = \"pat_id\")\nnew_data2\n\n\n\n\n\n# A tibble: 9 × 5\n  pat_id name                 age     k    cr\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 001    Arthur Blankenship    67   3.2   0.2\n2 002    Britney Jonas         23   3.7   0.5\n3 003    Sally Davis           63   4.2   0.9\n4 004    Al Jones              44   4.4   1.5\n5 005    Gary Hamill           38   4.1   0.7\n6 006    Ken Bartoletti        33   4     0.9\n7 007    Ike Gerhold           52   3.6   0.7\n8 008    Tatiana Grant         42   4.2   1  \n9 009    Antione Delacroix     27   4.9   1.7\n\n\n\nAl has HTN and DM2\nAntoine has early stage FSGS"
   },
   {
     "objectID": "slides/index.html#exercise-ph3",
     "href": "slides/index.html#exercise-ph3",
     "title": "Data Cleaning",
     "section": "Exercise PH3",
-    "text": "Exercise PH3\n\nComplete Data Cleaning Fundamentals Exercise PH3.\n–&gt; Take me to the exercises &lt;–\n\nIf you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji on your screen.\nIf you are having trouble, click on the Reactions tab in Zoom, and click to put the “raise hand” emoji on your screen.\n\n\n\n\n−+\n03:00"
+    "text": "Exercise PH3\n\nComplete Data Cleaning Fundamentals Exercise PH3.\n–&gt; Take me to the exercises &lt;–\n\nIf you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the “thumbs up” emoji 👍 on your screen.\nIf you are having trouble, click on the Reactions tab in Zoom, and click to put the “raise hand” emoji ✋ on your screen.\n\n\n\n\n−+\n03:00"
   },
   {
     "objectID": "slides/index.html#patient-demographics-with-lab-results-your-turn-to-join",
@@ -887,5 +887,383 @@
     "title": "Data Cleaning",
     "section": "Other Fancy Joins",
     "text": "Other Fancy Joins\n\nleft_join is your workhorse. Start with patient identifiers/uniqid and add data to the right side.\nSometimes you will need to wrangle/process incoming data, then right_join it to the patient demographics\nThere are multiple kinds of fancy joins (semi_join, anti_join, inner_join, full_join) which come in handy once in a while.+\nThese are all well explained here"
+  },
+  {
+    "objectID": "slides/index.html#data-horror-stories",
+    "href": "slides/index.html#data-horror-stories",
+    "title": "Data Cleaning",
+    "section": "Data Horror Stories",
+    "text": "Data Horror Stories\n\n\n\n\n\n\nSo I imagine that many of you, at some point in your career, have received a spreadsheet that looks like this\nAnd upon receiving those spreadsheets, you probably felt something like this."
+  },
+  {
+    "objectID": "slides/index.html#data-horror-stories-1",
+    "href": "slides/index.html#data-horror-stories-1",
+    "title": "Data Cleaning",
+    "section": "Data Horror Stories",
+    "text": "Data Horror Stories\n\n\nImage from knowyourmeme.com\n\n\nJust defeated. Because you know that you now are going to have to spend hours and hours of time cleaning those spreadsheets before they can be used in your work. And that is what today is about. We are going to first provide you a foundational understanding for how data SHOULD be organized, we will briefly discuss how if at all possible, you want to correct messy data at the source, and then last, the meat of this presentation will include a review of various R functions that will help you quickly and efficiently turn a very messy dataset into a tidy and useable one."
+  },
+  {
+    "objectID": "slides/index.html#data-organizing-principles",
+    "href": "slides/index.html#data-organizing-principles",
+    "title": "Data Cleaning",
+    "section": "Data Organizing Principles",
+    "text": "Data Organizing Principles\n\n\n\n\nData Structure\nVariable Values\n\n\n\nVariable Types\nMissing Data\n\n\n\n\n\nSo first we are going to talk about data organizing principles associated with 4 practices. And by reviewing these principles, my hope is that we will all have a shared understanding of how data SHOULD be organized and that understanding will help you to strategically plan for how you should wrangle those messy datasets."
+  },
+  {
+    "objectID": "slides/index.html#data-structure",
+    "href": "slides/index.html#data-structure",
+    "title": "Data Cleaning",
+    "section": "Data Structure",
+    "text": "Data Structure\n\nData should make a rectangle of rows and columns\n\nYou should have the expected number of rows (cases in your data)\nYou should have the expected number of columns (variables in your data)\n\n\n\n\nAnd at the intersection of those rows and columns are cells filled with values\nYou should have no more or no less than you expect. And when I say “expect”, hopefully have some idea of what should exist in your data. Either you collected it yourself so you have an idea, or you have been given a codebook or data dictionary that tells you what should exist in the data.\n- Extra columns in your data may mean that you have empty columns or unexpected variables in your data  \n- Extra rows could mean you have duplicate or empty rows in your data  \n- Less columns in your data means you might be missing variables  \n- Less rows in your data means you may be missing cases  \nAnd these are things that need to be remedied in our data cleaning process"
+  },
+  {
+    "objectID": "slides/index.html#data-structure-1",
+    "href": "slides/index.html#data-structure-1",
+    "title": "Data Cleaning",
+    "section": "Data Structure",
+    "text": "Data Structure\n\nVariable names should be the first, and only the first, row of your data\n\nThey should also adhere to variable name best practices\n\nMake variable names meaningful (gender instead of X1)\nDon’t start with a number\nNo spaces in variable names\nNo special characters except _\n\nSo no /, -, !, \"\n\n\n\n\n\nThese aren’t just arbitrary practices. They serve a purpose.\n- First, they make your variable names more interpretable and easier to work with  \n- They also make your variables more compatiable with languages such as R. For instance, R does not allow variable names to start with numbers. It will give you an error if you do this."
+  },
+  {
+    "objectID": "slides/index.html#data-structure-2",
+    "href": "slides/index.html#data-structure-2",
+    "title": "Data Cleaning",
+    "section": "Data Structure",
+    "text": "Data Structure\n\nVariable names are not the first row of the data\nOur data does not make a rectangle - Empty column, empty rows\nVariable names do not adhere to best practices"
+  },
+  {
+    "objectID": "slides/index.html#variable-values",
+    "href": "slides/index.html#variable-values",
+    "title": "Data Cleaning",
+    "section": "Variable Values",
+    "text": "Variable Values\n\nValues should be explicit, not implicit\n\nIf a blank cell is implied to be zero, fill that cell with an actual zero\nNo color coding should be used to indicate information. Make a new variable.\n\n\n\n\nValues should be analyzable. This means no more than one measure should be captured in a variable.\n\n\n\n\nVariables should be captured consistently within a column\n\nDates captured consistently (i.e. YYYY-MM-DD)\nCategories captured consistently (both spelling and capitalization)\nIf the variable is numeric, values should fall within your expected range\n\n\n\n\nWe don’t ever want anyone to have to guess what a cell value means\n\n\nIf you are color coding a variable in order to indicate treatment, instead make a treatment variable and add the values to that variable\n\n\nSo for instance, we don’t want both weight and height in the same variable. It would be very difficult to analyze a variable with combined information. We would want to split this information into two columns.\nPick a format and stick to it\n\n\nFor instance if you could make a decision to always capture dates in this ISO 8601 standardized format\nSo if you’re capture gender, you always want to spell male the same way, always want to spell female the same way. This allows your data to be easily categorized.\nSo if the range for a variable is 1-50, you shouldn’t see values outside of that range"
+  },
+  {
+    "objectID": "slides/index.html#variable-values-1",
+    "href": "slides/index.html#variable-values-1",
+    "title": "Data Cleaning",
+    "section": "Variable Values",
+    "text": "Variable Values\n\nColor coding used to indicate information\nTwo things measured in one column\nCategorical values captured inconsistently"
+  },
+  {
+    "objectID": "slides/index.html#variable-types",
+    "href": "slides/index.html#variable-types",
+    "title": "Data Cleaning",
+    "section": "Variable Types",
+    "text": "Variable Types\nVariables should be stored as your expected type (or in R terms - class)\n\n\nNumeric\n\nContain numeric values (14.5, 14.539, 789, -24)\nNumeric variables cannot contain special characters, spaces, or letters\n\n100mg\n83/150\n” 89”\n\n\n\n\n\n\nDate, Time, Date-Time\n\nRepresented in R as either &lt;date&gt;, &lt;time&gt; or &lt;dttm&gt;/&lt;POSIXct&gt;\nAllow you to perform calculations on dates\n\n\n\nIn R, type actually refers to how the variable is stored. Here we are more concerned about the abstract type that tells us how we can actually use the variable for analyses and so forth. And in R, that’s actually called variable class.\nSo let’s review a few of these variable classes.\n\nIf your variable contains non-numeric values, the class will be character. And you will no longer be able to perform calculations on your numeric variable, so no means, ranges, etc.\nBecause of the way dates are stored in R, they allow you to perform calculations using your dates, which is cool. You can add dates, subtract dates, etc. So as long as your dates are stored as dates, then we are good. However, if your dates are stored as character values, you will not be able to perform calculations on your dates.\n\nIt’s important to check your date types when you read in your data. While sometimes they are read in as dates, othertimes they may be read in as character values or numeric values and it’s important to be aware of this."
+  },
+  {
+    "objectID": "slides/index.html#variable-types-1",
+    "href": "slides/index.html#variable-types-1",
+    "title": "Data Cleaning",
+    "section": "Variable Types",
+    "text": "Variable Types\n\nCharacter\n\nContain character values or strings (“kg”, “R in Medicine”, “11.5”, “5mg”)\n\n\n\n\nFactor\n\nA special class of variables, helpful when working with categorical or ordinal variables\nFactors assign an order to your variable groups\nYou must assign this class to your variables\nYou can learn more about working with factors in this article: https://peerj.com/preprints/3163/\n\n\n\n\nYou can even store numbers as characters\nVery useful for ordering your groups in tables, graphs, or models\n\nSo when you read in your data, your character variables will not automatically be assigned as factors. You need to assign this class yourself.\nIf anyone remembers the controversial default of strings as factors = TRUE from the old days, then you probably already know what I’m talking about\nJust a warning, factors can be a little tricky to work with, especially when converting from factor back to a numeric variable. You can learn more about working with factors in this article from Amelia McNamara and Nicholas Horton."
+  },
+  {
+    "objectID": "slides/index.html#exercise-3",
+    "href": "slides/index.html#exercise-3",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\nWhat variable type issues do you notice in our sample data?\n\n\n\n\n\n\n\n\n−+\n01:00"
+  },
+  {
+    "objectID": "slides/index.html#variable-types-2",
+    "href": "slides/index.html#variable-types-2",
+    "title": "Data Cleaning",
+    "section": "Variable Types",
+    "text": "Variable Types\n\nDates stored as numbers\nSpecial characters in numeric variables"
+  },
+  {
+    "objectID": "slides/index.html#missing-data",
+    "href": "slides/index.html#missing-data",
+    "title": "Data Cleaning",
+    "section": "Missing Data",
+    "text": "Missing Data\n\nMissing data should appear as you expect it to\n\nThe amount of missingness\nThe variables/cases that data is missing for\n\n\n\n\nUse consistent values to indicate missing responses\n\nBlanks? NAs? -999?\nThe missing values should match your variable type\n\ni.e., Don’t use “no response” in a numeric variable\n\n\n\n\n\nSo there are varying opinions on how missing data should be assigned. Some people think that missing data should be explicitly assigned with a value like -999. That way you know that the cell wasn’t just skipped over by accident when data was being entered.\n\nSome people prefer to just leave the cell blank to not cause confusion by adding extreme values to a variable.\nI personally have no preference for which method you use. What is important though, is that you use consistent values to represent missing data (choose one and stick with it) AND that your missing values match your variable type."
+  },
+  {
+    "objectID": "slides/index.html#exercise-4",
+    "href": "slides/index.html#exercise-4",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\nWhat missing data issues do you notice in our sample data?\n\n\n\n\n\n\n\n\n−+\n01:00"
+  },
+  {
+    "objectID": "slides/index.html#missing-data-1",
+    "href": "slides/index.html#missing-data-1",
+    "title": "Data Cleaning",
+    "section": "Missing Data",
+    "text": "Missing Data\n\nUnexpected missing data\nInconsistent missing values used\nMissing values do not match variable type"
+  },
+  {
+    "objectID": "slides/index.html#error-reduction",
+    "href": "slides/index.html#error-reduction",
+    "title": "Data Cleaning",
+    "section": "Error Reduction",
+    "text": "Error Reduction\nThe number one way to reduce data errors is to make a plan before you collect data\n\nCorrect data at the source\n\n\n\n Plan the variables you want to collect\n\n\n Build your data collection/entry tools in a way that follows your plan\n\n\n Test your data tools before collecting/entering data\n\n\n Check your data often during data collection/entry\n\nSo if you have the luxury of being able to collect your own data, you want to make sure that you spend time planning so you can correct data at the source"
+  },
+  {
+    "objectID": "slides/index.html#plan-the-variables-you-want-to-collect",
+    "href": "slides/index.html#plan-the-variables-you-want-to-collect",
+    "title": "Data Cleaning",
+    "section": "Plan the variables you want to collect",
+    "text": "Plan the variables you want to collect\n\n\n\nNecessary to plan for\n\nVariable name\nVariable label/item wording\nVariable type\nAllowable values/ranges\nMissing values\n\n\nNice to plan for\n\nSkip patterns\nRequired items\nVariable universe\n\n\n\n\nThese items on the right can be really helpful to plan for if you are collecting something like survey data in particular. These items will help you better understand when and why you might have missing data for items.\n\nAre there skip or display patterns for any items? What is the logic for those items?\nAre items required or are people allowed to skip items?\nWhat is the variable universe for each item? Will the whole sample get each item or are some items only shown to a subsample of your group?"
+  },
+  {
+    "objectID": "slides/index.html#add-those-variables-to-a-data-dictionary",
+    "href": "slides/index.html#add-those-variables-to-a-data-dictionary",
+    "title": "Data Cleaning",
+    "section": "Add those variables to a data dictionary",
+    "text": "Add those variables to a data dictionary\n\n\n\n\n\n\n\n  \n    \n    \n      var_name\n      label\n      type\n      values\n      missing_values\n    \n  \n  \n    pat_id\nPatient Identifier\ncharacter\n001-030\nNA\n    treatment\nTreatment for UC\ncharacter\nupa; uste; oza\nNA\n    start_date\nDate of start of treatment\ndate\nYYYY-MM-DD\nNA\n    ethnic\nEthnicity - hispanic or not hispanic\ncharacter\nhispanic; not hispanic\nmissing\n    start_mes\nMayo endoscopic Score at start of treatment\nnumeric\n0-3\n-99\n  \n  \n  \n\n\n\n\n\nA data dictionary is a rectangular formatted collection of names, definitions, and attributes about variables in a dataset\nSet this up similar to a dataset, with a row and column layout, with variable names in first row"
+  },
+  {
+    "objectID": "slides/index.html#build-your-tools-based-on-your-data-dictionary",
+    "href": "slides/index.html#build-your-tools-based-on-your-data-dictionary",
+    "title": "Data Cleaning",
+    "section": "Build your tools based on your data dictionary",
+    "text": "Build your tools based on your data dictionary\n\n\n Name your variables correctly in your tool\n\nInstead of Q1, Q2, Q3 -&gt; id, start_date, treatment\n\n\n\n Build items to only accept allowable values\n\nOnly within specified range (0-50)\nOnly within specified categories (“hispanic”, “not hispanic”)\n\n\n\n Build items to only accept specified variable types\n\nOnly numeric values\nOnly dates in the YYYY-MM-DD format\n\n\nAnd by tool I mean whatever program you use to collect or enter data. So that could be Excel, RedCap, Qualtrics, or something else.\n\nThis reduces confusion during data entry, and also creates less data cleaning steps when you export your data\nIf working with numeric items, only allow values in a specified range, for example 0-50. You can set these validation rules in your tools, so that if someone tries to enter 51, it will say, this value is not allowed\n\nIf working with categorical items, only allow values in specified categories. Here it can be really helpful to use something like a drop down menu instead of open text boxes to make sure you own collect allowable values only.\n\nAgain, you can set these content validation rules in your tools so that a warning will pop up when unexpected formats or types are entered"
+  },
+  {
+    "objectID": "slides/index.html#test-your-data-collection-or-entry-tool",
+    "href": "slides/index.html#test-your-data-collection-or-entry-tool",
+    "title": "Data Cleaning",
+    "section": "Test your data collection or entry tool",
+    "text": "Test your data collection or entry tool\n\nCollect/enter sample data\n\nAre any items missing?\nAre you getting unexpected values for items?\n\nValues out of range\nIncorrect formats\nInconsistent entries\n\n“m”, “male”, “Male”, “MALE”\n\n\nIs the display logic working as expected?\nAre people able to skip items that they should not be able to skip?\n\n\n\nIf you find anything wrong, fix this in your tool before you begin to collect or enter data"
+  },
+  {
+    "objectID": "slides/index.html#review-your-data-often-during-data-collection-or-entry",
+    "href": "slides/index.html#review-your-data-often-during-data-collection-or-entry",
+    "title": "Data Cleaning",
+    "section": "Review your data often during data collection or entry",
+    "text": "Review your data often during data collection or entry\n\nValidate your data based on your expectations\n\npointblank\nvalidate\nassertr\nExcellent resource: https://www.youtube.com/watch?v=0d1c-8yw6Tk\n\n\n\nOne option for reviewing your data is to write code to validate your specified criteria. So you can write code to validate that variables are your expected types, fall within expected ranges, ids are not duplicated and so forth.\nHere are a couple of packages that have functions specifically for this purpose and they export really helpful reports for you to review.\nThis is a link to a great talk on validation that reviews all of these packages and more. I highly recommend watching it."
+  },
+  {
+    "objectID": "slides/index.html#pointblank-report",
+    "href": "slides/index.html#pointblank-report",
+    "title": "Data Cleaning",
+    "section": "pointblank report",
+    "text": "pointblank report\n\nCodeReport\n\n\n\nlibrary(pointblank)\n\ncreate_agent(df_raw) |&gt;\n  rows_distinct(columns = vars(pat_id)) |&gt;\n  col_vals_not_null(columns = vars(pat_id)) |&gt;\n  col_is_date(columns = vars(start_date)) |&gt;\n  col_is_numeric(columns = vars(start_mes)) |&gt;\n  col_vals_in_set(columns = vars(treatment), set = c(\"upa\", \"uste\", \"oza\")) |&gt;\n  col_vals_in_set(columns = vars(ethnic), set = c(\"hispanic\", \"not hispanic\")) |&gt;\n  col_vals_between(columns = vars(start_mes), left = 0, right = 3, na_pass = FALSE) |&gt;\n  interrogate()\n\n\n\n\n\n\n\n\n\n\n\n\nSo here I am showing a very brief example of how I might set up some validation criteria using the pointblank package. And I could run this on a recurring schedule during data collection or entry to make sure everything is being collected as expected.\nAnd when I run this code, I receive this report that assures me that everything is being collected as expected EXCEPT there are two variables that fail. My start_date variable is not being collected in a date format and my ethnicity variable has collected some unexpected values. And this is something that if caught early, I could go and fix in my tool. Because if I don’t fix this, I could end up with really messy data, or I might end up with data that is completely unusable if there are some values collected that I am unable to interpret."
+  },
+  {
+    "objectID": "slides/index.html#review-your-data-often-during-data-collection",
+    "href": "slides/index.html#review-your-data-often-during-data-collection",
+    "title": "Data Cleaning",
+    "section": "Review your data often during data collection",
+    "text": "Review your data often during data collection\n\nCreate a codebook to review univariate summary statistics\n\ncodebookr\ncodebook\nmemisc\nsjPlot\n\n\n\nA second option for reviewing your data during collection is to create a codebook. Codebooks provide descriptive variable-level information as well univariate summary statistics (such as means, ranges, counts). There are several R packages that automate the creation of codebooks.\nBut unlike validation, where we write code based on idividualized criteria, for the most part, these codebooks provide similar out of the box summary statistics that allow you to get a feel for what is going on in your data.\nBoth the validation and codebook methods provide you solid information to help you better understand if your data is being collected as expected."
+  },
+  {
+    "objectID": "slides/index.html#codebookr-codebook",
+    "href": "slides/index.html#codebookr-codebook",
+    "title": "Data Cleaning",
+    "section": "codebookr codebook",
+    "text": "codebookr codebook\n\nCodeCodebook\n\n\n\nlibrary(codebookr)\n\ndf_codebook &lt;- codebook(df_raw)\n\nprint(df_codebook,\"my_codebookr_codebook.docx\")\n\n\n\n\n\n\n\n\n\n\n\n\nHere is one example of a codebook created using the codebookr package. And if I ran that code, you can see it gives me a codebook that looks like this.\nAt the top it provides me some overarching dataset summary information and then it quickly jumps into variable-level information including summary statistics.\nAnd I could once again see here that I am having issues with my start_date variable, it’s being collected as a numeric type instead of a date. And my ethnicity variable has some unexpected values. And I would want to go correct this at the source so I can fix this issue sooner rather than later.\nAnd the last thing to know about codebooks is that they are even more useful when working with data that contains embedded metadata (like variable and value labels - you see in this in data that comes from programs like SPSS or Stata). When working with labelled data, those labels are displayed in the codebook. So for instance, if this was labelled data, you would see variable descriptions under each variable section, that describes what each variable represents. So for instance, under pat_id, you would see a label that says “patient unique identifier”. And that descriptive information helps me to better interpret the data. But as you can see, codebooks work fine without labels as well."
+  },
+  {
+    "objectID": "slides/index.html#scenario",
+    "href": "slides/index.html#scenario",
+    "title": "Data Cleaning",
+    "section": "Scenario",
+    "text": "Scenario\n\nWe have data that originate from an observational study comparing 3 treatments of ulcerative colitis (UC)\nWe have an analysis question:\n\nAre there differences in change in MES and QOL scores between start and finish, and are the decreases in scores greater for any of the 3 new medications?\n\nIn order to answer this question, we have asked a student to extract data from the medical record into Excel\nAlong with the spreadsheet, we are provided a data dictionary\nAs we start to review the data, we find a sundry of errors that need correction"
+  },
+  {
+    "objectID": "slides/index.html#exercise-5",
+    "href": "slides/index.html#exercise-5",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\nTake 1 minute to review the data dictionary and our data.\nGive instructions here….\n\n\n\n−+\n01:00\n\n\n\n\nBelieve it or not, the first thing we are going to do is NOT import our data into R. We are first going to open and review the data dictionary. We want to learn about what we should expect from our data before we open it.\nThen we are going to open the Excel file. Because there is a lot of merit to knowing what you are getting into before reading your file into R.\n….\nSo hopefully you noticed a few things upon reviewing our data.\n\nOur variable names are not the first row of our data. That is really important to know before we try to import our data.\nOur data is not the first sheet of our Excel file. It’s actually the 3rd sheet over. And that’s also important to know."
+  },
+  {
+    "objectID": "slides/index.html#import-our-file",
+    "href": "slides/index.html#import-our-file",
+    "title": "Data Cleaning",
+    "section": "Import our file",
+    "text": "Import our file\n\nWe are going to use the read_excel() function from the readxl package\nThere are several arguments to consider when using this function\n\npath\nsheet = NULL\ncol_names = TRUE\nna = ” ”\nskip = 0\n\ntype ?read_excel in your console to see more arguments\n\n\n\nlist the path to our xls or xlsx file\nwe can add the name or position of the sheet to read in\nshould R grab column names from the first row in your data?\nare there any values that R should read in as NA?\nwhat is the minimum number of rows R should skip before reading anything?"
+  },
+  {
+    "objectID": "slides/index.html#import-our-file-1",
+    "href": "slides/index.html#import-our-file-1",
+    "title": "Data Cleaning",
+    "section": "Import our file",
+    "text": "Import our file\n\nCodeData\n\n\n\nlibrary(readxl)\n\ndf_raw &lt;- read_excel(\"data/messy_uc.xlsx\",\n  sheet = \"Data\", skip = 5\n)\n\n\n\n\n\n\n\n\n\n  \n    \n    \n      pat_id\n      treatment\n      start_date\n      ethnic\n      race\n      dob\n      ...7\n      start_bp\n      pre/post_wt_kg\n      start_mes\n    \n  \n  \n    001\nupa\n44208\nhispanic\nCaucasian\n2005-01-07\nNA\n114/72\n84/82\n3\n    002\nuste\n44215\nnot hispanic\nCaucasian\n1937-04-13\nNA\n132/86\n77/77\n2\n    003\noza\n44230\nnot hispanic\nAfrican-American\n1946-06-06\nNA\n124/92\n74/75\n1\n    004\nupa\n44245\nnot hispanic\nCaucasian\n1963-07-14\nNA\n144/83\n66/65\n3\n    005\noza\n44255\nnot hispanic\nMixed\n1978-05-12\nNA\n122/78\n55/56\n3\n    006\nuste\n44259\nnot hispanic\nOther\n1992-04-03\nNA\n121/80\n111/110\n2\n    007\nuste\n44264\nnot hispanic\nAsian\n1955-08-22\nNA\n133/74\n133/130\n3\n    008\noza\n44999\nHispanic\nafromerican\n1974-09-11\nNA\n116/73\n74/76\n3\n    009\nupa\n44276\nNOT hispanic\nCaucasian\n1984-11-14\nNA\n118/66\n82/80\n2\n    010\noza\n44278\nhispamnic\nCaucasian\n1972-12-20\nNA\n122/78\n85/87\n3"
+  },
+  {
+    "objectID": "slides/index.html#exercise-6",
+    "href": "slides/index.html#exercise-6",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\n\nYour turn! Take 3 minutes to import the data.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/index.html#review-the-data",
+    "href": "slides/index.html#review-the-data",
+    "title": "Data Cleaning",
+    "section": "Review the data",
+    "text": "Review the data\n\nEDA is not a formal process with a strict set of rules. More than anything, EDA is a state of mind. During the initial phases of EDA you should feel free to investigate every idea that occurs to you. - R for Data Science\n\n\n\nImage from giphy.com\n\n\nTo quote the authors of R 4 Data Science\nSo what does this mean? It means there is no one prescriptive way to review your data. There are endless ways to figure out if there are errors in your data. Try any ideas you can think of. But there are some common steps you can at least start with."
+  },
+  {
+    "objectID": "slides/index.html#review-the-data-1",
+    "href": "slides/index.html#review-the-data-1",
+    "title": "Data Cleaning",
+    "section": "Review the data",
+    "text": "Review the data\n\n\n\nIt is important to get to know your data\n\nHow many rows? How many columns?\nWhat are the variable types?\nWhat are variable values?\nHow much missing data is there?\nHow are variables related?\n\n\n\n\nThere are several functions that can be used to explore data.\n\ndplyr::glimpse()\nskimr::skim()\nbase::summary()\nvisdat:vis_dat()\nsummarytools::dfSummary()\nDataExplorer::create_report()\nHmisc::describe()\n\n\n\n\nSo after you read your data into R, once again, use the old fashioned method of opening up your data and looking at it to see if everything imported as you expected.\nAfter that, you can start to run some functions to review your data for the following things.\n\nAre the values within your expected ranges? What outliers do you see? Is there a lack of variation? All values are equal to the same number?\nConsider bivariate plots, is one variable high and the other low - is that normal"
+  },
+  {
+    "objectID": "slides/index.html#summarytoolsdfsummary",
+    "href": "slides/index.html#summarytoolsdfsummary",
+    "title": "Data Cleaning",
+    "section": "summarytools::dfSummary()",
+    "text": "summarytools::dfSummary()\n\nCodeOutput\n\n\n\nlibrary(summarytools)\n\ndfSummary(df_raw)\n\n\nSo this function provides some overall summary information (number of rows and columns) as well as variable level summary information including variable type, values, frequencies, and histograms."
+  },
+  {
+    "objectID": "slides/index.html#skimrskim",
+    "href": "slides/index.html#skimrskim",
+    "title": "Data Cleaning",
+    "section": "skimr::skim()",
+    "text": "skimr::skim()\n\nCodeOutput\n\n\n\nlibrary(skimr)\n\nskim(df_raw)\n\n\n\n\n\n\n\n\nSo this function provides similar information to dfSummary, just formatted differently. It also provides some overall data summary information (number of rows and columns) as well as variable level summary information including variable type, completion rate, values, percentiles, and histograms.\nBut a quick word of caution about this funciton. You’ll notice that it provides some misleading information for character variables. It gives a min and max value. This is actually the min and max character count for each variable."
+  },
+  {
+    "objectID": "slides/index.html#exercise-7",
+    "href": "slides/index.html#exercise-7",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\nUse one or more of these exploratory packages to review your data. Based on your data and your data dictionary, what fixes do you see that need to happen?\n\n\n\ndplyr::glimpse()\nskimr::skim()\nbase::summary()\nvisdat:vis_dat()\n\n\n\nsummarytools::dfSummary()\nDataExplorer::create_report()\nHmisc::describe()\n\n\n\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/index.html#exercise-8",
+    "href": "slides/index.html#exercise-8",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP1.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/index.html#exercise-9",
+    "href": "slides/index.html#exercise-9",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP2.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/index.html#exercise-10",
+    "href": "slides/index.html#exercise-10",
+    "title": "Data Cleaning",
+    "section": "Exercise",
+    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP3.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/index.html#filling-in-unobserved-datestimes-with-padr",
+    "href": "slides/index.html#filling-in-unobserved-datestimes-with-padr",
+    "title": "Data Cleaning",
+    "section": "Filling in Unobserved Dates/Times with padr",
+    "text": "Filling in Unobserved Dates/Times with padr\n\n\n\n\n# A tibble: 6 × 2\n  title                   time_stamp         \n  &lt;chr&gt;                   &lt;dttm&gt;             \n1 EMS: BACK PAINS/INJURY  2015-12-10 17:40:00\n2 EMS: DIABETIC EMERGENCY 2015-12-10 17:40:00\n3 Fire: GAS-ODOR/LEAK     2015-12-10 17:40:00\n4 EMS: CARDIAC EMERGENCY  2015-12-10 17:40:01\n5 EMS: DIZZINESS          2015-12-10 17:40:01\n6 EMS: HEAD INJURY        2015-12-10 17:40:01\n\n\n\n\nThe emergency data set in the {padr} package contains &gt; 120K emergency calls from Montgomery County, PA over a period of ~ 11 months.\nEach call has a title and a timestamp"
+  },
+  {
+    "objectID": "slides/index.html#filling-in-unobserved-datestimes-padr",
+    "href": "slides/index.html#filling-in-unobserved-datestimes-padr",
+    "title": "Data Cleaning",
+    "section": "Filling in Unobserved Dates/Times padr",
+    "text": "Filling in Unobserved Dates/Times padr\n\n\n\n\n# A tibble: 6 × 2\n  title                   time_stamp         \n  &lt;chr&gt;                   &lt;dttm&gt;             \n1 EMS: BACK PAINS/INJURY  2015-12-10 17:40:00\n2 EMS: DIABETIC EMERGENCY 2015-12-10 17:40:00\n3 Fire: GAS-ODOR/LEAK     2015-12-10 17:40:00\n4 EMS: CARDIAC EMERGENCY  2015-12-10 17:40:01\n5 EMS: DIZZINESS          2015-12-10 17:40:01\n6 EMS: HEAD INJURY        2015-12-10 17:40:01\n\n\n\n\nThe emergency data set in the {padr} package contains &gt; 120K emergency calls from Montgomery County, PA over a period of ~ 11 months.\nEach call has a title and a timestamp"
+  },
+  {
+    "objectID": "slides/index.html#fill-in-unobserved-date-times-with-padr",
+    "href": "slides/index.html#fill-in-unobserved-date-times-with-padr",
+    "title": "Data Cleaning",
+    "section": "Fill in Unobserved Date-Times with padr",
+    "text": "Fill in Unobserved Date-Times with padr\n\n\n\n\n# A tibble: 6 × 2\n  title                   time_stamp         \n  &lt;chr&gt;                   &lt;dttm&gt;             \n1 EMS: BACK PAINS/INJURY  2015-12-10 17:40:00\n2 EMS: DIABETIC EMERGENCY 2015-12-10 17:40:00\n3 Fire: GAS-ODOR/LEAK     2015-12-10 17:40:00\n4 EMS: CARDIAC EMERGENCY  2015-12-10 17:40:01\n5 EMS: DIZZINESS          2015-12-10 17:40:01\n6 EMS: HEAD INJURY        2015-12-10 17:40:01\n\n\n\n\nThe emergency data set in the {padr} package contains &gt; 120K emergency calls from Montgomery County, PA over a period of ~ 11 months.\nEach call has a title and a timestamp"
+  },
+  {
+    "objectID": "slides/index.html#workhorse-joins",
+    "href": "slides/index.html#workhorse-joins",
+    "title": "Data Cleaning",
+    "section": "Workhorse Joins",
+    "text": "Workhorse Joins\n\nleft_join is your workhorse. Start with patient identifiers/uniqid and add data to the right side.\nSometimes you will need to wrangle/process incoming data, then right_join it to the patient demographics"
+  },
+  {
+    "objectID": "slides/index.html#fancy-joins",
+    "href": "slides/index.html#fancy-joins",
+    "title": "Data Cleaning",
+    "section": "Fancy Joins",
+    "text": "Fancy Joins\n\nThere are multiple kinds of fancy joins (semi_join, anti_join, inner_join, full_join, union, intersect, setdiff) which come in handy once in a while.\nThese are all well explained here\n\n\n\n\nYou want to subset your data (x) by keeping only the ones (y=hospitalized) who were hospitalized.\n\n\n\n\n\n\nYou want to subset your data (x) by keeping only the ones (y = dead) who are NOT dead."
+  },
+  {
+    "objectID": "slides/index.html#what-the-left-join-looks-like",
+    "href": "slides/index.html#what-the-left-join-looks-like",
+    "title": "Data Cleaning",
+    "section": "What the Left Join Looks Like",
+    "text": "What the Left Join Looks Like"
+  },
+  {
+    "objectID": "slides/index.html#where-are-we-now",
+    "href": "slides/index.html#where-are-we-now",
+    "title": "Data Cleaning",
+    "section": "Where are We Now?",
+    "text": "Where are We Now?\n\nWe have done DEV (Data Evaluation and Validation) - more validation to be done, Data validation is a continuous process, right up to Data Lock.\nDiscussed the importance of preventing data errors at the source - data collection and entry (preferably using a tool with data validation at entry - like REDCap)\nDid Stage 1 cleaning - clean variable names, remove empty columns/rows, fix variable types/classes (characters in numeric, recoding factors, date madness), address missingness, violations of tidy data principles (separate), added meaningful variable labels."
+  },
+  {
+    "objectID": "slides/index.html#data-horror",
+    "href": "slides/index.html#data-horror",
+    "title": "Data Cleaning",
+    "section": "Data Horror",
+    "text": "Data Horror\n\n\nData So Messy, it Constitutes a Data Crime\n \n What Should You Do?\n\n\n\n\n The Horror! The Horror!"
+  },
+  {
+    "objectID": "slides/index.html#two-options",
+    "href": "slides/index.html#two-options",
+    "title": "Data Cleaning",
+    "section": "Two Options",
+    "text": "Two Options\n\n\n\nYou can find the person who collected/entered the data\n\n\nIf you don’t correct this behavior now, this will torture many future data analysts\nEducate in this teachable moment about tidy data\nSend them to watch Tidy Spreadsheets on YouTube here to prevent this kind of Data Crime in the future.\nImprove the world, one (now tidy) data collector at a time.\n\n\n\nThere is no way to find the person who collected/entered the data\n\n\nPull out some advanced data cleaning packages made for this particular kind of mess\n\n{unpivotr}\n{tidyxl}\n{unheadr}\n\nWatch the unpivotr/tidyxl 14 min video here\nLearn from a free e-book, Spreadsheet Munging Strategies"
+  },
+  {
+    "objectID": "exercises.html#pivoting-longer",
+    "href": "exercises.html#pivoting-longer",
+    "title": "Data Cleaning: Exercises",
+    "section": "Pivoting Longer",
+    "text": "Pivoting Longer\n\nYour Turn with endo_data\nMeasurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) in biopsies of 3 segments of intestine.\nThis could be affected by portal hypertension in patients with liver cirrhosis\nLet’s find out!\nHere is the code to load the data if you are doing this on a local computer. Use the clipboard icon at the top right to copy the code.\n\n\nendo_data &lt;- tibble::tribble(\n  ~pat_id, ~portal_htn, ~duod_teer, ~ileal_teer, ~colon_teer,\n  001, 1, 4.33, 14.57, 16.23,\n  002, 0, 11.67, 15.99, 18.97,\n  003, 1, 4.12, 13.77, 15.22,\n  004, 1, 4.62, 16.37, 18.12,\n  005, 0, 12.43, 15.84, 19.04,\n  006, 0, 13.05, 16.23, 18.81,\n  007, 0, 11.88, 15.72, 18.31,\n  008, 1, 4.87, 16.59, 18.77,\n  009, 1, 4.23, 15.04, 16.87,\n  010, 0, 12.77, 16.73, 19.12\n)\nendo_data\n\n# A tibble: 10 × 5\n   pat_id portal_htn duod_teer ileal_teer colon_teer\n    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;\n 1      1          1      4.33       14.6       16.2\n 2      2          0     11.7        16.0       19.0\n 3      3          1      4.12       13.8       15.2\n 4      4          1      4.62       16.4       18.1\n 5      5          0     12.4        15.8       19.0\n 6      6          0     13.0        16.2       18.8\n 7      7          0     11.9        15.7       18.3\n 8      8          1      4.87       16.6       18.8\n 9      9          1      4.23       15.0       16.9\n10     10          0     12.8        16.7       19.1"
+  },
+  {
+    "objectID": "exercises.html#pivoting-longer-with-endo_data",
+    "href": "exercises.html#pivoting-longer-with-endo_data",
+    "title": "Data Cleaning: Exercises",
+    "section": "Pivoting Longer with endo_data",
+    "text": "Pivoting Longer with endo_data\n\nDatasetArgumentsCodeSolutionResult\n\n\n\n\n# A tibble: 10 × 5\n   pat_id portal_htn duod_teer ileal_teer colon_teer\n    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;\n 1      1          1      4.33       14.6       16.2\n 2      2          0     11.7        16.0       19.0\n 3      3          1      4.12       13.8       15.2\n 4      4          1      4.62       16.4       18.1\n 5      5          0     12.4        15.8       19.0\n 6      6          0     13.0        16.2       18.8\n 7      7          0     11.9        15.7       18.3\n 8      8          1      4.87       16.6       18.8\n 9      9          1      4.23       15.0       16.9\n10     10          0     12.8        16.7       19.1\n\n\n\n\n\nWhat values do you want to use for these arguments to pivot_longer:\n\ncols\nnames_pattern = “(.+)_teer”\nnames_to\nvalues_to\n\nNote that we are giving you the correct value for names_pattern, which will ask for what we want - to keep the characters of the name (of whatever length) before “_teer”\n\n\n\n\nFill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.\nNote that we are giving you the correct answer for the names_pattern argument.\n\n\nendo_data |&gt; \n  pivot_longer(\n    cols = ___ ,\n    names_pattern = \"(.+)_teer\",\n    names_to =  ___ ,\n    values_to = ___\n  )\n\n\n\n\nFill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.\n\n\n\nShow the code solution\nendo_data |&gt; \n  pivot_longer(\n    cols = \"duod_teer\":\"colon_teer\",\n    names_pattern = \"(.+)_teer\",\n    names_to = c(\"location\"),\n    values_to = \"teer\"\n  )\n\n\n\nRun the code, and look at the resulting table. Use the clipboard icon at the top right to copy the code.\n\n\n\n\n\n# A tibble: 30 × 4\n   pat_id portal_htn location  teer\n    &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;\n 1      1          1 duod      4.33\n 2      1          1 ileal    14.6 \n 3      1          1 colon    16.2 \n 4      2          0 duod     11.7 \n 5      2          0 ileal    16.0 \n 6      2          0 colon    19.0 \n 7      3          1 duod      4.12\n 8      3          1 ileal    13.8 \n 9      3          1 colon    15.2 \n10      4          1 duod      4.62\n# ℹ 20 more rows\n\n\n\nDo you think that portal hypertension has an effect on TEER and (its inverse) epithelial leakiness?"
+  },
+  {
+    "objectID": "exercises.html#patient-demographics-with-lab-results-your-turn-to-join",
+    "href": "exercises.html#patient-demographics-with-lab-results-your-turn-to-join",
+    "title": "Data Cleaning: Exercises",
+    "section": "Patient Demographics with Lab results (Your Turn to Join)",
+    "text": "Patient Demographics with Lab results (Your Turn to Join)\n\n\n\nWe have some basic Patient Demographics in one table\n\n\n\n# A tibble: 9 × 3\n  pat_id name                 age\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;\n1 001    Arthur Blankenship    67\n2 002    Britney Jonas         23\n3 003    Sally Davis           63\n4 004    Al Jones              44\n5 005    Gary Hamill           38\n6 006    Ken Bartoletti        33\n7 007    Ike Gerhold           52\n8 008    Tatiana Grant         42\n9 009    Antione Delacroix     27\n\n\n\nand potassium levels and creatinine levels in 2 other tables\n\n\n# A tibble: 6 × 2\n  pat_id     k\n  &lt;chr&gt;  &lt;dbl&gt;\n1 001      3.2\n2 002      3.7\n3 003      4.2\n4 004      4.4\n5 005      4.1\n6 006      4  \n\n\n\n\n# A tibble: 6 × 2\n  pat_id    cr\n  &lt;chr&gt;  &lt;dbl&gt;\n1 001      0.2\n2 002      0.5\n3 003      0.9\n4 004      1.5\n5 005      0.7\n6 006      0.9"
+  },
+  {
+    "objectID": "exercises.html#your-turn-to-join",
+    "href": "exercises.html#your-turn-to-join",
+    "title": "Data Cleaning: Exercises",
+    "section": "Your Turn to Join",
+    "text": "Your Turn to Join\n\nWe want to join the correct labs (9 rows each) to the correct patients.\nThe unique identifier (called the uniqid or key or recordID) is pat_id.\nIt only occurs once for each patient/row\nIt appears in each table we want to join\nThe pat_id is of the character type in each (a common downfall if one is character, one is numeric, but they can look the same - but don’t match)\nWe want to start with demographics, then add datasets that match to the right.\nWe will use demo as our base dataset on the left hand side (LHS), and first join the potassium (pot) results (RHS)"
+  },
+  {
+    "objectID": "exercises.html#what-the-left-join-looks-like",
+    "href": "exercises.html#what-the-left-join-looks-like",
+    "title": "Data Cleaning: Exercises",
+    "section": "What the Left Join Looks Like",
+    "text": "What the Left Join Looks Like"
+  },
+  {
+    "objectID": "exercises.html#your-turn-to-join-1",
+    "href": "exercises.html#your-turn-to-join-1",
+    "title": "Data Cleaning: Exercises",
+    "section": "Your Turn to Join",
+    "text": "Your Turn to Join\n\nThe ProblemThe CodeThe SolutionThe Result\n\n\n\nJoining demo to pot with a left_join\nleft_join(data_x, data_y, by = “uniqid”)\n\n\n\n\nreplace the generic arguments below with the correct ones to join demo to pot and produce new_data.\n\n\nnew_data &lt;- left_join(data_x, data_y, by = \"uniqid\")\nnew_data\n\n\n\n\n\nShow the code solution\nnew_data &lt;- left_join(demo, pot, by = \"pat_id\")\nnew_data\n\n\n\n\n\n\n# A tibble: 9 × 4\n  pat_id name                 age     k\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt;\n1 001    Arthur Blankenship    67   3.2\n2 002    Britney Jonas         23   3.7\n3 003    Sally Davis           63   4.2\n4 004    Al Jones              44   4.4\n5 005    Gary Hamill           38   4.1\n6 006    Ken Bartoletti        33   4  \n7 007    Ike Gerhold           52   3.6\n8 008    Tatiana Grant         42   4.2\n9 009    Antoine Delacroix     27   4.9"
+  },
+  {
+    "objectID": "exercises.html#now-add-creatinine-cr-to-new_data",
+    "href": "exercises.html#now-add-creatinine-cr-to-new_data",
+    "title": "Data Cleaning: Exercises",
+    "section": "Now add Creatinine (cr) to new_data",
+    "text": "Now add Creatinine (cr) to new_data\n\nThe ProblemThe CodeThe SolutionThe Result\n\n\n\nJoining new_data and cr with a left_join\nleft_join(data_x, data_y, by = “uniqid”)\n\n\n\n\nReplace the generic arguments with the correct ones to join new_data and cr and produce new_data2.\n\n\nnew_data2 &lt;- left_join(data_x, data_y, by = \"uniqid\")\nnew_data2\n\n\n\n\n\nShow the code solution\nnew_data2 &lt;- left_join(new_data, cr, by = \"pat_id\")\nnew_data2\n\n\n\n\n\n\n# A tibble: 9 × 5\n  pat_id name                 age     k    cr\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 001    Arthur Blankenship    67   3.2   0.2\n2 002    Britney Jonas         23   3.7   0.5\n3 003    Sally Davis           63   4.2   0.9\n4 004    Al Jones              44   4.4   1.5\n5 005    Gary Hamill           38   4.1   0.7\n6 006    Ken Bartoletti        33   4     0.9\n7 007    Ike Gerhold           52   3.6   0.7\n8 008    Tatiana Grant         42   4.2   1  \n9 009    Antoine Delacroix     27   4.9   1.7\n\n\n\nAl has HTN and DM2\nAntoine has early stage FSGS"
+  },
+  {
+    "objectID": "exercises.html#need-to-load-the-data",
+    "href": "exercises.html#need-to-load-the-data",
+    "title": "Data Cleaning: Exercises",
+    "section": "Need to Load the Data?",
+    "text": "Need to Load the Data?\nIf you are trying this on your local computer, copy the code below with the clipboard icon to get the data into your computer.\n\n\nShow the code solution\ndemo &lt;- tibble::tribble(\n  ~pat_id, ~name, ~age,\n  '001', \"Arthur Blankenship\", 67,\n  '002', \"Britney Jonas\", 23,\n  '003', \"Sally Davis\", 63,\n  '004', \"Al Jones\", 44,\n  '005', \"Gary Hamill\", 38,\n  '006', \"Ken Bartoletti\", 33,\n  '007', \"Ike Gerhold\", 52,\n  '008', \"Tatiana Grant\", 42,\n  '009', \"Antoine Delacroix\", 27,\n)\n\npot &lt;- tibble::tribble(\n  ~pat_id, ~k,\n  '001', 3.2,\n  '002', 3.7,\n  '003', 4.2,\n  '004', 4.4,\n  '005', 4.1,\n  '006', 4.0,\n  '007', 3.6,\n  '008', 4.2,\n  '009', 4.9,\n)\n\ncr &lt;- tibble::tribble(\n  ~pat_id, ~cr,\n  '001', 0.2,\n  '002', 0.5,\n  '003', 0.9,\n  '004', 1.5,\n  '005', 0.7,\n  '006', 0.9,\n  '007', 0.7,\n  '008', 1.0,\n  '009', 1.7,\n)"
   }
 ]

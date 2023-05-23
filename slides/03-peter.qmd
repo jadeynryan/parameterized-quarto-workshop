@@ -10,14 +10,21 @@ library(here)
 library(gtsummary)
 library(padr)
 library(countdown)
+library(emo)
 ```
+
+## Where are We Now?
+- We have done DEV (Data Evaluation and Validation) - more validation to be done, Data validation is a continuous process, right up to Data Lock.
+- Discussed the importance of preventing data errors at the source - data collection and entry (preferably using a tool with data validation at entry - like REDCap)
+- Did Stage 1 cleaning - clean variable names, remove empty columns/rows, fix variable types/classes (characters in numeric, recoding factors, date madness), address missingness, violations of tidy data principles (separate), added meaningful variable labels.
+
 ## Deciding on the Unit of Observation
 
 -   In Prospective Data Collection, a patient arrives for a visit. All data collected are part of the same observation/visit.
     -   Alternatively, we can divide a visit into distinct observations, like blood pressure, a PHQ-9 depression questionnaire, and a hemoglobin measurement (all on the same date)
 -   In retrospective data review, we can divide the observations up as we choose. For inpatient stays, we need to decide *a priori* on how to handle multiple observations of the same type (e.g., vitals q6h) in the same day.
     -   use the 0800 observation each day?
-    -   use the daily average?
+    -   use the daily average for SBP and DBP?
     -   use the max values each day?
 
 ## What is the Unit of Analysis?
@@ -40,25 +47,53 @@ library(countdown)
 
 ## Reshaping your data with tidyr
 
--   We often enter data by patient
--   Spreadsheets encourage us to enter longitudinal data as long rows (per patient)
--   We end up with wide data
+::: panel-tabset
+### The Problem
 
-\[Image\]
+-   We often *enter* data by patient
+-   Spreadsheets encourage us to enter longitudinal data as long rows (per patient)
+-   We end up with **wide**, rather than **tall** data
+
+### Wide Version of Data
+
+```{r,  echo=FALSE, warning=FALSE, message=FALSE}
+wide <- readxl::read_excel(here("data/messy_uc.xlsx"), sheet = 3, skip = 6) |>
+  janitor::clean_names() |>
+  janitor::remove_empty(which = c("rows", "cols")) |> 
+  select(pat_id, treatment, ends_with("mes"), ends_with("bss"), ends_with("emo")) |> 
+  mutate(across(3:8, as.numeric)) 
+
+head(wide)
+```
+
+### Tall Version of Data
+
+```{r, echo=FALSE}
+wide |> 
+  pivot_longer(cols = 3:8,
+               names_to = "measure",
+               values_to = "score")
+```
+:::
 
 ## Reshaping your data with tidyr
 
 -   R (and most R functions) are vectorized to handle tall data
 -   One small observation per row
--   Lots of analyses in R are easier with tall data
+-   Most analyses in R are easier with tall data
 
-\[Image\]
+```{r, echo=FALSE}
+wide |> 
+  pivot_longer(cols = 3:8,
+               names_to = "measure",
+               values_to = "score")
+```
 
 ## Pivoting Longer (common)
 
 -   We need to 'pivot' data from wide to tall on the regular
 -   This "lengthens" data, increasing the number of rows, and decreasing the number of columns
--   We will be looking at Visit Dates/Measures
+-   We will be looking at Visit Dates (Start vs End) and Measures
 
 ## Pivoting Longer
 
@@ -83,7 +118,7 @@ wide <- readxl::read_excel(here("data/messy_uc.xlsx"), sheet = 3, skip = 6) |>
 wide
 ```
 
--    Note that there are 30 rows, one per patient, with 6 measured quantities for each patient.
+-   Note that there are 30 rows, one per patient, with 6 measured quantities for each patient.
 
 ## Pivoting Longer (Example)
 
@@ -96,7 +131,7 @@ wide |>
                values_to = "score") 
 ```
 
--    Note that there now 180 rows (30\*6), with one row per observation measure.
+-   Note that there now 180 rows (30\*6), with one row per observation measure.
 
 ## Doing the pivot_longer()
 
@@ -113,6 +148,7 @@ wide
 ## Pivoting Longer In Action
 
 ::: panel-tabset
+
 ### Problem: Wide
 
 ```{r, echo=FALSE}
@@ -141,11 +177,19 @@ tall <- wide |>
 
 tall
 ```
+
+-   Does this make sense so far?
+-   Zoom reaction: "thumbs up" emoji `r knitr::asis_output("\U1F44D")` if yes
+    -   "raised hand" emoji `r knitr::asis_output("\U270B")` if puzzled/questions 
+    
 :::
 
 ## One Minor Issue - Separation of measure
 
+
+
 ::: panel-tabset
+
 ### Problem
 
 -   the "measure" column combines a timepoint and the measure
@@ -176,9 +220,12 @@ tall |>
 
 ### Alternative within pivot_longer
 
-- You can do this _within_ pivot_longer with one more argument (if you are _fancy_)
+-   You can do this *within* pivot_longer with one more argument (if you are *fancy*)
 
-```{r}
+::: columns
+
+::: {.column width="50%"}
+```{r, echo=TRUE, eval=FALSE}
 wide |> 
   pivot_longer(cols = 3:8,
     names_to = c("timept", "measure"),
@@ -189,11 +236,26 @@ wide |>
 
 :::
 
+::: {.column width="50%"}
+```{r, echo=FALSE, eval=TRUE}
+wide |> 
+  pivot_longer(cols = 3:8,
+    names_to = c("timept", "measure"),
+    names_sep = "_",
+    values_to = "score")
+
+```
+:::
+
+:::
+
+:::
+
 ## Pivoting Longer
 
 -   Your Turn (Exercise) with endo_data
-- Measurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) were taken from biopsies of 3 segments of intestine.
-- This might be affected by portal hypertension in patients with liver cirrhosis
+-   Measurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) in biopsies of 3 segments of intestine.
+-   This could be affected by portal hypertension in patients with liver cirrhosis
 
 ```{r, echo=FALSE}
 endo_data <- tibble::tribble(
@@ -212,77 +274,25 @@ endo_data <- tibble::tribble(
 endo_data
 ```
 
-
-## Pivoting Longer with endo_data
-
-::: panel-tabset
-
-### The Dataset
-
-```{r, echo=FALSE}
-endo_data
-```
-
-### The Arguments
-
-- What values do you want to use for:
-  - cols
-  - names_pattern = "(.+)_teer"
-  - names_to
-  - values_to
-- Note that we are giving you the value for names_pattern, which means that we want to keep the characters of the name (of whatever length) before "_teer"
-
-### The Code
-
-- Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.
-- Note that we are giving you names_pattern
-
-```{r, error=TRUE, eval=FALSE}
-endo_data |> 
-  pivot_longer(
-    cols =  ,
-    names_pattern = "(.+)_teer",
-    names_to =   ,
-    values_to = 
-  )
-```
-
-### The Solution
-
-- Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.
-
-```{r, error=TRUE, eval=FALSE}
-endo_data |> 
-  pivot_longer(
-    cols = "duod_teer":"colon_teer",
-    names_pattern = "(.+)_teer",
-    names_to = c("location"),
-    values_to = "teer"
-  )
-```
-
-- Run the code, and look at the resulting table.
-- Do you think that portal hypertension has an effect on TEER and (its inverse) epithelial leakiness?
-
-:::
-
 ## Exercise PH1
-
 
 <br>
 
 Complete Data Cleaning Fundamentals Exercise PH1.
 
-- If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji on your screen.
+- Do This in [Posit Cloud](https://posit.cloud/content/5758558) 
+-   If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji `r knitr::asis_output("\U1F44D")` on your screen.
 
-- If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raise hand" emoji on your screen.
+-   If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raised hand" emoji `r knitr::asis_output("\U270B")` on your screen.
 
-[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+[--\> Take me to the exercise solution \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#ph1){target="_blank"}
+
+<br>
 
 ```{r}
 #| echo: false
 #| cache: false
-countdown(minutes = 3, font_size = "4em")
+countdown(minutes = 3, font_size = "3.5em")
 ```
 
 ## Pivoting Wider
@@ -290,15 +300,28 @@ countdown(minutes = 3, font_size = "4em")
 ::: panel-tabset
 
 ### Tall messy_uc Data
+::: columns
+
+::: {.column width="50%"}
+
 -   Wide data is less common, but sometimes needed
-- Here we will convert the tall version of our selected messy_uc data back to wide.
-- This is what the tall data look like
+-   Here we will convert the tall version of our selected messy_uc data back to wide.
+-   This is what the tall data look like
+
+:::
+
+
+::: {.column width="50%"}
 
 ```{r, echo=FALSE}
 tall
 ```
 
-### Code
+:::
+
+:::
+
+### Code to Pivot
 
 ```{r echo=TRUE, eval=FALSE}
 tall |> 
@@ -322,11 +345,10 @@ tall |>
 
 :::
 
-# Filling in Unobserved Dates/Times with padr
+## Fill in Unobserved Date-Times with padr
 
 ::: columns
 ::: {.column width="55%"}
-
 ```{r, echo=FALSE}
 library(padr)
 library(tidyverse)
@@ -334,30 +356,28 @@ emergency <- padr::emergency
 head(emergency) |>  
   select(title, time_stamp)
 ```
-
 :::
 
 ::: {.column width="45%"}
-- The **emergency** data set in the {padr} package contains > 120K emergency calls from Montgomery County, PA over a period of ~ 11 months.
-- Each call has a title and a timestamp
-
+-   The **emergency** data set in the {padr} package contains \> 120K emergency calls from Montgomery County, PA over a period of \~ 11 months.
+-   Each call has a title and a timestamp
 :::
-
 :::
 
 ## Thickening Time to a Usable Level
 
 ::: panel-tabset
-
 ### Goal
-- The thicken function adds a column to a data frame that is of a higher interval than the original variable.
-- The variable **time_stamp** has the interval of seconds
-- We can thicken the data to day, or to week, or to month.
-- Then we can count events by a usable unit of time
+
+-   The thicken function adds a column to a data frame that is of a higher interval than the original variable.
+-   The variable **time_stamp** has the interval of seconds
+-   We can thicken the data to day, or to week, or to month.
+-   Then we can count events by a usable unit of time
 
 ### Code
-- We will thicken to month
-- Then count overdoses by month
+
+-   We will thicken to month
+-   Then count overdoses by month
 
 ```{r}
 #| echo: true
@@ -371,18 +391,36 @@ emergency |>
 ```
 
 ### Result
-- This lets us count events like overdoses by month with time_stamp_month.
+
+-   This lets us count events like overdoses by month with time_stamp_month.
 
 ```{r}
 #| echo: false
 #| eval: true
-emergency |> 
+by_month <- emergency |> 
   thicken('month') |> 
   filter(str_detect(title, "OVERDOSE")) |>
   group_by(time_stamp_month) |> 
   mutate(ods = sum(str_detect(title, "OVERDOSE"))) |> 
   select(time_stamp_month, ods) |> 
   distinct()
+
+by_month
+```
+
+### Plot Monthly 
+```{r}
+#| output-location: column-fragment
+by_month |> 
+  ggplot(aes(x = time_stamp_month,
+             y = ods)) +
+  geom_point(size = 3, color = "red") +
+  geom_line() +
+  labs(y = "Overdoses Per Month",
+       x = "Month",
+  title = "Monthly Overdose Calls") +
+  theme_linedraw(base_size = 20) +
+  ylim(0,175)
 ```
 
 :::
@@ -391,16 +429,13 @@ emergency |>
 
 ::: columns
 ::: {.column width="60%"}
-
-- The pad function allows you to fill in missing intervals.
-- As an example, my hospital only runs fecal calprotectin tests on weekdays.
-- This can lead to weird discontinuities in data over a weekend (Dec 3-4).
-- No observations on weekend days.
-
+-   The pad function allows you to fill in missing intervals.
+-   As an example, my hospital only runs fecal calprotectin tests on weekdays.
+-   This can lead to weird discontinuities in data over a weekend (Dec 3-4).
+-   No observations on weekend days.
 :::
 
 ::: {.column width="40%"}
-
 ```{r}
 #| echo: false
 fcp <- tibble::tribble(
@@ -424,18 +459,15 @@ fcp <- tibble::tribble(
 
 fcp
 ```
-
 :::
-
 :::
 
 ## Padding Unobserved Times
 
 ::: panel-tabset
-
 ### The Problem
 
-- We can fill in (pad) the unobserved weekend days with the **pad()** function.
+-   We can fill in (pad) the unobserved weekend days with the **pad()** function.
 
 ### The Code
 
@@ -451,9 +483,7 @@ fcp |>
 ### The Result
 
 ::: columns
-
 ::: {.column width="40%"}
-
 ```{r}
 #| echo: false
 #| eval: true
@@ -462,61 +492,48 @@ fcp |>
   tidyr::fill(pat_id) |> 
   print(n = 14)
 ```
-
 :::
 
 ::: {.column width="60%"}
-
-- New observations are created on the missing dates
-- NAs are filled in for the missing FCPs, with one for each day and group (pat_id)
-- we used **tidyr::fill(pat_id)** to fill in the missing pat_ids
-
+-   New observations are created on the missing dates
+-   NAs are filled in for the missing FCPs, with one for each day and group (pat_id)
+-   we used **tidyr::fill(pat_id)** to fill in the missing pat_ids
 :::
-
 :::
-
 :::
 
 ## Joins of data from different sources
 
-- We often collect data from different sources that we later want to join together for analysis
-  - Data from local Electronic Medical Record
-  - Data from the CDC
-  - Data from the US Census
-- External data can illuminate our understanding of our local patient data
+-   We often collect data from different sources that we later want to join together for analysis
+    -   Data from local Electronic Medical Record
+    -   Data from the CDC
+    -   Data from the US Census
+-   External data can illuminate our understanding of our local patient data
 
-## Local Demographics with CDC SVI data 
+## Local Demographics with CDC SVI data
 
 ::: panel-tabset
-
 ### The Problem
 
 ::: columns
 ::: {.column width="60%"}
-
-- We have 2 datasets, one local Demographics and Census Tract, and one from the CDC that has values for Social Vulnerability Index by Census Tract
-- We want to know the median SVI for the neighborhood of each patient
-- We need to left_join these datasets together by matching on the Census Tract
-
+-   We have 2 datasets, one local Demographics and Census Tract, and one from the CDC that has values for Social Vulnerability Index by Census Tract
+-   We want to know the median SVI for the neighborhood of each patient
+-   We need to left_join these datasets together by matching on the Census Tract
 :::
 
 ::: {.column width="40%"}
-
-![Joins](images/joins.png)
-
+![](images/joins.PNG)
 :::
-
 :::
-
-
 
 ### The Data
-- What is the common uniqid/key?
+
+-   What is the common uniqid/key?
 
 ::: columns
 ::: {.column width="60%"}
-
-- demo
+-   demo
 
 ```{r}
 #| echo: false
@@ -535,12 +552,10 @@ demo <- tibble::tribble(
 
 demo
 ```
-
 :::
 
 ::: {.column width="40%"}
-
-- cdc
+-   cdc
 
 ```{r}
 #| echo: false
@@ -559,35 +574,37 @@ cdc <- tibble::tribble(
 
 cdc
 ```
-
 :::
-
 :::
 
 ### The Code
-- Replace the arguments to join the demographic data (*demo*) on the left to add Social Vulnerability index (svi) from the *cdc* dataset on the RHS. Left join by census tract.
+
+-   Replace the generic arguments to the left_join function to join the demographic data (*demo*) on the left to add Social Vulnerability index (svi) from the *cdc* dataset on the RHS. Left join by census tract.
 
 ```{r, echo=TRUE, eval=FALSE}
 left_join(dataset_x, dataset_y, by = "key")
 ```
 
+### The Solution
+
+```{r, echo=TRUE, eval=FALSE}
+left_join(demo, cdc, by = "census_tract")
+```
 
 ### The Result
 
-- Is there an association between social vulnerability and hypertension?
+-   Is there an association between social vulnerability and hypertension?
 
 ```{r, echo=FALSE, eval=TRUE}
 left_join(demo, cdc, by = "census_tract")
 ```
-
 :::
 
 ## Patient Demographics with Lab results (Your Turn to Join)
 
 ::: columns
 ::: {.column width="40%"}
-
-- We have some basic Patient Demographics in one table
+-   We have some basic Patient Demographics in one table
 
 ```{r}
 #| echo: false
@@ -608,7 +625,7 @@ demo
 ```
 :::
 
-::: {.column width="60%"}
+::: {.column width="60%" .fragment}
 and potassium levels and creatinine levels in 2 other tables
 
 ```{r}
@@ -646,120 +663,128 @@ cr <- tibble::tribble(
 
 head(cr)
 ```
-
 :::
-
 :::
 
 ## Your Turn to Join
 
-- We want to join the correct labs (9 rows each) to the correct patients.
-- The unique identifier (called the uniqid or key or recordID) is pat_id. 
-- It only occurs once for each patient/row
-- It appears in each table we want to join
-- The pat_id is of the character type in each (a common downfall if one is character, one is numeric, but they **look** the same - but don't match)
-- We want to start with demographics, then add datasets that match to the right.
-- We will use *demo* as our base dataset on the left hand side (LHS), and first join the potassium (*pot*) results (RHS)
+-   We want to join the correct labs (9 rows each) to the correct patients.
+-   The unique identifier (called the uniqid or key or recordID) is pat_id.
+-   It only occurs once for each patient/row
+-   It appears in each table we want to join
+-   The pat_id is of the character type in each (a common downfall if one is character, one is numeric, but they **look** the same - but don't match)
+-   We want to start with demographics, then add datasets that match to the right.
+-   We will use *demo* as our base dataset on the left hand side (LHS), and first join the potassium (*pot*) results (RHS)
 
-## Your Turn to Join
+## What the Left Join Looks Like
 
-::: panel-tabset
-
-### The Problem
-- Joining _demo_ to _pot_ with a left_join
-- left_join(data_x, data_y, by = "uniqid")
-
-### The Code
-- replace the arguments with the correct ones to join _demo_ to _pot_ and produce *new_data*.
-
-```{r, error=TRUE, eval=FALSE}
-new_data <- left_join(data_x, data_y, by = "uniqid")
-new_data
-```
-
-### The Result
-
-
-```{r, echo=FALSE}
-new_data <- left_join(demo, pot, by = "pat_id")
-new_data
-```
-
-:::
+   <div class="animations"><img alt="gif here" width="80%" height="80%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/left-join.gif"> </div>  
 
 ## Exercise PH2
-
 
 <br>
 
 Complete Data Cleaning Fundamentals Exercise PH2.
 
-[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
 
-- If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji on your screen.
+- Do This in [Posit Cloud](https://posit.cloud/content/5758558)
 
-- If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raise hand" emoji on your screen.
+-   If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji `r knitr::asis_output("\U1F44D")` on your screen.
+
+-   If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raised hand" emoji `r knitr::asis_output("\U270B")` on your screen.
+
+[--\> Take me to the exercise \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#ph2){target="_blank"}
 
 ```{r}
 #| echo: false
 #| cache: false
-countdown(minutes = 3, font_size = "4em")
+countdown(minutes = 3, font_size = "3.5em")
 ```
 
-## Solution PH2
 
-```{r, echo=TRUE, eval=FALSE}
-new_data <- left_join(demo, pot, by = "pat_id")
-new_data
-```
+## Workhorse Joins
 
-## Now add Creatinine (cr) to new_data
+-   *left_join* is your workhorse. Start with patient identifiers/uniqid and add data to the right side.
+-   Sometimes you will need to wrangle/process incoming data, then *right_join* it to the patient demographics
 
-::: panel-tabset
+::: columns
 
-### The Problem
-- Joining new_data and cr with a left_join
-- left_join(data_x, data_y, by = "uniqid")
+::: {.column width="50%"}
+   <div class="animations"><img alt="gif here" width="100%" height="100%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/left-join.gif"> </div>  
+:::
 
-### The Code
-- Replace the arguments with the correct ones to join new_data and cr and produce new_data2.
-
-```{r, error=TRUE, eval=FALSE}
-new_data2 <- left_join(data_x, data_y, by = "uniqid")
-new_data2
-```
-
-### The Result
-
-
-```{r, echo=FALSE}
-new_data2 <- left_join(new_data, cr, by = "pat_id")
-new_data2
-```
+::: {.column width="50%"}
+   <div class="animations"><img alt="gif here" width="100%" height="100%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/right-join.gif"> </div>  
+:::
 
 :::
 
-## Exercise PH3
+## Fancy Joins
 
+-   There are multiple kinds of fancy joins (semi_join, anti_join, inner_join, full_join, union, intersect, setdiff) which come in handy once in a while.
+-   These are all well explained [here](http://statseducation.com/Introduction-to-R/modules/tidy%20data/joins/#:~:text=semi_join(x%2C%20y)%3A%20Return,This%20is%20a%20filtering%20join.)
+
+::: columns
+
+::: {.column width="50%"}
+- You want to subset your data (x) by keeping only the ones (y=hospitalized) who were hospitalized.
+
+ <div class="animations"><img alt="gif here" width="100%" height="100%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/semi-join.gif"> </div>  
+:::
+
+::: {.column width="50%"}
+- You want to subset your data (x) by keeping only the ones <br>(y = dead) <br>who are NOT dead.
+
+ <div class="animations"><img alt="gif here" width="100%" height="100%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/anti-join.gif"> </div>  
+:::
+
+:::
+
+## Data Horror
+
+::: columns
+
+::: {.column width="50%"}
+Data So Messy, it Constitutes a Data Crime
 
 <br>
+![Messy](images/messy.png)
 
-Complete Data Cleaning Fundamentals Exercise PH3.
+<br>
+What Should You Do?
+:::
 
-[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+::: {.column width="50%"}
+<iframe src="https://giphy.com/embed/jquDWJfPUMCiI" width="480" height="428" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/scared-shocked-jquDWJfPUMCiI"> The Horror! The Horror!</a></p>
+ 
+:::
 
-- If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji on your screen.
+:::
 
-- If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raise hand" emoji on your screen.
 
-```{r}
-#| echo: false
-#| cache: false
-countdown(minutes = 3, font_size = "4em")
-```
+## Two Options
 
-## Other Fancy Joins
-- *left_join* is your workhorse. Start with patient identifiers/uniqid and add data to the right side.
-- Sometimes you will need to wrangle/process incoming data, then *right_join* it to the patient demographics
-- There are multiple kinds of fancy joins (semi_join, anti_join, inner_join, full_join) which come in handy once in a while.+
-- These are all well explained [here](http://statseducation.com/Introduction-to-R/modules/tidy%20data/joins/#:~:text=semi_join(x%2C%20y)%3A%20Return,This%20is%20a%20filtering%20join.)
+::: columns
+
+::: {.column width="50%"}
+1. You can find the person who collected/entered the data
+
+- If you don't correct this behavior now, this will torture _**many**_ future data analysts
+- Educate in this *teachable moment* about tidy data
+- Send them to watch Tidy Spreadsheets on YouTube [here](https://www.youtube.com/watch?v=9f-hpJbjKZo) to prevent this kind of Data Crime in the future.
+- **Improve** the world, one (now tidy) data collector at a time.
+:::
+
+::: {.column width="50%" .fragment}
+2. There is no way to find the person who collected/entered the data
+
+- Pull out some advanced data cleaning packages made for this particular kind of mess
+  - {unpivotr}
+  - {tidyxl}
+  - {unheadr}
+- Watch the unpivotr/tidyxl 14 min video [here](https://www.youtube.com/watch?v=ShWxAqnY2YE)
+- Learn from a free e-book, [Spreadsheet Munging Strategies](https://nacnudus.github.io/spreadsheet-munging-strategies/)
+
+:::
+
+:::
