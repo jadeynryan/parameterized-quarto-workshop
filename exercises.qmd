@@ -47,9 +47,9 @@ Essentially, your job is to turn the messy Excel data beast (on the left) into t
 
 ## CL1
 
-1. Import `messy_uc.xlsx` using `readxl::read_excel()`
+1. Import `messy_uc.xlsx` using `readxl::read_excel()`.
 
-```{r}
+```{r eval = FALSE, error = TRUE}
 #| code-fold: false
 #| message: false
 #| warning: false
@@ -57,8 +57,8 @@ Essentially, your job is to turn the messy Excel data beast (on the left) into t
 # import raw data
 df_raw <- read_excel(
   path = "data/messy_uc.xlsx",
-  sheet = "Data",
-  skip = 5
+  sheet = "__",
+  skip = __
 )
 
 ```
