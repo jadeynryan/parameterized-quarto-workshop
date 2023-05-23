@@ -63,6 +63,21 @@ df_raw <- read_excel(
 
 ```
 
+```{r}
+#| code-fold: true
+#| message: false
+#| warning: false
+
+# import raw data
+df_raw <- read_excel(
+  path = "data/messy_uc.xlsx",
+  sheet = "Data",
+  skip = 6
+)
+
+```
+
+
 
 ## CL2
 
