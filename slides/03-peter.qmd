@@ -255,7 +255,7 @@ wide |>
 
 -   Your Turn (Exercise) with endo_data
 -   Measurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) in biopsies of 3 segments of intestine.
--   This could be affected by portal hypertension in pts with liver cirrhosis
+-   This could be affected by portal hypertension in patients with liver cirrhosis
 
 ```{r, echo=FALSE}
 endo_data <- tibble::tribble(
@@ -274,86 +274,25 @@ endo_data <- tibble::tribble(
 endo_data
 ```
 
-## Pivoting Longer with endo_data
-
-::: panel-tabset
-### Dataset
-
-```{r, echo=FALSE}
-endo_data
-```
-
-### Arguments
-
--   What values do you want to use for:
-    -   cols
-    -   names_pattern = "(.+)\_teer"
-    -   names_to
-    -   values_to
--   Note that we are giving you the value for names_pattern, which means that we want to keep the characters of the name (of whatever length) before "\_teer"
-
-### Code
-
--   Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.
--   Note that we are giving you names_pattern
-
-```{r, error=TRUE, eval=FALSE}
-endo_data |> 
-  pivot_longer(
-    cols =  ,
-    names_pattern = "(.+)_teer",
-    names_to =   ,
-    values_to = 
-  )
-```
-
-### Solution
-
--   Fill in the blanks to pivot this dataset to tall format, with columns for the intestinal location and the teer value.
-
-```{r, error=TRUE, eval=FALSE}
-endo_data |> 
-  pivot_longer(
-    cols = "duod_teer":"colon_teer",
-    names_pattern = "(.+)_teer",
-    names_to = c("location"),
-    values_to = "teer"
-  )
-```
-
--   Run the code, and look at the resulting table.
-
-### Result
-
-```{r, echo=FALSE}
-endo_data |> 
-  pivot_longer(
-    cols = "duod_teer":"colon_teer",
-    names_pattern = "(.+)_teer",
-    names_to = c("location"),
-    values_to = "teer"
-  )
-```
--   Do you think that portal hypertension has an effect on TEER and (its inverse) epithelial leakiness?
-
-:::
-
 ## Exercise PH1
 
 <br>
 
 Complete Data Cleaning Fundamentals Exercise PH1.
 
+- Do This in [Posit Cloud](https://posit.cloud/content/5758558) 
 -   If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji `r knitr::asis_output("\U1F44D")` on your screen.
 
 -   If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raised hand" emoji `r knitr::asis_output("\U270B")` on your screen.
 
-[--\> Take me to the exercises \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#ph1){target="_blank"}
+[--\> Take me to the exercise solution \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#ph1){target="_blank"}
+
+<br>
 
 ```{r}
 #| echo: false
 #| cache: false
-countdown(minutes = 3, font_size = "4em")
+countdown(minutes = 3, font_size = "3.5em")
 ```
 
 ## Pivoting Wider
@@ -740,32 +679,6 @@ head(cr)
 ## What the Left Join Looks Like
 
    <div class="animations"><img alt="gif here" width="80%" height="80%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/left-join.gif"> </div>  
-   
-## Your Turn to Join
-
-::: panel-tabset
-### The Problem
-
--   Joining *demo* to *pot* with a left_join
--   left_join(data_x, data_y, by = "uniqid")
-
-### The Code
-
--   replace the generic arguments below with the correct ones to join *demo* to *pot* and produce *new_data*.
-
-```{r, error=TRUE, eval=FALSE}
-new_data <- left_join(data_x, data_y, by = "uniqid")
-new_data
-```
-
-### The Result
-
-```{r, echo=FALSE}
-new_data <- left_join(demo, pot, by = "pat_id")
-new_data
-```
-
-:::
 
 ## Exercise PH2
 
@@ -773,77 +686,21 @@ new_data
 
 Complete Data Cleaning Fundamentals Exercise PH2.
 
-[--\> Take me to the exercises \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#ph2){target="_blank"}
+
+- Do This in [Posit Cloud](https://posit.cloud/content/5758558)
 
 -   If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji `r knitr::asis_output("\U1F44D")` on your screen.
 
 -   If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raised hand" emoji `r knitr::asis_output("\U270B")` on your screen.
 
-```{r}
-#| echo: false
-#| cache: false
-countdown(minutes = 3, font_size = "4em")
-```
-
-## Solution PH2
-
-```{r, echo=TRUE, eval=FALSE}
-new_data <- left_join(demo, pot, by = "pat_id")
-new_data
-```
-
-## Now add Creatinine (cr) to new_data
-
-::: panel-tabset
-### The Problem
-
--   Joining new_data and cr with a left_join
--   left_join(data_x, data_y, by = "uniqid")
-
-### The Code
-
--   Replace the generic arguments with the correct ones to join new_data and cr and produce new_data2.
-
-```{r, error=TRUE, eval=FALSE}
-new_data2 <- left_join(data_x, data_y, by = "uniqid")
-new_data2
-```
-
-### The Solution
-
-```{r, eval=FALSE}
-new_data2 <- left_join(new_data, cr, by = "pat_id")
-new_data2
-```
-
-### The Result
-
-```{r, echo=FALSE}
-new_data2 <- left_join(new_data, cr, by = "pat_id")
-new_data2
-```
-
-- Al has HTN and DM2
-- Antoine has early stage FSGS
-:::
-
-## Exercise PH3
-
-<br>
-
-Complete Data Cleaning Fundamentals Exercise PH3.
-
-[--\> Take me to the exercises \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#ph3){target="_blank"}
-
--   If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji `r knitr::asis_output("\U1F44D")` on your screen.
-
--   If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raise hand" emoji `r knitr::asis_output("\U270B")` on your screen.
+[--\> Take me to the exercise \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#ph2){target="_blank"}
 
 ```{r}
 #| echo: false
 #| cache: false
-countdown(minutes = 3, font_size = "4em")
+countdown(minutes = 3, font_size = "3.5em")
 ```
+
 
 ## Workhorse Joins
 
@@ -898,7 +755,8 @@ What Should You Do?
 :::
 
 ::: {.column width="50%"}
-<div class="tenor-gif-embed" data-postid="21508179" data-share-method="host" data-aspect-ratio="1.33333" data-width="100%"><a href="https://tenor.com/view/apocalypse-now-marlon-brando-colonel-kurtz-kurtz-the-horror-gif-21508179">Apocalypse Now Marlon Brando GIF</a>from <a href="https://tenor.com/search/apocalypse+now-gifs">Apocalypse Now GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+<iframe src="https://giphy.com/embed/jquDWJfPUMCiI" width="480" height="428" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/scared-shocked-jquDWJfPUMCiI"> The Horror! The Horror!</a></p>
+ 
 :::
 
 :::
@@ -913,19 +771,20 @@ What Should You Do?
 
 - If you don't correct this behavior now, this will torture _**many**_ future data analysts
 - Educate in this *teachable moment* about tidy data
-- **Improve** the world
-- Send them to Tidy Spreadsheets on YouTube [here](https://www.youtube.com/watch?v=9f-hpJbjKZo) to prevent this in the future.
+- Send them to watch Tidy Spreadsheets on YouTube [here](https://www.youtube.com/watch?v=9f-hpJbjKZo) to prevent this kind of Data Crime in the future.
+- **Improve** the world, one (now tidy) data collector at a time.
 :::
 
-::: {.column width="50%"}
+::: {.column width="50%" .fragment}
 2. There is no way to find the person who collected/entered the data
 
 - Pull out some advanced data cleaning packages made for this particular kind of mess
-  - unpivotr
-  - tidyxl
-  - unheadr
-- Lean on a free e-book, [Spreadsheet Munging Strategies](https://nacnudus.github.io/spreadsheet-munging-strategies/)
-- Watch the 14 min video [here](https://www.youtube.com/watch?v=ShWxAqnY2YE)
+  - {unpivotr}
+  - {tidyxl}
+  - {unheadr}
+- Watch the unpivotr/tidyxl 14 min video [here](https://www.youtube.com/watch?v=ShWxAqnY2YE)
+- Learn from a free e-book, [Spreadsheet Munging Strategies](https://nacnudus.github.io/spreadsheet-munging-strategies/)
+
 :::
 
 :::
