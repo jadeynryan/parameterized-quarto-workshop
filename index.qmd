@@ -14,7 +14,7 @@ engine: knitr
 🏨 Virtual
 
 💥 **FREE** [workshop
-registration](https://events.linuxfoundation.org/r-medicine/)
+registration](https://events.linuxfoundation.org/r-medicine/) with registration for the R/Medicine 2023 meeting.
 
 ------------------------------------------------------------------------
 
@@ -32,10 +32,7 @@ ready for analysis.
 
 -   To address and clean common messy data problems in each variable.
 
--   To address and clean data with more complex meta-problems, like
-    pivoting to long format for data analysis, dealing with multi-column
-    headers, color-coded data (gah!), and un-pivoting pivot tables into
-    tidy data.
+-   To address and clean data with more complex meta-problems, like pivoting to long format for data analysis, thickening timestamped data to manageable time units, padding missing dates, and joining different datasets together.
 
 ## Is this course for me?
 
@@ -52,8 +49,8 @@ the right workshop for you.
 
 The workshop is designed for those with some experience in R. It will be
 assumed that participants can perform basic data manipulation.
-Experience with the {tidyverse} and the `%>%`/`|>` operator is a plus,
-but not required.
+Experience with the {tidyverse} and the `%>%`/`|>` operator is a major plus,
+but is not required.
 
 ## Prework
 
@@ -63,13 +60,13 @@ This workshop will largely be conducted in the Posit Cloud environment. Please c
 
 If you will not be using the Posit Cloud instance, you can just watch along as the instructors teach.
 
-If you would like to try this out on your own computer, please have the following installed and configured on your machine.
+As a more high-risk alternative, if you would like to try this out on your own computer, please have the following installed and configured on your machine. Note that we will **NOT** be able to help you with local computer problems during the workshop. If you choose to do this, you are on your own.
 
 -   Recent version of **R**
 
 -   Recent version of **RStudio**
 
--   Recent version of packages used in workshop.
+-   Recent version of packages used in this workshop.
 
     ``` r
     instll_pkgs <- c("tidyverse", "tidyxl", "unpivotr", "readxl", "openxlsx", "janitor", "gtsummary", "here", "padr")
@@ -147,3 +144,5 @@ encounters it in the wild.
     data entry tool (and how you can use Excel better) in an R/Medicine
     workshop/YouTube video
     [here](https://www.youtube.com/watch?v=9f-hpJbjKZo).
+-   Peter is working on a free e-book (work in progress) on reproducible medical data analysis [here](https://bookdown.org/pdr_higgins/rmrwr/) and a package of clean (and messy) medical data for practicing and teaching in R [here](https://higgi13425.github.io/medicaldata/).
+- Our friend Duncan Garmonsway has a free e-book on advanced data cleaning strategies for especially devilish colored, pivoted, or bizarrely structured data [here](https://nacnudus.github.io/spreadsheet-munging-strategies/)
