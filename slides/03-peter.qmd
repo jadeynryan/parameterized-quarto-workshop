@@ -14,9 +14,9 @@ library(emo)
 ```
 
 ## Where are We Now?
-- We have done DEV (Data Evaluation and Validation) - more validation to be done
-- Discussed the importance of preventing data errors at the source - data collection and entry
-- Did Stage 1 cleaning - variable names, remove empty columns/rows, variable types/classes (characters in numeric, recoding factors, date madness), missingness, violations of tidy data principles (separate), added meaningful variable labels.
+- We have done DEV (Data Evaluation and Validation) - more validation to be done, Data validation is a continuous process, right up to Data Lock.
+- Discussed the importance of preventing data errors at the source - data collection and entry (preferably using a tool with data validation at entry - like REDCap)
+- Did Stage 1 cleaning - clean variable names, remove empty columns/rows, fix variable types/classes (characters in numeric, recoding factors, date madness), address missingness, violations of tidy data principles (separate), added meaningful variable labels.
 
 ## Deciding on the Unit of Observation
 
@@ -348,7 +348,7 @@ Complete Data Cleaning Fundamentals Exercise PH1.
 
 -   If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raised hand" emoji `r knitr::asis_output("\U270B")` on your screen.
 
-[--\> Take me to the exercises \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+[--\> Take me to the exercises \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#ph1){target="_blank"}
 
 ```{r}
 #| echo: false
@@ -646,6 +646,12 @@ cdc
 left_join(dataset_x, dataset_y, by = "key")
 ```
 
+### The Solution
+
+```{r, echo=TRUE, eval=FALSE}
+left_join(demo, cdc, by = "census_tract")
+```
+
 ### The Result
 
 -   Is there an association between social vulnerability and hypertension?
@@ -767,7 +773,7 @@ new_data
 
 Complete Data Cleaning Fundamentals Exercise PH2.
 
-[--\> Take me to the exercises \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+[--\> Take me to the exercises \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#ph2){target="_blank"}
 
 -   If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji `r knitr::asis_output("\U1F44D")` on your screen.
 
@@ -803,14 +809,22 @@ new_data2 <- left_join(data_x, data_y, by = "uniqid")
 new_data2
 ```
 
+### The Solution
+
+```{r, eval=FALSE}
+new_data2 <- left_join(new_data, cr, by = "pat_id")
+new_data2
+```
+
 ### The Result
 
 ```{r, echo=FALSE}
 new_data2 <- left_join(new_data, cr, by = "pat_id")
 new_data2
 ```
+
 - Al has HTN and DM2
-- Antione has early stage FSGS
+- Antoine has early stage FSGS
 :::
 
 ## Exercise PH3
@@ -819,7 +833,7 @@ new_data2
 
 Complete Data Cleaning Fundamentals Exercise PH3.
 
-[--\> Take me to the exercises \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+[--\> Take me to the exercises \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#ph3){target="_blank"}
 
 -   If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji `r knitr::asis_output("\U1F44D")` on your screen.
 
@@ -856,11 +870,14 @@ countdown(minutes = 3, font_size = "4em")
 ::: columns
 
 ::: {.column width="50%"}
+- You want to subset your data (x) by keeping only the ones (y=hospitalized) who were hospitalized.
 
  <div class="animations"><img alt="gif here" width="100%" height="100%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/semi-join.gif"> </div>  
 :::
 
 ::: {.column width="50%"}
+- You want to subset your data (x) by keeping only the ones <br>(y = dead) <br>who are NOT dead.
+
  <div class="animations"><img alt="gif here" width="100%" height="100%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/anti-join.gif"> </div>  
 :::
 
@@ -897,13 +914,13 @@ What Should You Do?
 - If you don't correct this behavior now, this will torture _**many**_ future data analysts
 - Educate in this *teachable moment* about tidy data
 - **Improve** the world
-- Send them to Tidy Spreadsheets on YouTube [here](https://www.youtube.com/watch?v=9f-hpJbjKZo)
+- Send them to Tidy Spreadsheets on YouTube [here](https://www.youtube.com/watch?v=9f-hpJbjKZo) to prevent this in the future.
 :::
 
 ::: {.column width="50%"}
 2. There is no way to find the person who collected/entered the data
 
-- Pull out some advanced data cleaning packages made for this mess
+- Pull out some advanced data cleaning packages made for this particular kind of mess
   - unpivotr
   - tidyxl
   - unheadr
