@@ -24,6 +24,4 @@ cache: true
 
 {{< include 03-peter.qmd >}}
 
-{{< include 04-duncan.qmd >}}
-
-{{< include 05-thank-you.qmd >}}
+{{< include 04-thank-you.qmd >}}

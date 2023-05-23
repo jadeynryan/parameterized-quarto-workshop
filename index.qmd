@@ -83,8 +83,7 @@ If you would like to try this out on your own computer, please have the followin
 
 -   Ensure you can import data from a Microsoft Excel spreadsheet to R
 
-    -   Save a a Microsoft Excel spreadsheet in a known folder on your
-        computer.
+    -   Save a a Microsoft Excel spreadsheet in a known folder on your computer.
     -   Open RStudio install/load (library) the packages {readxl}
         ([link](https://readxl.tidyverse.org)) and {openxlsx}
         ([link](https://ycphs.github.io/openxlsx/))

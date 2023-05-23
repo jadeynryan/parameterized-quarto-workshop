@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.3.333">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -249,9 +249,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1><img src="images/Crystal_circle.png" class="img-fluid" style="width:15.0%" alt="Crystal Lewis"> Data management best practices</h1>
 <section id="cl1" class="level2">
 <h2 class="anchored" data-anchor-id="cl1">CL1</h2>
+<ol type="1">
+<li>Import <code>messy_uc.xlsx</code> using <code>readxl::read_excel()</code></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import raw data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df_raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"data/messy_uc.xlsx"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"Data"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">5</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="cl2" class="level2">
 <h2 class="anchored" data-anchor-id="cl2">CL2</h2>
+<ol start="2" type="1">
+<li>Use an exploratory function to review the data.</li>
+</ol>
+<div class="cell">
+<details>
+<summary>Show the code solution</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(df_raw)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(df_raw)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>base<span class="sc">::</span><span class="fu">summary</span>(df_raw)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>visdat<span class="sc">::</span><span class="fu">vis_dat</span>(df_raw)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>summarytools<span class="sc">::</span><span class="fu">view</span>(summarytools<span class="sc">::</span><span class="fu">dfSummary</span>(df_raw))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">create_report</span>(df_raw)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>Hmisc<span class="sc">::</span><span class="fu">describe</span>(df_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 </section>
 <section id="shannon-pileggi-data-cleaning-fundamentals" class="level1">
@@ -259,17 +291,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="set-up" class="level2">
 <h2 class="anchored" data-anchor-id="set-up">Set up</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import raw data</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df_raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"messy_uc.xlsx"</span>),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"Data"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">5</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># do initial cleaning of variable names and removing empty rows/columns</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># do initial cleaning of variable names and removing empty rows/columns</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="sp1" class="level2">
@@ -280,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> <span class="fu">count</span>(race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> <span class="fu">count</span>(race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 2
@@ -303,16 +328,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">race_clean =</span> <span class="fu">case_when</span>(</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"African-American"</span>, <span class="st">"afromerican"</span>) <span class="sc">~</span> <span class="st">"African-American"</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"H/API"</span>, <span class="st">"Mixed"</span>, <span class="st">"Other"</span>) <span class="sc">~</span> <span class="st">"Other"</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> race</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">race_clean =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"African-American"</span>, <span class="st">"afromerican"</span>) <span class="sc">~</span> <span class="st">"African-American"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"H/API"</span>, <span class="st">"Mixed"</span>, <span class="st">"Other"</span>) <span class="sc">~</span> <span class="st">"Other"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> race</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol start="3" type="1">
@@ -321,8 +346,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(race_clean, race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(race_clean, race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 3
@@ -348,8 +373,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(start_plt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(start_plt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 28 × 2
@@ -369,9 +394,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(start_plt) <span class="sc">|&gt;</span> </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(start_plt) <span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 30
@@ -380,7 +405,7 @@ $ start_plt &lt;chr&gt; "273K/microL", "414K/microL", "323K/microL", "389K/micro
 </div>
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_clean[[<span class="st">"start_plt"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_clean[[<span class="st">"start_plt"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "273K/microL"  "414K/microL"  "323K/microL"  "389K/microL"  "411K/microL" 
@@ -397,17 +422,17 @@ $ start_plt &lt;chr&gt; "273K/microL", "414K/microL", "323K/microL", "389K/micro
 <div class="cell">
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">race_clean =</span> <span class="fu">case_when</span>(</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"African-American"</span>, <span class="st">"afromerican"</span>) <span class="sc">~</span> <span class="st">"African-American"</span>,</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"H/API"</span>, <span class="st">"Mixed"</span>, <span class="st">"Other"</span>) <span class="sc">~</span> <span class="st">"Other"</span>,</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> race</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">start_plt_clean =</span> <span class="fu">parse_number</span>(start_plt) </span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">race_clean =</span> <span class="fu">case_when</span>(</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"African-American"</span>, <span class="st">"afromerican"</span>) <span class="sc">~</span> <span class="st">"African-American"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"H/API"</span>, <span class="st">"Mixed"</span>, <span class="st">"Other"</span>) <span class="sc">~</span> <span class="st">"Other"</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> race</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">start_plt_clean =</span> <span class="fu">parse_number</span>(start_plt) </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol start="3" type="1">
@@ -416,8 +441,8 @@ $ start_plt &lt;chr&gt; "273K/microL", "414K/microL", "323K/microL", "389K/micro
 <div class="cell">
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(start_plt_clean, start_plt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(start_plt_clean, start_plt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 28 × 3
@@ -437,9 +462,9 @@ $ start_plt &lt;chr&gt; "273K/microL", "414K/microL", "323K/microL", "389K/micro
 </div>
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(start_plt, start_plt_clean) <span class="sc">|&gt;</span> </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(start_plt, start_plt_clean) <span class="sc">|&gt;</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 30
@@ -449,7 +474,7 @@ $ start_plt_clean &lt;dbl&gt; 273, 414, 323, 389, 411, 427, 249, 197, 204, 305, 
 </div>
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_clean[[<span class="st">"start_plt_clean"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df_clean[[<span class="st">"start_plt_clean"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  273  414  323  389  411  427  249  197  204  305  347  402  389  432  288
@@ -470,8 +495,8 @@ attr(,"problems")
 <div class="cell">
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(race_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(race_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
@@ -491,17 +516,17 @@ attr(,"problems")
 <div class="cell">
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">race_clean =</span> <span class="fu">case_when</span>(</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"African-American"</span>, <span class="st">"afromerican"</span>) <span class="sc">~</span> <span class="st">"African-American"</span>,</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"H/API"</span>, <span class="st">"Mixed"</span>, <span class="st">"Other"</span>) <span class="sc">~</span> <span class="st">"Other"</span>,</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> race</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> <span class="fu">fct_infreq</span>(),</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">start_plt_clean =</span> <span class="fu">parse_number</span>(start_plt) </span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="ot">&lt;-</span> df_raw <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="fu">c</span>(<span class="st">"rows"</span>, <span class="st">"cols"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">race_clean =</span> <span class="fu">case_when</span>(</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"African-American"</span>, <span class="st">"afromerican"</span>) <span class="sc">~</span> <span class="st">"African-American"</span>,</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>      race <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"H/API"</span>, <span class="st">"Mixed"</span>, <span class="st">"Other"</span>) <span class="sc">~</span> <span class="st">"Other"</span>,</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> race</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> <span class="fu">fct_infreq</span>(),</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">start_plt_clean =</span> <span class="fu">parse_number</span>(start_plt) </span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol start="3" type="1">
@@ -510,8 +535,8 @@ attr(,"problems")
 <div class="cell">
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(race_clean, race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(race_clean, race)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 3
@@ -529,8 +554,8 @@ attr(,"problems")
 </div>
 <details>
 <summary>Show the code solution</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(race_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(race_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
@@ -558,54 +583,54 @@ attr(,"problems")
 <section id="session-info" class="level1">
 <h1>Session info</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value
- version  R version 4.3.0 (2023-04-21 ucrt)
- os       Windows 10 x64 (build 19044)
- system   x86_64, mingw32
- ui       RTerm
+ version  R version 4.3.0 (2023-04-21)
+ os       macOS Ventura 13.3.1
+ system   aarch64, darwin20
+ ui       X11
  language (EN)
- collate  English_United States.utf8
- ctype    English_United States.utf8
- tz       America/New_York
- date     2023-05-15
- pandoc   2.19.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
+ collate  en_US.UTF-8
+ ctype    en_US.UTF-8
+ tz       America/Detroit
+ date     2023-05-19
+ pandoc   2.19.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  ! package       * version date (UTC) lib source
  P broom.helpers   1.13.0  2023-03-28 [?] CRAN (R 4.3.0)
- P cachem          1.0.7   2023-02-24 [?] CRAN (R 4.3.0)
+ P cachem          1.0.8   2023-05-01 [?] CRAN (R 4.3.0)
  P callr           3.7.3   2022-11-02 [?] CRAN (R 4.3.0)
  P cellranger      1.1.0   2016-07-27 [?] CRAN (R 4.3.0)
  P cli             3.6.1   2023-03-23 [?] CRAN (R 4.3.0)
  P colorspace      2.1-0   2023-01-23 [?] CRAN (R 4.3.0)
  P crayon          1.5.2   2022-09-29 [?] CRAN (R 4.3.0)
  P devtools        2.4.5   2022-10-11 [?] CRAN (R 4.3.0)
- P digest          0.6.31  2022-12-11 [?] CRAN (R 4.3.0)
- P dplyr         * 1.1.1   2023-03-22 [?] CRAN (R 4.3.0)
- P ellipsis        0.3.2   2021-04-29 [?] CRAN (R 4.3.0)
- P evaluate        0.20    2023-01-17 [?] CRAN (R 4.3.0)
+   digest          0.6.31  2022-12-11 [1] CRAN (R 4.3.0)
+ P dplyr         * 1.1.2   2023-04-20 [?] CRAN (R 4.3.0)
+   ellipsis        0.3.2   2021-04-29 [1] CRAN (R 4.3.0)
+ P evaluate        0.21    2023-05-05 [?] CRAN (R 4.3.0)
  P fansi           1.0.4   2023-01-22 [?] CRAN (R 4.3.0)
- P fastmap         1.1.1   2023-02-24 [?] CRAN (R 4.3.0)
+   fastmap         1.1.1   2023-02-24 [1] CRAN (R 4.3.0)
  P forcats       * 1.0.0   2023-01-29 [?] CRAN (R 4.3.0)
- P fs              1.6.1   2023-02-06 [?] CRAN (R 4.3.0)
+ P fs              1.6.2   2023-04-25 [?] CRAN (R 4.3.0)
  P generics        0.1.3   2022-07-05 [?] CRAN (R 4.3.0)
- P ggplot2       * 3.4.1   2023-02-10 [?] CRAN (R 4.3.0)
+ P ggplot2       * 3.4.2   2023-04-03 [?] CRAN (R 4.3.0)
  P glue            1.6.2   2022-02-24 [?] CRAN (R 4.3.0)
  P gt              0.9.0   2023-03-31 [?] CRAN (R 4.3.0)
  P gtable          0.3.3   2023-03-21 [?] CRAN (R 4.3.0)
  P gtsummary     * 1.7.1   2023-04-27 [?] CRAN (R 4.3.0)
- P here          * 1.0.1   2020-12-13 [?] CRAN (R 4.3.0)
+   here          * 1.0.1   2020-12-13 [1] CRAN (R 4.3.0)
  P hms             1.1.3   2023-03-21 [?] CRAN (R 4.3.0)
- P htmltools       0.5.5   2023-03-23 [?] CRAN (R 4.3.0)
+   htmltools       0.5.5   2023-03-23 [1] CRAN (R 4.3.0)
  P htmlwidgets     1.6.2   2023-03-17 [?] CRAN (R 4.3.0)
- P httpuv          1.6.9   2023-02-14 [?] CRAN (R 4.3.0)
+ P httpuv          1.6.11  2023-05-11 [?] CRAN (R 4.3.0)
  P janitor       * 2.2.0   2023-02-02 [?] CRAN (R 4.3.0)
  P jsonlite        1.8.4   2022-12-06 [?] CRAN (R 4.3.0)
  P knitr           1.42    2023-01-25 [?] CRAN (R 4.3.0)
- P later           1.3.0   2021-08-18 [?] CRAN (R 4.3.0)
+ P later           1.3.1   2023-05-02 [?] CRAN (R 4.3.0)
  P lifecycle       1.0.3   2022-10-07 [?] CRAN (R 4.3.0)
  P lubridate     * 1.9.2   2023-02-10 [?] CRAN (R 4.3.0)
  P magrittr        2.0.3   2022-03-30 [?] CRAN (R 4.3.0)
@@ -618,20 +643,20 @@ attr(,"problems")
  P pkgconfig       2.0.3   2019-09-22 [?] CRAN (R 4.3.0)
  P pkgload         1.3.2   2022-11-16 [?] CRAN (R 4.3.0)
  P prettyunits     1.1.1   2020-01-24 [?] CRAN (R 4.3.0)
- P processx        3.8.0   2022-10-26 [?] CRAN (R 4.3.0)
- P profvis         0.3.7   2020-11-02 [?] CRAN (R 4.3.0)
+ P processx        3.8.1   2023-04-18 [?] CRAN (R 4.3.0)
+ P profvis         0.3.8   2023-05-02 [?] CRAN (R 4.3.0)
  P promises        1.2.0.1 2021-02-11 [?] CRAN (R 4.3.0)
- P ps              1.7.3   2023-03-21 [?] CRAN (R 4.3.0)
+ P ps              1.7.5   2023-04-18 [?] CRAN (R 4.3.0)
  P purrr         * 1.0.1   2023-01-10 [?] CRAN (R 4.3.0)
  P R6              2.5.1   2021-08-19 [?] CRAN (R 4.3.0)
  P Rcpp            1.0.10  2023-01-22 [?] CRAN (R 4.3.0)
  P readr         * 2.1.4   2023-02-10 [?] CRAN (R 4.3.0)
  P readxl        * 1.4.2   2023-02-09 [?] CRAN (R 4.3.0)
  P remotes         2.4.2   2021-11-30 [?] CRAN (R 4.3.0)
-   renv            0.17.2  2023-03-17 [1] CRAN (R 4.3.0)
- P rlang           1.1.0   2023-03-14 [?] CRAN (R 4.3.0)
- P rmarkdown       2.20    2023-01-19 [?] CRAN (R 4.3.0)
- P rprojroot       2.0.3   2022-04-02 [?] CRAN (R 4.3.0)
+ P renv            0.17.2  2023-03-17 [?] CRAN (R 4.3.0)
+   rlang           1.1.1   2023-04-28 [1] CRAN (R 4.3.0)
+ P rmarkdown       2.21    2023-03-26 [?] CRAN (R 4.3.0)
+   rprojroot       2.0.3   2022-04-02 [1] CRAN (R 4.3.0)
  P rstudioapi      0.14    2022-08-22 [?] CRAN (R 4.3.0)
  P scales          1.2.1   2022-08-20 [?] CRAN (R 4.3.0)
  P sessioninfo     1.2.2   2021-12-06 [?] CRAN (R 4.3.0)
@@ -648,15 +673,15 @@ attr(,"problems")
  P urlchecker      1.0.1   2021-11-30 [?] CRAN (R 4.3.0)
  P usethis         2.1.6   2022-05-25 [?] CRAN (R 4.3.0)
  P utf8            1.2.3   2023-01-31 [?] CRAN (R 4.3.0)
- P vctrs           0.6.1   2023-03-22 [?] CRAN (R 4.3.0)
+ P vctrs           0.6.2   2023-04-19 [?] CRAN (R 4.3.0)
  P withr           2.5.0   2022-03-03 [?] CRAN (R 4.3.0)
- P xfun            0.38    2023-03-24 [?] CRAN (R 4.3.0)
- P xml2            1.3.3   2021-11-30 [?] CRAN (R 4.3.0)
+ P xfun            0.39    2023-04-20 [?] CRAN (R 4.3.0)
+ P xml2            1.3.4   2023-04-27 [?] CRAN (R 4.3.0)
  P xtable          1.8-4   2019-04-21 [?] CRAN (R 4.3.0)
  P yaml            2.3.7   2023-01-23 [?] CRAN (R 4.3.0)
 
- [1] C:/Users/pileggis/Documents/gh-personal/rmedicine-data-cleaning-2023/renv/library/R-4.3/x86_64-w64-mingw32
- [2] C:/Users/pileggis/AppData/Local/R/cache/R/renv/sandbox/R-4.3/x86_64-w64-mingw32/830ce55b
+ [1] /Users/peterhiggins/Documents/RCode/rmedicine-data-cleaning-2023/renv/library/R-4.3/aarch64-apple-darwin20
+ [2] /Users/peterhiggins/Library/Caches/org.R-project.R/R/renv/sandbox/R-4.3/aarch64-apple-darwin20/84ba8b13
 
  P ── Loaded and on-disk path mismatch.
 

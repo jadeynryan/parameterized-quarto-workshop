@@ -51,8 +51,9 @@ Taming the Data Beast, from Allison Horst's [Data Science Illustrations](https:/
 
 | Time          | Activity           |
 |---------------|--------------------|
-| 11:00 - 11:50 | Crystal Lewis (Data management best practices)          |
-| 11:50 - 12:00 | *Break*            |
+|11:00-11:10    |   Intro/Logistics | 
+|11:10 - 11:55 | Crystal Lewis (Data management best practices)          |
+| 11:55 - 12:00 | *Break*            |
 | 12:00 - 12:50 | Shannon Pileggi (Data cleaning fundamentals)          |
 | 12:50 - 12:00 | *Break*            |
 | 01:00 - 02:00 | Peter Higgins (Data wrangling & reshaping)          |
@@ -121,6 +122,8 @@ Change `CTRL + Shift + M` shortcut to native pipe:
 :::
 
 ## Namespacing
+
+`package::function()`
 
 `dplyr::select()`
 
