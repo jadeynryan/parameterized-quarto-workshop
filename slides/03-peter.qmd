@@ -1,4 +1,4 @@
-# Wrangling your Data
+# Stage 2 <br>Wrangling your Data
 
 ```{r}
 #| echo: false
@@ -14,6 +14,7 @@ library(emo)
 ```
 
 ## Where are We Now?
+
 - We have done DEV (Data Evaluation and Validation) - more validation to be done, Data validation is a continuous process, right up to Data Lock.
 - Discussed the importance of preventing data errors at the source - data collection and entry (preferably using a tool with data validation at entry - like REDCap)
 - Did Stage 1 cleaning - clean variable names, remove empty columns/rows, fix variable types/classes (characters in numeric, recoding factors, date madness), address missingness, violations of tidy data principles (separate), added meaningful variable labels.
