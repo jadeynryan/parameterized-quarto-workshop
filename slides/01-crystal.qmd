@@ -769,24 +769,37 @@ For the remainder of this workshop we will be working through a sample messy dat
 ## Exercise
 
 
-Take 2 minutes to review the data dictionary and our data.
+Take 5 minutes to review the data dictionary and our data.
 
-Give instructions here....
+1. Log in to Posit Cloud and navigate to our project
+2. Open the data folder and open the file "messy_uc.xlsx"
 
+:::: {layout="[[45,-10,45], [100]]"}
+::: {.column}
 ![](images/data_file.PNG){width=80%}
+:::
+
+::: {.column}
+-   When you finish, give us a `r knitr::asis_output("\U1F44D")`
+
+-   If you are having trouble, give us a `r knitr::asis_output("\U270B")`
+:::
+::::
 
 
 ```{r}
 #| echo: false
 #| cache: false
-countdown(minutes = 2, font_size = "3em")
+countdown(minutes = 5, font_size = "2em")
 ```
 
 ::: {.notes}
 
 So we have this scenario. And believe it or not, we are not going to jump into reading the data into R just yet. The first thing we really should do is open the Excel file to review both the data AND the data dictionary. While it seems low-tech, it is actually really important to learn what you are getting into before reading your file into R.
 
-So both the data and data dictionary are in the same file. So let's take 2 minutes to open our file and review both the data dictionary and the data to see what is actually going on in our file.
+So both the data and data dictionary are in the same file. So let's take 5 minutes to log into posit cloud and navigate to our data file. Then open and review both the data dictionary and the data to see what is actually going on in our file.
+
+Throughout this workshop, when you finish with an exercise, go ahead and give us the thumbs up using the Zoom reactions. If you are having trouble with an exercise, give us a hand wave.
 
 ....
 
@@ -879,7 +892,7 @@ So as I mentioned before, the very first thing we would do is open our script so
 
 And then we would use the read_excel function to read in our data
 
-Notice that I am giving you a hint here that in this situation we want to use both the sheet and then skip arguments. I am not showing you the full code because we are going to do this in an exercise here in just a moment.
+Notice that I am giving you a hint here that in this situation we want to use both the sheet and then skip arguments. I am not showing you the full code because we are going to do this in an exercise here in just a moment. But do pay attention to the quotation marks that are needed for the sheet argument. Those are not needed for the skip argument.
 
 :::
 
