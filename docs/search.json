@@ -844,7 +844,7 @@
     "href": "slides/index.html#your-turn-to-join-1",
     "title": "Data Cleaning",
     "section": "Your Turn to Join",
-    "text": "Your Turn to Join\n\nThe ProblemThe CodeThe SolutionThe Result\n\n\n\nJoining demo to pot with a left_join\nleft_join(data_x, data_y, by = “uniqid”)\n\n\n\n\nreplace the generic arguments below with the correct ones to join demo to pot and produce new_data.\n\n\nnew_data &lt;- left_join(data_x, data_y, by = \"uniqid\")\nnew_data\n\n\n\n\n\nCode\nnew_data &lt;- left_join(demo, pot, by = \"pat_id\")\nnew_data\n\n\n\n\n\n\n# A tibble: 9 × 4\n  pat_id name                 age     k\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt;\n1 001    Arthur Blankenship    67   3.2\n2 002    Britney Jonas         23   3.7\n3 003    Sally Davis           63   4.2\n4 004    Al Jones              44   4.4\n5 005    Gary Hamill           38   4.1\n6 006    Ken Bartoletti        33   4  \n7 007    Ike Gerhold           52   3.6\n8 008    Tatiana Grant         42   4.2\n9 009    Antoine Delacroix     27   4.9"
+    "text": "Your Turn to Join\n\nThe ProblemThe CodeThe SolutionThe Result\n\n\n\nJoining demo to pot with a left_join\nleft_join(data_x, data_y, by = “uniqid”)\n\n\n\n\nreplace the generic arguments below with the correct ones to join demo to pot and produce new_data.\n\n\nnew_data &lt;- left_join(data_x, data_y, by = \"uniqid\")\nnew_data\n\nNote the syntax for identifying the uniqid on which to do the merge: by = \"varname\"\n\n\n\n\nCode\nnew_data &lt;- left_join(demo, pot, by = \"pat_id\") \nnew_data\n\n\n\n\n\n\n# A tibble: 9 × 4\n  pat_id name                 age     k\n  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;dbl&gt;\n1 001    Arthur Blankenship    67   3.2\n2 002    Britney Jonas         23   3.7\n3 003    Sally Davis           63   4.2\n4 004    Al Jones              44   4.4\n5 005    Gary Hamill           38   4.1\n6 006    Ken Bartoletti        33   4  \n7 007    Ike Gerhold           52   3.6\n8 008    Tatiana Grant         42   4.2\n9 009    Antoine Delacroix     27   4.9"
   },
   {
     "objectID": "slides/index.html#exercise-ph2",
@@ -1180,7 +1180,7 @@
     "href": "slides/index.html#fancy-joins",
     "title": "Data Cleaning",
     "section": "Fancy Joins",
-    "text": "Fancy Joins\n\nThere are multiple kinds of fancy joins (semi_join, anti_join, inner_join, full_join, union, intersect, setdiff) which come in handy once in a while.\nThe joins below are filtering joins, which filter the rows of the LHS without adding new variables.\nThe many kinds of joins are all well explained here\n\n\n\n\nYou want to subset your data (x) by keeping only the ones (y=hospitalized) who were hospitalized.\n\n\n\n\n\n\nYou want to subset your data (x) by keeping only the ones (y = dead) who are NOT dead."
+    "text": "Fancy Joins\n\nThere are multiple kinds of fancy joins (semi_join, anti_join, inner_join, full_join, union, intersect, setdiff) which come in handy once in a while.\nThe many kinds of joins are all well explained here\n\n\n\n\nYou want to subset your data (x) by keeping only the ones (y=hospitalized) who were hospitalized.\n\n\n\n\n\n\nYou want to subset your data (x) by keeping only the ones (y = dead) who are NOT dead.\n\n\n\n\n\n\n\nThe joins shown below are filtering joins, which filter out rows in your x (LHS) dataset, but do not add any new variables."
   },
   {
     "objectID": "slides/index.html#what-the-left-join-looks-like",
@@ -1279,5 +1279,33 @@
     "title": "Data Cleaning",
     "section": "Need to Load the Data?",
     "text": "Need to Load the Data?\nIf you are trying this on your local computer, copy the code below with the clipboard icon to get the data into your computer.\n\ndemo &lt;- tibble::tribble(\n  ~pat_id, ~name, ~age,\n  '001', \"Arthur Blankenship\", 67,\n  '002', \"Britney Jonas\", 23,\n  '003', \"Sally Davis\", 63,\n  '004', \"Al Jones\", 44,\n  '005', \"Gary Hamill\", 38,\n  '006', \"Ken Bartoletti\", 33,\n  '007', \"Ike Gerhold\", 52,\n  '008', \"Tatiana Grant\", 42,\n  '009', \"Antoine Delacroix\", 27,\n)\n\npot &lt;- tibble::tribble(\n  ~pat_id, ~k,\n  '001', 3.2,\n  '002', 3.7,\n  '003', 4.2,\n  '004', 4.4,\n  '005', 4.1,\n  '006', 4.0,\n  '007', 3.6,\n  '008', 4.2,\n  '009', 4.9,\n)\n\ncr &lt;- tibble::tribble(\n  ~pat_id, ~cr,\n  '001', 0.2,\n  '002', 0.5,\n  '003', 0.9,\n  '004', 1.5,\n  '005', 0.7,\n  '006', 0.9,\n  '007', 0.7,\n  '008', 1.0,\n  '009', 1.7,\n)"
+  },
+  {
+    "objectID": "slides/index.html#step-by-step---stage-1",
+    "href": "slides/index.html#step-by-step---stage-1",
+    "title": "Data Cleaning",
+    "section": "Step by Step - Stage 1",
+    "text": "Step by Step - Stage 1\n\nImport your data cleanly - skip rows, get headers\nexplore data\nremove empty rows, columns\nfix variable classes/types, check dates\ncreate a codebook\nvalidate for missingness, outliers\nclean variable names\naddress bad category values\nidentify and consistently label missing values\nseparate mixed (SBP/DBP) values, assign variable labels"
+  },
+  {
+    "objectID": "slides/index.html#step-by-step---stage-2",
+    "href": "slides/index.html#step-by-step---stage-2",
+    "title": "Data Cleaning",
+    "section": "Step by Step - Stage 2",
+    "text": "Step by Step - Stage 2\n\nDefine your Unit of Analysis\npivot_longer if needed\nthicken time, pad missing times if needed\njoin to add new data if needed\nknow how to find packages for data horror\n\nunpivotr\ntidyxl\nunheadr"
+  },
+  {
+    "objectID": "slides/index.html#step-by-step-cleaning---stage-1",
+    "href": "slides/index.html#step-by-step-cleaning---stage-1",
+    "title": "Data Cleaning",
+    "section": "Step by Step Cleaning - Stage 1",
+    "text": "Step by Step Cleaning - Stage 1\n\nImport your data cleanly - skip rows, get headers\nExplore data\nRemove empty rows, columns\nFix variable classes/types, check dates\nClean variable names\nCreate a codebook\nValidate for missingness, outliers\nFix bad category values\nIdentify and consistently label missing values\nSeparate mixed (SBP/DBP) values, assign variable labels"
+  },
+  {
+    "objectID": "slides/index.html#step-by-step-cleaning---stage-2",
+    "href": "slides/index.html#step-by-step-cleaning---stage-2",
+    "title": "Data Cleaning",
+    "section": "Step by Step Cleaning - Stage 2",
+    "text": "Step by Step Cleaning - Stage 2\n\nDefine your Unit of Analysis\npivot_longer if needed\nthicken time, pad missing times if needed\njoin to add new data if needed\nknow what packages to use for data horrors\n\nunpivotr\ntidyxl\nunheadr"
   }
 ]
