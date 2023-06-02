@@ -1,4 +1,4 @@
-# Stage 1 cleaning
+# Stage 1 Data Cleaning
 
 ```{r}
 #| echo: false
@@ -11,7 +11,6 @@ library(gtsummary)
 library(countdown)
 ```
 
-
 ```{r}
 #| echo: false
 df_raw <- read_excel(
@@ -21,11 +20,9 @@ df_raw <- read_excel(
 )
 ```
 
-
-
 ## Variable names
 
-Original variable names in excel: 
+Original variable names in excel:
 
 ![](images/var_names_1.PNG)
 
@@ -36,8 +33,6 @@ Original variable names in excel:
 Variable names import as shown, with modifications from `readxl::read_excel()` to ensure uniqueness:
 
 ![](images/var_names_2.PNG)
-
-
 
 ## Variable names, cleaner
 
@@ -51,7 +46,6 @@ Variable names as imported:
 
 `janitor::clean_names()` removes special characters and implements snake case by default:
 
-
 ```{r}
 df_clean <- df_raw |> 
   janitor::clean_names() 
@@ -61,9 +55,7 @@ df_clean <- df_raw |>
 
 ## Remove empty columns or rows
 
-
 ::: panel-tabset
-
 ### Problem
 
 ```{r}
@@ -111,24 +103,18 @@ df_raw |>
   glimpse()
 ```
 :::
-
 :::
-
 :::
-
 
 ## Recoding
 
 ::: panel-tabset
-
 ### Problem
-
 
 ```{r}
 df_clean |> 
   count(ethnic)
 ```
-
 
 ### Solution
 
@@ -141,6 +127,7 @@ df_clean <- df_raw |>
     ethnic_clean = case_when(
       ethnic %in%  c("hispanic", "Hispanic", "hispamnic") ~ "hispanic",
       ethnic %in%  c("NOT hispanic", "not hispanic") ~ "not hispanic",
+      .default = ethnic
     )
   )
 
@@ -148,18 +135,15 @@ df_clean |>
   count(ethnic_clean)
 ```
 
-
 ### Confirm
 
 ```{r}
 df_clean |> 
   count(ethnic_clean, ethnic)
 ```
-
 :::
 
 ## Exercise
-
 
 <br>
 
@@ -167,7 +151,7 @@ Complete Data Cleaning Fundamentals Exercise SP1.
 
 <br>
 
-[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+[--\> Take me to the exercises \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#sp1){target="_blank"}
 
 ```{r}
 #| echo: false
@@ -175,35 +159,26 @@ Complete Data Cleaning Fundamentals Exercise SP1.
 countdown(minutes = 5, font_size = "4em")
 ```
 
-
 ## Replace values with missing
 
-
-
 ::: panel-tabset
-
 ### Problem
 
 ::: columns
-
 ::: {.column width="50%"}
-
 ```{r}
 df_clean |> 
   count(end_na) 
 ```
-
 :::
 
 ::: {.column width="50%"}
-
 ```{r}
 df_clean |> 
   ggplot(aes(x = end_na)) +
   geom_histogram()
 ```
 :::
-
 :::
 
 ### Solution
@@ -222,46 +197,33 @@ df_clean <- df_raw |>
   ) 
 ```
 
-
 ### Confirm
 
 ::: columns
-
 ::: {.column width="50%"}
-
 ```{r}
 df_clean |> 
   count(end_na, end_na_clean) 
 ```
-
 :::
 
 ::: {.column width="50%"}
-
 ```{r}
 df_clean |> 
   ggplot(aes(x = end_na_clean)) +
   geom_histogram()
 ```
 :::
-
 :::
-
 :::
-
 
 ## Incorrect variable type
 
-
 ::: panel-tabset
-
 ### Problem
 
-
 ::: columns
-
 ::: {.column width="50%"}
-
 ```{r}
 df_raw |> 
   select(end_emo) |> 
@@ -270,25 +232,19 @@ df_raw |>
 
 <br>
 
-
-::: {.fragment}
+::: fragment
 ```{r, warning = TRUE}
 mean(df_raw[["end_emo"]], na.rm = TRUE)
 ```
 :::
-
 :::
 
-::: {.column width="50%" .fragment}
-
+::: {.column .fragment width="50%"}
 ```{r}
 df_raw[["end_emo"]]
 ```
-
 :::
-
 :::
-
 
 ### Solution
 
@@ -310,46 +266,35 @@ df_clean <- df_raw |>
 ### Confirm
 
 ::: columns
-
 ::: {.column width="50%"}
-
 ```{r}
 df_clean |> 
-  select(end_emo_clean) |> 
+  select(end_emo, end_emo_clean) |> 
   glimpse()
 ```
 
 <br>
 
-
-::: {.fragment}
+::: fragment
 ```{r, error=TRUE}
 mean(df_clean[["end_emo_clean"]], na.rm = TRUE)
 ```
 :::
-
 :::
 
-::: {.column width="50%" .fragment}
-
+::: {.column .fragment width="50%"}
 ```{r}
 df_clean |> 
   count(end_emo_clean, end_emo)
 ```
-
 :::
-
 :::
-
 :::
-
 
 ## Correcting dates
 
 ::: panel-tabset
-
 ### Problem
-
 
 ```{r}
 df_raw |> 
@@ -357,15 +302,12 @@ df_raw |>
   glimpse()
 ```
 
-
 <br>
 
-::: {.fragment}
-
+::: fragment
 ```{r}
 df_raw[["start_date"]]
 ```
-
 :::
 
 ### Solution
@@ -389,41 +331,30 @@ df_clean <- df_raw |>
 ### Confirm
 
 ::: columns
-
 ::: {.column width="50%"}
-
 ```{r}
 df_clean |> 
   select(start_date, start_date_clean) |> 
   glimpse()
 ```
-
 :::
 
 ::: {.column width="50%"}
-
 ```{r}
 df_clean |> 
   count(start_date, start_date_clean) 
 ```
-
 :::
-
 :::
-
 :::
 
 ## Extracting numbers from text
 
 ::: panel-tabset
-
 ### Problem
 
-
 ::: columns
-
 ::: {.column width="50%"}
-
 ```{r}
 df_raw |> 
   select(start_na) |> 
@@ -432,23 +363,18 @@ df_raw |>
 
 <br>
 
-
-::: {.fragment}
+::: fragment
 ```{r, warning = TRUE}
 mean(df_raw[["start_na"]], na.rm = TRUE)
 ```
 :::
-
 :::
 
-::: {.column width="50%" .fragment}
-
+::: {.column .fragment width="50%"}
 ```{r}
 df_raw[["start_na"]]
 ```
-
 :::
-
 :::
 
 ### Solution
@@ -472,42 +398,32 @@ df_clean <- df_raw |>
 ### Confirm
 
 ::: columns
-
 ::: {.column width="50%"}
-
 ```{r}
 df_clean |> 
-  select(start_na_clean) |> 
+  select(start_na, start_na_clean) |> 
   glimpse()
 ```
 
 <br>
 
-
-::: {.fragment}
+::: fragment
 ```{r, error=TRUE}
 mean(df_clean[["start_na_clean"]], na.rm = TRUE)
 ```
 :::
-
 :::
 
-::: {.column width="50%" .fragment}
-
+::: {.column .fragment width="50%"}
 ```{r}
 df_clean |> 
   count(start_na_clean, start_na)
 ```
-
 :::
-
 :::
-
 :::
-
 
 ## Exercise
-
 
 <br>
 
@@ -515,7 +431,7 @@ Complete Data Cleaning Fundamentals Exercise SP2.
 
 <br>
 
-[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+[--\> Take me to the exercises \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#sp2){target="_blank"}
 
 ```{r}
 #| echo: false
@@ -523,21 +439,13 @@ Complete Data Cleaning Fundamentals Exercise SP2.
 countdown(minutes = 5, font_size = "4em")
 ```
 
-
-
 ## Character variable should be a factor
 
-
 ::: panel-tabset
-
 ### Problem
 
-
 ::: columns
-
 ::: {.column width="35%"}
-
-
 ```{r}
 df_clean |> 
   count(treatment)
@@ -545,39 +453,30 @@ df_clean |>
 
 <br>
 
-::: {.fragment}
+::: fragment
 ```{r}
 df_clean |> 
   count(ethnic_clean)
 ```
 :::
-
-
 :::
 
-
-
-::: {.column width="65%" .fragment}
-
+::: {.column .fragment width="65%"}
 ```{r}
 df_clean |> 
   select(treatment, ethnic_clean) |> 
   glimpse()
 ```
 
-
-::: {.fragment}
+::: fragment
 ```{r}
 df_clean |> 
   select(treatment, ethnic_clean) |> 
-  tbl_summary(by = treatment)
+  gtsummary::tbl_summary(by = treatment)
 ```
 :::
-
 :::
-
 :::
-
 
 ### Solution
 
@@ -605,10 +504,7 @@ See the [forcats package](https://forcats.tidyverse.org/) for other factor handl
 ### Confirm
 
 ::: columns
-
 ::: {.column width="35%"}
-
-
 ```{r}
 df_clean |> 
   count(treatment)
@@ -616,43 +512,33 @@ df_clean |>
 
 <br>
 
-::: {.fragment}
+::: fragment
 ```{r}
 df_clean |> 
   count(ethnic_clean)
 ```
 :::
-
-
 :::
 
-
-
-::: {.column width="65%" .fragment}
-
+::: {.column .fragment width="65%"}
 ```{r}
 df_clean |> 
   select(treatment, ethnic_clean) |> 
   glimpse()
 ```
 
-
-::: {.fragment}
+::: fragment
 ```{r}
 df_clean |> 
   select(treatment, ethnic_clean) |> 
-  tbl_summary(by = treatment)
+  gtsummary::tbl_summary(by = treatment)
 ```
 :::
-
 :::
-
 :::
-
 :::
 
 ## Exercise
-
 
 <br>
 
@@ -660,7 +546,7 @@ Complete Data Cleaning Fundamentals Exercise SP3.
 
 <br>
 
-[--> Take me to the exercises <--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html){target="_blank"}
+[--\> Take me to the exercises \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#sp3){target="_blank"}
 
 ```{r}
 #| echo: false
@@ -668,12 +554,9 @@ Complete Data Cleaning Fundamentals Exercise SP3.
 countdown(minutes = 5, font_size = "4em")
 ```
 
-
 ## Separating values
 
-
 ::: panel-tabset
-
 ### Problem
 
 ```{r}
@@ -684,22 +567,21 @@ df_clean |>
 
 <br>
 
-::: {.fragment}
+::: fragment
 ```{r, error=TRUE}
 mean(df_clean[["start_bp"]], na.rm = TRUE)
 ```
 :::
+
 <br>
 
-
-::: {.fragment}
+::: fragment
 ```{r}
 df_clean[["start_bp"]]
 ```
 :::
 
 ### Solution
-
 
 ```{r}
 #| code-line-numbers: "14,15"
@@ -723,76 +605,66 @@ df_clean <- df_raw |>
 ### Confirm
 
 ::: columns
-
 ::: {.column width="50%"}
-
-
 ```{r}
 df_clean |> 
   select(start_bp, bp_systolic, bp_diastolic) |> 
   glimpse()
 ```
+
 <br>
 
-::: {.fragment}
+::: fragment
 ```{r, error=TRUE}
 mean(df_clean[["bp_systolic"]], na.rm = TRUE)
 mean(df_clean[["bp_diastolic"]], na.rm = TRUE)
 ```
 :::
-
 :::
 
 ::: {.column width="50%"}
-
-::: {.fragment}
+::: fragment
 ```{r}
 df_clean[["bp_systolic"]]
 df_clean[["bp_diastolic"]]
 ```
 :::
-
 :::
-
 :::
-
 :::
 
 ## Assigning labels
 
-
 ::: panel-tabset
-
 ### Problem
 
 What does anything mean?
 
 ```{r}
 #| eval: false
-view(df_clean)
+df_clean |> 
+  select(pat_id, start_na, start_na_clean, pre_post_wt_kg, start_emo) |> 
+  view()
 ```
-
-<br>
 
 ![](images/df_nolabels.PNG)
 
 ### Solution 1
 
 ```{r}
-# first import codebook
-df_codebook <- read_excel(
+# first import data dictionary
+df_dictionary <- read_excel(
   path = here("data", "messy_uc.xlsx"),
-  sheet = "Codebook"
+  sheet = "Data_Dictionary"
 )
-df_codebook
+df_dictionary
 ```
-
 
 ### Solution 2
 
 ```{r}
 # second create a named vector of variable names and variable labels
-vec_variables <- df_codebook |> 
+vec_variables <- df_dictionary |> 
   select(Variable, Details) |> 
   deframe()
 
@@ -800,8 +672,6 @@ vec_variables
 ```
 
 ### Solution 3
-
-
 
 ```{r}
 #| code-line-numbers: "17,18|19,20,21,22,23,24,25,26"
@@ -826,6 +696,7 @@ df_clean <- df_raw |>
   # assign labels to new derived variables that did not exist in the code book
   labelled::set_variable_labels(
     ethnic_clean = "Ethnicity",
+    start_na_clean = "Sodium level in serum at start",
     end_na_clean = "Sodium level in serum at end",
     end_emo_clean = "Emotional symptom score at end",
     bp_systolic = "Systolic blood pressure",
@@ -838,19 +709,26 @@ df_clean <- df_raw |>
 ```{r}
 #| eval: false
 # view entire data set
-df_clean |> view()
+df_clean |> 
+  select(pat_id, start_na, start_na_clean, pre_post_wt_kg, start_emo) |> 
+  view()
 ```
 
+![](images/df_yeslabels.PNG)
 
 <br>
 
-![](images/df_yeslabels.PNG)
+🤔 Why doesn't `pre_post_wt_kg` have a label?
+
 
 ### Confirm 2
 
 ```{r}
 # view structure of data frame
-df_clean |> str()
+df_clean |>
+   select(pat_id, start_na, start_na_clean, pre_post_wt_kg, start_emo) |> 
+   str()
 ```
-
 :::
+
+

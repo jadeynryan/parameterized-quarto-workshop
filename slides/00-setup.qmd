@@ -49,20 +49,23 @@ Taming the Data Beast, from Allison Horst's [Data Science Illustrations](https:/
 
 ## Schedule
 
-| Time          | Activity           |
+| Time          | Topic           |
 |---------------|--------------------|
-|11:00-11:10    |   Intro/Logistics | 
-|11:10 - 11:55 | Crystal Lewis (Data management best practices)          |
-| 11:55 - 12:00 | *Break*            |
-| 12:00 - 12:50 | Shannon Pileggi (Data cleaning fundamentals)          |
-| 12:50 - 12:00 | *Break*            |
-| 01:00 - 02:00 | Peter Higgins (Data wrangling & reshaping)          |
+|11:00 - 11:10  |   Intro/Logistics | 
+|11:10 - 12:00 | Crystal Lewis (Principles of Data Management)          |
+|12:00 - 12:05 | *Break*            |
+|12:05 - 12:55 | Shannon Pileggi (Stage 1 Data Cleaning)          |
+|12:55 - 1:00 | *Break*            |
+|01:00 - 02:00 | Peter Higgins (Stage 2 Data Cleaning)          |
 
 <br>
 
 Please add any questions to the public Zoom chat. These may be answered in the 
 moment or addressed at the end depending on context.
 
+## Exercises
+
+All exercises can be
 
 # Syntax aside
 
