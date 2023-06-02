@@ -1,5 +1,5 @@
 ---
-title: "Data Cleaning"
+title: "Cleaning Medical Data<br> with R"
 author: "Crystal Lewis, Shannon Pileggi, & Peter Higgins"
 footer: "[Data Cleaning](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023)"
 logo: "images/R-Med-logo-revised-pride.png"
