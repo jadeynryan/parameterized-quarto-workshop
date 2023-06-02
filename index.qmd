@@ -1,5 +1,5 @@
 ---
-title: "Principles of Data Cleaning"
+title: "Cleaning Medical Data with R"
 subtitle: "R/Medicine 2023 Workshop"
 editor: 
   markdown: 

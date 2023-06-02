@@ -136,6 +136,8 @@ Change `CTRL + Shift + M` shortcut to native pipe:
 
 -   does not require `library(dplyr)`
 
+-   generally, we aimed to namespace functions from non-tidyverse packages.
+
 . . .
 
 ::: columns
@@ -164,3 +166,4 @@ mtcars |>
 ```
 :::
 :::
+

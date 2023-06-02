@@ -43,7 +43,7 @@ Essentially, your job is to turn the messy Excel data beast (on the left) into t
 
 ![Taming the Data Beast, by Allison Horst](images/data_beast_allison_horst.jpeg)
 
-# ![Crystal Lewis](images/Crystal_circle.png){width="15%"} Data management best practices
+# ![Crystal Lewis](images/Crystal_circle.png){width="15%"} CL: Principles of Data Management
 
 ## CL1
 
@@ -106,7 +106,7 @@ Hmisc::describe(df_raw)
 
 
 
-# ![Shannon Pileggi](images/Shannon_circle.png){width="15%"} Data cleaning fundamentals
+# ![Shannon Pileggi](images/Shannon_circle.png){width="15%"} SP: Stage 1 Data Cleaning
 
 ## Set up
 
@@ -125,13 +125,17 @@ df_clean <- df_raw |>
 
 ## SP1
 
+::: panel-tabset
 
+### Explore
 
 1. Explore the values of `race`. 
 
 ```{r}
 df_clean |> count(race)
 ```
+
+### Clean
 
 2. In the `df_clean` data set, create a new variable named `race_clean` that cleans the
 coding of `race` (combine "African-American" & "afromerican"; "H/API" & "Mixed" & "Other").
@@ -145,11 +149,12 @@ df_clean <- df_raw |>
     race_clean = case_when(
       race %in% c("African-American", "afromerican") ~ "African-American",
       race %in% c("H/API", "Mixed", "Other") ~ "Other",
-      TRUE ~ race
+      .default = race
     )
   )
 ```
 
+### Confirm
 
 3. Confirm the new `race_clean` variable is coded correctly.
 
@@ -158,8 +163,14 @@ df_clean |>
   count(race_clean, race)
 ```
 
+:::
+
 
 ## SP2
+
+::: panel-tabset
+
+### Explore
 
 1. Explore the type of and values of `start_plt`. 
 
@@ -174,6 +185,7 @@ df_clean |>
 df_clean[["start_plt"]]
 ```
 
+### Clean
 
 2. In the `df_clean` data set, create a new variable named `start_plt_clean` that corrects any unusual
 values and assigns the correct variable type.
@@ -187,11 +199,13 @@ df_clean <- df_raw |>
     race_clean = case_when(
       race %in% c("African-American", "afromerican") ~ "African-American",
       race %in% c("H/API", "Mixed", "Other") ~ "Other",
-      TRUE ~ race
+      .default = race
     ),
     start_plt_clean = parse_number(start_plt) 
   )
 ```
+
+### Confirm
 
 3. Confirm the new `start_plt_clean` variable is coded correctly.
 
@@ -207,8 +221,13 @@ df_clean |>
 df_clean[["start_plt_clean"]]
 ```
 
+:::
 
 ## SP3
+
+::: panel-tabset
+
+### Explore
 
 1. Explore the type of and values of `race_clean`. 
 
@@ -217,6 +236,7 @@ df_clean |>
   count(race_clean)
 ```
 
+### Clean
 
 2. Convert the `race_clean` variable to a factor such that the most common values present in
 order in a summary table.
@@ -230,11 +250,13 @@ df_clean <- df_raw |>
     race_clean = case_when(
       race %in% c("African-American", "afromerican") ~ "African-American",
       race %in% c("H/API", "Mixed", "Other") ~ "Other",
-      TRUE ~ race
+      .default = race
     ) |> fct_infreq(),
     start_plt_clean = parse_number(start_plt) 
   )
 ```
+
+### Confirm
 
 3. Confirm the new coding of `race_clean`.
 
@@ -247,7 +269,9 @@ df_clean |>
   count(race_clean)
 ```
 
-# ![Peter Higgins](images/Peter_circle.jpg){width="15%"} Data wrangling & reshaping
+:::
+
+# ![Peter Higgins](images/Peter_circle.jpg){width="15%"} PH: Stage 2 Data Cleaning
 
 ## PH1
 

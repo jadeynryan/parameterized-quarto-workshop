@@ -1,4 +1,4 @@
-# Stage 1 Data Cleaning
+# Stage 1<br> Data Cleaning
 
 ```{r}
 #| echo: false
