@@ -1,3 +1,28 @@
+## Step by Step Cleaning - Stage 1
+
+- Import your data cleanly - skip rows, get headers
+- Explore data
+- Remove empty rows, columns
+- Fix variable classes/types, check dates
+- Clean variable names 
+- Create a codebook
+- Validate for missingness, outliers
+- Fix bad category values
+- Identify and consistently label missing values
+- Separate mixed (SBP/DBP) values, assign variable labels
+
+## Step by Step Cleaning - Stage 2
+
+- Define your Unit of Analysis
+- pivot_longer if needed
+- thicken time, pad missing times if needed
+- join to add new data if needed
+- know what packages to use for data horrors
+  - unpivotr
+  - tidyxl
+  - unheadr
+
+
 ## Thank you!
 
 🙏 [Click here to submit workshop feedback](https://forms.gle/kvEirN7sJmavem8q6){target="_blank"}

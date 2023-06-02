@@ -837,19 +837,22 @@ countdown(minutes = 3, font_size = "3.5em")
 
 -   replace the generic arguments below with the correct ones to join *demo* to *pot* and produce *new_data*.
 
-```{r, error=TRUE, eval=FALSE}
+```{r, error=TRUE, eval= FALSE}
 #| code-fold: false
 new_data <- left_join(data_x, data_y, by = "uniqid")
 new_data
 ```
 
+Note the syntax for identifying the `uniqid` on which to do the merge: `by = "varname"`
+
 ### The Solution
 
 ```{r, eval=FALSE}
 #| code-fold: true
-new_data <- left_join(demo, pot, by = "pat_id")
+new_data <- left_join(demo, pot, by = "pat_id") 
 new_data
 ```
+
 
 ### The Result
 
@@ -918,7 +921,6 @@ new_data2
 ## Fancy Joins
 
 -   There are multiple kinds of fancy joins (semi_join, anti_join, inner_join, full_join, union, intersect, setdiff) which come in handy once in a while.
--   The joins below are *filtering* joins, which filter the rows of the LHS without adding new variables.
 -   The many kinds of joins are all well explained [here](http://statseducation.com/Introduction-to-R/modules/tidy%20data/joins/#:~:text=semi_join(x%2C%20y)%3A%20Return,This%20is%20a%20filtering%20join.)
 
 ::: columns
@@ -935,6 +937,10 @@ new_data2
  <div class="animations"><img alt="gif here" width="100%" height="100%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/anti-join.gif"> </div>  
 :::
 
+:::
+
+:::{.notes}
+The joins shown below are *filtering* joins, which filter out rows in your x (LHS) dataset, but do not add any new variables.
 :::
 
 ## Data Horror
