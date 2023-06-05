@@ -16,7 +16,7 @@ format:
 
 It will be helpful to peek here to verify that your tables generated in Posit Cloud match the desired output and code solutions.
 
-Join R/Medicine Posit cloud work space for Cleaning Medical Data with R: **[bit.ly/posit-cloud-cleaning-medical-data](bit.ly/posit-cloud-cleaning-medical-data)**
+Join R/Medicine Posit cloud work space for Cleaning Medical Data with R: **[bit.ly/posit-cloud-cleaning-medical-data](https://bit.ly/posit-cloud-cleaning-medical-data){target="_blank"}**
 
 **Otherwise:** Follow along this document, work on your personal computer, and challenge yourself **not to peek** at the code solutions until you have completed the exercise.
 
