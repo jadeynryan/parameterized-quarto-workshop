@@ -15,36 +15,70 @@ library(emo)
 
 ## Where are We Now?
 
-- We have done DEV (Data Evaluation and Validation) - more validation to be done, Data validation is a continuous process, right up to Data Lock.
+- We have done DEV (Data Evaluation and Validation) - with more validation to be done, Data validation is a continuous process, right up to Data Lock.
 - Discussed the importance of preventing data errors at the source - data collection and entry (preferably using a tool with data validation at entry - like REDCap)
 - Did Stage 1 cleaning - clean variable names, remove empty columns/rows, fix variable types/classes (characters in numeric, recoding factors, date madness), address missingness, violations of tidy data principles (separate), added meaningful variable labels.
 
-## Deciding on the Unit of Observation
+## The Unit of Analysis - Wide by Patient
 
--   In Prospective Data Collection, a patient arrives for a visit. All data collected are part of the same observation/visit.
-    -   Alternatively, we can divide a visit into distinct observations, like blood pressure, a PHQ-9 depression questionnaire, and a hemoglobin measurement (all on the same date)
--   In retrospective data review, we can divide the observations up as we choose. For inpatient stays, we need to decide *a priori* on how to handle multiple observations of the same type (e.g., vitals q6h) in the same day.
-    -   use the 0800 observation each day?
-    -   use the daily average for SBP and DBP?
-    -   use the max values each day?
+- We may want to do an analysis by patient, as each patient may (or may not have the outcome). If we have multiple observations, or data points on each patient, this leads to wide data, with one row per patient.
 
-## What is the Unit of Analysis?
+```{r,  echo=FALSE, warning=FALSE, message=FALSE}
+wide <- readxl::read_excel(here("data/messy_uc.xlsx"), sheet = 3, skip = 6) |>
+  janitor::clean_names() |>
+  janitor::remove_empty(which = c("rows", "cols")) |> 
+  select(pat_id, treatment, ends_with("mes"), ends_with("bss"), ends_with("emo")) |> 
+  mutate(across(3:8, as.numeric)) 
 
--   While the unit of observation may be straightforward for outpatient visits, and complicated for inpatient stays, in the end we need to select a Unit of Analysis
+head(wide)
+```
+
+
+
+## The Unit of Analysis - Long by Visit
+
+- We are often interested in the change in an outcome over time.
+- To make this work, we need one row per measurement of the outcome. This leads to long data, which look like this, with multiple visits and measurements for each patient.
+
+```{r, echo=FALSE}
+wide |> 
+  pivot_longer(cols = 3:8,
+               names_to = "measure",
+               values_to = "score")
+```
+
+
+## Deciding on the Unit of Analysis
+
 -   This Unit of Analysis usually depends on the **Question** we want to ask
 
-## Is the Unit of Analysis the Patient?
+### Is the Unit of Analysis the Patient?
 
 -   Did the patient die?
 -   Did the patient have the outcome of colectomy?
 -   Did the patient reach disease remission?
 
-## Is the Unit of Analysis the Visit/Encounter?
+### Is the Unit of Analysis the Visit/Encounter?
 
 -   Often these are within-patient outcomes
     -   Did the C-reactive protein improve from Week 0 to Week 8?
     -   Did the number of sickle cell crises/year decrease after CRISPR gene therapy?
     -   Did the endoscopic ulcer score decrease on the experimental therapy vs placebo?
+
+## Deciding on the Unit of Analysis
+
+- You will most often use long data, and this data structure allows you to look at multiple predictors and outcomes, like blood pressure, a PHQ-9 depression questionnaire, and a hemoglobin measurement (all collected on the same date).
+- Depending on the analysis question, you may want to use wide data, and analyze by patient (usually with dichotomous outcomes).
+- For inpatient data, you may have multiple measurements in the same visit or day, so we need to decide *a priori* on how to handle multiple observations of the same type (e.g., vitals q6h) in the same day.
+    -   use the 0800 observation each day?
+    -   use the daily average for SBP and DBP?
+    -   use the max values each day?
+- You may want to do analysis on both long and wide data in the same project. 
+- It is often helpful to be able to pivot your data between long and wide structures.
+
+
+
+
 
 ## Reshaping your data with tidyr
 
@@ -383,7 +417,7 @@ endo_data |>
 
 ::: {.column width="50%"}
 
--   Wide data is less common, but sometimes needed
+-   Wide data is less common, but sometimes needed for per-patient analysis
 -   Here we will convert the tall version of our selected messy_uc data back to wide.
 -   This is what the tall data look like
 
@@ -400,7 +434,7 @@ tall
 
 :::
 
-### Code to Pivot
+### Code to Pivot Wider
 
 ```{r echo=TRUE, eval=FALSE}
 tall |> 
@@ -424,6 +458,134 @@ tall |>
 
 :::
 
+## Longitudinal Data
+
+::: columns
+::: {.column width="60%"}
+- Another data issue you may often face is in data collected over time, when one of two things happen:
+  - You want to analyze data by day or month or year, and data in your Electronic Medical Record is collected and time-stamped by the **second**.
+  - You realize that some observations (on weekends) are missing, and you need to fill these dates in (as missing), but you really don't want to do this by hand.
+- The {padr} package can help with these issues.
+
+:::
+::: {.column width="40%"}
+![Longitudinal Data](images/long_data.png)
+:::
+:::
+
+## Thickening Time to a Usable Level
+
+::: panel-tabset
+### Starting Point
+
+-   The thicken function adds a column to a data frame that is of a higher interval than the original variable.
+- The intervals for {padr} are year, quarter, month, week, day, hour, min, and sec.
+-   The variable **time_stamp** has the interval of seconds
+-   We can thicken the data to day, or to week, or to month.
+-   Then we can count events by a usable unit of time
+
+### Original Data
+
+```{r}
+#| echo: true
+#| eval: true
+emergency |> 
+  head()
+```
+
+###  Thickened to Month
+-   We will thicken to month
+
+```{r}
+#| echo: true
+#| eval: true
+emergency |> 
+  thicken('month') |> 
+  head() |> 
+  select(-lat, -lng, -zip)
+```
+
+### Thickened to Week
+-   We will thicken to week
+
+```{r}
+#| echo: true
+#| eval: true
+emergency |> 
+  thicken('week') |> 
+  head() |> 
+  select(-lat, -lng, -zip)
+```
+
+:::
+
+
+## Thickening Time for a Monthly Plot
+
+::: panel-tabset
+### Goal
+
+-   The thicken function adds a column to a data frame that is of a higher interval than the original variable.
+-   The variable **time_stamp** has the interval of seconds
+-   We can thicken the data to day, or to week, or to month.
+-   Then we can count events by a usable unit of time
+- This will set up the monthly overdose plot we want.
+
+### Code
+
+-   We will thicken to month
+-   Then count overdoses by month
+
+```{r}
+#| echo: true
+#| eval: false
+emergency |> 
+  thicken('month') |> 
+  filter(str_detect(title, "OVERDOSE")) |>
+  group_by(time_stamp_month) |> 
+  mutate(overdoses = sum(str_detect(title, "OVERDOSE"))) |> 
+    select(time_stamp_month, overdoses) |> 
+  distinct()
+```
+
+### Result
+
+-   This lets us count events like overdoses by month with time_stamp_month.
+
+```{r}
+#| echo: false
+#| eval: true
+by_month <- emergency |> 
+  thicken('month') |> 
+  filter(str_detect(title, "OVERDOSE")) |>
+  group_by(time_stamp_month) |> 
+  mutate(overdoses = sum(str_detect(title, "OVERDOSE"))) |> 
+  select(time_stamp_month, overdoses) |> 
+  distinct()
+
+by_month
+```
+
+### Plot Monthly 
+```{r}
+#| output-location: column-fragment
+by_month |> 
+  ggplot(aes(x = time_stamp_month,
+             y = overdoses)) +
+  geom_point(size = 3, color = "red") +
+  geom_line() +
+  labs(y = "Overdoses Per Month",
+       x = "Month",
+  title = "Monthly Overdose Calls") +
+  theme_linedraw(base_size = 20) +
+  ylim(0,175)
+```
+
+- When would you order extra cases of Narcan?
+
+:::
+
+
 ## Fill in Unobserved Date-Times with padr
 
 ::: columns
@@ -440,78 +602,20 @@ head(emergency) |>
 ::: {.column width="45%"}
 -   The **emergency** data set in the {padr} package contains \> 120K emergency calls from Montgomery County, PA over a period of \~ 11 months.
 -   Each call has a title and a timestamp
+- We want to know if the emergency department should order an extra case of Narcan each month in the summer months.
 :::
 :::
 
-## Thickening Time to a Usable Level
 
-::: panel-tabset
-### Goal
-
--   The thicken function adds a column to a data frame that is of a higher interval than the original variable.
--   The variable **time_stamp** has the interval of seconds
--   We can thicken the data to day, or to week, or to month.
--   Then we can count events by a usable unit of time
-
-### Code
-
--   We will thicken to month
--   Then count overdoses by month
-
-```{r}
-#| echo: true
-#| eval: false
-emergency |> 
-  thicken('month') |> 
-  filter(str_detect(title, "OVERDOSE")) |>   group_by(time_stamp_month) |> 
-  mutate(ods = sum(str_detect(title, "OVERDOSE"))) |> 
-    select(time_stamp_month, ods) |> 
-  distinct()
-```
-
-### Result
-
--   This lets us count events like overdoses by month with time_stamp_month.
-
-```{r}
-#| echo: false
-#| eval: true
-by_month <- emergency |> 
-  thicken('month') |> 
-  filter(str_detect(title, "OVERDOSE")) |>
-  group_by(time_stamp_month) |> 
-  mutate(ods = sum(str_detect(title, "OVERDOSE"))) |> 
-  select(time_stamp_month, ods) |> 
-  distinct()
-
-by_month
-```
-
-### Plot Monthly 
-```{r}
-#| output-location: column-fragment
-by_month |> 
-  ggplot(aes(x = time_stamp_month,
-             y = ods)) +
-  geom_point(size = 3, color = "red") +
-  geom_line() +
-  labs(y = "Overdoses Per Month",
-       x = "Month",
-  title = "Monthly Overdose Calls") +
-  theme_linedraw(base_size = 20) +
-  ylim(0,175)
-```
-
-:::
 
 ## Padding unobserved dates (weekends?)
 
 ::: columns
 ::: {.column width="60%"}
--   The pad function allows you to fill in missing intervals.
+-   The _pad()_ function allows you to fill in missing intervals.
 -   As an example, my hospital only runs fecal calprotectin tests on weekdays.
 -   This can lead to weird discontinuities in data over a weekend (Dec 3-4).
--   No observations on weekend days.
+-   No observations on weekend days/holidays.
 :::
 
 ::: {.column width="40%"}
@@ -554,8 +658,7 @@ fcp
 #| echo: true
 #| eval: false
 fcp |> 
-  pad(group = "pat_id") |> 
-  tidyr::fill(pat_id) |> # fill in the missing pat_ids
+  pad(group = "pat_id") |> # this adds lines for each missing day to the data
   print(n = 14)
 ```
 
@@ -568,7 +671,6 @@ fcp |>
 #| eval: true
 fcp |> 
   pad(group = "pat_id") |> 
-  tidyr::fill(pat_id) |> 
   print(n = 14)
 ```
 :::
@@ -576,9 +678,23 @@ fcp |>
 ::: {.column width="60%"}
 -   New observations are created on the missing dates
 -   NAs are filled in for the missing FCPs, with one for each day and group (pat_id)
--   we used **tidyr::fill(pat_id)** to fill in the missing pat_ids
+- **pad()** fills in the missing pat_ids
 :::
 :::
+:::
+
+## Joining Data
+
+::: columns
+::: {.column width="40%"}
+
+- Another data issue you will often face is that you have two interesting data sets, and that they would be more interesting if you could link the data in one to the data in the other.
+:::
+
+::: {.column width="60%"}
+![Better Together: Chocolate and Peanut Butter](images/choc_pb.jpeg)
+:::
+
 :::
 
 ## Joins of data from different sources
@@ -612,7 +728,7 @@ fcp |>
 
 ::: columns
 ::: {.column width="60%"}
--   demo
+-  Local EMR data (**demo**)
 
 ```{r}
 #| echo: false
@@ -671,7 +787,7 @@ left_join(demo, cdc, by = "census_tract")
 ```
 
 ### The Result
-
+- Now that the join is complete, you can ask your question:
 -   Is there an association between social vulnerability and hypertension?
 
 ```{r, echo=FALSE, eval=TRUE}
@@ -683,7 +799,7 @@ left_join(demo, cdc, by = "census_tract")
 
 ::: columns
 ::: {.column width="40%"}
--   We have some basic Patient Demographics in one table
+-   We have some basic Patient Demographics in one table (demo)
 
 ```{r}
 #| echo: false
@@ -705,7 +821,7 @@ demo
 :::
 
 ::: {.column width="60%" .fragment}
-and potassium levels and creatinine levels in 2 other tables
+and potassium levels and creatinine levels in 2 other tables (pot and cr)
 
 ```{r}
 #| echo: false
@@ -792,7 +908,7 @@ cr <- tibble::tribble(
 
 ## Your Turn to Join
 
--   We want to join the correct labs (9 rows each) to the correct patients.
+-   We want to join the correct labs (9 rows each from the pot and cr datasets) to the correct patients.
 -   The unique identifier (called the uniqid or key or recordID) is pat_id.
 -   It only occurs once for each patient/row
 -   It appears in each table we want to join
@@ -925,14 +1041,17 @@ new_data2
 
 ::: columns
 
-::: {.column width="50%"}
-- You want to subset your data (x) by keeping only the ones (y=hospitalized) who were hospitalized.
+::: {.column width="45%"}
+- Subset your data (x), keeping only the ones (y=hospitalized) who were hospitalized.
 
  <div class="animations"><img alt="gif here" width="100%" height="100%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/semi-join.gif"> </div>  
 :::
 
-::: {.column width="50%"}
-- You want to subset your data (x) by keeping only the ones <br>(y = dead) <br>who are NOT dead.
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+- Subset your data (x), keeping only the ones (y = dead) who are NOT dead.
 
  <div class="animations"><img alt="gif here" width="100%" height="100%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/anti-join.gif"> </div>  
 :::

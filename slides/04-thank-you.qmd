@@ -1,7 +1,7 @@
 ## Step by Step Cleaning - Stage 1
 
 - Import your data cleanly - skip rows, get headers
-- Explore data
+- Explore your data
 - Remove empty rows, columns
 - Fix variable classes/types, check dates
 - Clean variable names 
@@ -14,10 +14,10 @@
 ## Step by Step Cleaning - Stage 2
 
 - Define your Unit of Analysis
-- pivot_longer if needed
-- thicken time, pad missing times if needed
-- join to add new data if needed
-- know what packages to use for data horrors
+- Pivot_longer or pivot_wider if needed
+- Thicken time, pad missing times if needed
+- Join to add new data if needed
+- Know what packages to use for data horrors
   - unpivotr
   - tidyxl
   - unheadr
