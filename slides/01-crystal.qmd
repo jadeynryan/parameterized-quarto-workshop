@@ -29,7 +29,7 @@ Welcome to the first section of this workshop. We are going to spend the next 30
 
 So I imagine that many of you, at some point in your career, have either created or received a spreadsheet that looks like this
 
-And spreadsheets formatted like this, with color coding and various headers and notes throughout CAN be really helpful when you just needing to eyeball and review some information. But at some point you are probably going to need to actually analyze this data in some sort of statistical program and if you've ever tried to read a spreadsheet like this into a program like R, then you probably felt a little like this.
+And spreadsheets formatted like this, with color coding and various headers and notes throughout CAN be really helpful when you just need to eyeball and review some information. But at some point you are probably going to need to actually analyze this data in some sort of statistical program and if you've ever tried to read a spreadsheet like this into a program like R, then you probably felt a little like this.
 
 :::
 
@@ -78,7 +78,7 @@ And then last, the meat of this presentation will include a review of various R 
 
 ::: {.notes}
 
-So first we are going to talk about data organizing principles associated with 4 practices. And by reviewing these principles, my hope is that we will all have a shared understanding of how data SHOULD be organized and that understanding will help you to strategically plan for how you should wrangle those messy datasets.
+So first we are going to talk about data organizing principles associated with 4 ideas. And by reviewing these principles, my hope is that we will all have a shared understanding of how data SHOULD be organized and that understanding will help you to strategically plan for how you should wrangle those messy datasets.
 
 :::
 
@@ -181,7 +181,7 @@ So let's do a quick exercise. Take one minute to review this messy data and look
 
 3. Pick a format and stick to it
 
- - For instance you could make a decision to always capture dates in this ISO 8601 standardized format which is a really nice format to work with. But whatever format you choose, make sure all dates are captured using the same format. You can click on this date in the slides to learn more about this specific format.
+ - For instance you could make a decision to always capture dates in the international standardized format shown here which is a really nice format to work with. But whatever format you choose, make sure all dates are captured using the same format. You can click on this date in the slides to learn more about this specific format.
 
  - So if you're capturing gender, you always want to spell male the same way, always want to spell female the same way. This allows your data to be easily categorized.
 
@@ -382,8 +382,7 @@ countdown(minutes = 1, font_size = "1em")
 
 . . .
 
-2. Use consistent values to indicate missing responses
-    - Blanks? NAs? -999?
+2. Use consistent values to indicate missing responses (Blank, NA, -999)
     - Document your decision
     - The missing values should match your variable type
       - i.e., Don't use "no response" in a numeric variable
@@ -533,7 +532,7 @@ Set this up similar to a dataset, with a row and column layout, with variable na
 
 - Excel
 - Qualtrics
-- RedCap
+- REDCap
 
 - Know the strengths and limitations of your tool
   - Consider things such a privacy (PHI), versioning, validation
@@ -690,7 +689,7 @@ And when I run this code, I receive this report that assures me that everything 
     
 ::: {.notes}
 
-A second option for reviewing your data during collection is to create a codebook. Codebooks provide descriptive variable-level information as well univariate summary statistics (such as means, ranges, counts). There are several R packages that automate the creation of codebooks. 
+A second option for reviewing your data during collection is to create a codebook. Codebooks provide descriptive variable-level information as well univariate summary statistics (such as means, ranges, counts). There are several R packages that automate the creation of codebooks. I'm showing 4 here but there are more.
 
 But unlike validation, where we write code based on individualized criteria, for the most part, these codebooks provide similar out of the box summary statistics that allow you to get a feel for what is going on in your data. 
 
@@ -746,7 +745,7 @@ And the last thing to know about codebooks is that they are even more useful whe
 
 So all of those practices we just covered are obviously done in an ideal world, where we have autonomy over how data is collected. But there are obviously still going to be situations where you are handed data that you had no control over the collection/entry process.
 
-Or maybe, even if you did collect our own data, despite your best efforts to collect/enter clean data, you still ended up with data that contains errors
+Or maybe, even if you did collect your own data, despite your best efforts to collect/enter clean data, you still ended up with data that contains errors
 
 For the remainder of this workshop we will be working through a sample messy dataset to both identify and resolve issues to leave us with a usable tidy dataset that is ready for analysis.
 
@@ -797,7 +796,7 @@ countdown(minutes = 5, font_size = "2em")
 
 So we have this scenario. And believe it or not, we are not going to jump into reading the data into R just yet. The first thing we really should do is open the Excel file to review both the data AND the data dictionary. While it seems low-tech, it is actually really important to learn what you are getting into before reading your file into R.
 
-So both the data and data dictionary are in the same file. So let's take 5 minutes to log into posit cloud and navigate to our data file. Then open and review both the data dictionary and the data to see what is actually going on in our file.
+So both the data and data dictionary are in the same file. So let's take 5 minutes to log into posit cloud and navigate to our project and then to our data file. Then open and review both the data dictionary and the data to see what is actually going on in our file.
 
 Throughout this workshop, when you finish with an exercise, go ahead and give us the thumbs up using the Zoom reactions. If you are having trouble with an exercise, give us a hand wave.
 
@@ -828,7 +827,9 @@ So hopefully you noticed a few things upon reviewing our data.
 
 So now we are ready to import our data into R
 
-The first thing we would want to do is open an R script
+The first thing we would want to do is open an R script, or it could also be a rmarkdown or quarto file
+
+We are going to use...
 
 - list the path to our xlsx file
 - we can add the name or position of the sheet to read in
@@ -844,7 +845,7 @@ The first thing we would want to do is open an R script
 
 ## Script
 
-![](images/script.PNG){width=70%}
+![](images/script2.PNG){width=50%}
 
 ## Code
 
@@ -855,7 +856,8 @@ library(readxl)
 # Import our file
 
 df_raw <- readxl::read_excel("data/messy_uc.xlsx",
-  sheet = "__", skip = __
+  sheet = "__", 
+  skip = __
 )
 
 ```
@@ -888,19 +890,23 @@ df_raw |>
 
 ::: {.notes}
 
-So as I mentioned before, the very first thing we would do is open our script so that we can save our code as we write it. So your RStudio pane would look something like this.
+So as I mentioned before, the very first thing we would do is open our script, or our Rmarkdown or quarto file, so that we can save our code as we write it. So your RStudio pane would look something like this. 
 
 And then we would use the read_excel function to read in our data
 
-Notice that I am giving you a hint here that in this situation we want to use both the sheet and then skip arguments. I am not showing you the full code because we are going to do this in an exercise here in just a moment. But do pay attention to the quotation marks that are needed for the sheet argument. Those are not needed for the skip argument.
+Notice that I am giving you a hint here that in this situation we want to use both the sheet and the skip arguments. I am not showing you the full code because we are going to do this in an exercise here in just a moment. But do pay attention to the quotation marks that are needed for the sheet argument. Those are not needed for the skip argument.
 
 :::
 
-## Exercise
+## Exercise (CL1)
 
 <br>
 
 Your turn! Take 3 minutes to import the data.
+
+1. Open "exercises.qmd" in our Posit Cloud project
+2. Navigate to ## CL1
+3. Update the code and run the code chunk using the green arrow
 
 <br>
 
@@ -912,6 +918,11 @@ Your turn! Take 3 minutes to import the data.
 countdown(minutes = 3, font_size = "2em")
 ```
 
+::: {.notes}
+
+You'll want to find and open the pre-loaded quarto file called exercises.qmd.
+
+::: 
 
 ## Review the data
 
@@ -981,9 +992,9 @@ So after you read your data into R, once again, first, use the old fashioned met
 
 After that, you can start to run some functions to review your data for the following things.
 
-3. Are the values within your expected ranges? What outliers do you see? Is there a lack of variation?
+3\. Are the values within your expected ranges? What outliers do you see? Is there a lack of variation?
 
-5. Consider bivariate plots, is one variable high and the other low - is that normal
+5\. Consider bivariate plots, is one variable high and the other low - is that normal
 
 Here are 7 examples
 
@@ -1055,7 +1066,7 @@ But a quick clarification about this function. You'll notice that it provides a 
 
 :::
 
-## Exercise
+## Exercise (CL2)
 
 Use one or more of these exploratory packages to review your data. What fixes do you see that need to happen?
 
