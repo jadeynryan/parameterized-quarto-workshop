@@ -6,17 +6,17 @@ format:
     code-summary: "Show the code solution"
 ---
 
-# Instructions:
+# Instructions
 
 **Recommended:** Complete these exercises in the dedicated Posit Cloud work space, which comes with
 
 1.  all packages pre-installed, and
 
-2.  an Rmarkdown document to fill in.
+2.  a Quarto document to fill in.
 
-It will be helpful to peek here to verify that your tables generated in Posit Cloud match the desired output (or even to peek at the Code Solution if your cleaned tables don't look right).
+It will be helpful to peek here to verify that your tables generated in Posit Cloud match the desired output and code solutions.
 
-[Click here to enter the R/Medicine Posit cloud work space](https://rstudio.cloud/spaces/299322/join?access_code=Vnp96stsVIDLiEJI7AtHAQ4GB1gsptQgnOGb99_N){target="_blank"}
+Join R/Medicine Posit cloud work space for Cleaning Medical Data with R: **[bit.ly/posit-cloud-cleaning-medical-data](bit.ly/posit-cloud-cleaning-medical-data)**
 
 **Otherwise:** Follow along this document, work on your personal computer, and challenge yourself **not to peek** at the code solutions until you have completed the exercise.
 

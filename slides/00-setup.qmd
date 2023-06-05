@@ -65,7 +65,9 @@ moment or addressed at the end depending on context.
 
 ## Exercises
 
-All exercises can be
+All exercises can be accessed via Posit Cloud.
+
+See [exercise instructions](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#instructions){target="_blank"} for the link to access the Posit Cloud workspace.
 
 # Syntax aside
 
