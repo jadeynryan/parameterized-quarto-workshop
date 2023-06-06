@@ -201,7 +201,7 @@ df_clean <- df_raw |>
       race %in% c("H/API", "Mixed", "Other") ~ "Other",
       .default = race
     ),
-    start_plt_clean = parse_number(start_plt) 
+    start_plt_clean = parse_number(start_plt, na = "clumped") 
   )
 ```
 
