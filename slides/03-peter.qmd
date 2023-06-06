@@ -1037,12 +1037,12 @@ new_data
 ::: panel-tabset
 ### The Problem
 
--   Joining new_data and cr with a left_join
+-   Joining *new_data* and *cr* with a `left_join`
 -   left_join(data_x, data_y, by = "uniqid")
 
 ### The Code
 
--   Replace the generic arguments with the correct ones to join new_data and cr and produce new_data2.
+-   Replace the generic arguments with the correct ones to join <br>*new_data* and *cr* and produce *new_data2*.
 
 ```{r, error=TRUE, eval=FALSE}
 #| code-fold: false
@@ -1072,7 +1072,7 @@ new_data2
 ## Workhorse Joins
 
 -   *left_join* is your workhorse. Start with patient identifiers/uniqid and add data to the right side.
--   Sometimes you will need to wrangle/process incoming data, then *right_join* it to the patient demographics
+-   Sometimes you will need to wrangle/process incoming data, then pipe it in to *right_join* it to the patient demographics
 
 ::: columns
 
