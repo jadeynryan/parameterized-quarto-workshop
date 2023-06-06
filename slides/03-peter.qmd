@@ -523,7 +523,10 @@ head(emergency) |>
 ```
 :::
 
-::: {.column width="45%"}
+::: {.column width="2%"}
+:::
+
+::: {.column width="43%"}
 -   The **emergency** data set in the {padr} package contains \> 120K emergency calls from Montgomery County, PA over a period of \~ 11 months.
 -   Each call has a title and a timestamp
 - We want to know in which months the emergency department should order an extra case of Narcan <br>(H: summer months?).
@@ -537,9 +540,9 @@ head(emergency) |>
 ::: panel-tabset
 ### Starting Point
 
--   The thicken function adds a column to a data frame that is of a higher interval than the original variable.
+-   The `thicken` function adds a column to a data frame that is of a higher interval than the original variable.
 - The intervals for {padr} are year, quarter, month, week, day, hour, min, and sec.
--   The variable **time_stamp** has the interval of seconds
+-   The variable `time_stamp` has the interval of seconds
 -   We can thicken the data to the time  interval we need.
 -   Then we can count events by a usable unit of time
 
@@ -600,9 +603,8 @@ emergency |>
 emergency |> 
   thicken('month') |> 
   group_by(time_stamp_month) |> 
-  mutate(overdoses = sum(str_detect(title, "OVERDOSE"))) |> 
-    select(time_stamp_month, overdoses) |> 
-  distinct()
+  summarize(overdoses = sum(str_detect(title, "OVERDOSE"))) |> 
+    select(time_stamp_month, overdoses) 
 ```
 
 ### Result
@@ -615,9 +617,8 @@ emergency |>
 by_month <- emergency |> 
   thicken('month') |> 
   group_by(time_stamp_month) |> 
-  mutate(overdoses = sum(str_detect(title, "OVERDOSE"))) |> 
-  select(time_stamp_month, overdoses) |> 
-  distinct()
+  summarize(overdoses = sum(str_detect(title, "OVERDOSE"))) |> 
+    select(time_stamp_month, overdoses) 
 
 by_month
 ```
@@ -678,7 +679,7 @@ fcp <- tibble::tribble(
   '003', "12-06-2022", 101
 ) |> mutate(date = lubridate::mdy(date))
 
-fcp
+fcp |>  head(14)
 ```
 :::
 :::
@@ -697,7 +698,8 @@ fcp
 #| eval: false
 fcp |> 
   pad(group = "pat_id") |> # this adds lines for each missing day to the data
-  print(n = 14)
+  # by patient
+  print(n = 12)
 ```
 
 ### The Result
@@ -709,7 +711,7 @@ fcp |>
 #| eval: true
 fcp |> 
   pad(group = "pat_id") |> 
-  print(n = 14)
+  print(n = 12)
 ```
 :::
 
@@ -737,12 +739,21 @@ fcp |>
 
 ## Joins of data from different sources
 
+::: columns
+::: {.column width="70%"}
+
 -   We often collect data from different sources that we later want to join together for analysis
     -   Data from your local Electronic Medical Record
     -   Data from the CDC
     -   Data from the US Census
 -   External data can illuminate our understanding of our local patient data
+:::
 
+::: {.column width="30%"}
+![](images/LuxoJr_Lamp.webp)
+:::
+
+:::
 ## Local Demographics with CDC SVI data
 
 ::: panel-tabset
@@ -752,7 +763,7 @@ fcp |>
 ::: {.column width="60%"}
 -   We have 2 datasets, one local Demographics and Census Tract, and one from the CDC that has values for Social Vulnerability Index by Census Tract
 -   We want to know if the SVI for the neighborhood of each patient influences health outcomes
--   We need to left_join these datasets together by matching on the Census Tract
+-   We need to `left_join` these datasets together by matching on the Census Tract
 :::
 
 ::: {.column width="40%"}
@@ -766,7 +777,7 @@ fcp |>
 
 ::: columns
 ::: {.column width="60%"}
--  Local EMR data (**demo**)
+-  Local EMR data (`demo`)
 
 ```{r}
 #| echo: false
@@ -788,7 +799,7 @@ demo
 :::
 
 ::: {.column width="40%"}
--   cdc
+-   `cdc`
 
 ```{r}
 #| echo: false
@@ -951,9 +962,9 @@ cr <- tibble::tribble(
 
 -   We want to join the correct labs (9 rows each from the pot and cr datasets) to the correct patients.
 -   The unique identifier (called the uniqid or key or recordID) is pat_id.
-  -   It only occurs once for each patient/row
-  -   It appears in each table we want to join
-  -   The pat_id is of the character type in each (a common downfall if one is character, one is numeric, but they **look** the same - but don't match)
+    + It only occurs once for each patient/row
+    + It appears in each table we want to join
+    + The pat_id is of the character type in each (a common downfall if one is character, one is numeric, but they **look** the same - but don't match)
 -   We want to start with demographics, then add datasets that match to the right.
 -   We will use *demo* as our base dataset on the left hand side (LHS), and first join the potassium (*pot*) results (RHS)
 
