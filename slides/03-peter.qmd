@@ -22,12 +22,12 @@ library(emo)
 
 ## Stage 2 Data Cleaning
 
-- We will cover the frequent but optional topics:
+- We will cover these frequent but optional topics:
   - Restructuring data as Long or Wide format
   - Thickening or padding Longitudinal Data
   - Joining multiple datasets
 
-## Restructuring data as Long or Wide format
+## Restructuring data to Long or Wide format
 
 
 Wide Format - One Row per Patient
@@ -73,7 +73,7 @@ head(wide)
 ## The Unit of Analysis - Long by Visit
 
 - We are often interested in the change in an outcome over time.
-- To make this work, we need one row per measurement of the outcome. This leads to long data, which look like this, with multiple visits and measurements for each patient.
+- To make this work, we need one row per measurement of the outcome. This leads to long data, with multiple visits and measurements for each patient.
 
 ```{r, echo=FALSE}
 wide |> 
@@ -85,7 +85,7 @@ wide |>
 
 ## Deciding on the Unit of Analysis
 
--   This Unit of Analysis usually depends on the **Question** we want to ask
+-   This Unit of Analysis usually depends on the `Question` we ask
 
 Is the Unit of Analysis the Patient?
 
@@ -102,19 +102,16 @@ Is the Unit of Analysis the Visit/Encounter?
 
 ## Deciding on the Unit of Analysis
 
-- You will most often use long data, and this data structure allows you to look at multiple predictors and outcomes, like blood pressure, a PHQ-9 depression questionnaire, and a hemoglobin measurement (all collected on the same date).
+- You will most often use long data, and this data structure allows you to look at multiple predictors and outcomes, like blood pressure, a PHQ-9 depression questionnaire, and a hemoglobin measurement.
 - Depending on the analysis question, you may want to use wide data, and analyze by patient (usually with dichotomous outcomes).
 
 ## Deciding on the Unit of Analysis
-- For inpatient data, you may have multiple measurements in the same visit or day, so we need to decide *a priori* on how to handle multiple observations of the same type (e.g., vitals q6h) in the same day.
-    -   use the 0800 observation each day?
+- For inpatient data, you may have multiple measurements in the same visit or day, so we need to decide _a priori_ on how to handle multiple observations of the same type (e.g., vitals q6h) in the same day.
+    -   use the `0600` observation each day?
     -   use the daily average for SBP and DBP?
     -   use the max values each day?
 - Sometimes, you may want to do analysis on both long and wide data in the same project. 
 - It is often helpful to be able to pivot your data between long and wide structures.
-
-
-
 
 
 ## Reshaping your data with tidyr
@@ -124,7 +121,7 @@ Is the Unit of Analysis the Visit/Encounter?
 
 -   We often *enter* data by patient
 -   Spreadsheets encourage us to enter longitudinal data as long rows (per patient)
--   We end up with **wide**, rather than **tall** data
+-   We end up with `wide`, rather than `tall` data
 
 ### Wide Version of Data
 
@@ -209,7 +206,7 @@ wide |>
 
 What values do we want for these key arguments in order to pivot_longer?
 
--   `cols` (which columns to pivot)
+-   `cols` (which columns to pivot?)
 -   `names_to` (variable to store the names)
 -   `values_to` (variable to store the values)
 
@@ -296,7 +293,7 @@ tall |>
 
 ### Alternative within pivot_longer
 
--   You can do this *within* pivot_longer with one more argument (if you are *fancy*)
+-   You can do this *within* pivot_longer with one more argument (if you *read all of the pivot_longer documentation*)
 
 ::: columns
 
@@ -333,7 +330,7 @@ wide |>
 
 -   Your Turn with endo_data
 -   Measurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) in biopsies of 3 segments of intestine.
--   This could be affected by portal hypertension in patients with liver cirrhosis
+-   This `could` be affected by portal hypertension in patients with liver cirrhosis
 - Let's find out!
 
 ## Doing this At Home? Data load
@@ -501,8 +498,8 @@ tall |>
 
 ::: columns
 ::: {.column width="60%"}
-- Another data issue you may often face is in data collected over time, when one of two things happen:
-  - You want to analyze data by day or month or year, and data in your Electronic Medical Record is collected and time-stamped by the **second**.
+- Another set of data issues you may face is in data collected over time, when one of two things happen:
+  - You want to analyze data by day or month or year, and data in your Electronic Medical Record is collected and time-stamped by the `second`.
   - You realize that some observations (on weekends) are missing, and you need to fill these dates in as missing, but you really don't want to do this by hand.
 - The {padr} package can help with these issues.
 
@@ -526,10 +523,13 @@ head(emergency) |>
 ```
 :::
 
-::: {.column width="45%"}
+::: {.column width="2%"}
+:::
+
+::: {.column width="43%"}
 -   The **emergency** data set in the {padr} package contains \> 120K emergency calls from Montgomery County, PA over a period of \~ 11 months.
 -   Each call has a title and a timestamp
-- We want to know in which months the emergency department should order an extra case of Narcan <br>(summer months?).
+- We want to know in which months the emergency department should order an extra case of Narcan <br>(H: summer months?).
 :::
 :::
 
@@ -540,9 +540,9 @@ head(emergency) |>
 ::: panel-tabset
 ### Starting Point
 
--   The thicken function adds a column to a data frame that is of a higher interval than the original variable.
+-   The `thicken` function adds a column to a data frame that is of a higher interval than the original variable.
 - The intervals for {padr} are year, quarter, month, week, day, hour, min, and sec.
--   The variable **time_stamp** has the interval of seconds
+-   The variable `time_stamp` has the interval of seconds
 -   We can thicken the data to the time  interval we need.
 -   Then we can count events by a usable unit of time
 
@@ -603,9 +603,8 @@ emergency |>
 emergency |> 
   thicken('month') |> 
   group_by(time_stamp_month) |> 
-  mutate(overdoses = sum(str_detect(title, "OVERDOSE"))) |> 
-    select(time_stamp_month, overdoses) |> 
-  distinct()
+  summarize(overdoses = sum(str_detect(title, "OVERDOSE"))) |> 
+    select(time_stamp_month, overdoses) 
 ```
 
 ### Result
@@ -618,9 +617,8 @@ emergency |>
 by_month <- emergency |> 
   thicken('month') |> 
   group_by(time_stamp_month) |> 
-  mutate(overdoses = sum(str_detect(title, "OVERDOSE"))) |> 
-  select(time_stamp_month, overdoses) |> 
-  distinct()
+  summarize(overdoses = sum(str_detect(title, "OVERDOSE"))) |> 
+    select(time_stamp_month, overdoses) 
 
 by_month
 ```
@@ -681,7 +679,7 @@ fcp <- tibble::tribble(
   '003', "12-06-2022", 101
 ) |> mutate(date = lubridate::mdy(date))
 
-fcp
+fcp |>  head(14)
 ```
 :::
 :::
@@ -700,7 +698,8 @@ fcp
 #| eval: false
 fcp |> 
   pad(group = "pat_id") |> # this adds lines for each missing day to the data
-  print(n = 14)
+  # by patient
+  print(n = 12)
 ```
 
 ### The Result
@@ -712,7 +711,7 @@ fcp |>
 #| eval: true
 fcp |> 
   pad(group = "pat_id") |> 
-  print(n = 14)
+  print(n = 12)
 ```
 :::
 
@@ -740,12 +739,21 @@ fcp |>
 
 ## Joins of data from different sources
 
+::: columns
+::: {.column width="70%"}
+
 -   We often collect data from different sources that we later want to join together for analysis
     -   Data from your local Electronic Medical Record
     -   Data from the CDC
     -   Data from the US Census
 -   External data can illuminate our understanding of our local patient data
+:::
 
+::: {.column width="30%"}
+![](images/LuxoJr_Lamp.webp)
+:::
+
+:::
 ## Local Demographics with CDC SVI data
 
 ::: panel-tabset
@@ -755,7 +763,7 @@ fcp |>
 ::: {.column width="60%"}
 -   We have 2 datasets, one local Demographics and Census Tract, and one from the CDC that has values for Social Vulnerability Index by Census Tract
 -   We want to know if the SVI for the neighborhood of each patient influences health outcomes
--   We need to left_join these datasets together by matching on the Census Tract
+-   We need to `left_join` these datasets together by matching on the Census Tract
 :::
 
 ::: {.column width="40%"}
@@ -769,7 +777,7 @@ fcp |>
 
 ::: columns
 ::: {.column width="60%"}
--  Local EMR data (**demo**)
+-  Local EMR data (`demo`)
 
 ```{r}
 #| echo: false
@@ -791,7 +799,7 @@ demo
 :::
 
 ::: {.column width="40%"}
--   cdc
+-   `cdc`
 
 ```{r}
 #| echo: false
@@ -954,9 +962,9 @@ cr <- tibble::tribble(
 
 -   We want to join the correct labs (9 rows each from the pot and cr datasets) to the correct patients.
 -   The unique identifier (called the uniqid or key or recordID) is pat_id.
-  -   It only occurs once for each patient/row
-  -   It appears in each table we want to join
-  -   The pat_id is of the character type in each (a common downfall if one is character, one is numeric, but they **look** the same - but don't match)
+    + It only occurs once for each patient/row
+    + It appears in each table we want to join
+    + The pat_id is of the character type in each (a common downfall if one is character, one is numeric, but they **look** the same - but don't match)
 -   We want to start with demographics, then add datasets that match to the right.
 -   We will use *demo* as our base dataset on the left hand side (LHS), and first join the potassium (*pot*) results (RHS)
 
@@ -1029,12 +1037,12 @@ new_data
 ::: panel-tabset
 ### The Problem
 
--   Joining new_data and cr with a left_join
+-   Joining *new_data* and *cr* with a `left_join`
 -   left_join(data_x, data_y, by = "uniqid")
 
 ### The Code
 
--   Replace the generic arguments with the correct ones to join new_data and cr and produce new_data2.
+-   Replace the generic arguments with the correct ones to join <br>*new_data* and *cr* and produce *new_data2*.
 
 ```{r, error=TRUE, eval=FALSE}
 #| code-fold: false
@@ -1064,7 +1072,7 @@ new_data2
 ## Workhorse Joins
 
 -   *left_join* is your workhorse. Start with patient identifiers/uniqid and add data to the right side.
--   Sometimes you will need to wrangle/process incoming data, then *right_join* it to the patient demographics
+-   Sometimes you will need to wrangle/process incoming data, then pipe it in to *right_join* it to the patient demographics
 
 ::: columns
 
