@@ -56,7 +56,7 @@ but is not required.
 
 This workshop will largely be conducted in the Posit Cloud environment. Please create a login to the Posit Cloud instance of this workshop here:
 
-[Posit Cloud Medical Cleaning Workshop](https://posit.cloud/content/5758558).
+**[bit.ly/posit-cloud-cleaning-medical-data](https://bit.ly/posit-cloud-cleaning-medical-data){target="_blank"}**.
 
 If you will not be using the Posit Cloud instance, you can just watch along as the instructors teach.
 
@@ -68,10 +68,13 @@ As a more high-risk alternative, if you would like to try this out on your own c
 
 -   Recent version of packages used in this workshop.
 
-    ``` r
-    instll_pkgs <- c("tidyverse", "tidyxl", "unpivotr", "readxl", "openxlsx", "janitor", "gtsummary", "here", "padr")
-    install.packages(instll_pkgs)
-    ```
+``` r
+instll_pkgs <- c("tidyverse", "tidyxl", "unpivotr", "readxl", "openxlsx", "janitor", 
+                "gtsummary", "here", "padr",  "here", "skimr", "visdat", "summarytools", 
+                "DataExplorer", "Hmisc", "pointblank", "codebookr", "codebook", 
+                "memisc", "sjPlot")
+install.packages(instll_pkgs)
+```
 -   Ensure you can knit R markdown documents
 
 - Open RStudio and create a new Rmarkdown document

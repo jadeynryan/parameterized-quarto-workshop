@@ -25,5 +25,9 @@
 
 ## Thank you!
 
-🙏 [Click here to submit workshop feedback](https://forms.gle/kvEirN7sJmavem8q6){target="_blank"}
+Thank you for joining the workshop!
+
+<br>
+
+All materials will live on here: [https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/)
 
