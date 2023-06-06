@@ -893,7 +893,7 @@
     "href": "slides/index.html#data-horror-stories",
     "title": "Cleaning Medical Data with R",
     "section": "Data Horror Stories",
-    "text": "Data Horror Stories\n\n\n\n\n\n\nSo I imagine that many of you, at some point in your career, have either created or received a spreadsheet that looks like this\nAnd spreadsheets formatted like this, with color coding and various headers and notes throughout CAN be really helpful when you just needing to eyeball and review some information. But at some point you are probably going to need to actually analyze this data in some sort of statistical program and if you’ve ever tried to read a spreadsheet like this into a program like R, then you probably felt a little like this."
+    "text": "Data Horror Stories\n\n\n\n\n\n\nSo I imagine that many of you, at some point in your career, have either created or received a spreadsheet that looks like this\nAnd spreadsheets formatted like this, with color coding and various headers and notes throughout CAN be really helpful when you just need to eyeball and review some information. But at some point you are probably going to need to actually analyze this data in some sort of statistical program and if you’ve ever tried to read a spreadsheet like this into a program like R, then you probably felt a little like this."
   },
   {
     "objectID": "slides/index.html#data-horror-stories-1",
@@ -907,7 +907,7 @@
     "href": "slides/index.html#data-organizing-principles",
     "title": "Cleaning Medical Data with R",
     "section": "Data Organizing Principles",
-    "text": "Data Organizing Principles\n\n\n\n\nData Structure\nVariable Values\n\n\n\nVariable Types\nMissing Data\n\n\n\n\n\nSo first we are going to talk about data organizing principles associated with 4 practices. And by reviewing these principles, my hope is that we will all have a shared understanding of how data SHOULD be organized and that understanding will help you to strategically plan for how you should wrangle those messy datasets."
+    "text": "Data Organizing Principles\n\n\n\n\nData Structure\nVariable Values\n\n\n\nVariable Types\nMissing Data\n\n\n\n\n\nSo first we are going to talk about data organizing principles associated with 4 ideas. And by reviewing these principles, my hope is that we will all have a shared understanding of how data SHOULD be organized and that understanding will help you to strategically plan for how you should wrangle those messy datasets."
   },
   {
     "objectID": "slides/index.html#data-structure",
@@ -935,7 +935,7 @@
     "href": "slides/index.html#variable-values",
     "title": "Cleaning Medical Data with R",
     "section": "Variable Values",
-    "text": "Variable Values\n\nValues should be explicit, not implicit\n\nIf a blank cell is implied to be zero, fill that cell with an actual zero\nNo color coding should be used to indicate information. Make a new variable.\n\n\n\n\nValues should be analyzable. This means no more than one measure should be captured in a variable.\n\n\n\n\nVariables should be captured consistently within a column\n\nDates captured consistently (i.e. YYYY-MM-DD)\nCategories captured consistently (both spelling and capitalization)\nIf the variable is numeric, values should fall within your expected range\n\n\n\n\nWe don’t ever want anyone to have to guess what a cell value means\n\n\nIf you are color coding a variable in order to indicate treatment, instead make a treatment variable and add the values to that variable\n\n\nSo for instance, we don’t want both weight and height in the same variable. It would be very difficult to analyze a variable with combined information. We would want to split this information into two columns.\nPick a format and stick to it\n\n\nFor instance you could make a decision to always capture dates in this ISO 8601 standardized format which is a really nice format to work with. But whatever format you choose, make sure all dates are captured using the same format. You can click on this date in the slides to learn more about this specific format.\nSo if you’re capturing gender, you always want to spell male the same way, always want to spell female the same way. This allows your data to be easily categorized.\nSo if the range for a variable is 1-50, you shouldn’t see values outside of that range"
+    "text": "Variable Values\n\nValues should be explicit, not implicit\n\nIf a blank cell is implied to be zero, fill that cell with an actual zero\nNo color coding should be used to indicate information. Make a new variable.\n\n\n\n\nValues should be analyzable. This means no more than one measure should be captured in a variable.\n\n\n\n\nVariables should be captured consistently within a column\n\nDates captured consistently (i.e. YYYY-MM-DD)\nCategories captured consistently (both spelling and capitalization)\nIf the variable is numeric, values should fall within your expected range\n\n\n\n\nWe don’t ever want anyone to have to guess what a cell value means\n\n\nIf you are color coding a variable in order to indicate treatment, instead make a treatment variable and add the values to that variable\n\n\nSo for instance, we don’t want both weight and height in the same variable. It would be very difficult to analyze a variable with combined information. We would want to split this information into two columns.\nPick a format and stick to it\n\n\nFor instance you could make a decision to always capture dates in the international standardized format shown here which is a really nice format to work with. But whatever format you choose, make sure all dates are captured using the same format. You can click on this date in the slides to learn more about this specific format.\nSo if you’re capturing gender, you always want to spell male the same way, always want to spell female the same way. This allows your data to be easily categorized.\nSo if the range for a variable is 1-50, you shouldn’t see values outside of that range"
   },
   {
     "objectID": "slides/index.html#variable-values-1",
@@ -977,7 +977,7 @@
     "href": "slides/index.html#missing-data",
     "title": "Cleaning Medical Data with R",
     "section": "Missing Data",
-    "text": "Missing Data\n\nMissing data should appear as you expect it to\n\nThe amount of missingness\nThe variables/cases that data is missing for\n\n\n\n\nUse consistent values to indicate missing responses\n\nBlanks? NAs? -999?\nDocument your decision\nThe missing values should match your variable type\n\ni.e., Don’t use “no response” in a numeric variable\n\n\n\n\n\nSo there are varying opinions on how missing data should be assigned.\n\n\nSome people think that missing data should be explicitly assigned with an extreme value like -999. That way you know that the cell wasn’t just skipped over by accident when data was being entered.\nSome people prefer to just leave the cell blank to not cause confusion by adding extreme values to a variable.\n\nI personally have no preference for which method you use. I think it is important to be aware of the problems that can be caused by adding extreme values to your data. If you add -999 as a missing value, be aware that someone could accidentally interpret that as an actual value, leading to bad results.\nUltimately I think what is important though, is that you use consistent values to represent missing data (choose one and stick with it).\nThen, make sure your choices are documented so that future users know how to interpret the values in your data.\nAND last, make sure that your missing values match your variable type. If you use text to define missing values in a numeric variable, that variable will no longer be considered a numeric variable. So be aware of this."
+    "text": "Missing Data\n\nMissing data should appear as you expect it to\n\nThe amount of missingness\nThe variables/cases that data is missing for\n\n\n\n\nUse consistent values to indicate missing responses (Blank, NA, -999)\n\nDocument your decision\nThe missing values should match your variable type\n\ni.e., Don’t use “no response” in a numeric variable\n\n\n\n\n\nSo there are varying opinions on how missing data should be assigned.\n\n\nSome people think that missing data should be explicitly assigned with an extreme value like -999. That way you know that the cell wasn’t just skipped over by accident when data was being entered.\nSome people prefer to just leave the cell blank to not cause confusion by adding extreme values to a variable.\n\nI personally have no preference for which method you use. I think it is important to be aware of the problems that can be caused by adding extreme values to your data. If you add -999 as a missing value, be aware that someone could accidentally interpret that as an actual value, leading to bad results.\nUltimately I think what is important though, is that you use consistent values to represent missing data (choose one and stick with it).\nThen, make sure your choices are documented so that future users know how to interpret the values in your data.\nAND last, make sure that your missing values match your variable type. If you use text to define missing values in a numeric variable, that variable will no longer be considered a numeric variable. So be aware of this."
   },
   {
     "objectID": "slides/index.html#exercise-4",
@@ -1019,7 +1019,7 @@
     "href": "slides/index.html#build-your-tools-based-on-your-data-dictionary",
     "title": "Cleaning Medical Data with R",
     "section": "Build your tools based on your data dictionary",
-    "text": "Build your tools based on your data dictionary\n\nExcel\nQualtrics\nRedCap\nKnow the strengths and limitations of your tool\n\nConsider things such a privacy (PHI), versioning, validation\nTidy Spreadsheets in Medical Research (70 mins)\n\n\n\nAnd by tool I mean whatever program you use to collect or enter data. So that could be Excel, RedCap, Qualtrics, or something else. Not all data entry and collection tools are created equal so make sure to consider the limitations and strengths of your tools.\nConsider how your tool handles things like data security and privacy, versioning, and data validation.\nWe are not going to explore different data collection and entry tools today but if you want to learn more about the strengths and weaknesses of various tools, specifically if you want to learn the limitations of using Excel as a data collection tool, you can watch this video from a previous R in Medicine workshop."
+    "text": "Build your tools based on your data dictionary\n\nExcel\nQualtrics\nREDCap\nKnow the strengths and limitations of your tool\n\nConsider things such a privacy (PHI), versioning, validation\nTidy Spreadsheets in Medical Research (70 mins)\n\n\n\nAnd by tool I mean whatever program you use to collect or enter data. So that could be Excel, RedCap, Qualtrics, or something else. Not all data entry and collection tools are created equal so make sure to consider the limitations and strengths of your tools.\nConsider how your tool handles things like data security and privacy, versioning, and data validation.\nWe are not going to explore different data collection and entry tools today but if you want to learn more about the strengths and weaknesses of various tools, specifically if you want to learn the limitations of using Excel as a data collection tool, you can watch this video from a previous R in Medicine workshop."
   },
   {
     "objectID": "slides/index.html#test-your-data-collection-or-entry-tool",
@@ -1047,7 +1047,7 @@
     "href": "slides/index.html#review-your-data-often-during-data-collection",
     "title": "Cleaning Medical Data with R",
     "section": "Review your data often during data collection",
-    "text": "Review your data often during data collection\n\nCreate a codebook to review univariate summary statistics\n\ncodebookr\ncodebook\nmemisc\nsjPlot\n\n\n\nA second option for reviewing your data during collection is to create a codebook. Codebooks provide descriptive variable-level information as well univariate summary statistics (such as means, ranges, counts). There are several R packages that automate the creation of codebooks.\nBut unlike validation, where we write code based on individualized criteria, for the most part, these codebooks provide similar out of the box summary statistics that allow you to get a feel for what is going on in your data.\nBoth the validation and codebook methods provide you solid information to help you better understand if your data is being collected as expected."
+    "text": "Review your data often during data collection\n\nCreate a codebook to review univariate summary statistics\n\ncodebookr\ncodebook\nmemisc\nsjPlot\n\n\n\nA second option for reviewing your data during collection is to create a codebook. Codebooks provide descriptive variable-level information as well univariate summary statistics (such as means, ranges, counts). There are several R packages that automate the creation of codebooks. I’m showing 4 here but there are more.\nBut unlike validation, where we write code based on individualized criteria, for the most part, these codebooks provide similar out of the box summary statistics that allow you to get a feel for what is going on in your data.\nBoth the validation and codebook methods provide you solid information to help you better understand if your data is being collected as expected."
   },
   {
     "objectID": "slides/index.html#codebookr-codebook",
@@ -1068,28 +1068,28 @@
     "href": "slides/index.html#exercise-5",
     "title": "Cleaning Medical Data with R",
     "section": "Exercise",
-    "text": "Exercise\nTake 5 minutes to review the data dictionary and our data.\n\nLog in to Posit Cloud and navigate to our project\nOpen the data folder and open the file “messy_uc.xlsx”\n\n\n\n\n\n\n\n \n\n\n\nWhen you finish, give us a 👍\nIf you are having trouble, give us a ✋\n\n\n\n\n\n\n\n−+\n05:00\n\n\n\n\nSo we have this scenario. And believe it or not, we are not going to jump into reading the data into R just yet. The first thing we really should do is open the Excel file to review both the data AND the data dictionary. While it seems low-tech, it is actually really important to learn what you are getting into before reading your file into R.\nSo both the data and data dictionary are in the same file. So let’s take 5 minutes to log into posit cloud and navigate to our data file. Then open and review both the data dictionary and the data to see what is actually going on in our file.\nThroughout this workshop, when you finish with an exercise, go ahead and give us the thumbs up using the Zoom reactions. If you are having trouble with an exercise, give us a hand wave.\n….\nSo hopefully you noticed a few things upon reviewing our data.\n\nOur variable names are not the first row of our data. There are 6 rows of irrelevant information before we finally get to our variable names. That is really important to know before we try to import our data.\nOur data is not the first sheet of our Excel file. It’s actually the 3rd sheet over. And that’s also important to know."
+    "text": "Exercise\nTake 5 minutes to review the data dictionary and our data.\n\nLog in to Posit Cloud and navigate to our project\nOpen the data folder and open the file “messy_uc.xlsx”\n\n\n\n\n\n\n\n \n\n\n\nWhen you finish, give us a 👍\nIf you are having trouble, give us a ✋\n\n\n\n\n\n\n\n−+\n05:00\n\n\n\n\nSo we have this scenario. And believe it or not, we are not going to jump into reading the data into R just yet. The first thing we really should do is open the Excel file to review both the data AND the data dictionary. While it seems low-tech, it is actually really important to learn what you are getting into before reading your file into R.\nSo both the data and data dictionary are in the same file. So let’s take 5 minutes to log into posit cloud and navigate to our project and then to our data file. Then open and review both the data dictionary and the data to see what is actually going on in our file.\nThroughout this workshop, when you finish with an exercise, go ahead and give us the thumbs up using the Zoom reactions. If you are having trouble with an exercise, give us a hand wave.\n….\nSo hopefully you noticed a few things upon reviewing our data.\n\nOur variable names are not the first row of our data. There are 6 rows of irrelevant information before we finally get to our variable names. That is really important to know before we try to import our data.\nOur data is not the first sheet of our Excel file. It’s actually the 3rd sheet over. And that’s also important to know."
   },
   {
     "objectID": "slides/index.html#import-our-file",
     "href": "slides/index.html#import-our-file",
     "title": "Cleaning Medical Data with R",
     "section": "Import our file",
-    "text": "Import our file\n\nWe are going to use the read_excel() function from the readxl package\nThere are several arguments to consider when using this function\n\npath\nsheet = NULL\ncol_names = TRUE\nna = ” ”\nskip = 0\n\ntype ?read_excel in your console to see more arguments\n\n\nSo now we are ready to import our data into R\nThe first thing we would want to do is open an R script\n\nlist the path to our xlsx file\nwe can add the name or position of the sheet to read in\nshould R grab column names from the first row in your data?\nare there any values that R should read in as NA? For instance, if we had added -999 as our missing values indicator, we could tell R to convert all of our -999s to NA when we read the data in\nwhat is the minimum number of rows R should skip before reading anything?"
+    "text": "Import our file\n\nWe are going to use the read_excel() function from the readxl package\nThere are several arguments to consider when using this function\n\npath\nsheet = NULL\ncol_names = TRUE\nna = ” ”\nskip = 0\n\ntype ?read_excel in your console to see more arguments\n\n\nSo now we are ready to import our data into R\nThe first thing we would want to do is open an R script, or it could also be a rmarkdown or quarto file\nWe are going to use…\n\nlist the path to our xlsx file\nwe can add the name or position of the sheet to read in\nshould R grab column names from the first row in your data?\nare there any values that R should read in as NA? For instance, if we had added -999 as our missing values indicator, we could tell R to convert all of our -999s to NA when we read the data in\nwhat is the minimum number of rows R should skip before reading anything?"
   },
   {
     "objectID": "slides/index.html#import-our-file-1",
     "href": "slides/index.html#import-our-file-1",
     "title": "Cleaning Medical Data with R",
     "section": "Import our file",
-    "text": "Import our file\n\nScriptCodeData\n\n\n\n\n\n\nlibrary(readxl)\n\n# Import our file\n\ndf_raw &lt;- readxl::read_excel(\"data/messy_uc.xlsx\",\n  sheet = \"__\", skip = __\n)\n\n\n\n\n\n\n\n\n\n  \n    \n    \n      pat_id\n      treatment\n      start_date\n      ethnic\n      race\n      dob\n      ...7\n      start_bp\n      pre/post_wt_kg\n      start_mes\n    \n  \n  \n    001\nupa\n44208\nhispanic\nCaucasian\n2005-01-07\nNA\n114/72\n84/82\n3\n    002\nuste\n44215\nnot hispanic\nCaucasian\n1937-04-13\nNA\n132/86\n77/77\n2\n    003\noza\n44230\nnot hispanic\nAfrican-American\n1946-06-06\nNA\n124/92\n74/75\n1\n    004\nupa\n44245\nnot hispanic\nCaucasian\n1963-07-14\nNA\n144/83\n66/65\n3\n    005\noza\n44255\nnot hispanic\nMixed\n1978-05-12\nNA\n122/78\n55/56\n3\n    006\nuste\n44259\nnot hispanic\nOther\n1992-04-03\nNA\n121/80\n111/110\n2\n    007\nuste\n44264\nnot hispanic\nAsian\n1955-08-22\nNA\n133/74\n133/130\n3\n    008\noza\n44999\nHispanic\nafromerican\n1974-09-11\nNA\n116/73\n74/76\n3\n    009\nupa\n44276\nNOT hispanic\nCaucasian\n1984-11-14\nNA\n118/66\n82/80\n2\n    010\noza\n44278\nhispamnic\nCaucasian\n1972-12-20\nNA\n122/78\n85/87\n3\n  \n  \n  \n\n\n\n\n\n\n\n\nSo as I mentioned before, the very first thing we would do is open our script so that we can save our code as we write it. So your RStudio pane would look something like this.\nAnd then we would use the read_excel function to read in our data\nNotice that I am giving you a hint here that in this situation we want to use both the sheet and then skip arguments. I am not showing you the full code because we are going to do this in an exercise here in just a moment. But do pay attention to the quotation marks that are needed for the sheet argument. Those are not needed for the skip argument."
+    "text": "Import our file\n\nScriptCodeData\n\n\n\n\n\n\nlibrary(readxl)\n\n# Import our file\n\ndf_raw &lt;- readxl::read_excel(\"data/messy_uc.xlsx\",\n  sheet = \"__\", \n  skip = __\n)\n\n\n\n\n\n\n\n\n\n  \n    \n    \n      pat_id\n      treatment\n      start_date\n      ethnic\n      race\n      dob\n      ...7\n      start_bp\n      pre/post_wt_kg\n      start_mes\n    \n  \n  \n    001\nupa\n44208\nhispanic\nCaucasian\n2005-01-07\nNA\n114/72\n84/82\n3\n    002\nuste\n44215\nnot hispanic\nCaucasian\n1937-04-13\nNA\n132/86\n77/77\n2\n    003\noza\n44230\nnot hispanic\nAfrican-American\n1946-06-06\nNA\n124/92\n74/75\n1\n    004\nupa\n44245\nnot hispanic\nCaucasian\n1963-07-14\nNA\n144/83\n66/65\n3\n    005\noza\n44255\nnot hispanic\nMixed\n1978-05-12\nNA\n122/78\n55/56\n3\n    006\nuste\n44259\nnot hispanic\nOther\n1992-04-03\nNA\n121/80\n111/110\n2\n    007\nuste\n44264\nnot hispanic\nAsian\n1955-08-22\nNA\n133/74\n133/130\n3\n    008\noza\n44999\nHispanic\nafromerican\n1974-09-11\nNA\n116/73\n74/76\n3\n    009\nupa\n44276\nNOT hispanic\nCaucasian\n1984-11-14\nNA\n118/66\n82/80\n2\n    010\noza\n44278\nhispamnic\nCaucasian\n1972-12-20\nNA\n122/78\n85/87\n3\n  \n  \n  \n\n\n\n\n\n\n\n\nSo as I mentioned before, the very first thing we would do is open our script, or our Rmarkdown or quarto file, so that we can save our code as we write it. So your RStudio pane would look something like this.\nAnd then we would use the read_excel function to read in our data\nNotice that I am giving you a hint here that in this situation we want to use both the sheet and the skip arguments. I am not showing you the full code because we are going to do this in an exercise here in just a moment. But do pay attention to the quotation marks that are needed for the sheet argument. Those are not needed for the skip argument."
   },
   {
     "objectID": "slides/index.html#exercise-6",
     "href": "slides/index.html#exercise-6",
     "title": "Cleaning Medical Data with R",
     "section": "Exercise",
-    "text": "Exercise\n\nYour turn! Take 3 minutes to import the data.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n03:00"
+    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP1.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
   },
   {
     "objectID": "slides/index.html#review-the-data",
@@ -1103,7 +1103,7 @@
     "href": "slides/index.html#review-the-data-1",
     "title": "Cleaning Medical Data with R",
     "section": "Review the data",
-    "text": "Review the data\n\n\n\nGet to know your data\n\nHow many rows? How many columns?\nWhat are the variable types?\nWhat are variable values?\nHow much missing data is there?\nHow are variables related?\n\n\n\n\nThere are several functions that can be used to explore data\n\ndplyr::glimpse()\nskimr::skim()\nbase::summary()\nvisdat:vis_dat()\nsummarytools::dfSummary()\nDataExplorer::create_report()\nHmisc::describe()\n\n\n\n\nSo after you read your data into R, once again, first, use the old fashioned method of opening up your data and looking at it to see if everything imported as you expected.\nAfter that, you can start to run some functions to review your data for the following things.\n\nAre the values within your expected ranges? What outliers do you see? Is there a lack of variation?\nConsider bivariate plots, is one variable high and the other low - is that normal\n\nHere are 7 examples"
+    "text": "Review the data\n\n\n\nGet to know your data\n\nHow many rows? How many columns?\nWhat are the variable types?\nWhat are variable values?\nHow much missing data is there?\nHow are variables related?\n\n\n\n\nThere are several functions that can be used to explore data\n\ndplyr::glimpse()\nskimr::skim()\nbase::summary()\nvisdat:vis_dat()\nsummarytools::dfSummary()\nDataExplorer::create_report()\nHmisc::describe()\n\n\n\n\nSo after you read your data into R, once again, first, use the old fashioned method of opening up your data and looking at it to see if everything imported as you expected.\nAfter that, you can start to run some functions to review your data for the following things.\n3. Are the values within your expected ranges? What outliers do you see? Is there a lack of variation?\n5. Consider bivariate plots, is one variable high and the other low - is that normal\nHere are 7 examples"
   },
   {
     "objectID": "slides/index.html#summarytoolsdfsummary",
@@ -1124,14 +1124,14 @@
     "href": "slides/index.html#exercise-7",
     "title": "Cleaning Medical Data with R",
     "section": "Exercise",
-    "text": "Exercise\nUse one or more of these exploratory packages to review your data. What fixes do you see that need to happen?\n\n\n\ndplyr::glimpse()\nskimr::skim()\nbase::summary()\nvisdat:vis_dat()\n\n\n\nsummarytools::dfSummary()\nDataExplorer::create_report()\nHmisc::describe()\n\n\n\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP2.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
   },
   {
     "objectID": "slides/index.html#exercise-8",
     "href": "slides/index.html#exercise-8",
     "title": "Cleaning Medical Data with R",
     "section": "Exercise",
-    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP1.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+    "text": "Exercise\n\nComplete Data Cleaning Fundamentals Exercise SP3.\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
   },
   {
     "objectID": "slides/index.html#exercise-9",
@@ -1299,7 +1299,7 @@
     "href": "slides/index.html#step-by-step-cleaning---stage-1",
     "title": "Cleaning Medical Data with R",
     "section": "Step by Step Cleaning - Stage 1",
-    "text": "Step by Step Cleaning - Stage 1\n\nImport your data cleanly - skip rows, get headers\nExplore your data\nRemove empty rows, columns\nFix variable classes/types, check dates\nClean variable names\nCreate a codebook\nValidate for missingness, outliers\nFix bad category values\nIdentify and consistently label missing values\nSeparate mixed (SBP/DBP) values, assign variable labels"
+    "text": "Step by Step Cleaning - Stage 1\n\nImport your data cleanly - skip rows, get headers\nExplore your data\nRemove empty rows & columns\nFix variable classes/types, check dates\nClean variable names\nCreate a codebook\nValidate for missingness, outliers\nFix bad category values\nIdentify and consistently label missing values\nSeparate mixed (SBP/DBP) values, assign variable labels"
   },
   {
     "objectID": "slides/index.html#step-by-step-cleaning---stage-2",
@@ -1313,7 +1313,7 @@
     "href": "slides/index.html#exercises",
     "title": "Cleaning Medical Data with R",
     "section": "Exercises",
-    "text": "Exercises\nAll exercises can be"
+    "text": "Exercises\nAll exercises can be accessed via Posit Cloud.\nSee exercise instructions for the link to access the Posit Cloud workspace."
   },
   {
     "objectID": "slides/index.html#the-unit-of-analysis---wide-by-patient",
@@ -1398,5 +1398,26 @@
     "title": "Cleaning Medical Data with R",
     "section": "Thicken Date-Times with padr",
     "text": "Thicken Date-Times with padr\n\n\n\n\n# A tibble: 6 × 2\n  title                   time_stamp         \n  &lt;chr&gt;                   &lt;dttm&gt;             \n1 EMS: BACK PAINS/INJURY  2015-12-10 17:40:00\n2 EMS: DIABETIC EMERGENCY 2015-12-10 17:40:00\n3 Fire: GAS-ODOR/LEAK     2015-12-10 17:40:00\n4 EMS: CARDIAC EMERGENCY  2015-12-10 17:40:01\n5 EMS: DIZZINESS          2015-12-10 17:40:01\n6 EMS: HEAD INJURY        2015-12-10 17:40:01\n\n\n\n\nThe emergency data set in the {padr} package contains &gt; 120K emergency calls from Montgomery County, PA over a period of ~ 11 months.\nEach call has a title and a timestamp\nWe want to know in which months the emergency department should order an extra case of Narcan (summer months?)."
+  },
+  {
+    "objectID": "slides/index.html#exercise-cl1",
+    "href": "slides/index.html#exercise-cl1",
+    "title": "Cleaning Medical Data with R",
+    "section": "Exercise (CL1)",
+    "text": "Exercise (CL1)\n\nYour turn! Take 3 minutes to import the data.\n\nOpen “exercises.qmd” in our Posit Cloud project\nNavigate to ## CL1\nUpdate the code and run the code chunk using the green arrow\n\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n03:00\n\n\n\n\nYou’ll want to find and open the pre-loaded quarto file called exercises.qmd."
+  },
+  {
+    "objectID": "slides/index.html#exercise-cl2",
+    "href": "slides/index.html#exercise-cl2",
+    "title": "Cleaning Medical Data with R",
+    "section": "Exercise (CL2)",
+    "text": "Exercise (CL2)\nUse one or more of these exploratory packages to review your data. What fixes do you see that need to happen?\n\n\n\ndplyr::glimpse()\nskimr::skim()\nbase::summary()\nvisdat:vis_dat()\n\n\n\nsummarytools::dfSummary()\nDataExplorer::create_report()\nHmisc::describe()\n\n\n\n\n–&gt; Take me to the exercises &lt;–\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "slides/index.html#step-by-step-cleaning---stage-2-wrangling",
+    "href": "slides/index.html#step-by-step-cleaning---stage-2-wrangling",
+    "title": "Cleaning Medical Data with R",
+    "section": "Step by Step Cleaning - Stage 2 Wrangling",
+    "text": "Step by Step Cleaning - Stage 2 Wrangling\n\nLet your Question define your Unit of Analysis\nPivot_longer or pivot_wider if needed\nThicken time, pad missing times if needed\nJoin to add new data if needed\nKnow what packages to use for data horrors\n\nunpivotr\ntidyxl\nunheadr"
   }
 ]
