@@ -206,7 +206,7 @@ wide |>
 
 What values do we want for these key arguments in order to pivot_longer?
 
--   `cols` (which columns to pivot)
+-   `cols` (which columns to pivot?)
 -   `names_to` (variable to store the names)
 -   `values_to` (variable to store the values)
 
@@ -293,7 +293,7 @@ tall |>
 
 ### Alternative within pivot_longer
 
--   You can do this *within* pivot_longer with one more argument (if you are *fancy*)
+-   You can do this *within* pivot_longer with one more argument (if you *read all of the pivot_longer documentation*)
 
 ::: columns
 
@@ -330,7 +330,7 @@ wide |>
 
 -   Your Turn with endo_data
 -   Measurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) in biopsies of 3 segments of intestine.
--   This could be affected by portal hypertension in patients with liver cirrhosis
+-   This `could` be affected by portal hypertension in patients with liver cirrhosis
 - Let's find out!
 
 ## Doing this At Home? Data load
@@ -498,8 +498,8 @@ tall |>
 
 ::: columns
 ::: {.column width="60%"}
-- Another data issue you may often face is in data collected over time, when one of two things happen:
-  - You want to analyze data by day or month or year, and data in your Electronic Medical Record is collected and time-stamped by the **second**.
+- Another set of data issues you may face is in data collected over time, when one of two things happen:
+  - You want to analyze data by day or month or year, and data in your Electronic Medical Record is collected and time-stamped by the `second`.
   - You realize that some observations (on weekends) are missing, and you need to fill these dates in as missing, but you really don't want to do this by hand.
 - The {padr} package can help with these issues.
 
@@ -526,7 +526,7 @@ head(emergency) |>
 ::: {.column width="45%"}
 -   The **emergency** data set in the {padr} package contains \> 120K emergency calls from Montgomery County, PA over a period of \~ 11 months.
 -   Each call has a title and a timestamp
-- We want to know in which months the emergency department should order an extra case of Narcan <br>(summer months?).
+- We want to know in which months the emergency department should order an extra case of Narcan <br>(H: summer months?).
 :::
 :::
 
