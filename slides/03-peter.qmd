@@ -22,12 +22,12 @@ library(emo)
 
 ## Stage 2 Data Cleaning
 
-- We will cover the frequent but optional topics:
+- We will cover these frequent but optional topics:
   - Restructuring data as Long or Wide format
   - Thickening or padding Longitudinal Data
   - Joining multiple datasets
 
-## Restructuring data as Long or Wide format
+## Restructuring data to Long or Wide format
 
 
 Wide Format - One Row per Patient
@@ -73,7 +73,7 @@ head(wide)
 ## The Unit of Analysis - Long by Visit
 
 - We are often interested in the change in an outcome over time.
-- To make this work, we need one row per measurement of the outcome. This leads to long data, which look like this, with multiple visits and measurements for each patient.
+- To make this work, we need one row per measurement of the outcome. This leads to long data, with multiple visits and measurements for each patient.
 
 ```{r, echo=FALSE}
 wide |> 
@@ -85,7 +85,7 @@ wide |>
 
 ## Deciding on the Unit of Analysis
 
--   This Unit of Analysis usually depends on the **Question** we want to ask
+-   This Unit of Analysis usually depends on the `Question` we ask
 
 Is the Unit of Analysis the Patient?
 
@@ -102,19 +102,16 @@ Is the Unit of Analysis the Visit/Encounter?
 
 ## Deciding on the Unit of Analysis
 
-- You will most often use long data, and this data structure allows you to look at multiple predictors and outcomes, like blood pressure, a PHQ-9 depression questionnaire, and a hemoglobin measurement (all collected on the same date).
+- You will most often use long data, and this data structure allows you to look at multiple predictors and outcomes, like blood pressure, a PHQ-9 depression questionnaire, and a hemoglobin measurement.
 - Depending on the analysis question, you may want to use wide data, and analyze by patient (usually with dichotomous outcomes).
 
 ## Deciding on the Unit of Analysis
-- For inpatient data, you may have multiple measurements in the same visit or day, so we need to decide *a priori* on how to handle multiple observations of the same type (e.g., vitals q6h) in the same day.
-    -   use the 0800 observation each day?
+- For inpatient data, you may have multiple measurements in the same visit or day, so we need to decide _a priori_ on how to handle multiple observations of the same type (e.g., vitals q6h) in the same day.
+    -   use the `0600` observation each day?
     -   use the daily average for SBP and DBP?
     -   use the max values each day?
 - Sometimes, you may want to do analysis on both long and wide data in the same project. 
 - It is often helpful to be able to pivot your data between long and wide structures.
-
-
-
 
 
 ## Reshaping your data with tidyr
@@ -124,7 +121,7 @@ Is the Unit of Analysis the Visit/Encounter?
 
 -   We often *enter* data by patient
 -   Spreadsheets encourage us to enter longitudinal data as long rows (per patient)
--   We end up with **wide**, rather than **tall** data
+-   We end up with `wide`, rather than `tall` data
 
 ### Wide Version of Data
 

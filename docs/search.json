@@ -1327,21 +1327,21 @@
     "href": "slides/index.html#the-unit-of-analysis---long-by-visit",
     "title": "Cleaning Medical Data with R",
     "section": "The Unit of Analysis - Long by Visit",
-    "text": "The Unit of Analysis - Long by Visit\n\nWe are often interested in the change in an outcome over time.\nTo make this work, we need one row per measurement of the outcome. This leads to long data, which look like this, with multiple visits and measurements for each patient.\n\n\n\n# A tibble: 180 × 4\n   pat_id treatment measure   score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;\n 1 001    upa       start_mes  3   \n 2 001    upa       end_mes    0   \n 3 001    upa       start_bss 75.9 \n 4 001    upa       end_bss    9.85\n 5 001    upa       start_emo 79.3 \n 6 001    upa       end_emo   39.8 \n 7 002    uste      start_mes  2   \n 8 002    uste      end_mes    1   \n 9 002    uste      start_bss 54.7 \n10 002    uste      end_bss   32.7 \n# ℹ 170 more rows"
+    "text": "The Unit of Analysis - Long by Visit\n\nWe are often interested in the change in an outcome over time.\nTo make this work, we need one row per measurement of the outcome. This leads to long data, with multiple visits and measurements for each patient.\n\n\n\n# A tibble: 180 × 4\n   pat_id treatment measure   score\n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;\n 1 001    upa       start_mes  3   \n 2 001    upa       end_mes    0   \n 3 001    upa       start_bss 75.9 \n 4 001    upa       end_bss    9.85\n 5 001    upa       start_emo 79.3 \n 6 001    upa       end_emo   39.8 \n 7 002    uste      start_mes  2   \n 8 002    uste      end_mes    1   \n 9 002    uste      start_bss 54.7 \n10 002    uste      end_bss   32.7 \n# ℹ 170 more rows"
   },
   {
     "objectID": "slides/index.html#deciding-on-the-unit-of-analysis",
     "href": "slides/index.html#deciding-on-the-unit-of-analysis",
     "title": "Cleaning Medical Data with R",
     "section": "Deciding on the Unit of Analysis",
-    "text": "Deciding on the Unit of Analysis\n\nThis Unit of Analysis usually depends on the Question we want to ask\n\nIs the Unit of Analysis the Patient?\n\nDid the patient die?\nDid the patient have the outcome of colectomy?\nDid the patient reach disease remission?\n\nIs the Unit of Analysis the Visit/Encounter?\n\nOften these are within-patient outcomes\n\nDid the C-reactive protein improve from Week 0 to Week 8?\nDid the sickle cell crises/year decrease after CRISPR gene Rx?\nDid the endoscopic score decrease on treatment vs placebo?"
+    "text": "Deciding on the Unit of Analysis\n\nThis Unit of Analysis usually depends on the Question we ask\n\nIs the Unit of Analysis the Patient?\n\nDid the patient die?\nDid the patient have the outcome of colectomy?\nDid the patient reach disease remission?\n\nIs the Unit of Analysis the Visit/Encounter?\n\nOften these are within-patient outcomes\n\nDid the C-reactive protein improve from Week 0 to Week 8?\nDid the sickle cell crises/year decrease after CRISPR gene Rx?\nDid the endoscopic score decrease on treatment vs placebo?"
   },
   {
     "objectID": "slides/index.html#deciding-on-the-unit-of-analysis-1",
     "href": "slides/index.html#deciding-on-the-unit-of-analysis-1",
     "title": "Cleaning Medical Data with R",
     "section": "Deciding on the Unit of Analysis",
-    "text": "Deciding on the Unit of Analysis\n\nYou will most often use long data, and this data structure allows you to look at multiple predictors and outcomes, like blood pressure, a PHQ-9 depression questionnaire, and a hemoglobin measurement (all collected on the same date).\nDepending on the analysis question, you may want to use wide data, and analyze by patient (usually with dichotomous outcomes)."
+    "text": "Deciding on the Unit of Analysis\n\nYou will most often use long data, and this data structure allows you to look at multiple predictors and outcomes, like blood pressure, a PHQ-9 depression questionnaire, and a hemoglobin measurement.\nDepending on the analysis question, you may want to use wide data, and analyze by patient (usually with dichotomous outcomes)."
   },
   {
     "objectID": "slides/index.html#longitudinal-data",
@@ -1369,7 +1369,7 @@
     "href": "slides/index.html#stage-2-data-cleaning",
     "title": "Cleaning Medical Data with R",
     "section": "Stage 2 Data Cleaning",
-    "text": "Stage 2 Data Cleaning\n\nWe will cover the frequent but optional topics:\n\nRestructuring data as Long or Wide format\nThickening or padding Longitudinal Data\nJoining multiple datasets"
+    "text": "Stage 2 Data Cleaning\n\nWe will cover these frequent but optional topics:\n\nRestructuring data as Long or Wide format\nThickening or padding Longitudinal Data\nJoining multiple datasets"
   },
   {
     "objectID": "slides/index.html#restructuring-data-as-long-or-wide-format",
@@ -1383,7 +1383,7 @@
     "href": "slides/index.html#deciding-on-the-unit-of-analysis-2",
     "title": "Cleaning Medical Data with R",
     "section": "Deciding on the Unit of Analysis",
-    "text": "Deciding on the Unit of Analysis\n\nFor inpatient data, you may have multiple measurements in the same visit or day, so we need to decide a priori on how to handle multiple observations of the same type (e.g., vitals q6h) in the same day.\n\nuse the 0800 observation each day?\nuse the daily average for SBP and DBP?\nuse the max values each day?\n\nSometimes, you may want to do analysis on both long and wide data in the same project.\nIt is often helpful to be able to pivot your data between long and wide structures."
+    "text": "Deciding on the Unit of Analysis\n\nFor inpatient data, you may have multiple measurements in the same visit or day, so we need to decide a priori on how to handle multiple observations of the same type (e.g., vitals q6h) in the same day.\n\nuse the 0600 observation each day?\nuse the daily average for SBP and DBP?\nuse the max values each day?\n\nSometimes, you may want to do analysis on both long and wide data in the same project.\nIt is often helpful to be able to pivot your data between long and wide structures."
   },
   {
     "objectID": "slides/index.html#doing-this-at-home-data-load",
@@ -1419,5 +1419,12 @@
     "title": "Cleaning Medical Data with R",
     "section": "Step by Step Cleaning - Stage 2 Wrangling",
     "text": "Step by Step Cleaning - Stage 2 Wrangling\n\nLet your Question define your Unit of Analysis\nPivot_longer or pivot_wider if needed\nThicken time, pad missing times if needed\nJoin to add new data if needed\nKnow what packages to use for data horrors\n\nunpivotr\ntidyxl\nunheadr"
+  },
+  {
+    "objectID": "slides/index.html#restructuring-data-to-long-or-wide-format",
+    "href": "slides/index.html#restructuring-data-to-long-or-wide-format",
+    "title": "Cleaning Medical Data with R",
+    "section": "Restructuring data to Long or Wide format",
+    "text": "Restructuring data to Long or Wide format\nWide Format - One Row per Patient\n\n\n# A tibble: 6 × 8\n  pat_id treatment start_mes end_mes start_bss end_bss start_emo end_emo\n  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 001    upa               3       0      75.9    9.85      79.3    39.8\n2 002    uste              2       1      54.7   32.7       58.6    49.4\n3 003    oza               1       1      28.5   28.5       32.2    35.9\n4 004    upa               3       1      77.2   33.2       75.6    50.2\n5 005    oza               3       2      78.8   56.8       74.3    65.0\n6 006    uste              2       1      54.4   32.4       45.3    36.0\n\n\nLong Format - One Row per Measurement\n\n\n# A tibble: 9 × 4\n  pat_id treatment measure   score\n  &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;\n1 001    upa       start_mes  3   \n2 001    upa       end_mes    0   \n3 001    upa       start_bss 75.9 \n4 001    upa       end_bss    9.85\n5 001    upa       start_emo 79.3 \n6 001    upa       end_emo   39.8 \n7 002    uste      start_mes  2   \n8 002    uste      end_mes    1   \n9 002    uste      start_bss 54.7"
   }
 ]
