@@ -293,7 +293,7 @@ tall |>
 
 ### Alternative within pivot_longer
 
--   You can do this *within* pivot_longer with one more argument (if you *read all of the pivot_longer documentation*)
+-   You can do this *within* pivot_longer with just one more argument <br>(if you *read all of the pivot_longer documentation*)
 
 ::: columns
 
@@ -328,7 +328,7 @@ wide |>
 
 ## Pivoting Longer
 
--   Your Turn with endo_data
+-   Your Turn with `endo_data`
 -   Measurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) in biopsies of 3 segments of intestine.
 -   This `could` be affected by portal hypertension in patients with liver cirrhosis
 - Let's find out!
@@ -1113,6 +1113,16 @@ new_data2
 :::{.notes}
 The joins shown below are *filtering* joins, which filter out rows in your x (LHS) dataset, but do not add any new variables.
 :::
+
+## The Newest Fancy Joins
+
+- You can use `join_by` for more joining options, including
+    + inequality - only match if > value
+    + closest date
+    + `closest` date as long it is _after_ the comparison date, but within 30 days
+    + only match if interval/date `overlaps`
+    + match value if it is `within` a range
+- Learn more at [Join Specifications](https://dplyr.tidyverse.org/reference/join_by.html)
 
 ## Data Horror
 
