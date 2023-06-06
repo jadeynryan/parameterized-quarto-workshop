@@ -15,36 +15,104 @@ library(emo)
 
 ## Where are We Now?
 
-- We have done DEV (Data Evaluation and Validation) - more validation to be done, Data validation is a continuous process, right up to Data Lock.
-- Discussed the importance of preventing data errors at the source - data collection and entry (preferably using a tool with data validation at entry - like REDCap)
-- Did Stage 1 cleaning - clean variable names, remove empty columns/rows, fix variable types/classes (characters in numeric, recoding factors, date madness), address missingness, violations of tidy data principles (separate), added meaningful variable labels.
+- We have done DEV (Data Exploration and Validation) - with more validation to be done. Data validation is a continuous process, right up to Data Lock.
+- We discussed the importance of preventing data errors at the source - data collection and entry (preferably using a tool with data validation at entry - like REDCap)
+- We did Stage 1 cleaning - clean variable names, remove empty columns/rows, fix variable types/classes (characters in numeric, recoding factors, date madness), address missingness, violations of tidy data principles (separate), added meaningful variable labels.
+- While Stage 1 is required in nearly all projects, Stage 2 data cleaning is frequently needed, but not in all projects.
 
-## Deciding on the Unit of Observation
+## Stage 2 Data Cleaning
 
--   In Prospective Data Collection, a patient arrives for a visit. All data collected are part of the same observation/visit.
-    -   Alternatively, we can divide a visit into distinct observations, like blood pressure, a PHQ-9 depression questionnaire, and a hemoglobin measurement (all on the same date)
--   In retrospective data review, we can divide the observations up as we choose. For inpatient stays, we need to decide *a priori* on how to handle multiple observations of the same type (e.g., vitals q6h) in the same day.
-    -   use the 0800 observation each day?
-    -   use the daily average for SBP and DBP?
-    -   use the max values each day?
+- We will cover these frequent but optional topics:
+  - Restructuring data as Long or Wide format
+  - Thickening or padding Longitudinal Data
+  - Joining multiple datasets
 
-## What is the Unit of Analysis?
+## Restructuring data to Long or Wide format
 
--   While the unit of observation may be straightforward for outpatient visits, and complicated for inpatient stays, in the end we need to select a Unit of Analysis
--   This Unit of Analysis usually depends on the **Question** we want to ask
 
-## Is the Unit of Analysis the Patient?
+Wide Format - One Row per Patient
+
+```{r, echo=FALSE}
+wide <- readxl::read_excel(here("data/messy_uc.xlsx"), sheet = 3, skip = 6) |>
+  janitor::clean_names() |>
+  janitor::remove_empty(which = c("rows", "cols")) |> 
+  select(pat_id, treatment, ends_with("mes"), ends_with("bss"), ends_with("emo")) |> 
+  mutate(across(3:8, as.numeric)) 
+
+head(wide)
+```
+
+Long Format - One Row per Measurement
+
+```{r, echo=FALSE}
+wide |> 
+  pivot_longer(cols = 3:8,
+               names_to = "measure",
+               values_to = "score") |> 
+  head(9)
+```
+
+
+
+## The Unit of Analysis - Wide by Patient
+
+- We may want to do an analysis by patient, as each patient may (or may not) have the outcome. If we have multiple observations, or data points on each patient, this leads to wide data, with one row per patient.
+
+```{r,  echo=FALSE, warning=FALSE, message=FALSE}
+wide <- readxl::read_excel(here("data/messy_uc.xlsx"), sheet = 3, skip = 6) |>
+  janitor::clean_names() |>
+  janitor::remove_empty(which = c("rows", "cols")) |> 
+  select(pat_id, treatment, ends_with("mes"), ends_with("bss"), ends_with("emo")) |> 
+  mutate(across(3:8, as.numeric)) 
+
+head(wide)
+```
+
+
+
+## The Unit of Analysis - Long by Visit
+
+- We are often interested in the change in an outcome over time.
+- To make this work, we need one row per measurement of the outcome. This leads to long data, with multiple visits and measurements for each patient.
+
+```{r, echo=FALSE}
+wide |> 
+  pivot_longer(cols = 3:8,
+               names_to = "measure",
+               values_to = "score")
+```
+
+
+## Deciding on the Unit of Analysis
+
+-   This Unit of Analysis usually depends on the `Question` we ask
+
+Is the Unit of Analysis the Patient?
 
 -   Did the patient die?
 -   Did the patient have the outcome of colectomy?
 -   Did the patient reach disease remission?
 
-## Is the Unit of Analysis the Visit/Encounter?
+Is the Unit of Analysis the Visit/Encounter?
 
 -   Often these are within-patient outcomes
     -   Did the C-reactive protein improve from Week 0 to Week 8?
-    -   Did the number of sickle cell crises/year decrease after CRISPR gene therapy?
-    -   Did the endoscopic ulcer score decrease on the experimental therapy vs placebo?
+    -   Did the sickle cell crises/year decrease after CRISPR gene Rx?
+    -   Did the endoscopic score decrease on treatment vs placebo?
+
+## Deciding on the Unit of Analysis
+
+- You will most often use long data, and this data structure allows you to look at multiple predictors and outcomes, like blood pressure, a PHQ-9 depression questionnaire, and a hemoglobin measurement.
+- Depending on the analysis question, you may want to use wide data, and analyze by patient (usually with dichotomous outcomes).
+
+## Deciding on the Unit of Analysis
+- For inpatient data, you may have multiple measurements in the same visit or day, so we need to decide _a priori_ on how to handle multiple observations of the same type (e.g., vitals q6h) in the same day.
+    -   use the `0600` observation each day?
+    -   use the daily average for SBP and DBP?
+    -   use the max values each day?
+- Sometimes, you may want to do analysis on both long and wide data in the same project. 
+- It is often helpful to be able to pivot your data between long and wide structures.
+
 
 ## Reshaping your data with tidyr
 
@@ -53,7 +121,7 @@ library(emo)
 
 -   We often *enter* data by patient
 -   Spreadsheets encourage us to enter longitudinal data as long rows (per patient)
--   We end up with **wide**, rather than **tall** data
+-   We end up with `wide`, rather than `tall` data
 
 ### Wide Version of Data
 
@@ -98,12 +166,12 @@ wide |>
 
 ## Pivoting Longer
 
--   Arguments: data, cols, names_to, values_to, and many optional arguments
+-   Arguments: `data`, `cols`, `names_to`, `values_to`, and many optional arguments
 -   Details from the tidyverse help page are [here](https://tidyr.tidyverse.org/reference/pivot_longer.html)
--   **data** is your dataframe/tibble - you can pipe this in
--   **cols** = columns to pivot, as a vector of names, or by number, or selected with [tidyselect](https://tidyselect.r-lib.org) functions
--   **names_to** = A character vector specifying the new column or columns to create from the information stored in the column names of data specified by cols.
--   **values_to** = A string specifying the name of the column to create from the data stored in cell values.
+-   `data` = your dataframe/tibble - you can pipe this in
+-   `cols` = columns to pivot, as a vector of names, or by number, or selected with [tidyselect](https://tidyselect.r-lib.org) functions
+-   `names_to` = A character vector specifying the new column or columns to create from the information stored in the column names of data specified by cols.
+-   `values_to` = A string specifying the name of the column to create from the data stored in cell values.
 
 ## Pivoting Longer (Example)
 
@@ -138,9 +206,9 @@ wide |>
 
 What values do we want for these key arguments in order to pivot_longer?
 
--   cols (which columns to pivot)
--   names_to (variable to store the names)
--   values_to (variable to store the values)
+-   `cols` (which columns to pivot?)
+-   `names_to` (variable to store the names)
+-   `values_to` (variable to store the values)
 
 ```{r, echo=FALSE}
 wide
@@ -199,9 +267,9 @@ tall
 -   Needs to be separated.
 -   You already know how to use *separate()*
 -   Arguments
-    -   col
-    -   sep
-    -   into
+    -   `col`
+    -   `sep`
+    -   `into`
 
 ### Code
 
@@ -225,7 +293,7 @@ tall |>
 
 ### Alternative within pivot_longer
 
--   You can do this *within* pivot_longer with one more argument (if you are *fancy*)
+-   You can do this *within* pivot_longer with just one more argument <br>(if you *read all of the pivot_longer documentation*)
 
 ::: columns
 
@@ -260,14 +328,16 @@ wide |>
 
 ## Pivoting Longer
 
--   Your Turn with endo_data
+-   Your Turn with `endo_data`
 -   Measurements of Trans-Epithelial Electrical Resistance (TEER, the inverse of leakiness) in biopsies of 3 segments of intestine.
--   This could be affected by portal hypertension in patients with liver cirrhosis
+-   This `could` be affected by portal hypertension in patients with liver cirrhosis
 - Let's find out!
+
+## Doing this At Home? Data load
 
 - Here is the code to load the data if you are doing this on a local computer. Use the clipboard icon at the top right to copy the code.
 
-```{r}
+```{r, echo=TRUE, eval=FALSE}
 #| code-fold: false
 endo_data <- tibble::tribble(
   ~pat_id, ~portal_htn, ~duod_teer, ~ileal_teer, ~colon_teer,
@@ -291,12 +361,12 @@ endo_data
 
 Complete Data Cleaning Fundamentals Exercise PH1.
 
-- Do This in [Posit Cloud](https://posit.cloud/content/5758558) 
+- Do This in [Posit Cloud](https://posit.cloud/spaces/378150/join?access_code=7FQ1xLRyG4pLUwl3f3qhA2YxEtjw2hRpJvejGsd4) 
 -   If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji `r knitr::asis_output("\U1F44D")` on your screen.
 
 -   If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raised hand" emoji `r knitr::asis_output("\U270B")` on your screen.
 
-[--\> Take me to the exercise solution \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#ph1){target="_blank"}
+[--\> Take me to the exercise Solution \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#ph1){target="_blank"}
 
 <br>
 
@@ -320,10 +390,10 @@ endo_data
 ### Arguments
 
 -   What values do you want to use for these arguments to `pivot_longer`:
-    -   cols
-    -   names_pattern = "(.+)\_teer"
-    -   names_to
-    -   values_to
+    -   `cols`
+    -   `names_pattern` = "(.+)\_teer"
+    -   `names_to`
+    -   `values_to`
 -   Note that we are giving you the correct value for `names_pattern`, which will ask for what we want - to keep the characters of the name (of whatever length) before "\_teer"
 
 ### Code
@@ -383,7 +453,7 @@ endo_data |>
 
 ::: {.column width="50%"}
 
--   Wide data is less common, but sometimes needed
+-   Wide data is less common, but sometimes needed for per-patient analysis
 -   Here we will convert the tall version of our selected messy_uc data back to wide.
 -   This is what the tall data look like
 
@@ -400,7 +470,7 @@ tall
 
 :::
 
-### Code to Pivot
+### Code to Pivot Wider
 
 ```{r echo=TRUE, eval=FALSE}
 tall |> 
@@ -424,7 +494,23 @@ tall |>
 
 :::
 
-## Fill in Unobserved Date-Times with padr
+## Longitudinal Data
+
+::: columns
+::: {.column width="60%"}
+- Another set of data issues you may face is in data collected over time, when one of two things happen:
+  - You want to analyze data by day or month or year, and data in your Electronic Medical Record is collected and time-stamped by the `second`.
+  - You realize that some observations (on weekends) are missing, and you need to fill these dates in as missing, but you really don't want to do this by hand.
+- The {padr} package can help with these issues.
+
+:::
+::: {.column width="40%"}
+![Longitudinal Data](images/long_data.png)
+:::
+:::
+
+
+## Thicken Date-Times with padr
 
 ::: columns
 ::: {.column width="55%"}
@@ -437,21 +523,74 @@ head(emergency) |>
 ```
 :::
 
-::: {.column width="45%"}
+::: {.column width="2%"}
+:::
+
+::: {.column width="43%"}
 -   The **emergency** data set in the {padr} package contains \> 120K emergency calls from Montgomery County, PA over a period of \~ 11 months.
 -   Each call has a title and a timestamp
+- We want to know in which months the emergency department should order an extra case of Narcan <br>(H: summer months?).
 :::
 :::
 
+
+
 ## Thickening Time to a Usable Level
+
+::: panel-tabset
+### Starting Point
+
+-   The `thicken` function adds a column to a data frame that is of a higher interval than the original variable.
+- The intervals for {padr} are year, quarter, month, week, day, hour, min, and sec.
+-   The variable `time_stamp` has the interval of seconds
+-   We can thicken the data to the time  interval we need.
+-   Then we can count events by a usable unit of time
+
+### Original Data
+
+```{r}
+#| echo: true
+#| eval: true
+emergency |> 
+  head()
+```
+
+###  Thickened to Month
+-   We will thicken to month
+
+```{r}
+#| echo: true
+#| eval: true
+emergency |> 
+  thicken('month') |> 
+  head() |> 
+  select(-lat, -lng, -zip)
+```
+
+### Thickened to Week
+-   We will thicken to week
+
+```{r}
+#| echo: true
+#| eval: true
+emergency |> 
+  thicken('week') |> 
+  head() |> 
+  select(-lat, -lng, -zip)
+```
+
+:::
+
+
+## Thickening Time for a Monthly Plot
 
 ::: panel-tabset
 ### Goal
 
 -   The thicken function adds a column to a data frame that is of a higher interval than the original variable.
--   The variable **time_stamp** has the interval of seconds
--   We can thicken the data to day, or to week, or to month.
--   Then we can count events by a usable unit of time
+-   The variable `time_stamp` has the interval of seconds
+-   We want to thicken this (time stamped) data to month, then select and count overdoses
+- This will set up the monthly overdose plot we want.
 
 ### Code
 
@@ -463,10 +602,9 @@ head(emergency) |>
 #| eval: false
 emergency |> 
   thicken('month') |> 
-  filter(str_detect(title, "OVERDOSE")) |>   group_by(time_stamp_month) |> 
-  mutate(ods = sum(str_detect(title, "OVERDOSE"))) |> 
-    select(time_stamp_month, ods) |> 
-  distinct()
+  group_by(time_stamp_month) |> 
+  summarize(overdoses = sum(str_detect(title, "OVERDOSE"))) |> 
+    select(time_stamp_month, overdoses) 
 ```
 
 ### Result
@@ -478,21 +616,22 @@ emergency |>
 #| eval: true
 by_month <- emergency |> 
   thicken('month') |> 
-  filter(str_detect(title, "OVERDOSE")) |>
   group_by(time_stamp_month) |> 
-  mutate(ods = sum(str_detect(title, "OVERDOSE"))) |> 
-  select(time_stamp_month, ods) |> 
-  distinct()
+  summarize(overdoses = sum(str_detect(title, "OVERDOSE"))) |> 
+    select(time_stamp_month, overdoses) 
 
 by_month
 ```
 
 ### Plot Monthly 
 ```{r}
-#| output-location: column-fragment
+#| echo: false
+#| eval: true
+#| fig-height: 4
+
 by_month |> 
   ggplot(aes(x = time_stamp_month,
-             y = ods)) +
+             y = overdoses)) +
   geom_point(size = 3, color = "red") +
   geom_line() +
   labs(y = "Overdoses Per Month",
@@ -502,16 +641,20 @@ by_month |>
   ylim(0,175)
 ```
 
+- When would you order extra cases of Narcan?
+
 :::
+
+
 
 ## Padding unobserved dates (weekends?)
 
 ::: columns
 ::: {.column width="60%"}
--   The pad function allows you to fill in missing intervals.
+-   The _pad()_ function allows you to fill in missing intervals.
 -   As an example, my hospital only runs fecal calprotectin tests on weekdays.
 -   This can lead to weird discontinuities in data over a weekend (Dec 3-4).
--   No observations on weekend days.
+-   No observations on weekend days/holidays.
 :::
 
 ::: {.column width="40%"}
@@ -536,7 +679,7 @@ fcp <- tibble::tribble(
   '003', "12-06-2022", 101
 ) |> mutate(date = lubridate::mdy(date))
 
-fcp
+fcp |>  head(14)
 ```
 :::
 :::
@@ -554,9 +697,9 @@ fcp
 #| echo: true
 #| eval: false
 fcp |> 
-  pad(group = "pat_id") |> 
-  tidyr::fill(pat_id) |> # fill in the missing pat_ids
-  print(n = 14)
+  pad(group = "pat_id") |> # this adds lines for each missing day to the data
+  # by patient
+  print(n = 12)
 ```
 
 ### The Result
@@ -568,27 +711,49 @@ fcp |>
 #| eval: true
 fcp |> 
   pad(group = "pat_id") |> 
-  tidyr::fill(pat_id) |> 
-  print(n = 14)
+  print(n = 12)
 ```
 :::
 
 ::: {.column width="60%"}
 -   New observations are created on the missing dates
 -   NAs are filled in for the missing FCPs, with one for each day and group (pat_id)
--   we used **tidyr::fill(pat_id)** to fill in the missing pat_ids
+- **pad()** fills in the missing pat_ids
 :::
 :::
+:::
+
+## Joining Data
+
+::: columns
+::: {.column width="60%"}
+
+- Another data issue you will often face is that you have two interesting data sets, and that they would be more interesting if you could link the data in one to the data in the other.
+:::
+
+::: {.column width="40%"}
+![Better Together: <br>Chocolate and Peanut Butter <br> (Datasets)](images/choc_pb.jpeg)
+:::
+
 :::
 
 ## Joins of data from different sources
 
+::: columns
+::: {.column width="70%"}
+
 -   We often collect data from different sources that we later want to join together for analysis
-    -   Data from local Electronic Medical Record
+    -   Data from your local Electronic Medical Record
     -   Data from the CDC
     -   Data from the US Census
 -   External data can illuminate our understanding of our local patient data
+:::
 
+::: {.column width="30%"}
+![](images/LuxoJr_Lamp.webp)
+:::
+
+:::
 ## Local Demographics with CDC SVI data
 
 ::: panel-tabset
@@ -597,8 +762,8 @@ fcp |>
 ::: columns
 ::: {.column width="60%"}
 -   We have 2 datasets, one local Demographics and Census Tract, and one from the CDC that has values for Social Vulnerability Index by Census Tract
--   We want to know the median SVI for the neighborhood of each patient
--   We need to left_join these datasets together by matching on the Census Tract
+-   We want to know if the SVI for the neighborhood of each patient influences health outcomes
+-   We need to `left_join` these datasets together by matching on the Census Tract
 :::
 
 ::: {.column width="40%"}
@@ -612,7 +777,7 @@ fcp |>
 
 ::: columns
 ::: {.column width="60%"}
--   demo
+-  Local EMR data (`demo`)
 
 ```{r}
 #| echo: false
@@ -634,7 +799,7 @@ demo
 :::
 
 ::: {.column width="40%"}
--   cdc
+-   `cdc`
 
 ```{r}
 #| echo: false
@@ -671,7 +836,7 @@ left_join(demo, cdc, by = "census_tract")
 ```
 
 ### The Result
-
+- Now that the join is complete, you can ask your question:
 -   Is there an association between social vulnerability and hypertension?
 
 ```{r, echo=FALSE, eval=TRUE}
@@ -683,7 +848,7 @@ left_join(demo, cdc, by = "census_tract")
 
 ::: columns
 ::: {.column width="40%"}
--   We have some basic Patient Demographics in one table
+-   We have some basic Patient Demographics in one table (*demo*)
 
 ```{r}
 #| echo: false
@@ -704,8 +869,11 @@ demo
 ```
 :::
 
-::: {.column width="60%" .fragment}
-and potassium levels and creatinine levels in 2 other tables
+::: {.column width="10%"}
+:::
+
+::: {.column width="50%" .fragment}
+and potassium levels and creatinine levels in 2 other tables (*pot* and *cr*)
 
 ```{r}
 #| echo: false
@@ -722,7 +890,7 @@ pot <- tibble::tribble(
   '009', 4.9,
 )
 
-head(pot)
+head(pot, 5)
 ```
 
 ```{r}
@@ -740,7 +908,7 @@ cr <- tibble::tribble(
   '009', 1.7,
 )
 
-head(cr)
+head(cr, 5)
 ```
 :::
 :::
@@ -792,16 +960,16 @@ cr <- tibble::tribble(
 
 ## Your Turn to Join
 
--   We want to join the correct labs (9 rows each) to the correct patients.
+-   We want to join the correct labs (9 rows each from the pot and cr datasets) to the correct patients.
 -   The unique identifier (called the uniqid or key or recordID) is pat_id.
--   It only occurs once for each patient/row
--   It appears in each table we want to join
--   The pat_id is of the character type in each (a common downfall if one is character, one is numeric, but they **look** the same - but don't match)
+    + It only occurs once for each patient/row
+    + It appears in each table we want to join
+    + The pat_id is of the character type in each (a common downfall if one is character, one is numeric, but they **look** the same - but don't match)
 -   We want to start with demographics, then add datasets that match to the right.
 -   We will use *demo* as our base dataset on the left hand side (LHS), and first join the potassium (*pot*) results (RHS)
 
 ## What the Left Join Looks Like
-- This is a *mutating* join - new variables are created/added to the LHS
+- This is a *mutating* join - new variables from y are created/added to the LHS (x).
 
    <div class="animations"><img alt="gif here" width="80%" height="80%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/left-join.gif"> </div>  
 
@@ -811,13 +979,13 @@ cr <- tibble::tribble(
 
 Complete the Data Cleaning Fundamentals Exercise PH2.
 
-- Do This in [Posit Cloud](https://posit.cloud/content/5758558)
+- Do This in [Posit Cloud](https://posit.cloud/spaces/378150/join?access_code=7FQ1xLRyG4pLUwl3f3qhA2YxEtjw2hRpJvejGsd4)
 
 -   If you have the exercise done correctly, click on the Reactions tab in Zoom, and click to put the "thumbs up" emoji `r knitr::asis_output("\U1F44D")` on your screen.
 
 -   If you are having trouble, click on the Reactions tab in Zoom, and click to put the "raised hand" emoji `r knitr::asis_output("\U270B")` on your screen.
 
-[--\> Take me to the exercise \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#ph2){target="_blank"}
+[--\> Take me to the exercise Solution \<--](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/exercises.html#ph2){target="_blank"}
 
 ```{r}
 #| echo: false
@@ -831,7 +999,7 @@ countdown(minutes = 3, font_size = "3.5em")
 ### The Problem
 
 -   Joining *demo* to *pot* with a left_join
--   left_join(data_x, data_y, by = "uniqid")
+-   left_join(`data_x`, `data_y`, by = `"uniqid"`)
 
 ### The Code
 
@@ -869,12 +1037,12 @@ new_data
 ::: panel-tabset
 ### The Problem
 
--   Joining new_data and cr with a left_join
+-   Joining *new_data* and *cr* with a `left_join`
 -   left_join(data_x, data_y, by = "uniqid")
 
 ### The Code
 
--   Replace the generic arguments with the correct ones to join new_data and cr and produce new_data2.
+-   Replace the generic arguments with the correct ones to join <br>*new_data* and *cr* and produce *new_data2*.
 
 ```{r, error=TRUE, eval=FALSE}
 #| code-fold: false
@@ -904,7 +1072,7 @@ new_data2
 ## Workhorse Joins
 
 -   *left_join* is your workhorse. Start with patient identifiers/uniqid and add data to the right side.
--   Sometimes you will need to wrangle/process incoming data, then *right_join* it to the patient demographics
+-   Sometimes you will need to wrangle/process incoming data, then pipe it in to *right_join* it to the patient demographics
 
 ::: columns
 
@@ -925,14 +1093,17 @@ new_data2
 
 ::: columns
 
-::: {.column width="50%"}
-- You want to subset your data (x) by keeping only the ones (y=hospitalized) who were hospitalized.
+::: {.column width="45%"}
+- Subset your data (x), keeping only the ones (y=hospitalized) who were hospitalized.
 
  <div class="animations"><img alt="gif here" width="100%" height="100%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/semi-join.gif"> </div>  
 :::
 
-::: {.column width="50%"}
-- You want to subset your data (x) by keeping only the ones <br>(y = dead) <br>who are NOT dead.
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+- Subset your data (x), keeping only the ones (y = dead) who are NOT dead.
 
  <div class="animations"><img alt="gif here" width="100%" height="100%" src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/anti-join.gif"> </div>  
 :::
@@ -942,6 +1113,16 @@ new_data2
 :::{.notes}
 The joins shown below are *filtering* joins, which filter out rows in your x (LHS) dataset, but do not add any new variables.
 :::
+
+## The Newest Fancy Joins
+
+- You can use `join_by` for more joining options, including
+    + inequality - only match if > value
+    + closest date
+    + `closest` date as long it is _after_ the comparison date, but within 30 days
+    + only match if interval/date `overlaps`
+    + match value if it is `within` a range
+- Learn more at [Join Specifications](https://dplyr.tidyverse.org/reference/join_by.html)
 
 ## Data Horror
 

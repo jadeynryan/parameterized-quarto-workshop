@@ -1,8 +1,8 @@
 ## Step by Step Cleaning - Stage 1
 
 - Import your data cleanly - skip rows, get headers
-- Explore data
-- Remove empty rows, columns
+- Explore your data
+- Remove empty rows & columns
 - Fix variable classes/types, check dates
 - Clean variable names 
 - Create a codebook
@@ -11,13 +11,13 @@
 - Identify and consistently label missing values
 - Separate mixed (SBP/DBP) values, assign variable labels
 
-## Step by Step Cleaning - Stage 2
+## Step by Step Cleaning - Stage 2 Wrangling
 
-- Define your Unit of Analysis
-- pivot_longer if needed
-- thicken time, pad missing times if needed
-- join to add new data if needed
-- know what packages to use for data horrors
+- Let your Question define your Unit of Analysis
+- Pivot_longer or pivot_wider if needed
+- Thicken time, pad missing times if needed
+- Join to add new data if needed
+- Know what packages to use for data horrors
   - unpivotr
   - tidyxl
   - unheadr
