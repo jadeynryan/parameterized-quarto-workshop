@@ -427,7 +427,6 @@ gt::gt(dict)
 -   Only numeric values
 -   Only dates in the YYYY-MM-DD format
 
-
 ## Test your data collection or entry tool
 
 - Collect/enter sample data
