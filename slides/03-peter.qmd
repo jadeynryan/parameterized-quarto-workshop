@@ -337,7 +337,7 @@ wide |>
 
 - Here is the code to load the data if you are doing this on a local computer. Use the clipboard icon at the top right to copy the code.
 
-```{r, echo=TRUE, eval=FALSE}
+```{r, echo=TRUE, eval=TRUE}
 #| code-fold: false
 endo_data <- tibble::tribble(
   ~pat_id, ~portal_htn, ~duod_teer, ~ileal_teer, ~colon_teer,
