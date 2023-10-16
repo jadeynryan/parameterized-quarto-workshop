@@ -13,7 +13,7 @@ fa_fill <- "#606060"
 
 <br>
 
-This work is licensed under [Creative Commons Zero v1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/).
+This work is licensed under [Creative Commons 4.0 International](https://creativecommons.org/licenses/by/4.0/).
 
 
 ## Instructors
