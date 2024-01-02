@@ -37,6 +37,8 @@ library(gtsummary) # presentation ready summary tables
 
 # The Data
 
+The exercises use [`messy_uc.xlsx`](https://github.com/shannonpileggi/rmedicine-data-cleaning-2023/blob/main/data/messy_uc.xlsx).
+
 The data for each section will start out as messy Excel files of the type your well-meaning clinical colleague will have used to collect data from the local electronic medical record (EMR), with typos, data problems, and often untidy data structures.
 
 Essentially, your job is to turn the messy Excel data beast (on the left) into the tidy data on the right.

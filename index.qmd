@@ -16,6 +16,8 @@ engine: knitr
 💥 **FREE** [workshop
 registration](https://events.linuxfoundation.org/r-medicine/) with registration for the R/Medicine 2023 meeting.
 
+📹 [Recording available on YouTube](https://youtu.be/6wFYAMwYzM4?si=MGvvIvjRfv1PhvAg) (~3 hours)
+
 ------------------------------------------------------------------------
 
 # Overview
