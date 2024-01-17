@@ -305,7 +305,7 @@
     "href": "index.html#r-ladies-washington-dc-workshop",
     "title": "Parameterized Reporting with Quarto",
     "section": "R-Ladies Washington DC Workshop",
-    "text": "R-Ladies Washington DC Workshop\n📆 January 18, 2024 | 6:30 pm - 8:30 pm EDT\n🏨 Virtual\n🆓 FREE with registration on Meetup"
+    "text": "R-Ladies Washington DC Workshop\n📆 January 18, 2024 | 6:30 pm - 8:30 pm EDT\n🏨 Virtual\n🆓 FREE with registration on Meetup\n🏡 Workshop website"
   },
   {
     "objectID": "index.html#abstract",
@@ -347,6 +347,27 @@
     "href": "prework.html",
     "title": "Pre-work",
     "section": "",
-    "text": "This workshop will largely be conducted in the Posit Cloud environment. Please create a login to the Posit Cloud instance of this workshop here:\nbit.ly/rladies-parameterized-quarto.\nIf you will not be using the Posit Cloud instance, you can learn by watching and listening.\nAs a more high-risk alternative, if you would like to try this out on your own computer, please have the following installed and configured on your machine. Note that we will NOT be able to help you with local computer problems during the workshop. If you choose to do this, you are on your own.\n\nRecent version of R\nRecent version of RStudio\n\nRecent version of packages used in this workshop:\n\npkgs &lt;- c(\"dplyr\", \"fs\", \"ggplot2\", \"here\", \"plotly\", \"purrr\", \"quarto\", \n          \"readr\", \"stringr\", \"janitor\", \"lubridate\", \"tidyr\", \"rmarkdown\",\n          \"knitr\")\n\ninstall.packages(pkgs)\n\n\n\nCheck that Quarto works on your computer:\n\nOpen RStudio and create a new Quarto (.qmd) document.\nSave the document and check you are able to render it.\n\n\n\nGet the project on your machine.\n\n# install.packages(\"usethis\")\nusethis::use_course(\"https://github.com/jadeynryan/rladies-parameterized-quarto/raw/main/exercises/exercises.zip\")"
+    "text": "This workshop has five exercises for you to try. After the workshop, I encourage you to adapt the exercise template files and code to fit your own projects.\nThere are three ways for you to participate. Please complete the pre-work for whichever way you’d like to follow along before the workshop."
+  },
+  {
+    "objectID": "prework.html#follow-along-in-the-posit-cloud",
+    "href": "prework.html#follow-along-in-the-posit-cloud",
+    "title": "Pre-work",
+    "section": "Follow along in the Posit Cloud",
+    "text": "Follow along in the Posit Cloud\nThis workshop will largely be conducted in the Posit Cloud environment. Posit Cloud allows us all to work in the exact same environment with the same version of R, R packages, and directory of files. Please create an account if you don’t yet have one.\nLog in to the Posit Cloud instance of this workshop here:\nbit.ly/rladies-parameterized-quarto."
+  },
+  {
+    "objectID": "prework.html#watch-and-listen",
+    "href": "prework.html#watch-and-listen",
+    "title": "Pre-work",
+    "section": "Watch and listen",
+    "text": "Watch and listen\nIf you will not be using the Posit Cloud instance, you can learn by watching and listening. No pre-work needed for you. 😊"
+  },
+  {
+    "objectID": "prework.html#follow-along-on-your-own-computer",
+    "href": "prework.html#follow-along-on-your-own-computer",
+    "title": "Pre-work",
+    "section": "Follow along on your own computer",
+    "text": "Follow along on your own computer\nAs a more high-risk alternative, if you would like to try this out on your own computer, please have the following installed and configured on your machine. Note that we will NOT be able to help you with local computer problems during the workshop. If you choose to do this, you are on your own.\n\nRecent version of R\nRecent version of RStudio\n\nRecent version of packages used in this workshop:\n\npkgs &lt;- c(\"dplyr\", \"fs\", \"ggplot2\", \"here\", \"plotly\", \"purrr\", \"quarto\", \n          \"readr\", \"stringr\", \"janitor\", \"lubridate\", \"tidyr\", \"rmarkdown\",\n          \"knitr\")\n\ninstall.packages(pkgs)\n\n\n\nCheck that Quarto works on your computer:\n\nOpen RStudio and create a new Quarto (.qmd) document.\nSave the document and check you are able to render it.\n\n\n\nGet the project on your machine.\n\n# install.packages(\"usethis\")\nusethis::use_course(\"https://github.com/jadeynryan/rladies-parameterized-quarto/raw/main/exercises/exercises.zip\")"
   }
 ]
