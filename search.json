@@ -1,0 +1,352 @@
+[
+  {
+    "objectID": "slides/index.html#acknowledgements",
+    "href": "slides/index.html#acknowledgements",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\n\n\nR/Medicine Data Cleaning 2023 Workshop taught by Crystal Lewis, Shannon Pileggi, and Peter Higgins\nASA Traveling Courses on Quarto taught by Mine Çetinkaya-Rundel and Andrew Bray"
+  },
+  {
+    "objectID": "slides/index.html#license",
+    "href": "slides/index.html#license",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "License",
+    "text": "License\nOpinions expressed are solely my own and do not express the views of my employer or any organizations I am associated with.\nThis work is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA)."
+  },
+  {
+    "objectID": "slides/index.html#jadey-ryan",
+    "href": "slides/index.html#jadey-ryan",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Jadey Ryan",
+    "text": "Jadey Ryan\n\n\nData scientist at WA Dept of Agriculture\nBusiness owner of The Coding Cats\n jadeyryan.com\n @jadeynryan\n linkedin.com/in/jadey-ryan\n jadeynryan\n thecodingcats.etsy.com\n\n\n\nFrom left to right: Tai, Mai, and Skye"
+  },
+  {
+    "objectID": "slides/index.html#logistics",
+    "href": "slides/index.html#logistics",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Logistics",
+    "text": "Logistics\n\n\nLogin to Posit Cloud: bit.ly/rladies-parameterized-quarto.\nIf Posit Cloud doesn’t work, download materials locally:\n\nusethis::use_course(\"https://github.com/jadeynryan/rladies-parameterized-quarto/raw/main/exercises/exercises.zip\")\n\nAsk questions in the public Zoom chat or raise hand ✋.\n\nWorkshop structure: presentation, exercises, questions to answer in chat [💬 Chat:], and demos."
+  },
+  {
+    "objectID": "slides/index.html#learning-objectives",
+    "href": "slides/index.html#learning-objectives",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Learning objectives",
+    "text": "Learning objectives\n\n\nUnderstand what parameterized reporting is and when it is useful.\nLearn how to convert a report into a parameterized template.\nRender all variations of the report at once using {quarto} and {purrr}.\nGenerate multiple format outputs from the same template file with conditional content and conditional code execution."
+  },
+  {
+    "objectID": "slides/index.html#pipes",
+    "href": "slides/index.html#pipes",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Pipes",
+    "text": "Pipes\n\n2014+ magrittr pipe %&gt;%\n2021+ (R \\(\\geq\\) 4.1.0) native R pipe |&gt;\n\n\nIsabella Velásquez’s blog post Understanding the native R pipe |&gt; (2022)\n\n\n\n\n\nwhatever(arg1, arg2, arg3, ...)\n\narg1 |&gt;  \n  whatever(arg2, arg3)\n\n\n\n\n\nmean(0:10)\n\n0:10 |&gt; \n  mean()\n\n\n\n\n\nTo change Ctrl + Shift + M shortcut to the native pipe:\nTools → Global Options → Code → Editing → Use Native Pipe Operator\n\nSlide adapted from R/Medicine Data Cleaning 2023 Workshop"
+  },
+  {
+    "objectID": "slides/index.html#namespacing",
+    "href": "slides/index.html#namespacing",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Namespacing",
+    "text": "Namespacing\npackage::function()\ndplyr::select()\n\n\ntells R explicitly to use the function select from the package dplyr\nhelps avoid name conflicts (e.g., MASS::select())\ndoes not require library(dplyr)\n\n\n\n\n\n\nlibrary(dplyr)\n\nmtcars |&gt;  \n  select(mpg, cyl) \n\n\n\n\n\n# library(dplyr) not needed\n\nmtcars |&gt;  \n  dplyr::select(mpg, cyl) \n\n\n\n\nSlide adapted from R/Medicine Data Cleaning 2023 Workshop"
+  },
+  {
+    "objectID": "slides/index.html#rstudio-options",
+    "href": "slides/index.html#rstudio-options",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "RStudio options",
+    "text": "RStudio options\nTools → Global Options →\n\nFussy YAML indentation: Code → Display → Indentation guides: → Rainbow lines\nMatch parentheses: Code → Display → Indentation guides: → Check Use rainbow parentheses\nMatching divs: R Markdown → Advanced → Check Use rainbow fenced divs"
+  },
+  {
+    "objectID": "slides/index.html#r-markdown",
+    "href": "slides/index.html#r-markdown",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "R Markdown",
+    "text": "R Markdown\n\nFigure from “Hello, Quarto” keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio::Conf(2022)."
+  },
+  {
+    "objectID": "slides/index.html#quarto",
+    "href": "slides/index.html#quarto",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Quarto",
+    "text": "Quarto\n\n\n\n\nArtwork from “Hello, Quarto” keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio::Conf(2022). Illustrated by Allison Horst."
+  },
+  {
+    "objectID": "slides/index.html#r-markdown-vs-quarto",
+    "href": "slides/index.html#r-markdown-vs-quarto",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "R Markdown vs Quarto",
+    "text": "R Markdown vs Quarto\n\n\n\nR Markdown\n\nVast R Markdown ecosystem\nDependent on R\n\n\n\nQuarto\n\nExpands R Markdown ecosystem\n“Batteries included”\nMulti-language and multi-engine\n\n\n\n\nR Markdown will still be maintained but likely no new features (Yihui 2022)."
+  },
+  {
+    "objectID": "slides/index.html#convert-.rmd-.qmd",
+    "href": "slides/index.html#convert-.rmd-.qmd",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Convert .Rmd → .qmd*",
+    "text": "Convert .Rmd → .qmd*\n\nChange file extension from .Rmd → .qmd\nChange YAML header (output: → format:)\nConvert chunk headers with knitr::convert_chunk_header()\n\n*If you want.\n\n\nResources for R Markdown users\nFrom R Markdown to Quarto workshop taught by Dr. Mine Çetinkaya-Rundel and Dr. Andrew Bray.\nQuarto FAQ for R Markdown Users\nTed Laderas’ talk Quarto/RMarkdown - What’s Different?"
+  },
+  {
+    "objectID": "slides/index.html#many-use-cases",
+    "href": "slides/index.html#many-use-cases",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Many use cases",
+    "text": "Many use cases\n\n\n\n\n\n\n\nOcean floor maps\n\n\n\n\n\n\nFiscal briefs\n\n\n\n\n\n\nBad drivers\n\n\n\n\n\n\nSoil health\n\n\n\n💬 Chat: what kinds of reports would you like to parameterize? What would the parameters be?"
+  },
+  {
+    "objectID": "slides/index.html#like-a-custom-function",
+    "href": "slides/index.html#like-a-custom-function",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Like a custom function",
+    "text": "Like a custom function"
+  },
+  {
+    "objectID": "slides/index.html#what-makes-a-report-parameterized",
+    "href": "slides/index.html#what-makes-a-report-parameterized",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "What makes a report “parameterized”?",
+    "text": "What makes a report “parameterized”?\n\n\nYAML header with params key-value pairs\n\nYet Another Markdown Language or YAML Ain’t Markup Language 🤷🏻‍♀️\n\nUse those params in your report to create different variations"
+  },
+  {
+    "objectID": "slides/index.html#workflow",
+    "href": "slides/index.html#workflow",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Workflow",
+    "text": "Workflow\n\n\nWrite report template with default values hard-coded, render, and review.\nSet default params key-value pairs in YAML and replace hard-coded values with the params variables.\nRender the single report and review.\nRender extreme cases and review.\n\nParameter values with barely any data and with tons of data.\n\nRender all variations of the report at once."
+  },
+  {
+    "objectID": "slides/index.html#set-params-in-yaml-header",
+    "href": "slides/index.html#set-params-in-yaml-header",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Set params in YAML header",
+    "text": "Set params in YAML header\n\n---\ntitle: \"Swiss Cats\"                 # Metadata\nformat:                             # Set format types\n  html:                                     \n  docx:                            \nparams:                             # Set default parameter key-value pairs\n  fave_breed: \"Snowshoe\"                                \n---\n    \nReport content goes here.           # Write content\n\n\nYour default params key-value pairs must be found in your dataset."
+  },
+  {
+    "objectID": "slides/index.html#access-params",
+    "href": "slides/index.html#access-params",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Access params",
+    "text": "Access params\nRun any line or chunk to add params to your environment.\n\nparams object is a list.\n\nstr(params)\n\nList of 1\n $ fave_breed: chr \"Snowshoe\"\n\n\n\n\n\nAccess with $ notation.\n\nparams$fave_breed\n\n[1] \"Snowshoe\"\n\n\n\n\n\nFor inline code in YAML or report content, enclose the expression in `r `.\n\nMy favorite cat breed is the **`r params$fave_breed`**.\n\nMy favorite cat breed is the Snowshoe."
+  },
+  {
+    "objectID": "slides/index.html#replace-hard-coded-values-with-params",
+    "href": "slides/index.html#replace-hard-coded-values-with-params",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Replace hard-coded values with params",
+    "text": "Replace hard-coded values with params\n\n\nCtrl + F to find and replace values.\nUse inline R code to replace hard-coded markdown values.\nUse paste() for plot and table titles and labels."
+  },
+  {
+    "objectID": "slides/index.html#multiple-ways-to-render",
+    "href": "slides/index.html#multiple-ways-to-render",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Multiple ways to render",
+    "text": "Multiple ways to render\n\n\n Render button in RStudio or Ctrl+Shift+K keyboard shortcut\nCheck Render on Save and Ctrl+S keyboard shortcut\nQuarto CLI\n\n\nTerminal\n\nquarto render ex-2-quarto-render.qmd -P pet_type:'cats' -P fave_breed:'Snowshoe'\n\n✨ quarto::quarto_render()\n\n\nConsole or R script\n\nquarto::quarto_render(\n  input = here::here(\"ex-2-quarto-render.qmd\"), # Input Quarto file\n  execute_params = list(                     # Named list of params\n    pet_type = \"cats\",\n    fave_breed = \"Snowshoe\"\n  )"
+  },
+  {
+    "objectID": "slides/index.html#render-all-538-reports",
+    "href": "slides/index.html#render-all-538-reports",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Render all 538 reports",
+    "text": "Render all 538 reports\nOne HTML report for each cat breed and each dog breed.\n\n📊 Data👷🏼‍♂️ Manual 1👷🏻‍♀️ Manual 2⚡ Programatically\n\n\n\npets &lt;- readr::read_rds(here::here(\"data\", \"pets.RDS\"))\n\npets |&gt;\n  dplyr::distinct(pet_type, breed) |&gt;\n  dplyr::count(pet_type) |&gt;\n  janitor::adorn_totals()\n\n\n\n\n\npet_type\nn\n\n\n\n\ncats\n104\n\n\ndogs\n434\n\n\nTotal\n538\n\n\n\n\n\n\n\n\n\nChange the default params in the YAML.\nRender button in RStudio or Ctrl+Shift+K keyboard shortcut.\nChange the file name to add the parameter.\noutput-file: YAML option doesn’t seem to work with inline R code.\nRepeat 537 times.\n\n\n\n\nquarto::quarto_render(\n  input = here::here(\"ex-2-quarto-render.qmd\"),\n  output_file = \"dogs-affenpinscher-report.html\",\n  execute_params = list(\n    pet_type = \"dogs\",\n    fave_breed = \"Affenpinscher\"))\n\nquarto::quarto_render(\n  input = here::here(\"ex-2-quarto-render.qmd\"),\n  output_file = \"dogs-afghan-hound-report.html\",\n  execute_params = list(\n    pet_type = \"dogs\",\n    fave_breed = \"Afghan Hound\"))\n\nquarto::quarto_render(\n  input = here::here(\"ex-2-quarto-render.qmd\"),\n  output_file = \"dogs-aidi-chien-de-montagne-de-l-atlas-report.html\",\n  execute_params = list(\n    pet_type = \"dogs\",\n    fave_breed = \"Aidi Chien De Montagne De L Atlas\"))\n\nquarto::quarto_render(\n  input = here::here(\"ex-2-quarto-render.qmd\"),\n  output_file = \"dogs-akita-report.html\",\n  execute_params = list(\n    pet_type = \"dogs\",\n    fave_breed = \"Akita\"))\n\n# + 534 more times... \n\n\n\nCreate a dataframe with three columns that match quarto_render() args:\n\noutput_format: file type (html, revealjs, pdf, docx, etc.)\noutput_file: file name with extension\nexecute_params: named list of parameters\n\nMap over each row:\n\npurrr::pwalk(dataframe, quarto_render, quarto_render_args)"
+  },
+  {
+    "objectID": "slides/index.html#create-dataframe-to-iterate-over",
+    "href": "slides/index.html#create-dataframe-to-iterate-over",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Create dataframe to iterate over",
+    "text": "Create dataframe to iterate over\n\npet_reports &lt;- pets |&gt;\n  dplyr::distinct(pet_type, breed) |&gt;   # Get distinct pet/breed combos\n  dplyr::mutate(\n    output_format = \"html\",             # Make output_format column\n    output_file = paste(                # Make output_file column\n      tolower(pet_type),\n      tolower(gsub(\" \", \"-\", breed)),\n      \"report.html\",\n      sep = \"-\"\n    ),\n    execute_params = purrr::map2(       # Make execute_params column\n      pet_type,\n      breed,\n      \\(pet_type, breed) list(pet_type = pet_type, breed = breed)))"
+  },
+  {
+    "objectID": "slides/index.html#subset-to-first-2-catdog-breeds",
+    "href": "slides/index.html#subset-to-first-2-catdog-breeds",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Subset to first 2 cat/dog breeds",
+    "text": "Subset to first 2 cat/dog breeds\n\npet_reports_subset &lt;- pet_reports |&gt;\n  dplyr::slice_head(n = 2, by = pet_type) |&gt;\n  dplyr::select(output_file, execute_params)\n\npet_reports_subset\n\n\n\n\n\noutput_file\nexecute_params\n\n\n\n\ncats-abyssiniane-report.html\ncats , Abyssiniane\n\n\ncats-aegean-cat-report.html\ncats , Aegean Cat\n\n\ndogs-affenpinscher-report.html\ndogs , Affenpinscher\n\n\ndogs-afghan-hound-report.html\ndogs , Afghan Hound"
+  },
+  {
+    "objectID": "slides/index.html#map-over-each-row",
+    "href": "slides/index.html#map-over-each-row",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Map over each row",
+    "text": "Map over each row\n\n\npurrr::pwalk() iterates over multiple arguments simultaneously.\nFirst .l argument is a list of vectors.\n\nDataframe is a special case of .l that iterates over rows.\n\n\n\n\n\npurrr::pwalk(\n  .l = pet_reports_subset,                      # Dataframe to map over\n  .f = quarto::quarto_render,                   # Function we are applying to each row\n  input = here::here(\"ex-2-quarto-render.qmd\"), # Arguments of .f\n  .progress = TRUE                              # Show a progress bar :)\n)"
+  },
+  {
+    "objectID": "slides/index.html#limitations",
+    "href": "slides/index.html#limitations",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Limitations",
+    "text": "Limitations\n\n\nCan’t render reports to another directory.\n\noutput-dir YAML option only works for Quarto projects that have _quarto.yml.\nWorkaround: use {fs} to move files after rendering. See ex-3-render-reports.R for example.\nMore info: GitHub discussion and GitHub issue.\n\nIf using embed-resources: true, .qmd can’t be in subfolder, otherwise:\n\n[WARNING] Could not fetch resource …\nMore info: GitHub discussion and GitHub issue."
+  },
+  {
+    "objectID": "slides/index.html#multiple-formats",
+    "href": "slides/index.html#multiple-formats",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Multiple formats",
+    "text": "Multiple formats\nAdd to the format: YAML option to render additional output formats from the same .qmd file.\n---\nformat:\n  html: \n    embed-resources: true   # Makes the report self-contained\n  pdf: default              # If not using any additional format options,\n  docx: default             # set value to `default`  \n---\n\nNote: the Render button now has a dropdown!\n\nQuarto docs on multiple formats"
+  },
+  {
+    "objectID": "slides/index.html#format-links-for-html-output",
+    "href": "slides/index.html#format-links-for-html-output",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Format links for HTML output",
+    "text": "Format links for HTML output\nLinks to download the other formats will automatically appear in HTML documents."
+  },
+  {
+    "objectID": "slides/index.html#format-link-options",
+    "href": "slides/index.html#format-link-options",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Format link options",
+    "text": "Format link options\nChoose which format links to include:\n\n---\nformat:\n  html: \n    embed-resources: true\n  pdf: default\n  docx: default\nformat-links: [pdf]\n---\n\nOr hide all links:\n\n---\nformat:\n  html: \n    embed-resources: true\n  pdf: default\n  docx: default\nformat-links: false\n---"
+  },
+  {
+    "objectID": "slides/index.html#control-content-visibility",
+    "href": "slides/index.html#control-content-visibility",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Control content visibility",
+    "text": "Control content visibility\nSpecial .content-visible and .content-hidden classes can be applied to:\nDivs\n::: {.content-visible when-format=\"html\"}\n\nWill only appear in HTML.\n\n:::\n\nNon-executable code\n# code shown only in HTML\n2 + 2\n\n\nSpans\nSome text\n[in HTML.]{.content-visible when-format=\"html\"}\n[in PDF.]{.content-visible when-format=\"pdf\"}\n\nExamples from Conditional Content Quarto docs"
+  },
+  {
+    "objectID": "slides/index.html#useful-for-staticinteractive-features",
+    "href": "slides/index.html#useful-for-staticinteractive-features",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Useful for static/interactive features",
+    "text": "Useful for static/interactive features\nPairs well with {{&lt; include &gt;}} shortcodes to re-use content without copying/pasting.\nIncludes Quarto Docs\n\nStaticInteractive\n\n\nUse .content-visible unless-format=\"html\"\n:::: {.content-visible unless-format=\"html\"}\n\n## Cats\n\n{{&lt; include cats.qmd &gt;}}\n\n## Dogs\n\n{{&lt; include dogs.qmd &gt;}}\n\n::::\n\n\nUse .content-visible when-format=\"html\"\n:::: {.content-visible when-format=\"html\"}\n::: panel-tabset\n\n## Cats\n\n{{&lt; include cats.qmd &gt;}}\n\n## Dogs\n\n{{&lt; include dogs.qmd &gt;}}\n\n:::\n::::"
+  },
+  {
+    "objectID": "slides/index.html#conditional-code-execution",
+    "href": "slides/index.html#conditional-code-execution",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Conditional code execution",
+    "text": "Conditional code execution\n\n\nMore efficient to not execute code that generates interactive outputs for static reports.\nUseful for executing interactive plot code for HTML reports and static ggplot2 code for all other formats.\nNot currently a feature of Quarto v1.3, but a Quarto dev thinks it could be possible in v1.4 according to this GitHub discussion. Granted, that comment was from 2023-01-02…"
+  },
+  {
+    "objectID": "slides/index.html#workaround-for-conditional-r-code",
+    "href": "slides/index.html#workaround-for-conditional-r-code",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Workaround for conditional R code",
+    "text": "Workaround for conditional R code\nInclude in the setup chunk of your .qmd file.\nGet the format of the Pandoc output:\n\n```{r}\n#| label: setup\n\n# Get output format\nformat &lt;- knitr::opts_knit$get(\"rmarkdown.pandoc.to\")\n```"
+  },
+  {
+    "objectID": "slides/index.html#use-eval-expr-chunk-option",
+    "href": "slides/index.html#use-eval-expr-chunk-option",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Use eval: !expr chunk option",
+    "text": "Use eval: !expr chunk option\n\nStatic plotInteractive plot\n\n\n\n```{r}\n#| eval: !expr format %in% c(\"latex\", \"docx\")\n\n# code to create static {ggplot2}\n```\n\n\n\n\n```{r}\n#| eval: !expr format == \"html\"\n\n# code to create interactive {plotly}\n```\n\n\n\n\n\n\nCan even use params in !expr:\n#| eval: !expr params$fave_breed == \"Snowshoe\"\n\n\n\nChunk Options Quarto Docs"
+  },
+  {
+    "objectID": "slides/index.html#learning-objectives-1",
+    "href": "slides/index.html#learning-objectives-1",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Learning objectives",
+    "text": "Learning objectives\n\n\nUnderstand what parameterized reporting is and when it is useful.\nLearn how to convert a report into a parameterized template.\nRender all variations of the report at once using {quarto} and {purrr}.\nGenerate multiple format outputs from the same template file with conditional content and conditional code execution."
+  },
+  {
+    "objectID": "slides/index.html#learning-objective-1",
+    "href": "slides/index.html#learning-objective-1",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Learning objective 1",
+    "text": "Learning objective 1\nUnderstand what parameterized reporting is and when it is useful.\nLike very fancy custom functions.\n\n\nFunction → .qmd template\nInput → parameters\nOutput → rendered reports\n\n\n\nUseful for creating variations of the same report:\n\ncountry, state, county, or city\ntime periods\nbreeds, species, diseases, trials, etc.\n\n\n\nNote: we only covered reports, but you can also parameterize revealjs presentations! See this Jumping Rivers blog post about it."
+  },
+  {
+    "objectID": "slides/index.html#learning-objective-2",
+    "href": "slides/index.html#learning-objective-2",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Learning objective 2",
+    "text": "Learning objective 2\nLearn how to convert a report into a parameterized template.\n\n\nInclude default params: in YAML\nReplace hard-coded values with params$pet_type\n\nYAML:\n\n---\ntitle: \"Report about `r params$pet_type`\"\nparams:\n  pet_type: \"cats\"\n---\n\nInline R code:\n\nI like **`r params$pet_type`**.\n\nCode chunks:\npets |&gt; \n    dplyr::filter(pet_type == params$pet_type)"
+  },
+  {
+    "objectID": "slides/index.html#learning-objective-3",
+    "href": "slides/index.html#learning-objective-3",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Learning objective 3",
+    "text": "Learning objective 3\nRender all variations of the report at once using {quarto} and {purrr}. \n\n\nGet all unique parameter combinations into a dataframe:\n\n\nhead(pet_reports, 1)\n\n\n\n\n\n\n\n\n\n\n\n\npet_type\nbreed\noutput_format\noutput_file\nexecute_params\n\n\n\n\ncats\nAbyssiniane\nhtml\ncats-abyssiniane-report.html\ncats , Abyssiniane\n\n\n\n\n\n\n\n\n\n\nUse dataframe in pwalk() with quarto_render():\n\n\npurrr::pwalk(\n  pet_reports,\n  quarto::quarto_render,\n  input = here::here(\"pet_template.qmd\"),\n  .progress = TRUE\n)"
+  },
+  {
+    "objectID": "slides/index.html#learning-objective-4",
+    "href": "slides/index.html#learning-objective-4",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Learning objective 4",
+    "text": "Learning objective 4\nGenerate multiple format outputs from the same template file with conditional content and conditional code execution.\n\n\nContent visibility\n\n{.content-visible when-format=“___“}\n{.content-visible unless-format=“___“}\n{.content-hidden unless-format=“___“}\n{.content-hidden unless-format=“___“}\n\n\n\n\nCode execution\n# Get output format in setup chunk:\nformat &lt;- knitr::opts_knit$get(\"rmarkdown.pandoc.to\")\n\n# Set chunk option:\n#| eval: !expr format == \"html\""
+  },
+  {
+    "objectID": "slides/index.html#thank-you",
+    "href": "slides/index.html#thank-you",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Thank you!",
+    "text": "Thank you!\n\n\n🙏🏼 Please let me know how I did in this short survey\n\n🏡 Home for all workshop materials: https://jadeynryan.github.io/rladies-parameterized-quarto\n\n\nStay connected!\n jadeyryan.com\n @jadeynryan\n linkedin.com/in/jadey-ryan\n jadeynryan\n thecodingcats.etsy.com\n\n\n\n\n\nParameterized Reporting with Quarto bit.ly/rladies-parameterized-quarto-workshop"
+  },
+  {
+    "objectID": "materials.html",
+    "href": "materials.html",
+    "title": "Materials",
+    "section": "",
+    "text": "View slides in full screen."
+  },
+  {
+    "objectID": "materials.html#slides",
+    "href": "materials.html#slides",
+    "title": "Materials",
+    "section": "",
+    "text": "View slides in full screen."
+  },
+  {
+    "objectID": "materials.html#recording",
+    "href": "materials.html#recording",
+    "title": "Materials",
+    "section": "Recording",
+    "text": "Recording"
+  },
+  {
+    "objectID": "materials.html#exercises",
+    "href": "materials.html#exercises",
+    "title": "Materials",
+    "section": "Exercises",
+    "text": "Exercises\nOption 1: Posit Cloud\nbit.ly/rladies-parameterized-quarto\nOption 2: Download locally\n\nusethis::use_course(\"https://github.com/jadeynryan/rladies-parameterized-quarto/raw/main/exercises/exercises.zip\")"
+  },
+  {
+    "objectID": "index.html#r-ladies-washington-dc-workshop",
+    "href": "index.html#r-ladies-washington-dc-workshop",
+    "title": "Parameterized Reporting with Quarto",
+    "section": "R-Ladies Washington DC Workshop",
+    "text": "R-Ladies Washington DC Workshop\n📆 January 18, 2024 | 6:30 pm - 8:30 pm EDT\n🏨 Virtual\n🆓 FREE with registration on Meetup"
+  },
+  {
+    "objectID": "index.html#abstract",
+    "href": "index.html#abstract",
+    "title": "Parameterized Reporting with Quarto",
+    "section": "Abstract",
+    "text": "Abstract\nTired of manually adjusting Quarto reports for different regions, time periods, or clients? Dreaming of using just one template to generate both interactive HTML and static Word/PDF versions of your reports?\nJoin our workshop to unlock the power of parameterized reporting with Quarto and leave with your own template and examples to modify for your own projects.\nGet a sneak preview of what you’ll learn by checking out the slides from my posit::conf(2023) talk.\nEveryone is welcome to attend. If you’re new to Quarto, we recommend watching Tom Mock’s excellent 2-hour introduction to Quarto."
+  },
+  {
+    "objectID": "index.html#learning-objectives",
+    "href": "index.html#learning-objectives",
+    "title": "Parameterized Reporting with Quarto",
+    "section": "Learning objectives",
+    "text": "Learning objectives\n\nUnderstand what parameterized reporting is and when it is useful.\nLearn how to convert a report into a parameterized template.\nRender all variations of the report at once using {quarto} and {purrr}.\nGenerate multiple format outputs from the same template file with conditional content and conditional code execution."
+  },
+  {
+    "objectID": "index.html#is-this-workshop-for-me",
+    "href": "index.html#is-this-workshop-for-me",
+    "title": "Parameterized Reporting with Quarto",
+    "section": "Is this workshop for me?",
+    "text": "Is this workshop for me?\nIf your answer to any of the following questions is “yes”, then this is the right workshop for you.\n\nDo you frequently report the same set of metrics, tables, or graphs for different groups?\nDo you want to stop combing through your source code to find and replace your hard-coded values each time you need to create a new variation of your report?\nDo you want to make your life easier and your reports more reproducible by parameterizing your reports?\n\nThe workshop is designed for those with some experience in R and R Markdown or Quarto. It will be assumed that participants can perform basic data manipulation and visualization. Experience with the {tidyverse} and the pipe operator (%&gt;% / |&gt;) is a major plus, but is not required."
+  },
+  {
+    "objectID": "index.html#speaker",
+    "href": "index.html#speaker",
+    "title": "Parameterized Reporting with Quarto",
+    "section": "Speaker",
+    "text": "Speaker\n Jadey Ryan is a self-taught R enthusiast working in environmental data science for the Washington State Department of Agriculture. She is obsessed with cats, nature, R, and Quarto. This is her first time leading a workshop!"
+  },
+  {
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "License",
+    "section": "",
+    "text": "© 2024 Jadey Ryan\nOpinions expressed are solely my own and do not express the views of my employer or any organizations I am associated with.\nThis work is released under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA) license.\n   \nIn short, you may share and adapt this content with appropriate credit and notation of any changes. You may not use this material for any commercial purposes."
+  },
+  {
+    "objectID": "prework.html",
+    "href": "prework.html",
+    "title": "Pre-work",
+    "section": "",
+    "text": "This workshop will largely be conducted in the Posit Cloud environment. Please create a login to the Posit Cloud instance of this workshop here:\nbit.ly/rladies-parameterized-quarto.\nIf you will not be using the Posit Cloud instance, you can learn by watching and listening.\nAs a more high-risk alternative, if you would like to try this out on your own computer, please have the following installed and configured on your machine. Note that we will NOT be able to help you with local computer problems during the workshop. If you choose to do this, you are on your own.\n\nRecent version of R\nRecent version of RStudio\n\nRecent version of packages used in this workshop:\n\npkgs &lt;- c(\"dplyr\", \"fs\", \"ggplot2\", \"here\", \"plotly\", \"purrr\", \"quarto\", \n          \"readr\", \"stringr\", \"janitor\", \"lubridate\", \"tidyr\", \"rmarkdown\",\n          \"knitr\")\n\ninstall.packages(pkgs)\n\n\n\nCheck that Quarto works on your computer:\n\nOpen RStudio and create a new Quarto (.qmd) document.\nSave the document and check you are able to render it.\n\n\n\nGet the project on your machine.\n\n# install.packages(\"usethis\")\nusethis::use_course(\"https://github.com/jadeynryan/rladies-parameterized-quarto/raw/main/exercises/exercises.zip\")"
+  }
+]
