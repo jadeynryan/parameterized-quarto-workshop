@@ -24,6 +24,6 @@ title: "Materials"
 ```{r}
 #| eval: false
 
-usethis::use_course("https://bit.ly/rladies-parameterized-quarto-exercises")
+usethis::use_course("https://github.com/jadeynryan/rladies-parameterized-quarto/raw/main/exercises/exercises.zip")
 ```
 

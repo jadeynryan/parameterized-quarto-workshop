@@ -38,5 +38,5 @@ As a more high-risk alternative, if you would like to try this out on your own c
     #| eval: false
 
     # install.packages("usethis")
-    usethis::use_course("https://bit.ly/rladies-parameterized-quarto-exercises")
+    usethis::use_course("https://github.com/jadeynryan/rladies-parameterized-quarto/raw/main/exercises/exercises.zip")
     ```
