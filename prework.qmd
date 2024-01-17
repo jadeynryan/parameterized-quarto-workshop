@@ -2,11 +2,23 @@
 title: "Pre-work"
 ---
 
-This workshop will largely be conducted in the Posit Cloud environment. Please create a login to the Posit Cloud instance of this workshop here:
+This workshop has five exercises for you to try. After the workshop, I encourage you to adapt the exercise template files and code to fit your own projects.
+
+There are three ways for you to participate. Please complete the pre-work for whichever way you'd like to follow along **before the workshop**.
+
+## Follow along in the Posit Cloud
+
+This workshop will largely be conducted in the [Posit Cloud](https://posit.cloud/) environment. Posit Cloud allows us all to work in the exact same environment with the same version of R, R packages, and directory of files. Please create an account if you don't yet have one.
+
+Log in to the Posit Cloud instance of this workshop here:
 
 **[bit.ly/rladies-parameterized-quarto](https://bit.ly/rladies-parameterized-quarto)**.
 
-If you will not be using the Posit Cloud instance, you can learn by watching and listening.
+## Watch and listen
+
+If you will not be using the Posit Cloud instance, you can learn by watching and listening. No pre-work needed for you. 😊
+
+## Follow along on your own computer
 
 As a more high-risk alternative, if you would like to try this out on your own computer, please have the following installed and configured on your machine. Note that we will **NOT** be able to help you with local computer problems during the workshop. If you choose to do this, you are on your own.
 

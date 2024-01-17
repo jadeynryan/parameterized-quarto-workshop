@@ -5,7 +5,8 @@
 📆 January 18, 2024 \| 6:30 pm - 8:30 pm EDT  
 🏨 Virtual  
 🆓 **FREE** with
-[registration](https://www.meetup.com/rladies-dc/events/297344107/)
+[registration](https://www.meetup.com/rladies-dc/events/297344107/)  
+🏡 [Workshop website](https://jadeynryan.github.io/rladies-parameterized-quarto) 
 
 ------------------------------------------------------------------------
 
