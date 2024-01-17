@@ -1,10 +1,13 @@
 ---
 title: "License"
-editor: source
 ---
 
-![](https://i.creativecommons.org/l/by/4.0/88x31.png)
+&copy; 2024 Jadey Ryan
 
-This work is licensed under a [Creative Commons 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+Opinions expressed are solely my own and do not express the views of my employer or any organizations I am associated with.
 
-<!--# TO DO: Add reuse and attribution instructions. -->
+This work is released under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA) license](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+{{< fa brands creative-commons size=2x >}} {{< fa brands creative-commons-by size=2x >}} {{< fa brands creative-commons-nc size=2x >}} {{< fa brands creative-commons-sa size=2x >}}
+
+In short, you may share and adapt this content with appropriate credit and notation of any changes. You may not use this material for any commercial purposes.

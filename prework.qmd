@@ -1,0 +1,42 @@
+---
+title: "Pre-work"
+---
+
+This workshop will largely be conducted in the Posit Cloud environment. Please create a login to the Posit Cloud instance of this workshop here:
+
+**[bit.ly/rladies-parameterized-quarto](https://bit.ly/rladies-parameterized-quarto)**.
+
+If you will not be using the Posit Cloud instance, you can learn by watching and listening.
+
+As a more high-risk alternative, if you would like to try this out on your own computer, please have the following installed and configured on your machine. Note that we will **NOT** be able to help you with local computer problems during the workshop. If you choose to do this, you are on your own.
+
+-   Recent version of **R**
+
+-   Recent version of **RStudio**
+
+-   Recent version of packages used in this workshop:
+
+    ``` {r}
+    #| eval: false
+
+    pkgs <- c("dplyr", "fs", "ggplot2", "here", "plotly", "purrr", "quarto", 
+              "readr", "stringr", "janitor", "lubridate", "tidyr", "rmarkdown",
+              "knitr")
+
+    install.packages(pkgs)
+    ```
+
+-   Check that Quarto works on your computer:
+
+    1. Open RStudio and create a new Quarto (`.qmd`) document.
+
+    2. Save the document and check you are able to render it.
+
+-   Get the project on your machine.
+
+    ```{r}
+    #| eval: false
+
+    # install.packages("usethis")
+    usethis::use_course("https://bit.ly/rladies-parameterized-quarto-exercises")
+    ```

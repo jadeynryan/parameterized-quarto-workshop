@@ -1,53 +1,70 @@
 project:
   type: website
-  output-dir: docs
   render:
     - "*.qmd"
     - "!exercises/exercises.Rmd"
     - "!slides/[0-9]*.qmd"
+  preview:
+    port: 3434
+    browser: true
+    watch-inputs: true
+    timeout: 3600
+
+execute:
+  freeze: auto
 
 website:
   page-navigation: true
-  title: "Data Cleaning"
-  description: "Homepage for the R/Medicine 2023 Workshop"
-  site-url: "https://shannonpileggi.github.io/rmedicine-data-cleaning-2023"
-  favicon: "images/R-Med-logo-revised-pride.png"
+  title: "Parameterized Reporting with Quarto"
+  description: "Homepage for the 2024 R-Ladies DC Parameterized Reports with Quarto Workshop"
+  site-url: "https://jadeynryan.github.io/rladies-parameterized-quarto"
+  favicon: "images/jr-logo-circle.webp"
 
-  repo-url: https://github.com/shannonpileggi/rmedicine-data-cleaning-2023
+  repo-url: https://github.com/jadeynryan/rladies-parameterized-quarto
   repo-actions: [edit, issue]
 
   page-footer:
-    left: "This page is built with ❤️ and [Quarto](https://quarto.org/). Inspired by [@minebocek](https://twitter.com/minebocek) & [@statistishdan](https://github.com/ddsjoberg/clinical-reporting-gtsummary-rmed)."
-    background: "#708090"
+    left: "&copy; 2024 Jadey Ryan"
+    center: "Website built with ❤︎️ and [Quarto](https://quarto.org/)."
+    right: "Inspired by [R/Medicine 2023 workshop](https://github.com/shannonpileggi/rmedicine-data-cleaning-2023), inspired by [R/Medicine 2022 Workshop](https://github.com/ddsjoberg/clinical-reporting-gtsummary-rmed), inspired by [@minebocek](https://twitter.com/minebocek)."
+    background: "#07483f"
 
   sidebar:
-    background: "#708090"
-    logo: "images/R-Med-logo-revised-pride.png"
+    background: "#07483f"
+    logo: "images/jr-logo-quarto.webp"
+    logo-alt: "Two hex stickers side by side with a heart joining them in the middle. Left sticker is Jadey's cat logo. Right sticker is the Quarto logo."
     pinned: true
     align: center
-    tools:
-      - icon: github
-        href: https://github.com/shannonpileggi/rmedicine-data-cleaning-2023
-        text: GitHub
     style: docked
+    type: dark
     contents:
      - href: index.qmd
        text: Home
-     - href: slidespage.qmd
-       text: Slides
-     - href: exercises.qmd
-       text: Exercises
+     - href: prework.qmd
+       text: Pre-work
+     - href: materials.qmd
+       text: Materials
      - href: license.qmd
-
+       text: License
 
 format:
   html:
-    theme: [cosmo, theme.scss]
+    theme: [flatly, theme.scss]
     toc: true
+    smooth-scroll: true
+    link-external-newwindow: true
+    code-link: true
     code-copy: true
     code-overflow: scroll
     mainfont: "Atkinson Hyperlegible"
     highlight-style: a11y
 
-editor: source
-
+# lightbox extension
+# https://github.com/quarto-ext/lightbox
+filters:
+  - lightbox
+lightbox:
+  desc-position: right  # position of description
+  # match: auto # give all images lightbox treatment
+  effect: zoom # how lightbox opens/closes
+  loop: false # doesn't loop to first image in gallery

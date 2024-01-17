@@ -1,0 +1,67 @@
+# R Markdown → Quarto {.section}
+
+. . .
+
+💬 **Chat**: what's your comfort level / experience with R Markdown and Quarto?
+
+## R Markdown
+
+![Figure from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio::Conf(2022).](images/rmd-ecosystem.png){style="margin-top:-5em;margin-bottom:-1em" fig-alt="Hex logos for various packages from the R Markdown ecosystem." fig-align="center" width="800"}
+
+## Quarto
+
+::: r-stack
+![Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio::Conf(2022). Illustrated by Allison Horst.](images/horst-quarto-schematic.png){.fragment .fade-out fragment-index=1 fig-alt="A schematic representing the multi-language input (e.g. Python, R, Observable, Julia) and multi-format output (e.g. PDF, html, Word documents, and more) versatility of Quarto." fig-align="center" style="margin-top:-1.5em;margin-bottom:-1em"}
+
+![](images/horst-qmd-render-schema.png){.fragment fragment-index=1 fig-alt="A schematic representing rendering of Quarto documents from .qmd, to knitr or jupyter, to plain text markdown, then converted by pandoc into any number of output types including html, PDF, or Word document." fig-align="center" style="margin-top:-1.5em;margin-bottom:-1em"}
+:::
+
+## R Markdown vs Quarto
+
+::: columns
+::: {.column width="50%"}
+![](images/rmarkdown.png){width="150" style="float:left;padding: 0 1em 0 0"}
+
+### R Markdown
+
+-   Vast R Markdown ecosystem
+
+-   Dependent on R
+:::
+
+::: {.column width="50%"}
+![](images/quarto.png){width="150" style="float:left;padding: 0 1em 0 0"}
+
+### Quarto
+
+-   Expands R Markdown ecosystem
+
+-   "Batteries included"
+
+-   Multi-language and multi-engine
+:::
+:::
+
+. . .
+
+R Markdown will still be maintained but likely no new features [(Yihui 2022)](https://yihui.org/en/2022/04/quarto-r-markdown/).
+
+## Convert `.Rmd` &rarr; `.qmd`\*
+
+1.  Change file extension from `.Rmd` &rarr; `.qmd`
+2.  Change YAML header (`output:` &rarr; `format:`)
+3.  Convert chunk headers with `knitr::convert_chunk_header()`
+
+*\*If you want.*
+
+<br>
+
+. . .
+
+**Resources for R Markdown users**
+
+[From R Markdown to Quarto workshop](https://quarto.org/docs/blog/posts/2023-12-05-asa-traveling-courses/) taught by Dr. Mine Çetinkaya-Rundel and Dr. Andrew Bray.
+
+[Quarto FAQ for R Markdown Users](https://quarto.org/docs/faq/rmarkdown.html)
+
+Ted Laderas' talk [Quarto/RMarkdown - What's Different?](https://laderast.github.io/qmd_rmd)

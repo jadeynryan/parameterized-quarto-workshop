@@ -1,27 +1,33 @@
 ---
-title: "Cleaning Medical Data<br> with R"
-author: "Crystal Lewis, Shannon Pileggi, & Peter Higgins"
-footer: "[Data Cleaning](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023)"
-logo: "images/R-Med-logo-revised-pride.png"
-editor: source
+title: "Parameterized Reporting<br> with Quarto<br> ![](images/jr-logo-quarto.webp){width=5em}"
+author: "Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC"
+footer: "Parameterized Reporting with Quarto [bit.ly/parameterized-quarto-workshop](https://jadeynryan.github.io/rladies-parameterized-quarto)"
+logo: "images/jr-logo-quarto.webp"
+logo-alt: "Two hex stickers side by side with a heart joining them in the middle. Left sticker is Jadey's cat logo. Right sticker is the Quarto logo."
 format: 
   revealjs: 
+    width: 1600
+    height: 900  
     theme: slides.scss
+    highlight-style: a11y
     transition: fade
     slide-number: true
-    chalkboard: true
 execute:
   echo: true
-  freeze: auto
-cache: true
+df-print: kable
 ---
 
-{{< include 00-setup.qmd >}}
+{{< include 01-intro.qmd >}}
 
-{{< include 01-crystal.qmd >}}
+{{< include 02-quarto.qmd >}}
 
-{{< include 02-shannon.qmd >}}
+{{< include 03-parameters.qmd >}}
 
-{{< include 03-peter.qmd >}}
+{{< include 04-render.qmd >}}
 
-{{< include 04-thank-you.qmd >}}
+{{< include 05-conditionals.qmd >}}
+
+{{< include 06-summary.qmd >}}
+
+ 
+ 

@@ -1,7 +1,214 @@
 /*-- scss:defaults --*/
 
-@import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap';
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fira+Mono&family=Domine:wght@400;700;900&family=Nunito:wght@400;900&display=swap');
 
-$font-family: "Atkinson Hyperlegible", sans-serif;
+// Colors
+
+// Most colors adopted from https://palx.jxnblk.com/
+// with base color #0b7366
+
+$white:  #fff;
+$gray-0: #f9f9f9;
+$gray-1: #eceeee;
+$gray-2: #dfe1e1;
+$gray-3: #d0d4d3;
+$gray-4: #c0c5c4;
+$gray-5: #aeb4b3;
+$gray-6: #99a1a0;
+$gray-7: #818b8a;
+$gray-8: #626f6d;
+$gray-9: #334240;
+$black:  #000;
+
+// colors
+$teal-light1: #f6fafa;
+$teal-light2: #A2F6EC;
+$teal:        #0b7366;
+$teal-dark1:  #07483f;
+$teal-dark2:  #042521;
+$orange:      #a98069;
+$orange-light:#e9dfd9;
+$orange-dark: #6a2d0a;
+
+$primary:       $teal;
+$secondary:     $orange-dark;
+$light:         $teal-light1;
+$light-accent:  $gray-3;
+$dark:          $gray-9;
+
+// Base document colors
+$navbar-bg: $primary; // navbar
+$navbar-fg: $teal-light1; // navbar foreground elements
+$navbar-hl: $white; // highlight color when hovering over navbar links
+$link-color: $orange-dark; // hyperlinks
+
+// Inline code
+$code-bg: $orange-light; // inline code background color
+$code-color: $orange-dark; // inline code text color
+
+// Contrast
+$min-contrast-ratio:   7;
 
 /*-- scss:rules --*/
+
+.navbar-title {
+  font-family: Domine, serif;
+  font-weight: 700;
+}
+
+h1, h2 {
+  font-size: 1.3em;
+  font-weight: 900;
+  font-family: Domine, serif;
+  color: $teal-dark1;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
+h3, h4 {
+  font-weight: 700;
+  font-family: Domine, serif;
+  color: $teal;
+}
+
+h3 {
+  font-size: 1.15em;
+}
+
+h4 {
+  font-size: 1.1em;
+}
+
+h5, h6 {
+  font-size: 1.05em;
+  font-weight: 600;
+  font-family: Domine, serif;
+  color: $secondary;
+}
+
+.fa-solid, .fab, .fa-brands {
+    font-family: 'Font Awesome 6 Brands';
+    font-weight: 400;
+    color: $teal;
+}
+
+p.subtitle.lead {
+  font-size: 1em;
+  text-align: center;
+}
+
+#title-block-header.quarto-title-block.default .description {
+  margin-top: 1em;
+}
+
+body {
+  font-family: Atkinson Hyperlegible, Nunito, sans-serif;
+  background-color: $light;
+}
+
+// code
+
+code {
+  font-family: Fira Mono, monospace;
+}
+
+.sourceCode pre code {
+  padding: 1.2em;
+}
+
+// images
+
+.figure-img {
+    margin-bottom: 0;
+    line-height: 0;
+    border-radius: 5px;
+}
+
+// specific classes
+
+.center-text {
+  text-align: center;
+}
+
+.img-va-bottom {
+  vertical-align: bottom;
+}
+
+.img-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img-float-right {
+  float: right;
+  padding-left: 1em;
+}
+
+@media screen and (max-width: 991.98px) {
+  .img-float-right {
+    float: right;
+    width: 100%;
+    padding-bottom: 1em;
+    padding-left: 0em;
+  }
+}
+
+// listing buttons
+
+div.quarto-post .listing-categories .listing-category, .quarto-category, .btn {
+  opacity: 0.8 !important;
+  color: $secondary;
+  border-color: $secondary;
+  text-align: center;
+  border-style: solid;
+  text-decoration: none;
+  transition-delay: 0s;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.btn {
+  opacity: 1 !important;
+  padding: 0.5em;
+  border-radius: 6px;
+}
+div.quarto-post .listing-categories .listing-category:hover, .quarto-category:hover, .btn:hover {
+  background-color: $secondary;
+  color: $white;
+}
+
+.listing-btn-group {
+  display: inline-flex;
+  gap: 1em;
+}
+
+// page buttons
+
+.page-link {
+  background-color: $orange-light;
+  color: $secondary;
+}
+
+.page-link:hover {
+  background-color: $secondary;
+  color: white;
+}
+
+.page-item.active .page-link {
+  background-color: $secondary;
+}
+
+// slide iframes
+
+.slides {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border-style: solid;
+  border-width: 1px;
+}
+

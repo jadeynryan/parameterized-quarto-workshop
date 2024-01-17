@@ -1,153 +1,53 @@
 ---
-title: "Cleaning Medical Data with R"
-subtitle: "R/Medicine 2023 Workshop"
-editor: 
-  markdown: 
-    wrap: 72
-engine: knitr
+title: "Parameterized Reporting with Quarto"
 ---
 
-------------------------------------------------------------------------
+----
 
-🗓 June 6, 2023 \| 11:00am - 2:00pm EDT
+## R-Ladies Washington DC Workshop
 
-🏨 Virtual
+📆 January 18, 2024 | 6:30 pm - 8:30 pm EDT   
+🏨 Virtual  
+🆓 **FREE** with [registration on Meetup](https://www.meetup.com/rladies-dc/events/297344107/)
 
-💥 **FREE** [workshop
-registration](https://events.linuxfoundation.org/r-medicine/) with registration for the R/Medicine 2023 meeting.
+----
 
-📹 [Recording available on YouTube](https://youtu.be/6wFYAMwYzM4?si=MGvvIvjRfv1PhvAg) (~3 hours)
+## Abstract
 
-------------------------------------------------------------------------
+Tired of manually adjusting Quarto reports for different regions, time periods, or clients? Dreaming of using just one template to generate both interactive HTML and static Word/PDF versions of your reports?
 
-# Overview
+Join our workshop to unlock the power of parameterized reporting with Quarto and leave with your own template and examples to modify for your own projects.
 
-In this workshop you will learn how to import messy data from an Excel
-spreadsheet, and develop the R skills to turn this mess into tidy data
-ready for analysis.
+Get a sneak preview of what you'll learn by checking out the [slides](https://jadeyryan.com/talks/2023-09-25_posit_parameterized-quarto/) from my posit::conf(2023) talk.
+
+Everyone is welcome to attend. If you're new to Quarto, we recommend watching [Tom Mock's excellent 2-hour introduction to Quarto](https://www.youtube.com/watch?v=yvi5uXQMvu4).
 
 ## Learning objectives
 
--   The acquire a foundational understanding of how data should be organized.
+1. Understand what parameterized reporting is and when it is useful.
 
--   To import Excel files with (common, messy) data problems.
+2. Learn how to convert a report into a parameterized template.
 
--   To address and clean common messy data problems in each variable.
+3. Render all variations of the report at once using [{quarto}](https://quarto-dev.github.io/quarto-r/) and [{purrr}](https://purrr.tidyverse.org/). 
 
--   To address and clean data with more complex meta-problems, like pivoting to long format for data analysis, thickening timestamped data to manageable time units, padding missing dates, and joining different datasets together.
+4. Generate multiple format outputs from the same template file with conditional content and conditional code execution.
 
-## Is this course for me?
+## Is this workshop for me?
 
 If your answer to any of the following questions is "yes", then this is
 the right workshop for you.
 
--   Do you frequently receive untidy data for analysis in Excel
-    spreadsheets?
+-   Do you frequently report the same set of metrics, tables, or graphs for different groups?
 
--   Does this drive you slightly batty?
+-   Do you want to stop combing through your source code to find and replace your [hard-coded values](https://www.bloomtech.com/article/what-is-hard-coding) each time you need to create a new variation of your report?
 
--   Do you want to learn how to make your life easier with a suite of
-    data cleaning tools?
+-   Do you want to make your life easier and your reports more reproducible by parameterizing your reports?
 
-The workshop is designed for those with some experience in R. It will be
-assumed that participants can perform basic data manipulation.
-Experience with the {tidyverse} and the `%>%`/`|>` operator is a major plus,
-but is not required.
+The workshop is designed for those with some experience in R and R Markdown or Quarto. It will be assumed that participants can perform basic data manipulation and visualization. Experience with the {tidyverse} and the pipe operator (`%>%`&nbsp;/&nbsp;`|>`) is a major plus, but is not required.
 
-## Prework
+## Speaker
 
-This workshop will largely be conducted in the Posit Cloud environment. Please create a login to the Posit Cloud instance of this workshop here:
+![](images/jadey.jpg){style="float:left;padding: 0 10px 0 0; border-radius:50%" fig-alt="Headshot of Jadey Ryan" width="150"} 
+[**Jadey Ryan**](https://jadeyryan.com) is a self-taught R enthusiast working in environmental data science for the [Washington State Department of Agriculture](https://agr.wa.gov/AgScience). She is obsessed with cats, nature, R, and Quarto. This is her first time leading a workshop!
 
-**[bit.ly/posit-cloud-cleaning-medical-data](https://bit.ly/posit-cloud-cleaning-medical-data){target="_blank"}**.
-
-If you will not be using the Posit Cloud instance, you can just watch along as the instructors teach.
-
-As a more high-risk alternative, if you would like to try this out on your own computer, please have the following installed and configured on your machine. Note that we will **NOT** be able to help you with local computer problems during the workshop. If you choose to do this, you are on your own.
-
--   Recent version of **R**
-
--   Recent version of **RStudio**
-
--   Recent version of packages used in this workshop.
-
-``` r
-instll_pkgs <- c("tidyverse", "tidyxl", "unpivotr", "readxl", "openxlsx", "janitor", 
-                "gtsummary", "here", "padr",  "here", "skimr", "visdat", "summarytools", 
-                "DataExplorer", "Hmisc", "pointblank", "codebookr", "codebook", 
-                "memisc", "sjPlot")
-install.packages(instll_pkgs)
-```
--   Ensure you can knit R markdown documents
-
-- Open RStudio and create a new Rmarkdown document
-
-- Save the document and check you are able to knit it.
-
--   Ensure you can import data from a Microsoft Excel spreadsheet to R
-
-    -   Save a a Microsoft Excel spreadsheet in a known folder on your computer.
-    -   Open RStudio install/load (library) the packages {readxl}
-        ([link](https://readxl.tidyverse.org)) and {openxlsx}
-        ([link](https://ycphs.github.io/openxlsx/))
-    -   Import the data from the spreadsheet into R using the path to
-        the correct folder with either package.
-
-# Instructors
-
-
-![](images/Crystal_circle.png){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Crystal Lewis" width="150"}
-
-[**Crystal Lewis**](https://cghlewis.com) (she/her) is a Freelance Research Data Management Consultant, helping people better understand how to organize, document, and share their data. She has been wrangling data in the field of Education for over 10 years. She is also a co-organizer for R-Ladies St. Louis.
-
-[`r fontawesome::fa("link")`](https://cghlewis.com)
-[`r fontawesome::fa("github")`](https://github.com/Cghlewis/)
-[`r fontawesome::fa("mastodon")`](https://fosstodon.org/@Cghlewis)
-[`r fontawesome::fa("twitter")`](https://twitter.com/Cghlewis)
-[`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/crystal-lewis-922b4193/)
-
-
-<br> <br>
-
-![](images/Shannon_circle.png){style="float:left;padding: 0 10px 0 0;"
-fig-alt="Headshot of Shannon Pileggi" width="150"}
-
-[**Shannon Pileggi**](https://www.pipinghotdata.com/) (she/her) is a
-Lead Data Scientist at The Prostate Cancer Clinical Trials Consortium, a
-frequent blogger, and a member of the R-Ladies Global team. She enjoys
-automating data wrangling and data outputs, and making both data
-insights and learning new material digestible.
-
-[`r fontawesome::fa("link")`](https://www.pipinghotdata.com/)
-[`r fontawesome::fa("github")`](https://github.com/shannonpileggi/)
-[`r fontawesome::fa("mastodon")`](https://fosstodon.org/@PipingHotData)
-[`r fontawesome::fa("twitter")`](https://twitter.com/PipingHotData)
-[`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/shannon-m-pileggi/)
-
-<br> <br>
-![](images/Peter_circle.jpg){style="float:left;padding: 0 10px 0 0;"
-fig-alt="Headshot of Peter Higgins" width="150"}
-
-[**Peter Higgins**](https://bookdown.org/pdr_higgins/rmrwr/) (he/him) is
-a Professor at the University of Michigan, a translational researcher
-interested in reproducible research, and the creator of the
-{medicaldata} package. He enjoys clean and tidy data when he (rarely)
-encounters it in the wild.
-
-[`r fontawesome::fa("link")`](https://www.uofmhealth.org/profile/4/peter-doyle-higgins-md-phd)
-[`r fontawesome::fa("github")`](https://github.com/higgi13425)
-[`r fontawesome::fa("twitter")`](https://twitter.com/ibddoctor)
-[`r fontawesome::fa("linkedin")`](https://www.linkedin.com/in/peter-higgins-b1a21a30/)
-
-<br> <br>
-
-# Further Reading/Viewing:
-
--   Crystal has an excellent (work in progress) e-book on Data
-    Management in Large-Scale Education Research
-    [here](https://datamgmtinedresearch.com).
--   Peter shared his strong feelings about the limitations of Excel as a
-    data entry tool (and how you can use Excel better) in an R/Medicine
-    workshop/YouTube video
-    [here](https://www.youtube.com/watch?v=9f-hpJbjKZo).
--   Peter is working on a free e-book (work in progress) on reproducible medical data analysis [here](https://bookdown.org/pdr_higgins/rmrwr/) and a package of clean (and messy) medical data for practicing and teaching in R [here](https://higgi13425.github.io/medicaldata/).
-- Our friend Duncan Garmonsway has a free e-book on advanced data cleaning strategies for especially devilish colored, pivoted, or bizarrely structured data [here](https://nacnudus.github.io/spreadsheet-munging-strategies/)
+[{{< fa link size=xl >}}](https://jadeyryan.com) [{{< fa brands mastodon size=xl >}}](https://fosstodon.org/@jadeynryan)  [{{< fa brands linkedin size=xl >}}](https://www.linkedin.com/in/jadey-ryan)  [{{< fa brands github size=xl >}}](https://github.com/jadeynryan/)  [{{< fa brands etsy size=xl >}}](https://thecodingcats.etsy.com/)

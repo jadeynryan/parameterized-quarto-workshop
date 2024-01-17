@@ -1,0 +1,196 @@
+---
+execute:
+  eval: false
+---
+
+# Conditional content {.section}
+
+## Control content visibility
+
+Special `.content-visible` and `.content-hidden` classes can be applied to:
+
+**Divs**
+
+``` markdown
+::: {.content-visible when-format="html"}
+
+Will only appear in HTML.
+
+:::
+```
+. . .
+
+**Non-executable code**
+
+```{.python .content-visible when-format="html"}
+# code shown only in HTML
+2 + 2
+```
+
+. . .
+
+**Spans**
+
+``` markdown
+Some text
+[in HTML.]{.content-visible when-format="html"}
+[in PDF.]{.content-visible when-format="pdf"}
+```
+
+::: footer
+Examples from [Conditional Content Quarto docs](https://quarto.org/docs/authoring/conditional.html)
+:::
+
+## Useful for static/interactive features
+
+Pairs well with `{{< include >}}` shortcodes to re-use content without copying/pasting.
+
+[Includes Quarto Docs](https://quarto.org/docs/authoring/includes.html)
+
+::::: panel-tabset
+
+## Static
+
+Use `.content-visible unless-format="html"`
+
+```markdown
+:::: {.content-visible unless-format="html"}
+
+## Cats
+
+{{{< include cats.qmd >}}}
+
+## Dogs
+
+{{{< include dogs.qmd >}}}
+
+::::
+```
+
+## Interactive
+
+Use `.content-visible when-format="html"`
+
+```markdown
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+
+## Cats
+
+{{{< include cats.qmd >}}}
+
+## Dogs
+
+{{{< include dogs.qmd >}}}
+
+:::
+::::
+```
+:::::
+
+# 💪🏼 Exercise 4 {.exercise}
+
+1. Modify `ex-4-conditional-content.qmd` so that the `panel-tabset` is only used for HTML documents by filling in the `{.content-`} class.
+
+Options:
+
+ - {.content-visible when-format="___"}
+ 
+ - {.content-visible unless-format="___"}
+ 
+ - {.content-hidden unless-format="___"}
+ 
+ - {.content-hidden unless-format="___"}
+ 
+ 2. 💬 **Chat**: what other kinds of content might you want to make visible for only a certain format?
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5, top = 0)
+```
+
+## Conditional code execution
+
+::: incremental
+
+-   More efficient to not execute code that generates interactive outputs for static reports.
+
+-   Useful for executing interactive plot code for HTML reports and static `ggplot2` code for all other formats. 
+
+-   Not currently a feature of Quarto v1.3, but a Quarto dev thinks it could be possible in v1.4 according to this [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/3260#discussioncomment-4573926). Granted, that comment was from 2023-01-02...
+
+:::
+
+## Workaround for conditional R code
+
+Include in the setup chunk of your `.qmd` file.
+
+Get the format of the Pandoc output:
+
+```{r}
+#| label: setup
+#| echo: fenced
+
+# Get output format
+format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+```
+
+## Use `eval: !expr` chunk option
+
+::: panel-tabset
+
+## Static plot
+
+```{r}
+#| echo: fenced
+#| eval: !expr format %in% c("latex", "docx")
+
+# code to create static {ggplot2}
+```
+
+## Interactive plot
+
+```{r}
+#| echo: fenced
+#| eval: !expr format == "html"
+
+# code to create interactive {plotly}
+```
+
+:::
+
+<br>
+
+. . .
+
+**Can even use `params` in `!expr`:**
+
+``` r
+#| eval: !expr params$fave_breed == "Snowshoe"
+```
+
+. . .
+
+<br>
+
+[Chunk Options Quarto Docs](https://quarto.org/docs/computations/r.html#chunk-options)
+
+# 💪🏼 Exercise 5 {.exercise}
+
+1. Modify `ex-5-conditional-code.qmd` so that code chunks for `ggplot2` are executed only for PDF or MS Word documents and code chunks for `plotly` are executed only for HTML documents.
+
+    Hints:
+   ```r
+   # Get output format in setup chunk:
+   format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+
+   # Set chunk option:
+   #| eval: !expr format == "html"
+   ```
+
+2. 💬 **Chat**: what is something you learned from this workshop that you're excited to apply to your own reports and projects?
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5, top = 0)
+```

@@ -1,0 +1,165 @@
+# Wrap up {.section}
+
+## Learning objectives
+
+::: incremental
+1. Understand what parameterized reporting is and when it is useful.
+
+2. Learn how to convert a report into a parameterized template.
+
+3. Render all variations of the report at once using [{quarto}](https://quarto-dev.github.io/quarto-r/) and [{purrr}](https://purrr.tidyverse.org/). 
+
+4. Generate multiple format outputs from the same template file with conditional content and conditional code execution.
+:::
+
+## Learning objective 1
+
+**Understand what parameterized reporting is and when it is useful.**
+
+Like very fancy custom functions.
+
+::: incremental
+
+- Function &rarr; `.qmd` template
+
+- Input &rarr; parameters
+
+- Output &rarr; rendered reports
+:::
+
+. . . 
+
+Useful for creating variations of the same report:
+
+-   country, state, county, or city
+
+-   time periods
+
+-   breeds, species, diseases, trials, etc.
+
+. . .
+
+**Note**: we only covered reports, but you can also parameterize `revealjs` presentations! See this [Jumping Rivers blog post](https://www.jumpingrivers.com/blog/r-parameterised-presentations-quarto/) about it.
+
+## Learning objective 2
+
+**Learn how to convert a report into a parameterized template.**
+
+::: incremental
+- Include default `params:` in YAML
+    
+- Replace hard-coded values with `params$pet_type`
+
+  - **YAML**: 
+  
+    ``` {yaml}
+    ---
+    title: "Report about `r params$pet_type`"
+    params:
+      pet_type: "cats"
+    ---
+    ```
+    
+  - **Inline R code**: 
+  
+    ```{markdown}
+    I like **`r params$pet_type`**.
+    ```
+    
+  - **Code chunks**: 
+  
+    ``` r
+    pets |> 
+        dplyr::filter(pet_type == params$pet_type)
+    ```
+:::
+
+## Learning objective 3
+
+**Render all variations of the report at once using [{quarto}](https://quarto-dev.github.io/quarto-r/) and [{purrr}](https://purrr.tidyverse.org/). **
+
+::: {.fragment}
+1. Get all unique parameter combinations into a dataframe:
+
+```{r}
+head(pet_reports, 1)
+```
+:::
+
+<br>
+
+::: {.fragment}
+2. Use dataframe in `pwalk()` with `quarto_render()`:
+
+```{r}
+#| eval: false
+purrr::pwalk(
+  pet_reports,
+  quarto::quarto_render,
+  input = here::here("pet_template.qmd"),
+  .progress = TRUE
+)
+```
+:::
+
+## Learning objective 4
+
+**Generate multiple format outputs from the same template file with conditional content and conditional code execution.**
+
+::: {.fragment}
+
+#### Content visibility
+
+- {.content-visible when-format="___"}
+
+- {.content-visible unless-format="___"}
+
+- {.content-hidden unless-format="___"}
+
+- {.content-hidden unless-format="___"}
+
+:::
+
+::: {.fragment}
+
+#### Code execution
+
+```r
+# Get output format in setup chunk:
+format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+
+# Set chunk option:
+#| eval: !expr format == "html"
+```
+
+:::
+
+## Thank you!
+
+:::: {.columns}
+::: {.column width="65%"}
+🙏🏼 **Please let me know how I did in this [short survey](https://forms.gle/xSYgJQenNs6gFcck9)** 
+
+<br>
+
+🏡 **Home for all workshop materials**: <https://jadeynryan.github.io/rladies-parameterized-quarto>
+
+![](images/mts.jpg){width=600 fig-alt="From left to right, Mai, Tai, and Skye. Three snowshoe cats cuddling in their warming beds." style="border-radius:1em"}
+:::
+
+::: {.column width="35%"}
+**Stay connected!**
+
+{{< fa link size=xl >}} [jadeyryan.com](https://jadeyryan.com)
+
+{{< fa brands mastodon size=xl >}} [\@jadeynryan](https://fosstodon.org/@jadeynryan)
+
+{{< fa brands linkedin size=xl >}} [linkedin.com/in/jadey-ryan](https://www.linkedin.com/in/jadey-ryan)
+
+{{< fa brands github size=xl >}} [jadeynryan](https://github.com/jadeynryan/)
+
+{{< fa brands etsy size=xl >}} [thecodingcats.etsy.com](https://thecodingcats.etsy.com/)
+:::
+
+::::
+

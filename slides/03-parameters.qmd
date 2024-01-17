@@ -1,0 +1,167 @@
+# Parameterized reports {.section}
+
+## Many use cases
+
+::: columns
+::: {.column width="25%"}
+![](images/ocean-floor.png){.lightbox group="examples" fig-alt="RStudio R Markdown parameterized report project for mapping ocean floors."}
+
+[Ocean floor maps](https://rmarkdown.rstudio.com/lesson-6.html)
+:::
+
+::: {.column width="25%"}
+![](images/urban-institute.png){.lightbox group="examples" fig-alt="Report for Alabama spending with text and plots generated from parameterized R Markdown."}
+
+[Fiscal briefs](https://book.rwithoutstatistics.com/parameterized-reports-chapter.html)
+:::
+
+::: {.column width="25%"}
+![](images/driver-quality.png){.lightbox group="examples" fig-alt="Report for Alaska driver quality with text, plot, and table generated from parameterized RMarkdown."}
+
+[Bad drivers](https://urban-institute.medium.com/iterated-fact-sheets-with-r-markdown-d685eb4eafce)
+:::
+
+::: {.column width="25%"}
+![](images/soils-report.png){.lightbox group="examples" fig-alt="HTML report for soil health survey participant, generated from a parameterized Quarto report."}
+
+[Soil health](https://wa-department-of-agriculture.github.io/soils/)
+:::
+:::
+
+. . .
+
+💬 **Chat**: what kinds of reports would you like to parameterize? What would the parameters be?
+
+## Like a custom function
+
+::: r-stack
+![](images/template1.png){.fragment fig-alt="File with the word '.qmd' inside and the word 'Function' above." width="1300" fig-align="left" style="margin-top:-1em"}
+
+![](images/template2.png){.fragment fig-alt="An arrow points from 'Input' with 'params$year' to the previous image with 'Function' and '.qmd' file." width="1300" fig-align="left" style="margin-top:-1em"}
+
+![](images/template3.png){.fragment fig-alt="In addition to the previous two images, arrows point to five reports with years 2019 through 2023 on them in a flow chart." width="1300" fig-align="left" style="margin-top:-1em"}
+:::
+
+## What makes a report "parameterized"?
+
+::: incremental
+-   YAML header with `params` key-value pairs
+    -   Yet Another Markdown Language or YAML Ain't Markup Language 🤷🏻‍♀️
+-   Use those `params` in your report to create different variations
+:::
+
+## Workflow
+
+::: incremental
+1.  Write report template with default values hard-coded, render, and review.
+
+2.  Set default `params` key-value pairs in YAML and replace hard-coded values with the `params` variables.
+
+3.  Render the single report and review.
+
+4.  Render extreme cases and review.
+
+    -   Parameter values with barely any data and with tons of data.
+    
+5. Render all variations of the report at once.
+:::
+
+# 💪🏼 Exercise 1 {.exercise}
+
+1.  Open `ex-1-swiss-cats.qmd`.
+
+2.  Click the ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button.
+
+3.  Look at the source markdown and code and the rendered report.
+
+4.  Update your name as the author. Re-render.
+
+5.  💬 **Chat**: what variables could we set as parameters?
+    
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5, top = 0)
+```
+
+## Set `params` in YAML header
+
+```{yaml}
+#| code-line-numbers: 2|3-5|6-8|11
+---
+title: "Swiss Cats"                 # Metadata
+format:                             # Set format types
+  html:                                     
+  docx:                            
+params:                             # Set default parameter key-value pairs
+  fave_breed: "Snowshoe"                                
+---
+    
+Report content goes here.           # Write content
+```
+
+. . .
+
+**Your default `params` key-value pairs must be found in your dataset.**
+
+## Access `params`
+
+```{r}
+#| include: false
+
+# Set params for slide
+params <- list(
+  fave_breed = "Snowshoe"
+)
+```
+
+Run any line or chunk to add `params` to your environment.
+
+. . .
+
+`params` object is a list.
+
+```{r}
+str(params)
+```
+
+<br>
+
+. . .
+
+Access with `$` notation.
+
+```{r}
+params$fave_breed
+```
+
+<br>
+
+. . .
+
+For inline code in YAML or report content, enclose the expression in `` `r ` ``.
+
+```{markdown}
+My favorite cat breed is the **`r params$fave_breed`**.
+```
+
+My favorite cat breed is the **`r params$fave_breed`**.
+
+## Replace hard-coded values with `params`
+
+::: incremental
+
+1.   `Ctrl` + `F` to find and replace values.
+
+2.   Use inline R code to replace hard-coded markdown values. 
+
+3.   Use `paste()` for plot and table titles and labels.
+
+:::
+
+# 💃🏻 Demo {.demo}
+
+Modify `ex-1-swiss-cats.qmd` to add `pet_type` and `fave_breed` parameters.
+
+. . .
+
+✅ Completed demo (and starting point for next exercise) `ex-2-swiss-pets.qmd`.

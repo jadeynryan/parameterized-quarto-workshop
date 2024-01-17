@@ -1,0 +1,29 @@
+---
+title: "Materials"
+---
+
+## Slides
+
+[View slides in full screen](/slides/index.html).
+
+```{=html}
+<iframe class="slides" src="/slides/index.html"></iframe>
+```
+
+## Recording
+
+
+## Exercises
+
+**Option 1: Posit Cloud**
+
+[bit.ly/rladies-parameterized-quarto](https://bit.ly/rladies-parameterized-quarto)
+
+**Option 2: Download locally**
+
+```{r}
+#| eval: false
+
+usethis::use_course("https://bit.ly/rladies-parameterized-quarto-exercises")
+```
+
