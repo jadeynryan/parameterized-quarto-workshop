@@ -74,7 +74,14 @@
     "href": "slides/index.html#r-markdown-vs-quarto",
     "title": "Parameterized Reporting with Quarto ",
     "section": "R Markdown vs Quarto",
-    "text": "R Markdown vs Quarto\n\n\n\nR Markdown\n\nVast R Markdown ecosystem\nDependent on R\n\n\n\nQuarto\n\nExpands R Markdown ecosystem\n“Batteries included”\nMulti-language and multi-engine\n\n\n\n\nR Markdown will still be maintained but likely no new features (Yihui 2022)."
+    "text": "R Markdown vs Quarto\n\n\n\nR Markdown\n\nVast R Markdown ecosystem\nDependent on R\n\n\n\nQuarto\n\nCommand line interface (CLI)\nExpands R Markdown ecosystem\n“Batteries included”\nMulti-language and multi-engine\n\n\n\n\nR Markdown will still be maintained but likely no new features (Yihui 2022)."
+  },
+  {
+    "objectID": "slides/index.html#differences-with-parameters",
+    "href": "slides/index.html#differences-with-parameters",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Differences with parameters",
+    "text": "Differences with parameters\nNo Quarto equivalent to .Rmd Knit with Parameters GUI built with Shiny {miniUI}.\n\nFigure from R Markdown: The Definitive Guide (Xie et al. 2023)\n\nWorkaround: build webapp to get input, serialize to YAML, pass to Quarto render.\nMore info: GitHub discussion"
   },
   {
     "objectID": "slides/index.html#convert-.rmd-.qmd",
@@ -88,7 +95,7 @@
     "href": "slides/index.html#many-use-cases",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Many use cases",
-    "text": "Many use cases\n\n\n\n\n\n\n\nOcean floor maps\n\n\n\n\n\n\nFiscal briefs\n\n\n\n\n\n\nBad drivers\n\n\n\n\n\n\nSoil health\n\n\n\n💬 Chat: what kinds of reports would you like to parameterize? What would the parameters be?"
+    "text": "Many use cases\n\n\n\n\n\n\n\nOcean floor maps\n\n\n\n\n\n\nFiscal briefs\n\n\n\n\n\n\nBad drivers\n\n\n\n\n\n\nSoil health\n\n\n\nDifferent audiences, different reports\nShow code for technical staff and hide code for everyone else.\nSee this StackOverflow question and answer for an example.\n\n\n\n💬 Chat: what kinds of reports would you like to parameterize? What would the parameters be?"
   },
   {
     "objectID": "slides/index.html#like-a-custom-function",
@@ -102,7 +109,7 @@
     "href": "slides/index.html#what-makes-a-report-parameterized",
     "title": "Parameterized Reporting with Quarto ",
     "section": "What makes a report “parameterized”?",
-    "text": "What makes a report “parameterized”?\n\n\nYAML header with params key-value pairs\n\nYet Another Markdown Language or YAML Ain’t Markup Language 🤷🏻‍♀️\n\nUse those params in your report to create different variations"
+    "text": "What makes a report “parameterized”?\n\nYAML header with params key-value pairs\n\nYet Another Markdown Language or YAML Ain’t Markup Language 🤷🏻‍♀️\n\nUse those params in your report to create different variations\n\n\n\n\n\n\n\n\nImportant\n\n\nValid parameter values are strings, numbers, or Boolean.\nMust serialize a dataframe to pass it as a parameter, then un-serialize it back to a dataframe within the .qmd content.\nSee Christophe Dervieux’s answer in Posit Community to understand why.\nSee John Paul Helveston’s blog post to learn how to use {jsonlite} as a workaround."
   },
   {
     "objectID": "slides/index.html#workflow",
@@ -172,7 +179,7 @@
     "href": "slides/index.html#limitations",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Limitations",
-    "text": "Limitations\n\n\nCan’t render reports to another directory.\n\noutput-dir YAML option only works for Quarto projects that have _quarto.yml.\nWorkaround: use {fs} to move files after rendering. See ex-3-render-reports.R for example.\nMore info: GitHub discussion and GitHub issue.\n\nIf using embed-resources: true, .qmd can’t be in subfolder, otherwise:\n\n[WARNING] Could not fetch resource …\nMore info: GitHub discussion and GitHub issue."
+    "text": "Limitations\n\n\nCan’t render reports to another directory.\n\noutput-dir YAML option only works for Quarto projects that have _quarto.yml.\nWorkaround: use {fs} to move files after rendering. See ex-3-render-reports.R for example.\nMore info: GitHub discussion and GitHub issue.\n\n\n\n\nIf using embed-resources: true, .qmd can’t be in subfolder, otherwise:\n\n[WARNING] Could not fetch resource …\nMore info: GitHub discussion and GitHub issue."
   },
   {
     "objectID": "slides/index.html#multiple-formats",
@@ -207,7 +214,7 @@
     "href": "slides/index.html#useful-for-staticinteractive-features",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Useful for static/interactive features",
-    "text": "Useful for static/interactive features\nPairs well with {{&lt; include &gt;}} shortcodes to re-use content without copying/pasting.\nIncludes Quarto Docs\n\nStaticInteractive\n\n\nUse .content-visible unless-format=\"html\"\n:::: {.content-visible unless-format=\"html\"}\n\n## Cats\n\n{{&lt; include cats.qmd &gt;}}\n\n## Dogs\n\n{{&lt; include dogs.qmd &gt;}}\n\n::::\n\n\nUse .content-visible when-format=\"html\"\n:::: {.content-visible when-format=\"html\"}\n::: panel-tabset\n\n## Cats\n\n{{&lt; include cats.qmd &gt;}}\n\n## Dogs\n\n{{&lt; include dogs.qmd &gt;}}\n\n:::\n::::"
+    "text": "Useful for static/interactive features\nPairs well with {{&lt; include &gt;}} shortcodes to re-use content without copying/pasting.\nUse an underscore _ prefix for included files so they are automatically ignored by a Quarto render of a project (Includes Quarto Docs).\n\nStaticInteractive\n\n\nUse .content-visible unless-format=\"html\"\n:::: {.content-visible unless-format=\"html\"}\n\n## Cats\n\n{{&lt; include _cats.qmd &gt;}}\n\n## Dogs\n\n{{&lt; include _dogs.qmd &gt;}}\n\n::::\n\n\nUse .content-visible when-format=\"html\"\n:::: {.content-visible when-format=\"html\"}\n::: panel-tabset\n\n## Cats\n\n{{&lt; include _cats.qmd &gt;}}\n\n## Dogs\n\n{{&lt; include _dogs.qmd &gt;}}\n\n:::\n::::"
   },
   {
     "objectID": "slides/index.html#conditional-code-execution",

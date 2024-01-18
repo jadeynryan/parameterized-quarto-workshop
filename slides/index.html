@@ -479,11 +479,11 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <ol type="1">
 <li><p>Raise/lower your hand on Zoom.</p></li>
 <li><p>Use your favorite reaction.</p></li>
-<li><p>💬 <strong>Chat</strong>: share your name, where you live, and one thing you’ve made that you’re proud of.</p></li>
+<li><p>💬 <strong>Chat</strong>: share your name, where you’re calling in from, and one thing you’ve made that you’re proud of.</p></li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_c6885037" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_52347c43" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -630,6 +630,7 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <p><img data-src="images/quarto.png" style="float:left;padding: 0 1em 0 0" width="150"></p>
 <h3 id="quarto-1">Quarto</h3>
 <ul>
+<li><p>Command line interface (CLI)</p></li>
 <li><p>Expands R Markdown ecosystem</p></li>
 <li><p>“Batteries included”</p></li>
 <li><p>Multi-language and multi-engine</p></li>
@@ -638,6 +639,17 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 </div>
 <div class="fragment">
 <p>R Markdown will still be maintained but likely no new features <a href="https://yihui.org/en/2022/04/quarto-r-markdown/">(Yihui 2022)</a>.</p>
+</div>
+</section>
+<section id="differences-with-parameters" class="slide level2">
+<h2>Differences with parameters</h2>
+<p>No Quarto equivalent to .Rmd <a href="https://bookdown.org/yihui/rmarkdown/params-knit.html#the-interactive-user-interface">Knit with Parameters GUI</a> built with Shiny <a href="https://github.com/rstudio/miniUI">{miniUI}</a>.</p>
+
+<img data-src="https://bookdown.org/yihui/rmarkdown/images/params-input.png" alt="Input parameter values interactively for parameterized reports." width="300" class="r-stretch quarto-figure-left"><p class="caption">Figure from <a href="https://bookdown.org/yihui/rmarkdown/params-knit.html#the-interactive-user-interface"><em>R Markdown: The Definitive Guide</em> (Xie et al.&nbsp;2023)</a></p><div>
+<ul>
+<li class="fragment"><p><strong>Workaround</strong>: build webapp to get input, serialize to YAML, pass to Quarto render.</p></li>
+<li class="fragment"><p><strong>More info</strong>: <a href="https://github.com/quarto-dev/quarto-cli/discussions/7581#discussioncomment-7603016">GitHub discussion</a></p></li>
+</ul>
 </div>
 </section>
 <section id="convert-.rmd-.qmd" class="slide level2">
@@ -695,6 +707,12 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 </div>
 </div>
 <div class="fragment">
+<p><strong>Different audiences, different reports</strong></p>
+<p>Show code for technical staff and hide code for everyone else.</p>
+<p>See this <a href="https://stackoverflow.com/questions/73571919/how-to-pass-logical-parameters-with-the-quarto-r-package-to-the-knitr-chunk-opti">StackOverflow question and answer</a> for an example.</p>
+</div>
+<div class="fragment">
+<p><br></p>
 <p>💬 <strong>Chat</strong>: what kinds of reports would you like to parameterize? What would the parameters be?</p>
 </div>
 </section>
@@ -720,14 +738,30 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 </section>
 <section id="what-makes-a-report-parameterized" class="slide level2">
 <h2>What makes a report “parameterized”?</h2>
-<div>
 <ul>
-<li class="fragment">YAML header with <code>params</code> key-value pairs
+<li><p>YAML header with <code>params</code> key-value pairs</p>
 <ul>
-<li class="fragment">Yet Another Markdown Language or YAML Ain’t Markup Language 🤷🏻‍♀️</li>
+<li>Yet Another Markdown Language or YAML Ain’t Markup Language 🤷🏻‍♀️</li>
 </ul></li>
-<li class="fragment">Use those <code>params</code> in your report to create different variations</li>
+<li><p>Use those <code>params</code> in your report to create different variations</p></li>
 </ul>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Valid parameter values are strings, numbers, or Boolean.</p>
+<p>Must serialize a dataframe to pass it as a parameter, then un-serialize it back to a dataframe within the <code>.qmd</code> content.</p>
+<p>See <a href="https://community.rstudio.com/t/param-converted-from-data-frame-to-list/155556/9">Christophe Dervieux’s answer in Posit Community</a> to understand why.</p>
+<p>See <a href="https://www.jhelvy.com/posts/2023-02-28-parameterized-pdfs-with-quarto/#passing-data-frames-as-parameters">John Paul Helveston’s blog post</a> to learn how to use {jsonlite} as a workaround.</p>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="workflow" class="slide level2">
@@ -757,7 +791,7 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_9f25baf0" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_68344f0d" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -886,7 +920,7 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_01027453" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_126df143" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1081,12 +1115,15 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <ul>
 <li class="fragment"><p><a href="https://quarto.org/docs/books/book-output.html#output-path"><code>output-dir</code> YAML option</a> only works for Quarto projects that have <code>_quarto.yml</code>.</p></li>
 <li class="fragment"><p><strong>Workaround</strong>: use <a href="https://fs.r-lib.org/"><code>{fs}</code></a> to move files after rendering. See <code>ex-3-render-reports.R</code> for example.</p></li>
-<li class="fragment"><p>More info: <a href="https://github.com/quarto-dev/quarto-cli/discussions/2171#discussioncomment-4865286">GitHub discussion</a> and <a href="https://github.com/quarto-dev/quarto-r/issues/81">GitHub issue</a>.</p></li>
+<li class="fragment"><p><strong>More info</strong>: <a href="https://github.com/quarto-dev/quarto-cli/discussions/2171#discussioncomment-4865286">GitHub discussion</a> and <a href="https://github.com/quarto-dev/quarto-r/issues/81">GitHub issue</a>.</p></li>
 </ul></li>
+</ul>
+<p><br></p>
+<ul>
 <li class="fragment"><p>If using <code>embed-resources: true</code>, <code>.qmd</code> can’t be in subfolder, otherwise:</p>
 <ul>
 <li class="fragment"><p><span class="warning">[WARNING] Could not fetch resource …</span></p></li>
-<li class="fragment"><p>More info: <a href="https://github.com/quarto-dev/quarto-cli/discussions/4041#discussioncomment-6052000">GitHub discussion</a> and <a href="https://github.com/quarto-dev/quarto-cli/issues/5765">GitHub issue</a>.</p></li>
+<li class="fragment"><p><strong>More info</strong>: <a href="https://github.com/quarto-dev/quarto-cli/discussions/4041#discussioncomment-6052000">GitHub discussion</a> and <a href="https://github.com/quarto-dev/quarto-cli/issues/5765">GitHub issue</a>.</p></li>
 </ul></li>
 </ul>
 </div>
@@ -1152,7 +1189,7 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_31ae65ad" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_a0cd170b" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1192,7 +1229,7 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <section id="useful-for-staticinteractive-features" class="slide level2">
 <h2>Useful for static/interactive features</h2>
 <p>Pairs well with <code>{{&lt; include &gt;}}</code> shortcodes to re-use content without copying/pasting.</p>
-<p><a href="https://quarto.org/docs/authoring/includes.html">Includes Quarto Docs</a></p>
+<p>Use an underscore <code>_</code> prefix for included files so they are automatically ignored by a Quarto render of a project (<a href="https://quarto.org/docs/authoring/includes.html">Includes Quarto Docs</a>).</p>
 <div class="panel-tabset">
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Static</a></li><li><a href="#tabset-2-2">Interactive</a></li></ul>
 <div class="tab-content">
@@ -1202,11 +1239,11 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <span id="cb27-2"><a href="#cb27-2"></a></span>
 <span id="cb27-3"><a href="#cb27-3"></a><span class="fu">## Cats</span></span>
 <span id="cb27-4"><a href="#cb27-4"></a></span>
-<span id="cb27-5"><a href="#cb27-5"></a>{{&lt; include cats.qmd &gt;}}</span>
+<span id="cb27-5"><a href="#cb27-5"></a>{{&lt; include _cats.qmd &gt;}}</span>
 <span id="cb27-6"><a href="#cb27-6"></a></span>
 <span id="cb27-7"><a href="#cb27-7"></a><span class="fu">## Dogs</span></span>
 <span id="cb27-8"><a href="#cb27-8"></a></span>
-<span id="cb27-9"><a href="#cb27-9"></a>{{&lt; include dogs.qmd &gt;}}</span>
+<span id="cb27-9"><a href="#cb27-9"></a>{{&lt; include _dogs.qmd &gt;}}</span>
 <span id="cb27-10"><a href="#cb27-10"></a></span>
 <span id="cb27-11"><a href="#cb27-11"></a>::::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1217,11 +1254,11 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <span id="cb28-3"><a href="#cb28-3"></a></span>
 <span id="cb28-4"><a href="#cb28-4"></a><span class="fu">## Cats</span></span>
 <span id="cb28-5"><a href="#cb28-5"></a></span>
-<span id="cb28-6"><a href="#cb28-6"></a>{{&lt; include cats.qmd &gt;}}</span>
+<span id="cb28-6"><a href="#cb28-6"></a>{{&lt; include _cats.qmd &gt;}}</span>
 <span id="cb28-7"><a href="#cb28-7"></a></span>
 <span id="cb28-8"><a href="#cb28-8"></a><span class="fu">## Dogs</span></span>
 <span id="cb28-9"><a href="#cb28-9"></a></span>
-<span id="cb28-10"><a href="#cb28-10"></a>{{&lt; include dogs.qmd &gt;}}</span>
+<span id="cb28-10"><a href="#cb28-10"></a>{{&lt; include _dogs.qmd &gt;}}</span>
 <span id="cb28-11"><a href="#cb28-11"></a></span>
 <span id="cb28-12"><a href="#cb28-12"></a>:::</span>
 <span id="cb28-13"><a href="#cb28-13"></a>::::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1247,7 +1284,7 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_734ac61c" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_86efe3cd" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1326,7 +1363,7 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_facef3f2" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_31449186" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
