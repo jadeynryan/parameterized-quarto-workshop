@@ -18,14 +18,14 @@
     "href": "slides/index.html#jadey-ryan",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Jadey Ryan",
-    "text": "Jadey Ryan\n\n\nData scientist at WA Dept of Agriculture\nBusiness owner of The Coding Cats\n jadeyryan.com\n @jadeynryan\n linkedin.com/in/jadey-ryan\n jadeynryan\n thecodingcats.etsy.com\n\n\n\nFrom left to right: Tai, Mai, and Skye"
+    "text": "Jadey Ryan\n\n\nData scientist at WA Dept of Agriculture\nBusiness owner of The Coding Cats\n jadeyryan.com\n @jadeynryan\n linkedin.com/in/jadey-ryan\n jadeynryan\n thecodingcats.etsy.com\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPhoto credit: @leslie.mmichel"
   },
   {
     "objectID": "slides/index.html#logistics",
     "href": "slides/index.html#logistics",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Logistics",
-    "text": "Logistics\n\n\nLogin to Posit Cloud: bit.ly/rladies-parameterized-quarto.\nIf Posit Cloud doesn’t work, download materials locally:\n\nusethis::use_course(\"https://github.com/jadeynryan/rladies-parameterized-quarto/raw/main/exercises/exercises.zip\")\n\nAsk questions in the public Zoom chat or raise hand ✋.\n\nWorkshop structure: presentation, exercises, questions to answer in chat [💬 Chat:], and demos."
+    "text": "Logistics\n\n\nLogin to Posit Cloud: bit.ly/rladies-parameterized-quarto.\nIf Posit Cloud doesn’t work, download materials locally:\n\nusethis::use_course(\n  \"https://github.com/jadeynryan/rladies-parameterized-quarto/raw/main/exercises/exercises.zip\")\n\nAsk questions in the public Zoom chat or raise hand ✋.\n\nWorkshop structure: presentation, exercises, questions to answer in chat [💬 Chat:], and demos."
   },
   {
     "objectID": "slides/index.html#learning-objectives",
@@ -53,7 +53,7 @@
     "href": "slides/index.html#rstudio-options",
     "title": "Parameterized Reporting with Quarto ",
     "section": "RStudio options",
-    "text": "RStudio options\nTools → Global Options →\n\nFussy YAML indentation: Code → Display → Indentation guides: → Rainbow lines\nMatch parentheses: Code → Display → Indentation guides: → Check Use rainbow parentheses\nMatching divs: R Markdown → Advanced → Check Use rainbow fenced divs"
+    "text": "RStudio options\nTools → Global Options →\n\n\nFussy YAML indentation:\nCode → Display → Indentation guides: → Rainbow lines\n\n\n\nMatch parentheses:\nCode → Display → Indentation guides: → Check Use rainbow parentheses\n\n\n\nMatching divs:\nR Markdown → Advanced → Check Use rainbow fenced divs"
   },
   {
     "objectID": "slides/index.html#r-markdown",
@@ -74,7 +74,7 @@
     "href": "slides/index.html#r-markdown-vs-quarto",
     "title": "Parameterized Reporting with Quarto ",
     "section": "R Markdown vs Quarto",
-    "text": "R Markdown vs Quarto\n\n\n\nR Markdown\n\nVast R Markdown ecosystem\nDependent on R\n\n\n\nQuarto\n\nCommand line interface (CLI)\nExpands R Markdown ecosystem\n“Batteries included”\nMulti-language and multi-engine\n\n\n\n\nR Markdown will still be maintained but likely no new features (Yihui 2022)."
+    "text": "R Markdown vs Quarto\n\n\n\nR Markdown\n\nVast R Markdown ecosystem\nDependent on R\n\n\n\nQuarto\n\nCommand line interface (CLI)\nExpands R Markdown ecosystem\n“Batteries included”\nMulti-language and multi-engine\n\n\n\n\n\nR Markdown will still be maintained but likely no new features (Xie 2022)."
   },
   {
     "objectID": "slides/index.html#differences-with-parameters",
@@ -200,21 +200,21 @@
     "href": "slides/index.html#format-link-options",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Format link options",
-    "text": "Format link options\nChoose which format links to include:\n\n---\nformat:\n  html: \n    embed-resources: true\n  pdf: default\n  docx: default\nformat-links: [pdf]\n---\n\nOr hide all links:\n\n---\nformat:\n  html: \n    embed-resources: true\n  pdf: default\n  docx: default\nformat-links: false\n---"
+    "text": "Format link options\nChoose which format links to include:\n\n---\nformat:\n  html: \n    embed-resources: true\n  pdf: default\n  docx: default\nformat-links: [pdf]\n---\n\n\nOr hide all links:\n\n---\nformat:\n  html: \n    embed-resources: true\n  pdf: default\n  docx: default\nformat-links: false\n---"
   },
   {
     "objectID": "slides/index.html#control-content-visibility",
     "href": "slides/index.html#control-content-visibility",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Control content visibility",
-    "text": "Control content visibility\nSpecial .content-visible and .content-hidden classes can be applied to:\nDivs\n::: {.content-visible when-format=\"html\"}\n\nWill only appear in HTML.\n\n:::\n\nNon-executable code\n# code shown only in HTML\n2 + 2\n\n\nSpans\nSome text\n[in HTML.]{.content-visible when-format=\"html\"}\n[in PDF.]{.content-visible when-format=\"pdf\"}\n\nExamples from Conditional Content Quarto docs"
+    "text": "Control content visibility\nSpecial .content-visible and .content-hidden classes can be applied to:\nDivs\n::: {.content-visible when-format=\"html\"}\n\nWill only appear in HTML.\n\n:::\n\nNon-executable code\n```{.python .content-visible when-format=\"html\"}\n# code shown only in HTML\n2 + 2\n```\n\n\nSpans\nSome text\n[in HTML.]{.content-visible when-format=\"html\"}\n[in PDF.]{.content-visible when-format=\"pdf\"}\n\nExamples from Conditional Content Quarto docs"
   },
   {
     "objectID": "slides/index.html#useful-for-staticinteractive-features",
     "href": "slides/index.html#useful-for-staticinteractive-features",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Useful for static/interactive features",
-    "text": "Useful for static/interactive features\nPairs well with {{&lt; include &gt;}} shortcodes to re-use content without copying/pasting.\nUse an underscore _ prefix for included files so they are automatically ignored by a Quarto render of a project (Includes Quarto Docs).\n\nStaticInteractive\n\n\nUse .content-visible unless-format=\"html\"\n:::: {.content-visible unless-format=\"html\"}\n\n## Cats\n\n{{&lt; include _cats.qmd &gt;}}\n\n## Dogs\n\n{{&lt; include _dogs.qmd &gt;}}\n\n::::\n\n\nUse .content-visible when-format=\"html\"\n:::: {.content-visible when-format=\"html\"}\n::: panel-tabset\n\n## Cats\n\n{{&lt; include _cats.qmd &gt;}}\n\n## Dogs\n\n{{&lt; include _dogs.qmd &gt;}}\n\n:::\n::::"
+    "text": "Useful for static/interactive features\nPairs well with {{&lt; include &gt;}} shortcodes to re-use content without copying/pasting.\nUse an underscore (_) prefix for included files so they are automatically ignored by a Quarto render of a project (Includes Quarto Docs).\n\nStaticInteractive\n\n\nUse .content-visible unless-format=\"html\"\n:::: {.content-visible unless-format=\"html\"}\n\n## Cats\n\n{{&lt; include _cats.qmd &gt;}}\n\n## Dogs\n\n{{&lt; include _dogs.qmd &gt;}}\n\n::::\n\n\nUse .content-visible when-format=\"html\"\n:::: {.content-visible when-format=\"html\"}\n::: panel-tabset\n\n## Cats\n\n{{&lt; include _cats.qmd &gt;}}\n\n## Dogs\n\n{{&lt; include _dogs.qmd &gt;}}\n\n:::\n::::"
   },
   {
     "objectID": "slides/index.html#conditional-code-execution",
@@ -238,18 +238,11 @@
     "text": "Use eval: !expr chunk option\n\nStatic plotInteractive plot\n\n\n\n```{r}\n#| eval: !expr format %in% c(\"latex\", \"docx\")\n\n# code to create static {ggplot2}\n```\n\n\n\n\n```{r}\n#| eval: !expr format == \"html\"\n\n# code to create interactive {plotly}\n```\n\n\n\n\n\n\nCan even use params in !expr:\n#| eval: !expr params$fave_breed == \"Snowshoe\"\n\n\n\nChunk Options Quarto Docs"
   },
   {
-    "objectID": "slides/index.html#learning-objectives-1",
-    "href": "slides/index.html#learning-objectives-1",
-    "title": "Parameterized Reporting with Quarto ",
-    "section": "Learning objectives",
-    "text": "Learning objectives\n\n\nUnderstand what parameterized reporting is and when it is useful.\nLearn how to convert a report into a parameterized template.\nRender all variations of the report at once using {quarto} and {purrr}.\nGenerate multiple format outputs from the same template file with conditional content and conditional code execution."
-  },
-  {
     "objectID": "slides/index.html#learning-objective-1",
     "href": "slides/index.html#learning-objective-1",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Learning objective 1",
-    "text": "Learning objective 1\nUnderstand what parameterized reporting is and when it is useful.\nLike very fancy custom functions.\n\n\nFunction → .qmd template\nInput → parameters\nOutput → rendered reports\n\n\n\nUseful for creating variations of the same report:\n\ncountry, state, county, or city\ntime periods\nbreeds, species, diseases, trials, etc.\n\n\n\nNote: we only covered reports, but you can also parameterize revealjs presentations! See this Jumping Rivers blog post about it."
+    "text": "Learning objective 1\nUnderstand what parameterized reporting is and when it is useful.\n\nLike very fancy custom functions:\n\n\nFunction → .qmd template\nInput → parameters\nOutput → rendered reports\n\n\n\n\nUseful for creating variations of the same report:\n\ncountry, state, county, or city\ntime periods\nbreeds, species, diseases, trials, etc.\n\n\n\n\n\n\n\n\n\nNote\n\n\nWe only covered reports, but you can also parameterize revealjs presentations! See this Jumping Rivers blog post about it."
   },
   {
     "objectID": "slides/index.html#learning-objective-2",
@@ -270,7 +263,7 @@
     "href": "slides/index.html#learning-objective-4",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Learning objective 4",
-    "text": "Learning objective 4\nGenerate multiple format outputs from the same template file with conditional content and conditional code execution.\n\n\nContent visibility\n\n{.content-visible when-format=“___“}\n{.content-visible unless-format=“___“}\n{.content-hidden unless-format=“___“}\n{.content-hidden unless-format=“___“}\n\n\n\n\nCode execution\n# Get output format in setup chunk:\nformat &lt;- knitr::opts_knit$get(\"rmarkdown.pandoc.to\")\n\n# Set chunk option:\n#| eval: !expr format == \"html\""
+    "text": "Learning objective 4\nGenerate multiple format outputs from the same template with conditional content and code.\n\n\nContent visibility\n\n{.content-visible when-format=“___“}\n{.content-visible unless-format=“___“}\n{.content-hidden unless-format=“___“}\n{.content-hidden unless-format=“___“}\n\n\n\n\nCode execution\n#| label: setup\n\nformat &lt;- knitr::opts_knit$get(\"rmarkdown.pandoc.to\")\n#| label: interactive-plot\n#| eval: !expr format == \"html\"\n\n# plotly code"
   },
   {
     "objectID": "slides/index.html#thank-you",
