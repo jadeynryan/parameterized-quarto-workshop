@@ -74,7 +74,7 @@ Business owner of The Coding Cats
 
 2. Use your favorite reaction.
 
-3. 💬 **Chat**: share your name, where you live, and one thing you’ve made that you’re proud of.
+3. 💬 **Chat**: share your name, where you're calling in from, and one thing you’ve made that you’re proud of.
 
 ```{r}
 #| echo: false

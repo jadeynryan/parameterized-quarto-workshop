@@ -11,9 +11,9 @@
 ## Quarto
 
 ::: r-stack
-![Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio::Conf(2022). Illustrated by Allison Horst.](images/horst-quarto-schematic.png){.fragment .fade-out fragment-index=1 fig-alt="A schematic representing the multi-language input (e.g. Python, R, Observable, Julia) and multi-format output (e.g. PDF, html, Word documents, and more) versatility of Quarto." fig-align="center" style="margin-top:-1.5em;margin-bottom:-1em"}
+![Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio::Conf(2022). Illustrated by Allison Horst.](images/horst-quarto-schematic.png){.fragment .fade-out fragment-index="1" fig-alt="A schematic representing the multi-language input (e.g. Python, R, Observable, Julia) and multi-format output (e.g. PDF, html, Word documents, and more) versatility of Quarto." fig-align="center" style="margin-top:-1.5em;margin-bottom:-1em"}
 
-![](images/horst-qmd-render-schema.png){.fragment fragment-index=1 fig-alt="A schematic representing rendering of Quarto documents from .qmd, to knitr or jupyter, to plain text markdown, then converted by pandoc into any number of output types including html, PDF, or Word document." fig-align="center" style="margin-top:-1.5em;margin-bottom:-1em"}
+![](images/horst-qmd-render-schema.png){.fragment fragment-index="1" fig-alt="A schematic representing rendering of Quarto documents from .qmd, to knitr or jupyter, to plain text markdown, then converted by pandoc into any number of output types including html, PDF, or Word document." fig-align="center" style="margin-top:-1.5em;margin-bottom:-1em"}
 :::
 
 ## R Markdown vs Quarto
@@ -34,6 +34,8 @@
 
 ### Quarto
 
+-   Command line interface (CLI)
+
 -   Expands R Markdown ecosystem
 
 -   "Batteries included"
@@ -46,10 +48,22 @@
 
 R Markdown will still be maintained but likely no new features [(Yihui 2022)](https://yihui.org/en/2022/04/quarto-r-markdown/).
 
-## Convert `.Rmd` &rarr; `.qmd`\*
+## Differences with parameters
 
-1.  Change file extension from `.Rmd` &rarr; `.qmd`
-2.  Change YAML header (`output:` &rarr; `format:`)
+No Quarto equivalent to .Rmd [Knit with Parameters GUI](https://bookdown.org/yihui/rmarkdown/params-knit.html#the-interactive-user-interface) built with Shiny [{miniUI}](https://github.com/rstudio/miniUI).
+
+![Figure from [*R Markdown: The Definitive Guide* (Xie et al. 2023)](https://bookdown.org/yihui/rmarkdown/params-knit.html#the-interactive-user-interface)](https://bookdown.org/yihui/rmarkdown/images/params-input.png){fig-alt="Input parameter values interactively for parameterized reports." fig-align="left" width="300"}
+
+::: incremental
+-   **Workaround**: build webapp to get input, serialize to YAML, pass to Quarto render.
+
+-   **More info**: [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/7581#discussioncomment-7603016)
+:::
+
+## Convert `.Rmd` → `.qmd`\*
+
+1.  Change file extension from `.Rmd` → `.qmd`
+2.  Change YAML header (`output:` → `format:`)
 3.  Convert chunk headers with `knitr::convert_chunk_header()`
 
 *\*If you want.*

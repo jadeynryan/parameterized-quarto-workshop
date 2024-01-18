@@ -198,13 +198,16 @@ purrr::pwalk(
 
     - **Workaround**: use [`{fs}`](https://fs.r-lib.org/) to move files after rendering. See `ex-3-render-reports.R` for example.
     
-    - More info: [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/2171#discussioncomment-4865286) and [GitHub issue](https://github.com/quarto-dev/quarto-r/issues/81).
+    - **More info**: [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/2171#discussioncomment-4865286) and [GitHub issue](https://github.com/quarto-dev/quarto-r/issues/81).
+
+<br>
 
 - If using `embed-resources: true`, `.qmd` can't be in subfolder, otherwise: 
 
     - [[WARNING] Could not fetch resource ...]{.warning}
 
-    - More info: [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/4041#discussioncomment-6052000) and [GitHub issue](https://github.com/quarto-dev/quarto-cli/issues/5765).
+    - **More info**: [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/4041#discussioncomment-6052000) and [GitHub issue](https://github.com/quarto-dev/quarto-cli/issues/5765).
+    
 :::
 
 # 💃🏻 Demo {.demo}

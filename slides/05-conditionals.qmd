@@ -45,7 +45,7 @@ Examples from [Conditional Content Quarto docs](https://quarto.org/docs/authorin
 
 Pairs well with `{{< include >}}` shortcodes to re-use content without copying/pasting.
 
-[Includes Quarto Docs](https://quarto.org/docs/authoring/includes.html)
+Use an underscore `_` prefix for included files so they are automatically ignored by a Quarto render of a project ([Includes Quarto Docs](https://quarto.org/docs/authoring/includes.html)).
 
 ::::: panel-tabset
 
@@ -58,11 +58,11 @@ Use `.content-visible unless-format="html"`
 
 ## Cats
 
-{{{< include cats.qmd >}}}
+{{{< include _cats.qmd >}}}
 
 ## Dogs
 
-{{{< include dogs.qmd >}}}
+{{{< include _dogs.qmd >}}}
 
 ::::
 ```
@@ -77,11 +77,11 @@ Use `.content-visible when-format="html"`
 
 ## Cats
 
-{{{< include cats.qmd >}}}
+{{{< include _cats.qmd >}}}
 
 ## Dogs
 
-{{{< include dogs.qmd >}}}
+{{{< include _dogs.qmd >}}}
 
 :::
 ::::

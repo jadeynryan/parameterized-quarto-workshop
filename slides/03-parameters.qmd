@@ -30,6 +30,16 @@
 
 . . .
 
+**Different audiences, different reports**
+
+Show code for technical staff and hide code for everyone else.
+
+See this [StackOverflow question and answer](https://stackoverflow.com/questions/73571919/how-to-pass-logical-parameters-with-the-quarto-r-package-to-the-knitr-chunk-opti) for an example.
+
+. . .
+
+<br> 
+
 💬 **Chat**: what kinds of reports would you like to parameterize? What would the parameters be?
 
 ## Like a custom function
@@ -44,10 +54,22 @@
 
 ## What makes a report "parameterized"?
 
-::: incremental
 -   YAML header with `params` key-value pairs
-    -   Yet Another Markdown Language or YAML Ain't Markup Language 🤷🏻‍♀️
+
+    - Yet Another Markdown Language or YAML Ain't Markup Language 🤷🏻‍♀️
+    
 -   Use those `params` in your report to create different variations
+
+. . .
+
+::: callout-important
+Valid parameter values are strings, numbers, or Boolean.
+    
+Must serialize a dataframe to pass it as a parameter, then un-serialize it back to a dataframe within the `.qmd` content. 
+
+See [Christophe Dervieux's answer in Posit Community](https://community.rstudio.com/t/param-converted-from-data-frame-to-list/155556/9) to understand why.
+
+See [John Paul Helveston's blog post](https://www.jhelvy.com/posts/2023-02-28-parameterized-pdfs-with-quarto/#passing-data-frames-as-parameters) to learn how to use {jsonlite} as a workaround.
 :::
 
 ## Workflow
