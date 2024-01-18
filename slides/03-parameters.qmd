@@ -75,9 +75,9 @@ See [John Paul Helveston's blog post](https://www.jhelvy.com/posts/2023-02-28-pa
 ## Workflow
 
 ::: incremental
-1.  Write report template with default values hard-coded, render, and review.
+1.  Write report template with default values hard-coded, and then render & review.
 
-2.  Set default `params` key-value pairs in YAML and replace hard-coded values with the `params` variables.
+2.  Set default `params` key-value pairs in YAML. Replace hard-coded values with the `params` variables.
 
 3.  Render the single report and review.
 
@@ -112,8 +112,8 @@ countdown::countdown(minutes = 5, top = 0)
 ---
 title: "Swiss Cats"                 # Metadata
 format:                             # Set format types
-  html:                                     
-  docx:                            
+  html: default                                     
+  docx: default                           
 params:                             # Set default parameter key-value pairs
   fave_breed: "Snowshoe"                                
 ---
@@ -172,9 +172,9 @@ My favorite cat breed is the **`r params$fave_breed`**.
 
 ::: incremental
 
-1.   `Ctrl` + `F` to find and replace values.
+1.   Use inline R code to replace hard-coded markdown values. 
 
-2.   Use inline R code to replace hard-coded markdown values. 
+2.   `Ctrl` + `F` to find and replace values in code.
 
 3.   Use `paste()` for plot and table titles and labels.
 

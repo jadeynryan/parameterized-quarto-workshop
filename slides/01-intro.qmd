@@ -114,10 +114,10 @@ Isabella Velásquez's blog post [*Understanding the native R pipe* \|\>](https:/
 ::: columns
 ::: {.column width="50%"}
 ```{r echo=TRUE, eval=FALSE}
-whatever(arg1, arg2, arg3, ...)
+do_something(arg1, arg2, arg3, ...)
 
 arg1 |>  
-  whatever(arg2, arg3)
+  do_something(arg2, arg3)
 ```
 :::
 
@@ -136,7 +136,9 @@ mean(0:10)
 
 . . .
 
-To change `Ctrl + Shift + M` shortcut to the native pipe:
+<br>
+
+To change `Ctrl` + `Shift` + `M` shortcut to the native pipe:
 
 `Tools` → `Global Options` → `Code` → `Editing` → `Use Native Pipe Operator`
 

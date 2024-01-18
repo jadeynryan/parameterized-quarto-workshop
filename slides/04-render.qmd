@@ -3,9 +3,9 @@
 ## Multiple ways to render 
 
 ::: incremental
-1. ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button in RStudio or `Ctrl`+`Shift`+`K` keyboard shortcut
+1. ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button in RStudio or `Ctrl` + `Shift` + `K` keyboard shortcut
 
-2. Check `Render on Save` and `Ctrl`+`S` keyboard shortcut
+2. Check `Render on Save` and `Ctrl` + `S` keyboard shortcut
 
 3. Quarto CLI
 
@@ -18,16 +18,15 @@
     ```{.r filename="Console or R script"}
     quarto::quarto_render(
       input = here::here("ex-2-quarto-render.qmd"), # Input Quarto file
-      execute_params = list(                     # Named list of params
+      execute_params = list(                        # Named list of params
         pet_type = "cats",
-        fave_breed = "Snowshoe"
-      )
+        fave_breed = "Snowshoe"))
     ```
 :::
 
 # 💪🏼 Exercise 2 {.exercise}
 
-1. Render `ex-2-quarto-render.qmd` with the **Render** button or keyboard shortcut.
+1. Render `ex-2-quarto-render.qmd` with the **Render** button or keyboard shortcut `Ctrl` + `Shift` + `K`.
 
 2. Take a look at the unique pet breeds.
    ```r
@@ -45,8 +44,7 @@
       input = here::here("ex-2-quarto-render.qmd"),
       execute_params = list(
         pet_type = "___",
-        fave_breed = "___"
-      )
+        fave_breed = "___")
    ```
 
 5. 💬 **Chat**: what's your fave breed and do you have any pets? 🐈🐕🐹🐍🐠
@@ -202,12 +200,11 @@ purrr::pwalk(
 
 <br>
 
-- If using `embed-resources: true`, `.qmd` can't be in subfolder, otherwise: 
+- If using `embed-resources: true` YAML option, `.qmd` can't be in subfolder, otherwise: 
 
     - [[WARNING] Could not fetch resource ...]{.warning}
 
     - **More info**: [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/4041#discussioncomment-6052000) and [GitHub issue](https://github.com/quarto-dev/quarto-cli/issues/5765).
-    
 :::
 
 # 💃🏻 Demo {.demo}
