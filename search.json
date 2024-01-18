@@ -39,7 +39,7 @@
     "href": "slides/index.html#pipes",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Pipes",
-    "text": "Pipes\n\n2014+ magrittr pipe %&gt;%\n2021+ (R \\(\\geq\\) 4.1.0) native R pipe |&gt;\n\n\nIsabella Velásquez’s blog post Understanding the native R pipe |&gt; (2022)\n\n\n\n\n\nwhatever(arg1, arg2, arg3, ...)\n\narg1 |&gt;  \n  whatever(arg2, arg3)\n\n\n\n\n\nmean(0:10)\n\n0:10 |&gt; \n  mean()\n\n\n\n\n\nTo change Ctrl + Shift + M shortcut to the native pipe:\nTools → Global Options → Code → Editing → Use Native Pipe Operator\n\nSlide adapted from R/Medicine Data Cleaning 2023 Workshop"
+    "text": "Pipes\n\n2014+ magrittr pipe %&gt;%\n2021+ (R \\(\\geq\\) 4.1.0) native R pipe |&gt;\n\n\nIsabella Velásquez’s blog post Understanding the native R pipe |&gt; (2022)\n\n\n\n\n\ndo_something(arg1, arg2, arg3, ...)\n\narg1 |&gt;  \n  do_something(arg2, arg3)\n\n\n\n\n\nmean(0:10)\n\n0:10 |&gt; \n  mean()\n\n\n\n\n\n\nTo change Ctrl + Shift + M shortcut to the native pipe:\nTools → Global Options → Code → Editing → Use Native Pipe Operator\n\nSlide adapted from R/Medicine Data Cleaning 2023 Workshop"
   },
   {
     "objectID": "slides/index.html#namespacing",
@@ -116,14 +116,14 @@
     "href": "slides/index.html#workflow",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Workflow",
-    "text": "Workflow\n\n\nWrite report template with default values hard-coded, render, and review.\nSet default params key-value pairs in YAML and replace hard-coded values with the params variables.\nRender the single report and review.\nRender extreme cases and review.\n\nParameter values with barely any data and with tons of data.\n\nRender all variations of the report at once."
+    "text": "Workflow\n\n\nWrite report template with default values hard-coded, and then render & review.\nSet default params key-value pairs in YAML. Replace hard-coded values with the params variables.\nRender the single report and review.\nRender extreme cases and review.\n\nParameter values with barely any data and with tons of data.\n\nRender all variations of the report at once."
   },
   {
     "objectID": "slides/index.html#set-params-in-yaml-header",
     "href": "slides/index.html#set-params-in-yaml-header",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Set params in YAML header",
-    "text": "Set params in YAML header\n\n---\ntitle: \"Swiss Cats\"                 # Metadata\nformat:                             # Set format types\n  html:                                     \n  docx:                            \nparams:                             # Set default parameter key-value pairs\n  fave_breed: \"Snowshoe\"                                \n---\n    \nReport content goes here.           # Write content\n\n\nYour default params key-value pairs must be found in your dataset."
+    "text": "Set params in YAML header\n\n---\ntitle: \"Swiss Cats\"                 # Metadata\nformat:                             # Set format types\n  html: default                                     \n  docx: default                           \nparams:                             # Set default parameter key-value pairs\n  fave_breed: \"Snowshoe\"                                \n---\n    \nReport content goes here.           # Write content\n\n\nYour default params key-value pairs must be found in your dataset."
   },
   {
     "objectID": "slides/index.html#access-params",
@@ -137,14 +137,14 @@
     "href": "slides/index.html#replace-hard-coded-values-with-params",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Replace hard-coded values with params",
-    "text": "Replace hard-coded values with params\n\n\nCtrl + F to find and replace values.\nUse inline R code to replace hard-coded markdown values.\nUse paste() for plot and table titles and labels."
+    "text": "Replace hard-coded values with params\n\n\nUse inline R code to replace hard-coded markdown values.\nCtrl + F to find and replace values in code.\nUse paste() for plot and table titles and labels."
   },
   {
     "objectID": "slides/index.html#multiple-ways-to-render",
     "href": "slides/index.html#multiple-ways-to-render",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Multiple ways to render",
-    "text": "Multiple ways to render\n\n\n Render button in RStudio or Ctrl+Shift+K keyboard shortcut\nCheck Render on Save and Ctrl+S keyboard shortcut\nQuarto CLI\n\n\nTerminal\n\nquarto render ex-2-quarto-render.qmd -P pet_type:'cats' -P fave_breed:'Snowshoe'\n\n✨ quarto::quarto_render()\n\n\nConsole or R script\n\nquarto::quarto_render(\n  input = here::here(\"ex-2-quarto-render.qmd\"), # Input Quarto file\n  execute_params = list(                     # Named list of params\n    pet_type = \"cats\",\n    fave_breed = \"Snowshoe\"\n  )"
+    "text": "Multiple ways to render\n\n\n Render button in RStudio or Ctrl + Shift + K keyboard shortcut\nCheck Render on Save and Ctrl + S keyboard shortcut\nQuarto CLI\n\n\nTerminal\n\nquarto render ex-2-quarto-render.qmd -P pet_type:'cats' -P fave_breed:'Snowshoe'\n\n✨ quarto::quarto_render()\n\n\nConsole or R script\n\nquarto::quarto_render(\n  input = here::here(\"ex-2-quarto-render.qmd\"), # Input Quarto file\n  execute_params = list(                        # Named list of params\n    pet_type = \"cats\",\n    fave_breed = \"Snowshoe\"))"
   },
   {
     "objectID": "slides/index.html#render-all-538-reports",
@@ -179,7 +179,7 @@
     "href": "slides/index.html#limitations",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Limitations",
-    "text": "Limitations\n\n\nCan’t render reports to another directory.\n\noutput-dir YAML option only works for Quarto projects that have _quarto.yml.\nWorkaround: use {fs} to move files after rendering. See ex-3-render-reports.R for example.\nMore info: GitHub discussion and GitHub issue.\n\n\n\n\nIf using embed-resources: true, .qmd can’t be in subfolder, otherwise:\n\n[WARNING] Could not fetch resource …\nMore info: GitHub discussion and GitHub issue."
+    "text": "Limitations\n\n\nCan’t render reports to another directory.\n\noutput-dir YAML option only works for Quarto projects that have _quarto.yml.\nWorkaround: use {fs} to move files after rendering. See ex-3-render-reports.R for example.\nMore info: GitHub discussion and GitHub issue.\n\n\n\n\nIf using embed-resources: true YAML option, .qmd can’t be in subfolder, otherwise:\n\n[WARNING] Could not fetch resource …\nMore info: GitHub discussion and GitHub issue."
   },
   {
     "objectID": "slides/index.html#multiple-formats",
