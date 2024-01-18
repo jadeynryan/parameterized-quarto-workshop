@@ -2,6 +2,8 @@
 
 . . .
 
+<br>
+
 💬 **Chat**: what's your comfort level / experience with R Markdown and Quarto?
 
 ## R Markdown
@@ -46,7 +48,9 @@
 
 . . .
 
-R Markdown will still be maintained but likely no new features [(Yihui 2022)](https://yihui.org/en/2022/04/quarto-r-markdown/).
+<br>
+
+R Markdown will still be maintained but likely no new features [(Xie 2022)](https://yihui.org/en/2022/04/quarto-r-markdown/).
 
 ## Differences with parameters
 

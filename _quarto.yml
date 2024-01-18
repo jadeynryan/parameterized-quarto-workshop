@@ -21,7 +21,7 @@ website:
   favicon: "images/jr-logo-circle.webp"
 
   repo-url: https://github.com/jadeynryan/rladies-parameterized-quarto
-  repo-actions: [edit, issue]
+  repo-actions: [source, edit, issue]
 
   page-footer:
     left: "&copy; 2024 Jadey Ryan"
@@ -37,6 +37,10 @@ website:
     align: center
     style: docked
     type: dark
+    tools:
+      - icon: github
+        href: https://github.com/jadeynryan/rladies-parameterized-quarto
+        text: GitHub
     contents:
      - href: index.qmd
        text: Home
@@ -56,7 +60,7 @@ format:
     code-link: true
     code-copy: true
     code-overflow: scroll
-    mainfont: "Atkinson Hyperlegible"
+    mainfont: Atkinson Hyperlegible
     highlight-style: a11y
 
 # lightbox extension

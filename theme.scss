@@ -157,35 +157,11 @@ code {
   }
 }
 
-// listing buttons
+// github icon button
 
-div.quarto-post .listing-categories .listing-category, .quarto-category, .btn {
-  opacity: 0.8 !important;
-  color: $secondary;
-  border-color: $secondary;
-  text-align: center;
-  border-style: solid;
-  text-decoration: none;
-  transition-delay: 0s;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
+.bi-github {
+  color: white;
 }
-
-.btn {
-  opacity: 1 !important;
-  padding: 0.5em;
-  border-radius: 6px;
-}
-div.quarto-post .listing-categories .listing-category:hover, .quarto-category:hover, .btn:hover {
-  background-color: $secondary;
-  color: $white;
-}
-
-.listing-btn-group {
-  display: inline-flex;
-  gap: 1em;
-}
-
 // page buttons
 
 .page-link {

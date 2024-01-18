@@ -28,6 +28,3 @@ df-print: kable
 {{< include 05-conditionals.qmd >}}
 
 {{< include 06-summary.qmd >}}
-
- 
- 

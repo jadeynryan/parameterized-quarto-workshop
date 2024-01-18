@@ -32,7 +32,7 @@ Business owner of The Coding Cats
 
 {{< fa brands etsy size=xl >}} [thecodingcats.etsy.com](https://thecodingcats.etsy.com/)
 
-![From left to right: Tai, Mai, and Skye](images/mts.webp){fig-alt="Three snowshoe siamese cats in loaf mode." fig-align="left" style="border-radius:1em"}
+![](images/mts.webp){fig-alt="Three snowshoe siamese cats in loaf mode. From left to right: Tai, Mai, and Skye" style="border-radius:1em;margin-top:auto"}
 :::
 
 ::: {.column width="30%"}
@@ -45,7 +45,10 @@ Business owner of The Coding Cats
 
 ![](images/rangeland.jpg){fig-alt="Jadey standing in a grazed wildflower meadow with two colleagues collecting soil samples." style="border-radius:1em;margin-top:auto"}
 :::
+Photo credit: [@leslie.mmichel](https://twitter.com/leslie_mmichel)
 :::
+
+
 :::
 
 ## Logistics
@@ -58,7 +61,8 @@ Business owner of The Coding Cats
     ```{r}
     #| eval: false
     
-    usethis::use_course("https://github.com/jadeynryan/rladies-parameterized-quarto/raw/main/exercises/exercises.zip")
+    usethis::use_course(
+      "https://github.com/jadeynryan/rladies-parameterized-quarto/raw/main/exercises/exercises.zip")
     ```
 
 -   Ask questions in the public Zoom chat or raise hand ✋. 
@@ -187,8 +191,21 @@ Slide adapted from [R/Medicine Data Cleaning 2023 Workshop](https://shannonpileg
 
 `Tools` → `Global Options` → 
 
--   Fussy YAML indentation: `Code` → `Display` → `Indentation guides:` → `Rainbow lines`
+::: incremental
 
--   Match parentheses: `Code` → `Display` → `Indentation guides:` → Check `Use rainbow parentheses`
+-   Fussy YAML indentation: 
 
--   Matching divs: `R Markdown` → `Advanced` → Check `Use rainbow fenced divs`
+    `Code` → `Display` → `Indentation guides:` → `Rainbow lines`
+    
+<br>
+
+-   Match parentheses: 
+
+    `Code` → `Display` → `Indentation guides:` → Check `Use rainbow parentheses`
+
+<br>
+
+-   Matching divs: 
+
+    `R Markdown` → `Advanced` → Check `Use rainbow fenced divs`
+:::

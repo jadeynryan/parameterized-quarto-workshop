@@ -1,22 +1,12 @@
-# Wrap up {.section}
-
-## Learning objectives
-
-::: incremental
-1. Understand what parameterized reporting is and when it is useful.
-
-2. Learn how to convert a report into a parameterized template.
-
-3. Render all variations of the report at once using [{quarto}](https://quarto-dev.github.io/quarto-r/) and [{purrr}](https://purrr.tidyverse.org/). 
-
-4. Generate multiple format outputs from the same template file with conditional content and conditional code execution.
-:::
+# Summary {.section}
 
 ## Learning objective 1
 
 **Understand what parameterized reporting is and when it is useful.**
 
-Like very fancy custom functions.
+. . .
+
+**Like very fancy custom functions:**
 
 ::: incremental
 
@@ -29,7 +19,7 @@ Like very fancy custom functions.
 
 . . . 
 
-Useful for creating variations of the same report:
+**Useful for creating variations of the same report:**
 
 -   country, state, county, or city
 
@@ -39,7 +29,9 @@ Useful for creating variations of the same report:
 
 . . .
 
-**Note**: we only covered reports, but you can also parameterize `revealjs` presentations! See this [Jumping Rivers blog post](https://www.jumpingrivers.com/blog/r-parameterised-presentations-quarto/) about it.
+::: callout-note
+We only covered reports, but you can also parameterize `revealjs` presentations! See this [Jumping Rivers blog post](https://www.jumpingrivers.com/blog/r-parameterised-presentations-quarto/) about it.
+:::
 
 ## Learning objective 2
 
@@ -104,7 +96,7 @@ purrr::pwalk(
 
 ## Learning objective 4
 
-**Generate multiple format outputs from the same template file with conditional content and conditional code execution.**
+**Generate multiple format outputs from the same template with conditional content and code.**
 
 ::: {.fragment}
 
@@ -125,11 +117,16 @@ purrr::pwalk(
 #### Code execution
 
 ```r
-# Get output format in setup chunk:
-format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+#| label: setup
 
-# Set chunk option:
+format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+```
+
+```r
+#| label: interactive-plot
 #| eval: !expr format == "html"
+
+# plotly code
 ```
 
 :::

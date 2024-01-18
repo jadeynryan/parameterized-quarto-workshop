@@ -138,7 +138,7 @@ quarto::quarto_render(
 ## Create dataframe to iterate over
 
 ```{r}
-#| code-line-numbers: "|2|4|5-9|10-13|"
+#| code-line-numbers: "|2|4|5-9|11-14|"
 pet_reports <- pets |>
   dplyr::distinct(pet_type, breed) |>   # Get distinct pet/breed combos
   dplyr::mutate(
@@ -257,6 +257,8 @@ format:
 format-links: [pdf]
 ---
 ```
+
+. . .
 
 **Or hide all links:**
 
