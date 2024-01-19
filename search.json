@@ -32,7 +32,7 @@
     "href": "slides/index.html#learning-objectives",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Learning objectives",
-    "text": "Learning objectives\n\n\nUnderstand what parameterized reporting is and when it is useful.\nLearn how to convert a report into a parameterized template.\nRender all variations of the report at once using {quarto} and {purrr}.\nGenerate multiple format outputs from the same template file with conditional content and conditional code execution."
+    "text": "Learning objectives\n\n\nUnderstand what parameterized reporting is and when it is useful.\n\n\n\nLearn how to convert a report into a parameterized template.\n\n\n\nRender all variations of the report at once using {quarto} and {purrr}.\n\n\n\nGenerate multiple format outputs from the same template file with conditional content and conditional code execution."
   },
   {
     "objectID": "slides/index.html#pipes",
@@ -88,7 +88,14 @@
     "href": "slides/index.html#convert-.rmd-.qmd",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Convert .Rmd → .qmd*",
-    "text": "Convert .Rmd → .qmd*\n\nChange file extension from .Rmd → .qmd\nChange YAML header (output: → format:)\nConvert chunk headers with knitr::convert_chunk_header()\n\n*If you want.\n\n\nResources for R Markdown users\nFrom R Markdown to Quarto workshop taught by Dr. Mine Çetinkaya-Rundel and Dr. Andrew Bray.\nQuarto FAQ for R Markdown Users\nTed Laderas’ talk Quarto/RMarkdown - What’s Different?"
+    "text": "Convert .Rmd → .qmd*\n\nChange file extension from .Rmd → .qmd\nChange YAML header (output: → format:)\nConvert chunk headers with knitr::convert_chunk_header()\n\n*If you want.\n\n\n\nR Markdown\n\n```{r, label=rmarkdown, eval=FALSE}\n# code\n```\n\n\nQuarto\n\n```{r}\n#| label: quarto\n#| eval: false\n\n# code\n```"
+  },
+  {
+    "objectID": "slides/index.html#resources-for-r-markdown-users",
+    "href": "slides/index.html#resources-for-r-markdown-users",
+    "title": "Parameterized Reporting with Quarto ",
+    "section": "Resources for R Markdown users",
+    "text": "Resources for R Markdown users\n\nFrom R Markdown to Quarto workshop taught by Dr. Mine Çetinkaya-Rundel and Dr. Andrew Bray.\nQuarto FAQ for R Markdown Users\nTed Laderas’ talk Quarto/RMarkdown - What’s Different?"
   },
   {
     "objectID": "slides/index.html#many-use-cases",
@@ -123,7 +130,7 @@
     "href": "slides/index.html#set-params-in-yaml-header",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Set params in YAML header",
-    "text": "Set params in YAML header\n\n---\ntitle: \"Swiss Cats\"                 # Metadata\nformat:                             # Set format types\n  html: default                                     \n  docx: default                           \nparams:                             # Set default parameter key-value pairs\n  fave_breed: \"Snowshoe\"                                \n---\n    \nReport content goes here.           # Write content\n\n\nYour default params key-value pairs must be found in your dataset."
+    "text": "Set params in YAML header\n\n---\ntitle: \"Swiss Cats\"                 # Metadata\nformat:                             # Set format types\n  html: default                                     \n  docx: default                           \nparams:                             # Set default parameter key-value pairs\n  fave_breed: \"Snowshoe\"                                \n---\n    \nReport content goes here.           # Write content\n\n\n\n\n\n\n\n\nImportant\n\n\nYour default params key-value pairs must be found in your dataset."
   },
   {
     "objectID": "slides/index.html#access-params",
@@ -137,7 +144,7 @@
     "href": "slides/index.html#replace-hard-coded-values-with-params",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Replace hard-coded values with params",
-    "text": "Replace hard-coded values with params\n\n\nUse inline R code to replace hard-coded markdown values.\nCtrl + F to find and replace values in code.\nUse paste() for plot and table titles and labels."
+    "text": "Replace hard-coded values with params\nCtrl + F to find where to replace hard-coded values with params\n\n\nUse inline R code for markdown\n\nText textity text **`r params$___`**.\n\n\n\n\nUse paste() for plot and table titles and labels\n\n# ggplot code +\nlabs(title = paste(params$fave_breed, \"population\"))"
   },
   {
     "objectID": "slides/index.html#multiple-ways-to-render",
@@ -151,7 +158,7 @@
     "href": "slides/index.html#render-all-538-reports",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Render all 538 reports",
-    "text": "Render all 538 reports\nOne HTML report for each cat breed and each dog breed.\n\n📊 Data👷🏼‍♂️ Manual 1👷🏻‍♀️ Manual 2⚡ Programatically\n\n\n\npets &lt;- readr::read_rds(here::here(\"data\", \"pets.RDS\"))\n\npets |&gt;\n  dplyr::distinct(pet_type, breed) |&gt;\n  dplyr::count(pet_type) |&gt;\n  janitor::adorn_totals()\n\n\n\n\n\npet_type\nn\n\n\n\n\ncats\n104\n\n\ndogs\n434\n\n\nTotal\n538\n\n\n\n\n\n\n\n\n\nChange the default params in the YAML.\nRender button in RStudio or Ctrl+Shift+K keyboard shortcut.\nChange the file name to add the parameter.\noutput-file: YAML option doesn’t seem to work with inline R code.\nRepeat 537 times.\n\n\n\n\nquarto::quarto_render(\n  input = here::here(\"ex-2-quarto-render.qmd\"),\n  output_file = \"dogs-affenpinscher-report.html\",\n  execute_params = list(\n    pet_type = \"dogs\",\n    fave_breed = \"Affenpinscher\"))\n\nquarto::quarto_render(\n  input = here::here(\"ex-2-quarto-render.qmd\"),\n  output_file = \"dogs-afghan-hound-report.html\",\n  execute_params = list(\n    pet_type = \"dogs\",\n    fave_breed = \"Afghan Hound\"))\n\nquarto::quarto_render(\n  input = here::here(\"ex-2-quarto-render.qmd\"),\n  output_file = \"dogs-aidi-chien-de-montagne-de-l-atlas-report.html\",\n  execute_params = list(\n    pet_type = \"dogs\",\n    fave_breed = \"Aidi Chien De Montagne De L Atlas\"))\n\nquarto::quarto_render(\n  input = here::here(\"ex-2-quarto-render.qmd\"),\n  output_file = \"dogs-akita-report.html\",\n  execute_params = list(\n    pet_type = \"dogs\",\n    fave_breed = \"Akita\"))\n\n# + 534 more times... \n\n\n\nCreate a dataframe with three columns that match quarto_render() args:\n\noutput_format: file type (html, revealjs, pdf, docx, etc.)\noutput_file: file name with extension\nexecute_params: named list of parameters\n\nMap over each row:\n\npurrr::pwalk(dataframe, quarto_render, quarto_render_args)"
+    "text": "Render all 538 reports\nOne HTML report for each cat breed and each dog breed.\n\n📊 Data👷🏼‍♂️ Manual 1👷🏻‍♀️ Manual 2⚡ Programatically\n\n\n\npets &lt;- readr::read_rds(here::here(\"data\", \"pets.RDS\"))\n\npets |&gt;\n  dplyr::distinct(pet_type, breed) |&gt;\n  dplyr::count(pet_type) |&gt;\n  janitor::adorn_totals()\n\n\n\n\n\npet_type\nn\n\n\n\n\ncats\n104\n\n\ndogs\n434\n\n\nTotal\n538\n\n\n\n\n\n\n\n\n\nChange the default params in the YAML.\nRender button in RStudio or Ctrl + Shift + K keyboard shortcut.\nChange the file name to add the parameter.\noutput-file: YAML option doesn’t seem to work with inline R code.\nRepeat 537 times.\n\n\n\n\nquarto::quarto_render(\n  input = here::here(\"ex-2-quarto-render.qmd\"),\n  output_file = \"dogs-affenpinscher-report.html\",\n  execute_params = list(\n    pet_type = \"dogs\",\n    fave_breed = \"Affenpinscher\"))\n\nquarto::quarto_render(\n  input = here::here(\"ex-2-quarto-render.qmd\"),\n  output_file = \"dogs-afghan-hound-report.html\",\n  execute_params = list(\n    pet_type = \"dogs\",\n    fave_breed = \"Afghan Hound\"))\n\nquarto::quarto_render(\n  input = here::here(\"ex-2-quarto-render.qmd\"),\n  output_file = \"dogs-aidi-chien-de-montagne-de-l-atlas-report.html\",\n  execute_params = list(\n    pet_type = \"dogs\",\n    fave_breed = \"Aidi Chien De Montagne De L Atlas\"))\n\nquarto::quarto_render(\n  input = here::here(\"ex-2-quarto-render.qmd\"),\n  output_file = \"dogs-akita-report.html\",\n  execute_params = list(\n    pet_type = \"dogs\",\n    fave_breed = \"Akita\"))\n\n# + 534 more times... \n\n\n\nCreate a dataframe with three columns that match quarto_render() args:\n\noutput_format: file type (html, revealjs, pdf, docx, etc.)\noutput_file: file name with extension\nexecute_params: named list of parameters\n\nMap over each row:\n\npurrr::pwalk(dataframe, quarto_render, quarto_render_args)"
   },
   {
     "objectID": "slides/index.html#create-dataframe-to-iterate-over",
@@ -207,14 +214,14 @@
     "href": "slides/index.html#control-content-visibility",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Control content visibility",
-    "text": "Control content visibility\nSpecial .content-visible and .content-hidden classes can be applied to:\nDivs\n::: {.content-visible when-format=\"html\"}\n\nWill only appear in HTML.\n\n:::\n\nNon-executable code\n```{.python .content-visible when-format=\"html\"}\n# code shown only in HTML\n2 + 2\n```\n\n\nSpans\nSome text\n[in HTML.]{.content-visible when-format=\"html\"}\n[in PDF.]{.content-visible when-format=\"pdf\"}\n\nExamples from Conditional Content Quarto docs"
+    "text": "Control content visibility\nSpecial .content-visible and .content-hidden classes with when-format=\"___\" and unless-format=\"___\" attributes can be applied to:\n\nDivsNon-executable codeSpans\n\n\n::: {.content-visible when-format=\"html\"}\n\nWill only appear in HTML.\n\n:::\n\n\n```{.python .content-visible when-format=\"html\"}\n# code shown only in HTML\n2 + 2\n```\n\n\nSome text\n[in HTML.]{.content-visible when-format=\"html\"}\n[in PDF.]{.content-visible when-format=\"pdf\"}\n\n\n\n\nExamples from Conditional Content Quarto docs"
   },
   {
     "objectID": "slides/index.html#useful-for-staticinteractive-features",
     "href": "slides/index.html#useful-for-staticinteractive-features",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Useful for static/interactive features",
-    "text": "Useful for static/interactive features\nPairs well with {{&lt; include &gt;}} shortcodes to re-use content without copying/pasting.\nUse an underscore (_) prefix for included files so they are automatically ignored by a Quarto render of a project (Includes Quarto Docs).\n\nStaticInteractive\n\n\nUse .content-visible unless-format=\"html\"\n:::: {.content-visible unless-format=\"html\"}\n\n## Cats\n\n{{&lt; include _cats.qmd &gt;}}\n\n## Dogs\n\n{{&lt; include _dogs.qmd &gt;}}\n\n::::\n\n\nUse .content-visible when-format=\"html\"\n:::: {.content-visible when-format=\"html\"}\n::: panel-tabset\n\n## Cats\n\n{{&lt; include _cats.qmd &gt;}}\n\n## Dogs\n\n{{&lt; include _dogs.qmd &gt;}}\n\n:::\n::::"
+    "text": "Useful for static/interactive features\nPairs well with {{&lt; include &gt;}} shortcodes to re-use content without copying/pasting.\nUse an underscore (_) prefix for included files so they are automatically ignored by a Quarto render of a project (Includes Quarto Docs).\n\n\nStaticInteractive\n\n\nUse .content-visible unless-format=\"html\"\n:::: {.content-visible unless-format=\"html\"}\n\n## Cats\n\n{{&lt; include _cats.qmd &gt;}}\n\n## Dogs\n\n{{&lt; include _dogs.qmd &gt;}}\n\n::::\n\n\nUse .content-visible when-format=\"html\"\n:::: {.content-visible when-format=\"html\"}\n::: panel-tabset\n\n## Cats\n\n{{&lt; include _cats.qmd &gt;}}\n\n## Dogs\n\n{{&lt; include _dogs.qmd &gt;}}\n\n:::\n::::"
   },
   {
     "objectID": "slides/index.html#conditional-code-execution",
@@ -263,7 +270,7 @@
     "href": "slides/index.html#learning-objective-4",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Learning objective 4",
-    "text": "Learning objective 4\nGenerate multiple format outputs from the same template with conditional content and code.\n\n\nContent visibility\n\n{.content-visible when-format=“___“}\n{.content-visible unless-format=“___“}\n{.content-hidden unless-format=“___“}\n{.content-hidden unless-format=“___“}\n\n\n\n\nCode execution\n#| label: setup\n\nformat &lt;- knitr::opts_knit$get(\"rmarkdown.pandoc.to\")\n#| label: interactive-plot\n#| eval: !expr format == \"html\"\n\n# plotly code"
+    "text": "Learning objective 4\nGenerate multiple format outputs from the same template with conditional content and code.\n\n\nContent visibility\n\n\n\n{.content-visible when-format=“___“}\n{.content-visible unless-format=“___“}\n\n\n\n{.content-hidden unless-format=“___“}\n{.content-hidden unless-format=“___“}\n\n\n\n\n\n\nCode execution\n#| label: setup\n\nformat &lt;- knitr::opts_knit$get(\"rmarkdown.pandoc.to\")\n#| label: interactive-plot\n#| eval: !expr format == \"html\"\n\n# plotly code\n#| label: static-plot\n#| eval: !expr format %in% c(\"pdf\", \"docx\")\n\n# ggplot2 code"
   },
   {
     "objectID": "slides/index.html#thank-you",

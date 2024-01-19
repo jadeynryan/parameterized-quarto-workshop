@@ -476,11 +476,11 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <ol type="1">
 <li><p>Raise/lower your hand on Zoom.</p></li>
 <li><p>Use your favorite reaction.</p></li>
-<li><p>💬 <strong>Chat</strong>: share your name, where you’re calling in from, and one thing you’ve made that you’re proud of.</p></li>
+<li><p>💬 <strong>Chat</strong>: share your name, where you’re calling from, and one thing you’ve made that you’re proud of.</p></li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_00c305da" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_d490dc3e" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -491,10 +491,19 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <h2>Learning objectives</h2>
 <div>
 <ol type="1">
-<li class="fragment"><p>Understand what parameterized reporting is and when it is useful.</p></li>
-<li class="fragment"><p>Learn how to convert a report into a parameterized template.</p></li>
-<li class="fragment"><p>Render all variations of the report at once using <a href="https://quarto-dev.github.io/quarto-r/">{quarto}</a> and <a href="https://purrr.tidyverse.org/">{purrr}</a>.</p></li>
-<li class="fragment"><p>Generate multiple format outputs from the same template file with conditional content and conditional code execution.</p></li>
+<li class="fragment">Understand what parameterized reporting is and when it is useful.</li>
+</ol>
+<p><br></p>
+<ol start="2" type="1">
+<li class="fragment">Learn how to convert a report into a parameterized template.</li>
+</ol>
+<p><br></p>
+<ol start="3" type="1">
+<li class="fragment">Render all variations of the report at once using <a href="https://quarto-dev.github.io/quarto-r/">{quarto}</a> and <a href="https://purrr.tidyverse.org/">{purrr}</a>.</li>
+</ol>
+<p><br></p>
+<ol start="4" type="1">
+<li class="fragment">Generate multiple format outputs from the same template file with conditional content and conditional code execution.</li>
 </ol>
 </div>
 </section></section>
@@ -671,13 +680,36 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <li>Convert chunk headers with <code>knitr::convert_chunk_header()</code></li>
 </ol>
 <p><em>*If you want.</em></p>
-<p><br></p>
 <div class="fragment">
-<p><strong>Resources for R Markdown users</strong></p>
-<p><a href="https://quarto.org/docs/blog/posts/2023-12-05-asa-traveling-courses/">From R Markdown to Quarto workshop</a> taught by Dr.&nbsp;Mine Çetinkaya-Rundel and Dr.&nbsp;Andrew Bray.</p>
-<p><a href="https://quarto.org/docs/faq/rmarkdown.html">Quarto FAQ for R Markdown Users</a></p>
-<p>Ted Laderas’ talk <a href="https://laderast.github.io/qmd_rmd">Quarto/RMarkdown - What’s Different?</a></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>R Markdown</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1"></a><span class="in">```{r, label=rmarkdown, eval=FALSE}</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co"># code</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div><div class="column" style="width:50%;">
+<p><strong>Quarto</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#| label: quarto</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#| eval: false</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co"># code</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="resources-for-r-markdown-users" class="slide level2">
+<h2>Resources for R Markdown users</h2>
+<ul>
+<li><p><a href="https://quarto.org/docs/blog/posts/2023-12-05-asa-traveling-courses/">From R Markdown to Quarto workshop</a> taught by Dr.&nbsp;Mine Çetinkaya-Rundel and Dr.&nbsp;Andrew Bray.</p></li>
+<li><p><a href="https://quarto.org/docs/faq/rmarkdown.html">Quarto FAQ for R Markdown Users</a></p></li>
+<li><p>Ted Laderas’ talk <a href="https://laderast.github.io/qmd_rmd">Quarto/RMarkdown - What’s Different?</a></p></li>
+</ul>
 </section></section>
 <section>
 <section id="parameterized-reports" class="title-slide slide level1 section center">
@@ -690,28 +722,28 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <div class="column" style="width:25%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="images/ocean-floor.png" class="lightbox" data-gallery="examples" title="RStudio R Markdown parameterized report project for mapping ocean floors."><img data-src="images/ocean-floor.png" alt="RStudio R Markdown parameterized report project for mapping ocean floors."></a></p>
+<p><a href="images/ocean-floor.png" class="lightbox" title="RStudio R Markdown parameterized report project for mapping ocean floors." data-gallery="examples"><img data-src="images/ocean-floor.png" alt="RStudio R Markdown parameterized report project for mapping ocean floors."></a></p>
 </figure>
 </div>
 <p><a href="https://rmarkdown.rstudio.com/lesson-6.html">Ocean floor maps</a></p>
 </div><div class="column" style="width:25%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="images/urban-institute.png" class="lightbox" data-gallery="examples" title="Report for Alabama spending with text and plots generated from parameterized R Markdown."><img data-src="images/urban-institute.png" alt="Report for Alabama spending with text and plots generated from parameterized R Markdown."></a></p>
+<p><a href="images/urban-institute.png" class="lightbox" title="Report for Alabama spending with text and plots generated from parameterized R Markdown." data-gallery="examples"><img data-src="images/urban-institute.png" alt="Report for Alabama spending with text and plots generated from parameterized R Markdown."></a></p>
 </figure>
 </div>
 <p><a href="https://book.rwithoutstatistics.com/parameterized-reports-chapter.html">Fiscal briefs</a></p>
 </div><div class="column" style="width:25%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="images/driver-quality.png" class="lightbox" data-gallery="examples" title="Report for Alaska driver quality with text, plot, and table generated from parameterized RMarkdown."><img data-src="images/driver-quality.png" alt="Report for Alaska driver quality with text, plot, and table generated from parameterized RMarkdown."></a></p>
+<p><a href="images/driver-quality.png" class="lightbox" title="Report for Alaska driver quality with text, plot, and table generated from parameterized RMarkdown." data-gallery="examples"><img data-src="images/driver-quality.png" alt="Report for Alaska driver quality with text, plot, and table generated from parameterized RMarkdown."></a></p>
 </figure>
 </div>
 <p><a href="https://urban-institute.medium.com/iterated-fact-sheets-with-r-markdown-d685eb4eafce">Bad drivers</a></p>
 </div><div class="column" style="width:25%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="images/soils-report.png" class="lightbox" data-gallery="examples" title="HTML report for soil health survey participant, generated from a parameterized Quarto report."><img data-src="images/soils-report.png" alt="HTML report for soil health survey participant, generated from a parameterized Quarto report."></a></p>
+<p><a href="images/soils-report.png" class="lightbox" title="HTML report for soil health survey participant, generated from a parameterized Quarto report." data-gallery="examples"><img data-src="images/soils-report.png" alt="HTML report for soil health survey participant, generated from a parameterized Quarto report."></a></p>
 </figure>
 </div>
 <p><a href="https://wa-department-of-agriculture.github.io/soils/">Soil health</a></p>
@@ -793,6 +825,7 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <section>
 <section id="exercise-1" class="title-slide slide level1 exercise center">
 <h1>💪🏼 Exercise 1</h1>
+<p><strong>Explore a report without parameters and see where we could add them.</strong></p>
 <ol type="1">
 <li><p>Open <code>ex-1-swiss-cats.qmd</code>.</p></li>
 <li><p>Click the <img data-src="https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png" style="vertical-align:middle;" alt="Quarto render button in RStudio" width="49"> <strong>Render</strong> button.</p></li>
@@ -802,7 +835,7 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_547533cf" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_61af6978" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -812,19 +845,31 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <section id="set-params-in-yaml-header" class="slide level2">
 <h2>Set <code>params</code> in YAML header</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="2|3-5|6-8|11"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1"></a><span class="pp">---</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Swiss Cats"</span><span class="co">                 # Metadata</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">format</span><span class="kw">:</span><span class="co">                             # Set format types</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> default                                     </span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default                           </span></span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="fu">params</span><span class="kw">:</span><span class="co">                             # Set default parameter key-value pairs</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="at">  </span><span class="fu">fave_breed</span><span class="kw">:</span><span class="at"> </span><span class="st">"Snowshoe"</span><span class="at">                                </span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="pp">---</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a><span class="at">    </span></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="at">Report content goes here.</span><span class="co">           # Write content</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="2|3-5|6-8|11"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1"></a><span class="pp">---</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Swiss Cats"</span><span class="co">                 # Metadata</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="fu">format</span><span class="kw">:</span><span class="co">                             # Set format types</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> default                                     </span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default                           </span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="fu">params</span><span class="kw">:</span><span class="co">                             # Set default parameter key-value pairs</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="at">  </span><span class="fu">fave_breed</span><span class="kw">:</span><span class="at"> </span><span class="st">"Snowshoe"</span><span class="at">                                </span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="pp">---</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="at">    </span></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="at">Report content goes here.</span><span class="co">           # Write content</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
-<p><strong>Your default <code>params</code> key-value pairs must be found in your dataset.</strong></p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Your default <code>params</code> key-value pairs must be found in your dataset.</p>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="access-params" class="slide level2">
@@ -833,7 +878,7 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <div class="fragment">
 <p><code>params</code> object is a list.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">str</span>(params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">str</span>(params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 1
  $ fave_breed: chr "Snowshoe"</code></pre>
@@ -844,7 +889,7 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <div class="fragment">
 <p>Access with <code>$</code> notation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>params<span class="sc">$</span>fave_breed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>params<span class="sc">$</span>fave_breed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Snowshoe"</code></pre>
 </div>
@@ -854,27 +899,33 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <div class="fragment">
 <p>For inline code in YAML or report content, enclose the expression in <code>`r `</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1"></a>My favorite cat breed is the **`r params$fave_breed`**.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1"></a>My favorite cat breed is the **`r params$fave_breed`**.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>My favorite cat breed is the <strong>Snowshoe</strong>.</p>
 </div>
 </section>
 <section id="replace-hard-coded-values-with-params" class="slide level2">
 <h2>Replace hard-coded values with <code>params</code></h2>
-<div>
-<ol type="1">
-<li class="fragment"><p>Use inline R code to replace hard-coded markdown values.</p></li>
-<li class="fragment"><p><code>Ctrl</code> + <code>F</code> to find and replace values in code.</p></li>
-<li class="fragment"><p>Use <code>paste()</code> for plot and table titles and labels.</p></li>
-</ol>
+<p><code>Ctrl</code> + <code>F</code> to find where to replace hard-coded values with <code>params</code></p>
+<div class="fragment">
+<p><br></p>
+<p>Use inline R code for markdown</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1"></a>Text textity text **`r params$___`**.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<p><br></p>
+<p>Use <code>paste()</code> for plot and table titles and labels</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># ggplot code +</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(params<span class="sc">$</span>fave_breed, <span class="st">"population"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </section></section>
 <section id="demo" class="title-slide slide level1 demo center">
 <h1>💃🏻 Demo</h1>
 <p>Modify <code>ex-1-swiss-cats.qmd</code> to add <code>pet_type</code> and <code>fave_breed</code> parameters.</p>
-<div class="fragment">
-<p>✅ Completed demo (and starting point for next exercise) <code>ex-2-swiss-pets.qmd</code>.</p>
-</div>
 </section>
 
 <section>
@@ -893,18 +944,18 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="ex">quarto</span> render ex-2-quarto-render.qmd <span class="at">-P</span> pet_type:<span class="st">'cats'</span> <span class="at">-P</span> fave_breed:<span class="st">'Snowshoe'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="ex">quarto</span> render ex-2-quarto-render.qmd <span class="at">-P</span> pet_type:<span class="st">'cats'</span> <span class="at">-P</span> fave_breed:<span class="st">'Snowshoe'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li class="fragment"><p>✨ <code>quarto::quarto_render()</code></p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Console or R script</strong></pre>
 </div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(</span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="at">input =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"ex-2-quarto-render.qmd"</span>), <span class="co"># Input Quarto file</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>  <span class="at">execute_params =</span> <span class="fu">list</span>(                        <span class="co"># Named list of params</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>    <span class="at">pet_type =</span> <span class="st">"cats"</span>,</span>
-<span id="cb13-5"><a href="#cb13-5"></a>    <span class="at">fave_breed =</span> <span class="st">"Snowshoe"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(</span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="at">input =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"ex-2-quarto-render.qmd"</span>), <span class="co"># Input Quarto file</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="at">execute_params =</span> <span class="fu">list</span>(                        <span class="co"># Named list of params</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>    <span class="at">pet_type =</span> <span class="st">"cats"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5"></a>    <span class="at">fave_breed =</span> <span class="st">"Snowshoe"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ol>
 </div>
@@ -912,24 +963,26 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <section>
 <section id="exercise-2" class="title-slide slide level1 exercise center">
 <h1>💪🏼 Exercise 2</h1>
-<ol type="1">
-<li><p>Render <code>ex-2-quarto-render.qmd</code> with the <strong>Render</strong> button or keyboard shortcut <code>Ctrl</code> + <code>Shift</code> + <code>K</code>.</p></li>
-<li><p>Take a look at the unique pet breeds.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>pets <span class="sc">|&gt;</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>   dplyr<span class="sc">::</span><span class="fu">distinct</span>(pet_type, breed) <span class="sc">|&gt;</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a>   <span class="fu">View</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Change the default parameters in the YAML to your favorite pet type and breed. Re-render.</p></li>
-<li><p>Render with <code>quarto::quarto_render()</code> and different parameters:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a> quarto<span class="sc">::</span><span class="fu">quarto_render</span>(</span>
-<span id="cb15-2"><a href="#cb15-2"></a>   <span class="at">input =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"ex-2-quarto-render.qmd"</span>),</span>
-<span id="cb15-3"><a href="#cb15-3"></a>   <span class="at">execute_params =</span> <span class="fu">list</span>(</span>
-<span id="cb15-4"><a href="#cb15-4"></a>     <span class="at">pet_type =</span> <span class="st">"___"</span>,</span>
-<span id="cb15-5"><a href="#cb15-5"></a>     <span class="at">fave_breed =</span> <span class="st">"___"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<p><strong>Change parameters and render using 1) Render button and 2) <code>quarto_render()</code>.</strong></p>
+<ol start="0" type="1">
+<li><p>Look at the unique pet breeds and pick your favorite.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Run in the console</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>pets <span class="sc">|&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>   dplyr<span class="sc">::</span><span class="fu">distinct</span>(pet_type, breed) <span class="sc">|&gt;</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a>   <span class="fu">View</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>In <code>ex-2-quarto-render.qmd</code> Change the default parameters in the YAML to your favorite pet type and breed. Render using the button.</p></li>
+<li><p>Now render with <code>quarto::quarto_render()</code>. Replace <code>___</code> with different parameters:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Run in the console</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a> quarto<span class="sc">::</span><span class="fu">quarto_render</span>(</span>
+<span id="cb19-3"><a href="#cb19-3"></a>   <span class="at">input =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"ex-2-quarto-render.qmd"</span>),</span>
+<span id="cb19-4"><a href="#cb19-4"></a>   <span class="at">execute_params =</span> <span class="fu">list</span>(</span>
+<span id="cb19-5"><a href="#cb19-5"></a>     <span class="at">pet_type =</span> <span class="st">"___"</span>,</span>
+<span id="cb19-6"><a href="#cb19-6"></a>     <span class="at">fave_breed =</span> <span class="st">"___"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>💬 <strong>Chat</strong>: what’s your fave breed and do you have any pets? 🐈🐕🐹🐍🐠</p></li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_61ce2dc3" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_381d78f9" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -944,12 +997,12 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>pets <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"pets.RDS"</span>))</span>
-<span id="cb16-2"><a href="#cb16-2"></a></span>
-<span id="cb16-3"><a href="#cb16-3"></a>pets <span class="sc">|&gt;</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(pet_type, breed) <span class="sc">|&gt;</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a>  dplyr<span class="sc">::</span><span class="fu">count</span>(pet_type) <span class="sc">|&gt;</span></span>
-<span id="cb16-6"><a href="#cb16-6"></a>  janitor<span class="sc">::</span><span class="fu">adorn_totals</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>pets <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"pets.RDS"</span>))</span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a>pets <span class="sc">|&gt;</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(pet_type, breed) <span class="sc">|&gt;</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a>  dplyr<span class="sc">::</span><span class="fu">count</span>(pet_type) <span class="sc">|&gt;</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a>  janitor<span class="sc">::</span><span class="fu">adorn_totals</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table>
@@ -981,7 +1034,7 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <div id="tabset-1-2">
 <ol type="1">
 <li><p>Change the default <code>params</code> in the YAML.</p></li>
-<li><p><strong>Render</strong> button in RStudio or <code>Ctrl</code>+<code>Shift</code>+<code>K</code> keyboard shortcut.</p></li>
+<li><p><strong>Render</strong> button in RStudio or <code>Ctrl</code> + <code>Shift</code> + <code>K</code> keyboard shortcut.</p></li>
 <li><p>Change the file name to add the parameter.</p>
 <p><code>output-file:</code> YAML option doesn’t seem to work with inline R code.</p></li>
 <li><p>Repeat 537 times.</p></li>
@@ -989,35 +1042,35 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 </div>
 <div id="tabset-1-3">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(</span>
-<span id="cb17-2"><a href="#cb17-2"></a>  <span class="at">input =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"ex-2-quarto-render.qmd"</span>),</span>
-<span id="cb17-3"><a href="#cb17-3"></a>  <span class="at">output_file =</span> <span class="st">"dogs-affenpinscher-report.html"</span>,</span>
-<span id="cb17-4"><a href="#cb17-4"></a>  <span class="at">execute_params =</span> <span class="fu">list</span>(</span>
-<span id="cb17-5"><a href="#cb17-5"></a>    <span class="at">pet_type =</span> <span class="st">"dogs"</span>,</span>
-<span id="cb17-6"><a href="#cb17-6"></a>    <span class="at">fave_breed =</span> <span class="st">"Affenpinscher"</span>))</span>
-<span id="cb17-7"><a href="#cb17-7"></a></span>
-<span id="cb17-8"><a href="#cb17-8"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(</span>
-<span id="cb17-9"><a href="#cb17-9"></a>  <span class="at">input =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"ex-2-quarto-render.qmd"</span>),</span>
-<span id="cb17-10"><a href="#cb17-10"></a>  <span class="at">output_file =</span> <span class="st">"dogs-afghan-hound-report.html"</span>,</span>
-<span id="cb17-11"><a href="#cb17-11"></a>  <span class="at">execute_params =</span> <span class="fu">list</span>(</span>
-<span id="cb17-12"><a href="#cb17-12"></a>    <span class="at">pet_type =</span> <span class="st">"dogs"</span>,</span>
-<span id="cb17-13"><a href="#cb17-13"></a>    <span class="at">fave_breed =</span> <span class="st">"Afghan Hound"</span>))</span>
-<span id="cb17-14"><a href="#cb17-14"></a></span>
-<span id="cb17-15"><a href="#cb17-15"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(</span>
-<span id="cb17-16"><a href="#cb17-16"></a>  <span class="at">input =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"ex-2-quarto-render.qmd"</span>),</span>
-<span id="cb17-17"><a href="#cb17-17"></a>  <span class="at">output_file =</span> <span class="st">"dogs-aidi-chien-de-montagne-de-l-atlas-report.html"</span>,</span>
-<span id="cb17-18"><a href="#cb17-18"></a>  <span class="at">execute_params =</span> <span class="fu">list</span>(</span>
-<span id="cb17-19"><a href="#cb17-19"></a>    <span class="at">pet_type =</span> <span class="st">"dogs"</span>,</span>
-<span id="cb17-20"><a href="#cb17-20"></a>    <span class="at">fave_breed =</span> <span class="st">"Aidi Chien De Montagne De L Atlas"</span>))</span>
-<span id="cb17-21"><a href="#cb17-21"></a></span>
-<span id="cb17-22"><a href="#cb17-22"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(</span>
-<span id="cb17-23"><a href="#cb17-23"></a>  <span class="at">input =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"ex-2-quarto-render.qmd"</span>),</span>
-<span id="cb17-24"><a href="#cb17-24"></a>  <span class="at">output_file =</span> <span class="st">"dogs-akita-report.html"</span>,</span>
-<span id="cb17-25"><a href="#cb17-25"></a>  <span class="at">execute_params =</span> <span class="fu">list</span>(</span>
-<span id="cb17-26"><a href="#cb17-26"></a>    <span class="at">pet_type =</span> <span class="st">"dogs"</span>,</span>
-<span id="cb17-27"><a href="#cb17-27"></a>    <span class="at">fave_breed =</span> <span class="st">"Akita"</span>))</span>
-<span id="cb17-28"><a href="#cb17-28"></a></span>
-<span id="cb17-29"><a href="#cb17-29"></a><span class="co"># + 534 more times... </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(</span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="at">input =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"ex-2-quarto-render.qmd"</span>),</span>
+<span id="cb21-3"><a href="#cb21-3"></a>  <span class="at">output_file =</span> <span class="st">"dogs-affenpinscher-report.html"</span>,</span>
+<span id="cb21-4"><a href="#cb21-4"></a>  <span class="at">execute_params =</span> <span class="fu">list</span>(</span>
+<span id="cb21-5"><a href="#cb21-5"></a>    <span class="at">pet_type =</span> <span class="st">"dogs"</span>,</span>
+<span id="cb21-6"><a href="#cb21-6"></a>    <span class="at">fave_breed =</span> <span class="st">"Affenpinscher"</span>))</span>
+<span id="cb21-7"><a href="#cb21-7"></a></span>
+<span id="cb21-8"><a href="#cb21-8"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(</span>
+<span id="cb21-9"><a href="#cb21-9"></a>  <span class="at">input =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"ex-2-quarto-render.qmd"</span>),</span>
+<span id="cb21-10"><a href="#cb21-10"></a>  <span class="at">output_file =</span> <span class="st">"dogs-afghan-hound-report.html"</span>,</span>
+<span id="cb21-11"><a href="#cb21-11"></a>  <span class="at">execute_params =</span> <span class="fu">list</span>(</span>
+<span id="cb21-12"><a href="#cb21-12"></a>    <span class="at">pet_type =</span> <span class="st">"dogs"</span>,</span>
+<span id="cb21-13"><a href="#cb21-13"></a>    <span class="at">fave_breed =</span> <span class="st">"Afghan Hound"</span>))</span>
+<span id="cb21-14"><a href="#cb21-14"></a></span>
+<span id="cb21-15"><a href="#cb21-15"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(</span>
+<span id="cb21-16"><a href="#cb21-16"></a>  <span class="at">input =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"ex-2-quarto-render.qmd"</span>),</span>
+<span id="cb21-17"><a href="#cb21-17"></a>  <span class="at">output_file =</span> <span class="st">"dogs-aidi-chien-de-montagne-de-l-atlas-report.html"</span>,</span>
+<span id="cb21-18"><a href="#cb21-18"></a>  <span class="at">execute_params =</span> <span class="fu">list</span>(</span>
+<span id="cb21-19"><a href="#cb21-19"></a>    <span class="at">pet_type =</span> <span class="st">"dogs"</span>,</span>
+<span id="cb21-20"><a href="#cb21-20"></a>    <span class="at">fave_breed =</span> <span class="st">"Aidi Chien De Montagne De L Atlas"</span>))</span>
+<span id="cb21-21"><a href="#cb21-21"></a></span>
+<span id="cb21-22"><a href="#cb21-22"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(</span>
+<span id="cb21-23"><a href="#cb21-23"></a>  <span class="at">input =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"ex-2-quarto-render.qmd"</span>),</span>
+<span id="cb21-24"><a href="#cb21-24"></a>  <span class="at">output_file =</span> <span class="st">"dogs-akita-report.html"</span>,</span>
+<span id="cb21-25"><a href="#cb21-25"></a>  <span class="at">execute_params =</span> <span class="fu">list</span>(</span>
+<span id="cb21-26"><a href="#cb21-26"></a>    <span class="at">pet_type =</span> <span class="st">"dogs"</span>,</span>
+<span id="cb21-27"><a href="#cb21-27"></a>    <span class="at">fave_breed =</span> <span class="st">"Akita"</span>))</span>
+<span id="cb21-28"><a href="#cb21-28"></a></span>
+<span id="cb21-29"><a href="#cb21-29"></a><span class="co"># + 534 more times... </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-1-4">
@@ -1038,30 +1091,30 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <section id="create-dataframe-to-iterate-over" class="slide level2">
 <h2>Create dataframe to iterate over</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="|2|4|5-9|11-14|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>pet_reports <span class="ot">&lt;-</span> pets <span class="sc">|&gt;</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(pet_type, breed) <span class="sc">|&gt;</span>   <span class="co"># Get distinct pet/breed combos</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
-<span id="cb18-4"><a href="#cb18-4"></a>    <span class="at">output_format =</span> <span class="st">"html"</span>,             <span class="co"># Make output_format column</span></span>
-<span id="cb18-5"><a href="#cb18-5"></a>    <span class="at">output_file =</span> <span class="fu">paste</span>(                <span class="co"># Make output_file column</span></span>
-<span id="cb18-6"><a href="#cb18-6"></a>      <span class="fu">tolower</span>(pet_type),</span>
-<span id="cb18-7"><a href="#cb18-7"></a>      <span class="fu">tolower</span>(<span class="fu">gsub</span>(<span class="st">" "</span>, <span class="st">"-"</span>, breed)),</span>
-<span id="cb18-8"><a href="#cb18-8"></a>      <span class="st">"report.html"</span>,</span>
-<span id="cb18-9"><a href="#cb18-9"></a>      <span class="at">sep =</span> <span class="st">"-"</span></span>
-<span id="cb18-10"><a href="#cb18-10"></a>    ),</span>
-<span id="cb18-11"><a href="#cb18-11"></a>    <span class="at">execute_params =</span> purrr<span class="sc">::</span><span class="fu">map2</span>(       <span class="co"># Make execute_params column</span></span>
-<span id="cb18-12"><a href="#cb18-12"></a>      pet_type,</span>
-<span id="cb18-13"><a href="#cb18-13"></a>      breed,</span>
-<span id="cb18-14"><a href="#cb18-14"></a>      \(pet_type, breed) <span class="fu">list</span>(<span class="at">pet_type =</span> pet_type, <span class="at">breed =</span> breed)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="|2|4|5-9|11-14|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>pet_reports <span class="ot">&lt;-</span> pets <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(pet_type, breed) <span class="sc">|&gt;</span>   <span class="co"># Get distinct pet/breed combos</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb22-4"><a href="#cb22-4"></a>    <span class="at">output_format =</span> <span class="st">"html"</span>,             <span class="co"># Make output_format column</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a>    <span class="at">output_file =</span> <span class="fu">paste</span>(                <span class="co"># Make output_file column</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a>      <span class="fu">tolower</span>(pet_type),</span>
+<span id="cb22-7"><a href="#cb22-7"></a>      <span class="fu">tolower</span>(<span class="fu">gsub</span>(<span class="st">" "</span>, <span class="st">"-"</span>, breed)),</span>
+<span id="cb22-8"><a href="#cb22-8"></a>      <span class="st">"report.html"</span>,</span>
+<span id="cb22-9"><a href="#cb22-9"></a>      <span class="at">sep =</span> <span class="st">"-"</span></span>
+<span id="cb22-10"><a href="#cb22-10"></a>    ),</span>
+<span id="cb22-11"><a href="#cb22-11"></a>    <span class="at">execute_params =</span> purrr<span class="sc">::</span><span class="fu">map2</span>(       <span class="co"># Make execute_params column</span></span>
+<span id="cb22-12"><a href="#cb22-12"></a>      pet_type,</span>
+<span id="cb22-13"><a href="#cb22-13"></a>      breed,</span>
+<span id="cb22-14"><a href="#cb22-14"></a>      \(pet_type, breed) <span class="fu">list</span>(<span class="at">pet_type =</span> pet_type, <span class="at">breed =</span> breed)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="subset-to-first-2-catdog-breeds" class="slide level2">
 <h2>Subset to first 2 cat/dog breeds</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>pet_reports_subset <span class="ot">&lt;-</span> pet_reports <span class="sc">|&gt;</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>  dplyr<span class="sc">::</span><span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">2</span>, <span class="at">by =</span> pet_type) <span class="sc">|&gt;</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(output_file, execute_params)</span>
-<span id="cb19-4"><a href="#cb19-4"></a></span>
-<span id="cb19-5"><a href="#cb19-5"></a>pet_reports_subset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>pet_reports_subset <span class="ot">&lt;-</span> pet_reports <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>  dplyr<span class="sc">::</span><span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">2</span>, <span class="at">by =</span> pet_type) <span class="sc">|&gt;</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(output_file, execute_params)</span>
+<span id="cb23-4"><a href="#cb23-4"></a></span>
+<span id="cb23-5"><a href="#cb23-5"></a>pet_reports_subset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table>
@@ -1107,12 +1160,12 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="|2|3|4|5|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>purrr<span class="sc">::</span><span class="fu">pwalk</span>(</span>
-<span id="cb20-2"><a href="#cb20-2"></a>  <span class="at">.l =</span> pet_reports_subset,                      <span class="co"># Dataframe to map over</span></span>
-<span id="cb20-3"><a href="#cb20-3"></a>  <span class="at">.f =</span> quarto<span class="sc">::</span>quarto_render,                   <span class="co"># Function we are applying to each row</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a>  <span class="at">input =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"ex-2-quarto-render.qmd"</span>), <span class="co"># Arguments of .f</span></span>
-<span id="cb20-5"><a href="#cb20-5"></a>  <span class="at">.progress =</span> <span class="cn">TRUE</span>                              <span class="co"># Show a progress bar :)</span></span>
-<span id="cb20-6"><a href="#cb20-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24" data-code-line-numbers="|2|3|4|5|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>purrr<span class="sc">::</span><span class="fu">pwalk</span>(</span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="at">.l =</span> pet_reports_subset,                      <span class="co"># Dataframe to map over</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="at">.f =</span> quarto<span class="sc">::</span>quarto_render,                   <span class="co"># Function we are applying to each row</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="at">input =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"ex-2-quarto-render.qmd"</span>), <span class="co"># Arguments of .f</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="at">.progress =</span> <span class="cn">TRUE</span>                              <span class="co"># Show a progress bar :)</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1145,13 +1198,13 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <section id="multiple-formats" class="slide level2">
 <h2>Multiple formats</h2>
 <p>Add to the <code>format:</code> YAML option to render additional output formats from the same <code>.qmd</code> file.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb21-1"><a href="#cb21-1"></a><span class="pp">---</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb21-4"><a href="#cb21-4"></a><span class="at">    </span><span class="fu">embed-resources</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">   # Makes the report self-contained</span></span>
-<span id="cb21-5"><a href="#cb21-5"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span><span class="at"> default</span><span class="co">              # If not using any additional format options,</span></span>
-<span id="cb21-6"><a href="#cb21-6"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span><span class="co">             # set value to `default`  </span></span>
-<span id="cb21-7"><a href="#cb21-7"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb25-1"><a href="#cb25-1"></a><span class="pp">---</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="at">    </span><span class="fu">embed-resources</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">   # Makes the report self-contained</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span><span class="at"> default</span><span class="co">              # If not using any additional format options,</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span><span class="co">             # set value to `default`  </span></span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p><strong>Note</strong>: the Render button now has a dropdown!</p>
 <p><img data-src="images/render-button.png" style="width:60.0%" alt="Screenshot of Quarto file with the Render dropdown showing options for HTML, PDF, and MS Word formats."></p>
@@ -1167,40 +1220,45 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <h2>Format link options</h2>
 <p><strong>Choose which format links to include:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="7"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb22-1"><a href="#cb22-1"></a><span class="pp">---</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="at">    </span><span class="fu">embed-resources</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span><span class="at"> default</span></span>
-<span id="cb22-6"><a href="#cb22-6"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span></span>
-<span id="cb22-7"><a href="#cb22-7"></a><span class="fu">format-links</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">pdf</span><span class="kw">]</span></span>
-<span id="cb22-8"><a href="#cb22-8"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26" data-code-line-numbers="7"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb26-1"><a href="#cb26-1"></a><span class="pp">---</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="at">    </span><span class="fu">embed-resources</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span><span class="at"> default</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="fu">format-links</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">pdf</span><span class="kw">]</span></span>
+<span id="cb26-8"><a href="#cb26-8"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p><strong>Or hide all links:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23" data-code-line-numbers="7"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb23-1"><a href="#cb23-1"></a><span class="pp">---</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb23-4"><a href="#cb23-4"></a><span class="at">    </span><span class="fu">embed-resources</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb23-5"><a href="#cb23-5"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span><span class="at"> default</span></span>
-<span id="cb23-6"><a href="#cb23-6"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span></span>
-<span id="cb23-7"><a href="#cb23-7"></a><span class="fu">format-links</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb23-8"><a href="#cb23-8"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27" data-code-line-numbers="7"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb27-1"><a href="#cb27-1"></a><span class="pp">---</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="at">    </span><span class="fu">embed-resources</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span><span class="at"> default</span></span>
+<span id="cb27-6"><a href="#cb27-6"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span></span>
+<span id="cb27-7"><a href="#cb27-7"></a><span class="fu">format-links</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb27-8"><a href="#cb27-8"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section></section>
 <section id="exercise-3" class="title-slide slide level1 exercise center">
 <h1>💪🏼 Exercise 3</h1>
+<p><strong>Add another format by updating 1) the YAML, 2) the <code>pet_reports</code> dataframe, and 3) the <code>regexp</code> argument.</strong></p>
 <ol type="1">
-<li><p>Modify the YAML of <code>ex-3-render-reports.qmd</code> to add a new format (pdf and/or docx).</p></li>
-<li><p>Modify <code>ex-3-render-reports.R</code> to add this new format to the dataframe used in <code>pwalk()</code>.</p></li>
-<li><p>Modify the <code>regexp</code> argument in <code>dir_ls()</code> to also include “.html” OR “.docx” OR “.pdf”. Hint: <code>|</code> can be used as the <code>OR</code> operator.</p></li>
+<li><p>Modify the YAML of <code>ex-3-render-reports.qmd</code> to add a new format (<a href="https://quarto.org/docs/output-formats/all-formats.html">see all the options</a>).</p></li>
+<li><p>Modify <code>ex-3-render-reports.R</code> to:</p>
+<ul>
+<li><p>Add this new format to the <code>pet_reports</code> dataframe used in <code>pwalk()</code></p></li>
+<li><p>Include “.html” OR “.docx” OR “.pdf” in the <code>regexp</code> argument in <code>dir_ls()</code></p></li>
+<li><p>Hint: use the <code>|</code> pipe <code>OR</code> operator.</p></li>
+</ul></li>
 <li><p>💬 <strong>Chat</strong>: were any of these functions from the <code>.qmd</code> or <code>.R</code> files new to you?</p></li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_ee7707c8" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_96616398" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1215,66 +1273,72 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 </section>
 <section id="control-content-visibility" class="slide level2">
 <h2>Control content visibility</h2>
-<p>Special <code>.content-visible</code> and <code>.content-hidden</code> classes can be applied to:</p>
-<p><strong>Divs</strong></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1"></a>::: {.content-visible when-format="html"}</span>
-<span id="cb24-2"><a href="#cb24-2"></a></span>
-<span id="cb24-3"><a href="#cb24-3"></a>Will only appear in HTML.</span>
-<span id="cb24-4"><a href="#cb24-4"></a></span>
-<span id="cb24-5"><a href="#cb24-5"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<p><strong>Non-executable code</strong></p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1"></a><span class="in">```{.python .content-visible when-format="html"}</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a><span class="co"># code shown only in HTML</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span></span>
-<span id="cb25-4"><a href="#cb25-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Special <code>.content-visible</code> and <code>.content-hidden</code> classes with <code>when-format="___"</code> and <code>unless-format="___"</code> attributes can be applied to:</p>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Divs</a></li><li><a href="#tabset-2-2">Non-executable code</a></li><li><a href="#tabset-2-3">Spans</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1"></a>::: {.content-visible when-format="html"}</span>
+<span id="cb28-2"><a href="#cb28-2"></a></span>
+<span id="cb28-3"><a href="#cb28-3"></a>Will only appear in HTML.</span>
+<span id="cb28-4"><a href="#cb28-4"></a></span>
+<span id="cb28-5"><a href="#cb28-5"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="fragment">
-<p><strong>Spans</strong></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1"></a>Some text</span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="co">[</span><span class="ot">in HTML.</span><span class="co">]</span>{.content-visible when-format="html"}</span>
-<span id="cb26-3"><a href="#cb26-3"></a><span class="co">[</span><span class="ot">in PDF.</span><span class="co">]</span>{.content-visible when-format="pdf"}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-2-2">
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1"></a><span class="in">```{.python .content-visible when-format="html"}</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="co"># code shown only in HTML</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-3">
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1"></a>Some text</span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="co">[</span><span class="ot">in HTML.</span><span class="co">]</span>{.content-visible when-format="html"}</span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="co">[</span><span class="ot">in PDF.</span><span class="co">]</span>{.content-visible when-format="pdf"}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 <div class="footer">
 <p>Examples from <a href="https://quarto.org/docs/authoring/conditional.html">Conditional Content Quarto docs</a></p>
-</div>
 </div>
 </section>
 <section id="useful-for-staticinteractive-features" class="slide level2">
 <h2>Useful for static/interactive features</h2>
 <p>Pairs well with <code>{{&lt; include &gt;}}</code> shortcodes to re-use content without copying/pasting.</p>
 <p>Use an underscore (_) prefix for included files so they are automatically ignored by a Quarto render of a project (<a href="https://quarto.org/docs/authoring/includes.html">Includes Quarto Docs</a>).</p>
+<div class="fragment">
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Static</a></li><li><a href="#tabset-2-2">Interactive</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Static</a></li><li><a href="#tabset-3-2">Interactive</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1">
+<div id="tabset-3-1">
 <p>Use <code>.content-visible unless-format="html"</code></p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1"></a>:::: {.content-visible unless-format="html"}</span>
-<span id="cb27-2"><a href="#cb27-2"></a></span>
-<span id="cb27-3"><a href="#cb27-3"></a><span class="fu">## Cats</span></span>
-<span id="cb27-4"><a href="#cb27-4"></a></span>
-<span id="cb27-5"><a href="#cb27-5"></a>{{&lt; include _cats.qmd &gt;}}</span>
-<span id="cb27-6"><a href="#cb27-6"></a></span>
-<span id="cb27-7"><a href="#cb27-7"></a><span class="fu">## Dogs</span></span>
-<span id="cb27-8"><a href="#cb27-8"></a></span>
-<span id="cb27-9"><a href="#cb27-9"></a>{{&lt; include _dogs.qmd &gt;}}</span>
-<span id="cb27-10"><a href="#cb27-10"></a></span>
-<span id="cb27-11"><a href="#cb27-11"></a>::::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1"></a>:::: {.content-visible unless-format="html"}</span>
+<span id="cb31-2"><a href="#cb31-2"></a></span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="fu">## Cats</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a></span>
+<span id="cb31-5"><a href="#cb31-5"></a>{{&lt; include _cats.qmd &gt;}}</span>
+<span id="cb31-6"><a href="#cb31-6"></a></span>
+<span id="cb31-7"><a href="#cb31-7"></a><span class="fu">## Dogs</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a></span>
+<span id="cb31-9"><a href="#cb31-9"></a>{{&lt; include _dogs.qmd &gt;}}</span>
+<span id="cb31-10"><a href="#cb31-10"></a></span>
+<span id="cb31-11"><a href="#cb31-11"></a>::::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-2-2">
+<div id="tabset-3-2">
 <p>Use <code>.content-visible when-format="html"</code></p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1"></a>:::: {.content-visible when-format="html"}</span>
-<span id="cb28-2"><a href="#cb28-2"></a>::: panel-tabset</span>
-<span id="cb28-3"><a href="#cb28-3"></a></span>
-<span id="cb28-4"><a href="#cb28-4"></a><span class="fu">## Cats</span></span>
-<span id="cb28-5"><a href="#cb28-5"></a></span>
-<span id="cb28-6"><a href="#cb28-6"></a>{{&lt; include _cats.qmd &gt;}}</span>
-<span id="cb28-7"><a href="#cb28-7"></a></span>
-<span id="cb28-8"><a href="#cb28-8"></a><span class="fu">## Dogs</span></span>
-<span id="cb28-9"><a href="#cb28-9"></a></span>
-<span id="cb28-10"><a href="#cb28-10"></a>{{&lt; include _dogs.qmd &gt;}}</span>
-<span id="cb28-11"><a href="#cb28-11"></a></span>
-<span id="cb28-12"><a href="#cb28-12"></a>:::</span>
-<span id="cb28-13"><a href="#cb28-13"></a>::::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb32-1"><a href="#cb32-1"></a>:::: {.content-visible when-format="html"}</span>
+<span id="cb32-2"><a href="#cb32-2"></a>::: panel-tabset</span>
+<span id="cb32-3"><a href="#cb32-3"></a></span>
+<span id="cb32-4"><a href="#cb32-4"></a><span class="fu">## Cats</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a></span>
+<span id="cb32-6"><a href="#cb32-6"></a>{{&lt; include _cats.qmd &gt;}}</span>
+<span id="cb32-7"><a href="#cb32-7"></a></span>
+<span id="cb32-8"><a href="#cb32-8"></a><span class="fu">## Dogs</span></span>
+<span id="cb32-9"><a href="#cb32-9"></a></span>
+<span id="cb32-10"><a href="#cb32-10"></a>{{&lt; include _dogs.qmd &gt;}}</span>
+<span id="cb32-11"><a href="#cb32-11"></a></span>
+<span id="cb32-12"><a href="#cb32-12"></a>:::</span>
+<span id="cb32-13"><a href="#cb32-13"></a>::::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -1282,22 +1346,30 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <section>
 <section id="exercise-4" class="title-slide slide level1 exercise center">
 <h1>💪🏼 Exercise 4</h1>
+<p><strong>Use conditional content divs to control when tabsets are shown.</strong></p>
 <ol type="1">
-<li>Modify <code>ex-4-conditional-content.qmd</code> so that the <code>panel-tabset</code> is only used for HTML documents by filling in the <code>{.content-</code>} class.</li>
+<li>Modify <code>ex-4-conditional-content.qmd</code> so that the <code>panel-tabset</code> visible for .html reports and hidden for .pdf &amp; .docx reports.</li>
 </ol>
 <p>Options:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li><p>{.content-visible when-format=“___“}</p></li>
 <li><p>{.content-visible unless-format=“___“}</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
 <li><p>{.content-hidden unless-format=“___“}</p></li>
 <li><p>{.content-hidden unless-format=“___“}</p></li>
 </ul>
+</div>
+</div>
 <ol start="2" type="1">
 <li>💬 <strong>Chat</strong>: what other kinds of content might you want to make visible for only a certain format?</li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_8f4e34dc" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_b95b1571" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1319,35 +1391,35 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <p>Include in the setup chunk of your <code>.qmd</code> file.</p>
 <p>Get the format of the Pandoc output:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a><span class="co">#| label: setup</span></span>
-<span id="cb29-3"><a href="#cb29-3"></a></span>
-<span id="cb29-4"><a href="#cb29-4"></a><span class="co"># Get output format</span></span>
-<span id="cb29-5"><a href="#cb29-5"></a>format <span class="ot">&lt;-</span> knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">get</span>(<span class="st">"rmarkdown.pandoc.to"</span>)</span>
-<span id="cb29-6"><a href="#cb29-6"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb33-1"><a href="#cb33-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="co">#| label: setup</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a></span>
+<span id="cb33-4"><a href="#cb33-4"></a><span class="co"># Get output format</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a>format <span class="ot">&lt;-</span> knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">get</span>(<span class="st">"rmarkdown.pandoc.to"</span>)</span>
+<span id="cb33-6"><a href="#cb33-6"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="use-eval-expr-chunk-option" class="slide level2">
 <h2>Use <code>eval: !expr</code> chunk option</h2>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Static plot</a></li><li><a href="#tabset-3-2">Interactive plot</a></li></ul>
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Static plot</a></li><li><a href="#tabset-4-2">Interactive plot</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1">
+<div id="tabset-4-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a><span class="co">#| eval: !expr format %in% c("latex", "docx")</span></span>
-<span id="cb30-3"><a href="#cb30-3"></a></span>
-<span id="cb30-4"><a href="#cb30-4"></a><span class="co"># code to create static {ggplot2}</span></span>
-<span id="cb30-5"><a href="#cb30-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb34-1"><a href="#cb34-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="co">#| eval: !expr format %in% c("latex", "docx")</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a></span>
+<span id="cb34-4"><a href="#cb34-4"></a><span class="co"># code to create static {ggplot2}</span></span>
+<span id="cb34-5"><a href="#cb34-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-3-2">
+<div id="tabset-4-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1"></a><span class="in">```{r}</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="co">#| eval: !expr format == "html"</span></span>
-<span id="cb31-3"><a href="#cb31-3"></a></span>
-<span id="cb31-4"><a href="#cb31-4"></a><span class="co"># code to create interactive {plotly}</span></span>
-<span id="cb31-5"><a href="#cb31-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="co">#| eval: !expr format == "html"</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a></span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="co"># code to create interactive {plotly}</span></span>
+<span id="cb35-5"><a href="#cb35-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1355,7 +1427,7 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <p><br></p>
 <div class="fragment">
 <p><strong>Can even use <code>params</code> in <code>!expr</code>:</strong></p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co">#| eval: !expr params$fave_breed == "Snowshoe"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co">#| eval: !expr params$fave_breed == "Snowshoe"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p><br></p>
@@ -1364,19 +1436,29 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 </section></section>
 <section id="exercise-5" class="title-slide slide level1 exercise center">
 <h1>💪🏼 Exercise 5</h1>
+<p><strong>Set a <code>format</code> variable and use it in the <code>eval:</code> chunk option to execute <code>ggplot2</code> code only for static reports and <code>plotly</code> code only for HTML documents.</strong></p>
 <ol type="1">
-<li><p>Modify <code>ex-5-conditional-code.qmd</code> so that code chunks for <code>ggplot2</code> are executed only for PDF or MS Word documents and code chunks for <code>plotly</code> are executed only for HTML documents.</p>
-<p>Hints:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># Get output format in setup chunk:</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a>format <span class="ot">&lt;-</span> knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">get</span>(<span class="st">"rmarkdown.pandoc.to"</span>)</span>
-<span id="cb33-3"><a href="#cb33-3"></a></span>
-<span id="cb33-4"><a href="#cb33-4"></a><span class="co"># Set chunk option:</span></span>
-<span id="cb33-5"><a href="#cb33-5"></a><span class="co">#| eval: !expr format == "html"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>💬 <strong>Chat</strong>: what is something you learned from this workshop that you’re excited to apply to your own reports and projects?</p></li>
+<li>Modify <code>ex-5-conditional-code.qmd</code>, get the output format in a variable in the <code>setup</code> chunk.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Get output format in setup chunk:</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a>format <span class="ot">&lt;-</span> knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">get</span>(<span class="st">"rmarkdown.pandoc.to"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Set chunk options for <code>ggplot</code> code blocks and <code>plotly</code> code blocks.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># Insert in chunk options:</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="co">#| eval: !expr format == "html"</span></span>
+<span id="cb38-3"><a href="#cb38-3"></a><span class="co"># or</span></span>
+<span id="cb38-4"><a href="#cb38-4"></a><span class="co">#| eval: !expr format %in% c("latex", "docx")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>💬 <strong>Chat</strong>: what is something you learned from this workshop that you’re excited to apply to your own reports and projects?</li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_3996404b" data-update-every="1" tabindex="0" style="top:0;right:0;">
+<div class="countdown" id="timer_e1b2f33f" data-update-every="1" tabindex="0" style="top:0;right:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1436,19 +1518,19 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <ul>
 <li class="fragment"><p><strong>YAML</strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb34-1"><a href="#cb34-1"></a><span class="pp">---</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Report about `r params$pet_type`"</span></span>
-<span id="cb34-3"><a href="#cb34-3"></a><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb34-4"><a href="#cb34-4"></a><span class="at">  </span><span class="fu">pet_type</span><span class="kw">:</span><span class="at"> </span><span class="st">"cats"</span></span>
-<span id="cb34-5"><a href="#cb34-5"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb39-1"><a href="#cb39-1"></a><span class="pp">---</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Report about `r params$pet_type`"</span></span>
+<span id="cb39-3"><a href="#cb39-3"></a><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb39-4"><a href="#cb39-4"></a><span class="at">  </span><span class="fu">pet_type</span><span class="kw">:</span><span class="at"> </span><span class="st">"cats"</span></span>
+<span id="cb39-5"><a href="#cb39-5"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li class="fragment"><p><strong>Inline R code</strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1"></a>I like **`r params$pet_type`**.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb40-1"><a href="#cb40-1"></a>I like **`r params$pet_type`**.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li class="fragment"><p><strong>Code chunks</strong>:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>pets <span class="sc">|&gt;</span> </span>
-<span id="cb36-2"><a href="#cb36-2"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(pet_type <span class="sc">==</span> params<span class="sc">$</span>pet_type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>pets <span class="sc">|&gt;</span> </span>
+<span id="cb41-2"><a href="#cb41-2"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(pet_type <span class="sc">==</span> params<span class="sc">$</span>pet_type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 </ul>
 </div>
@@ -1461,7 +1543,7 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <li>Get all unique parameter combinations into a dataframe:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">head</span>(pet_reports, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">head</span>(pet_reports, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table>
@@ -1501,12 +1583,12 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <li>Use dataframe in <code>pwalk()</code> with <code>quarto_render()</code>:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>purrr<span class="sc">::</span><span class="fu">pwalk</span>(</span>
-<span id="cb38-2"><a href="#cb38-2"></a>  pet_reports,</span>
-<span id="cb38-3"><a href="#cb38-3"></a>  quarto<span class="sc">::</span>quarto_render,</span>
-<span id="cb38-4"><a href="#cb38-4"></a>  <span class="at">input =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"pet_template.qmd"</span>),</span>
-<span id="cb38-5"><a href="#cb38-5"></a>  <span class="at">.progress =</span> <span class="cn">TRUE</span></span>
-<span id="cb38-6"><a href="#cb38-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>purrr<span class="sc">::</span><span class="fu">pwalk</span>(</span>
+<span id="cb43-2"><a href="#cb43-2"></a>  pet_reports,</span>
+<span id="cb43-3"><a href="#cb43-3"></a>  quarto<span class="sc">::</span>quarto_render,</span>
+<span id="cb43-4"><a href="#cb43-4"></a>  <span class="at">input =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"pet_template.qmd"</span>),</span>
+<span id="cb43-5"><a href="#cb43-5"></a>  <span class="at">.progress =</span> <span class="cn">TRUE</span></span>
+<span id="cb43-6"><a href="#cb43-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1516,23 +1598,34 @@ Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC
 <div class="fragment">
 <!-- -->
 <h4 id="content-visibility">Content visibility</h4>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li><p>{.content-visible when-format=“___“}</p></li>
 <li><p>{.content-visible unless-format=“___“}</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
 <li><p>{.content-hidden unless-format=“___“}</p></li>
 <li><p>{.content-hidden unless-format=“___“}</p></li>
 </ul>
 </div>
+</div>
+</div>
 <div class="fragment">
 <!-- -->
 <h4 id="code-execution">Code execution</h4>
-<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co">#| label: setup</span></span>
-<span id="cb39-2"><a href="#cb39-2"></a></span>
-<span id="cb39-3"><a href="#cb39-3"></a>format <span class="ot">&lt;-</span> knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">get</span>(<span class="st">"rmarkdown.pandoc.to"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="co">#| label: interactive-plot</span></span>
-<span id="cb40-2"><a href="#cb40-2"></a><span class="co">#| eval: !expr format == "html"</span></span>
-<span id="cb40-3"><a href="#cb40-3"></a></span>
-<span id="cb40-4"><a href="#cb40-4"></a><span class="co"># plotly code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="co">#| label: setup</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a></span>
+<span id="cb44-3"><a href="#cb44-3"></a>format <span class="ot">&lt;-</span> knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">get</span>(<span class="st">"rmarkdown.pandoc.to"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="co">#| label: interactive-plot</span></span>
+<span id="cb45-2"><a href="#cb45-2"></a><span class="co">#| eval: !expr format == "html"</span></span>
+<span id="cb45-3"><a href="#cb45-3"></a></span>
+<span id="cb45-4"><a href="#cb45-4"></a><span class="co"># plotly code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="co">#| label: static-plot</span></span>
+<span id="cb46-2"><a href="#cb46-2"></a><span class="co">#| eval: !expr format %in% c("pdf", "docx")</span></span>
+<span id="cb46-3"><a href="#cb46-3"></a></span>
+<span id="cb46-4"><a href="#cb46-4"></a><span class="co"># ggplot2 code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="thank-you" class="slide level2">
