@@ -1,1 +1,1 @@
-Sitemap: https://jadeynryan.github.io/rladies-parameterized-quarto/sitemap.xml
+Sitemap: https://jadeynryan.github.io/parameterized-quarto-workshop/sitemap.xml

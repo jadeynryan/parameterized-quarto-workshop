@@ -442,7 +442,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp("https:\/\/jadeynryan\.github\.io\/rladies-parameterized-quarto\/");
+      var filterRegex = new RegExp("https:\/\/jadeynryan\.github\.io\/parameterized-quarto-workshop\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
