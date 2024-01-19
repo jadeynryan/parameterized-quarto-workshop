@@ -78,7 +78,7 @@ Photo credit: [@leslie.mmichel](https://twitter.com/leslie_mmichel)
 
 2. Use your favorite reaction.
 
-3. 💬 **Chat**: share your name, where you're calling in from, and one thing you’ve made that you’re proud of.
+3. 💬 **Chat**: share your name, where you're calling from, and one thing you’ve made that you’re proud of.
 
 ```{r}
 #| echo: false
@@ -90,9 +90,15 @@ countdown::countdown(minutes = 1, top = 0)
 ::: incremental
 1. Understand what parameterized reporting is and when it is useful.
 
+<br>
+
 2. Learn how to convert a report into a parameterized template.
 
+<br>
+
 3. Render all variations of the report at once using [{quarto}](https://quarto-dev.github.io/quarto-r/) and [{purrr}](https://purrr.tidyverse.org/). 
+
+<br>
 
 4. Generate multiple format outputs from the same template file with conditional content and conditional code execution.
 :::

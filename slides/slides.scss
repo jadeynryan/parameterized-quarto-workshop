@@ -45,6 +45,10 @@ $code-block-font-size: 0.8em;
 $linkColor: $orange-dark;
 $linkColorHover: darken( $linkColor, 20% );
 
+section.has-dark-background a, section.has-dark-background a:hover {
+    color: #bfe4fe !important;
+}
+
 // Text selection
 $selectionBackgroundColor: $teal;
 $selectionColor: #fff;

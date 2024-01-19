@@ -72,14 +72,39 @@ No Quarto equivalent to .Rmd [Knit with Parameters GUI](https://bookdown.org/yih
 
 *\*If you want.*
 
-<br>
-
 . . .
 
-**Resources for R Markdown users**
+:::: {.columns}
+::: {.column width="50%"}
 
-[From R Markdown to Quarto workshop](https://quarto.org/docs/blog/posts/2023-12-05-asa-traveling-courses/) taught by Dr. Mine Çetinkaya-Rundel and Dr. Andrew Bray.
+**R Markdown**
 
-[Quarto FAQ for R Markdown Users](https://quarto.org/docs/faq/rmarkdown.html)
+```{r, label=rmarkdown, eval=FALSE}
+#| echo: fenced
+# code
+```
 
-Ted Laderas' talk [Quarto/RMarkdown - What's Different?](https://laderast.github.io/qmd_rmd)
+:::
+
+::: {.column width="50%"}
+
+**Quarto**
+
+```{r}
+#| label: quarto
+#| echo: fenced
+#| eval: false
+
+# code
+```
+
+:::
+::::
+
+## Resources for R Markdown users
+
+- [From R Markdown to Quarto workshop](https://quarto.org/docs/blog/posts/2023-12-05-asa-traveling-courses/) taught by Dr. Mine Çetinkaya-Rundel and Dr. Andrew Bray.
+
+- [Quarto FAQ for R Markdown Users](https://quarto.org/docs/faq/rmarkdown.html)
+
+- Ted Laderas' talk [Quarto/RMarkdown - What's Different?](https://laderast.github.io/qmd_rmd)

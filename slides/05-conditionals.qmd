@@ -7,9 +7,11 @@ execute:
 
 ## Control content visibility
 
-Special `.content-visible` and `.content-hidden` classes can be applied to:
+Special `.content-visible` and `.content-hidden` classes with `when-format="___"` and `unless-format="___"` attributes can be applied to:
 
-**Divs**
+::: panel-tabset
+
+## Divs
 
 ``` markdown
 ::: {.content-visible when-format="html"}
@@ -18,9 +20,8 @@ Will only appear in HTML.
 
 :::
 ```
-. . .
 
-**Non-executable code**
+## Non-executable code
 
 ```` markdown
 ```{.python .content-visible when-format="html"}
@@ -29,15 +30,14 @@ Will only appear in HTML.
 ```
 ````
 
-. . .
-
-**Spans**
+## Spans
 
 ``` markdown
 Some text
 [in HTML.]{.content-visible when-format="html"}
 [in PDF.]{.content-visible when-format="pdf"}
 ```
+:::
 
 ::: footer
 Examples from [Conditional Content Quarto docs](https://quarto.org/docs/authoring/conditional.html)
@@ -48,6 +48,8 @@ Examples from [Conditional Content Quarto docs](https://quarto.org/docs/authorin
 Pairs well with `{{< include >}}` shortcodes to re-use content without copying/pasting.
 
 Use an underscore (_) prefix for included files so they are automatically ignored by a Quarto render of a project ([Includes Quarto Docs](https://quarto.org/docs/authoring/includes.html)).
+
+. . .
 
 ::::: panel-tabset
 
@@ -92,17 +94,25 @@ Use `.content-visible when-format="html"`
 
 # 💪🏼 Exercise 4 {.exercise}
 
-1. Modify `ex-4-conditional-content.qmd` so that the `panel-tabset` is only used for HTML documents by filling in the `{.content-`} class.
+**Use conditional content divs to control when tabsets are shown.**
+
+1. Modify `ex-4-conditional-content.qmd` so that the `panel-tabset` visible for .html reports and hidden for .pdf & .docx reports.
 
 Options:
 
+:::: {.columns}
+::: {.column width="50%"}
  - {.content-visible when-format="___"}
  
  - {.content-visible unless-format="___"}
- 
+:::
+
+::: {.column width="50%"}
  - {.content-hidden unless-format="___"}
  
  - {.content-hidden unless-format="___"}
+:::
+::::
  
  2. 💬 **Chat**: what other kinds of content might you want to make visible for only a certain format?
 
@@ -179,16 +189,23 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 
 # 💪🏼 Exercise 5 {.exercise}
 
-1. Modify `ex-5-conditional-code.qmd` so that code chunks for `ggplot2` are executed only for PDF or MS Word documents and code chunks for `plotly` are executed only for HTML documents.
+**Set a `format` variable and use it in the `eval:` chunk option to execute `ggplot2` code only for static reports and `plotly` code only for HTML documents.**
 
-    Hints:
-   ```r
-   # Get output format in setup chunk:
-   format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+1. Modify `ex-5-conditional-code.qmd`, get the output format in a variable in the `setup` chunk.
 
-   # Set chunk option:
-   #| eval: !expr format == "html"
-   ```
+```{r}
+# Get output format in setup chunk:
+format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+```
+
+2. Set chunk options for `ggplot` code blocks and `plotly` code blocks.
+
+```{r}
+# Insert in chunk options:
+#| eval: !expr format == "html"
+# or
+#| eval: !expr format %in% c("latex", "docx")
+```
 
 2. 💬 **Chat**: what is something you learned from this workshop that you're excited to apply to your own reports and projects?
 

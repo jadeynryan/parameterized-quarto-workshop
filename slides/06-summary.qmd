@@ -102,13 +102,19 @@ purrr::pwalk(
 
 #### Content visibility
 
-- {.content-visible when-format="___"}
+:::: {.columns}
+::: {.column width="50%"}
+ - {.content-visible when-format="___"}
+ 
+ - {.content-visible unless-format="___"}
+:::
 
-- {.content-visible unless-format="___"}
-
-- {.content-hidden unless-format="___"}
-
-- {.content-hidden unless-format="___"}
+::: {.column width="50%"}
+ - {.content-hidden unless-format="___"}
+ 
+ - {.content-hidden unless-format="___"}
+:::
+::::
 
 :::
 
@@ -127,6 +133,13 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 #| eval: !expr format == "html"
 
 # plotly code
+```
+
+```r
+#| label: static-plot
+#| eval: !expr format %in% c("pdf", "docx")
+
+# ggplot2 code
 ```
 
 :::

@@ -90,6 +90,8 @@ See [John Paul Helveston's blog post](https://www.jhelvy.com/posts/2023-02-28-pa
 
 # 💪🏼 Exercise 1 {.exercise}
 
+**Explore a report without parameters and see where we could add them.**
+
 1.  Open `ex-1-swiss-cats.qmd`.
 
 2.  Click the ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button.
@@ -123,7 +125,9 @@ Report content goes here.           # Write content
 
 . . .
 
-**Your default `params` key-value pairs must be found in your dataset.**
+::: callout-important
+Your default `params` key-value pairs must be found in your dataset.
+:::
 
 ## Access `params`
 
@@ -170,20 +174,31 @@ My favorite cat breed is the **`r params$fave_breed`**.
 
 ## Replace hard-coded values with `params`
 
-::: incremental
+`Ctrl` + `F` to find where to replace hard-coded values with `params`
 
-1.   Use inline R code to replace hard-coded markdown values. 
+. . .
 
-2.   `Ctrl` + `F` to find and replace values in code.
+<br>
 
-3.   Use `paste()` for plot and table titles and labels.
+Use inline R code for markdown
+    
+```{markdown}
+Text textity text **`r params$___`**.
+```
 
-:::
+. . .
+
+<br>
+
+Use `paste()` for plot and table titles and labels
+    
+```{r} 
+#| eval: false
+
+# ggplot code +
+labs(title = paste(params$fave_breed, "population"))
+```
 
 # 💃🏻 Demo {.demo}
 
 Modify `ex-1-swiss-cats.qmd` to add `pet_type` and `fave_breed` parameters.
-
-. . .
-
-✅ Completed demo (and starting point for next exercise) `ex-2-swiss-pets.qmd`.

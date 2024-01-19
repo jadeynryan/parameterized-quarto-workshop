@@ -26,28 +26,30 @@
 
 # 💪🏼 Exercise 2 {.exercise}
 
-1. Render `ex-2-quarto-render.qmd` with the **Render** button or keyboard shortcut `Ctrl` + `Shift` + `K`.
+**Change parameters and render using 1) Render button and 2) `quarto_render()`.**
 
-2. Take a look at the unique pet breeds.
+0. Look at the unique pet breeds and pick your favorite.
    ```r
+   # Run in the console
    pets |>
       dplyr::distinct(pet_type, breed) |>
       View()
    ```
    
-3. Change the default parameters in the YAML to your favorite pet type and breed. Re-render.
+1. In `ex-2-quarto-render.qmd` Change the default parameters in the YAML to your favorite pet type and breed. Render using the button.
 
-4. Render with `quarto::quarto_render()` and different parameters:
+2. Now render with `quarto::quarto_render()`. Replace `___` with different parameters:
 
    ```r
+   # Run in the console
     quarto::quarto_render(
       input = here::here("ex-2-quarto-render.qmd"),
       execute_params = list(
         pet_type = "___",
-        fave_breed = "___")
+        fave_breed = "___"))
    ```
 
-5. 💬 **Chat**: what's your fave breed and do you have any pets? 🐈🐕🐹🐍🐠
+3. 💬 **Chat**: what's your fave breed and do you have any pets? 🐈🐕🐹🐍🐠
 
 ```{r}
 #| echo: false
@@ -75,7 +77,7 @@ pets |>
 
 1. Change the default `params` in the YAML.
 
-2. **Render** button in RStudio or `Ctrl`+`Shift`+`K` keyboard shortcut.
+2. **Render** button in RStudio or `Ctrl` + `Shift` + `K` keyboard shortcut.
 
 3. Change the file name to add the parameter.
     
@@ -273,11 +275,17 @@ format-links: false
 
 # 💪🏼 Exercise 3 {.exercise}
 
-1. Modify the YAML of `ex-3-render-reports.qmd` to add a new format (pdf and/or docx). 
-2. Modify `ex-3-render-reports.R` to add this new format to the dataframe used in `pwalk()`.
+**Add another format by updating 1) the YAML, 2) the `pet_reports` dataframe, and 3) the `regexp` argument.**
 
-3. Modify the `regexp` argument in `dir_ls()` to also include ".html" OR ".docx" OR ".pdf".
-   Hint: `|` can be used as the `OR` operator.
+1. Modify the YAML of `ex-3-render-reports.qmd` to add a new format ([see all the options](https://quarto.org/docs/output-formats/all-formats.html)).
+
+2. Modify `ex-3-render-reports.R` to:
+   
+   - Add this new format to the `pet_reports` dataframe used in `pwalk()`
+
+   - Include ".html" OR ".docx" OR ".pdf" in the `regexp` argument in `dir_ls()`
+   
+   - Hint: use the `|` pipe `OR` operator. 
 
 4. 💬 **Chat**: were any of these functions from the `.qmd` or `.R` files new to you?
 
