@@ -277,7 +277,7 @@
     "href": "slides/index.html#thank-you",
     "title": "Parameterized Reporting with Quarto ",
     "section": "Thank you!",
-    "text": "Thank you!\n\n\n🙏🏼 Please let me know how I did in this short survey\n\n🏡 Home for all workshop materials: https://jadeynryan.github.io/rladies-parameterized-quarto\n\n\nStay connected!\n jadeyryan.com\n @jadeynryan\n linkedin.com/in/jadey-ryan\n jadeynryan\n thecodingcats.etsy.com\n\n\n\n\n\nParameterized Reporting with Quarto bit.ly/rladies-parameterized-quarto-workshop"
+    "text": "Thank you!\n\n\n🙏🏼 Please let me know how I did in this short survey\n\n🏡 Home for all workshop materials: https://jadeyryan.quarto.pub/rladies-dc-quarto-params/\n\n\nStay connected!\n jadeyryan.com\n @jadeynryan\n linkedin.com/in/jadey-ryan\n jadeynryan\n thecodingcats.etsy.com\n\n\n\n\n\nParameterized Reporting with Quarto https://jadeyryan.quarto.pub/rladies-dc-quarto-params/"
   },
   {
     "objectID": "materials.html",
@@ -310,35 +310,35 @@
   {
     "objectID": "index.html#r-ladies-washington-dc-workshop",
     "href": "index.html#r-ladies-washington-dc-workshop",
-    "title": "Parameterized Reporting with Quarto",
+    "title": "Parameterized Reporting with Quarto: R-Ladies DC",
     "section": "R-Ladies Washington DC Workshop",
     "text": "R-Ladies Washington DC Workshop\n📆 January 18, 2024 | 6:30 pm - 8:30 pm EDT\n🏨 Virtual\n🆓 FREE with registration on Meetup\n🏡 Workshop website"
   },
   {
     "objectID": "index.html#abstract",
     "href": "index.html#abstract",
-    "title": "Parameterized Reporting with Quarto",
+    "title": "Parameterized Reporting with Quarto: R-Ladies DC",
     "section": "Abstract",
     "text": "Abstract\nTired of manually adjusting Quarto reports for different regions, time periods, or clients? Dreaming of using just one template to generate both interactive HTML and static Word/PDF versions of your reports?\nJoin our workshop to unlock the power of parameterized reporting with Quarto and leave with your own template and examples to modify for your own projects.\nGet a sneak preview of what you’ll learn by checking out the slides from my posit::conf(2023) talk.\nEveryone is welcome to attend. If you’re new to Quarto, we recommend watching Tom Mock’s excellent 2-hour introduction to Quarto."
   },
   {
     "objectID": "index.html#learning-objectives",
     "href": "index.html#learning-objectives",
-    "title": "Parameterized Reporting with Quarto",
+    "title": "Parameterized Reporting with Quarto: R-Ladies DC",
     "section": "Learning objectives",
     "text": "Learning objectives\n\nUnderstand what parameterized reporting is and when it is useful.\nLearn how to convert a report into a parameterized template.\nRender all variations of the report at once using {quarto} and {purrr}.\nGenerate multiple format outputs from the same template file with conditional content and conditional code execution."
   },
   {
     "objectID": "index.html#is-this-workshop-for-me",
     "href": "index.html#is-this-workshop-for-me",
-    "title": "Parameterized Reporting with Quarto",
+    "title": "Parameterized Reporting with Quarto: R-Ladies DC",
     "section": "Is this workshop for me?",
     "text": "Is this workshop for me?\nIf your answer to any of the following questions is “yes”, then this is the right workshop for you.\n\nDo you frequently report the same set of metrics, tables, or graphs for different groups?\nDo you want to stop combing through your source code to find and replace your hard-coded values each time you need to create a new variation of your report?\nDo you want to make your life easier and your reports more reproducible by parameterizing your reports?\n\nThe workshop is designed for those with some experience in R and R Markdown or Quarto. It will be assumed that participants can perform basic data manipulation and visualization. Experience with the {tidyverse} and the pipe operator (%&gt;% / |&gt;) is a major plus, but is not required."
   },
   {
     "objectID": "index.html#speaker",
     "href": "index.html#speaker",
-    "title": "Parameterized Reporting with Quarto",
+    "title": "Parameterized Reporting with Quarto: R-Ladies DC",
     "section": "Speaker",
     "text": "Speaker\n Jadey Ryan is a self-taught R enthusiast working in environmental data science for the Washington State Department of Agriculture. She is obsessed with cats, nature, R, and Quarto. This is her first time leading a workshop!"
   },
