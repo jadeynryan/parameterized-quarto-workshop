@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: 5971dfa1-fe76-41ff-b5db-37b30ae5067d
+      url: 'https://jadeyryan.quarto.pub/rladies-dc-quarto-params'

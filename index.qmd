@@ -1,5 +1,5 @@
 ---
-title: "Parameterized Reporting with Quarto"
+title: "Parameterized Reporting with Quarto: R-Ladies DC"
 ---
 
 ----
@@ -9,7 +9,7 @@ title: "Parameterized Reporting with Quarto"
 📆 January 18, 2024 | 6:30 pm - 8:30 pm EDT   
 🏨 Virtual  
 🆓 **FREE** with [registration on Meetup](https://www.meetup.com/rladies-dc/events/297344107/)  
-🏡 [Workshop website](https://jadeynryan.github.io/rladies-parameterized-quarto) 
+🏡 [Workshop website](https://jadeyryan.quarto.pub/rladies-dc-quarto-params/) 
 
 ----
 
