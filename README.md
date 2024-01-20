@@ -10,7 +10,7 @@ Upcoming and past offerings:
 
 📆 February 21, 2024 \| 4:30 pm - 6:30 pm GMT  
 🏨 Virtual  
-🆓 **FREE** with [registration]() Meetup registration link TBD
+🆓 **FREE** with [registration]() Meetup registration link TBD  
 🏡 [Workshop website](https://jadeyryan.quarto.pub/rladies-abuja-quarto-params)
 
 ### R-Ladies Washington DC Workshop
