@@ -6,7 +6,7 @@
 🏨 Virtual  
 🆓 **FREE** with
 [registration](https://www.meetup.com/rladies-dc/events/297344107/)  
-🏡 [Workshop website](https://jadeynryan.github.io/rladies-parameterized-quarto) 
+🏡 [Workshop website](https://jadeyryan.quarto.pub/rladies-dc-quarto-params)
 
 ------------------------------------------------------------------------
 
