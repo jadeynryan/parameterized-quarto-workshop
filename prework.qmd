@@ -4,7 +4,7 @@ title: "Pre-work"
 
 This workshop has five exercises for you to try. After the workshop, I encourage you to adapt the exercise template files and code to fit your own projects.
 
-There are three ways for you to participate. Please complete the pre-work for whichever way you'd like to follow along **before the workshop**.
+There are three ways for you to participate. Please complete the pre-work for whichever way you'd like to follow along **before the workshop**. Spinning up the Posit Cloud instance can take a few minutes. So can installing packages and downloading the exercises.
 
 ## Follow along in the Posit Cloud
 
@@ -44,11 +44,19 @@ As a more high-risk alternative, if you would like to try this out on your own c
 
     2. Save the document and check you are able to render it.
 
--   Get the project on your machine.
+-   Get the project on your machine. Fill in `destdir` with the location where you want to download the project. Delete that argument if you want it to default to your Desktop.
 
     ```{r}
     #| eval: false
 
     # install.packages("usethis")
-    usethis::use_course("https://github.com/jadeynryan/rladies-parameterized-quarto/raw/main/exercises/exercises.zip")
+    usethis::use_course(
+        "https://github.com/jadeynryan/parameterized-quarto-workshop/raw/main/exercises/exercises.zip",
+        destdir = "___")
     ```
+
+## Quarto and {purrr} {#sec-quarto-purrr}
+
+If you're new to Quarto, we recommend watching [Tom Mock's excellent 2-hour introduction to Quarto](https://www.youtube.com/watch?v=yvi5uXQMvu4).
+
+If you're new to {purrr}, we recommend watching this R-Ladies Baltimore presentation [*Make your R Code purr with purrr*](https://www.youtube.com/watch?v=IewsPpjKElc) and reviewing Jenny Bryan's [tutorial](https://jennybc.github.io/purrr-tutorial/) and [workshop](https://github.com/jennybc/row-oriented-workflows).

@@ -2,7 +2,6 @@ project:
   type: website
   render:
     - "*.qmd"
-    - "!exercises/exercises.Rmd"
     - "!slides/[0-9]*.qmd"
   preview:
     port: 3434
@@ -15,12 +14,12 @@ execute:
 
 website:
   page-navigation: true
-  title: "Parameterized Reporting with Quarto: R-Ladies DC"
-  description: "Homepage for the 2024 R-Ladies DC Parameterized Reports with Quarto Workshop"
-  site-url: "https://jadeyryan.quarto.pub/rladies-dc-quarto-params/"
+  title: "Parameterized Reporting with Quarto: R-Ladies Abuja"
+  description: "Homepage for the 2024 R-Ladies Abuja Parameterized Reports with Quarto Workshop"
+  site-url: "https://jadeyryan.quarto.pub/rladies-abuja-quarto-params/"
   favicon: "images/jr-logo-circle.webp"
 
-  repo-url: https://github.com/jadeynryan/rladies-parameterized-quarto
+  repo-url: https://github.com/jadeynryan/parameterized-quarto-workshop
   repo-actions: [source, edit, issue]
 
   page-footer:
@@ -39,7 +38,7 @@ website:
     type: dark
     tools:
       - icon: github
-        href: https://github.com/jadeynryan/rladies-parameterized-quarto
+        href: https://github.com/jadeynryan/parameterized-quarto-workshop
         text: GitHub
     contents:
      - href: index.qmd

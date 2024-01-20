@@ -1,10 +1,8 @@
 {
-  "hash": "6533348466def950c06219b4372cc4ab",
+  "hash": "3c7bfbc8dd4aabba8d45258eaddd3368",
   "result": {
-    "markdown": "---\ntitle: \"Materials\"\n---\n\n\n## Slides\n\n[View slides in full screen](/slides/index.html).\n\n\n```{=html}\n<iframe class=\"slides\" src=\"/slides/index.html\"></iframe>\n```\n\n\n## Recording\n\n\n## Exercises\n\n**Option 1: Posit Cloud**\n\n[bit.ly/rladies-parameterized-quarto](https://bit.ly/rladies-parameterized-quarto)\n\n**Option 2: Download locally**\n\n\n::: {.cell}\n\n```{.r .cell-code}\nusethis::use_course(\"https://github.com/jadeynryan/rladies-parameterized-quarto/raw/main/exercises/exercises.zip\")\n```\n:::\n",
-    "supporting": [
-      "materials_files"
-    ],
+    "markdown": "---\ntitle: \"Materials\"\n---\n\n\n## Slides\n\n[View slides in full screen](/slides/index.html).\n\n\n```{=html}\n<iframe class=\"slides\" src=\"/slides/index.html\"></iframe>\n```\n\n\n## Recording\n\n\n## Exercises\n\n**Option 1: Posit Cloud**\n\n[bit.ly/rladies-parameterized-quarto](https://bit.ly/rladies-parameterized-quarto)\n\n**Option 2: Download locally**\n\nFill in `destdir` with the location where you want to download the project. Delete that argument if you want it to default to your Desktop.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# install.packages(\"usethis\")\nusethis::use_course(\n    \"https://github.com/jadeynryan/parameterized-quarto-workshop/raw/main/exercises/exercises.zip\",\n    destdir = \"___\")\n```\n:::\n",
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

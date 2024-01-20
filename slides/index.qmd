@@ -1,7 +1,7 @@
 ---
 title: "Parameterized Reporting<br> with Quarto<br> ![](images/jr-logo-quarto.webp){width=5em}"
-author: "Jadey Ryan | January 18, 2024<br>R-Ladies Washington DC"
-footer: "Parameterized Reporting with Quarto // [jadeyryan.quarto.pub/rladies-dc-quarto-params/](https://jadeyryan.quarto.pub/rladies-dc-quarto-params/)"
+author: "Jadey Ryan // February 21, 2024<br>R-Ladies Abuja"
+footer: "Parameterized Reporting with Quarto // [jadeyryan.quarto.pub/rladies-abuja-quarto-params/](https://jadeyryan.quarto.pub/rladies-abuja-quarto-params/)"
 logo: "images/jr-logo-quarto.webp"
 logo-alt: "Two hex stickers side by side with a heart joining them in the middle. Left sticker is Jadey's cat logo. Right sticker is the Quarto logo."
 format: 

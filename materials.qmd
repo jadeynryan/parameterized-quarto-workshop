@@ -21,9 +21,14 @@ title: "Materials"
 
 **Option 2: Download locally**
 
+Fill in `destdir` with the location where you want to download the project. Delete that argument if you want it to default to your Desktop.
+
 ```{r}
 #| eval: false
 
-usethis::use_course("https://github.com/jadeynryan/rladies-parameterized-quarto/raw/main/exercises/exercises.zip")
+# install.packages("usethis")
+usethis::use_course(
+    "https://github.com/jadeynryan/parameterized-quarto-workshop/raw/main/exercises/exercises.zip",
+    destdir = "___")
 ```
 

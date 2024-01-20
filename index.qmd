@@ -1,17 +1,21 @@
 ---
-title: "Parameterized Reporting with Quarto: R-Ladies DC"
+title: "Parameterized Reporting with Quarto: R-Ladies Abuja"
 ---
 
-----
+------------------------------------------------------------------------
 
-## R-Ladies Washington DC Workshop
+::: callout-important
+This workshop is currently being updated. Materials, links, exercises subject to change.
+:::
 
-📆 January 18, 2024 | 6:30 pm - 8:30 pm EDT   
-🏨 Virtual  
-🆓 **FREE** with [registration on Meetup](https://www.meetup.com/rladies-dc/events/297344107/)  
-🏡 [Workshop website](https://jadeyryan.quarto.pub/rladies-dc-quarto-params/) 
+## R-Ladies Abuja Workshop
 
-----
+📆 February 21, 2024 \| 4:30 pm - 6:30 pm GMT\
+🏨 Virtual\
+🆓 **FREE** with [registration]() Meetup registration link TBD\
+🏡 [Workshop website](https://jadeyryan.quarto.pub/rladies-abuja-quarto-params)
+
+------------------------------------------------------------------------
 
 ## Abstract
 
@@ -21,22 +25,21 @@ Join our workshop to unlock the power of parameterized reporting with Quarto and
 
 Get a sneak preview of what you'll learn by checking out the [slides](https://jadeyryan.com/talks/2023-09-25_posit_parameterized-quarto/) from my posit::conf(2023) talk.
 
-Everyone is welcome to attend. If you're new to Quarto, we recommend watching [Tom Mock's excellent 2-hour introduction to Quarto](https://www.youtube.com/watch?v=yvi5uXQMvu4).
+We welcome everyone! However, if you're new to Quarto or functional programming with {purrr}, take a look at the [pre-work](prework.html#sec-quarto-purrr) for some background videos/tutorials.
 
 ## Learning objectives
 
-1. Understand what parameterized reporting is and when it is useful.
+1.  Understand what parameterized reporting is and when it is useful.
 
-2. Learn how to convert a report into a parameterized template.
+2.  Learn how to convert a report into a parameterized template.
 
-3. Render all variations of the report at once using [{quarto}](https://quarto-dev.github.io/quarto-r/) and [{purrr}](https://purrr.tidyverse.org/). 
+3.  Render all variations of the report at once using [{quarto}](https://quarto-dev.github.io/quarto-r/) and [{purrr}](https://purrr.tidyverse.org/).
 
-4. Generate multiple format outputs from the same template file with conditional content and conditional code execution.
+4.  Generate multiple format outputs from the same template file with conditional content and conditional code execution.
 
 ## Is this workshop for me?
 
-If your answer to any of the following questions is "yes", then this is
-the right workshop for you.
+If your answer to any of the following questions is "yes", then this is the right workshop for you.
 
 -   Do you frequently report the same set of metrics, tables, or graphs for different groups?
 
@@ -44,11 +47,10 @@ the right workshop for you.
 
 -   Do you want to make your life easier and your reports more reproducible by parameterizing your reports?
 
-The workshop is designed for those with some experience in R and R Markdown or Quarto. It will be assumed that participants can perform basic data manipulation and visualization. Experience with the {tidyverse} and the pipe operator (`%>%`&nbsp;/&nbsp;`|>`) is a major plus, but is not required.
+The workshop is designed for those with some experience in R and R Markdown or Quarto. It will be assumed that participants can perform basic data manipulation and visualization. Experience with the {tidyverse}, especially {purrr} and the pipe operator (`%>%` / `|>`), is a major plus, but is not required.
 
 ## Speaker
 
-![](images/jadey.jpg){style="float:left;padding: 0 10px 0 0; border-radius:50%" fig-alt="Headshot of Jadey Ryan" width="150"} 
-[**Jadey Ryan**](https://jadeyryan.com) is a self-taught R enthusiast working in environmental data science for the [Washington State Department of Agriculture](https://agr.wa.gov/AgScience). She is obsessed with cats, nature, R, and Quarto. This is her first time leading a workshop!
+![](images/jadey.jpg){style="float:left;padding: 0 10px 0 0; border-radius:50%" fig-alt="Headshot of Jadey Ryan" width="150"} [**Jadey Ryan**](https://jadeyryan.com) is a self-taught R enthusiast working in environmental data science for the [Washington State Department of Agriculture](https://agr.wa.gov/AgScience). She is obsessed with cats, nature, R, and Quarto.
 
-[{{< fa link size=xl >}}](https://jadeyryan.com) [{{< fa brands mastodon size=xl >}}](https://fosstodon.org/@jadeynryan)  [{{< fa brands linkedin size=xl >}}](https://www.linkedin.com/in/jadey-ryan)  [{{< fa brands github size=xl >}}](https://github.com/jadeynryan/)  [{{< fa brands etsy size=xl >}}](https://thecodingcats.etsy.com/)
+[{{< fa link size=xl >}}](https://jadeyryan.com) [{{< fa brands mastodon size=xl >}}](https://fosstodon.org/@jadeynryan) [{{< fa brands linkedin size=xl >}}](https://www.linkedin.com/in/jadey-ryan) [{{< fa brands github size=xl >}}](https://github.com/jadeynryan/) [{{< fa brands etsy size=xl >}}](https://thecodingcats.etsy.com/)

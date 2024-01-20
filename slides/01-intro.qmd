@@ -1,14 +1,20 @@
 ## Acknowledgements
 
-![](images/rladies-dc.jpg){fig-alt="R-Ladies Washington DC Logo" style="border-radius:1em"}
+::: {width="70%"}
+![](images/rladies-abuja.png){.center fig-alt="R-Ladies Abuja Logo"}
+:::
 
--   [R/Medicine Data Cleaning 2023 Workshop](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/) taught by [Crystal Lewis](https://cghlewis.com/), [Shannon Pileggi](https://www.pipinghotdata.com/), and [Peter Higgins](https://bookdown.org/pdr_higgins/rmrwr/)
+<br>
 
--   [ASA Traveling Courses on Quarto](https://quarto.org/docs/blog/posts/2023-12-05-asa-traveling-courses/) taught by [Mine Çetinkaya-Rundel](https://mine-cr.com/) and [Andrew Bray](https://andrewpbray.github.io/)
+[R/Medicine Data Cleaning 2023 Workshop](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/) taught by [Crystal Lewis](https://cghlewis.com/), [Shannon Pileggi](https://www.pipinghotdata.com/), and [Peter Higgins](https://bookdown.org/pdr_higgins/rmrwr/)
 
-## License
+[ASA Traveling Courses on Quarto](https://quarto.org/docs/blog/posts/2023-12-05-asa-traveling-courses/) taught by [Mine Çetinkaya-Rundel](https://mine-cr.com/) and [Andrew Bray](https://andrewpbray.github.io/)
+
+## Disclaimer and license
 
 Opinions expressed are solely my own and do not express the views of my employer or any organizations I am associated with.
+
+<br>
 
 This work is licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
@@ -45,40 +51,46 @@ Business owner of The Coding Cats
 
 ![](images/rangeland.jpg){fig-alt="Jadey standing in a grazed wildflower meadow with two colleagues collecting soil samples." style="border-radius:1em;margin-top:auto"}
 :::
-Photo credit: [@leslie.mmichel](https://twitter.com/leslie_mmichel)
+
+Photo credit: [\@leslie.mmichel](https://twitter.com/leslie_mmichel)
 :::
-
-
 :::
 
 ## Logistics
 
-::: incremental
--   Login to Posit Cloud: [**bit.ly/rladies-parameterized-quarto**](https://bit.ly/rladies-parameterized-quarto).
+Login to Posit Cloud: [**bit.ly/rladies-parameterized-quarto**](https://bit.ly/rladies-parameterized-quarto).
 
--   If Posit Cloud doesn't work, download materials locally:
+. . .
 
-    ```{r}
-    #| eval: false
-    
-    usethis::use_course(
-      "https://github.com/jadeynryan/rladies-parameterized-quarto/raw/main/exercises/exercises.zip")
-    ```
+If Posit Cloud doesn't work, download materials locally:
 
--   Ask questions in the public Zoom chat or raise hand ✋. 
+Fill in `destdir` with the location where you want to download the project. Delete that argument if you want it to default to your Desktop.
 
-    ![](images/zoom-reactions.png){fig-alt="Zoom reactions panel with options for emojis and raising hand."}
-    
--   Workshop structure: presentation, exercises, questions to answer in chat [💬 **Chat**:], and demos. 
-:::
+```{r}
+#| eval: false
+
+usethis::use_course(
+  "https://github.com/jadeynryan/parameterized-quarto-workshop/raw/main/exercises/exercises.zip",
+  destdir = "___")
+```
+
+. . .
+
+Ask questions in the public Zoom chat or raise hand ✋.
+
+![](images/zoom-reactions.png){fig-alt="Zoom reactions panel with options for emojis and raising hand."}
+
+. . .
+
+Workshop structure: presentation, demos/exercises, questions to answer in 💬 **Chat**.
 
 # 💪🏼 Exercise 0 {.exercise}
 
-1. Raise/lower your hand on Zoom.
+1.  Raise/lower your hand on Zoom.
 
-2. Use your favorite reaction.
+2.  Use your favorite reaction.
 
-3. 💬 **Chat**: share your name, where you're calling from, and one thing you’ve made that you’re proud of.
+3.  💬 **Chat**: share your name, where you're calling from, and one thing you've made that you're proud of.
 
 ```{r}
 #| echo: false
@@ -88,19 +100,19 @@ countdown::countdown(minutes = 1, top = 0)
 ## Learning objectives
 
 ::: incremental
-1. Understand what parameterized reporting is and when it is useful.
+1.  Understand what parameterized reporting is and when it is useful.
 
 <br>
 
-2. Learn how to convert a report into a parameterized template.
+2.  Learn how to convert a report into a parameterized template.
 
 <br>
 
-3. Render all variations of the report at once using [{quarto}](https://quarto-dev.github.io/quarto-r/) and [{purrr}](https://purrr.tidyverse.org/). 
+3.  Render all variations of the report at once using [{quarto}](https://quarto-dev.github.io/quarto-r/) and [{purrr}](https://purrr.tidyverse.org/).
 
 <br>
 
-4. Generate multiple format outputs from the same template file with conditional content and conditional code execution.
+4.  Generate multiple format outputs from the same template file with conditional content and conditional code execution.
 :::
 
 # Syntax and RStudio aside {.section}
@@ -197,23 +209,22 @@ Slide adapted from [R/Medicine Data Cleaning 2023 Workshop](https://shannonpileg
 
 ## RStudio options
 
-`Tools` → `Global Options` → 
+`Tools` → `Global Options` →
 
 ::: incremental
-
--   Fussy YAML indentation: 
+-   Fussy YAML indentation:
 
     `Code` → `Display` → `Indentation guides:` → `Rainbow lines`
-    
+
 <br>
 
--   Match parentheses: 
+-   Match parentheses:
 
     `Code` → `Display` → `Indentation guides:` → Check `Use rainbow parentheses`
 
 <br>
 
--   Matching divs: 
+-   Matching divs:
 
     `R Markdown` → `Advanced` → Check `Use rainbow fenced divs`
 :::

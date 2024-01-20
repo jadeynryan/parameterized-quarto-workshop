@@ -56,7 +56,13 @@ $selectionColor: #fff;
 // Contrast
 $min-contrast-ratio:   7;
 
-// Start using css here
+// Start using css here //
+
+// Font classes
+
+.warning {
+  color: #990000;
+}
 
 .reveal a:not([role="tab"]) {
   text-decoration: underline !important;
@@ -83,14 +89,20 @@ $min-contrast-ratio:   7;
   margin-bottom: 15px !important;
 }
 
+// Table
+
 .reveal table {
   margin-left: 0!important;
 }
+
+// Footer
 
 .reveal .footer {
   font-size: 0.8em;
   color: $orange-dark;
 }
+
+// Containers
 
 .reveal .slide .v-center-container {
   display: flex;
@@ -99,6 +111,16 @@ $min-contrast-ratio:   7;
   height: 90%;
   flex-direction: column;
 }
+
+// Alignment
+
+.center {
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+// Background color sections
 
 .section {
   &:is(.slide-background) {
@@ -118,6 +140,8 @@ $min-contrast-ratio:   7;
   }
 }
 
+// Fontawesome
+
 .fab, .fa-brands {
   font-family: 'Font Awesome 6 Brands';
   font-weight: 400;
@@ -132,11 +156,7 @@ $min-contrast-ratio:   7;
   line-height: 1.2;
 }
 
-.warning {
-  color: #990000;
-}
-
-// slide iframes
+// Slide iframes
 
 .slides {
   width: 100%;

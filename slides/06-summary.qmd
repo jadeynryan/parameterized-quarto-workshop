@@ -152,7 +152,7 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 
 <br>
 
-🏡 **Home for all workshop materials**: <https://jadeyryan.quarto.pub/rladies-dc-quarto-params/>
+🏡 **Home for all workshop materials**: [jadeyryan.quarto.pub/rladies-abuja-quarto-params/](https://jadeyryan.quarto.pub/rladies-abuja-quarto-params/)
 
 ![](images/mts.jpg){width=600 fig-alt="From left to right, Mai, Tai, and Skye. Three snowshoe cats cuddling in their warming beds." style="border-radius:1em"}
 :::
@@ -172,4 +172,3 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 :::
 
 ::::
-
