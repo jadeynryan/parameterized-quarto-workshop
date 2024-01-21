@@ -10,9 +10,9 @@ This workshop is currently being updated. Materials, links, exercises subject to
 
 ## R-Ladies Abuja Workshop
 
-📆 February 21, 2024 \| 4:30 pm - 6:30 pm GMT\
+📆 February 21, 2024 // 4:30 pm - 6:30 pm WAT\
 🏨 Virtual\
-🆓 **FREE** with [registration]() Meetup registration link TBD\
+🆓 **FREE** with [registration](https://www.meetup.com/rladies-abuja/events/298688371/)\
 🏡 [Workshop website](https://jadeyryan.quarto.pub/rladies-abuja-quarto-params)
 
 ------------------------------------------------------------------------
