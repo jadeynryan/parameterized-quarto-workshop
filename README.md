@@ -19,6 +19,7 @@ Upcoming and past offerings:
 🏨 Virtual  
 🆓 **FREE** with [registration](https://www.meetup.com/rladies-dc/events/297344107/)  
 🏡 [Workshop website](https://jadeyryan.quarto.pub/rladies-dc-quarto-params/)  
+🎥 [Recording](https://youtu.be/MKjz_xkMgxY)  
 🔖 [Source tag](https://github.com/jadeynryan/parameterized-quarto-workshop/releases/tag/rladies-dc-workshop)
 
 ## Abstract
