@@ -71,8 +71,8 @@ If Posit Cloud doesn't work, download materials locally:
 #| eval: false
 
 usethis::use_course(
-  "https://github.com/jadeynryan/parameterized-quarto-workshop/raw/main/exercises/exercises.zip",
-#  destdir = "___"
+  "https://github.com/jadeynryan/parameterized-quarto-workshop/raw/main/exercises/exercises.zip"
+#  ,destdir = "___"
   )
 ```
 
@@ -80,19 +80,15 @@ usethis::use_course(
 
 Ask questions in the public Zoom chat or raise hand ✋.
 
-![](images/zoom-reactions.png){fig-alt="Zoom reactions panel with options for emojis and raising hand."}
-
 . . .
 
 Workshop structure: presentation, demos/exercises, questions to answer in 💬 **Chat**.
 
 # 💪🏼 Exercise 0 {.exercise}
 
-1.  Raise/lower your hand on Zoom.
+<br>
 
-2.  Use your favorite reaction.
-
-3.  💬 **Chat**: share your name, where you're calling from, and one thing you've made that you're proud of.
+💬 **Chat**: share your name, where you're calling from, and one thing you've made that you're proud of.
 
 ```{r}
 #| echo: false
@@ -129,6 +125,8 @@ countdown::countdown(minutes = 1, top = 0)
 
 Isabella Velásquez's blog post [*Understanding the native R pipe* \|\>](https://ivelasq.rbind.io/blog/understanding-the-r-pipe/) (2022)
 
+<br>
+
 . . .
 
 ::: columns
@@ -158,9 +156,13 @@ mean(0:10)
 
 <br>
 
-To change `Ctrl` + `Shift` + `M` shortcut to the native pipe:
+To change shortcut to the native pipe:
 
 `Tools` → `Global Options` → `Code` → `Editing` → `Use Native Pipe Operator`
+
+Windows: `Ctrl` + `Shift` + `M` 
+
+Mac: `Cmd` + `Shift` + `M` 
 
 ::: footer
 Slide adapted from [R/Medicine Data Cleaning 2023 Workshop](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/)

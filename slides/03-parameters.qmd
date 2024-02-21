@@ -43,13 +43,6 @@ fig-alt="HTML report for soil health survey participant, generated from a parame
 Show code for technical staff and hide code for everyone else ([StackOverflow
 example](https://stackoverflow.com/questions/73571919/how-to-pass-logical-parameters-with-the-quarto-r-package-to-the-knitr-chunk-opti)).
 
-. . .
-
-<br>
-
-💬 **Chat**: what kinds of reports would you like to parameterize? What would
-the parameters be?
-
 ## Like a custom function
 
 ::: r-stack
@@ -94,19 +87,19 @@ width="1300" fig-align="left" style="margin-top:-1em"}
 ## Workflow
 
 ::: incremental
-1.  Write report template with default values hard-coded, and then render &
-    review.
+1.  Write report template with default values hard-coded, and then render & review.
 
-2.  Set default `params` key-value pairs in YAML. Replace hard-coded values with
-    the `params` variables.
+2.  Set default `params` key-value pairs in YAML. 
 
-3.  Render the single report and review.
+3. Replace hard-coded values with the `params` variables.
 
-4.  Render extreme cases and review.
+4.  Render the single report and review.
+
+5.  Render extreme cases and review.
 
     -   Parameter values with barely any data and with tons of data.
 
-5.  Render all variations of the report at once.
+6.  Render all variations of the report at once.
 :::
 
 # 💪🏼 Exercise 1 {.exercise}
@@ -121,9 +114,7 @@ width="1300" fig-align="left" style="margin-top:-1em"}
 
 3.  Look at the source markdown & code and the rendered report.
 
-4.  Update your name as the author. Re-render.
-
-5.  💬 **Chat**: what variables could we set as parameters?
+4.  💬 **Chat**: what variables could we set as parameters?
 
     💡 **Hint**: run the `setup` chunk and look at the `pets` dataframe to see
     what variables it has.
@@ -138,21 +129,21 @@ countdown::countdown(minutes = 5, top = 0)
 ```{yaml}
 #| code-line-numbers: 2|3-5|6-8|11
 ---
-title: "Swiss Cats"                 # Metadata
-format:                             # Set format types
+title: "Swiss Cats"             # Metadata
+format:                         # Set format types
   html: default                                     
   docx: default                           
-params:                             # Set default parameter key-value pairs
+params:                         # Set default parameter key-value pairs
   fave_breed: "Snowshoe"                                
 ---
     
-Report content goes here.           # Write content
+Report content goes here.       # Write content
 ```
 
 . . .
 
 ::: callout-important
-Your default `params` key-value pairs must be found in your dataset.
+Your default `params` key-value pairs must be found in your dataset. Otherwise, code will error or output will be blank.
 :::
 
 ## Access `params`
