@@ -66,6 +66,8 @@ countdown::countdown(minutes = 5, top = 0)
    ```
 
 2. 💬 **Chat**: what kinds of variables are you hoping to use as parameters for your reports? 
+
+*5-min break after this exercise*
    
 ```{r}
 #| echo: false

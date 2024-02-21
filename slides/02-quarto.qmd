@@ -44,13 +44,13 @@
 
 <br>
 
-R Markdown will still be maintained but likely no new features [(Xie 2022)](https://yihui.org/en/2022/04/quarto-r-markdown/).
+**If you're happy with R Markdown and it's not broken, no need to switch!**
 
 . . .
 
 <br>
 
-**If you're happy with R Markdown and it's not broken, no need to switch!**
+R Markdown will still be maintained but likely no new features [(Xie 2022)](https://yihui.org/en/2022/04/quarto-r-markdown/).
 
 ## Convert `.Rmd` → `.qmd`
 
@@ -100,6 +100,8 @@ No Quarto equivalent to .Rmd [Knit with Parameters GUI](https://bookdown.org/yih
 ::: {.column width="50%"}
 
 <br>
+
+. . .
 
 **Workaround**: build web app to get input, serialize to YAML, pass to Quarto render.
 

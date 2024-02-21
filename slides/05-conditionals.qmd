@@ -21,7 +21,17 @@ Will only appear in HTML.
 :::
 ```
 
+## Spans
+
+``` markdown
+Some text
+[in HTML.]{.content-visible when-format="html"}
+[in PDF.]{.content-visible when-format="pdf"}
+```
+
 ## Non-executable code
+
+Fenced code blocks purely for documentation.
 
 ````markdown
 ```{.python .content-visible when-format="html"}
@@ -30,13 +40,6 @@ Will only appear in HTML.
 ```
 ````
 
-## Spans
-
-``` markdown
-Some text
-[in HTML.]{.content-visible when-format="html"}
-[in PDF.]{.content-visible when-format="pdf"}
-```
 :::
 
 ::: footer
