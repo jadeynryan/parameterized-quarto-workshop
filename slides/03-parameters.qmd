@@ -144,6 +144,8 @@ Report content goes here.       # Write content
 
 ::: callout-important
 Your default `params` key-value pairs must be found in your dataset. Otherwise, code will error or output will be blank.
+
+The variable name for `params` can be anything you choose. Often, it's a column name in your dataset.
 :::
 
 ## Access `params`
