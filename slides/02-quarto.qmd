@@ -1,11 +1,5 @@
 # R Markdown → Quarto {.section}
 
-. . .
-
-<br>
-
-💬 **Chat**: what's your comfort level / experience with R Markdown and Quarto?
-
 ## R Markdown
 
 ![Figure from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio::Conf(2022).](images/rmd-ecosystem.png){style="margin-top:-5em;margin-bottom:-1em" fig-alt="Hex logos for various packages from the R Markdown ecosystem." fig-align="center" width="700"}

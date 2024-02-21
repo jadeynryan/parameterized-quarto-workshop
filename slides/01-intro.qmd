@@ -80,19 +80,15 @@ usethis::use_course(
 
 Ask questions in the public Zoom chat or raise hand ✋.
 
-![](images/zoom-reactions.png){fig-alt="Zoom reactions panel with options for emojis and raising hand."}
-
 . . .
 
 Workshop structure: presentation, demos/exercises, questions to answer in 💬 **Chat**.
 
 # 💪🏼 Exercise 0 {.exercise}
 
-1.  Raise/lower your hand on Zoom.
+<br>
 
-2.  Use your favorite reaction.
-
-3.  💬 **Chat**: share your name, where you're calling from, and one thing you've made that you're proud of.
+💬 **Chat**: share your name, where you're calling from, and one thing you've made that you're proud of.
 
 ```{r}
 #| echo: false

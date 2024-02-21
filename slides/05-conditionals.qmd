@@ -47,8 +47,6 @@ Examples from [Conditional Content Quarto docs](https://quarto.org/docs/authorin
 
 Pairs well with `{{< include >}}` shortcodes to re-use content without copying/pasting.
 
-Use an underscore (_) prefix for included files so they are automatically ignored by a Quarto render of a project ([Includes Quarto Docs](https://quarto.org/docs/authoring/includes.html)).
-
 . . .
 
 ::::: panel-tabset
@@ -88,11 +86,15 @@ Use an underscore (_) prefix for included files so they are automatically ignore
 ```
 :::::
 
+. . .
+
+Use an underscore prefix for included files so they are automatically ignored by a Quarto render of a project ([Includes Quarto Docs](https://quarto.org/docs/authoring/includes.html)).
+
 # 💪🏼 Exercise 4 {.exercise}
 
 **Use conditional content divs to control when tabsets are shown.**
 
-1. Modify `ex-4-conditional-content.qmd` so that the `panel-tabset` is visible for .html reports and hidden for all other formats.
+1. Modify `ex-4-conditional-content.qmd` so that the `panel-tabset` is visible for HTML reports and hidden for all other formats.
 
 <br>
 
@@ -148,6 +150,8 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 # code to create static {ggplot2}
 ```
 
+💡 Pandoc uses LaTeX to create PDFs.
+
 ## Interactive plot
 
 ```{r}
@@ -177,14 +181,16 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 
 # 💪🏼 Exercise 5 {.exercise}
 
-**Conditionally execute `ggplot2` code for static reports and `plotly` code for HTML documents.**
+<br>
+
+**Conditionally execute `ggplot2` code for static reports & `plotly` code for interactive reports.**
 
 1. Open `ex-5-conditional-code.qmd`.
 
 2. Fill in the blanks for the `eval: ` option for `ggplot` code chunks and `plotly` code chunks.
 
 ```{r}
-# Insert in chunk options: html, latex, docx
+# Options are html, latex, and docx.
 
 #| eval: !expr format == "___"
 
