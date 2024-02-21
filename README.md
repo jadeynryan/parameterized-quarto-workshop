@@ -4,7 +4,7 @@
 
 ## Workshops
 
-Upcoming and past offerings:
+**Upcoming**:
 
 ### R-Ladies Abuja Workshop
 
@@ -12,6 +12,8 @@ Upcoming and past offerings:
 🏨 Virtual  
 🆓 **FREE** with [registration](https://www.meetup.com/rladies-abuja/events/298688371/)  
 🏡 [Workshop website](https://jadeyryan.quarto.pub/rladies-abuja-quarto-params)
+
+**Past**:
 
 ### R-Ladies Washington DC Workshop
 
