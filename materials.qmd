@@ -17,7 +17,10 @@ title: "Materials"
 
 **Option 1: Posit Cloud**
 
-[bit.ly/quarto-params-posit-cloud](https://bit.ly/quarto-params-posit-cloud)
+Join the workspace: [bit.ly/rladies-parameterized-quarto](https://bit.ly/rladies-parameterized-quarto).
+
+Open the R-Ladies Abuja specific project:
+[bit.ly/quarto-params-posit-cloud](https://bit.ly/quarto-params-posit-cloud).
 
 **Option 2: Download locally**
 

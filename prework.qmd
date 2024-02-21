@@ -10,9 +10,10 @@ There are three ways for you to participate. Please complete the pre-work for wh
 
 This workshop will largely be conducted in the [Posit Cloud](https://posit.cloud/) environment. Posit Cloud allows us all to work in the exact same environment with the same version of R, R packages, and directory of files. Please create an account if you don't yet have one.
 
-Log in to the Posit Cloud instance of this workshop here:
+**Join the R-Ladies workspace**: [bit.ly/rladies-parameterized-quarto](https://bit.ly/rladies-parameterized-quarto).
 
-**[bit.ly/quarto-params-posit-cloud](https://bit.ly/quarto-params-posit-cloud)**.
+**Open the R-Ladies Abuja project**:
+[bit.ly/quarto-params-posit-cloud](https://bit.ly/quarto-params-posit-cloud).
 
 ## Watch and listen
 

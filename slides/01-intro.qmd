@@ -61,7 +61,7 @@ The Coding Cats: cat & code themed merch
 
 ## Logistics
 
-Login to Posit Cloud: [**bit.ly/quarto-params-posit-cloud**](https://bit.ly/quarto-params-posit-cloud).
+Login to Posit Cloud workspace: [**bit.ly/rladies-parameterized-quarto**](https://bit.ly/rladies-parameterized-quarto).
 
 . . .
 
