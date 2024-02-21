@@ -4,9 +4,9 @@ title: "Parameterized Reporting with Quarto: R-Ladies Abuja"
 
 ------------------------------------------------------------------------
 
-::: callout-important
-This workshop is currently being updated. Materials, links, exercises subject to change.
-:::
+<!-- ::: callout-important -->
+<!-- This workshop is currently being updated. Materials, links, exercises subject to change. -->
+<!-- ::: -->
 
 ## R-Ladies Abuja Workshop
 

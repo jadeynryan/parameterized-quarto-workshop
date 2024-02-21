@@ -1,11 +1,11 @@
 # Rendering reports {.section}
 
-## Multiple ways to render 
+## Four ways to render 
 
 ::: incremental
-1. ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button in RStudio or `Ctrl` + `Shift` + `K` keyboard shortcut
+1. ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button in RStudio or `Cmd`/`Ctrl` + `Shift` + `K` keyboard shortcut
 
-2. Check `Render on Save` and `Ctrl` + `S` keyboard shortcut
+2. Check `Render on Save` and `Cmd`/`Ctrl` + `S` keyboard shortcut
 
 3. Quarto CLI
 
@@ -24,21 +24,37 @@
     ```
 :::
 
-# 💪🏼 Exercise 2 {.exercise}
+# 💪🏼 Exercise 2.1 {.exercise}
 
-**Change parameters and render using 1) Render button and 2) `quarto_render()`.**
+**Change parameters in the YAML and render using ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} Render button.**
 
-0. Look at the unique pet breeds and pick your favorite.
+1. Look at the unique pet breeds and pick your favorite.
    ```r
    # Run in the console
-   pets |>
-      dplyr::distinct(pet_type, breed) |>
-      View()
+   pets <- readr::read_rds(here::here("data", "pets.RDS")) |> 
+      dplyr::distinct(pet_type, breed) |> View()
    ```
    
-1. In `ex-2-quarto-render.qmd` Change the default parameters in the YAML to your favorite pet type and breed. Render using the button.
+2. In `ex-2-quarto-render.qmd` Change the default parameters in the YAML to your favorite pet type and breed. Render using the ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button.
 
-2. Now render with `quarto::quarto_render()`. Replace `___` with different parameters:
+  ```yaml
+  params:
+    pet_type: "___"
+    fave_breed: "___"
+  ```
+
+3. 💬 **Chat**: do you have any pets? what kind? 🐈🐕🐹🐍🐠
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 7, top = 0)
+```
+
+# 💪🏼 Exercise 2.2 {.exercise}
+
+**Change parameters and render using `quarto_render()`.**
+
+1. Render with `quarto::quarto_render()`.
 
    ```r
    # Run in the console
@@ -49,11 +65,18 @@
         fave_breed = "___"))
    ```
 
-3. 💬 **Chat**: what's your fave breed and do you have any pets? 🐈🐕🐹🐍🐠
+2. 💬 **Chat**: if you could have any animal as a pet, what would it be? 🐧🐘🐅🐼🐳
+   
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5, top = 0)
+```
+
+# 🥱 Break {.section
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 7, top = 0)
+countdown::countdown(minutes = 5, top = 0)
 ```
 
 ## Render all 538 reports 
@@ -77,11 +100,9 @@ pets |>
 
 1. Change the default `params` in the YAML.
 
-2. **Render** button in RStudio or `Ctrl` + `Shift` + `K` keyboard shortcut.
+2. **Render** button or `Cmd`/`Ctrl` + `Shift` + `K` keyboard shortcut.
 
-3. Change the file name to add the parameter.
-    
-   `output-file:` YAML option doesn't seem to work with inline R code.
+3. Rename the rendered report to include the parameter & prevent overwriting.
 
 4. Repeat 537 times.
 
@@ -144,8 +165,8 @@ pet_reports <- pets |>
   dplyr::mutate(
     output_format = "html",             # Make output_format column
     output_file = paste(                # Make output_file column
-      tolower(pet_type),
-      tolower(gsub(" ", "-", breed)),
+      tolower(pet_type),                
+      tolower(gsub(" ", "-", breed)),           
       "report.html",
       sep = "-"
     ),
@@ -194,9 +215,10 @@ purrr::pwalk(
 
 -   Can't render reports to another directory.
 
-    - [`output-dir` YAML option](https://quarto.org/docs/books/book-output.html#output-path) only works for Quarto projects that have `_quarto.yml`.
+    - [`output-dir` YAML option](https://quarto.org/docs/books/book-output.html#output-path) only works for *Quarto projects* that contain a `_quarto.yml` config file.
 
-    - **Workaround**: use [`{fs}`](https://fs.r-lib.org/) to move files after rendering. See `ex-3-render-reports.R` for example.
+    - **Workaround**: use [`{fs}`](https://fs.r-lib.org/) to move files after rendering. 
+    See `ex-3-render-reports.R` for example.
     
     - **More info**: [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/2171#discussioncomment-4865286) and [GitHub issue](https://github.com/quarto-dev/quarto-r/issues/81).
 
@@ -275,19 +297,15 @@ format-links: false
 
 # 💪🏼 Exercise 3 {.exercise}
 
-**Add another format by updating 1) the YAML, 2) the `pet_reports` dataframe, and 3) the `regexp` argument.**
+**Explore the programmatic way of rendering multiple reports at once.**
 
-1. Modify the YAML of `ex-3-render-reports.qmd` to add a new format ([see all the options](https://quarto.org/docs/output-formats/all-formats.html)).
+1. Look through `ex-3-render-reports.qmd` and `ex-3-render-reports.R`.
 
-2. Modify `ex-3-render-reports.R` to:
-   
-   - Add this new format to the `pet_reports` dataframe used in `pwalk()`
+2. `Source` the R script (or run line by line).
 
-   - Include ".html" OR ".docx" OR ".pdf" in the `regexp` argument in `dir_ls()`
-   
-   - Hint: use the `|` pipe `OR` operator. 
+3. Ask questions, or take a break.
 
-4. 💬 **Chat**: were any of these functions from the `.qmd` or `.R` files new to you?
+2. 💬 **Chat**: were any of these functions from the `.qmd` or `.R` files new to you?
 
 ```{r}
 #| echo: false

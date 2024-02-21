@@ -4,25 +4,31 @@
 
 ::: columns
 ::: {.column width="25%"}
-![](images/ocean-floor.png){.lightbox group="examples" fig-alt="RStudio R Markdown parameterized report project for mapping ocean floors."}
+![](images/ocean-floor.png){.lightbox group="examples"
+fig-alt="RStudio R Markdown parameterized report project for mapping ocean floors."}
 
 [Ocean floor maps](https://rmarkdown.rstudio.com/lesson-6.html)
 :::
 
 ::: {.column width="25%"}
-![](images/urban-institute.png){.lightbox group="examples" fig-alt="Report for Alabama spending with text and plots generated from parameterized R Markdown."}
+![](images/urban-institute.png){.lightbox group="examples"
+fig-alt="Report for Alabama spending with text and plots generated from parameterized R Markdown."}
 
-[Fiscal briefs](https://book.rwithoutstatistics.com/parameterized-reports-chapter.html)
+[Fiscal
+briefs](https://book.rwithoutstatistics.com/parameterized-reports-chapter.html)
 :::
 
 ::: {.column width="25%"}
-![](images/driver-quality.png){.lightbox group="examples" fig-alt="Report for Alaska driver quality with text, plot, and table generated from parameterized RMarkdown."}
+![](images/driver-quality.png){.lightbox group="examples"
+fig-alt="Report for Alaska driver quality with text, plot, and table generated from parameterized RMarkdown."}
 
-[Bad drivers](https://urban-institute.medium.com/iterated-fact-sheets-with-r-markdown-d685eb4eafce)
+[Bad
+drivers](https://urban-institute.medium.com/iterated-fact-sheets-with-r-markdown-d685eb4eafce)
 :::
 
 ::: {.column width="25%"}
-![](images/soils-report.png){.lightbox group="examples" fig-alt="HTML report for soil health survey participant, generated from a parameterized Quarto report."}
+![](images/soils-report.png){.lightbox group="examples"
+fig-alt="HTML report for soil health survey participant, generated from a parameterized Quarto report."}
 
 [Soil health](https://wa-department-of-agriculture.github.io/soils/)
 :::
@@ -30,62 +36,77 @@
 
 . . .
 
+<br>
+
 **Different audiences, different reports**
 
-Show code for technical staff and hide code for everyone else.
-
-See this [StackOverflow question and answer](https://stackoverflow.com/questions/73571919/how-to-pass-logical-parameters-with-the-quarto-r-package-to-the-knitr-chunk-opti) for an example.
+Show code for technical staff and hide code for everyone else ([StackOverflow
+example](https://stackoverflow.com/questions/73571919/how-to-pass-logical-parameters-with-the-quarto-r-package-to-the-knitr-chunk-opti)).
 
 . . .
 
-<br> 
+<br>
 
-💬 **Chat**: what kinds of reports would you like to parameterize? What would the parameters be?
+💬 **Chat**: what kinds of reports would you like to parameterize? What would
+the parameters be?
 
 ## Like a custom function
 
 ::: r-stack
-![](images/template1.png){.fragment fig-alt="File with the word '.qmd' inside and the word 'Function' above." width="1300" fig-align="left" style="margin-top:-1em"}
+![](images/template1.png){.fragment
+fig-alt="File with the word '.qmd' inside and the word 'Function' above."
+width="1300" fig-align="left" style="margin-top:-1em"}
 
-![](images/template2.png){.fragment fig-alt="An arrow points from 'Input' with 'params$year' to the previous image with 'Function' and '.qmd' file." width="1300" fig-align="left" style="margin-top:-1em"}
+![](images/template2.png){.fragment
+fig-alt="An arrow points from 'Input' with 'params$year' to the previous image with 'Function' and '.qmd' file."
+width="1300" fig-align="left" style="margin-top:-1em"}
 
-![](images/template3.png){.fragment fig-alt="In addition to the previous two images, arrows point to five reports with years 2019 through 2023 on them in a flow chart." width="1300" fig-align="left" style="margin-top:-1em"}
+![](images/template3.png){.fragment
+fig-alt="In addition to the previous two images, arrows point to five reports with years 2019 through 2023 on them in a flow chart."
+width="1300" fig-align="left" style="margin-top:-1em"}
 :::
 
 ## What makes a report "parameterized"?
 
 -   YAML header with `params` key-value pairs
 
-    - Yet Another Markdown Language or YAML Ain't Markup Language 🤷🏻‍♀️
-    
--   Use those `params` in your report to create different variations
+    -   Yet Another Markdown Language → YAML Ain't Markup Language
+
+-   Use these `params` in your report to create different variations.
 
 . . .
 
 ::: callout-important
-Valid parameter values are strings, numbers, or Boolean.
-    
-Must serialize a dataframe to pass it as a parameter, then un-serialize it back to a dataframe within the `.qmd` content. 
+-   Valid parameter values are strings, numbers, or Boolean.
 
-See [Christophe Dervieux's answer in Posit Community](https://community.rstudio.com/t/param-converted-from-data-frame-to-list/155556/9) to understand why.
+-   Must serialize a dataframe to pass it as a parameter, then un-serialize it
+    back to a dataframe within the `.qmd` content.
 
-See [John Paul Helveston's blog post](https://www.jhelvy.com/posts/2023-02-28-parameterized-pdfs-with-quarto/#passing-data-frames-as-parameters) to learn how to use {jsonlite} as a workaround.
+-   See [Christophe Dervieux's answer in Posit
+    Community](https://community.rstudio.com/t/param-converted-from-data-frame-to-list/155556/9)
+    to understand why.
+
+-   See [John Paul Helveston's blog
+    post](https://www.jhelvy.com/posts/2023-02-28-parameterized-pdfs-with-quarto/#passing-data-frames-as-parameters)
+    to learn how to use {jsonlite} as a workaround.
 :::
 
 ## Workflow
 
 ::: incremental
-1.  Write report template with default values hard-coded, and then render & review.
+1.  Write report template with default values hard-coded, and then render &
+    review.
 
-2.  Set default `params` key-value pairs in YAML. Replace hard-coded values with the `params` variables.
+2.  Set default `params` key-value pairs in YAML. Replace hard-coded values with
+    the `params` variables.
 
 3.  Render the single report and review.
 
 4.  Render extreme cases and review.
 
     -   Parameter values with barely any data and with tons of data.
-    
-5. Render all variations of the report at once.
+
+5.  Render all variations of the report at once.
 :::
 
 # 💪🏼 Exercise 1 {.exercise}
@@ -94,14 +115,19 @@ See [John Paul Helveston's blog post](https://www.jhelvy.com/posts/2023-02-28-pa
 
 1.  Open `ex-1-swiss-cats.qmd`.
 
-2.  Click the ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button.
+2.  Click the
+    ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio"
+    style="vertical-align:middle;" width="49"} **Render** button.
 
-3.  Look at the source markdown and code and the rendered report.
+3.  Look at the source markdown & code and the rendered report.
 
 4.  Update your name as the author. Re-render.
 
 5.  💬 **Chat**: what variables could we set as parameters?
-    
+
+    💡 **Hint**: run the `setup` chunk and look at the `pets` dataframe to see
+    what variables it has.
+
 ```{r}
 #| echo: false
 countdown::countdown(minutes = 5, top = 0)
@@ -174,30 +200,32 @@ My favorite cat breed is the **`r params$fave_breed`**.
 
 ## Replace hard-coded values with `params`
 
-`Ctrl` + `F` to find where to replace hard-coded values with `params`
-
-. . .
+::: incremental
+-   `Cmd`/`Ctrl` + `F` to find where to replace hard-coded values with `params`.
 
 <br>
 
-Use inline R code for markdown
-    
-```{markdown}
-Text textity text **`r params$___`**.
+-   Use inline R code for markdown.
+
+    ```{markdown}
+## My favorite breed: `r params$fave_breed`
 ```
 
-. . .
-
 <br>
 
-Use `paste()` for plot and table titles and labels
-    
-```{r} 
+-   Use `paste()` or `glue()` for plot and table titles and labels.
+
+    ```{r}
 #| eval: false
 
 # ggplot code +
 labs(title = paste(params$fave_breed, "population"))
 ```
+:::
+
+##
+
+![](images/snowshoe-graph.png){fig-align="center"}
 
 # 💃🏻 Demo {.demo}
 

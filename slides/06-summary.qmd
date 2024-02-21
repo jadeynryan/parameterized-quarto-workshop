@@ -1,4 +1,4 @@
-# Summary {.section}
+# 🏁 Recap {.section}
 
 ## Learning objective 1
 
@@ -137,7 +137,7 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 
 ```r
 #| label: static-plot
-#| eval: !expr format %in% c("pdf", "docx")
+#| eval: !expr format %in% c("latex", "docx")
 
 # ggplot2 code
 ```

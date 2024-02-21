@@ -8,6 +8,8 @@
 
 [R/Medicine Data Cleaning 2023 Workshop](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/) taught by [Crystal Lewis](https://cghlewis.com/), [Shannon Pileggi](https://www.pipinghotdata.com/), and [Peter Higgins](https://bookdown.org/pdr_higgins/rmrwr/)
 
+<br>
+
 [ASA Traveling Courses on Quarto](https://quarto.org/docs/blog/posts/2023-12-05-asa-traveling-courses/) taught by [Mine Çetinkaya-Rundel](https://mine-cr.com/) and [Andrew Bray](https://andrewpbray.github.io/)
 
 ## Disclaimer and license
@@ -23,10 +25,10 @@ This work is licensed under [Creative Commons Attribution-NonCommercial-ShareAli
 ## Jadey Ryan
 
 ::: columns
-::: {.column width="40%"}
+::: {.column width="44%"}
 Data scientist at WA Dept of Agriculture
 
-Business owner of The Coding Cats
+The Coding Cats: cat & code themed merch
 
 {{< fa link size=xl >}} [jadeyryan.com](https://jadeyryan.com)
 
@@ -41,37 +43,37 @@ Business owner of The Coding Cats
 ![](images/mts.webp){fig-alt="Three snowshoe siamese cats in loaf mode. From left to right: Tai, Mai, and Skye" style="border-radius:1em;margin-top:auto"}
 :::
 
-::: {.column width="30%"}
+::: {.column width="28%"}
 ![](images/bulk-density.jpg){fig-alt="Jadey collecting a bulk density soil sample in a field of wheat stubble." style="border-radius:1em;margin-top:auto"}
 :::
 
-::: {.column width="30%"}
+::: {.column width="28%"}
 ::: {layout-nrow="2"}
 ![](images/soil-sampling.jpg){style="border-radius:1em;margin-top:auto" fig-alt="Jadey standing in a field of wheat stubble holding a 3 foot long soil sampling probe over her shoulder."}
 
 ![](images/rangeland.jpg){fig-alt="Jadey standing in a grazed wildflower meadow with two colleagues collecting soil samples." style="border-radius:1em;margin-top:auto"}
 :::
 
-Photo credit: [\@leslie.mmichel](https://twitter.com/leslie_mmichel)
+{{< fa camera title="Photo credit" >}} [@leslie.mmichel](https://twitter.com/leslie_mmichel)
+
 :::
 :::
 
 ## Logistics
 
-Login to Posit Cloud: [**bit.ly/rladies-parameterized-quarto**](https://bit.ly/rladies-parameterized-quarto).
+Login to Posit Cloud: [**bit.ly/quarto-params-posit-cloud**](https://bit.ly/quarto-params-posit-cloud).
 
 . . .
 
 If Posit Cloud doesn't work, download materials locally:
-
-Fill in `destdir` with the location where you want to download the project. Delete that argument if you want it to default to your Desktop.
 
 ```{r}
 #| eval: false
 
 usethis::use_course(
   "https://github.com/jadeynryan/parameterized-quarto-workshop/raw/main/exercises/exercises.zip",
-  destdir = "___")
+#  destdir = "___"
+  )
 ```
 
 . . .

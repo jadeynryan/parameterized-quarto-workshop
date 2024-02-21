@@ -4,7 +4,7 @@ title: "Pre-work"
 
 This workshop has five exercises for you to try. After the workshop, I encourage you to adapt the exercise template files and code to fit your own projects.
 
-There are three ways for you to participate. Please complete the pre-work for whichever way you'd like to follow along **before the workshop**. Spinning up the Posit Cloud instance can take a few minutes. So can installing packages and downloading the exercises.
+There are three ways for you to participate. Please complete the pre-work for whichever way you'd like to follow along **before the workshop**. Spinning up the Posit Cloud instance can take a few minutes, as can installing packages and downloading the exercises.
 
 ## Follow along in the Posit Cloud
 
@@ -12,7 +12,7 @@ This workshop will largely be conducted in the [Posit Cloud](https://posit.cloud
 
 Log in to the Posit Cloud instance of this workshop here:
 
-**[bit.ly/rladies-parameterized-quarto](https://bit.ly/rladies-parameterized-quarto)**.
+**[bit.ly/quarto-params-posit-cloud](https://bit.ly/quarto-params-posit-cloud)**.
 
 ## Watch and listen
 

@@ -17,7 +17,7 @@ title: "Materials"
 
 **Option 1: Posit Cloud**
 
-[bit.ly/rladies-parameterized-quarto](https://bit.ly/rladies-parameterized-quarto)
+[bit.ly/quarto-params-posit-cloud](https://bit.ly/quarto-params-posit-cloud)
 
 **Option 2: Download locally**
 

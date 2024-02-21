@@ -13,7 +13,7 @@ Special `.content-visible` and `.content-hidden` classes with `when-format="___"
 
 ## Divs
 
-``` markdown
+```markdown
 ::: {.content-visible when-format="html"}
 
 Will only appear in HTML.
@@ -23,7 +23,7 @@ Will only appear in HTML.
 
 ## Non-executable code
 
-```` markdown
+````markdown
 ```{.python .content-visible when-format="html"}
 # code shown only in HTML
 2 + 2
@@ -55,8 +55,6 @@ Use an underscore (_) prefix for included files so they are automatically ignore
 
 ## Static
 
-Use `.content-visible unless-format="html"`
-
 ```markdown
 :::: {.content-visible unless-format="html"}
 
@@ -72,8 +70,6 @@ Use `.content-visible unless-format="html"`
 ```
 
 ## Interactive
-
-Use `.content-visible when-format="html"`
 
 ```markdown
 :::: {.content-visible when-format="html"}
@@ -96,25 +92,17 @@ Use `.content-visible when-format="html"`
 
 **Use conditional content divs to control when tabsets are shown.**
 
-1. Modify `ex-4-conditional-content.qmd` so that the `panel-tabset` visible for .html reports and hidden for .pdf & .docx reports.
+1. Modify `ex-4-conditional-content.qmd` so that the `panel-tabset` is visible for .html reports and hidden for all other formats.
 
-Options:
+<br>
 
-:::: {.columns}
-::: {.column width="50%"}
- - {.content-visible when-format="___"}
- 
- - {.content-visible unless-format="___"}
-:::
+2. Explore the other options. There are multiple ways to get the same result.
 
-::: {.column width="50%"}
- - {.content-hidden unless-format="___"}
+    {.content-visible when-format="html"} == {.content-hidden unless-format="html"}
+    
+<br>
  
- - {.content-hidden unless-format="___"}
-:::
-::::
- 
- 2. 💬 **Chat**: what other kinds of content might you want to make visible for only a certain format?
+3. 💬 **Chat**: what other kinds of content might you want to make visible for only a certain format?
 
 ```{r}
 #| echo: false
@@ -129,7 +117,7 @@ countdown::countdown(minutes = 5, top = 0)
 
 -   Useful for executing interactive plot code for HTML reports and static `ggplot2` code for all other formats. 
 
--   Not currently a feature of Quarto v1.3, but a Quarto dev thinks it could be possible in v1.4 according to this [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/3260#discussioncomment-4573926). Granted, that comment was from 2023-01-02...
+-   Not currently a feature of Quarto v1.4. Follow along with this [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/3260#discussioncomment-4573926).
 
 :::
 
@@ -189,22 +177,18 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 
 # 💪🏼 Exercise 5 {.exercise}
 
-**Set a `format` variable and use it in the `eval:` chunk option to execute `ggplot2` code only for static reports and `plotly` code only for HTML documents.**
+**Conditionally execute `ggplot2` code for static reports and `plotly` code for HTML documents.**
 
-1. Modify `ex-5-conditional-code.qmd`, get the output format in a variable in the `setup` chunk.
+1. Open `ex-5-conditional-code.qmd`.
 
-```{r}
-# Get output format in setup chunk:
-format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
-```
-
-2. Set chunk options for `ggplot` code blocks and `plotly` code blocks.
+2. Fill in the blanks for the `eval: ` option for `ggplot` code chunks and `plotly` code chunks.
 
 ```{r}
-# Insert in chunk options:
-#| eval: !expr format == "html"
-# or
-#| eval: !expr format %in% c("latex", "docx")
+# Insert in chunk options: html, latex, docx
+
+#| eval: !expr format == "___"
+
+#| eval: !expr format %in% c("___", "___")
 ```
 
 2. 💬 **Chat**: what is something you learned from this workshop that you're excited to apply to your own reports and projects?

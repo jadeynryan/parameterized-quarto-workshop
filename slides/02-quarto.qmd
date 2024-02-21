@@ -8,7 +8,7 @@
 
 ## R Markdown
 
-![Figure from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio::Conf(2022).](images/rmd-ecosystem.png){style="margin-top:-5em;margin-bottom:-1em" fig-alt="Hex logos for various packages from the R Markdown ecosystem." fig-align="center" width="800"}
+![Figure from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio::Conf(2022).](images/rmd-ecosystem.png){style="margin-top:-5em;margin-bottom:-1em" fig-alt="Hex logos for various packages from the R Markdown ecosystem." fig-align="center" width="700"}
 
 ## Quarto
 
@@ -52,25 +52,17 @@
 
 R Markdown will still be maintained but likely no new features [(Xie 2022)](https://yihui.org/en/2022/04/quarto-r-markdown/).
 
-## Differences with parameters
+. . .
 
-No Quarto equivalent to .Rmd [Knit with Parameters GUI](https://bookdown.org/yihui/rmarkdown/params-knit.html#the-interactive-user-interface) built with Shiny [{miniUI}](https://github.com/rstudio/miniUI).
+<br>
 
-![Figure from [*R Markdown: The Definitive Guide* (Xie et al. 2023)](https://bookdown.org/yihui/rmarkdown/params-knit.html#the-interactive-user-interface)](https://bookdown.org/yihui/rmarkdown/images/params-input.png){fig-alt="Input parameter values interactively for parameterized reports." fig-align="left" width="300"}
+**If you're happy with R Markdown and it's not broken, no need to switch!**
 
-::: incremental
--   **Workaround**: build webapp to get input, serialize to YAML, pass to Quarto render.
-
--   **More info**: [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/7581#discussioncomment-7603016)
-:::
-
-## Convert `.Rmd` → `.qmd`\*
+## Convert `.Rmd` → `.qmd`
 
 1.  Change file extension from `.Rmd` → `.qmd`
 2.  Change YAML header (`output:` → `format:`)
 3.  Convert chunk headers with `knitr::convert_chunk_header()`
-
-*\*If you want.*
 
 . . .
 
@@ -99,6 +91,27 @@ No Quarto equivalent to .Rmd [Knit with Parameters GUI](https://bookdown.org/yih
 ```
 
 :::
+::::
+
+## One sad difference 😥
+
+No Quarto equivalent to .Rmd [Knit with Parameters GUI](https://bookdown.org/yihui/rmarkdown/params-knit.html#the-interactive-user-interface) built with Shiny [{miniUI}](https://github.com/rstudio/miniUI).
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![Figure from [*R Markdown: The Definitive Guide* (Xie et al. 2023)](https://bookdown.org/yihui/rmarkdown/params-knit.html#the-interactive-user-interface)](https://bookdown.org/yihui/rmarkdown/images/params-input.png){fig-alt="Input parameter values interactively for parameterized reports." fig-align="left"}
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+**Workaround**: build web app to get input, serialize to YAML, pass to Quarto render.
+
+**More info**: [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/7581#discussioncomment-7603016)
+:::
+
 ::::
 
 ## Resources for R Markdown users
