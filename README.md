@@ -4,18 +4,20 @@
 
 ## Workshops
 
-**Upcoming**:
+### Upcoming
 
-### R-Ladies Abuja Workshop
+None at this time.
+
+### Past
+
+#### R-Ladies Abuja
 
 📆 February 21, 2024 // 4:30 pm - 6:30 pm WAT  
 🏨 Virtual  
 🆓 **FREE** with [registration](https://www.meetup.com/rladies-abuja/events/298688371/)  
 🏡 [Workshop website](https://jadeyryan.quarto.pub/rladies-abuja-quarto-params)
 
-**Past**:
-
-### R-Ladies Washington DC Workshop
+#### R-Ladies Washington DC
 
 📆 January 18, 2024 // 6:30 pm - 8:30 pm EDT  
 🏨 Virtual  
