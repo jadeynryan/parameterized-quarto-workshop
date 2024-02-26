@@ -15,7 +15,9 @@ None at this time.
 📆 February 21, 2024 // 4:30 pm - 6:30 pm WAT  
 🏨 Virtual  
 🆓 **FREE** with [registration](https://www.meetup.com/rladies-abuja/events/298688371/)  
-🏡 [Workshop website](https://jadeyryan.quarto.pub/rladies-abuja-quarto-params)
+🎥 [Recording](https://youtu.be/kQn82pa04jQ?si=Ksvdp0Hdgs1crOD0)  
+🏡 [Workshop website](https://jadeyryan.quarto.pub/rladies-abuja-quarto-params)  
+🔖 [Source tag](https://github.com/jadeynryan/parameterized-quarto-workshop/releases/tag/rladies-abuja)
 
 #### R-Ladies Washington DC
 
