@@ -12,6 +12,7 @@ title: "Materials"
 
 ## Recording
 
+{{< video https://youtu.be/kQn82pa04jQ?si=Ksvdp0Hdgs1crOD0 >}}
 
 ## Exercises
 
