@@ -64,8 +64,6 @@ format:
 
 # lightbox extension
 # https://github.com/quarto-ext/lightbox
-filters:
-  - lightbox
 lightbox:
   desc-position: right  # position of description
   # match: auto # give all images lightbox treatment
