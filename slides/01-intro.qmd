@@ -1,24 +1,40 @@
 ## Acknowledgements
 
-::: {width="70%"}
-![](images/rladies-abuja.png){.center fig-alt="R-Ladies Abuja Logo"}
+::: columns
+::: {.column width="50%"}
+![](images/ceds.jpg){.center fig-alt="Community-Engaged Data Science Logo" width="250"}
+:::
+
+::: {.column width="50%"}
+![](images/coa.png){.center fig-alt="College of the Atlantic Logo" width="250"}
+:::
 :::
 
 <br>
 
-[R/Medicine Data Cleaning 2023 Workshop](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/) taught by [Crystal Lewis](https://cghlewis.com/), [Shannon Pileggi](https://www.pipinghotdata.com/), and [Peter Higgins](https://bookdown.org/pdr_higgins/rmrwr/)
+[R/Medicine Data Cleaning 2023
+Workshop](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/) taught
+by [Crystal Lewis](https://cghlewis.com/), [Shannon
+Pileggi](https://www.pipinghotdata.com/), and [Peter
+Higgins](https://bookdown.org/pdr_higgins/rmrwr/)
 
 <br>
 
-[ASA Traveling Courses on Quarto](https://quarto.org/docs/blog/posts/2023-12-05-asa-traveling-courses/) taught by [Mine Çetinkaya-Rundel](https://mine-cr.com/) and [Andrew Bray](https://andrewpbray.github.io/)
+[ASA Traveling Courses on
+Quarto](https://quarto.org/docs/blog/posts/2023-12-05-asa-traveling-courses/)
+taught by [Mine Çetinkaya-Rundel](https://mine-cr.com/) and [Andrew
+Bray](https://andrewpbray.github.io/)
 
 ## Disclaimer and license
 
-Opinions expressed are solely my own and do not express the views of my employer or any organizations I am associated with.
+Opinions expressed are solely my own and do not express the views of my employer
+or any organizations I am associated with.
 
 <br>
 
-This work is licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+This work is licensed under [Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International (CC
+BY-NC-SA)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 {{< fa brands creative-commons size=2x >}} {{< fa brands creative-commons-by size=2x >}} {{< fa brands creative-commons-nc size=2x >}} {{< fa brands creative-commons-sa size=2x >}}
 
@@ -49,19 +65,24 @@ The Coding Cats: cat & code themed merch
 
 ::: {.column width="28%"}
 ::: {layout-nrow="2"}
-![](images/soil-sampling.jpg){style="border-radius:1em;margin-top:auto" fig-alt="Jadey standing in a field of wheat stubble holding a 3 foot long soil sampling probe over her shoulder."}
+![](images/soil-sampling.jpg){style="border-radius:1em;margin-top:auto"
+fig-alt="Jadey standing in a field of wheat stubble holding a 3 foot long soil sampling probe over her shoulder."}
 
-![](images/rangeland.jpg){fig-alt="Jadey standing in a grazed wildflower meadow with two colleagues collecting soil samples." style="border-radius:1em;margin-top:auto"}
+![](images/rangeland.jpg){fig-alt="Jadey standing in a grazed wildflower meadow with two colleagues collecting soil samples."
+style="border-radius:1em;margin-top:auto"}
 :::
 
 {{< fa camera title="Photo credit" >}} [@leslie.mmichel](https://twitter.com/leslie_mmichel)
-
 :::
 :::
 
 ## Logistics
 
-Login to Posit Cloud workspace: [**bit.ly/rladies-parameterized-quarto**](https://bit.ly/rladies-parameterized-quarto).
+Login to Posit Cloud workspace:
+
+[**https://posit.cloud/spaces/504211/content/8064826**](https://posit.cloud/spaces/504211/content/8064826){.uri}
+
+<br>
 
 . . .
 
@@ -71,24 +92,29 @@ If Posit Cloud doesn't work, download materials locally:
 #| eval: false
 
 usethis::use_course(
-  "https://github.com/jadeynryan/parameterized-quarto-workshop/raw/main/exercises/exercises.zip"
+  "https://github.com/jadeynryan/parameterized-quarto-workshop/raw/coa-ceds/exercises/exercises.zip"
 #  ,destdir = "___"
   )
 ```
+
+<br>
 
 . . .
 
 Ask questions in the public Zoom chat or raise hand ✋.
 
+<br>
+
 . . .
 
-Workshop structure: presentation, demos/exercises, questions to answer in 💬 **Chat**.
+**Workshop structure**: presentation, 💃🏻 demos, 💪🏻 exercises
 
 # 💪🏼 Exercise 0 {.exercise}
 
 <br>
 
-💬 **Chat**: share your name, where you're calling from, and one thing you've made that you're proud of.
+💬 **Chat**: share your name, where you're calling from, and one thing you've
+made that you're proud of.
 
 ```{r}
 #| echo: false
@@ -98,19 +124,18 @@ countdown::countdown(minutes = 1, top = 0)
 ## Learning objectives
 
 ::: incremental
-1.  Understand what parameterized reporting is and when it is useful.
+
+-   Learn what Quarto is and what you can use it for.
 
 <br>
 
-2.  Learn how to convert a report into a parameterized template.
+-   Learn how to weave code and text together to create a fully reproducible
+    report.
 
 <br>
 
-3.  Render all variations of the report at once using [{quarto}](https://quarto-dev.github.io/quarto-r/) and [{purrr}](https://purrr.tidyverse.org/).
+-   Learn how to use parameters to create variations of a report.
 
-<br>
-
-4.  Generate multiple format outputs from the same template file with conditional content and conditional code execution.
 :::
 
 # Syntax and RStudio aside {.section}
@@ -123,7 +148,8 @@ countdown::countdown(minutes = 1, top = 0)
 
 . . .
 
-Isabella Velásquez's blog post [*Understanding the native R pipe* \|\>](https://ivelasq.rbind.io/blog/understanding-the-r-pipe/) (2022)
+Isabella Velásquez's blog post [*Understanding the native R pipe*
+\|\>](https://ivelasq.rbind.io/blog/understanding-the-r-pipe/) (2022)
 
 <br>
 
@@ -160,12 +186,13 @@ To change shortcut to the native pipe:
 
 `Tools` → `Global Options` → `Code` → `Editing` → `Use Native Pipe Operator`
 
-Windows: `Ctrl` + `Shift` + `M` 
+Windows: `Ctrl` + `Shift` + `M`
 
-Mac: `Cmd` + `Shift` + `M` 
+Mac: `Cmd` + `Shift` + `M`
 
 ::: footer
-Slide adapted from [R/Medicine Data Cleaning 2023 Workshop](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/)
+Slide adapted from [R/Medicine Data Cleaning 2023
+Workshop](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/)
 :::
 
 ## Namespacing
@@ -208,7 +235,8 @@ mtcars |>
 :::
 
 ::: footer
-Slide adapted from [R/Medicine Data Cleaning 2023 Workshop](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/)
+Slide adapted from [R/Medicine Data Cleaning 2023
+Workshop](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/)
 :::
 
 ## RStudio options

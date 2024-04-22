@@ -1,0 +1,13 @@
+---
+title: "Slides"
+---
+
+[View slides in full screen](/slides/index.html).
+
+```{=html}
+<iframe class="slides" src="/slides/index.html"></iframe>
+```
+
+<!-- ## Recording -->
+
+<!-- {{< video https://youtu.be/kQn82pa04jQ?si=Ksvdp0Hdgs1crOD0 >}} -->

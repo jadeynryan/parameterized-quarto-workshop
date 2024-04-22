@@ -2,34 +2,30 @@
 title: "Pre-work"
 ---
 
-This workshop has five exercises for you to try. After the workshop, I encourage you to adapt the exercise template files and code to fit your own projects.
+## Participation
 
-There are three ways for you to participate. Please complete the pre-work for whichever way you'd like to follow along **before the workshop**. Spinning up the Posit Cloud instance can take a few minutes, as can installing packages and downloading the exercises.
+Demonstrations and exercises will be in [Posit Cloud](https://posit.cloud/).
+Posit Cloud allows us all to work in the exact same environment with the same
+version of R, R packages, and directory of files. Please create an account if
+you don't yet have one.
 
-## Follow along in the Posit Cloud
+You must be part of the CEDS Workshops Posit Cloud work space to access the
+project linked below.
 
-This workshop will largely be conducted in the [Posit Cloud](https://posit.cloud/) environment. Posit Cloud allows us all to work in the exact same environment with the same version of R, R packages, and directory of files. Please create an account if you don't yet have one.
+[**https://posit.cloud/spaces/504211/content/8064826**](https://posit.cloud/spaces/504211/content/8064826){.uri}
 
-**Join the R-Ladies workspace**: [bit.ly/rladies-parameterized-quarto](https://bit.ly/rladies-parameterized-quarto).
+**Alternative**
 
-**Open the R-Ladies Abuja project**:
-[bit.ly/quarto-params-posit-cloud](https://bit.ly/quarto-params-posit-cloud).
+If you are struggling with Posit Cloud or if you prefer to work locally, please
+have the following installed and configured on your machine.
 
-## Watch and listen
-
-If you will not be using the Posit Cloud instance, you can learn by watching and listening. No pre-work needed for you. 😊
-
-## Follow along on your own computer
-
-As a more high-risk alternative, if you would like to try this out on your own computer, please have the following installed and configured on your machine. Note that we will **NOT** be able to help you with local computer problems during the workshop. If you choose to do this, you are on your own.
-
--   Recent version of **R**
-
--   Recent version of **RStudio**
+-   Recent version of [**R**](https://cran.rstudio.com/),
+    [**RStudio**](https://posit.co/download/rstudio-desktop/), and
+    [**Quarto**](https://quarto.org/docs/get-started/)
 
 -   Recent version of packages used in this workshop:
 
-    ``` {r}
+    ```{r}
     #| eval: false
 
     pkgs <- c("dplyr", "fs", "ggplot2", "here", "plotly", "purrr", "quarto", 
@@ -41,23 +37,33 @@ As a more high-risk alternative, if you would like to try this out on your own c
 
 -   Check that Quarto works on your computer:
 
-    1. Open RStudio and create a new Quarto (`.qmd`) document.
+    1.  Open RStudio and create a new Quarto (`.qmd`) document.
 
-    2. Save the document and check you are able to render it.
+    2.  Save the document and check you are able to render it.
 
--   Get the project on your machine. Fill in `destdir` with the location where you want to download the project. Delete that argument if you want it to default to your Desktop.
+-   Get the project on your machine (by default, downloads to desktop).
+    
+    Uncomment and use the `destdir` argument to choose a different location.
 
     ```{r}
     #| eval: false
 
     # install.packages("usethis")
     usethis::use_course(
-        "https://github.com/jadeynryan/parameterized-quarto-workshop/raw/main/exercises/exercises.zip",
-        destdir = "___")
+        "https://github.com/jadeynryan/parameterized-quarto-workshop/raw/coa-ceds/exercises/ceds-quarto-exercises.zip"
+        # , destdir = "C:/Users/jryan/Documents/R/projects"
+    )
     ```
 
-## Quarto and {purrr} {#sec-quarto-purrr}
+## Quarto and `purrr` {#sec-quarto-purrr}
 
-If you're new to Quarto, we recommend watching [Tom Mock's excellent 2-hour introduction to Quarto](https://www.youtube.com/watch?v=yvi5uXQMvu4).
+If you're new to Quarto, we recommend watching [Mine Çetinkaya-Rundel's
+23-minute *Getting Started with
+Quarto*](https://www.youtube.com/watch?v=_f3latmOhew) or [Tom Mock's 2-hour
+*Welcome to Quarto Workshop*](https://www.youtube.com/watch?v=yvi5uXQMvu4).
 
-If you're new to {purrr}, we recommend watching this R-Ladies Baltimore presentation [*Make your R Code purr with purrr*](https://www.youtube.com/watch?v=IewsPpjKElc) and reviewing Jenny Bryan's [tutorial](https://jennybc.github.io/purrr-tutorial/) and [workshop](https://github.com/jennybc/row-oriented-workflows).
+If you're new to `purrr`, we recommend watching this R-Ladies Baltimore
+presentation [*Make your R Code purr with
+`purrr`*](https://www.youtube.com/watch?v=IewsPpjKElc) and reviewing Jenny
+Bryan's [tutorial](https://jennybc.github.io/purrr-tutorial/) and
+[workshop](https://github.com/jennybc/row-oriented-workflows).

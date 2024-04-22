@@ -58,10 +58,13 @@ $min-contrast-ratio:   7;
 }
 
 h1, h2 {
-  font-size: 1.3em;
   font-weight: 900;
   font-family: Domine, serif;
   color: $teal-dark1;
+}
+
+h1 {
+  font-size: 1.4em;
 }
 
 h2 {

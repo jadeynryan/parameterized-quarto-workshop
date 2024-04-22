@@ -1,8 +1,7 @@
 {
-  "hash": "6ee120c511e884b322152344d9a46cc1",
+  "hash": "26ed986ff2c550a39ca43bb9f74a17aa",
   "result": {
-    "engine": "knitr",
-    "markdown": "---\ntitle: \"Materials\"\n---\n\n\n## Slides\n\n[View slides in full screen](/slides/index.html).\n\n\n```{=html}\n<iframe class=\"slides\" src=\"/slides/index.html\"></iframe>\n```\n\n\n## Recording\n\n\n{{< video https://youtu.be/kQn82pa04jQ?si=Ksvdp0Hdgs1crOD0 >}}\n\n\n\n## Exercises\n\n**Option 1: Posit Cloud**\n\nJoin the workspace: [bit.ly/rladies-parameterized-quarto](https://bit.ly/rladies-parameterized-quarto).\n\nOpen the R-Ladies Abuja specific project:\n[bit.ly/quarto-params-posit-cloud](https://bit.ly/quarto-params-posit-cloud).\n\n**Option 2: Download locally**\n\nFill in `destdir` with the location where you want to download the project. Delete that argument if you want it to default to your Desktop.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# install.packages(\"usethis\")\nusethis::use_course(\n    \"https://github.com/jadeynryan/parameterized-quarto-workshop/raw/main/exercises/exercises.zip\",\n    destdir = \"___\")\n```\n:::\n",
+    "markdown": "---\ntitle: \"Materials\"\n---\n\n\n## Slides\n\n[View slides in full screen](/slides/index.html).\n\n\n```{=html}\n<iframe class=\"slides\" src=\"/slides/index.html\"></iframe>\n```\n\n\n<!-- ## Recording -->\n\n<!-- {{< video https://youtu.be/kQn82pa04jQ?si=Ksvdp0Hdgs1crOD0 >}} -->\n\n## Exercises\n\n**Option 1: Posit Cloud**\n\nYou must be part of the CEDS Workshops Posit Cloud work space to access the project linked below.\n\n**<https://posit.cloud/spaces/504211/content/8064826>**\n\n**Option 2: Download locally**\n\nFill in `destdir` with the location where you want to download the project. Delete this argument to download to your desktop.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# install.packages(\"usethis\")\nusethis::use_course(\n    \"https://github.com/jadeynryan/parameterized-quarto-workshop/raw/main/exercises/exercises.zip\"\n    , destdir = \"___\"\n)\n```\n:::\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

@@ -14,9 +14,9 @@ execute:
 
 website:
   page-navigation: true
-  title: "Parameterized Reporting with Quarto: R-Ladies Abuja"
-  description: "Homepage for the 2024 R-Ladies Abuja Parameterized Reports with Quarto Workshop"
-  site-url: "https://jadeyryan.quarto.pub/rladies-abuja-quarto-params/"
+  title: "Reproducible Reporting with Quarto Workshop"
+  description: "Homepage for the Reproducible Reporting with Quarto Workshop hosted by Community Engaged Data Science course at the College of the Atlantic"
+  site-url: "https://jadeyryan.quarto.pub/ceds-quarto-workshop/"
   favicon: "images/jr-logo-circle.webp"
 
   repo-url: https://github.com/jadeynryan/parameterized-quarto-workshop
@@ -25,7 +25,7 @@ website:
   page-footer:
     left: "&copy; 2024 Jadey Ryan"
     center: "Website built with ❤︎️ and [Quarto](https://quarto.org/)."
-    right: "Inspired by [R/Medicine 2023 workshop](https://github.com/shannonpileggi/rmedicine-data-cleaning-2023), inspired by [R/Medicine 2022 Workshop](https://github.com/ddsjoberg/clinical-reporting-gtsummary-rmed), inspired by [@minebocek](https://twitter.com/minebocek)."
+    right: "Inspired by [R/Medicine 2023 workshop](https://github.com/shannonpileggi/rmedicine-data-cleaning-2023) and [ASA Traveling Courses on Quarto](https://quarto.org/docs/blog/posts/2023-12-05-asa-traveling-courses/)."
     background: "#07483f"
 
   sidebar:
@@ -45,8 +45,8 @@ website:
        text: Home
      - href: prework.qmd
        text: Pre-work
-     - href: materials.qmd
-       text: Materials
+     - href: slides.qmd
+       text: Slides
      - href: license.qmd
        text: License
 
