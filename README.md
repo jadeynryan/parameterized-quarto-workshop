@@ -53,7 +53,7 @@ seamlessly integrates code and text to create reproducible reports and
 presentations; 2) dive into real-world applications at the Washington State
 Department of Agriculture; and 3) learn and practice Quarto functionality
 through demonstrations and hands-on exercises covering static and dynamic output
-formats, markdown syntax, code chunk options, output styling, and parameters for
+formats, markdown syntax, code chunk options, output theming, and parameters for
 document variations.
 
 This workshop will be great for folks familiar with RMarkdown who are interested

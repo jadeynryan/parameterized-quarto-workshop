@@ -113,8 +113,13 @@ Ask questions in the public Zoom chat or raise hand ✋.
 
 <br>
 
-💬 **Chat**: share your name, where you're calling from, and one thing you've
-made that you're proud of.
+💬 **Chat**: 
+
+-   Your name
+
+-   Which community project you're working on
+
+-   One thing you've made that you're proud of
 
 ```{r}
 #| echo: false

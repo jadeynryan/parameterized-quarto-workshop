@@ -35,7 +35,7 @@ In this session, we will:
 
 -   learn and practice Quarto functionality through demonstrations and hands-on
     exercises covering static and dynamic outputs, markdown syntax, code chunk
-    options, output styling, and parameters.
+    options, output theming, and parameters.
 
 ## Learning objectives
 
