@@ -3,116 +3,116 @@ execute:
   eval: false
 ---
 
-# Conditional content {.section}
+<!-- # Conditional content {.section} -->
 
-## Control content visibility
+<!-- ## Control content visibility -->
 
-Special `.content-visible` and `.content-hidden` classes with `when-format="___"` and `unless-format="___"` attributes can be applied to:
+<!-- Special `.content-visible` and `.content-hidden` classes with `when-format="___"` and `unless-format="___"` attributes can be applied to: -->
 
-::: panel-tabset
+<!-- ::: panel-tabset -->
 
-## Divs
+<!-- ## Divs -->
 
-```markdown
-::: {.content-visible when-format="html"}
+<!-- ```markdown -->
+<!-- ::: {.content-visible when-format="html"} -->
 
-Will only appear in HTML.
+<!-- Will only appear in HTML. -->
 
-:::
-```
+<!-- ::: -->
+<!-- ``` -->
 
-## Spans
+<!-- ## Spans -->
 
-``` markdown
-Some text
-[in HTML.]{.content-visible when-format="html"}
-[in PDF.]{.content-visible when-format="pdf"}
-```
+<!-- ``` markdown -->
+<!-- Some text -->
+<!-- [in HTML.]{.content-visible when-format="html"} -->
+<!-- [in PDF.]{.content-visible when-format="pdf"} -->
+<!-- ``` -->
 
-## Non-executable code
+<!-- ## Non-executable code -->
 
-Fenced code blocks purely for documentation.
+<!-- Fenced code blocks purely for documentation. -->
 
-````markdown
-```{.python .content-visible when-format="html"}
-# code shown only in HTML
-2 + 2
-```
-````
+<!-- ````markdown -->
+<!-- ```{.python .content-visible when-format="html"} -->
+<!-- # code shown only in HTML -->
+<!-- 2 + 2 -->
+<!-- ``` -->
+<!-- ```` -->
 
-:::
+<!-- ::: -->
 
-::: footer
-Examples from [Conditional Content Quarto docs](https://quarto.org/docs/authoring/conditional.html)
-:::
+<!-- ::: footer -->
+<!-- Examples from [Conditional Content Quarto docs](https://quarto.org/docs/authoring/conditional.html) -->
+<!-- ::: -->
 
-## Useful for static/interactive features
+<!-- ## Useful for static/interactive features -->
 
-Pairs well with `{{< include >}}` shortcodes to re-use content without copying/pasting.
+<!-- Pairs well with `{{< include >}}` shortcodes to re-use content without copying/pasting. -->
 
-. . .
+<!-- . . . -->
 
-::::: panel-tabset
+<!-- ::::: panel-tabset -->
 
-## Static
+<!-- ## Static -->
 
-```markdown
-:::: {.content-visible unless-format="html"}
+<!-- ```markdown -->
+<!-- :::: {.content-visible unless-format="html"} -->
 
-## Cats
+<!-- ## Cats -->
 
-{{{< include _cats.qmd >}}}
+<!-- {{{< include _cats.qmd >}}} -->
 
-## Dogs
+<!-- ## Dogs -->
 
-{{{< include _dogs.qmd >}}}
+<!-- {{{< include _dogs.qmd >}}} -->
 
-::::
-```
+<!-- :::: -->
+<!-- ``` -->
 
-## Interactive
+<!-- ## Interactive -->
 
-```markdown
-:::: {.content-visible when-format="html"}
-::: panel-tabset
+<!-- ```markdown -->
+<!-- :::: {.content-visible when-format="html"} -->
+<!-- ::: panel-tabset -->
 
-## Cats
+<!-- ## Cats -->
 
-{{{< include _cats.qmd >}}}
+<!-- {{{< include _cats.qmd >}}} -->
 
-## Dogs
+<!-- ## Dogs -->
 
-{{{< include _dogs.qmd >}}}
+<!-- {{{< include _dogs.qmd >}}} -->
 
-:::
-::::
-```
-:::::
+<!-- ::: -->
+<!-- :::: -->
+<!-- ``` -->
+<!-- ::::: -->
 
-. . .
+<!-- . . . -->
 
-Use an underscore prefix for included files so they are automatically ignored by a Quarto render of a project ([Includes Quarto Docs](https://quarto.org/docs/authoring/includes.html)).
+<!-- Use an underscore prefix for included files so they are automatically ignored by a Quarto render of a project ([Includes Quarto Docs](https://quarto.org/docs/authoring/includes.html)). -->
 
-# 💪🏼 Exercise 4 {.exercise}
+<!-- # 💪🏼 Exercise 4 {.exercise} -->
 
-**Use conditional content divs to control when tabsets are shown.**
+<!-- **Use conditional content divs to control when tabsets are shown.** -->
 
-1. Modify `ex-4-conditional-content.qmd` so that the `panel-tabset` is visible for HTML reports and hidden for all other formats.
+<!-- 1. Modify `ex-4-conditional-content.qmd` so that the `panel-tabset` is visible for HTML reports and hidden for all other formats. -->
 
-<br>
+<!-- <br> -->
 
-2. Explore the other options. There are multiple ways to get the same result.
+<!-- 2. Explore the other options. There are multiple ways to get the same result. -->
 
-    {.content-visible when-format="html"} == {.content-hidden unless-format="html"}
-    
-<br>
- 
-3. 💬 **Chat**: what other kinds of content might you want to make visible for only a certain format?
+<!--     {.content-visible when-format="html"} == {.content-hidden unless-format="html"} -->
 
-```{r}
-#| echo: false
-countdown::countdown(minutes = 5, top = 0)
-```
+<!-- <br> -->
+
+<!-- 3. 💬 **Chat**: what other kinds of content might you want to make visible for only a certain format? -->
+
+<!-- ```{r} -->
+<!-- #| echo: false -->
+<!-- countdown::countdown(minutes = 5, top = 0) -->
+<!-- ``` -->
 
 ## Conditional code execution
 

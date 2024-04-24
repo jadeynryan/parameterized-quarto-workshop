@@ -1,19 +1,13 @@
-# Rendering reports {.section}
+# Rendering many reports {.section}
 
-## Four ways to render 
+## Review ways to render
 
 ::: incremental
 1. ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button in RStudio or `Cmd`/`Ctrl` + `Shift` + `K` keyboard shortcut
 
-2. Check `Render on Save` and `Cmd`/`Ctrl` + `S` keyboard shortcut
+    Check `Render on Save` and `Cmd`/`Ctrl` + `S` keyboard shortcut
 
-3. Quarto CLI
-
-    ```{.bash filename="Terminal"}
-    quarto render ex-2-quarto-render.qmd -P pet_type:'cats' -P fave_breed:'Snowshoe'
-    ```
-
-4. ✨ `quarto::quarto_render()`
+2. ✨ `quarto::quarto_render()`
 
     ```{.r filename="Console or R script"}
     quarto::quarto_render(
@@ -22,9 +16,16 @@
         pet_type = "cats",
         fave_breed = "Snowshoe"))
     ```
+    
+3. Quarto CLI
+
+    ```{.bash filename="Terminal"}
+    quarto render ex-2-quarto-render.qmd -P pet_type:'cats' -P fave_breed:'Snowshoe'
+    ```
+
 :::
 
-# 💪🏼 Exercise 2.1 {.exercise}
+# 💪🏼 Exercise 4.1 {.exercise}
 
 **Change parameters in the YAML and render using ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} Render button.**
 
@@ -50,7 +51,7 @@
 countdown::countdown(minutes = 5, top = 0)
 ```
 
-# 💪🏼 Exercise 2.2 {.exercise}
+# 💪🏼 Exercise 4.2 {.exercise}
 
 **Change parameters and render using `quarto_render()`.**
 
@@ -290,24 +291,6 @@ format-links: false
 # 💃🏻 Demo {.demo}
 
 Demo programmatically rendering all reports in all formats in `ex-3-render-reports.R`.
-
-# 💪🏼 Exercise 3 {.exercise}
-
-**Explore the programmatic way of rendering multiple reports at once.**
-
-1. Look through `ex-3-render-reports.qmd` and `ex-3-render-reports.R`.
-
-2. `Source` the R script (or run line by line).
-
-3. 💬 **Chat**: were any of these functions from the `.qmd` or `.R` files new to you?
-
-4. Ask questions or take a break. 😊
-
-```{r}
-#| echo: false
-countdown::countdown(minutes = 10, top = 0)
-```
-
 
 ## Watchouts
 

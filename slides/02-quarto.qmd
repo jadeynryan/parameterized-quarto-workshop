@@ -162,7 +162,7 @@ Multiple `.qmd` files for a website, blog, or book
 
 ![](images/quarto-project.png){fig-alt="Pop up menu for creating a new project in a new directory. A list of Project Types are presented with Quarto Project, Quarto Website, Quarto Blog, and Quarto Book highlighted."}
 
-# 💪🏼 Exercise 1 {.exercise}
+# 💪🏼 Exercise 1.1 {.exercise}
 
 1. Create a Quarto document that will generate an HTML output format.
 
@@ -185,24 +185,26 @@ Toggle between **Visual** and **Source** modes with ⌘⇧ F4 or Ctrl+Shift+F4.
 Image adapted from [Tutorial: Hello, Quarto](https://quarto.org/docs/get-started/hello/).
 :::
 
-# 💪🏼 Exercise 2 {.exercise}
+# 💪🏼 Exercise 1.2 {.exercise}
 
-1. Toggle between **Visual** and **Source** modes.
+1. Toggle between **Visual** and **Source** modes. What differences in the RStudio IDE do you notice?
 
-2. What differences in the RStudio IDE do you notice?
+2. In **Visual** mode, try a traditional keyboard shortcut to format text in Google Docs or Microsoft Word (⌘B or Ctrl+B to bold text).
 
-3. In **Visual** mode, try a traditional keyboard shortcut to format text in Google Docs or Microsoft Word (⌘B or Ctrl+B to bold text).
+3. Try out other formatting shortcuts you normally use.
 
-4. Try out some of the other shortcuts and the **Insert Anything** shortcut (⌘/ or Ctrl+/).
+4. Try inserting an image using the **Insert Anything** shortcut (⌘/ or Ctrl+/).
 
 ```{r}
 #| echo: false
 countdown::countdown(minutes = 5, top = 0)
 ```
 
-## Rendering
+## Three ways to render
 
-Use the ![](images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button to render the file and preview the output.
+1. Use the RStudio/Quarto integration
+
+![](images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button to render the file and preview the output.
 
 Keyboard shortcut: ⌘⇧K or Ctrl+Shift+K
 
@@ -214,25 +216,33 @@ Check the **Render on Save** option to automatically render and update the previ
 
 ![](images/rstudio-render-on-save.png){fig-alt="Top of the text editor in RStudio with the Render on Save checkbox checked and highlighted with a purple box."}
 
-. . .
-
-Use the **`quarto` package** in the Console `quarto::quarto_render("hello.qmd")`.
-
-. . .
-
-Use the **CLI** in the Terminal `quarto render hello.qmd`.
-
 ::: footer
 Images from [Tutorial: Hello, Quarto](https://quarto.org/docs/get-started/hello/).
 :::
 
-# 💪🏼 Exercise 3 {.exercise}
+## Three ways to render
 
-1. Render the document using the **Render** button, and then by using the keyboard shortcut.
+2. Use the **`quarto` package** in the Console or an R script
 
-2. Modify the text and code, re-render the document, and review the newly rendered report.
+```{.r filename="Console or R script"}
+quarto::quarto_render(input = "hello.qmd", output_format = "html")
+```
 
-3. Check the **Render on Save** option, modify the text/code, save, and watch the output re-render and the preview update.
+. . .
+
+3. Use the **CLI** in the Terminal
+
+```{.bash filename="Terminal"}
+quarto render hello.qmd --to html
+```
+
+# 💪🏼 Exercise 1.3 {.exercise}
+
+1. Render the document using the ![](images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button.
+
+2. Modify the text and code, render using the `quarto` package, and review the output.
+
+3. Check the **Render on Save** option, make more changes, save, and watch the preview update.
 
 ```{r}
 #| echo: false
@@ -249,13 +259,15 @@ countdown::countdown(minutes = 3, top = 0)
 
 ## 1. YAML header
 
--   Metadata and options for document ([HTML](https://quarto.org/docs/reference/formats/html.html){preview-link="true"}, [PDF](https://quarto.org/docs/reference/formats/pdf.html){preview-link="true"}, [MS Word](https://quarto.org/docs/reference/formats/docx.html){preview-link="true"})
+"Yet Another Markup Language" or "YAML Ain't Markup Language"
+
+-   Document level metadata and options ([HTML](https://quarto.org/docs/reference/formats/html.html){preview-link="true"}, [PDF](https://quarto.org/docs/reference/formats/pdf.html){preview-link="true"}, [MS Word](https://quarto.org/docs/reference/formats/docx.html){preview-link="true"})
 
 -   Demarcated by three dashes (`---`) on the top and bottom
 
 -   Uses key-value pairs in the format `key: value`
 
-    -   Careful with indentation!
+-   Careful with indentation! (2 spaces to indent)
 
 ``` yaml
 ---
@@ -265,14 +277,15 @@ date: 2024-04-25
 format:                       # format type and options
   html:                       # specify HTML output
     theme: flatly             # additional options for HTML format
-execute:                      # global code chunk options
-  echo: false                 # hide code in final report
+    toc: true
 ---
 ```
 
-## YAML intelligence
+## YAML intelligence: tab-completion
 
-YAML code completion is available for project files, YAML front matter, and executable cell options:
+-   Start a word and then Tab to complete. 
+
+-   ⌘ Space or Ctrl+Space to see all available options.
 
 ![](images/rstudio-yaml-completion.png){fig-alt="Quarto document with YAML being edited. Next to the cursor code completion helper is open showing YAML options beginning with the letters preceding the cursor ('to')."}
 
@@ -280,7 +293,7 @@ YAML code completion is available for project files, YAML front matter, and exec
 Content and image adapted from [YAML Intelligence on quarto.org](https://quarto.org/docs/tools/rstudio.html#yaml-intelligence).
 :::
 
-## YAML intelligence
+## YAML intelligence: diagnostics
 
 Incorrect YAML is highlighted when documents are saved:
 
@@ -290,15 +303,25 @@ Incorrect YAML is highlighted when documents are saved:
 Content and image adapted from [YAML Intelligence on quarto.org](https://quarto.org/docs/tools/rstudio.html#yaml-intelligence).
 :::
 
-# 💪🏼 Exercise 4 {.exercise}
+# 💪🏼 Exercise 2.1 {.exercise}
 
-Modify the YAML header and explore HTML theming.
+1. Explore the [Quarto documentation on HTML theming](https://quarto.org/docs/output-formats/html-themes.html) and choose a [Bootswatch theme](https://bootswatch.com/). 
 
-1.   Explore the [Quarto documentation on HTML theming](https://quarto.org/docs/output-formats/html-themes.html) and choose a [Bootswatch theme](https://bootswatch.com/). 
+2. Add your chosen theme to the YAML.
 
-2.   Try setting the theme under the `format:` > `html:` > `theme:` field in the YAML and re-rendering the report.
+  ```yaml
+  format:                      
+    html:                       
+      theme: flatly 
+  ```
 
-3.   Play around with some of the other [Basic Options](https://quarto.org/docs/output-formats/html-themes.html#basic-options).
+3. ⌘ Space or Ctrl+Space to see all available YAML options for the HTML format.
+
+4. Try any that sound interesting.
+
+5. Share your two favorites in the chat or with your neighbors.
+
+Use the [HTML reference](https://quarto.org/docs/reference/formats/html.html) as needed.
 
 ```{r}
 #| echo: false
@@ -328,26 +351,30 @@ Markdown syntax for:
 -   [**Guide to markdown syntax**](https://quarto.org/docs/authoring/markdown-basics.html){preview-link="true"}
 :::
 
-# 💪🏼 Exercise 5 {.exercise}
+# 💪🏼 Exercise 2.2 {.exercise}
 
 1. Enable the **Visual** mode.
 
-2. Explore the **Format**, **Insert**, and **Table** drop downs and change some of the text formatting.
+2. Explore the **Format**, **Insert**, and **Table** drop downs.
 
-3. Switch to the **Source** mode and see what that formatting looks like in markdown syntax.
+3. Pick one or two options from these drop downs and try them out.
+
+4. Switch to the **Source** mode and see what that formatting or feature looks like in markdown syntax.
+
+5. Share your two favorites in the chat or with your neighbors.
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 3, top = 0)
+countdown::countdown(minutes = 5, top = 0)
 ```
 
-## 3. Code chunks
+## 3. Code chunks (or cells or blocks)
 
 **Three ways to insert code chunks:**
 
 1.    Keyboard shortcut ⌘⌥I or Ctrl+Alt+I.
 
-2.    ![](images/rstudio-insert-chunk.png){fig-alt="Insert Chunk button in RStudio" style="vertical-align:middle;" width="49"}**Insert Chunk** button in the editor toolbar.
+2.    ![](images/rstudio-insert-chunk.png){fig-alt="Insert Chunk button in RStudio" style="vertical-align:middle;" width="49"} **Insert Chunk** button in the editor toolbar.
 
 3.    Manually type the chunk delimiters ```` ```{r} ```` and ```` ``` ````.
 
@@ -361,53 +388,67 @@ countdown::countdown(minutes = 3, top = 0)
 
 2.    Run the current code chunk with ⌘⇧⏎ or Ctrl+Shift+Enter.
 
-# 💪🏼 Exercise 6 {.exercise}
+# 💪🏼 Exercise 2.3 {.exercise}
 
-<br>
+1. Insert a code chunk at the beginning of the document that includes `library(ggplot2)`.  
+   Do not run this chunk yet.
 
-💬 **Chat**: 
+2. Insert a chunk at the end that includes `ggplot2` code to generate a plot of your choice.  
+   Browse the various geoms on the [ggplot2 documentation website](https://ggplot2.tidyverse.org/reference/index.html#geoms) for examples.
 
--   Your name
+3. Try running just this plot code chunk. It should error with `could not find function "ggplot"`. 
+   We attached the `ggplot2` package, why can't R find the `ggplot` function? 
 
--   Which community project you're working on
+4. Click the **Run All Chunks Above** button. 
+   
+   Why do you think it worked this time?
 
--   One thing you've made that you're proud of
+5. Render the document.
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 1, top = 0)
+countdown::countdown(minutes = 8, top = 0)
 ```
 
 ## Optional code chunk labels
 
-Use the hash pipe syntax (`#|`) to specify labels.
+:::: {.columns}
 
-**Labels for better documentation and navigation**.
+::: {.column width="40%"}
+Use a hashpipe (`#|`) to specify **labels**.
 
 ```{r}
 #| echo: fenced
 #| label: simple-addition
+#| code-line-numbers: "|2"
 
 1 + 1
 ```
+:::
 
-. . .
+::: {.fragment .column width="60%"}
+Improve **documentation** and **navigation**.
 
 ![Figure from [Chapter 28 of *R4DS*](https://r4ds.hadley.nz/quarto#chunk-label)](images/quarto-chunk-nav.png){fig-align="left" fig-alt="Snippet of RStudio IDE showing only the drop-down code navigator which shows three chunks. Chunk 1 is setup. Chunk 2 is cars and it is in a section called Quarto. Chunk 3 is pressure and it is in a section called Including plots."}
+:::
+::::
 
 ## Optional code chunk options
 
-Use the hash pipe syntax (`#|`) to specify options.
-
-**Options for code execution, what is included in the rendered report, layout, captions, etc.**
+Use a hashpipe (`#|`) to specify **options**.
 
 ```{r}
 #| echo: fenced
 #| label: simple-multiplication
 #| eval: false
+#| code-line-numbers: "|3-4"
 
 2 * 3
 ```
+
+. . .
+
+**Control code execution, text or plot output, layout, captions, etc.**
 
 -   `eval: false` prevents code from being evaluated and does not generate results.
     Use this to display example code or disable a code block.
@@ -415,27 +456,32 @@ Use the hash pipe syntax (`#|`) to specify options.
 -   `echo: false` prevents code, but not the results from appearing in the report.
     Use this when writing reports aimed at people who don't want to see the underlying R code.
 
--   [Full list of options](https://yihui.org/knitr/options/){preview-link="true"}.
+. . .
+
+**Use tab-completion to see available options! Read about [`knitr` specific options](https://yihui.org/knitr/options/){preview-link="true"}.**
 
 ::: footer
 Content adapted from [Chapter 28 of *R4DS*](https://r4ds.hadley.nz/quarto#chunk-label).
 :::
 
-# 💪🏼 Exercise 7 {.exercise}
+# 💪🏼 Exercise 2.4 {.exercise}
 
-<br>
+1. Add appropriate **labels** to the first and last code chunks.
 
-💬 **Chat**: 
+2. Try navigating to the chunks using the drop down navigator at the bottom left of the source pane.
 
--   Your name
+3. Add `#| echo: false` to all chunks and re-render. How did this change the report?
 
--   Which community project you're working on
+4. Try two more chunk options and re-render.  
+   To see all options, type `#| ` then Tab, ⌘ Space , or Ctrl+Space. 
+   
+5. Share which options you tried and what they did in the chat or with your neighbors.
 
--   One thing you've made that you're proud of
+Use the [Code Cells: Knitr reference](https://quarto.org/docs/reference/cells/cells-knitr.html) as needed.
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 1, top = 0)
+countdown::countdown(minutes = 6, top = 0)
 ```
 
 ## Global options
@@ -456,7 +502,7 @@ execute:
 
 . . .
 
-**Some global options relevant only to R must be set under the `knitr` field, under `opts_chunk`:**
+**Some global options relevant only to R must be set under the `knitr` key, under `opts_chunk`:**
 
 ``` yaml
 ---
@@ -470,25 +516,32 @@ knitr:
 Content adapted from [Chapter 28 of *R4DS*](https://r4ds.hadley.nz/quarto#chunk-label).
 :::
 
-# 💪🏼 Exercise 8 {.exercise}
+# 💪🏼 Exercise 2.5 {.exercise}
 
-<br>
+1. Delete the `echo: false` option from all code chunks.
 
-💬 **Chat**: 
+2. Add `code-fold: true`, under the `html:` key in the YAML, to collapse all code chunks by default.
 
--   Your name
+3. What do you think will happen if you add `echo: false`, under the `execute:` key in YAML?  
+   Try it out.
 
--   Which community project you're working on
+4. Try adding a `knitr: opts_chunk:` global option. Careful with indentation!  
 
--   One thing you've made that you're proud of
+   ``` yaml
+   knitr:
+     opts_chunk:
+       out-width: 50%
+   ```
+   Tab-completion doesn't seem to work for this YAML key.  
+   Use the [Code Cells: Knitr reference](https://quarto.org/docs/reference/cells/cells-knitr.html#figures) as needed.
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 1, top = 0)
+countdown::countdown(minutes = 6, top = 0)
 ```
 
-# Quarto features {.section}
+<!-- # Quarto features {.section} -->
 
-## Cross-references
+<!-- ## Cross-references -->
 
-## Citations
+<!-- ## Citations -->

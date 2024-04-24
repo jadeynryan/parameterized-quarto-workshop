@@ -2,159 +2,91 @@
 
 ## Learning objective 1
 
-**Understand what parameterized reporting is and when it is useful.**
+**Learn what Quarto is and what you can use it for.**
 
-. . .
+::: columns
+::: {.column width="50%"}
+Scientific and technical publishing system for:
 
-**Like very fancy custom functions:**
+-   interactive [HTML
+    reports](https://quarto.org/docs/output-formats/html-basics.html)
+-   static [MS Word](https://quarto.org/docs/output-formats/ms-word.html) or
+    [PDF](https://quarto.org/docs/output-formats/pdf-basics.html) fact sheets or
+    reports
+-   [manuscripts](https://quarto.org/docs/manuscripts/)
+-   [presentations](https://quarto.org/docs/presentations/)
+-   [dashboards](https://quarto.org/docs/dashboards/)
+-   [websites](https://quarto.org/docs/websites/)
+-   [books](https://quarto.org/docs/books/)
+-   [blogs](https://quarto.org/docs/websites/website-blog.html)
 
-::: incremental
-
-- Function &rarr; `.qmd` template
-
-- Input &rarr; parameters
-
-- Output &rarr; rendered reports
+**Check out the [Quarto Gallery](https://quarto.org/docs/gallery/)!**
 :::
 
-. . . 
-
-**Useful for creating variations of the same report:**
-
--   country, state, county, or city
-
--   time periods
-
--   breeds, species, diseases, trials, etc.
-
-. . .
-
-::: callout-note
-We only covered reports, but you can also parameterize `revealjs` presentations! See this [Jumping Rivers blog post](https://www.jumpingrivers.com/blog/r-parameterised-presentations-quarto/) about it.
+::: {.column width="50%"}
+![Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine
+Çetinkaya-Rundel, presented at RStudio::Conf(2022). Illustrated by Allison
+Horst.](images/horst-quarto-schematic.png){fig-alt="A schematic representing the multi-language input (e.g. Python, R, Observable, Julia) and multi-format output (e.g. PDF, html, Word documents, and more) versatility of Quarto."
+fig-align="center" style="margin-top:-1.5em;margin-bottom:-1em"}
+:::
 :::
 
 ## Learning objective 2
 
-**Learn how to convert a report into a parameterized template.**
+**Learn how to weave code and text together to create a fully reproducible
+report.**
 
-::: incremental
-- Include default `params:` in YAML
-    
-- Replace hard-coded values with `params$pet_type`
+`.qmd` documents contain:
 
-  - **YAML**: 
-  
-    ``` {yaml}
-    ---
-    title: "Report about `r params$pet_type`"
-    params:
-      pet_type: "cats"
-    ---
-    ```
-    
-  - **Inline R code**: 
-  
-    ```{markdown}
-    I like **`r params$pet_type`**.
-    ```
-    
-  - **Code chunks**: 
-  
-    ``` r
-    pets |> 
-        dplyr::filter(pet_type == params$pet_type)
-    ```
-:::
+-   document level metadata and options in the **YAML**
+-   a **narrative** using markdown syntax, and
+-   **code chunks** to import, wrangle, visualize data.
 
 ## Learning objective 3
 
-**Render all variations of the report at once using [{quarto}](https://quarto-dev.github.io/quarto-r/) and [{purrr}](https://purrr.tidyverse.org/). **
+**Learn how to use parameters to create variations of a report.**
 
-::: {.fragment}
-1. Get all unique parameter combinations into a dataframe:
+. . .
 
-```{r}
-head(pet_reports, 1)
-```
+**Parameterized reports &rarr; very fancy custom functions:**
+
+::: incremental
+-   Function → `.qmd` template
+
+-   Input → parameters
+
+-   Output → rendered reports
 :::
 
-<br>
+. . .
 
-::: {.fragment}
-2. Use dataframe in `pwalk()` with `quarto_render()`:
+**Useful for creating variations of the same report:**
 
-```{r}
-#| eval: false
-purrr::pwalk(
-  pet_reports,
-  quarto::quarto_render,
-  input = here::here("pet_template.qmd"),
-  .progress = TRUE
-)
-```
-:::
+-   spatial: country, state, county, or city
 
-## Learning objective 4
+-   temporal: year or other time period
 
-**Generate multiple format outputs from the same template with conditional content and code.**
+-   water bodies, sampling sites, energy sources, breeds, species, diseases, trials, etc.
 
-::: {.fragment}
+. . .
 
-#### Content visibility
-
-:::: {.columns}
-::: {.column width="50%"}
- - {.content-visible when-format="___"}
- 
- - {.content-visible unless-format="___"}
-:::
-
-::: {.column width="50%"}
- - {.content-hidden unless-format="___"}
- 
- - {.content-hidden unless-format="___"}
-:::
-::::
-
-:::
-
-::: {.fragment}
-
-#### Code execution
-
-```r
-#| label: setup
-
-format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
-```
-
-```r
-#| label: interactive-plot
-#| eval: !expr format == "html"
-
-# plotly code
-```
-
-```r
-#| label: static-plot
-#| eval: !expr format %in% c("latex", "docx")
-
-# ggplot2 code
-```
-
+::: callout-note
+We only covered reports, but you can also parameterize `revealjs` presentations!
+See this [Jumping Rivers blog
+post](https://www.jumpingrivers.com/blog/r-parameterised-presentations-quarto/)
+about it.
 :::
 
 ## Thank you!
 
-:::: {.columns}
+::: columns
 ::: {.column width="65%"}
-🙏🏼 **Please let me know how I did in this [short survey](https://forms.gle/xSYgJQenNs6gFcck9)** 
+🏡 **Home for all workshop materials**:
+[jadeyryan.quarto.pub/ceds-quarto-workshop/](https://jadeyryan.quarto.pub/ceds-quarto-workshop/)
 
-<br>
-
-🏡 **Home for all workshop materials**: [jadeyryan.quarto.pub/rladies-abuja-quarto-params/](https://jadeyryan.quarto.pub/rladies-abuja-quarto-params/)
-
-![](images/mts.jpg){width=600 fig-alt="From left to right, Mai, Tai, and Skye. Three snowshoe cats cuddling in their warming beds." style="border-radius:1em"}
+![](images/mts.jpg){width="600"
+fig-alt="From left to right, Mai, Tai, and Skye. Three snowshoe cats cuddling in their warming beds."
+style="border-radius:1em"}
 :::
 
 ::: {.column width="35%"}
@@ -162,13 +94,15 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 
 {{< fa link size=xl >}} [jadeyryan.com](https://jadeyryan.com)
 
-{{< fa brands mastodon size=xl >}} [\@jadeynryan](https://fosstodon.org/@jadeynryan)
+{{< fa brands mastodon size=xl >}}
+[\@jadeynryan](https://fosstodon.org/@jadeynryan)
 
-{{< fa brands linkedin size=xl >}} [linkedin.com/in/jadey-ryan](https://www.linkedin.com/in/jadey-ryan)
+{{< fa brands linkedin size=xl >}}
+[linkedin.com/in/jadey-ryan](https://www.linkedin.com/in/jadey-ryan)
 
 {{< fa brands github size=xl >}} [jadeynryan](https://github.com/jadeynryan/)
 
-{{< fa brands etsy size=xl >}} [thecodingcats.etsy.com](https://thecodingcats.etsy.com/)
+{{< fa brands etsy size=xl >}}
+[thecodingcats.etsy.com](https://thecodingcats.etsy.com/)
 :::
-
-::::
+:::

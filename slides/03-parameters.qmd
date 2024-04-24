@@ -63,9 +63,7 @@ width="1300" fig-align="left" style="margin-top:-1em"}
 
 -   YAML header with `params` key-value pairs
 
-    -   Yet Another Markdown Language → YAML Ain't Markup Language
-
--   Use these `params` in your report to create different variations.
+-   Use these `params` to create different variations of a report from a single `.qmd` document.
 
 . . .
 
@@ -102,7 +100,7 @@ width="1300" fig-align="left" style="margin-top:-1em"}
 6.  Render all variations of the report at once.
 :::
 
-# 💪🏼 Exercise 1 {.exercise}
+# 💪🏼 Exercise 3.1 {.exercise}
 
 **Explore a report without parameters and see where we could add them.**
 
@@ -223,3 +221,9 @@ labs(title = paste(params$fave_breed, "population"))
 # 💃🏻 Demo {.demo}
 
 Modify `ex-1-swiss-cats.qmd` to add `pet_type` and `fave_breed` parameters.
+
+## `knitr::knit_child()`
+
+- `knitr::knit_child()` allows you to break your content into smaller, modular pieces
+- It involves having a "child" document as a template and running it repeatedly with different parameters
+- The "main" document "knits" or includes the output from the child document

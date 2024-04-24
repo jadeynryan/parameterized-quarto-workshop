@@ -2,7 +2,7 @@
 
 ::: columns
 ::: {.column width="50%"}
-![](images/ceds.jpg){.center fig-alt="Community-Engaged Data Science Logo" width="250"}
+![](images/ceds.jpg){.center fig-alt="Community Engaged Data Science Logo" width="250"}
 :::
 
 ::: {.column width="50%"}
@@ -76,9 +76,9 @@ style="border-radius:1em;margin-top:auto"}
 :::
 :::
 
-## Logistics
+## Participation
 
-Login to Posit Cloud workspace:
+Log in to Posit Cloud work space:
 
 [**https://posit.cloud/spaces/504211/content/8064826**](https://posit.cloud/spaces/504211/content/8064826){.uri}
 
