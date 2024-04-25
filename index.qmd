@@ -15,10 +15,10 @@ taught by [Dr. Laurie Baker](https://lauriebaker.rbind.io/).
 🏡 [Workshop website](https://jadeyryan.quarto.pub/ceds-quarto-workshop)\
 🐙 [GitHub release](https://github.com/jadeynryan/parameterized-quarto-workshop/tree/coa-ceds)\
 
-::: callout-important
-This workshop is currently being updated. Materials, links, and exercises
-subject to change.
-:::
+<!-- ::: callout-important -->
+<!-- This workshop is currently being updated. Materials, links, and exercises -->
+<!-- subject to change. -->
+<!-- ::: -->
 
 ## Description
 

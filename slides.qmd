@@ -2,10 +2,10 @@
 title: "Slides"
 ---
 
-[View slides in full screen](/slides/index.html).
+[View slides in full screen](/slides/slides.html).
 
 ```{=html}
-<iframe class="slides" src="/slides/index.html"></iframe>
+<iframe class="slides" src="/slides/slides.html" allowfullscreen></iframe>
 ```
 
 <!-- ## Recording -->
