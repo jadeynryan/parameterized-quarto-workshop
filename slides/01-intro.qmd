@@ -80,7 +80,7 @@ style="border-radius:1em;margin-top:auto"}
 
 Log in to Posit Cloud work space:
 
-[**https://posit.cloud/spaces/504211/content/8064826**](https://posit.cloud/spaces/504211/content/8064826){.uri}
+[**https://posit.cloud/spaces/504211/content/8093007**](https://posit.cloud/spaces/504211/content/8093007){.uri}
 
 <br>
 
@@ -101,29 +101,25 @@ usethis::use_course(
 
 . . .
 
-Ask questions in the public Zoom chat or raise hand ✋.
-
-<br>
-
-. . .
-
 **Workshop structure**: presentation, 💃🏻 demos, 💪🏻 exercises
 
 # 💪🏼 Exercise 0 {.exercise}
 
-<br>
-
-💬 **Chat**: 
+**Student introductions**: 
 
 -   Your name
 
--   Which community project you're working on
+-   Briefly describe your community project & what you're hoping to learn from this workshop
 
--   One thing you've made that you're proud of
+**Community partner // Maine UseR introductions**: 
+
+-   Your name, position title, and affiliation
+
+-   Briefly describe how you use R Markdown or Quarto
 
 ```{r}
 #| echo: false
-countdown::countdown(minutes = 1, top = 0)
+countdown::countdown(minutes = 15, top = 0)
 ```
 
 ## Learning objectives
@@ -132,12 +128,8 @@ countdown::countdown(minutes = 1, top = 0)
 
 -   Learn what Quarto is and what you can use it for.
 
-<br>
-
 -   Learn how to weave code and text together to create a fully reproducible
     report.
-
-<br>
 
 -   Learn how to use parameters to create variations of a report.
 

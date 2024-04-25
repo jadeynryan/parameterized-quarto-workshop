@@ -12,7 +12,7 @@ you don't yet have one.
 You must be part of the CEDS Workshops Posit Cloud work space to access the
 project linked below.
 
-[**https://posit.cloud/spaces/504211/content/8064826**](https://posit.cloud/spaces/504211/content/8064826){.uri}
+[**https://posit.cloud/spaces/504211/content/8093007**](https://posit.cloud/spaces/504211/content/8093007){.uri}
 
 **Alternative**
 

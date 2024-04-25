@@ -94,15 +94,12 @@ style="border-radius:1em"}
 
 {{< fa link size=xl >}} [jadeyryan.com](https://jadeyryan.com)
 
-{{< fa brands mastodon size=xl >}}
-[\@jadeynryan](https://fosstodon.org/@jadeynryan)
+{{< fa brands mastodon size=xl >}} [\@jadeynryan](https://fosstodon.org/@jadeynryan)
 
-{{< fa brands linkedin size=xl >}}
-[linkedin.com/in/jadey-ryan](https://www.linkedin.com/in/jadey-ryan)
+{{< fa brands linkedin size=xl >}} [linkedin.com/in/jadey-ryan](https://www.linkedin.com/in/jadey-ryan)
 
 {{< fa brands github size=xl >}} [jadeynryan](https://github.com/jadeynryan/)
 
-{{< fa brands etsy size=xl >}}
-[thecodingcats.etsy.com](https://thecodingcats.etsy.com/)
+{{< fa brands etsy size=xl >}} [thecodingcats.etsy.com](https://thecodingcats.etsy.com/)
 :::
 :::

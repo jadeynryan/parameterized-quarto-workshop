@@ -27,7 +27,7 @@ drivers](https://urban-institute.medium.com/iterated-fact-sheets-with-r-markdown
 :::
 
 ::: {.column width="25%"}
-![](images/soils-report.png){.lightbox group="examples"
+![](images/soils-report-html.png){.lightbox group="examples"
 fig-alt="HTML report for soil health survey participant, generated from a parameterized Quarto report."}
 
 [Soil health](https://wa-department-of-agriculture.github.io/soils/)
@@ -100,11 +100,11 @@ width="1300" fig-align="left" style="margin-top:-1em"}
 6.  Render all variations of the report at once.
 :::
 
-# 💪🏼 Exercise 3.1 {.exercise}
+# 💪🏼 Exercise 2 {.exercise}
 
 **Explore a report without parameters and see where we could add them.**
 
-1.  Open `ex-1-swiss-cats.qmd`.
+1.  Open `2-swiss-cats.qmd`.
 
 2.  Click the
     ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio"
@@ -112,7 +112,7 @@ width="1300" fig-align="left" style="margin-top:-1em"}
 
 3.  Look at the source markdown & code and the rendered report.
 
-4.  💬 **Chat**: what variables could we set as parameters?
+4.  💬 **Discuss**: What variables could we set as parameters?
 
     💡 **Hint**: run the `setup` chunk and look at the `pets` dataframe to see
     what variables it has.
@@ -124,18 +124,18 @@ countdown::countdown(minutes = 5, top = 0)
 
 ## Set `params` in YAML header
 
-```{yaml}
-#| code-line-numbers: 2|3-5|6-8|11
+```{.yaml code-line-numbers="|2|3,4,6|7-8|11"}
 ---
 title: "Swiss Cats"             # Metadata
 format:                         # Set format types
-  html: default                                     
+  html:
+    toc: true                   # Set additional options
   docx: default                           
 params:                         # Set default parameter key-value pairs
   fave_breed: "Snowshoe"                                
 ---
     
-Report content goes here.       # Write content
+Report content goes here.       # Write narrative and code
 ```
 
 . . .
@@ -191,28 +191,35 @@ My favorite cat breed is the **`r params$fave_breed`**.
 
 ## Replace hard-coded values with `params`
 
-::: incremental
 -   `Cmd`/`Ctrl` + `F` to find where to replace hard-coded values with `params`.
 
-<br>
+![](images/find-replace-hard-coded-values.png){fig-alt="Find and replace toolbar with &quot;pet_type in the Search field highlighted by a purple box and &quot;params$pet_type in the Replace field highlighted by a blue box. The .qmd file shows a filter statement with the &quot;pet_type highlighted by RStudio as a match for the Find tool. This filter statement is highlighted by a purple box with an arrow pointing to a blue box that has the filter statement with the hard-coded &quot;cats string replaced with &quot;params$pet_type."}
 
--   Use inline R code for markdown.
+## Replace hard-coded values with `params`
 
-    ```{markdown}
+Use inline R code for markdown.
+
+```{markdown}
 ## My favorite breed: `r params$fave_breed`
 ```
 
 <br>
 
--   Use `paste()` or `glue()` for plot and table titles and labels.
+. . .
 
-    ```{r}
+Use `paste()` or `glue::glue()` for plot and table titles and labels.
+
+```{r}
 #| eval: false
 
 # ggplot code +
 labs(title = paste(params$fave_breed, "population"))
+
+# OR
+
+# ggplot code +
+labs(title = glue::glue("{params$fave_breed} population"))
 ```
-:::
 
 ##
 
@@ -220,10 +227,8 @@ labs(title = paste(params$fave_breed, "population"))
 
 # 💃🏻 Demo {.demo}
 
-Modify `ex-1-swiss-cats.qmd` to add `pet_type` and `fave_breed` parameters.
+Modify `2-swiss-cats.qmd` to add `pet_type` and `fave_breed` parameters.
 
-## `knitr::knit_child()`
+<br>
 
-- `knitr::knit_child()` allows you to break your content into smaller, modular pieces
-- It involves having a "child" document as a template and running it repeatedly with different parameters
-- The "main" document "knits" or includes the output from the child document
+This parameterized version of `2-swiss-cats.qmd` is the starting point for the next section's exercises (`3-quarto-render.qmd`).

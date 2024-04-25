@@ -114,19 +114,23 @@ execute:
 <!-- countdown::countdown(minutes = 5, top = 0) -->
 <!-- ``` -->
 
-## Conditional code execution
+# Conditional code execution {.section}
+
+## Conditionally execute a code chunk
 
 ::: incremental
 
 -   More efficient to not execute code that generates interactive outputs for static reports.
 
--   Useful for executing interactive plot code for HTML reports and static `ggplot2` code for all other formats. 
+-   Useful for executing interactive plot code (e.g., `plotly` or `ggiraph`) for HTML reports and static `ggplot2` code for all other formats. 
+
+-   Useful for executing different code based on a parameter value.
 
 -   Not currently a feature of Quarto v1.4. Follow along with this [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/3260#discussioncomment-4573926).
 
 :::
 
-## Workaround for conditional R code
+## Conditional code based on output
 
 Include in the setup chunk of your `.qmd` file.
 
@@ -166,22 +170,6 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 
 :::
 
-<br>
-
-. . .
-
-**Can even use `params` in `!expr`:**
-
-``` r
-#| eval: !expr params$fave_breed == "Snowshoe"
-```
-
-. . .
-
-<br>
-
-[Chunk Options Quarto Docs](https://quarto.org/docs/computations/r.html#chunk-options)
-
 # 💪🏼 Exercise 5 {.exercise}
 
 <br>
@@ -192,6 +180,8 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 
 2. Fill in the blanks for the `eval: ` option for `ggplot` code chunks and `plotly` code chunks.
 
+3. 💬 **Discuss**: How would you change the `eval: ` option to execute a chunk based on a parameter value rather than the output format?
+
 ```{r}
 # Options are html, latex, and docx.
 
@@ -200,9 +190,30 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 #| eval: !expr format %in% c("___", "___")
 ```
 
-2. 💬 **Chat**: what is something you learned from this workshop that you're excited to apply to your own reports and projects?
-
 ```{r}
 #| echo: false
 countdown::countdown(minutes = 5, top = 0)
 ```
+
+## Conditional code based on parameter
+
+Use `params` in `!expr`:
+
+``` r
+#| eval: !expr params$fave_breed == "Snowshoe"
+
+# Code for a special plot for my favorite cat breed.
+```
+
+<br>
+
+``` r
+#| eval: !expr !params$fave_breed == "Snowshoe"
+
+# Code for a different plot for all other breeds.
+# Note the ! in front of params.
+```
+
+<br>
+
+[Chunk Options reference](https://quarto.org/docs/computations/r.html#chunk-options)
