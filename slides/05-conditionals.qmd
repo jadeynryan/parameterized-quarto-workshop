@@ -128,6 +128,8 @@ execute:
 
 -   Not currently a feature of Quarto v1.4. Follow along with this [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/3260#discussioncomment-4573926).
 
+-   Chunk options can use R code for option values with `!expr`. Learn about the limitations to this YAML "tag" literal syntax in the [Quarto Chunk Options reference](https://quarto.org/docs/computations/r.html#chunk-options).
+
 :::
 
 ## Conditional code based on output

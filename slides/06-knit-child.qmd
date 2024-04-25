@@ -1,4 +1,4 @@
-# Child documents and dynamic content {.section}
+# Child documents {.section}
 
 ## Generate dynamic contents with a "child" template
 
@@ -21,7 +21,7 @@ Caused by error in `setwd()`:
 ! character argument expected
 ```
 
-Read a description of this issue in WSDA's {soils} R package [vignette.](https://wa-department-of-agriculture.github.io/soils/articles/troubleshoot.html#error-when-run-interactively).
+Read a description of this issue in WSDA's {soils} R package [vignette](https://wa-department-of-agriculture.github.io/soils/articles/troubleshoot.html#error-when-run-interactively).
 
 ## Learn more about child documents
 
