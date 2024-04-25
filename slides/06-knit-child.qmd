@@ -8,6 +8,15 @@
 
 -   "main" document includes the output from all the different iterations of the child document
 
+<br> 
+
+. . .
+
+::: callout-tip
+## Community project: water quality monitoring monitoring
+Consider creating a main document using the river as the parameter and a child document as a template for the heading, plots, tables, and text for each sampling site.
+:::
+
 ## Do not run interactively!
 
 Code chunks including [`knitr::knit_child()`](https://rdrr.io/pkg/knitr/man/knit_child.html) are not supposed to be used interactively (see this [Stack Overflow response](https://stackoverflow.com/a/16847729) from the `knitr` developer Yihui
@@ -34,6 +43,8 @@ Read a description of this issue in WSDA's {soils} R package [vignette](https://
     26:00](https://youtu.be/Sf__ERCSgIA?si=Z4DLAHdqgRvof0FB&t=1560).
 
 # 💃🏻 Demo {.demo}
+
+Generate a report that dynamically creates sections and plots for all breeds of the `pet_type`.
 
 Main document: `6-demo-knit-child.qmd`
 

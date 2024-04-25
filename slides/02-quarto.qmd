@@ -174,19 +174,6 @@ Multiple `.qmd` files for a website, blog, or book
 
 ![](images/quarto-project.png){fig-alt="Pop up menu for creating a new project in a new directory. A list of Project Types are presented with Quarto Project, Quarto Website, Quarto Blog, and Quarto Book highlighted."}
 
-# 💪🏼 Exercise 1-1 {.exercise}
-
-1. Create a Quarto document that will generate an HTML output format. Name it `1-hello-quarto`.
-
-2. Skim through the default content.
-
-3. Try out the **Render** button and the code chunk buttons.
-
-```{r}
-#| echo: false
-countdown::countdown(minutes = 3, top = 0)
-```
-
 ## Authoring
 
 Toggle between **Visual** and **Source** modes with `Cmd`/`Ctrl` + `Shift`+ `F4.`
@@ -197,15 +184,17 @@ Toggle between **Visual** and **Source** modes with `Cmd`/`Ctrl` + `Shift`+ `F4.
 Image adapted from [Tutorial: Hello, Quarto](https://quarto.org/docs/get-started/hello/).
 :::
 
-# 💪🏼 Exercise 1-2 {.exercise}
+# 💪🏼 Exercise 1-1 {.exercise}
 
-1. Toggle between **Visual** and **Source** modes. What differences in the RStudio IDE do you notice?
+1. Create a Quarto document that will generate an HTML output format. Name it `1-hello-quarto`.
 
-2. In **Visual** mode, try a traditional keyboard shortcut to format text in Google Docs or Microsoft Word (`Cmd`/`Ctrl` + `B` to bold text).
+2. Toggle between **Visual** and **Source** modes. What differences in the RStudio IDE do you notice?
 
-3. Try out other formatting shortcuts you normally use.
+3. In **Visual** mode, try a traditional keyboard shortcut to format text in Google Docs or Microsoft Word (`Cmd`/`Ctrl` + `B` to bold text).
 
-4. Try inserting an image using the **Insert Anything** shortcut (`Cmd`/`Ctrl` + `/`).
+4. Try out other formatting shortcuts you normally use.
+
+5. Try inserting an image using the **Insert Anything** shortcut (`Cmd`/`Ctrl` + `/`).
 
 ```{r}
 #| echo: false
@@ -248,7 +237,7 @@ quarto::quarto_render(input = "hello.qmd", output_format = "html")
 quarto render hello.qmd --to html
 ```
 
-# 💪🏼 Exercise 1-3 {.exercise}
+# 💪🏼 Exercise 1-2 {.exercise}
 
 1. Render the document using the ![](images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button.
 
@@ -319,7 +308,7 @@ Incorrect YAML is highlighted when documents are saved:
 Content and image adapted from [YAML Intelligence on quarto.org](https://quarto.org/docs/tools/rstudio.html#yaml-intelligence).
 :::
 
-# 💪🏼 Exercise 1-4 {.exercise}
+# 💪🏼 Exercise 1-3 {.exercise}
 
 1. Explore the [Quarto documentation on HTML theming](https://quarto.org/docs/output-formats/html-themes.html) and choose a [Bootswatch theme](https://bootswatch.com/). 
 
@@ -369,7 +358,7 @@ Markdown syntax for:
 
 [**Guide to markdown syntax**](https://quarto.org/docs/authoring/markdown-basics.html){preview-link="true"}
 
-# 💪🏼 Exercise 1-5 {.exercise}
+# 💪🏼 Exercise 1-4 {.exercise}
 
 1. Enable the **Visual** mode.
 
@@ -406,7 +395,7 @@ countdown::countdown(minutes = 5, top = 0)
 
 2.    Run the current code chunk with `Cmd`/`Ctrl` + `Shift` + `Enter`.
 
-# 💪🏼 Exercise 1-6 {.exercise}
+# 💪🏼 Exercise 1-5 {.exercise}
 
 1. Insert a code chunk at the beginning of the document that includes `library(ggplot2)`.  
    Do not run this chunk yet.
@@ -482,7 +471,7 @@ Read about `knitr` specific options in the [developer's documentation](https://y
 Content adapted from the [Quarto chapter of *R for Data Science*](https://r4ds.hadley.nz/quarto#chunk-label).
 :::
 
-# 💪🏼 Exercise 1-7 {.exercise}
+# 💪🏼 Exercise 1-6 {.exercise}
 
 1. Add appropriate **labels** to the first and last code chunks.
 
@@ -534,7 +523,7 @@ knitr:
 Content adapted from the [Quarto chapter of *R for Data Science*](https://r4ds.hadley.nz/quarto#chunk-label).
 :::
 
-# 💪🏼 Exercise 1-8 {.exercise}
+# 💪🏼 Exercise 1-7 {.exercise}
 
 1. Delete the `echo: false` option from all code chunks.
 

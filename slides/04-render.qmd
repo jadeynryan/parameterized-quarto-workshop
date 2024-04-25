@@ -11,8 +11,8 @@
 
     ```{.r filename="Console or R script"}
     quarto::quarto_render(
-      input = here::here("3-quarto-render.qmd"), # Input Quarto file
-      execute_params = list(                        # Named list of params
+      input = here::here("3-quarto-render.qmd"),   # Input Quarto file
+      execute_params = list(                       # Named list of params
         pet_type = "cats",
         fave_breed = "Snowshoe"))
     ```
@@ -30,7 +30,8 @@
 **Change parameters in the YAML and render using ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} Render button.**
 
 1. Look at the unique pet breeds and pick your favorite.
-   ```{.r filename="Console"}
+   ```{.r}
+   # Run in Console
    pets <- readr::read_rds(here::here("data", "pets.RDS")) |> 
       dplyr::distinct(pet_type, breed) |> View()
    ```
