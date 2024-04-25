@@ -1,12 +1,16 @@
 ## Acknowledgements
 
 ::: columns
-::: {.column width="50%"}
+::: {.column width="30%"}
 ![](images/ceds.jpg){.center fig-alt="Community Engaged Data Science Logo" width="250"}
 :::
 
-::: {.column width="50%"}
+::: {.column width="30%"}
 ![](images/coa.png){.center fig-alt="College of the Atlantic Logo" width="250"}
+:::
+
+::: {.column width="30%"}
+![](https://rladies.org/images/logo.png){.center fig-alt="Purple R Ladies Logo" width="250"}
 :::
 :::
 
@@ -92,7 +96,7 @@ If Posit Cloud doesn't work, download materials locally:
 #| eval: false
 
 usethis::use_course(
-  "https://github.com/jadeynryan/parameterized-quarto-workshop/raw/coa-ceds/exercises/exercises.zip"
+  "https://github.com/jadeynryan/parameterized-quarto-workshop/raw/coa-ceds/exercises/ceds-quarto-exercises.zip"
 #  ,destdir = "___"
   )
 ```
