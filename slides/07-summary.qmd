@@ -84,6 +84,9 @@ about it.
 🏡 **Home for all workshop materials**:
 [jadeyryan.quarto.pub/ceds-quarto-workshop/](https://jadeyryan.quarto.pub/ceds-quarto-workshop/)
 
+🎥 **Recordings from previous workshops & talks**:  
+[links in GitHub repo](https://github.com/jadeynryan/parameterized-quarto-workshop?tab=readme-ov-file#workshops) or [my YouTube playlist](https://youtube.com/playlist?list=PLzjGoNexcyYaDUVCg4MQDtMXLl2F5HE3B&si=-y0jQfCYyRAQjI1B)
+
 ![](images/mts.jpg){width="600"
 fig-alt="From left to right, Mai, Tai, and Skye. Three snowshoe cats cuddling in their warming beds."
 style="border-radius:1em"}
