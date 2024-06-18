@@ -10,6 +10,7 @@ project:
 
 execute:
   freeze: auto
+  echo: true
 
 website:
   page-navigation: true

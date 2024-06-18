@@ -37,14 +37,14 @@ all variations of a parameterized report at once using `quarto` and
 
 ## Schedule
 
-| Time        | Topic                                                          |
-|-------------|----------------------------------------------------------------|
-| 1:30 - 2:00 | [Welcome](1-welcome/) & [Parameterized reports](2-parameters/) |
-| 2:00 - 3:00 | [Rendering reports](3-render/)                                 |
-| 3:00 - 3:30 | Break                                                          |
-| 3:30 - 4:00 | [Conditional content & code](4-conditionals/)                  |
-| 4:00 - 4:20 | [Styling](5-styling/)                                          |
-| 4:20 - 4:30 | [Summary](6-summary/)                                          |
+| Time        | Topic                                                           |
+|-------------|-----------------------------------------------------------------|
+| 1:30 - 2:00 | [Welcome](1-welcome/) & [Parameterizing reports](2-parameters/) |
+| 2:00 - 3:00 | [Rendering reports](3-render/)                                  |
+| 3:00 - 3:30 | Break                                                           |
+| 3:30 - 4:00 | [Conditional content & code](4-conditionals/)                   |
+| 4:00 - 4:20 | [Styling reports](5-styling/)                                   |
+| 4:20 - 4:30 | [Summary](6-summary/)                                           |
 
 ## Speaker
 

@@ -1,67 +1,54 @@
 ---
-title: "Pre-work"
+title: "Pre-workshop instructions"
 format: html
+execute: 
+  eval: false
 ---
 
-## Participation
+Prior to the workshop, please complete the following steps:
 
-Demonstrations and exercises will be in [Posit Cloud](https://posit.cloud/).
-Posit Cloud allows us all to work in the exact same environment with the same
-version of R, R packages, and directory of files. Please create an account if
-you don't yet have one.
+*If you have trouble with these steps, or you'd prefer not to mess with your current set up, you can also work in Posit Cloud. See [Backup option](#backup-option-posit-cloud) below.*
 
-You must be part of the CEDS Workshops Posit Cloud work space to access the
-project linked below.
 
-[**https://posit.cloud/spaces/504211/content/8093007**](https://posit.cloud/spaces/504211/content/8093007){.uri}
+#### 1. Software
 
-**Alternative**
+Download and install the latest versions of R, RStudio, and Quarto:
 
-If you are struggling with Posit Cloud or if you prefer to work locally, please
-have the following installed and configured on your machine.
+-   R 4.2.3 or above: <https://cran.r-project.org>
+-   RStudio 2024.04.0 or above: <https://posit.co/download/rstudio-desktop>
+-   Quarto 1.4 or above: <https://quarto.org/docs/download> 
 
--   Recent version of [**R**](https://cran.rstudio.com/),
-    [**RStudio**](https://posit.co/download/rstudio-desktop/), and
-    [**Quarto**](https://quarto.org/docs/get-started/)
+#### 2. R Packages
 
--   Recent version of packages used in this workshop:
+Install the following packages by copying and pasting the following into the console in RStudio:
 
-    ```{r}
-    #| eval: false
+```{r}
+install.packages(c("dplyr", "fs", "ggplot2", "here", "janitor", "knitr", 
+                    "lubridate", "plotly", "purrr", "quarto", "readr", 
+                    "rmarkdown", "stringr", "tidyr"))
+```
 
-    pkgs <- c("dplyr", "fs", "ggplot2", "here", "plotly", "purrr", "quarto", 
-              "readr", "stringr", "janitor", "lubridate", "tidyr", "rmarkdown",
-              "knitr")
+#### 3. Exercises
 
-    install.packages(pkgs)
-    ```
+Download and open the exercises for this workshop by copying and pasting the following into the console in RStudio:
 
--   Check that Quarto works on your computer:
+This will download the RStudio project onto your Desktop. To choose a different destination, uncomment and use the `destdir` argument.
 
-    1.  Open RStudio and create a new Quarto (`.qmd`) document.
+```{r}
+# install.packages("usethis")
+usethis::use_course(
+  "https://github.com/jadeynryan/parameterized-quarto-workshop/raw/cascadia/exercises/intermediate-exercises.zip"
+# , destdir = "C:/Users/jryan/Documents/R/projects"
+  )
+```
 
-    2.  Save the document and check you are able to render it.
+If `use_course()` didn't work, manually download the zip file from GitHub: [github.com/jadeynryan/parameterized-quarto-workshop/tree/cascadia/exercises](https://github.com/jadeynryan/parameterized-quarto-workshop/tree/cascadia/exercises).
 
--   Get the project on your machine (by default, downloads to desktop).
-    
-    Uncomment and use the `destdir` argument to choose a different location.
+## Backup option: Posit Cloud
 
-    ```{r}
-    #| eval: false
+You can choose to use Posit Cloud instead which has the required tools already installed, along with a copy of the exercise files. Join the Posit Cloud [Quarto Cascadia workspace](https://posit.cloud/spaces/519059/join?access_code=ckv18LHEcSw3QtQ904uvpzLVlh4L2rk6RhKdpwyp) and open the [Intermediate Exercises project](https://posit.cloud/spaces/519059/content/8351107).
 
-    # install.packages("usethis")
-    usethis::use_course(
-        "https://github.com/jadeynryan/parameterized-quarto-workshop/raw/coa-ceds/exercises/ceds-quarto-exercises.zip"
-        # , destdir = "C:/Users/jryan/Documents/R/projects"
-    )
-    ```
-
-## Quarto and `purrr` {#sec-quarto-purrr}
-
-If you're new to Quarto, we recommend watching [Mine Çetinkaya-Rundel's
-23-minute *Getting Started with
-Quarto*](https://www.youtube.com/watch?v=_f3latmOhew) or [Tom Mock's 2-hour
-*Welcome to Quarto Workshop*](https://www.youtube.com/watch?v=yvi5uXQMvu4).
+## `purrr` {#sec-purrr}
 
 If you're new to `purrr`, we recommend watching this R-Ladies Baltimore
 presentation [*Make your R Code purr with

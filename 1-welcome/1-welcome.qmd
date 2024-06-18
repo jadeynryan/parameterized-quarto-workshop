@@ -1,46 +1,52 @@
 ---
-title: "Welcome!<br> ![](../images/cascadia-jr-quarto.webp){width=5em}"
+title: "Welcome!<br>![](../images/cascadia-jr-quarto.webp){width=5em}"
 format: revealjs
 ---
 
-## While you wait for us to begin...
+## While waiting for us to begin...
 
-1. Open the course website: [jadeyryan.quarto.pub/cascadia-quarto](https://jadeyryan.quarto.pub/cascadia-quarto).
+Open the workshop website and make sure you've completed the pre-work
+and have the required software, packages, and exercises.
 
-2. Get the exercises/packages via Posit Cloud or by downloading to your computer:
-
-**Option 1: Posit Cloud** (requires an account)
-
-[posit.cloud/spaces/504211/content/8093007](https://posit.cloud/spaces/504211/content/8093007)
-
-**Option 2: Download to your computer & install packages**
+[**jadeyryan.quarto.pub/cascadia-quarto/prework**](https://jadeyryan.quarto.pub/cascadia-quarto/prework).
 
 ```{r}
 #| eval: false
 
 usethis::use_course(
-  "https://github.com/jadeynryan/parameterized-quarto-workshop/raw/cascadia/exercises/cascadia-quarto-exercises.zip"
-#  ,destdir = "___"
+  "https://github.com/jadeynryan/parameterized-quarto-workshop/raw/cascadia/exercises/intermediate-exercises.zip"
+# , destdir = "C:/Users/jryan/Documents/R/projects"
   )
 
-install.packages(c("dplyr", "fs", "ggplot2", "here", "janitor", "knitr", 
-                   "lubridate", "plotly", "purrr", "quarto", "readr", 
-                   "rmarkdown", "stringr", "tidyr"))
+install.packages(c("dplyr", "fs", "ggplot2", "here", "janitor", "knitr", "lubridate",
+                   "plotly", "purrr", "quarto", "readr", "rmarkdown", "stringr", "tidyr"))
 ```
 
-If `use_course()` didn't work, manually download the zip file from GitHub: [github.com/jadeynryan/parameterized-quarto-workshop/tree/cascadia/exercises](https://github.com/jadeynryan/parameterized-quarto-workshop/tree/cascadia/exercises).
+If `use_course()` didn't work, manually download the zip file from
+GitHub:
+[github.com/jadeynryan/parameterized-quarto-workshop/tree/cascadia/exercises](https://github.com/jadeynryan/parameterized-quarto-workshop/tree/cascadia/exercises).
+
+::: callout-tip
+## Backup option: Posit Cloud
+
+Join the Posit Cloud [Quarto Cascadia
+workspace](https://posit.cloud/spaces/519059/join?access_code=ckv18LHEcSw3QtQ904uvpzLVlh4L2rk6RhKdpwyp)
+and open the [Intermediate Exercises
+project](https://posit.cloud/spaces/519059/content/8351107).
+:::
 
 ## Acknowledgements
 
-![](images/cascadia-logo.png){.center fig-alt="Cascadia R Conf logo" height=350px}
+![](images/cascadia-logo.png){.center fig-alt="Cascadia R Conf logo"
+height="350px"}
 
 \
 
 **Workshop structure adapted from:**
 
 [R/Medicine Data Cleaning 2023
-Workshop](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/) taught
-by [Crystal Lewis](https://cghlewis.com/), [Shannon
+Workshop](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/)
+taught by [Crystal Lewis](https://cghlewis.com/), [Shannon
 Pileggi](https://www.pipinghotdata.com/), and [Peter
 Higgins](https://bookdown.org/pdr_higgins/rmrwr/)
 
@@ -53,7 +59,8 @@ Bray](https://andrewpbray.github.io/)
 
 ## Code of Conduct
 
-Please review and abide by: [cascadiarconf.com/policies/](https://cascadiarconf.com/policies/)
+Please review and abide by:
+[cascadiarconf.com/policies/](https://cascadiarconf.com/policies/)
 
 \
 
@@ -65,8 +72,8 @@ Please review and abide by: [cascadiarconf.com/policies/](https://cascadiarconf.
 
 ## Disclaimer and license
 
-Opinions expressed are solely my own and do not express the views of my employer
-or any organizations I am associated with.
+Opinions expressed are solely my own and do not express the views of my
+employer or any organizations I am associated with.
 
 <br>
 
@@ -74,7 +81,10 @@ This work is licensed under [Creative Commons
 Attribution-NonCommercial-ShareAlike 4.0 International (CC
 BY-NC-SA)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-{{< fa brands creative-commons size=2x >}} {{< fa brands creative-commons-by size=2x >}} {{< fa brands creative-commons-nc size=2x >}} {{< fa brands creative-commons-sa size=2x >}}
+{{< fa brands creative-commons size=2x >}}
+{{< fa brands creative-commons-by size=2x >}}
+{{< fa brands creative-commons-nc size=2x >}}
+{{< fa brands creative-commons-sa size=2x >}}
 
 ## Meet Jadey Ryan
 
@@ -86,19 +96,25 @@ The Coding Cats: cat & code themed merch
 
 {{< fa link size=xl >}} [jadeyryan.com](https://jadeyryan.com)
 
-{{< fa brands mastodon size=xl >}} [\@jadeynryan](https://fosstodon.org/@jadeynryan)
+{{< fa brands mastodon size=xl >}}
+[\@jadeynryan](https://fosstodon.org/@jadeynryan)
 
-{{< fa brands linkedin size=xl >}} [linkedin.com/in/jadey-ryan](https://www.linkedin.com/in/jadey-ryan)
+{{< fa brands linkedin size=xl >}}
+[linkedin.com/in/jadey-ryan](https://www.linkedin.com/in/jadey-ryan)
 
-{{< fa brands github size=xl >}} [jadeynryan](https://github.com/jadeynryan/)
+{{< fa brands github size=xl >}}
+[jadeynryan](https://github.com/jadeynryan/)
 
-{{< fa brands etsy size=xl >}} [thecodingcats.etsy.com](https://thecodingcats.etsy.com/)
+{{< fa brands etsy size=xl >}}
+[thecodingcats.etsy.com](https://thecodingcats.etsy.com/)
 
-![](images/mts.webp){fig-alt="Three snowshoe siamese cats in loaf mode. From left to right: Tai, Mai, and Skye" style="border-radius:1em;margin-top:auto"}
+![](images/mts.webp){fig-alt="Three snowshoe siamese cats in loaf mode. From left to right: Tai, Mai, and Skye"
+style="border-radius:1em;margin-top:auto"}
 :::
 
 ::: {.column width="28%"}
-![](images/bulk-density.jpg){fig-alt="Jadey collecting a bulk density soil sample in a field of wheat stubble." style="border-radius:1em;margin-top:auto"}
+![](images/bulk-density.jpg){fig-alt="Jadey collecting a bulk density soil sample in a field of wheat stubble."
+style="border-radius:1em;margin-top:auto"}
 :::
 
 ::: {.column width="28%"}
@@ -110,7 +126,7 @@ fig-alt="Jadey standing in a field of wheat stubble holding a 3 foot long soil s
 style="border-radius:1em;margin-top:auto"}
 :::
 
-{{< fa camera title="Photo credit" >}} [@leslie.mmichel](https://twitter.com/leslie_mmichel)
+{{< fa camera title="Photo credit" >}} 
 :::
 :::
 
@@ -130,14 +146,14 @@ style="border-radius:1em;margin-top:auto"}
 
 ## Schedule
 
-| Time        | Topic                                                          |
-|-------------|----------------------------------------------------------------|
-| 1:30 - 2:00 | [Welcome](1-welcome/) & [Parameterized reports](2-parameters/) |
-| 2:00 - 3:00 | [Rendering reports](3-render/)                                 |
-| 3:00 - 3:30 | Break                                                          |
-| 3:30 - 4:00 | [Conditional content & code](4-conditionals/)                  |
-| 4:00 - 4:20 | [Styling](5-styling/)                                          |
-| 4:20 - 4:30 | [Summary](6-summary/)                                          |
+| Time        | Topic                                                |
+|-------------|------------------------------------------------------|
+| 1:30 - 2:00 | Welcome & [Parameterizing reports](../2-parameters/) |
+| 2:00 - 3:00 | [Rendering reports](../3-render/)                    |
+| 3:00 - 3:30 | Break                                                |
+| 3:30 - 4:00 | [Conditional content & code](../4-conditionals/)     |
+| 4:00 - 4:20 | [Styling reports](../5-styling/)                     |
+| 4:20 - 4:30 | [Summary](../6-summary/)                             |
 
 ## Workshop structure
 
@@ -149,7 +165,7 @@ Presentation
 
 \
 
-. . . 
+. . .
 
 Let us know how you're doing by displaying your stickies!
 
@@ -159,13 +175,14 @@ Let us know how you're doing by displaying your stickies!
 
 # 💪🏼 Exercise 0 {.exercise}
 
-**Meet your neighbors**: 
+**Meet your neighbors**:
 
 -   Your name
 
 -   Your favorite snack 🍎🧀🍦🍫🍿
 
--   What kinds of reports are you wanting to create after today's workshop?
+-   What kinds of reports are you wanting to create after today's
+    workshop?
 
 ```{r}
 #| echo: false
