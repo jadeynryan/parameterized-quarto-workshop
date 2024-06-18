@@ -14,7 +14,7 @@ format: revealjs
 
     ```{.r filename="Console or R script"}
     quarto::quarto_render(
-      input = here::here("3-quarto-render.qmd"),   # Input Quarto file
+      input = here::here("2-quarto-render.qmd"),   # Input Quarto file
       execute_params = list(                       # Named list of params
         pet_type = "cats",
         fave_breed = "Snowshoe"))
@@ -23,23 +23,23 @@ format: revealjs
 3. **Quarto CLI**
 
     ```{.bash filename="Terminal"}
-    quarto render 3-quarto-render.qmd -P pet_type:'cats' -P fave_breed:'Snowshoe'
+    quarto render 2-quarto-render.qmd -P pet_type:'cats' -P fave_breed:'Snowshoe'
     ```
 
 :::
 
-# 💪🏼 Exercise 3-1 {.exercise}
+# 💪🏼 Exercise 2-1 {.exercise}
 
 **Change parameters in the YAML and render using ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} Render button.**
 
 1. Look at the unique pet breeds and pick your favorite.
    ```{.r}
-   # Run in Console
+   # Run in the console
    pets <- readr::read_rds(here::here("data", "pets.RDS")) |> 
       dplyr::distinct(pet_type, breed) |> View()
    ```
    
-2. In `3-quarto-render.qmd` Change the default parameters in the YAML to your favorite pet type and breed. Render using the ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button.
+2. In `2-quarto-render.qmd` Change the default parameters in the YAML to your favorite pet type and breed. Render using the ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button.
 
     ```{.yaml}
     params:
@@ -49,14 +49,14 @@ format: revealjs
 
 3. 💬 **Discuss**: Which breed did you pick and why? What do you think will happen if you set the `pet_type` default parameter to "cats" and the `fave_breed` parameter to "American Bulldog"? 
 
-Try it out! 
+    Try it out and discuss what happend!
 
 ```{r}
 #| echo: false
 countdown::countdown(minutes = 7, top = 0)
 ```
 
-# 💪🏼 Exercise 3-2 {.exercise}
+# 💪🏼 Exercise 2-2 {.exercise}
 
 **Change parameters and render using `quarto_render()`.**
 
@@ -65,7 +65,7 @@ countdown::countdown(minutes = 7, top = 0)
    ```r
    # Run in the console
     quarto::quarto_render(
-      input = here::here("3-quarto-render.qmd"),
+      input = here::here("2-quarto-render.qmd"),
       execute_params = list(
         pet_type = "___",
         fave_breed = "___"))
@@ -73,9 +73,6 @@ countdown::countdown(minutes = 7, top = 0)
 
 2. 💬 **Discuss**: What kinds of variables will you use as parameters for your reports? 
 
-⏱**10-min break after this exercise**
-   
-   
 ```{r}
 #| echo: false
 countdown::countdown(minutes = 7, top = 0)
@@ -115,28 +112,28 @@ pets |>
 ```{r}
 #| eval: false
 quarto::quarto_render(
-  input = here::here("3-quarto-render.qmd"),
+  input = here::here("2-quarto-render.qmd"),
   output_file = "dogs-affenpinscher-report.html",
   execute_params = list(
     pet_type = "dogs",
     fave_breed = "Affenpinscher"))
 
 quarto::quarto_render(
-  input = here::here("3-quarto-render.qmd"),
+  input = here::here("2-quarto-render.qmd"),
   output_file = "dogs-afghan-hound-report.html",
   execute_params = list(
     pet_type = "dogs",
     fave_breed = "Afghan Hound"))
 
 quarto::quarto_render(
-  input = here::here("3-quarto-render.qmd"),
+  input = here::here("2-quarto-render.qmd"),
   output_file = "dogs-aidi-chien-de-montagne-de-l-atlas-report.html",
   execute_params = list(
     pet_type = "dogs",
     fave_breed = "Aidi Chien De Montagne De L Atlas"))
 
 quarto::quarto_render(
-  input = here::here("3-quarto-render.qmd"),
+  input = here::here("2-quarto-render.qmd"),
   output_file = "dogs-akita-report.html",
   execute_params = list(
     pet_type = "dogs",
@@ -161,7 +158,7 @@ quarto::quarto_render(
 - `purrr::pwalk(dataframe, quarto_render, <arguments for quarto_render>)` 😎
 ::::
 
-## `purrr` map functions for iteration
+## Primer on `purrr` functions for iteration
 
 :::: {.columns}
 
@@ -175,7 +172,10 @@ quarto::quarto_render(
 `for loops` &rarr; `lapply()` &rarr; `purrr::map()`
 :::
 
-::: {.column width="40%"}
+::: {.column width="5%"}
+:::
+
+::: {.column width="35%"}
 ![](https://purrr.tidyverse.org/logo.png){fig-alt="purrr R package logo"}
 :::
 ::::
@@ -238,7 +238,7 @@ pet_reports_subset
 purrr::pwalk(
   .l = pet_reports_subset,                      # Dataframe to map over
   .f = quarto::quarto_render,                   # Function we are applying to each row
-  input = here::here("3-quarto-render.qmd"),    # Named arguments of .f
+  input = here::here("2-quarto-render.qmd"),    # Named arguments of .f
   .progress = TRUE                              # Show a progress bar :)
 )
 ```
@@ -246,7 +246,7 @@ purrr::pwalk(
 . . .
 
 ::: callout-note
-`index` is the only named argument of `quarto_render()` included in `pwalk()`.
+`input` is the only named argument of `quarto_render()` included in `pwalk()`.
 
 
 `output_format`, `output_file`, and `execute_params` are already passed in through the dataframe.
@@ -286,7 +286,7 @@ Links to download the other formats will automatically appear in HTML documents.
 
 **Choose which format links to include:**
 
-``` {.yaml}
+```{yaml}
 #| code-line-numbers: "7"
 ---
 format:
@@ -294,7 +294,7 @@ format:
     embed-resources: true
   pdf: default
   docx: default
-format-links: [pdf]
+format-links: [pdf, docx]
 ---
 ```
 
@@ -302,7 +302,7 @@ format-links: [pdf]
 
 **Or hide all links:**
 
-``` {.yaml}
+```{yaml}
 #| code-line-numbers: "7"
 ---
 format:
@@ -316,32 +316,42 @@ format-links: false
 
 # 💃🏻 Demo {.demo}
 
-Demo programmatically rendering all reports in all formats in `4-demo-quarto-render-purrr.qmd` and `4-demo-quarto-render-purrr.R`.
+Programmatically render all reports in all formats in `3-purrr-render-demo.qmd` and `3-purrr-render-demo.R`.
 
-## ⚠ Watch out!
+\
+
+💡 Use these files as a template and modify them for your own projects!
+
+## Directory limitations
 
 ::: incremental
 
--   Can't render reports to another directory.
+:::: callout-important
+## Can't render reports to another directory.
 
-    - [`output-dir` YAML option](https://quarto.org/docs/books/book-output.html#output-path) only works for *Quarto projects* that contain a `_quarto.yml` config file.
+[`output-dir` YAML option](https://quarto.org/docs/books/book-output.html#output-path) only works for *Quarto projects* that contain a `_quarto.yml` config file.
 
-    - **Workaround**: use [`{fs}`](https://fs.r-lib.org/) to move files after rendering. 
-      
-      See `demo-quarto-render-purrr.R` for example.
+**Workaround**: use [`{fs}`](https://fs.r-lib.org/) to move files after rendering. 
     
-    - **More info**: [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/2171#discussioncomment-4865286) and [GitHub issue](https://github.com/quarto-dev/quarto-r/issues/81).
+See `3-purrr-render-demo.R` for example.
+  
+**More info**: [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/2171#discussioncomment-4865286) and [GitHub issue](https://github.com/quarto-dev/quarto-r/issues/81).
+::::
 
-<br>
+\
 
-- If using `embed-resources: true` YAML option, `.qmd` can't be in subfolder, otherwise: 
+:::: callout-important
+##  Can't embed resources for a Quarto document in a subfolder.
 
-    - [[WARNING] Could not fetch resource ...]{.warning}
+If using `embed-resources: true` YAML option, `.qmd` can't be in subfolder, otherwise:
 
-    - **More info**: [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/4041#discussioncomment-6052000) and [GitHub issue](https://github.com/quarto-dev/quarto-cli/issues/5765).
+[[WARNING] Could not fetch resource ...]{.warning}
+
+**More info**: [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/4041#discussioncomment-6052000) and [GitHub issue](https://github.com/quarto-dev/quarto-cli/issues/5765).
+::::
 :::
 
-# 🚶🏻‍♀ Break 🧘🏻‍♀️ {.section}
+# 🚶🏻‍♀ 30-min break 🧘🏾‍♂️️ {.section}
 
 ```{r}
 #| echo: false
