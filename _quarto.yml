@@ -14,10 +14,10 @@ execute:
 
 website:
   page-navigation: true
-  title: "Reproducible Reporting with Quarto Workshop"
-  description: "Homepage for the Reproducible Reporting with Quarto Workshop hosted by Community Engaged Data Science course at the College of the Atlantic"
-  site-url: "https://jadeyryan.quarto.pub/ceds-quarto-workshop/"
-  favicon: "images/jr-logo-circle.webp"
+  title: "Intermediate Quarto: Parameterized Reports Workshop"
+  description: "Homepage for the Intermediate Quarto: Parameterized Reports Workshop at Cascadia R Conf 2024"
+  site-url: "https://jadeyryan.quarto.pub/cascadia-quarto/"
+  # favicon: "images/cascadia-jr-quarto.webp"
 
   repo-url: https://github.com/jadeynryan/parameterized-quarto-workshop
   repo-actions: [source, edit, issue]
@@ -30,8 +30,8 @@ website:
 
   sidebar:
     background: "#07483f"
-    logo: "images/jr-logo-quarto.webp"
-    logo-alt: "Two hex stickers side by side with a heart joining them in the middle. Left sticker is Jadey's cat logo. Right sticker is the Quarto logo."
+    logo: "images/cascadia-jr-quarto.webp"
+    logo-alt: "Cascadia R Conf hex sticker on top of JR's cat hex logo joined by a heart with the Quarto hex sticker."
     pinned: true
     align: center
     style: docked

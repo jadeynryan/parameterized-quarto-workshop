@@ -1,69 +1,62 @@
 ---
-title: Reproducible Reporting with Quarto Workshop
+title: "Intermediate Quarto: Parameterized Reports Workshop"
 ---
 
-Hosted by the [Community Engaged Data
-Science](https://coa-community-data-science.netlify.app/) undergraduate course
-taught by [Dr. Laurie Baker](https://lauriebaker.rbind.io/).
+[Cascadia R Conference 2024](https://cascadiarconf.com/)
 
---------------------------------------------------------------------------------
-
-📆 April 25, 2024 // 1:00 pm - 4:00 pm EDT\
-🏨 Hybrid // College of the Atlantic\
-🆓 **FREE** with
-[registration](https://www.meetup.com/maine-r-users-group/events/300459430/)\
-🏡 [Workshop website](https://jadeyryan.quarto.pub/ceds-quarto-workshop)\
-🐙 [GitHub release](https://github.com/jadeynryan/parameterized-quarto-workshop/tree/coa-ceds)\
+📆 June 21, 2024 // 1:30 pm - 4:30 pm PT\
+🏫 University of Washington, South Lake Union, Building C\
+🏡 [Workshop website](https://jadeyryan.quarto.pub/cascadia-quarto)\
+🐙 [GitHub
+release](https://github.com/jadeynryan/parameterized-quarto-workshop/tree/cascadia)\
 
 <!-- ::: callout-important -->
+
 <!-- This workshop is currently being updated. Materials, links, and exercises -->
+
 <!-- subject to change. -->
+
 <!-- ::: -->
 
 ## Description
 
-Join this interactive workshop to learn what Quarto is and its impact on data
-communication and sharing.
-
-In this session, we will:
-
--   explore how Quarto seamlessly integrates code and text to create
-    reproducible reports;
-
--   dive into real-world applications at the Washington State Department of
-    Agriculture; and
-
--   learn and practice Quarto functionality through demonstrations and hands-on
-    exercises covering static and dynamic outputs, markdown syntax, code chunk
-    options, output theming, and parameters.
+The [Intro to Quarto workshop](https://charlotte.quarto.pub/cascadia/)
+takes you through the basics of authoring a reproducible report using
+Quarto. This workshop builds on those concepts and teaches you how to
+level up your reproducible reports by using parameters, conditional
+content, conditional code execution, and custom styling sheets for HTML
+and Microsoft Word formats. Additionally, you will learn how to render
+all variations of a parameterized report at once using `quarto` and
+`purrr`.
 
 ## Learning objectives
 
--   Learn what Quarto is and what you can use it for.
+-   Understand what parameterized reporting is and when it is useful.
+-   Convert a Quarto document into a parameterized template and render
+    all variations.
+-   Generate multiple format outputs from the same template using
+    conditional content, conditional code execution, and custom styling.
 
--   Learn how to weave code and text together to create a fully reproducible
-    report.
+## Schedule
 
--   Learn how to use parameters to create variations of a report.
-
-## Is this workshop for me?
-
-The workshop is designed for folks familiar with R Markdown who are interested in
-using Quarto and unlocking the power of parameterized reports. If you're new to
-Quarto, we recommend watching [Mine Çetinkaya-Rundel's 23-minute *Getting Started with
-Quarto*](https://www.youtube.com/watch?v=_f3latmOhew) or [Tom Mock's 2-hour *Welcome to Quarto Workshop*](https://www.youtube.com/watch?v=yvi5uXQMvu4).
+| Time        | Topic                                |
+|-------------|--------------------------------------|
+| 1:30 - 3:00 | Parameterized reporting              |
+| 3:00 - 3:30 | Break                                |
+| 3:30 - 4:20 | Conditional content/code and styling |
+| 4:20 - 4:30 | Summary                              |
 
 ## Speaker
 
 ![](images/jadey.jpg){style="float:left;padding: 0 10px 0 0; border-radius:50%"
 fig-alt="Headshot of Jadey Ryan" width="150"} [**Jadey
-Ryan**](https://jadeyryan.com) is a data scientist in [Natural Resources and
-Agricultural Sciences](https://agr.wa.gov/AgScience) at the Washington
-State Department of Agriculture. She is an R enthusiast obsessed with
-efficiently creating beautiful data products and decision-support tools,
-especially with Quarto. Away from the computer, find her trying new foods with
-her husband, snuggling with her three cats, or taking leisurely strolls in the
-great outdoors.
+Ryan**](https://jadeyryan.com) is a data scientist in [Natural Resources
+and Agricultural Sciences](https://agr.wa.gov/AgScience) at the
+Washington State Department of Agriculture. She is an R enthusiast
+obsessed with efficiently creating beautiful data products and
+decision-support tools, especially with Quarto. Away from the computer,
+find her trying new foods with her husband, snuggling with her three
+cats, or taking leisurely strolls in the great outdoors.
 
 Learn more at [jadeyryan.com](https://jadeyryan.com).
 
