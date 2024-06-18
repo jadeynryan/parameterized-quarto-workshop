@@ -81,10 +81,8 @@ This work is licensed under [Creative Commons
 Attribution-NonCommercial-ShareAlike 4.0 International (CC
 BY-NC-SA)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-{{< fa brands creative-commons size=2x >}}
-{{< fa brands creative-commons-by size=2x >}}
-{{< fa brands creative-commons-nc size=2x >}}
-{{< fa brands creative-commons-sa size=2x >}}
+{{< fa brands creative-commons size=2x >}} {{< fa brands creative-commons-by size=2x >}} {{< fa brands creative-commons-nc size=2x >}} {{< fa brands creative-commons-sa size=2x >}}
+
 
 ## Meet Jadey Ryan
 
@@ -96,25 +94,19 @@ The Coding Cats: cat & code themed merch
 
 {{< fa link size=xl >}} [jadeyryan.com](https://jadeyryan.com)
 
-{{< fa brands mastodon size=xl >}}
-[\@jadeynryan](https://fosstodon.org/@jadeynryan)
+{{< fa brands mastodon size=xl >}} [\@jadeynryan](https://fosstodon.org/@jadeynryan)
 
-{{< fa brands linkedin size=xl >}}
-[linkedin.com/in/jadey-ryan](https://www.linkedin.com/in/jadey-ryan)
+{{< fa brands linkedin size=xl >}} [linkedin.com/in/jadey-ryan](https://www.linkedin.com/in/jadey-ryan)
 
-{{< fa brands github size=xl >}}
-[jadeynryan](https://github.com/jadeynryan/)
+{{< fa brands github size=xl >}} [jadeynryan](https://github.com/jadeynryan/)
 
-{{< fa brands etsy size=xl >}}
-[thecodingcats.etsy.com](https://thecodingcats.etsy.com/)
+{{< fa brands etsy size=xl >}} [thecodingcats.etsy.com](https://thecodingcats.etsy.com/)
 
-![](images/mts.webp){fig-alt="Three snowshoe siamese cats in loaf mode. From left to right: Tai, Mai, and Skye"
-style="border-radius:1em;margin-top:auto"}
+![](images/mts.webp){fig-alt="Three snowshoe siamese cats in loaf mode. From left to right: Tai, Mai, and Skye" style="border-radius:1em;margin-top:auto"}
 :::
 
 ::: {.column width="28%"}
-![](images/bulk-density.jpg){fig-alt="Jadey collecting a bulk density soil sample in a field of wheat stubble."
-style="border-radius:1em;margin-top:auto"}
+![](images/bulk-density.jpg){fig-alt="Jadey collecting a bulk density soil sample in a field of wheat stubble." style="border-radius:1em;margin-top:auto"}
 :::
 
 ::: {.column width="28%"}
@@ -126,7 +118,7 @@ fig-alt="Jadey standing in a field of wheat stubble holding a 3 foot long soil s
 style="border-radius:1em;margin-top:auto"}
 :::
 
-{{< fa camera title="Photo credit" >}} 
+{{< fa camera title="Photo credit" >}} [@leslie.mmichel](https://twitter.com/leslie_mmichel)
 :::
 :::
 
