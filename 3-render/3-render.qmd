@@ -1,0 +1,349 @@
+---
+title: "Rendering reports<br> ![](../images/cascadia-jr-quarto.webp){width=5em}"
+format: revealjs
+---
+
+## Three ways to render
+
+::: incremental
+1. **RStudio/Quarto integration**:
+
+    ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button in RStudio or `Cmd`/`Ctrl` + `Shift` + `K` keyboard shortcut
+
+2. ✨ **Quarto R package** ✨
+
+    ```{.r filename="Console or R script"}
+    quarto::quarto_render(
+      input = here::here("3-quarto-render.qmd"),   # Input Quarto file
+      execute_params = list(                       # Named list of params
+        pet_type = "cats",
+        fave_breed = "Snowshoe"))
+    ```
+
+3. **Quarto CLI**
+
+    ```{.bash filename="Terminal"}
+    quarto render 3-quarto-render.qmd -P pet_type:'cats' -P fave_breed:'Snowshoe'
+    ```
+
+:::
+
+# 💪🏼 Exercise 3-1 {.exercise}
+
+**Change parameters in the YAML and render using ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} Render button.**
+
+1. Look at the unique pet breeds and pick your favorite.
+   ```{.r}
+   # Run in Console
+   pets <- readr::read_rds(here::here("data", "pets.RDS")) |> 
+      dplyr::distinct(pet_type, breed) |> View()
+   ```
+   
+2. In `3-quarto-render.qmd` Change the default parameters in the YAML to your favorite pet type and breed. Render using the ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button.
+
+    ```{.yaml}
+    params:
+      pet_type: "___"
+      fave_breed: "___"
+    ```
+
+3. 💬 **Discuss**: Which breed did you pick and why? What do you think will happen if you set the `pet_type` default parameter to "cats" and the `fave_breed` parameter to "American Bulldog"? 
+
+Try it out! 
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 7, top = 0)
+```
+
+# 💪🏼 Exercise 3-2 {.exercise}
+
+**Change parameters and render using `quarto_render()`.**
+
+1. Render with `quarto::quarto_render()`.
+
+   ```r
+   # Run in the console
+    quarto::quarto_render(
+      input = here::here("3-quarto-render.qmd"),
+      execute_params = list(
+        pet_type = "___",
+        fave_breed = "___"))
+   ```
+
+2. 💬 **Discuss**: What kinds of variables will you use as parameters for your reports? 
+
+⏱**10-min break after this exercise**
+   
+   
+```{r}
+#| echo: false
+countdown::countdown(minutes = 7, top = 0)
+```
+
+## Render all 538 reports 
+
+One HTML report for each cat breed and each dog breed.
+
+:::: panel-tabset
+
+## 📊 Data
+
+```{r}
+pets <- readr::read_rds(here::here("data", "pets.RDS"))
+
+pets |>
+  dplyr::distinct(pet_type, breed) |>
+  dplyr::count(pet_type) |>
+  janitor::adorn_totals()
+```
+
+## 👷🏼‍♂️ Manual 1
+
+1. Change the default `params` in the YAML.
+
+2. **Render** button or `Cmd`/`Ctrl` + `Shift` + `K` keyboard shortcut.
+
+3. Rename the rendered report to include the parameter & prevent overwriting.
+
+4. Repeat 537 times.
+
+😭
+
+## 👷🏻‍♀️ Manual 2
+
+```{r}
+#| eval: false
+quarto::quarto_render(
+  input = here::here("3-quarto-render.qmd"),
+  output_file = "dogs-affenpinscher-report.html",
+  execute_params = list(
+    pet_type = "dogs",
+    fave_breed = "Affenpinscher"))
+
+quarto::quarto_render(
+  input = here::here("3-quarto-render.qmd"),
+  output_file = "dogs-afghan-hound-report.html",
+  execute_params = list(
+    pet_type = "dogs",
+    fave_breed = "Afghan Hound"))
+
+quarto::quarto_render(
+  input = here::here("3-quarto-render.qmd"),
+  output_file = "dogs-aidi-chien-de-montagne-de-l-atlas-report.html",
+  execute_params = list(
+    pet_type = "dogs",
+    fave_breed = "Aidi Chien De Montagne De L Atlas"))
+
+quarto::quarto_render(
+  input = here::here("3-quarto-render.qmd"),
+  output_file = "dogs-akita-report.html",
+  execute_params = list(
+    pet_type = "dogs",
+    fave_breed = "Akita"))
+
+# + 534 more times... 
+# 😭
+```
+
+## ⚡ Programatically
+
+**Create a dataframe with three columns that match `quarto_render()` args:**
+
+- `output_format`: file type (html, revealjs, pdf, docx, etc.)
+
+- `output_file`: file name with extension
+
+- `execute_params`: named list of parameters
+
+**Map over each row:**
+
+- `purrr::pwalk(dataframe, quarto_render, <arguments for quarto_render>)` 😎
+::::
+
+## `purrr` map functions for iteration
+
+:::: {.columns}
+
+::: {.column width="60%"}
+**Map functions** apply the same action/function to each element of an object.
+
+-   Base R `apply()` functions are map functions.
+
+-   `purrr` map functions have consistent syntax and the output data type is predictable.
+
+`for loops` &rarr; `lapply()` &rarr; `purrr::map()`
+:::
+
+::: {.column width="40%"}
+![](https://purrr.tidyverse.org/logo.png){fig-alt="purrr R package logo"}
+:::
+::::
+
+. . .
+
+**Learn more**:
+
+- [Iteration chapter of *R for Data Science*](https://r4ds.had.co.nz/iteration.html)
+
+- R-Ladies Baltimore presentation [*Make your R Code purr with `purrr`*](https://www.youtube.com/watch?v=IewsPpjKElc)
+
+- Jenny Bryan's [tutorial](https://jennybc.github.io/purrr-tutorial/) and [workshop](https://github.com/jennybc/row-oriented-workflows)
+
+## Create dataframe to iterate over
+
+```{r}
+#| code-line-numbers: "|2|4|5-9|11-14|"
+pet_reports <- pets |>
+  dplyr::distinct(pet_type, breed) |>   # Get distinct pet/breed combos
+  dplyr::mutate(
+    output_format = "html",             # Make output_format column
+    output_file = paste(                # Make output_file column:
+      tolower(pet_type),                # cats-abyssiniane-report.html
+      tolower(gsub(" ", "-", breed)),           
+      "report.html",
+      sep = "-"
+    ),
+    execute_params = purrr::map2(       # Make execute_params column
+      pet_type,
+      breed,
+      \(pet_type, breed) list(pet_type = pet_type, breed = breed)))
+```
+        
+## Subset to first 2 cat/dog breeds
+
+```{r}
+pet_reports_subset <- pet_reports |>
+  dplyr::slice_head(n = 2, by = pet_type) |>
+  dplyr::select(output_file, execute_params)
+
+pet_reports_subset
+```
+
+## Map over each row 
+
+::: incremental
+-   `purrr::pwalk()` iterates over multiple arguments simultaneously.
+
+-   First `.l` argument is a *list of vectors*. 
+
+    - Dataframe is a special case of `.l` that iterates over rows.
+:::
+. . .
+
+```{r}
+#| eval: false
+#| code-line-numbers: "|2|3|4|5|"
+
+purrr::pwalk(
+  .l = pet_reports_subset,                      # Dataframe to map over
+  .f = quarto::quarto_render,                   # Function we are applying to each row
+  input = here::here("3-quarto-render.qmd"),    # Named arguments of .f
+  .progress = TRUE                              # Show a progress bar :)
+)
+```
+
+. . .
+
+::: callout-note
+`index` is the only named argument of `quarto_render()` included in `pwalk()`.
+
+
+`output_format`, `output_file`, and `execute_params` are already passed in through the dataframe.
+:::
+
+# Multiple formats {.section}
+
+## Render all reports to all formats
+
+Add to the `format:` YAML option to render additional output formats from the same `.qmd` file.
+
+``` {.yaml}
+---
+format:
+  html: 
+    embed-resources: true   # Makes the report self-contained
+  pdf: default              # If not using any additional format options,
+  docx: default             # set value to `default`  
+---
+```
+
+. . .
+
+**Note**: the Render button now has a dropdown!
+
+![](images/render-button.png){width=60% fig-alt="Screenshot of Quarto file with the Render dropdown showing options for HTML, PDF, and MS Word formats."}
+
+[Quarto docs on multiple formats](https://quarto.org/docs/get-started/authoring/rstudio.html#multiple-formats)
+
+## Format links for HTML output
+
+Links to download the other formats will automatically appear in HTML documents.
+
+![](images/other-formats.png){fig-alt="Screenshot of a HTML page that includes links to the PDF and MS Word formats in the table of contents under the heading Other Formats." style="border-radius:1em"}
+
+## Format link options
+
+**Choose which format links to include:**
+
+``` {.yaml}
+#| code-line-numbers: "7"
+---
+format:
+  html: 
+    embed-resources: true
+  pdf: default
+  docx: default
+format-links: [pdf]
+---
+```
+
+. . .
+
+**Or hide all links:**
+
+``` {.yaml}
+#| code-line-numbers: "7"
+---
+format:
+  html: 
+    embed-resources: true
+  pdf: default
+  docx: default
+format-links: false
+---
+```
+
+# 💃🏻 Demo {.demo}
+
+Demo programmatically rendering all reports in all formats in `4-demo-quarto-render-purrr.qmd` and `4-demo-quarto-render-purrr.R`.
+
+## ⚠ Watch out!
+
+::: incremental
+
+-   Can't render reports to another directory.
+
+    - [`output-dir` YAML option](https://quarto.org/docs/books/book-output.html#output-path) only works for *Quarto projects* that contain a `_quarto.yml` config file.
+
+    - **Workaround**: use [`{fs}`](https://fs.r-lib.org/) to move files after rendering. 
+      
+      See `demo-quarto-render-purrr.R` for example.
+    
+    - **More info**: [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/2171#discussioncomment-4865286) and [GitHub issue](https://github.com/quarto-dev/quarto-r/issues/81).
+
+<br>
+
+- If using `embed-resources: true` YAML option, `.qmd` can't be in subfolder, otherwise: 
+
+    - [[WARNING] Could not fetch resource ...]{.warning}
+
+    - **More info**: [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/4041#discussioncomment-6052000) and [GitHub issue](https://github.com/quarto-dev/quarto-cli/issues/5765).
+:::
+
+# 🚶🏻‍♀ Break 🧘🏻‍♀️ {.section}
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 30, top = 0)
+```

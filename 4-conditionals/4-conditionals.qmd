@@ -1,0 +1,230 @@
+---
+title: "Conditional content & code<br>![](../images/cascadia-jr-quarto.webp){width=4em}"
+format: revealjs
+execute:
+  eval: false
+---
+
+# Conditional content {.section}
+
+## Control content visibility
+
+Special `.content-visible` and `.content-hidden` classes with `when-format="___"` and `unless-format="___"` attributes can be applied to:
+
+::: panel-tabset
+
+## Divs
+
+```markdown
+::: {.content-visible when-format="html"}
+
+Will only appear in HTML.
+
+:::
+```
+
+## Spans
+
+``` markdown
+Some text
+[in HTML.]{.content-visible when-format="html"}
+[in PDF.]{.content-visible when-format="pdf"}
+```
+
+## Non-executable code
+
+Fenced code blocks purely for documentation.
+
+````markdown
+```{.python .content-visible when-format="html"}
+# code shown only in HTML
+2 + 2
+```
+````
+
+:::
+
+::: footer
+Examples from [Conditional Content Quarto docs](https://quarto.org/docs/authoring/conditional.html)
+:::
+
+## Useful for static/interactive features
+
+Pairs well with `{{< include >}}` shortcodes to re-use content without copying/pasting.
+
+. . .
+
+::::: panel-tabset
+
+## Static
+
+```markdown
+:::: {.content-visible unless-format="html"}
+
+## Cats
+
+{{{< include _cats.qmd >}}}
+
+## Dogs
+
+{{{< include _dogs.qmd >}}}
+
+::::
+```
+
+## Interactive
+
+```markdown
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+
+## Cats
+
+{{{< include _cats.qmd >}}}
+
+## Dogs
+
+{{{< include _dogs.qmd >}}}
+
+:::
+::::
+```
+:::::
+
+. . .
+
+Use an underscore prefix for included files so they are automatically ignored by a Quarto render of a project ([Includes Quarto Docs](https://quarto.org/docs/authoring/includes.html)).
+
+# 💪🏼 Exercise 4 {.exercise}
+
+**Use conditional content divs to control when tabsets are shown.**
+
+1. Modify `ex-4-conditional-content.qmd` so that the `panel-tabset` is visible for HTML reports and hidden for all other formats.
+
+<br>
+
+2. Explore the other options. There are multiple ways to get the same result.
+
+    {.content-visible when-format="html"} == {.content-hidden unless-format="html"}
+
+<br>
+
+3. 💬 **Chat**: what other kinds of content might you want to make visible for only a certain format?
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5, top = 0)
+```
+
+# Conditional code execution {.section}
+
+## Conditionally execute a code chunk
+
+::: incremental
+
+-   More efficient to not execute code that generates interactive outputs for static reports.
+
+-   Useful for executing interactive plot code (e.g., `plotly` or `ggiraph`) for HTML reports and static `ggplot2` code for all other formats. 
+
+-   Useful for executing different code based on a parameter value.
+
+-   Not currently a feature of Quarto v1.4. Follow along with this [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/3260#discussioncomment-4573926).
+
+-   Chunk options can use R code for option values with `!expr`. Learn about the limitations to this YAML "tag" literal syntax in the [Quarto Chunk Options reference](https://quarto.org/docs/computations/r.html#chunk-options).
+
+:::
+
+## Conditional code based on output
+
+Include in the setup chunk of your `.qmd` file.
+
+Get the format of the Pandoc output:
+
+```{r}
+#| label: setup
+#| echo: fenced
+
+# Get output format
+format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+```
+
+## Use `eval: !expr` chunk option
+
+::: panel-tabset
+
+## Static plot
+
+```markdown
+#| echo: fenced
+#| eval: !expr format %in% c("latex", "docx")
+
+# code to create static {ggplot2}
+```
+
+💡 Pandoc uses LaTeX to create PDFs.
+
+## Interactive plot
+
+```markdown
+#| echo: fenced
+#| eval: !expr format == "html"
+
+# code to create interactive {plotly}
+```
+
+:::
+
+# 💪🏼 Exercise 5 {.exercise}
+
+<br>
+
+**Conditionally execute `ggplot2` code for static reports & `plotly` code for interactive reports.**
+
+1. Open `ex-5-conditional-code.qmd`.
+
+2. Fill in the blanks for the `eval: ` option for `ggplot` code chunks and `plotly` code chunks.
+
+3. 💬 **Discuss**: How would you change the `eval: ` option to execute a chunk based on a parameter value rather than the output format?
+
+```{r}
+# Options are html, latex, and docx.
+
+#| eval: !expr format == "___"
+
+#| eval: !expr format %in% c("___", "___")
+```
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5, top = 0)
+```
+
+## Conditional code based on parameter
+
+Use `params` in `!expr`:
+
+``` r
+#| eval: !expr params$fave_breed == "Snowshoe"
+
+# Code for a special plot for my favorite cat breed.
+```
+
+<br>
+
+. . .
+
+``` r
+#| eval: !expr !params$fave_breed == "Snowshoe"
+
+# Code for a different plot for all other breeds.
+# Note the ! in front of params.
+```
+
+<br>
+
+. . .
+
+::: callout-tip
+## Community project: home energy monitoring
+Consider using a different conditional code chunk to create different visualizations depending on heating source.
+:::

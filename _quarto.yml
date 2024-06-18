@@ -2,7 +2,6 @@ project:
   type: website
   render:
     - "*.qmd"
-    - "!slides/[0-9]*.qmd"
   preview:
     port: 3434
     browser: true
@@ -45,10 +44,23 @@ website:
        text: Home
      - href: prework.qmd
        text: Pre-work
-     - href: slides.qmd
-       text: Slides
      - href: license.qmd
        text: License
+     - text: "---"
+     - section: Slides
+       contents:
+       - href: 1-welcome/index.qmd
+         text: Welcome
+       - href: 2-parameters/index.qmd
+         text: Parameters
+       - href: 3-render/index.qmd
+         text: Render
+       - href: 4-conditionals/index.qmd
+         text: Conditionals
+       - href: 5-style/index.qmd
+         text: Style
+       - href: 6-summary/index.qmd
+         text: Summary
 
 format:
   html:
@@ -61,6 +73,18 @@ format:
     code-overflow: scroll
     mainfont: Atkinson Hyperlegible
     highlight-style: a11y
+
+  revealjs:
+    author: "Jadey Ryan // June 21, 2024<br>Intermediate Quarto // Cascadia R Conf"
+    footer: "[jadeyryan.quarto.pub/cascadia-quarto/](https://jadeyryan.quarto.pub/cascadia-quarto/)"
+    logo: "images/cascadia-jr-quarto.webp"
+    logo-alt: "Cascadia R Conf hex sticker on top of JR's cat hex logo joined by a heart with the Quarto hex sticker."
+    width: 1600
+    height: 900
+    theme: slides.scss
+    highlight-style: a11y
+    transition: fade
+    slide-number: true
 
 # lightbox extension
 # https://github.com/quarto-ext/lightbox

@@ -1,0 +1,173 @@
+---
+title: "Welcome!<br> ![](../images/cascadia-jr-quarto.webp){width=5em}"
+format: revealjs
+---
+
+## While you wait for us to begin...
+
+1. Open the course website: [jadeyryan.quarto.pub/cascadia-quarto](https://jadeyryan.quarto.pub/cascadia-quarto).
+
+2. Get the exercises/packages via Posit Cloud or by downloading to your computer:
+
+**Option 1: Posit Cloud** (requires an account)
+
+[posit.cloud/spaces/504211/content/8093007](https://posit.cloud/spaces/504211/content/8093007)
+
+**Option 2: Download to your computer & install packages**
+
+```{r}
+#| eval: false
+
+usethis::use_course(
+  "https://github.com/jadeynryan/parameterized-quarto-workshop/raw/cascadia/exercises/cascadia-quarto-exercises.zip"
+#  ,destdir = "___"
+  )
+
+install.packages(c("dplyr", "fs", "ggplot2", "here", "janitor", "knitr", 
+                   "lubridate", "plotly", "purrr", "quarto", "readr", 
+                   "rmarkdown", "stringr", "tidyr"))
+```
+
+If `use_course()` didn't work, manually download the zip file from GitHub: [github.com/jadeynryan/parameterized-quarto-workshop/tree/cascadia/exercises](https://github.com/jadeynryan/parameterized-quarto-workshop/tree/cascadia/exercises).
+
+## Acknowledgements
+
+![](images/cascadia-logo.png){.center fig-alt="Cascadia R Conf logo" height=350px}
+
+\
+
+**Workshop structure adapted from:**
+
+[R/Medicine Data Cleaning 2023
+Workshop](https://shannonpileggi.github.io/rmedicine-data-cleaning-2023/) taught
+by [Crystal Lewis](https://cghlewis.com/), [Shannon
+Pileggi](https://www.pipinghotdata.com/), and [Peter
+Higgins](https://bookdown.org/pdr_higgins/rmrwr/)
+
+\
+
+[ASA Traveling Courses on
+Quarto](https://quarto.org/docs/blog/posts/2023-12-05-asa-traveling-courses/)
+taught by [Mine Çetinkaya-Rundel](https://mine-cr.com/) and [Andrew
+Bray](https://andrewpbray.github.io/)
+
+## Code of Conduct
+
+Please review and abide by: [cascadiarconf.com/policies/](https://cascadiarconf.com/policies/)
+
+\
+
+💙 Treat everyone with respect and kindness.
+
+\
+
+💜 Everyone should feel welcome and safe.
+
+## Disclaimer and license
+
+Opinions expressed are solely my own and do not express the views of my employer
+or any organizations I am associated with.
+
+<br>
+
+This work is licensed under [Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International (CC
+BY-NC-SA)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+{{< fa brands creative-commons size=2x >}} {{< fa brands creative-commons-by size=2x >}} {{< fa brands creative-commons-nc size=2x >}} {{< fa brands creative-commons-sa size=2x >}}
+
+## Meet Jadey Ryan
+
+::: columns
+::: {.column width="44%"}
+Data scientist at WA Dept of Agriculture
+
+The Coding Cats: cat & code themed merch
+
+{{< fa link size=xl >}} [jadeyryan.com](https://jadeyryan.com)
+
+{{< fa brands mastodon size=xl >}} [\@jadeynryan](https://fosstodon.org/@jadeynryan)
+
+{{< fa brands linkedin size=xl >}} [linkedin.com/in/jadey-ryan](https://www.linkedin.com/in/jadey-ryan)
+
+{{< fa brands github size=xl >}} [jadeynryan](https://github.com/jadeynryan/)
+
+{{< fa brands etsy size=xl >}} [thecodingcats.etsy.com](https://thecodingcats.etsy.com/)
+
+![](images/mts.webp){fig-alt="Three snowshoe siamese cats in loaf mode. From left to right: Tai, Mai, and Skye" style="border-radius:1em;margin-top:auto"}
+:::
+
+::: {.column width="28%"}
+![](images/bulk-density.jpg){fig-alt="Jadey collecting a bulk density soil sample in a field of wheat stubble." style="border-radius:1em;margin-top:auto"}
+:::
+
+::: {.column width="28%"}
+::: {layout-nrow="2"}
+![](images/soil-sampling.jpg){style="border-radius:1em;margin-top:auto"
+fig-alt="Jadey standing in a field of wheat stubble holding a 3 foot long soil sampling probe over her shoulder."}
+
+![](images/rangeland.jpg){fig-alt="Jadey standing in a grazed wildflower meadow with two colleagues collecting soil samples."
+style="border-radius:1em;margin-top:auto"}
+:::
+
+{{< fa camera title="Photo credit" >}} [@leslie.mmichel](https://twitter.com/leslie_mmichel)
+:::
+:::
+
+## Meet our TA: Lydia Gibson
+
+![](images/lydia-gibson.jpeg){.center fig-alt="Photo of Lydia Gibson"}
+
+## Learning objectives
+
+::: incremental
+-   Understand what parameterized reporting is and when it is useful.
+-   Convert a Quarto document into a parameterized template and render
+    all variations.
+-   Generate multiple format outputs from the same template using
+    conditional content, conditional code execution, and custom styling.
+:::
+
+## Schedule
+
+| Time        | Topic                                                          |
+|-------------|----------------------------------------------------------------|
+| 1:30 - 2:00 | [Welcome](1-welcome/) & [Parameterized reports](2-parameters/) |
+| 2:00 - 3:00 | [Rendering reports](3-render/)                                 |
+| 3:00 - 3:30 | Break                                                          |
+| 3:30 - 4:00 | [Conditional content & code](4-conditionals/)                  |
+| 4:00 - 4:20 | [Styling](5-styling/)                                          |
+| 4:20 - 4:30 | [Summary](6-summary/)                                          |
+
+## Workshop structure
+
+Presentation
+
+💃🏻 Demos
+
+💪🏻 Exercises
+
+\
+
+. . . 
+
+Let us know how you're doing by displaying your stickies!
+
+🟦 I'm all good; I'm done.
+
+🟧 I'm a little lost; I could use some help.
+
+# 💪🏼 Exercise 0 {.exercise}
+
+**Meet your neighbors**: 
+
+-   Your name
+
+-   Your favorite snack 🍎🧀🍦🍫🍿
+
+-   What kinds of reports are you wanting to create after today's workshop?
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 5, top = 0)
+```

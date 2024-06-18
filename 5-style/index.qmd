@@ -1,0 +1,10 @@
+---
+title: "Styling reports"
+format: html
+---
+
+[View slides in full screen](5-style.qmd).
+
+```{=html}
+<iframe class="slides" src="5-style.html"></iframe>
+```

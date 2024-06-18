@@ -1,0 +1,10 @@
+---
+title: "Rendering reports"
+format: html
+---
+
+[View slides in full screen](3-render.qmd).
+
+```{=html}
+<iframe class="slides" src="3-render.html""></iframe>
+```

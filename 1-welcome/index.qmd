@@ -1,0 +1,10 @@
+---
+title: "Welcome"
+format: html
+---
+
+[View slides in full screen](1-welcome.qmd).
+
+```{=html}
+<iframe class="slides" src="1-welcome.html""></iframe>
+```

@@ -1,0 +1,10 @@
+---
+title: "Summary"
+format: html
+---
+
+[View slides in full screen](6-summary.qmd).
+
+```{=html}
+<iframe class="slides" src="6-summary.html"></iframe>
+```

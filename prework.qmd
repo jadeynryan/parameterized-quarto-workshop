@@ -1,5 +1,6 @@
 ---
 title: "Pre-work"
+format: html
 ---
 
 ## Participation

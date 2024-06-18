@@ -1,0 +1,10 @@
+---
+title: "Conditional content & code"
+format: html
+---
+
+[View slides in full screen](4-conditionals.qmd).
+
+```{=html}
+<iframe class="slides" src="4-conditionals.html></iframe>
+```

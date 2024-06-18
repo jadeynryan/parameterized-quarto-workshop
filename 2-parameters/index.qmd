@@ -1,0 +1,10 @@
+---
+title: "Parameterizing reports"
+format: html
+---
+
+[View slides in full screen](2-parameters.qmd).
+
+```{=html}
+<iframe class="slides" src="2-parameters.html"></iframe>
+```

@@ -1,5 +1,6 @@
 ---
 title: "Disclaimer and license"
+format: html
 ---
 
 &copy; 2024 Jadey Ryan
