@@ -86,6 +86,7 @@ format:
     highlight-style: a11y
     transition: fade
     slide-number: true
+    df-print: kable
 
 # lightbox extension
 # https://github.com/quarto-ext/lightbox
