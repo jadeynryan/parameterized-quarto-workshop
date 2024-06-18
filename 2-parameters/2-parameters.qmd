@@ -3,7 +3,7 @@ title: "Parameterizing reports<br>![](../images/cascadia-jr-quarto.webp){width=5
 format: revealjs
 ---
 
-## Many use cases
+## Examples of parameterized reports
 
 ::: columns
 ::: {.column width="25%"}
@@ -41,7 +41,7 @@ fig-alt="HTML report for soil health survey participant, generated from a parame
 
 <br>
 
-**Different audiences, different reports**
+**Another use case: different audiences, different reports**
 
 Show code for technical staff and hide code for everyone else ([StackOverflow
 example](https://stackoverflow.com/questions/73571919/how-to-pass-logical-parameters-with-the-quarto-r-package-to-the-knitr-chunk-opti)).
@@ -103,15 +103,14 @@ width="1300" fig-align="left" style="margin-top:-1em"}
 6.  Render all variations of the report at once.
 :::
 
-# 💪🏼 Exercise 2 {.exercise}
+# 💪🏼 Exercise 1 {.exercise}
 
 **Explore a report without parameters and see where we could add them.**
 
-1.  Open `2-swiss-cats.qmd`.
+1.  Open `1-swiss-cats.qmd`.
 
 2.  Click the
-    ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio"
-    style="vertical-align:middle;" width="49"} **Render** button.
+    ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button.
 
 3.  Look at the source markdown & code and the rendered report.
 
@@ -127,7 +126,7 @@ countdown::countdown(minutes = 5, top = 0)
 
 ## Set `params` in YAML header
 
-```{.yaml code-line-numbers="|2|3,4,6|7-8|11"}
+```{.yaml code-line-numbers="|2|3,4,6|5|7-8|11"}
 ---
 title: "Swiss Cats"             # Metadata
 format:                         # Set format types
@@ -200,28 +199,40 @@ My favorite cat breed is the **`r params$fave_breed`**.
 
 ## Replace hard-coded values with `params`
 
-Use inline R code for markdown.
+**Use `$` list notation in code** for plot/table titles and labels, filtering, etc.
 
-```{.markdown}
-## My favorite breed: `r params$fave_breed`
-```
+\
 
-<br>
-
-. . .
-
-Use `paste()` or `glue::glue()` for plot and table titles and labels.
+`paste()` syntax:
 
 ```{r}
 #| eval: false
 
-# ggplot code +
-labs(title = paste(params$fave_breed, "population"))
+# ggplot2 code +
+    labs(title = paste(params$fave_breed, "population"))
+```
 
-# OR
+. . .
 
-# ggplot code +
-labs(title = glue::glue("{params$fave_breed} population"))
+\
+
+`glue::glue()` syntax:
+
+```{r}
+#| eval: false
+
+# ggplot2 code +
+    labs(title = glue::glue("{params$fave_breed} population"))
+```
+
+\
+
+. . .
+
+**Use inline R code** for markdown.
+
+```markdown
+## My favorite breed: **``r I("r params$fave_breed")``**.
 ```
 
 ##
@@ -230,8 +241,8 @@ labs(title = glue::glue("{params$fave_breed} population"))
 
 # 💃🏻 Demo {.demo}
 
-Modify `2-swiss-cats.qmd` to add `pet_type` and `fave_breed` parameters.
+Modify `1-swiss-cats-demo.qmd` to add `pet_type` and `fave_breed` parameters.
 
-<br>
+\
 
-This parameterized version of `2-swiss-cats.qmd` is the starting point for the next section's exercises (`3-quarto-render.qmd`).
+This parameterized version of `1-swiss-cats.qmd` is the starting point for the next section's exercises (`2-quarto-render.qmd`).
