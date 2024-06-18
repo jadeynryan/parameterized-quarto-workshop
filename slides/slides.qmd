@@ -1,9 +1,9 @@
 ---
-title: "Reproducible Reporting<br> with Quarto<br> ![](images/jr-logo-quarto.webp){width=5em}"
-author: "Jadey Ryan // April 25, 2024<br>Community Engaged Data Science<br>College of the Atlantic"
-footer: "Reproducible Reporting with Quarto // [jadeyryan.quarto.pub/ceds-quarto-workshop/](https://jadeyryan.quarto.pub/ceds-quarto-workshop/)"
-logo: "images/jr-logo-quarto.webp"
-logo-alt: "Two hex stickers side by side with a heart joining them in the middle. Left sticker is Jadey's cat logo. Right sticker is the Quarto logo."
+title: "Intermediate Quarto:<br>Parameterized Reporting<br> ![](images/cascadia-jr-quarto.webp){width=5em}"
+author: "Jadey Ryan // June 21, 2024<br>Cascadia R Conf"
+footer: "Intermediate Quarto // [jadeyryan.quarto.pub/cascadia-quarto/](https://jadeyryan.quarto.pub/cascadia-quarto/)"
+logo: "images/cascadia-jr-quarto.webp"
+logo-alt: "Cascadia R Conf hex sticker on top of JR's cat hex logo joined by a heart with the Quarto hex sticker."
 format: 
   revealjs: 
     width: 1600
@@ -17,16 +17,12 @@ execute:
 df-print: kable
 ---
 
-{{< include 01-intro.qmd >}} 
+{{< include 1-intro.qmd >}} 
 
-{{< include 02-quarto.qmd >}}
+{{< include 2-parameters.qmd >}}
 
-{{< include 03-parameters.qmd >}}
+{{< include 3-render.qmd >}}
 
-{{< include 04-render.qmd >}}
+{{< include 4-conditionals-style.qmd >}}
 
-{{< include 05-conditionals.qmd >}}
-
-{{< include 06-knit-child.qmd >}}
-
-{{< include 07-summary.qmd >}}
+{{< include 5-summary.qmd >}}

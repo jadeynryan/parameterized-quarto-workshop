@@ -152,7 +152,7 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 
 ## Static plot
 
-```{r}
+```markdown
 #| echo: fenced
 #| eval: !expr format %in% c("latex", "docx")
 
@@ -163,7 +163,7 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 
 ## Interactive plot
 
-```{r}
+```markdown
 #| echo: fenced
 #| eval: !expr format == "html"
 

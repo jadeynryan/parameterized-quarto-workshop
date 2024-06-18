@@ -78,13 +78,6 @@ countdown::countdown(minutes = 7, top = 0)
 countdown::countdown(minutes = 7, top = 0)
 ```
 
-# 🚶🏻‍♀ Break 🧘🏻‍♀️ {.section}
-
-```{r}
-#| echo: false
-countdown::countdown(minutes = 10, top = 0)
-```
-
 ## Render all 538 reports 
 
 One HTML report for each cat breed and each dog breed.
@@ -322,7 +315,7 @@ format-links: false
 
 Demo programmatically rendering all reports in all formats in `4-demo-quarto-render-purrr.qmd` and `4-demo-quarto-render-purrr.R`.
 
-## Watchouts
+## ⚠ Watch out!
 
 ::: incremental
 
@@ -344,3 +337,10 @@ Demo programmatically rendering all reports in all formats in `4-demo-quarto-ren
 
     - **More info**: [GitHub discussion](https://github.com/quarto-dev/quarto-cli/discussions/4041#discussioncomment-6052000) and [GitHub issue](https://github.com/quarto-dev/quarto-cli/issues/5765).
 :::
+
+# 🚶🏻‍♀ Break 🧘🏻‍♀️ {.section}
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 30, top = 0)
+```

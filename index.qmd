@@ -2,7 +2,7 @@
 title: "Intermediate Quarto: Parameterized Reports Workshop"
 ---
 
-[Cascadia R Conference 2024](https://cascadiarconf.com/)
+[**Cascadia R Conference 2024**](https://cascadiarconf.com/)
 
 📆 June 21, 2024 // 1:30 pm - 4:30 pm PT\
 🏫 University of Washington, South Lake Union, Building C\
@@ -10,13 +10,11 @@ title: "Intermediate Quarto: Parameterized Reports Workshop"
 🐙 [GitHub
 release](https://github.com/jadeynryan/parameterized-quarto-workshop/tree/cascadia)\
 
-<!-- ::: callout-important -->
+::: callout-important
 
-<!-- This workshop is currently being updated. Materials, links, and exercises -->
+This workshop is currently being updated. Materials, links, and exercises are subject to change.
 
-<!-- subject to change. -->
-
-<!-- ::: -->
+:::
 
 ## Description
 
@@ -41,9 +39,11 @@ all variations of a parameterized report at once using `quarto` and
 
 | Time        | Topic                                |
 |-------------|--------------------------------------|
-| 1:30 - 3:00 | Parameterized reporting              |
+| 1:30 - 2:00 | Welcome & Parameters                 |
+| 2:00 - 3:00 | Rendering                            |
 | 3:00 - 3:30 | Break                                |
-| 3:30 - 4:20 | Conditional content/code and styling |
+| 3:30 - 4:00 | Conditional content & code           |
+| 4:00 - 4:20 | Styling                              |
 | 4:20 - 4:30 | Summary                              |
 
 ## Speaker
