@@ -114,7 +114,7 @@ width="1300" fig-align="left" style="margin-top:-1em"}
 
 3.  Look at the source markdown & code and the rendered report.
 
-4.  💬 **Discuss**: What variables could we set as parameters?
+4.  💬 **Chat**: What variables could we set as parameters?
 
     💡 **Hint**: run the `setup` chunk and look at the `pets` dataframe to see
     what variables it has.

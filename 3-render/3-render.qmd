@@ -47,7 +47,7 @@ format: revealjs
       fave_breed: "___"
     ```
 
-3. 💬 **Discuss**: Which breed did you pick and why? What do you think will happen if you set the `pet_type` default parameter to "cats" and the `fave_breed` parameter to "American Bulldog"? 
+3. 💬 **Chat**: Which breed did you pick and why? What do you think will happen if you set the `pet_type` default parameter to "cats" and the `fave_breed` parameter to "American Bulldog"? 
 
     Try it out and discuss what happend!
 
@@ -71,7 +71,7 @@ countdown::countdown(minutes = 7, top = 0)
         fave_breed = "___"))
    ```
 
-2. 💬 **Discuss**: What kinds of variables will you use as parameters for your reports? 
+2. 💬 **Chat**: What kinds of variables will you use as parameters for your reports? 
 
 ```{r}
 #| echo: false

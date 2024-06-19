@@ -9,7 +9,42 @@ execute:
 
 ## Control content visibility
 
-Special `.content-visible` and `.content-hidden` classes with `when-format="___"` and `unless-format="___"` attributes can be applied to:
+Create a div, span, or non-executable code block with one option from each of the below columns:
+
+`{.class attribute="format"}`
+
+:::: {.columns}
+
+::: {.column width="30%"}
+**Class**
+
+- `.content-visible`
+- `.content-hidden`
+:::
+
+::: {.column width="30%"}
+**Attribute**
+
+- `when-format="___"`
+- `unless-format="___"`
+:::
+
+::: {.column width="30%"}
+**Format**
+
+- `latex` or `pdf`
+- `epub`
+- `html` or `revealjs`
+- `markdown`
+:::
+
+::::
+
+\
+
+. . .
+
+**Examples:**
 
 ::: panel-tabset
 
@@ -41,12 +76,13 @@ Fenced code blocks purely for documentation.
 2 + 2
 ```
 ````
-
 :::
 
-::: footer
-Examples from [Conditional Content Quarto docs](https://quarto.org/docs/authoring/conditional.html)
-:::
+\
+
+. . .
+
+[Conditional Content Quarto docs](https://quarto.org/docs/authoring/conditional.html)
 
 ## Useful for static/interactive features
 
@@ -93,23 +129,26 @@ Pairs well with `{{< include >}}` shortcodes to re-use content without copying/p
 
 . . .
 
+::: callout-tip
+## Good practice
 Use an underscore prefix for included files so they are automatically ignored by a Quarto render of a project ([Includes Quarto Docs](https://quarto.org/docs/authoring/includes.html)).
+:::
 
-# 💪🏼 Exercise 4 {.exercise}
+# 💪🏼 Exercise 3-1 {.exercise}
 
 **Use conditional content divs to control when tabsets are shown.**
 
-1. Modify `ex-4-conditional-content.qmd` so that the `panel-tabset` is visible for HTML reports and hidden for all other formats.
+1. Modify `3-conditional-content.qmd` so that the `panel-tabset` is visible for HTML reports and hidden for all other formats.
 
-<br>
+\
 
-2. Explore the other options. There are multiple ways to get the same result.
+2. Try another way to get the same result.
 
-    {.content-visible when-format="html"} == {.content-hidden unless-format="html"}
+    `{.content-visible when-format="html"}` is essentially the same as `{.content-hidden unless-format="html"}`.
 
-<br>
+\
 
-3. 💬 **Chat**: what other kinds of content might you want to make visible for only a certain format?
+3. 💬 **Chat**: Besides tabsets, what other kinds of content might you want to make visible for only a certain format?
 
 ```{r}
 #| echo: false
@@ -174,25 +213,23 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 
 :::
 
-# 💪🏼 Exercise 5 {.exercise}
-
-<br>
+# 💪🏼 Exercise 3-2 {.exercise}
 
 **Conditionally execute `ggplot2` code for static reports & `plotly` code for interactive reports.**
 
-1. Open `ex-5-conditional-code.qmd`.
+1. Open `4-conditional-code.qmd`.
 
-2. Fill in the blanks for the `eval: ` option for `ggplot` code chunks and `plotly` code chunks.
-
-3. 💬 **Discuss**: How would you change the `eval: ` option to execute a chunk based on a parameter value rather than the output format?
+2. In the `ggplot2` code chunks and `plotly` code chunks, fill in the blanks for the `eval: ` option.
 
 ```{r}
-# Options are html, latex, and docx.
+# Replace ___ with html, latex, or docx.
 
 #| eval: !expr format == "___"
 
 #| eval: !expr format %in% c("___", "___")
 ```
+
+3. 💬 **Chat**: How would you change the `eval: ` option to execute a chunk based on a parameter value rather than the output format?
 
 ```{r}
 #| echo: false
@@ -219,12 +256,3 @@ Use `params` in `!expr`:
 # Code for a different plot for all other breeds.
 # Note the ! in front of params.
 ```
-
-<br>
-
-. . .
-
-::: callout-tip
-## Community project: home energy monitoring
-Consider using a different conditional code chunk to create different visualizations depending on heating source.
-:::
