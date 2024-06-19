@@ -210,6 +210,11 @@ pet_reports <- pets |>
       \(pet_type, breed) list(pet_type = pet_type, breed = breed)))
 ```
         
+```{r}
+#| echo: false
+saveRDS(pet_reports, "../data/pet-reports.RDS")
+```
+
 ## Subset to first 2 cat/dog breeds
 
 ```{r}
