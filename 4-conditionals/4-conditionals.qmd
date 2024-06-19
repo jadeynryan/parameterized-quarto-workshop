@@ -40,9 +40,7 @@ Create a div, span, or non-executable code block with one option from each of th
 
 ::::
 
-\
-
-. . .
+:::: {.fragment style="margin-top:-3.5em"}
 
 **Examples:**
 
@@ -77,12 +75,11 @@ Fenced code blocks purely for documentation.
 ```
 ````
 :::
-
-\
+::::
 
 . . .
 
-[Conditional Content Quarto docs](https://quarto.org/docs/authoring/conditional.html)
+[Conditional Quarto docs](https://quarto.org/docs/authoring/conditional.html) & [Format aliases](https://quarto.org/docs/authoring/conditional.html#format-matching)
 
 ## Useful for static/interactive features
 
@@ -131,7 +128,7 @@ Pairs well with `{{< include >}}` shortcodes to re-use content without copying/p
 
 ::: callout-tip
 ## Good practice
-Use an underscore prefix for included files so they are automatically ignored by a Quarto render of a project ([Includes Quarto Docs](https://quarto.org/docs/authoring/includes.html)).
+Use an underscore prefix for included files so they are automatically ignored by a Quarto render of a project ([Include shortcode Quarto docs](https://quarto.org/docs/authoring/includes.html)).
 :::
 
 # 💪🏼 Exercise {.exercise}
@@ -200,7 +197,13 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 # code to create static {ggplot2}
 ```
 
-💡 Pandoc uses LaTeX to create PDFs.
+:::: callout-important
+## Use `latex` not `pdf`
+
+`format` comes from `knitr::opts_knit$get("rmarkdown.pandoc.to")`. Pandoc uses LaTeX to create PDFs.
+
+Quarto [format aliases](https://quarto.org/docs/authoring/conditional.html#format-matching) won't work here.
+::::
 
 ## Interactive plot
 
@@ -217,7 +220,7 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 
 **Conditionally execute `ggplot2` code for static reports & `plotly` code for interactive reports.**
 
-1. Open `4-conditional-code.qmd`.
+1. Open `5-conditional-code.qmd`.
 
 2. In the `ggplot2` code chunks and `plotly` code chunks, fill in the blanks for the `eval: ` option.
 
