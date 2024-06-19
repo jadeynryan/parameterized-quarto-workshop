@@ -28,7 +28,7 @@ format: revealjs
 
 :::
 
-# 💪🏼 Exercise 2-1 {.exercise}
+# 💪🏼 Exercise {.exercise}
 
 **Change parameters in the YAML and render using ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} Render button.**
 
@@ -39,7 +39,7 @@ format: revealjs
       dplyr::distinct(pet_type, breed) |> View()
    ```
    
-2. In `2-quarto-render.qmd` Change the default parameters in the YAML to your favorite pet type and breed. Render using the ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button.
+2. In `2-quarto-render.qmd`, change the default parameters in the YAML to your favorite pet type and breed. Render using the ![](https://quarto.org/docs/get-started/hello/images/rstudio-render-button.png){fig-alt="Quarto render button in RStudio" style="vertical-align:middle;" width="49"} **Render** button.
 
     ```{.yaml}
     params:
@@ -56,7 +56,7 @@ format: revealjs
 countdown::countdown(minutes = 7, top = 0)
 ```
 
-# 💪🏼 Exercise 2-2 {.exercise}
+# 💪🏼 Exercise {.exercise}
 
 **Change parameters and render using `quarto_render()`.**
 

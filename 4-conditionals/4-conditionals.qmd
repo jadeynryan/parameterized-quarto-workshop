@@ -134,7 +134,7 @@ Pairs well with `{{< include >}}` shortcodes to re-use content without copying/p
 Use an underscore prefix for included files so they are automatically ignored by a Quarto render of a project ([Includes Quarto Docs](https://quarto.org/docs/authoring/includes.html)).
 :::
 
-# 💪🏼 Exercise 3-1 {.exercise}
+# 💪🏼 Exercise {.exercise}
 
 **Use conditional content divs to control when tabsets are shown.**
 
@@ -213,7 +213,7 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 
 :::
 
-# 💪🏼 Exercise 3-2 {.exercise}
+# 💪🏼 Exercise {.exercise}
 
 **Conditionally execute `ggplot2` code for static reports & `plotly` code for interactive reports.**
 
@@ -246,7 +246,7 @@ Use `params` in `!expr`:
 # Code for a special plot for my favorite cat breed.
 ```
 
-<br>
+\
 
 . . .
 

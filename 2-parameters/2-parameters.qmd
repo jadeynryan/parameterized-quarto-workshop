@@ -39,7 +39,7 @@ fig-alt="HTML report for soil health survey participant, generated from a parame
 
 . . .
 
-<br>
+\
 
 **Another use case: different audiences, different reports**
 
@@ -103,7 +103,7 @@ width="1300" fig-align="left" style="margin-top:-1em"}
 6.  Render all variations of the report at once.
 :::
 
-# 💪🏼 Exercise 1 {.exercise}
+# 💪🏼 Exercise {.exercise}
 
 **Explore a report without parameters and see where we could add them.**
 
@@ -169,7 +169,7 @@ Run any line or chunk to add `params` to your environment.
 str(params)
 ```
 
-<br>
+\
 
 . . .
 
@@ -179,7 +179,7 @@ Access with `$` notation.
 params$fave_breed
 ```
 
-<br>
+\
 
 . . .
 
