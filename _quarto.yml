@@ -17,7 +17,7 @@ website:
   title: "Intermediate Quarto: Parameterized Reports Workshop"
   description: "Homepage for the Intermediate Quarto: Parameterized Reports Workshop at Cascadia R Conf 2024"
   site-url: "https://jadeyryan.quarto.pub/cascadia-quarto/"
-  # favicon: "images/cascadia-jr-quarto.webp"
+  favicon: "images/cascadia-jr-quarto.webp"
 
   repo-url: https://github.com/jadeynryan/parameterized-quarto-workshop
   repo-actions: [source, edit, issue]
