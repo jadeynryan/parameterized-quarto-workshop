@@ -3,111 +3,140 @@ title: "Styling your reports<br>![](../images/cascadia-jr-quarto.webp){width=5em
 format: revealjs
 ---
 
-# 🏁 Recap {.section}
+# HTML {.section}
 
-## Learning objective 1
+## Bootswatch themes
 
-**Learn what Quarto is and what you can use it for.**
+Choose from or customize one of 25 [Bootswatch](https://bootswatch.com/) themes.
 
-::: columns
-::: {.column width="50%"}
-Scientific and technical publishing system for:
-
--   interactive [HTML
-    reports](https://quarto.org/docs/output-formats/html-basics.html)
--   static [MS Word](https://quarto.org/docs/output-formats/ms-word.html) or
-    [PDF](https://quarto.org/docs/output-formats/pdf-basics.html) fact sheets or
-    reports
--   [manuscripts](https://quarto.org/docs/manuscripts/)
--   [presentations](https://quarto.org/docs/presentations/)
--   [dashboards](https://quarto.org/docs/dashboards/)
--   [websites](https://quarto.org/docs/websites/)
--   [books](https://quarto.org/docs/books/)
--   [blogs](https://quarto.org/docs/websites/website-blog.html)
-
-**Check out the [Quarto Gallery](https://quarto.org/docs/gallery/)!**
-:::
-
-::: {.column width="50%"}
-![Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine
-Çetinkaya-Rundel, presented at RStudio::Conf(2022). Illustrated by Allison
-Horst.](images/horst-quarto-schematic.png){fig-alt="A schematic representing the multi-language input (e.g. Python, R, Observable, Julia) and multi-format output (e.g. PDF, html, Word documents, and more) versatility of Quarto."
-fig-align="center" style="margin-top:-1.5em;margin-bottom:-1em"}
-:::
-:::
-
-## Learning objective 2
-
-**Learn how to weave code and text together to create a fully reproducible
-report.**
-
-`.qmd` documents contain:
-
--   document level metadata and options in the **YAML**
--   a **narrative** using markdown syntax, and
--   **code chunks** to import, wrangle, visualize data.
-
-## Learning objective 3
-
-**Learn how to use parameters to create variations of a report.**
+\
 
 . . .
 
-**Parameterized reports &rarr; very fancy custom functions:**
+**Set the theme** in the YAML under the `html` key:
 
-::: incremental
--   Function → `.qmd` template
+``` yaml
+format:
+  html:
+    theme: flatly
+```
 
--   Input → parameters
-
--   Output → rendered reports
-:::
-
-. . .
-
-**Useful for creating variations of the same report:**
-
--   spatial: country, state, county, or city
-
--   temporal: year or other time period
-
--   water bodies, sampling sites, energy sources, breeds, species, diseases, trials, etc.
+\
 
 . . .
 
-::: callout-note
-We only covered reports, but you can also parameterize `revealjs` presentations!
-See this [Jumping Rivers blog
-post](https://www.jumpingrivers.com/blog/r-parameterised-presentations-quarto/)
-about it.
+**Customize a theme** by including a custom `.scss` file under the `theme` key:
+
+``` yaml
+format:
+  html:
+    theme: [flatly, theme.scss]
+```
+
+\
+
+[HTML theming Quarto docs](https://quarto.org/docs/output-formats/html-themes.html)
+
+
+## SCSS files
+
+SCSS files have the following form:
+
+``` scss
+/*-- scss:defaults --*/
+$h2-font-size:          1.6rem !default;
+$headings-font-weight:  500 !default;
+$body-color:            $gray-700 !default;
+
+/*-- scss:rules --*/
+h1, h2, h3, h4, h5, h6 {
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, .3);
+}
+```
+
+\
+
+Define [**SASS variables**](https://quarto.org/docs/output-formats/html-themes.html#sass-variables) in the `defaults` section.
+
+Declare [**CSS rules**](https://www.w3schools.com/css/css_syntax.ASP) in the `rules` section.
+
+\
+
+[Bootstrap docs](https://getbootstrap.com/docs/5.1/customize/sass/)
+
+[Default Bootstrap variables](https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss)
+
+## Browser developer tools
+
+::: r-stack
+![](images/browser-tools.png){.fragment
+fig-alt="Screenshot of browser developer tools inspecting the Quarto title meta heading of an HTML report."
+width="1300" fig-align="left"}
+
+![](images/browser-tools-modified.png){.fragment
+fig-alt="Screenshot of browser developer tools with the CSS declaration modified to test style changes."
+width="1300" fig-align="left"}
 :::
 
-## Thank you!
+# MS Word {.section}
 
-::: columns
-::: {.column width="65%"}
-🏡 **Home for all workshop materials**:
-[jadeyryan.quarto.pub/ceds-quarto-workshop/](https://jadeyryan.quarto.pub/ceds-quarto-workshop/)
+## Reference document
 
-🎥 **Recordings from previous workshops & talks**:  
-[links in GitHub repo](https://github.com/jadeynryan/parameterized-quarto-workshop?tab=readme-ov-file#workshops) or [my YouTube playlist](https://youtube.com/playlist?list=PLzjGoNexcyYaDUVCg4MQDtMXLl2F5HE3B&si=-y0jQfCYyRAQjI1B)
+Create and modify a *reference document*, which is a special kind of template.
 
-![](images/mts.jpg){width="600"
-fig-alt="From left to right, Mai, Tai, and Skye. Three snowshoe cats cuddling in their warming beds."
-style="border-radius:1em"}
-:::
+. . .
 
-::: {.column width="35%"}
-**Stay connected!**
+1. Run the following in the Terminal to create the reference doc:
 
-{{< fa link size=xl >}} [jadeyryan.com](https://jadeyryan.com)
+```{.bash filename="Terminal"}
+quarto pandoc -o word-template.docx --print-default-data-file reference.docx
+```
 
-{{< fa brands mastodon size=xl >}} [\@jadeynryan](https://fosstodon.org/@jadeynryan)
+. . .
 
-{{< fa brands linkedin size=xl >}} [linkedin.com/in/jadey-ryan](https://www.linkedin.com/in/jadey-ryan)
+2. Open `word-template.docx` and modify the styles.
 
-{{< fa brands github size=xl >}} [jadeynryan](https://github.com/jadeynryan/)
+. . .
 
-{{< fa brands etsy size=xl >}} [thecodingcats.etsy.com](https://thecodingcats.etsy.com/)
-:::
-:::
+3. Set this template in the YAML under the `reference-doc:` key:
+
+```yaml
+format:
+  docx:
+    reference-doc: word-template.docx
+```
+
+. . .
+
+[MS Word template Quarto docs](https://quarto.org/docs/output-formats/ms-word-templates.html)
+
+[MS documentation on modifying styles](https://support.microsoft.com/en-us/office/customize-or-create-new-styles-d38d6e47-f6fc-48eb-a607-1eb120dec563)
+
+## Need your report as a PDF?
+
+Format in MS Word and then convert `.docx` to `.pdf` with Adobe Acrobat.
+
+or...
+
+- Learn how to format PDFs in the Quarto docs: [PDF basics](https://quarto.org/docs/output-formats/pdf-basics.html) & [PDF options](https://quarto.org/docs/reference/formats/pdf.html).
+
+- Try [Typst](https://quarto.org/docs/output-formats/typst.html), an open-source markup-based typesetting system, new in Quarto 1.4.
+
+# 💪🏼 Exercise {.exercise}
+
+**Play around with the HTML and MS Word styling of a report of your choosing.**
+
+1. Open a new `.qmd` or choose one from a previous exercise.
+2. Add a [Bootswatch](https://bootswatch.com/) theme to the YAML and re-render.
+3. Create a MS Word reference doc, [modify a style](https://support.microsoft.com/en-us/office/customize-or-create-new-styles-d38d6e47-f6fc-48eb-a607-1eb120dec563), add it to the YAML, and re-render.
+
+```{.bash}
+# Run in the Terminal
+
+quarto pandoc -o word-template.docx --print-default-data-file reference.docx
+```
+
+```{r}
+#| echo: false
+countdown::countdown(minutes = 7, top = 0)
+```
