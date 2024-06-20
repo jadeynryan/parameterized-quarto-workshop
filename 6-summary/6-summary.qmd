@@ -24,11 +24,11 @@ format: revealjs
 
 **Useful for creating variations of the same report:**
 
--   spatial: country, state, county, or city
+-   Spatial: country, state, county, or city
 
--   temporal: year, month or other time period
+-   Temporal: year, month or other time period
 
--   breeds, species, diseases, water bodies, customers, trials, etc.
+-   Anything you can filter by: breeds, species, diseases, water bodies, customers, trials, etc.
 
 . . .
 
@@ -38,7 +38,7 @@ We only covered reports, but you can also parameterize `revealjs` presentations!
 
 ## Learning objective 2a
 
-**Convert a Quarto document into a parameterized template** and render all variations.
+**Convert a Quarto document into a parameterized template.**
 
 ::: incremental
 - Include default `params:` in YAML
@@ -71,7 +71,7 @@ We only covered reports, but you can also parameterize `revealjs` presentations!
 
 ## Learning objective 2b
 
-Convert a Quarto document into a parameterized template and **render all variations of the report at once using [{quarto}](https://quarto-dev.github.io/quarto-r/) and [{purrr}](https://purrr.tidyverse.org/). **
+**Render all variations of the report at once using [{quarto}](https://quarto-dev.github.io/quarto-r/) and [{purrr}](https://purrr.tidyverse.org/).**
 
 ::: {.fragment}
 1. Get all unique parameter combinations into a dataframe:
@@ -104,11 +104,9 @@ purrr::pwalk(
 
 ## Learning objective 3a
 
-Generate multiple format outputs from the same template using **conditional content**, conditional code execution, and custom styling.
+**Generate multiple format outputs from the same .qmd using [conditional content]{style="font-size:larger;text-decoration: underline;"}.**
 
 Create a div, span, or non-executable code block with one option from each of the below columns:
-
-`{.class attribute="format"}`
 
 :::: {.columns}
 
@@ -136,15 +134,36 @@ Create a div, span, or non-executable code block with one option from each of th
 :::
 ::::
 
+:::: {.fragment style="margin-top:-2em"}
+
+**Example to show tabset only for HTML reports:**
+
+```markdown
+:::: {.content-visible when-format="html"}
+::: panel-tabset
+{{{< include _4-report-content.qmd >}}}
+:::
+::::
+```
+::::
+
 ## Learning objective 3b
 
-Generate multiple format outputs from the same template using conditional content, **conditional code execution**, and custom styling.
+**Generate multiple format outputs from the same .qmd using [conditional code execution]{style="font-size:larger;text-decoration: underline;"}**.
+
+::: panel-tabset
+
+## Conditional on output
+
+1. Get the Pandoc output format.
 
 ```r
 #| label: setup
 
 format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 ```
+
+2. Use `format` in the `eval: !expr` chunk option.
 
 ```r
 #| label: interactive-plot
@@ -153,18 +172,55 @@ format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 # plotly code
 ```
 
+## Conditional on parameter
+
+Use `params` in the `eval: !expr` chunk option.
+
 ```r
-#| label: static-plot
-#| eval: !expr format %in% c("latex", "docx")
+#| eval: !expr params$fave_breed == "Snowshoe"
 
-# ggplot2 code
+# Code for a special plot for my favorite cat breed.
 ```
-
 :::
 
 ## Learning objective 3c
 
-Generate multiple format outputs from the same template using conditional content, conditional code execution, and **custom styling**.
+**Generate multiple format outputs from the same .qmd using [custom styling]{style="font-size:larger;text-decoration: underline;"}.**
+
+::: panel-tabset
+
+## HTML: Bootswatch & SCSS file
+
+1. Pick a [Bootswatch](https://bootswatch.com/) theme.
+
+2. Customize with a `.scss` file.
+
+3. Use browser developer tools to find/test more styling.
+
+``` yaml
+format:
+  html:
+    theme: [flatly, theme.scss]
+```
+
+## MS Word: reference doc
+
+1. Create the reference doc.
+
+```{.bash filename="Terminal"}
+quarto pandoc -o word-template.docx --print-default-data-file reference.docx
+```
+
+2. Open `word-template.docx` and modify the styles.
+
+3. Set this template in the YAML under the `reference-doc:` key:
+
+```yaml
+format:
+  docx:
+    reference-doc: word-template.docx
+```
+:::
 
 ## Thank you!
 

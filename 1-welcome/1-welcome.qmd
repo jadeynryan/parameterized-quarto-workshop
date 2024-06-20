@@ -124,7 +124,7 @@ style="border-radius:1em;margin-top:auto"}
 
 ## Meet our TA: Lydia Gibson
 
-![](images/lydia-gibson.jpeg){.center fig-alt="Photo of Lydia Gibson"}
+![](images/lydia-gibson.jpeg){.center fig-alt="Photo of Lydia Gibson" style="border-radius:1em;"}
 
 ## Learning objectives
 
@@ -132,8 +132,10 @@ style="border-radius:1em;margin-top:auto"}
 -   Understand what parameterized reporting is and when it is useful.
 -   Convert a Quarto document into a parameterized template and render
     all variations.
--   Generate multiple format outputs from the same template using
-    conditional content, conditional code execution, and custom styling.
+-   Generate multiple format outputs from the same template using:
+    - conditional content
+    - conditional code execution, and
+    - custom styling.
 :::
 
 ## Schedule

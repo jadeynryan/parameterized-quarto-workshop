@@ -193,7 +193,7 @@ My favorite cat breed is the **`r params$fave_breed`**.
 
 ## Replace hard-coded values with `params`
 
--   `Cmd`/`Ctrl` + `F` to find where to replace hard-coded values with `params`.
+`Cmd`/`Ctrl` + `F` to find where to replace hard-coded values with `params`.
 
 ![](images/find-replace-hard-coded-values.png){fig-alt="Find and replace toolbar with &quot;pet_type in the Search field highlighted by a purple box and &quot;params$pet_type in the Replace field highlighted by a blue box. The .qmd file shows a filter statement with the &quot;pet_type highlighted by RStudio as a match for the Find tool. This filter statement is highlighted by a purple box with an arrow pointing to a blue box that has the filter statement with the hard-coded &quot;cats string replaced with &quot;params$pet_type."}
 

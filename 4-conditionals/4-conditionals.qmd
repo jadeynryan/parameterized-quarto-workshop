@@ -1,8 +1,6 @@
 ---
 title: "Conditional content & code<br>![](../images/cascadia-jr-quarto.webp){width=4em}"
 format: revealjs
-execute:
-  eval: false
 ---
 
 # Conditional content {.section}
@@ -83,7 +81,7 @@ Fenced code blocks purely for documentation.
 
 ## Useful for static/interactive features
 
-Pairs well with `{{< include >}}` shortcodes to re-use content without copying/pasting.
+Pairs well with the `{{< include >}}` shortcode to re-use content without copying/pasting.
 
 . . .
 
@@ -172,9 +170,7 @@ countdown::countdown(minutes = 5, top = 0)
 
 ## Conditional code based on output
 
-Include in the setup chunk of your `.qmd` file.
-
-Get the format of the Pandoc output:
+Get the format of the Pandoc output by including the following in the setup chunk of your `.qmd` file:
 
 ```{r}
 #| label: setup
