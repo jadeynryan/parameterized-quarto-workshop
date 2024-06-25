@@ -11,10 +11,10 @@ format: html
 🐙 [GitHub
 release](https://github.com/jadeynryan/parameterized-quarto-workshop/tree/cascadia)\
 
-::: callout-important
-This workshop is currently being updated. Materials, links, and
-exercises are subject to change.
-:::
+<!-- ::: callout-important -->
+<!-- This workshop is currently being updated. Materials, links, and -->
+<!-- exercises are subject to change. -->
+<!-- ::: -->
 
 ## Description
 
@@ -43,7 +43,7 @@ all variations of a parameterized report at once using `quarto` and
 | 2:00 - 3:00 | [Rendering reports](3-render/)                                  |
 | 3:00 - 3:30 | Break                                                           |
 | 3:30 - 4:00 | [Conditional content & code](4-conditionals/)                   |
-| 4:00 - 4:20 | [Styling reports](5-styling/)                                   |
+| 4:00 - 4:20 | [Styling reports](5-style/)                                     |
 | 4:20 - 4:30 | [Summary](6-summary/)                                           |
 
 ## Speaker
