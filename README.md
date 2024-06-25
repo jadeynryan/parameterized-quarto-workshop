@@ -6,6 +6,8 @@
 
 ### Upcoming
 
+### Past
+
 #### Intermediate Quarto: Parameterized Reports
 
 [Cascadia R Conference](https://cascadiarconf.com/) 2024 Workshop
@@ -25,8 +27,6 @@ content, conditional code execution, and custom styling sheets for HTML
 and Microsoft Word formats. Additionally, you will learn how to render
 all variations of a parameterized report at once using `quarto` and
 `purrr`.
-
-### Past
 
 #### Reproducible Reporting with Quarto
 
